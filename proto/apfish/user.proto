@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package user;
+
+option go_package = "apfish.v1;apfishv1";
+
+service User {
+  rpc Users (UsersRequest) returns (UsersResponse);
+}
+
+message UsersRequest {
+    string search_val = 1;
+}
+
+message UserRights {
+    bool is_mou = 1;
+    string authority = 2;
+    string district = 3;
+    string port = 4;
+}
+
+message UserInfo {
+    string login = 1;
+    string name = 2;
+    UserRights rights = 3;
+    string position = 4;
+    bool is_active = 5;
+}
+
+message UsersResponse {
+    repeated UserInfo users = 1;
+}
