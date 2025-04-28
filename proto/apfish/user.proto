@@ -10,6 +10,8 @@ service User {
 
 message UsersRequest {
     string search_val = 1;
+    int32 page = 2;
+    int32 per_page = 3;
 }
 
 message UserRights {
