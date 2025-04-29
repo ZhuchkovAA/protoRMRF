@@ -228,7 +228,7 @@ func (x *UserInfo) GetIsActive() bool {
 type UsersResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Users         []*UserInfo            `protobuf:"bytes,1,rep,name=users,proto3" json:"users,omitempty"`
-	Count         int32                  `protobuf:"varint,2,opt,name=count,proto3" json:"count,omitempty"`
+	Total         int32                  `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -270,9 +270,9 @@ func (x *UsersResponse) GetUsers() []*UserInfo {
 	return nil
 }
 
-func (x *UsersResponse) GetCount() int32 {
+func (x *UsersResponse) GetTotal() int32 {
 	if x != nil {
-		return x.Count
+		return x.Total
 	}
 	return 0
 }
@@ -301,7 +301,7 @@ const file_apfish_user_proto_rawDesc = "" +
 	"\tis_active\x18\x05 \x01(\bR\bisActive\"K\n" +
 	"\rUsersResponse\x12$\n" +
 	"\x05users\x18\x01 \x03(\v2\x0e.user.UserInfoR\x05users\x12\x14\n" +
-	"\x05count\x18\x02 \x01(\x05R\x05count28\n" +
+	"\x05total\x18\x02 \x01(\x05R\x05total28\n" +
 	"\x04User\x120\n" +
 	"\x05Users\x12\x12.user.UsersRequest\x1a\x13.user.UsersResponseB\x14Z\x12apfish.v1;apfishv1b\x06proto3"
 
