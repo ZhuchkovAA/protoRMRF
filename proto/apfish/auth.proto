@@ -11,6 +11,10 @@ service Auth {
   
   // Login logs in a user and returns an auth token.
   rpc Login (LoginRequest) returns (LoginResponse);
+
+  // Get access token by refresh
+  rpc Refresh (RefreshRequest) returns (RefreshResponse);
+
 }
 
 message RegisterRequest {
@@ -29,5 +33,14 @@ message LoginRequest {
 }
 
 message LoginResponse {
-  string token = 1; // Auth token of the logged in user.
+  string access_token = 1; // Auth token of the logged in user.
+  string refresh_token = 2; // Refresh token of the logged in user.
+}
+
+message RefreshRequest {
+  string refresh_token = 1;
+}
+
+message RefreshResponse {
+  string access_token = 1;
 }
