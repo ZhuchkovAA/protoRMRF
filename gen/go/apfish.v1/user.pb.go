@@ -21,29 +21,27 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-type UsersRequest struct {
+type UserRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	SearchVal     string                 `protobuf:"bytes,1,opt,name=search_val,json=searchVal,proto3" json:"search_val,omitempty"`
-	Page          int32                  `protobuf:"varint,2,opt,name=page,proto3" json:"page,omitempty"`
-	PerPage       int32                  `protobuf:"varint,3,opt,name=per_page,json=perPage,proto3" json:"per_page,omitempty"`
+	Login         string                 `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *UsersRequest) Reset() {
-	*x = UsersRequest{}
+func (x *UserRequest) Reset() {
+	*x = UserRequest{}
 	mi := &file_apfish_user_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *UsersRequest) String() string {
+func (x *UserRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UsersRequest) ProtoMessage() {}
+func (*UserRequest) ProtoMessage() {}
 
-func (x *UsersRequest) ProtoReflect() protoreflect.Message {
+func (x *UserRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_apfish_user_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -55,28 +53,170 @@ func (x *UsersRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UsersRequest.ProtoReflect.Descriptor instead.
-func (*UsersRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use UserRequest.ProtoReflect.Descriptor instead.
+func (*UserRequest) Descriptor() ([]byte, []int) {
 	return file_apfish_user_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *UsersRequest) GetSearchVal() string {
+func (x *UserRequest) GetLogin() string {
 	if x != nil {
-		return x.SearchVal
+		return x.Login
 	}
 	return ""
 }
 
-func (x *UsersRequest) GetPage() int32 {
+type UserResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	User          *UserInfo              `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UserResponse) Reset() {
+	*x = UserResponse{}
+	mi := &file_apfish_user_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UserResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UserResponse) ProtoMessage() {}
+
+func (x *UserResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_apfish_user_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UserResponse.ProtoReflect.Descriptor instead.
+func (*UserResponse) Descriptor() ([]byte, []int) {
+	return file_apfish_user_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *UserResponse) GetUser() *UserInfo {
+	if x != nil {
+		return x.User
+	}
+	return nil
+}
+
+type ListUsersRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Login         string                 `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"`
+	Page          int32                  `protobuf:"varint,2,opt,name=page,proto3" json:"page,omitempty"`
+	PerPage       int32                  `protobuf:"varint,3,opt,name=per_page,json=perPage,proto3" json:"per_page,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListUsersRequest) Reset() {
+	*x = ListUsersRequest{}
+	mi := &file_apfish_user_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListUsersRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListUsersRequest) ProtoMessage() {}
+
+func (x *ListUsersRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_apfish_user_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListUsersRequest.ProtoReflect.Descriptor instead.
+func (*ListUsersRequest) Descriptor() ([]byte, []int) {
+	return file_apfish_user_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *ListUsersRequest) GetLogin() string {
+	if x != nil {
+		return x.Login
+	}
+	return ""
+}
+
+func (x *ListUsersRequest) GetPage() int32 {
 	if x != nil {
 		return x.Page
 	}
 	return 0
 }
 
-func (x *UsersRequest) GetPerPage() int32 {
+func (x *ListUsersRequest) GetPerPage() int32 {
 	if x != nil {
 		return x.PerPage
+	}
+	return 0
+}
+
+type ListUsersResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Users         []*UserInfo            `protobuf:"bytes,1,rep,name=users,proto3" json:"users,omitempty"`
+	Total         int32                  `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListUsersResponse) Reset() {
+	*x = ListUsersResponse{}
+	mi := &file_apfish_user_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListUsersResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListUsersResponse) ProtoMessage() {}
+
+func (x *ListUsersResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_apfish_user_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListUsersResponse.ProtoReflect.Descriptor instead.
+func (*ListUsersResponse) Descriptor() ([]byte, []int) {
+	return file_apfish_user_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *ListUsersResponse) GetUsers() []*UserInfo {
+	if x != nil {
+		return x.Users
+	}
+	return nil
+}
+
+func (x *ListUsersResponse) GetTotal() int32 {
+	if x != nil {
+		return x.Total
 	}
 	return 0
 }
@@ -93,7 +233,7 @@ type UserRights struct {
 
 func (x *UserRights) Reset() {
 	*x = UserRights{}
-	mi := &file_apfish_user_proto_msgTypes[1]
+	mi := &file_apfish_user_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -105,7 +245,7 @@ func (x *UserRights) String() string {
 func (*UserRights) ProtoMessage() {}
 
 func (x *UserRights) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_user_proto_msgTypes[1]
+	mi := &file_apfish_user_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -118,7 +258,7 @@ func (x *UserRights) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UserRights.ProtoReflect.Descriptor instead.
 func (*UserRights) Descriptor() ([]byte, []int) {
-	return file_apfish_user_proto_rawDescGZIP(), []int{1}
+	return file_apfish_user_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *UserRights) GetIsMou() bool {
@@ -149,20 +289,222 @@ func (x *UserRights) GetPort() string {
 	return ""
 }
 
+type UserPermissions struct {
+	state            protoimpl.MessageState `protogen:"open.v1"`
+	IsAdmin          bool                   `protobuf:"varint,1,opt,name=is_admin,json=isAdmin,proto3" json:"is_admin,omitempty"`
+	IsDrafts         bool                   `protobuf:"varint,2,opt,name=is_drafts,json=isDrafts,proto3" json:"is_drafts,omitempty"`
+	IsVnc            bool                   `protobuf:"varint,3,opt,name=is_vnc,json=isVnc,proto3" json:"is_vnc,omitempty"`
+	IsApprove        bool                   `protobuf:"varint,4,opt,name=is_approve,json=isApprove,proto3" json:"is_approve,omitempty"`
+	IsBatch          bool                   `protobuf:"varint,5,opt,name=is_batch,json=isBatch,proto3" json:"is_batch,omitempty"`
+	IsCanPost        bool                   `protobuf:"varint,6,opt,name=is_can_post,json=isCanPost,proto3" json:"is_can_post,omitempty"`
+	IsObserver       bool                   `protobuf:"varint,7,opt,name=is_observer,json=isObserver,proto3" json:"is_observer,omitempty"`
+	IsIlo            bool                   `protobuf:"varint,8,opt,name=is_ilo,json=isIlo,proto3" json:"is_ilo,omitempty"`
+	IsObserverNew    bool                   `protobuf:"varint,9,opt,name=is_observer_new,json=isObserverNew,proto3" json:"is_observer_new,omitempty"`
+	IsDelete         bool                   `protobuf:"varint,10,opt,name=is_delete,json=isDelete,proto3" json:"is_delete,omitempty"`
+	IsSecret         bool                   `protobuf:"varint,11,opt,name=is_secret,json=isSecret,proto3" json:"is_secret,omitempty"`
+	IsAuthorityUsers bool                   `protobuf:"varint,12,opt,name=is_authority_users,json=isAuthorityUsers,proto3" json:"is_authority_users,omitempty"`
+	unknownFields    protoimpl.UnknownFields
+	sizeCache        protoimpl.SizeCache
+}
+
+func (x *UserPermissions) Reset() {
+	*x = UserPermissions{}
+	mi := &file_apfish_user_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UserPermissions) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UserPermissions) ProtoMessage() {}
+
+func (x *UserPermissions) ProtoReflect() protoreflect.Message {
+	mi := &file_apfish_user_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UserPermissions.ProtoReflect.Descriptor instead.
+func (*UserPermissions) Descriptor() ([]byte, []int) {
+	return file_apfish_user_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *UserPermissions) GetIsAdmin() bool {
+	if x != nil {
+		return x.IsAdmin
+	}
+	return false
+}
+
+func (x *UserPermissions) GetIsDrafts() bool {
+	if x != nil {
+		return x.IsDrafts
+	}
+	return false
+}
+
+func (x *UserPermissions) GetIsVnc() bool {
+	if x != nil {
+		return x.IsVnc
+	}
+	return false
+}
+
+func (x *UserPermissions) GetIsApprove() bool {
+	if x != nil {
+		return x.IsApprove
+	}
+	return false
+}
+
+func (x *UserPermissions) GetIsBatch() bool {
+	if x != nil {
+		return x.IsBatch
+	}
+	return false
+}
+
+func (x *UserPermissions) GetIsCanPost() bool {
+	if x != nil {
+		return x.IsCanPost
+	}
+	return false
+}
+
+func (x *UserPermissions) GetIsObserver() bool {
+	if x != nil {
+		return x.IsObserver
+	}
+	return false
+}
+
+func (x *UserPermissions) GetIsIlo() bool {
+	if x != nil {
+		return x.IsIlo
+	}
+	return false
+}
+
+func (x *UserPermissions) GetIsObserverNew() bool {
+	if x != nil {
+		return x.IsObserverNew
+	}
+	return false
+}
+
+func (x *UserPermissions) GetIsDelete() bool {
+	if x != nil {
+		return x.IsDelete
+	}
+	return false
+}
+
+func (x *UserPermissions) GetIsSecret() bool {
+	if x != nil {
+		return x.IsSecret
+	}
+	return false
+}
+
+func (x *UserPermissions) GetIsAuthorityUsers() bool {
+	if x != nil {
+		return x.IsAuthorityUsers
+	}
+	return false
+}
+
+type UserContactInfo struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Address       string                 `protobuf:"bytes,1,opt,name=Address,proto3" json:"Address,omitempty"`
+	Phone         string                 `protobuf:"bytes,2,opt,name=Phone,proto3" json:"Phone,omitempty"`
+	Fax           string                 `protobuf:"bytes,3,opt,name=Fax,proto3" json:"Fax,omitempty"`
+	Email         string                 `protobuf:"bytes,4,opt,name=Email,proto3" json:"Email,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UserContactInfo) Reset() {
+	*x = UserContactInfo{}
+	mi := &file_apfish_user_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UserContactInfo) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UserContactInfo) ProtoMessage() {}
+
+func (x *UserContactInfo) ProtoReflect() protoreflect.Message {
+	mi := &file_apfish_user_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UserContactInfo.ProtoReflect.Descriptor instead.
+func (*UserContactInfo) Descriptor() ([]byte, []int) {
+	return file_apfish_user_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *UserContactInfo) GetAddress() string {
+	if x != nil {
+		return x.Address
+	}
+	return ""
+}
+
+func (x *UserContactInfo) GetPhone() string {
+	if x != nil {
+		return x.Phone
+	}
+	return ""
+}
+
+func (x *UserContactInfo) GetFax() string {
+	if x != nil {
+		return x.Fax
+	}
+	return ""
+}
+
+func (x *UserContactInfo) GetEmail() string {
+	if x != nil {
+		return x.Email
+	}
+	return ""
+}
+
 type UserInfo struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Login         string                 `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"`
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	Rights        *UserRights            `protobuf:"bytes,3,opt,name=rights,proto3" json:"rights,omitempty"`
-	Position      string                 `protobuf:"bytes,4,opt,name=position,proto3" json:"position,omitempty"`
-	IsActive      bool                   `protobuf:"varint,5,opt,name=is_active,json=isActive,proto3" json:"is_active,omitempty"`
+	Permissions   *UserPermissions       `protobuf:"bytes,4,opt,name=permissions,proto3" json:"permissions,omitempty"`
+	ContactInfo   *UserContactInfo       `protobuf:"bytes,5,opt,name=contact_info,json=contactInfo,proto3" json:"contact_info,omitempty"`
+	Position      string                 `protobuf:"bytes,6,opt,name=position,proto3" json:"position,omitempty"`
+	IsActive      bool                   `protobuf:"varint,7,opt,name=is_active,json=isActive,proto3" json:"is_active,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *UserInfo) Reset() {
 	*x = UserInfo{}
-	mi := &file_apfish_user_proto_msgTypes[2]
+	mi := &file_apfish_user_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -174,7 +516,7 @@ func (x *UserInfo) String() string {
 func (*UserInfo) ProtoMessage() {}
 
 func (x *UserInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_user_proto_msgTypes[2]
+	mi := &file_apfish_user_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -187,7 +529,7 @@ func (x *UserInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UserInfo.ProtoReflect.Descriptor instead.
 func (*UserInfo) Descriptor() ([]byte, []int) {
-	return file_apfish_user_proto_rawDescGZIP(), []int{2}
+	return file_apfish_user_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *UserInfo) GetLogin() string {
@@ -211,6 +553,20 @@ func (x *UserInfo) GetRights() *UserRights {
 	return nil
 }
 
+func (x *UserInfo) GetPermissions() *UserPermissions {
+	if x != nil {
+		return x.Permissions
+	}
+	return nil
+}
+
+func (x *UserInfo) GetContactInfo() *UserContactInfo {
+	if x != nil {
+		return x.ContactInfo
+	}
+	return nil
+}
+
 func (x *UserInfo) GetPosition() string {
 	if x != nil {
 		return x.Position
@@ -225,85 +581,60 @@ func (x *UserInfo) GetIsActive() bool {
 	return false
 }
 
-type UsersResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Users         []*UserInfo            `protobuf:"bytes,1,rep,name=users,proto3" json:"users,omitempty"`
-	Total         int32                  `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UsersResponse) Reset() {
-	*x = UsersResponse{}
-	mi := &file_apfish_user_proto_msgTypes[3]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UsersResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UsersResponse) ProtoMessage() {}
-
-func (x *UsersResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_user_proto_msgTypes[3]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UsersResponse.ProtoReflect.Descriptor instead.
-func (*UsersResponse) Descriptor() ([]byte, []int) {
-	return file_apfish_user_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *UsersResponse) GetUsers() []*UserInfo {
-	if x != nil {
-		return x.Users
-	}
-	return nil
-}
-
-func (x *UsersResponse) GetTotal() int32 {
-	if x != nil {
-		return x.Total
-	}
-	return 0
-}
-
 var File_apfish_user_proto protoreflect.FileDescriptor
 
 const file_apfish_user_proto_rawDesc = "" +
 	"\n" +
-	"\x11apfish/user.proto\x12\x04user\"\\\n" +
-	"\fUsersRequest\x12\x1d\n" +
-	"\n" +
-	"search_val\x18\x01 \x01(\tR\tsearchVal\x12\x12\n" +
+	"\x11apfish/user.proto\x12\x04user\"#\n" +
+	"\vUserRequest\x12\x14\n" +
+	"\x05login\x18\x01 \x01(\tR\x05login\"2\n" +
+	"\fUserResponse\x12\"\n" +
+	"\x04user\x18\x01 \x01(\v2\x0e.user.UserInfoR\x04user\"W\n" +
+	"\x10ListUsersRequest\x12\x14\n" +
+	"\x05login\x18\x01 \x01(\tR\x05login\x12\x12\n" +
 	"\x04page\x18\x02 \x01(\x05R\x04page\x12\x19\n" +
-	"\bper_page\x18\x03 \x01(\x05R\aperPage\"q\n" +
+	"\bper_page\x18\x03 \x01(\x05R\aperPage\"O\n" +
+	"\x11ListUsersResponse\x12$\n" +
+	"\x05users\x18\x01 \x03(\v2\x0e.user.UserInfoR\x05users\x12\x14\n" +
+	"\x05total\x18\x02 \x01(\x05R\x05total\"q\n" +
 	"\n" +
 	"UserRights\x12\x15\n" +
 	"\x06is_mou\x18\x01 \x01(\bR\x05isMou\x12\x1c\n" +
 	"\tauthority\x18\x02 \x01(\tR\tauthority\x12\x1a\n" +
 	"\bdistrict\x18\x03 \x01(\tR\bdistrict\x12\x12\n" +
-	"\x04port\x18\x04 \x01(\tR\x04port\"\x97\x01\n" +
+	"\x04port\x18\x04 \x01(\tR\x04port\"\x82\x03\n" +
+	"\x0fUserPermissions\x12\x19\n" +
+	"\bis_admin\x18\x01 \x01(\bR\aisAdmin\x12\x1b\n" +
+	"\tis_drafts\x18\x02 \x01(\bR\bisDrafts\x12\x15\n" +
+	"\x06is_vnc\x18\x03 \x01(\bR\x05isVnc\x12\x1d\n" +
+	"\n" +
+	"is_approve\x18\x04 \x01(\bR\tisApprove\x12\x19\n" +
+	"\bis_batch\x18\x05 \x01(\bR\aisBatch\x12\x1e\n" +
+	"\vis_can_post\x18\x06 \x01(\bR\tisCanPost\x12\x1f\n" +
+	"\vis_observer\x18\a \x01(\bR\n" +
+	"isObserver\x12\x15\n" +
+	"\x06is_ilo\x18\b \x01(\bR\x05isIlo\x12&\n" +
+	"\x0fis_observer_new\x18\t \x01(\bR\risObserverNew\x12\x1b\n" +
+	"\tis_delete\x18\n" +
+	" \x01(\bR\bisDelete\x12\x1b\n" +
+	"\tis_secret\x18\v \x01(\bR\bisSecret\x12,\n" +
+	"\x12is_authority_users\x18\f \x01(\bR\x10isAuthorityUsers\"i\n" +
+	"\x0fUserContactInfo\x12\x18\n" +
+	"\aAddress\x18\x01 \x01(\tR\aAddress\x12\x14\n" +
+	"\x05Phone\x18\x02 \x01(\tR\x05Phone\x12\x10\n" +
+	"\x03Fax\x18\x03 \x01(\tR\x03Fax\x12\x14\n" +
+	"\x05Email\x18\x04 \x01(\tR\x05Email\"\x8a\x02\n" +
 	"\bUserInfo\x12\x14\n" +
 	"\x05login\x18\x01 \x01(\tR\x05login\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12(\n" +
-	"\x06rights\x18\x03 \x01(\v2\x10.user.UserRightsR\x06rights\x12\x1a\n" +
-	"\bposition\x18\x04 \x01(\tR\bposition\x12\x1b\n" +
-	"\tis_active\x18\x05 \x01(\bR\bisActive\"K\n" +
-	"\rUsersResponse\x12$\n" +
-	"\x05users\x18\x01 \x03(\v2\x0e.user.UserInfoR\x05users\x12\x14\n" +
-	"\x05total\x18\x02 \x01(\x05R\x05total28\n" +
-	"\x04User\x120\n" +
-	"\x05Users\x12\x12.user.UsersRequest\x1a\x13.user.UsersResponseB\x14Z\x12apfish.v1;apfishv1b\x06proto3"
+	"\x06rights\x18\x03 \x01(\v2\x10.user.UserRightsR\x06rights\x127\n" +
+	"\vpermissions\x18\x04 \x01(\v2\x15.user.UserPermissionsR\vpermissions\x128\n" +
+	"\fcontact_info\x18\x05 \x01(\v2\x15.user.UserContactInfoR\vcontactInfo\x12\x1a\n" +
+	"\bposition\x18\x06 \x01(\tR\bposition\x12\x1b\n" +
+	"\tis_active\x18\a \x01(\bR\bisActive2}\n" +
+	"\x04User\x127\n" +
+	"\x04User\x12\x16.user.ListUsersRequest\x1a\x17.user.ListUsersResponse\x12<\n" +
+	"\tListUsers\x12\x16.user.ListUsersRequest\x1a\x17.user.ListUsersResponseB\x14Z\x12apfish.v1;apfishv1b\x06proto3"
 
 var (
 	file_apfish_user_proto_rawDescOnce sync.Once
@@ -317,23 +648,32 @@ func file_apfish_user_proto_rawDescGZIP() []byte {
 	return file_apfish_user_proto_rawDescData
 }
 
-var file_apfish_user_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_apfish_user_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
 var file_apfish_user_proto_goTypes = []any{
-	(*UsersRequest)(nil),  // 0: user.UsersRequest
-	(*UserRights)(nil),    // 1: user.UserRights
-	(*UserInfo)(nil),      // 2: user.UserInfo
-	(*UsersResponse)(nil), // 3: user.UsersResponse
+	(*UserRequest)(nil),       // 0: user.UserRequest
+	(*UserResponse)(nil),      // 1: user.UserResponse
+	(*ListUsersRequest)(nil),  // 2: user.ListUsersRequest
+	(*ListUsersResponse)(nil), // 3: user.ListUsersResponse
+	(*UserRights)(nil),        // 4: user.UserRights
+	(*UserPermissions)(nil),   // 5: user.UserPermissions
+	(*UserContactInfo)(nil),   // 6: user.UserContactInfo
+	(*UserInfo)(nil),          // 7: user.UserInfo
 }
 var file_apfish_user_proto_depIdxs = []int32{
-	1, // 0: user.UserInfo.rights:type_name -> user.UserRights
-	2, // 1: user.UsersResponse.users:type_name -> user.UserInfo
-	0, // 2: user.User.Users:input_type -> user.UsersRequest
-	3, // 3: user.User.Users:output_type -> user.UsersResponse
-	3, // [3:4] is the sub-list for method output_type
-	2, // [2:3] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	7, // 0: user.UserResponse.user:type_name -> user.UserInfo
+	7, // 1: user.ListUsersResponse.users:type_name -> user.UserInfo
+	4, // 2: user.UserInfo.rights:type_name -> user.UserRights
+	5, // 3: user.UserInfo.permissions:type_name -> user.UserPermissions
+	6, // 4: user.UserInfo.contact_info:type_name -> user.UserContactInfo
+	2, // 5: user.User.User:input_type -> user.ListUsersRequest
+	2, // 6: user.User.ListUsers:input_type -> user.ListUsersRequest
+	3, // 7: user.User.User:output_type -> user.ListUsersResponse
+	3, // 8: user.User.ListUsers:output_type -> user.ListUsersResponse
+	7, // [7:9] is the sub-list for method output_type
+	5, // [5:7] is the sub-list for method input_type
+	5, // [5:5] is the sub-list for extension type_name
+	5, // [5:5] is the sub-list for extension extendee
+	0, // [0:5] is the sub-list for field type_name
 }
 
 func init() { file_apfish_user_proto_init() }
@@ -347,7 +687,7 @@ func file_apfish_user_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_apfish_user_proto_rawDesc), len(file_apfish_user_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   4,
+			NumMessages:   8,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
