@@ -631,9 +631,9 @@ const file_apfish_user_proto_rawDesc = "" +
 	"\vpermissions\x18\x04 \x01(\v2\x15.user.UserPermissionsR\vpermissions\x128\n" +
 	"\fcontact_info\x18\x05 \x01(\v2\x15.user.UserContactInfoR\vcontactInfo\x12\x1a\n" +
 	"\bposition\x18\x06 \x01(\tR\bposition\x12\x1b\n" +
-	"\tis_active\x18\a \x01(\bR\bisActive2}\n" +
-	"\x04User\x127\n" +
-	"\x04User\x12\x16.user.ListUsersRequest\x1a\x17.user.ListUsersResponse\x12<\n" +
+	"\tis_active\x18\a \x01(\bR\bisActive2s\n" +
+	"\x04User\x12-\n" +
+	"\x04User\x12\x11.user.UserRequest\x1a\x12.user.UserResponse\x12<\n" +
 	"\tListUsers\x12\x16.user.ListUsersRequest\x1a\x17.user.ListUsersResponseB\x14Z\x12apfish.v1;apfishv1b\x06proto3"
 
 var (
@@ -665,9 +665,9 @@ var file_apfish_user_proto_depIdxs = []int32{
 	4, // 2: user.UserInfo.rights:type_name -> user.UserRights
 	5, // 3: user.UserInfo.permissions:type_name -> user.UserPermissions
 	6, // 4: user.UserInfo.contact_info:type_name -> user.UserContactInfo
-	2, // 5: user.User.User:input_type -> user.ListUsersRequest
+	0, // 5: user.User.User:input_type -> user.UserRequest
 	2, // 6: user.User.ListUsers:input_type -> user.ListUsersRequest
-	3, // 7: user.User.User:output_type -> user.ListUsersResponse
+	1, // 7: user.User.User:output_type -> user.UserResponse
 	3, // 8: user.User.ListUsers:output_type -> user.ListUsersResponse
 	7, // [7:9] is the sub-list for method output_type
 	5, // [5:7] is the sub-list for method input_type
