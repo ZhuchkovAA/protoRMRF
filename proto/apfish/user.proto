@@ -5,7 +5,7 @@ package user;
 option go_package = "apfish.v1;apfishv1";
 
 service User {
-    rpc User (ListUsersRequest) returns (ListUsersResponse);
+    rpc User (UserRequest) returns (UserResponse);
     rpc ListUsers (ListUsersRequest) returns (ListUsersResponse);
 }
 
