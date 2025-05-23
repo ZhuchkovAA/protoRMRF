@@ -55,10 +55,10 @@ message UserPermissions {
 }
 
 message UserContactInfo {
-	string address = 1;
-	string phone = 2;
+    string address = 1;
+    string phone = 2;
     string fax = 3;
-	string email = 4;
+    string email = 4;
 }
 
 message UserInfo {

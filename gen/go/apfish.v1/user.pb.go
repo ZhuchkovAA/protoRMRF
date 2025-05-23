@@ -423,10 +423,10 @@ func (x *UserPermissions) GetIsAuthorityUsers() bool {
 
 type UserContactInfo struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Address       string                 `protobuf:"bytes,1,opt,name=Address,proto3" json:"Address,omitempty"`
-	Phone         string                 `protobuf:"bytes,2,opt,name=Phone,proto3" json:"Phone,omitempty"`
-	Fax           string                 `protobuf:"bytes,3,opt,name=Fax,proto3" json:"Fax,omitempty"`
-	Email         string                 `protobuf:"bytes,4,opt,name=Email,proto3" json:"Email,omitempty"`
+	Address       string                 `protobuf:"bytes,1,opt,name=address,proto3" json:"address,omitempty"`
+	Phone         string                 `protobuf:"bytes,2,opt,name=phone,proto3" json:"phone,omitempty"`
+	Fax           string                 `protobuf:"bytes,3,opt,name=fax,proto3" json:"fax,omitempty"`
+	Email         string                 `protobuf:"bytes,4,opt,name=email,proto3" json:"email,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -620,10 +620,10 @@ const file_apfish_user_proto_rawDesc = "" +
 	"\tis_secret\x18\v \x01(\bR\bisSecret\x12,\n" +
 	"\x12is_authority_users\x18\f \x01(\bR\x10isAuthorityUsers\"i\n" +
 	"\x0fUserContactInfo\x12\x18\n" +
-	"\aAddress\x18\x01 \x01(\tR\aAddress\x12\x14\n" +
-	"\x05Phone\x18\x02 \x01(\tR\x05Phone\x12\x10\n" +
-	"\x03Fax\x18\x03 \x01(\tR\x03Fax\x12\x14\n" +
-	"\x05Email\x18\x04 \x01(\tR\x05Email\"\x8a\x02\n" +
+	"\aaddress\x18\x01 \x01(\tR\aaddress\x12\x14\n" +
+	"\x05phone\x18\x02 \x01(\tR\x05phone\x12\x10\n" +
+	"\x03fax\x18\x03 \x01(\tR\x03fax\x12\x14\n" +
+	"\x05email\x18\x04 \x01(\tR\x05email\"\x8a\x02\n" +
 	"\bUserInfo\x12\x14\n" +
 	"\x05login\x18\x01 \x01(\tR\x05login\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12(\n" +
