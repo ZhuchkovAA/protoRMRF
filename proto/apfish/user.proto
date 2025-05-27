@@ -5,12 +5,32 @@ package user;
 option go_package = "apfish.v1;apfishv1";
 
 service User {
-  rpc Users (UsersRequest) returns (UsersResponse);
+    rpc User (UserRequest) returns (UserResponse);
+    rpc ListUsers (ListUsersRequest) returns (ListUsersResponse);
 }
 
-message UsersRequest {
-    string search_val = 1;
+
+message UserRequest {
+    string login = 1;
 }
+
+message UserResponse {
+    UserInfo user = 1;
+}
+
+
+message ListUsersRequest {
+    string login = 1;
+    int32 page = 2;
+    int32 per_page = 3;
+}
+
+message ListUsersResponse {
+    repeated UserInfo users = 1;
+    int32 total = 2;
+}
+
+
 
 message UserRights {
     bool is_mou = 1;
@@ -19,14 +39,34 @@ message UserRights {
     string port = 4;
 }
 
+message UserPermissions {
+    bool is_admin = 1;
+    bool is_drafts = 2;
+    bool is_vnc = 3;
+    bool is_approve = 4;
+    bool is_batch = 5;
+    bool is_can_post = 6;
+    bool is_observer = 7;
+    bool is_ilo = 8;
+    bool is_observer_new = 9;
+    bool is_delete = 10;
+    bool is_secret = 11;
+    bool is_authority_users = 12;
+}
+
+message UserContactInfo {
+    string address = 1;
+    string phone = 2;
+    string fax = 3;
+    string email = 4;
+}
+
 message UserInfo {
     string login = 1;
     string name = 2;
     UserRights rights = 3;
-    string position = 4;
-    bool is_active = 5;
-}
-
-message UsersResponse {
-    repeated UserInfo users = 1;
+    UserPermissions permissions = 4;
+    UserContactInfo contact_info = 5;
+    string position = 6;
+    bool is_active = 7;
 }
