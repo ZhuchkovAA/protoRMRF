@@ -9,6 +9,8 @@ package logv1
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	structpb "google.golang.org/protobuf/types/known/structpb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
@@ -22,12 +24,12 @@ const (
 )
 
 type LogRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Service       string                 `protobuf:"bytes,1,opt,name=service,proto3" json:"service,omitempty"`
-	Level         string                 `protobuf:"bytes,2,opt,name=level,proto3" json:"level,omitempty"`
-	Message       string                 `protobuf:"bytes,3,opt,name=message,proto3" json:"message,omitempty"`
-	Metadata      map[string]string      `protobuf:"bytes,4,rep,name=metadata,proto3" json:"metadata,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	Timestamp     int64                  `protobuf:"varint,5,opt,name=timestamp,proto3" json:"timestamp,omitempty"`
+	state         protoimpl.MessageState     `protogen:"open.v1"`
+	Service       string                     `protobuf:"bytes,1,opt,name=service,proto3" json:"service,omitempty"`
+	Level         string                     `protobuf:"bytes,2,opt,name=level,proto3" json:"level,omitempty"`
+	Message       string                     `protobuf:"bytes,3,opt,name=message,proto3" json:"message,omitempty"`
+	Fields        map[string]*structpb.Value `protobuf:"bytes,4,rep,name=fields,proto3" json:"fields,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	Timestamp     *timestamppb.Timestamp     `protobuf:"bytes,5,opt,name=timestamp,proto3" json:"timestamp,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -83,23 +85,25 @@ func (x *LogRequest) GetMessage() string {
 	return ""
 }
 
-func (x *LogRequest) GetMetadata() map[string]string {
+func (x *LogRequest) GetFields() map[string]*structpb.Value {
 	if x != nil {
-		return x.Metadata
+		return x.Fields
 	}
 	return nil
 }
 
-func (x *LogRequest) GetTimestamp() int64 {
+func (x *LogRequest) GetTimestamp() *timestamppb.Timestamp {
 	if x != nil {
 		return x.Timestamp
 	}
-	return 0
+	return nil
 }
 
 type LogResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Status        string                 `protobuf:"bytes,1,opt,name=status,proto3" json:"status,omitempty"`
+	Status        int32                  `protobuf:"varint,1,opt,name=status,proto3" json:"status,omitempty"`
+	ProcessedAt   *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=processed_at,json=processedAt,proto3" json:"processed_at,omitempty"`
+	LogId         string                 `protobuf:"bytes,3,opt,name=log_id,json=logId,proto3" json:"log_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -134,9 +138,23 @@ func (*LogResponse) Descriptor() ([]byte, []int) {
 	return file_log_log_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *LogResponse) GetStatus() string {
+func (x *LogResponse) GetStatus() int32 {
 	if x != nil {
 		return x.Status
+	}
+	return 0
+}
+
+func (x *LogResponse) GetProcessedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.ProcessedAt
+	}
+	return nil
+}
+
+func (x *LogResponse) GetLogId() string {
+	if x != nil {
+		return x.LogId
 	}
 	return ""
 }
@@ -146,19 +164,21 @@ var File_log_log_proto protoreflect.FileDescriptor
 const file_log_log_proto_rawDesc = "" +
 	"\n" +
 	"\rlog/log.proto\x12\n" +
-	"logservice\"\xf3\x01\n" +
+	"logservice\x1a\x1cgoogle/protobuf/struct.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x9f\x02\n" +
 	"\n" +
 	"LogRequest\x12\x18\n" +
 	"\aservice\x18\x01 \x01(\tR\aservice\x12\x14\n" +
 	"\x05level\x18\x02 \x01(\tR\x05level\x12\x18\n" +
-	"\amessage\x18\x03 \x01(\tR\amessage\x12@\n" +
-	"\bmetadata\x18\x04 \x03(\v2$.logservice.LogRequest.MetadataEntryR\bmetadata\x12\x1c\n" +
-	"\ttimestamp\x18\x05 \x01(\x03R\ttimestamp\x1a;\n" +
-	"\rMetadataEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"%\n" +
+	"\amessage\x18\x03 \x01(\tR\amessage\x12:\n" +
+	"\x06fields\x18\x04 \x03(\v2\".logservice.LogRequest.FieldsEntryR\x06fields\x128\n" +
+	"\ttimestamp\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\ttimestamp\x1aQ\n" +
+	"\vFieldsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12,\n" +
+	"\x05value\x18\x02 \x01(\v2\x16.google.protobuf.ValueR\x05value:\x028\x01\"{\n" +
 	"\vLogResponse\x12\x16\n" +
-	"\x06status\x18\x01 \x01(\tR\x06status2I\n" +
+	"\x06status\x18\x01 \x01(\x05R\x06status\x12=\n" +
+	"\fprocessed_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\vprocessedAt\x12\x15\n" +
+	"\x06log_id\x18\x03 \x01(\tR\x05logId2I\n" +
 	"\n" +
 	"LogService\x12;\n" +
 	"\bWriteLog\x12\x16.logservice.LogRequest\x1a\x17.logservice.LogResponseB\x0eZ\flog.v1;logv1b\x06proto3"
@@ -177,19 +197,24 @@ func file_log_log_proto_rawDescGZIP() []byte {
 
 var file_log_log_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
 var file_log_log_proto_goTypes = []any{
-	(*LogRequest)(nil),  // 0: logservice.LogRequest
-	(*LogResponse)(nil), // 1: logservice.LogResponse
-	nil,                 // 2: logservice.LogRequest.MetadataEntry
+	(*LogRequest)(nil),            // 0: logservice.LogRequest
+	(*LogResponse)(nil),           // 1: logservice.LogResponse
+	nil,                           // 2: logservice.LogRequest.FieldsEntry
+	(*timestamppb.Timestamp)(nil), // 3: google.protobuf.Timestamp
+	(*structpb.Value)(nil),        // 4: google.protobuf.Value
 }
 var file_log_log_proto_depIdxs = []int32{
-	2, // 0: logservice.LogRequest.metadata:type_name -> logservice.LogRequest.MetadataEntry
-	0, // 1: logservice.LogService.WriteLog:input_type -> logservice.LogRequest
-	1, // 2: logservice.LogService.WriteLog:output_type -> logservice.LogResponse
-	2, // [2:3] is the sub-list for method output_type
-	1, // [1:2] is the sub-list for method input_type
-	1, // [1:1] is the sub-list for extension type_name
-	1, // [1:1] is the sub-list for extension extendee
-	0, // [0:1] is the sub-list for field type_name
+	2, // 0: logservice.LogRequest.fields:type_name -> logservice.LogRequest.FieldsEntry
+	3, // 1: logservice.LogRequest.timestamp:type_name -> google.protobuf.Timestamp
+	3, // 2: logservice.LogResponse.processed_at:type_name -> google.protobuf.Timestamp
+	4, // 3: logservice.LogRequest.FieldsEntry.value:type_name -> google.protobuf.Value
+	0, // 4: logservice.LogService.WriteLog:input_type -> logservice.LogRequest
+	1, // 5: logservice.LogService.WriteLog:output_type -> logservice.LogResponse
+	5, // [5:6] is the sub-list for method output_type
+	4, // [4:5] is the sub-list for method input_type
+	4, // [4:4] is the sub-list for extension type_name
+	4, // [4:4] is the sub-list for extension extendee
+	0, // [0:4] is the sub-list for field type_name
 }
 
 func init() { file_log_log_proto_init() }
