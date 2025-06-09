@@ -29,7 +29,7 @@ type LogRequest struct {
 	Level         string                     `protobuf:"bytes,2,opt,name=level,proto3" json:"level,omitempty"`
 	Message       string                     `protobuf:"bytes,3,opt,name=message,proto3" json:"message,omitempty"`
 	Fields        map[string]*structpb.Value `protobuf:"bytes,4,rep,name=fields,proto3" json:"fields,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	Timestamp     *timestamppb.Timestamp     `protobuf:"bytes,5,opt,name=timestamp,proto3" json:"timestamp,omitempty"`
+	Timestamp     int64                      `protobuf:"varint,5,opt,name=timestamp,proto3" json:"timestamp,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -92,11 +92,11 @@ func (x *LogRequest) GetFields() map[string]*structpb.Value {
 	return nil
 }
 
-func (x *LogRequest) GetTimestamp() *timestamppb.Timestamp {
+func (x *LogRequest) GetTimestamp() int64 {
 	if x != nil {
 		return x.Timestamp
 	}
-	return nil
+	return 0
 }
 
 type LogResponse struct {
@@ -164,14 +164,14 @@ var File_log_log_proto protoreflect.FileDescriptor
 const file_log_log_proto_rawDesc = "" +
 	"\n" +
 	"\rlog/log.proto\x12\n" +
-	"logservice\x1a\x1cgoogle/protobuf/struct.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x9f\x02\n" +
+	"logservice\x1a\x1cgoogle/protobuf/struct.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x83\x02\n" +
 	"\n" +
 	"LogRequest\x12\x18\n" +
 	"\aservice\x18\x01 \x01(\tR\aservice\x12\x14\n" +
 	"\x05level\x18\x02 \x01(\tR\x05level\x12\x18\n" +
 	"\amessage\x18\x03 \x01(\tR\amessage\x12:\n" +
-	"\x06fields\x18\x04 \x03(\v2\".logservice.LogRequest.FieldsEntryR\x06fields\x128\n" +
-	"\ttimestamp\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\ttimestamp\x1aQ\n" +
+	"\x06fields\x18\x04 \x03(\v2\".logservice.LogRequest.FieldsEntryR\x06fields\x12\x1c\n" +
+	"\ttimestamp\x18\x05 \x01(\x03R\ttimestamp\x1aQ\n" +
 	"\vFieldsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12,\n" +
 	"\x05value\x18\x02 \x01(\v2\x16.google.protobuf.ValueR\x05value:\x028\x01\"{\n" +
@@ -205,16 +205,15 @@ var file_log_log_proto_goTypes = []any{
 }
 var file_log_log_proto_depIdxs = []int32{
 	2, // 0: logservice.LogRequest.fields:type_name -> logservice.LogRequest.FieldsEntry
-	3, // 1: logservice.LogRequest.timestamp:type_name -> google.protobuf.Timestamp
-	3, // 2: logservice.LogResponse.processed_at:type_name -> google.protobuf.Timestamp
-	4, // 3: logservice.LogRequest.FieldsEntry.value:type_name -> google.protobuf.Value
-	0, // 4: logservice.LogService.WriteLog:input_type -> logservice.LogRequest
-	1, // 5: logservice.LogService.WriteLog:output_type -> logservice.LogResponse
-	5, // [5:6] is the sub-list for method output_type
-	4, // [4:5] is the sub-list for method input_type
-	4, // [4:4] is the sub-list for extension type_name
-	4, // [4:4] is the sub-list for extension extendee
-	0, // [0:4] is the sub-list for field type_name
+	3, // 1: logservice.LogResponse.processed_at:type_name -> google.protobuf.Timestamp
+	4, // 2: logservice.LogRequest.FieldsEntry.value:type_name -> google.protobuf.Value
+	0, // 3: logservice.LogService.WriteLog:input_type -> logservice.LogRequest
+	1, // 4: logservice.LogService.WriteLog:output_type -> logservice.LogResponse
+	4, // [4:5] is the sub-list for method output_type
+	3, // [3:4] is the sub-list for method input_type
+	3, // [3:3] is the sub-list for extension type_name
+	3, // [3:3] is the sub-list for extension extendee
+	0, // [0:3] is the sub-list for field type_name
 }
 
 func init() { file_log_log_proto_init() }
