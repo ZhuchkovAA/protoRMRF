@@ -229,7 +229,7 @@ type User struct {
 	OfficialName   string                 `protobuf:"bytes,3,opt,name=official_name,json=officialName,proto3" json:"official_name,omitempty"`
 	IsActive       bool                   `protobuf:"varint,4,opt,name=is_active,json=isActive,proto3" json:"is_active,omitempty"`
 	CreatedAt      *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	CreatedByLogin int64                  `protobuf:"varint,6,opt,name=created_by_login,json=createdByLogin,proto3" json:"created_by_login,omitempty"`
+	CreatedByLogin string                 `protobuf:"bytes,6,opt,name=created_by_login,json=createdByLogin,proto3" json:"created_by_login,omitempty"`
 	Permissions    []*Permission          `protobuf:"bytes,7,rep,name=permissions,proto3" json:"permissions,omitempty"`
 	Role           *Role                  `protobuf:"bytes,8,opt,name=role,proto3" json:"role,omitempty"`
 	Contacts       []*Contact             `protobuf:"bytes,9,rep,name=contacts,proto3" json:"contacts,omitempty"`
@@ -302,11 +302,11 @@ func (x *User) GetCreatedAt() *timestamppb.Timestamp {
 	return nil
 }
 
-func (x *User) GetCreatedByLogin() int64 {
+func (x *User) GetCreatedByLogin() string {
 	if x != nil {
 		return x.CreatedByLogin
 	}
-	return 0
+	return ""
 }
 
 func (x *User) GetPermissions() []*Permission {
@@ -787,7 +787,7 @@ const file_apfish_user_proto_rawDesc = "" +
 	"\tis_active\x18\x04 \x01(\bR\bisActive\x129\n" +
 	"\n" +
 	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x12(\n" +
-	"\x10created_by_login\x18\x06 \x01(\x03R\x0ecreatedByLogin\x122\n" +
+	"\x10created_by_login\x18\x06 \x01(\tR\x0ecreatedByLogin\x122\n" +
 	"\vpermissions\x18\a \x03(\v2\x10.user.PermissionR\vpermissions\x12\x1e\n" +
 	"\x04role\x18\b \x01(\v2\n" +
 	".user.RoleR\x04role\x12)\n" +
