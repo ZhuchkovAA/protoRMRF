@@ -4,7 +4,9 @@ package user;
 
 option go_package = "apfish.v1;apfishv1";
 
-service User {
+import "google/protobuf/timestamp.proto";
+
+service SUser {
     rpc User (UserRequest) returns (UserResponse);
     rpc ListUsers (ListUsersRequest) returns (ListUsersResponse);
 }
@@ -15,58 +17,76 @@ message UserRequest {
 }
 
 message UserResponse {
-    UserInfo user = 1;
+    User user = 1;
 }
 
 
 message ListUsersRequest {
     string login = 1;
-    int32 page = 2;
-    int32 per_page = 3;
+    int64 page = 2;
+    int64 per_page = 3;
 }
 
 message ListUsersResponse {
-    repeated UserInfo users = 1;
+    repeated User users = 1;
     int32 total = 2;
 }
 
+message User {
+    int64 id = 1;
+    string login = 2;
+    string official_name = 3;
+    bool is_active = 4;
+    google.protobuf.Timestamp created_at = 5;
+    int64 created_by_login = 6;
 
-
-message UserRights {
-    bool is_mou = 1;
-    string authority = 2;
-    string district = 3;
-    string port = 4;
+    repeated Permission permissions = 7;
+    Role role = 8;
+    repeated Contact contacts = 9;
 }
 
-message UserPermissions {
-    bool is_admin = 1;
-    bool is_drafts = 2;
-    bool is_vnc = 3;
-    bool is_approve = 4;
-    bool is_batch = 5;
-    bool is_can_post = 6;
-    bool is_observer = 7;
-    bool is_ilo = 8;
-    bool is_observer_new = 9;
-    bool is_delete = 10;
-    bool is_secret = 11;
-    bool is_authority_users = 12;
-}
-
-message UserContactInfo {
-    string address = 1;
-    string phone = 2;
-    string fax = 3;
-    string email = 4;
-}
-
-message UserInfo {
-    string login = 1;
+message Role {
+    int64 id = 1;
     string name = 2;
-    UserRights rights = 3;
-    UserPermissions permissions = 4;
-    UserContactInfo contact_info = 5;
-    string position = 6;
-    bool is_active = 7;
+    string code = 3;
+    google.protobuf.Timestamp created_at = 4;
+    repeated Permission permissions = 5;
 }
+
+message Permission {
+    int64 id = 1;
+    Action action = 2;
+    Object object = 3;
+    string description = 4;
+    string name = 5;
+    string code = 6;
+}
+
+message Action {
+    int64 id = 1;
+    string name = 2;
+    string description = 3;
+    string code = 4;
+}
+
+message Object {
+    int64 id = 1;
+    string name = 2;
+    string description = 3;
+    string code = 4;
+}
+
+message Contact {
+    int64 id = 1;
+    ContactType type = 2;
+    string value = 3;
+    google.protobuf.Timestamp created_at = 4;
+}
+
+message ContactType {
+    int64 id = 1;
+    string name = 2;
+    string code = 3;
+    google.protobuf.Timestamp created_at = 4;
+}
+
