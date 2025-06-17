@@ -5,7 +5,6 @@ package user;
 option go_package = "apfish.v1;apfishv1";
 
 import "google/protobuf/timestamp.proto";  // Standard Protocol Buffers timestamp
-import "apfish/permission.proto";         // Custom permissions definitions
 
 // UserService defines RPC methods for user management.
 service UserService {
@@ -50,7 +49,7 @@ message User {
   string created_by_login = 6;        // Login of the creator (e.g., "admin").
 
   Role role = 7;                      // Assigned role.
-  repeated permission.Permission permissions = 8;  // Direct permissions (overrides role).
+  repeated Permission permissions = 8;  // Direct permissions (overrides role).
   repeated UserContact contacts = 9;   // User's contact methods.
 }
 
@@ -60,7 +59,7 @@ message Role {
   string name = 2;                    // Human-readable name (e.g., "Admin").
   string code = 3;                    // Machine-friendly code (e.g., "admin").
   google.protobuf.Timestamp created_at = 4;  // When the role was created.
-  repeated permission.Permission permissions = 5;  // Permissions granted by this role.
+  repeated Permission permissions = 5;  // Permissions granted by this role.
 }
 
 // A user's contact method (e.g., email, phone).
@@ -77,4 +76,51 @@ message UserContactType {
   string name = 2;                    // Human-readable name (e.g., "Email").
   string code = 3;                    // Machine-friendly code (e.g., "email").
   google.protobuf.Timestamp created_at = 4;  // When the type was defined.
+}
+
+// Defines an access permission in the system.
+// Permissions combine an Action and Object to create granular access controls (e.g., "read:inspection").
+message Permission {
+  int64 id = 1;                   // Unique identifier for the permission
+  PermissionAction action = 2;     // The operation this permission allows (e.g., "read", "create")
+  PermissionObject object = 3;     // The resource this permission applies to (e.g., "inspection", "user")
+  string description = 4;          // Human-readable explanation of the permission
+  string name = 5;                // Display name (e.g., "Read Inspections")
+  string code = 6;                // Machine-readable identifier (e.g., "inspection:read")
+  google.protobuf.Timestamp created_at = 7;
+
+  repeated CountryPermission countries= 8;
+  repeated DistrictPermission districts = 9;
+  repeated PortPermission ports = 10;
+}
+
+// Defines an actionable operation that can be performed in the system.
+message PermissionAction {
+  int64 id = 1;                   // Unique identifier for the action
+  string name = 2;                // Human-readable name (e.g., "Read")
+  string description = 3;         // Detailed explanation of the action
+  string code = 4;                // Machine-friendly code (e.g., "read")
+}
+
+// Defines a type of resource or object that can be accessed in the system.
+message PermissionObject {
+  int64 id = 1;                   // Unique identifier for the object type
+  string name = 2;                // Human-readable name (e.g., "Inspection")
+  string description = 3;         // Detailed explanation of the object type
+  string code = 4;                // Machine-friendly code (e.g., "inspection")
+}
+
+message CountryPermission {
+  int64 id = 1;
+  string name = 2;
+}
+
+message DistrictPermission {
+  int64 id = 1;
+  string name = 2;
+}
+
+message PortPermission {
+  int64 id = 1;
+  string name = 2;
 }
