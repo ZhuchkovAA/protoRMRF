@@ -46,7 +46,6 @@ message User {
   int64 id = 1;                       // Unique system-generated ID.
   string login = 2;                   // Unique login identifier.
   string official_name = 3;           // Formal name (e.g., "John Doe").
-  bool is_active = 4;                 // Whether the account is enabled.
   google.protobuf.Timestamp created_at = 5;  // When the user was created.
   string created_by_login = 6;        // Login of the creator (e.g., "admin").
 
