@@ -5,9 +5,6 @@ package permission;
 option go_package = "apfish.v1;apfishv1";
 
 import "google/protobuf/timestamp.proto";
-import "apfish/country.proto";
-import "apfish/district.proto";
-import "apfish/port.proto";
 
 // Defines an access permission in the system.
 // Permissions combine an Action and Object to create granular access controls (e.g., "read:inspection").
@@ -20,9 +17,9 @@ message Permission {
   string code = 6;                // Machine-readable identifier (e.g., "inspection:read")
   google.protobuf.Timestamp created_at = 7;
 
-  repeated country.Country country = 8;
-  repeated district.District district = 9;
-  repeated port.Port port = 10;
+  repeated CountryPermission countries= 8;
+  repeated DistrictPermission districts = 9;
+  repeated PortPermission ports = 10;
 }
 
 // Defines an actionable operation that can be performed in the system.
@@ -39,4 +36,19 @@ message PermissionObject {
   string name = 2;                // Human-readable name (e.g., "Inspection")
   string description = 3;         // Detailed explanation of the object type
   string code = 4;                // Machine-friendly code (e.g., "inspection")
+}
+
+message CountryPermission {
+  int64 id = 1;
+  string name = 2;
+}
+
+message DistrictPermission {
+  int64 id = 1;
+  string name = 2;
+}
+
+message PortPermission {
+  int64 id = 1;
+  string name = 2;
 }

@@ -33,9 +33,9 @@ type Permission struct {
 	Name          string                 `protobuf:"bytes,5,opt,name=name,proto3" json:"name,omitempty"`               // Display name (e.g., "Read Inspections")
 	Code          string                 `protobuf:"bytes,6,opt,name=code,proto3" json:"code,omitempty"`               // Machine-readable identifier (e.g., "inspection:read")
 	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	Country       []*Country             `protobuf:"bytes,8,rep,name=country,proto3" json:"country,omitempty"`
-	District      []*District            `protobuf:"bytes,9,rep,name=district,proto3" json:"district,omitempty"`
-	Port          []*Port                `protobuf:"bytes,10,rep,name=port,proto3" json:"port,omitempty"`
+	Countries     []*CountryPermission   `protobuf:"bytes,8,rep,name=countries,proto3" json:"countries,omitempty"`
+	Districts     []*DistrictPermission  `protobuf:"bytes,9,rep,name=districts,proto3" json:"districts,omitempty"`
+	Ports         []*PortPermission      `protobuf:"bytes,10,rep,name=ports,proto3" json:"ports,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -119,23 +119,23 @@ func (x *Permission) GetCreatedAt() *timestamppb.Timestamp {
 	return nil
 }
 
-func (x *Permission) GetCountry() []*Country {
+func (x *Permission) GetCountries() []*CountryPermission {
 	if x != nil {
-		return x.Country
+		return x.Countries
 	}
 	return nil
 }
 
-func (x *Permission) GetDistrict() []*District {
+func (x *Permission) GetDistricts() []*DistrictPermission {
 	if x != nil {
-		return x.District
+		return x.Districts
 	}
 	return nil
 }
 
-func (x *Permission) GetPort() []*Port {
+func (x *Permission) GetPorts() []*PortPermission {
 	if x != nil {
-		return x.Port
+		return x.Ports
 	}
 	return nil
 }
@@ -278,12 +278,168 @@ func (x *PermissionObject) GetCode() string {
 	return ""
 }
 
+type CountryPermission struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CountryPermission) Reset() {
+	*x = CountryPermission{}
+	mi := &file_apfish_permission_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CountryPermission) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CountryPermission) ProtoMessage() {}
+
+func (x *CountryPermission) ProtoReflect() protoreflect.Message {
+	mi := &file_apfish_permission_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CountryPermission.ProtoReflect.Descriptor instead.
+func (*CountryPermission) Descriptor() ([]byte, []int) {
+	return file_apfish_permission_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *CountryPermission) GetId() int64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *CountryPermission) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+type DistrictPermission struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DistrictPermission) Reset() {
+	*x = DistrictPermission{}
+	mi := &file_apfish_permission_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DistrictPermission) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DistrictPermission) ProtoMessage() {}
+
+func (x *DistrictPermission) ProtoReflect() protoreflect.Message {
+	mi := &file_apfish_permission_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DistrictPermission.ProtoReflect.Descriptor instead.
+func (*DistrictPermission) Descriptor() ([]byte, []int) {
+	return file_apfish_permission_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *DistrictPermission) GetId() int64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *DistrictPermission) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+type PortPermission struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *PortPermission) Reset() {
+	*x = PortPermission{}
+	mi := &file_apfish_permission_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PortPermission) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PortPermission) ProtoMessage() {}
+
+func (x *PortPermission) ProtoReflect() protoreflect.Message {
+	mi := &file_apfish_permission_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PortPermission.ProtoReflect.Descriptor instead.
+func (*PortPermission) Descriptor() ([]byte, []int) {
+	return file_apfish_permission_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *PortPermission) GetId() int64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *PortPermission) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
 var File_apfish_permission_proto protoreflect.FileDescriptor
 
 const file_apfish_permission_proto_rawDesc = "" +
 	"\n" +
 	"\x17apfish/permission.proto\x12\n" +
-	"permission\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x14apfish/country.proto\x1a\x15apfish/district.proto\x1a\x11apfish/port.proto\"\x89\x03\n" +
+	"permission\x1a\x1fgoogle/protobuf/timestamp.proto\"\xba\x03\n" +
 	"\n" +
 	"Permission\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x124\n" +
@@ -293,12 +449,11 @@ const file_apfish_permission_proto_rawDesc = "" +
 	"\x04name\x18\x05 \x01(\tR\x04name\x12\x12\n" +
 	"\x04code\x18\x06 \x01(\tR\x04code\x129\n" +
 	"\n" +
-	"created_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x12*\n" +
-	"\acountry\x18\b \x03(\v2\x10.country.CountryR\acountry\x12.\n" +
-	"\bdistrict\x18\t \x03(\v2\x12.district.DistrictR\bdistrict\x12\x1e\n" +
-	"\x04port\x18\n" +
-	" \x03(\v2\n" +
-	".port.PortR\x04port\"l\n" +
+	"created_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x12;\n" +
+	"\tcountries\x18\b \x03(\v2\x1d.permission.CountryPermissionR\tcountries\x12<\n" +
+	"\tdistricts\x18\t \x03(\v2\x1e.permission.DistrictPermissionR\tdistricts\x120\n" +
+	"\x05ports\x18\n" +
+	" \x03(\v2\x1a.permission.PortPermissionR\x05ports\"l\n" +
 	"\x10PermissionAction\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12 \n" +
@@ -308,7 +463,16 @@ const file_apfish_permission_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12 \n" +
 	"\vdescription\x18\x03 \x01(\tR\vdescription\x12\x12\n" +
-	"\x04code\x18\x04 \x01(\tR\x04codeB\x14Z\x12apfish.v1;apfishv1b\x06proto3"
+	"\x04code\x18\x04 \x01(\tR\x04code\"7\n" +
+	"\x11CountryPermission\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\"8\n" +
+	"\x12DistrictPermission\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\"4\n" +
+	"\x0ePortPermission\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04nameB\x14Z\x12apfish.v1;apfishv1b\x06proto3"
 
 var (
 	file_apfish_permission_proto_rawDescOnce sync.Once
@@ -322,23 +486,23 @@ func file_apfish_permission_proto_rawDescGZIP() []byte {
 	return file_apfish_permission_proto_rawDescData
 }
 
-var file_apfish_permission_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
+var file_apfish_permission_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_apfish_permission_proto_goTypes = []any{
 	(*Permission)(nil),            // 0: permission.Permission
 	(*PermissionAction)(nil),      // 1: permission.PermissionAction
 	(*PermissionObject)(nil),      // 2: permission.PermissionObject
-	(*timestamppb.Timestamp)(nil), // 3: google.protobuf.Timestamp
-	(*Country)(nil),               // 4: country.Country
-	(*District)(nil),              // 5: district.District
-	(*Port)(nil),                  // 6: port.Port
+	(*CountryPermission)(nil),     // 3: permission.CountryPermission
+	(*DistrictPermission)(nil),    // 4: permission.DistrictPermission
+	(*PortPermission)(nil),        // 5: permission.PortPermission
+	(*timestamppb.Timestamp)(nil), // 6: google.protobuf.Timestamp
 }
 var file_apfish_permission_proto_depIdxs = []int32{
 	1, // 0: permission.Permission.action:type_name -> permission.PermissionAction
 	2, // 1: permission.Permission.object:type_name -> permission.PermissionObject
-	3, // 2: permission.Permission.created_at:type_name -> google.protobuf.Timestamp
-	4, // 3: permission.Permission.country:type_name -> country.Country
-	5, // 4: permission.Permission.district:type_name -> district.District
-	6, // 5: permission.Permission.port:type_name -> port.Port
+	6, // 2: permission.Permission.created_at:type_name -> google.protobuf.Timestamp
+	3, // 3: permission.Permission.countries:type_name -> permission.CountryPermission
+	4, // 4: permission.Permission.districts:type_name -> permission.DistrictPermission
+	5, // 5: permission.Permission.ports:type_name -> permission.PortPermission
 	6, // [6:6] is the sub-list for method output_type
 	6, // [6:6] is the sub-list for method input_type
 	6, // [6:6] is the sub-list for extension type_name
@@ -351,16 +515,13 @@ func file_apfish_permission_proto_init() {
 	if File_apfish_permission_proto != nil {
 		return
 	}
-	file_apfish_country_proto_init()
-	file_apfish_district_proto_init()
-	file_apfish_port_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_apfish_permission_proto_rawDesc), len(file_apfish_permission_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   3,
+			NumMessages:   6,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
