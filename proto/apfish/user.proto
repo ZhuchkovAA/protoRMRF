@@ -4,89 +4,78 @@ package user;
 
 option go_package = "apfish.v1;apfishv1";
 
-import "google/protobuf/timestamp.proto";
+import "google/protobuf/timestamp.proto";  // Standard Protocol Buffers timestamp
+import "apfish/permission.proto";         // Custom permissions definitions
 
-service SUser {
-    rpc User (UserRequest) returns (UserResponse);
-    rpc ListUsers (ListUsersRequest) returns (ListUsersResponse);
+// UserService defines RPC methods for user management.
+service UserService {
+  // GetUser retrieves a single user by their unique login.
+  // Returns NOT_FOUND if the user does not exist.
+  rpc GetUser (UserRequest) returns (UserResponse);
+
+  // ListUsers searches for users by login prefix (case-insensitive)
+  // and returns paginated results.
+  rpc ListUsers (ListUsersRequest) returns (ListUsersResponse);
 }
 
-
+// Request to fetch a specific user.
 message UserRequest {
-    string login = 1;
+  string login = 1;  // Exact login identifier (e.g., "john.doe").
 }
 
+// Response containing the requested user.
 message UserResponse {
-    User user = 1;
+  User user = 1;  // Full user profile data.
 }
 
-
+// Paginated request for user search.
 message ListUsersRequest {
-    string login = 1;
-    int64 page = 2;
-    int64 per_page = 3;
+  string login = 1;    // Optional login prefix filter (e.g., "joh").
+  int64 page = 2;      // Page number (1-based). Default: 1.
+  int64 per_page = 3;  // Items per page (default: 20, max: 100).
 }
 
+// Paginated user list response.
 message ListUsersResponse {
-    repeated User users = 1;
-    int32 total = 2;
+  repeated User users = 1;  // Users matching the query (max `per_page` entries).
+  int32 total = 2;         // Total matching users (ignoring pagination).
 }
 
+// Represents a user account in the system.
 message User {
-    int64 id = 1;
-    string login = 2;
-    string official_name = 3;
-    bool is_active = 4;
-    google.protobuf.Timestamp created_at = 5;
-    string created_by_login = 6;
+  int64 id = 1;                       // Unique system-generated ID.
+  string login = 2;                   // Unique login identifier.
+  string official_name = 3;           // Formal name (e.g., "John Doe").
+  bool is_active = 4;                 // Whether the account is enabled.
+  google.protobuf.Timestamp created_at = 5;  // When the user was created.
+  string created_by_login = 6;        // Login of the creator (e.g., "admin").
 
-    Role role = 7;
-    repeated Permission permissions = 8;
-    repeated UserContact contacts = 9;
+  Role role = 7;                      // Assigned role.
+  repeated permission.Permission permissions = 8;  // Direct permissions (overrides role).
+  repeated UserContact contacts = 9;   // User's contact methods.
 }
 
+// Defines a user role (e.g., "Admin", "Editor").
 message Role {
-    int64 id = 1;
-    string name = 2;
-    string code = 3;
-    google.protobuf.Timestamp created_at = 4;
-    repeated Permission permissions = 5;
+  int64 id = 1;                       // Unique role ID.
+  string name = 2;                    // Human-readable name (e.g., "Admin").
+  string code = 3;                    // Machine-friendly code (e.g., "admin").
+  google.protobuf.Timestamp created_at = 4;  // When the role was created.
+  repeated permission.Permission permissions = 5;  // Permissions granted by this role.
 }
 
-message Permission {
-    int64 id = 1;
-    PermissionAction action = 2;
-    PermissionObject object = 3;
-    string description = 4;
-    string name = 5;
-    string code = 6;
-}
-
-message PermissionAction {
-    int64 id = 1;
-    string name = 2;
-    string description = 3;
-    string code = 4;
-}
-
-message PermissionObject {
-    int64 id = 1;
-    string name = 2;
-    string description = 3;
-    string code = 4;
-}
-
+// A user's contact method (e.g., email, phone).
 message UserContact {
-    int64 id = 1;
-    UserContactType type = 2;
-    string value = 3;
-    google.protobuf.Timestamp created_at = 4;
+  int64 id = 1;                       // Unique contact ID.
+  UserContactType type = 2;           // Contact type.
+  string value = 3;                   // Contact value (e.g., "user@example.com").
+  google.protobuf.Timestamp created_at = 4;  // When the contact was added.
 }
 
+// Type of contact method (e.g., "Email", "Phone").
 message UserContactType {
-    int64 id = 1;
-    string name = 2;
-    string code = 3;
-    google.protobuf.Timestamp created_at = 4;
+  int64 id = 1;                       // Unique type ID.
+  string name = 2;                    // Human-readable name (e.g., "Email").
+  string code = 3;                    // Machine-friendly code (e.g., "email").
+  google.protobuf.Timestamp created_at = 4;  // When the type was defined.
 }
-

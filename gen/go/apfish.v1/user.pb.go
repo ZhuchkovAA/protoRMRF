@@ -22,9 +22,10 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+// Request to fetch a specific user.
 type UserRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Login         string                 `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"`
+	Login         string                 `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"` // Exact login identifier (e.g., "john.doe").
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -66,9 +67,10 @@ func (x *UserRequest) GetLogin() string {
 	return ""
 }
 
+// Response containing the requested user.
 type UserResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	User          *User                  `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
+	User          *User                  `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"` // Full user profile data.
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -110,11 +112,12 @@ func (x *UserResponse) GetUser() *User {
 	return nil
 }
 
+// Paginated request for user search.
 type ListUsersRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Login         string                 `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"`
-	Page          int64                  `protobuf:"varint,2,opt,name=page,proto3" json:"page,omitempty"`
-	PerPage       int64                  `protobuf:"varint,3,opt,name=per_page,json=perPage,proto3" json:"per_page,omitempty"`
+	Login         string                 `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"`                     // Optional login prefix filter (e.g., "joh").
+	Page          int64                  `protobuf:"varint,2,opt,name=page,proto3" json:"page,omitempty"`                      // Page number (1-based). Default: 1.
+	PerPage       int64                  `protobuf:"varint,3,opt,name=per_page,json=perPage,proto3" json:"per_page,omitempty"` // Items per page (default: 20, max: 100).
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -170,10 +173,11 @@ func (x *ListUsersRequest) GetPerPage() int64 {
 	return 0
 }
 
+// Paginated user list response.
 type ListUsersResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Users         []*User                `protobuf:"bytes,1,rep,name=users,proto3" json:"users,omitempty"`
-	Total         int32                  `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	Users         []*User                `protobuf:"bytes,1,rep,name=users,proto3" json:"users,omitempty"`  // Users matching the query (max `per_page` entries).
+	Total         int32                  `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"` // Total matching users (ignoring pagination).
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -222,17 +226,18 @@ func (x *ListUsersResponse) GetTotal() int32 {
 	return 0
 }
 
+// Represents a user account in the system.
 type User struct {
 	state          protoimpl.MessageState `protogen:"open.v1"`
-	Id             int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Login          string                 `protobuf:"bytes,2,opt,name=login,proto3" json:"login,omitempty"`
-	OfficialName   string                 `protobuf:"bytes,3,opt,name=official_name,json=officialName,proto3" json:"official_name,omitempty"`
-	IsActive       bool                   `protobuf:"varint,4,opt,name=is_active,json=isActive,proto3" json:"is_active,omitempty"`
-	CreatedAt      *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	CreatedByLogin string                 `protobuf:"bytes,6,opt,name=created_by_login,json=createdByLogin,proto3" json:"created_by_login,omitempty"`
-	Role           *Role                  `protobuf:"bytes,7,opt,name=role,proto3" json:"role,omitempty"`
-	Permissions    []*Permission          `protobuf:"bytes,8,rep,name=permissions,proto3" json:"permissions,omitempty"`
-	Contacts       []*UserContact         `protobuf:"bytes,9,rep,name=contacts,proto3" json:"contacts,omitempty"`
+	Id             int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`                                                // Unique system-generated ID.
+	Login          string                 `protobuf:"bytes,2,opt,name=login,proto3" json:"login,omitempty"`                                           // Unique login identifier.
+	OfficialName   string                 `protobuf:"bytes,3,opt,name=official_name,json=officialName,proto3" json:"official_name,omitempty"`         // Formal name (e.g., "John Doe").
+	IsActive       bool                   `protobuf:"varint,4,opt,name=is_active,json=isActive,proto3" json:"is_active,omitempty"`                    // Whether the account is enabled.
+	CreatedAt      *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`                  // When the user was created.
+	CreatedByLogin string                 `protobuf:"bytes,6,opt,name=created_by_login,json=createdByLogin,proto3" json:"created_by_login,omitempty"` // Login of the creator (e.g., "admin").
+	Role           *Role                  `protobuf:"bytes,7,opt,name=role,proto3" json:"role,omitempty"`                                             // Assigned role.
+	Permissions    []*Permission          `protobuf:"bytes,8,rep,name=permissions,proto3" json:"permissions,omitempty"`                               // Direct permissions (overrides role).
+	Contacts       []*UserContact         `protobuf:"bytes,9,rep,name=contacts,proto3" json:"contacts,omitempty"`                                     // User's contact methods.
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
@@ -330,13 +335,14 @@ func (x *User) GetContacts() []*UserContact {
 	return nil
 }
 
+// Defines a user role (e.g., "Admin", "Editor").
 type Role struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	Code          string                 `protobuf:"bytes,3,opt,name=code,proto3" json:"code,omitempty"`
-	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	Permissions   []*Permission          `protobuf:"bytes,5,rep,name=permissions,proto3" json:"permissions,omitempty"`
+	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`                               // Unique role ID.
+	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`                            // Human-readable name (e.g., "Admin").
+	Code          string                 `protobuf:"bytes,3,opt,name=code,proto3" json:"code,omitempty"`                            // Machine-friendly code (e.g., "admin").
+	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"` // When the role was created.
+	Permissions   []*Permission          `protobuf:"bytes,5,rep,name=permissions,proto3" json:"permissions,omitempty"`              // Permissions granted by this role.
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -406,239 +412,20 @@ func (x *Role) GetPermissions() []*Permission {
 	return nil
 }
 
-type Permission struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Action        *PermissionAction      `protobuf:"bytes,2,opt,name=action,proto3" json:"action,omitempty"`
-	Object        *PermissionObject      `protobuf:"bytes,3,opt,name=object,proto3" json:"object,omitempty"`
-	Description   string                 `protobuf:"bytes,4,opt,name=description,proto3" json:"description,omitempty"`
-	Name          string                 `protobuf:"bytes,5,opt,name=name,proto3" json:"name,omitempty"`
-	Code          string                 `protobuf:"bytes,6,opt,name=code,proto3" json:"code,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *Permission) Reset() {
-	*x = Permission{}
-	mi := &file_apfish_user_proto_msgTypes[6]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *Permission) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*Permission) ProtoMessage() {}
-
-func (x *Permission) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_user_proto_msgTypes[6]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use Permission.ProtoReflect.Descriptor instead.
-func (*Permission) Descriptor() ([]byte, []int) {
-	return file_apfish_user_proto_rawDescGZIP(), []int{6}
-}
-
-func (x *Permission) GetId() int64 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
-}
-
-func (x *Permission) GetAction() *PermissionAction {
-	if x != nil {
-		return x.Action
-	}
-	return nil
-}
-
-func (x *Permission) GetObject() *PermissionObject {
-	if x != nil {
-		return x.Object
-	}
-	return nil
-}
-
-func (x *Permission) GetDescription() string {
-	if x != nil {
-		return x.Description
-	}
-	return ""
-}
-
-func (x *Permission) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
-
-func (x *Permission) GetCode() string {
-	if x != nil {
-		return x.Code
-	}
-	return ""
-}
-
-type PermissionAction struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	Description   string                 `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
-	Code          string                 `protobuf:"bytes,4,opt,name=code,proto3" json:"code,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *PermissionAction) Reset() {
-	*x = PermissionAction{}
-	mi := &file_apfish_user_proto_msgTypes[7]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *PermissionAction) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*PermissionAction) ProtoMessage() {}
-
-func (x *PermissionAction) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_user_proto_msgTypes[7]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use PermissionAction.ProtoReflect.Descriptor instead.
-func (*PermissionAction) Descriptor() ([]byte, []int) {
-	return file_apfish_user_proto_rawDescGZIP(), []int{7}
-}
-
-func (x *PermissionAction) GetId() int64 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
-}
-
-func (x *PermissionAction) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
-
-func (x *PermissionAction) GetDescription() string {
-	if x != nil {
-		return x.Description
-	}
-	return ""
-}
-
-func (x *PermissionAction) GetCode() string {
-	if x != nil {
-		return x.Code
-	}
-	return ""
-}
-
-type PermissionObject struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	Description   string                 `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
-	Code          string                 `protobuf:"bytes,4,opt,name=code,proto3" json:"code,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *PermissionObject) Reset() {
-	*x = PermissionObject{}
-	mi := &file_apfish_user_proto_msgTypes[8]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *PermissionObject) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*PermissionObject) ProtoMessage() {}
-
-func (x *PermissionObject) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_user_proto_msgTypes[8]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use PermissionObject.ProtoReflect.Descriptor instead.
-func (*PermissionObject) Descriptor() ([]byte, []int) {
-	return file_apfish_user_proto_rawDescGZIP(), []int{8}
-}
-
-func (x *PermissionObject) GetId() int64 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
-}
-
-func (x *PermissionObject) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
-
-func (x *PermissionObject) GetDescription() string {
-	if x != nil {
-		return x.Description
-	}
-	return ""
-}
-
-func (x *PermissionObject) GetCode() string {
-	if x != nil {
-		return x.Code
-	}
-	return ""
-}
-
+// A user's contact method (e.g., email, phone).
 type UserContact struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Type          *UserContactType       `protobuf:"bytes,2,opt,name=type,proto3" json:"type,omitempty"`
-	Value         string                 `protobuf:"bytes,3,opt,name=value,proto3" json:"value,omitempty"`
-	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`                               // Unique contact ID.
+	Type          *UserContactType       `protobuf:"bytes,2,opt,name=type,proto3" json:"type,omitempty"`                            // Contact type.
+	Value         string                 `protobuf:"bytes,3,opt,name=value,proto3" json:"value,omitempty"`                          // Contact value (e.g., "user@example.com").
+	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"` // When the contact was added.
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *UserContact) Reset() {
 	*x = UserContact{}
-	mi := &file_apfish_user_proto_msgTypes[9]
+	mi := &file_apfish_user_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -650,7 +437,7 @@ func (x *UserContact) String() string {
 func (*UserContact) ProtoMessage() {}
 
 func (x *UserContact) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_user_proto_msgTypes[9]
+	mi := &file_apfish_user_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -663,7 +450,7 @@ func (x *UserContact) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UserContact.ProtoReflect.Descriptor instead.
 func (*UserContact) Descriptor() ([]byte, []int) {
-	return file_apfish_user_proto_rawDescGZIP(), []int{9}
+	return file_apfish_user_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *UserContact) GetId() int64 {
@@ -694,19 +481,20 @@ func (x *UserContact) GetCreatedAt() *timestamppb.Timestamp {
 	return nil
 }
 
+// Type of contact method (e.g., "Email", "Phone").
 type UserContactType struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	Code          string                 `protobuf:"bytes,3,opt,name=code,proto3" json:"code,omitempty"`
-	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`                               // Unique type ID.
+	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`                            // Human-readable name (e.g., "Email").
+	Code          string                 `protobuf:"bytes,3,opt,name=code,proto3" json:"code,omitempty"`                            // Machine-friendly code (e.g., "email").
+	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"` // When the type was defined.
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *UserContactType) Reset() {
 	*x = UserContactType{}
-	mi := &file_apfish_user_proto_msgTypes[10]
+	mi := &file_apfish_user_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -718,7 +506,7 @@ func (x *UserContactType) String() string {
 func (*UserContactType) ProtoMessage() {}
 
 func (x *UserContactType) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_user_proto_msgTypes[10]
+	mi := &file_apfish_user_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -731,7 +519,7 @@ func (x *UserContactType) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UserContactType.ProtoReflect.Descriptor instead.
 func (*UserContactType) Descriptor() ([]byte, []int) {
-	return file_apfish_user_proto_rawDescGZIP(), []int{10}
+	return file_apfish_user_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *UserContactType) GetId() int64 {
@@ -766,7 +554,7 @@ var File_apfish_user_proto protoreflect.FileDescriptor
 
 const file_apfish_user_proto_rawDesc = "" +
 	"\n" +
-	"\x11apfish/user.proto\x12\x04user\x1a\x1fgoogle/protobuf/timestamp.proto\"#\n" +
+	"\x11apfish/user.proto\x12\x04user\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x17apfish/permission.proto\"#\n" +
 	"\vUserRequest\x12\x14\n" +
 	"\x05login\x18\x01 \x01(\tR\x05login\".\n" +
 	"\fUserResponse\x12\x1e\n" +
@@ -779,7 +567,7 @@ const file_apfish_user_proto_rawDesc = "" +
 	"\x11ListUsersResponse\x12 \n" +
 	"\x05users\x18\x01 \x03(\v2\n" +
 	".user.UserR\x05users\x12\x14\n" +
-	"\x05total\x18\x02 \x01(\x05R\x05total\"\xd6\x02\n" +
+	"\x05total\x18\x02 \x01(\x05R\x05total\"\xdc\x02\n" +
 	"\x04User\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x14\n" +
 	"\x05login\x18\x02 \x01(\tR\x05login\x12#\n" +
@@ -789,34 +577,16 @@ const file_apfish_user_proto_rawDesc = "" +
 	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x12(\n" +
 	"\x10created_by_login\x18\x06 \x01(\tR\x0ecreatedByLogin\x12\x1e\n" +
 	"\x04role\x18\a \x01(\v2\n" +
-	".user.RoleR\x04role\x122\n" +
-	"\vpermissions\x18\b \x03(\v2\x10.user.PermissionR\vpermissions\x12-\n" +
-	"\bcontacts\x18\t \x03(\v2\x11.user.UserContactR\bcontacts\"\xad\x01\n" +
+	".user.RoleR\x04role\x128\n" +
+	"\vpermissions\x18\b \x03(\v2\x16.permission.PermissionR\vpermissions\x12-\n" +
+	"\bcontacts\x18\t \x03(\v2\x11.user.UserContactR\bcontacts\"\xb3\x01\n" +
 	"\x04Role\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x12\n" +
 	"\x04code\x18\x03 \x01(\tR\x04code\x129\n" +
 	"\n" +
-	"created_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x122\n" +
-	"\vpermissions\x18\x05 \x03(\v2\x10.user.PermissionR\vpermissions\"\xc6\x01\n" +
-	"\n" +
-	"Permission\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12.\n" +
-	"\x06action\x18\x02 \x01(\v2\x16.user.PermissionActionR\x06action\x12.\n" +
-	"\x06object\x18\x03 \x01(\v2\x16.user.PermissionObjectR\x06object\x12 \n" +
-	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x12\n" +
-	"\x04name\x18\x05 \x01(\tR\x04name\x12\x12\n" +
-	"\x04code\x18\x06 \x01(\tR\x04code\"l\n" +
-	"\x10PermissionAction\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12 \n" +
-	"\vdescription\x18\x03 \x01(\tR\vdescription\x12\x12\n" +
-	"\x04code\x18\x04 \x01(\tR\x04code\"l\n" +
-	"\x10PermissionObject\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12 \n" +
-	"\vdescription\x18\x03 \x01(\tR\vdescription\x12\x12\n" +
-	"\x04code\x18\x04 \x01(\tR\x04code\"\x99\x01\n" +
+	"created_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x128\n" +
+	"\vpermissions\x18\x05 \x03(\v2\x16.permission.PermissionR\vpermissions\"\x99\x01\n" +
 	"\vUserContact\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12)\n" +
 	"\x04type\x18\x02 \x01(\v2\x15.user.UserContactTypeR\x04type\x12\x14\n" +
@@ -828,9 +598,9 @@ const file_apfish_user_proto_rawDesc = "" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x12\n" +
 	"\x04code\x18\x03 \x01(\tR\x04code\x129\n" +
 	"\n" +
-	"created_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt2t\n" +
-	"\x05SUser\x12-\n" +
-	"\x04User\x12\x11.user.UserRequest\x1a\x12.user.UserResponse\x12<\n" +
+	"created_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt2}\n" +
+	"\vUserService\x120\n" +
+	"\aGetUser\x12\x11.user.UserRequest\x1a\x12.user.UserResponse\x12<\n" +
 	"\tListUsers\x12\x16.user.ListUsersRequest\x1a\x17.user.ListUsersResponseB\x14Z\x12apfish.v1;apfishv1b\x06proto3"
 
 var (
@@ -845,7 +615,7 @@ func file_apfish_user_proto_rawDescGZIP() []byte {
 	return file_apfish_user_proto_rawDescData
 }
 
-var file_apfish_user_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
+var file_apfish_user_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
 var file_apfish_user_proto_goTypes = []any{
 	(*UserRequest)(nil),           // 0: user.UserRequest
 	(*UserResponse)(nil),          // 1: user.UserResponse
@@ -853,36 +623,32 @@ var file_apfish_user_proto_goTypes = []any{
 	(*ListUsersResponse)(nil),     // 3: user.ListUsersResponse
 	(*User)(nil),                  // 4: user.User
 	(*Role)(nil),                  // 5: user.Role
-	(*Permission)(nil),            // 6: user.Permission
-	(*PermissionAction)(nil),      // 7: user.PermissionAction
-	(*PermissionObject)(nil),      // 8: user.PermissionObject
-	(*UserContact)(nil),           // 9: user.UserContact
-	(*UserContactType)(nil),       // 10: user.UserContactType
-	(*timestamppb.Timestamp)(nil), // 11: google.protobuf.Timestamp
+	(*UserContact)(nil),           // 6: user.UserContact
+	(*UserContactType)(nil),       // 7: user.UserContactType
+	(*timestamppb.Timestamp)(nil), // 8: google.protobuf.Timestamp
+	(*Permission)(nil),            // 9: permission.Permission
 }
 var file_apfish_user_proto_depIdxs = []int32{
 	4,  // 0: user.UserResponse.user:type_name -> user.User
 	4,  // 1: user.ListUsersResponse.users:type_name -> user.User
-	11, // 2: user.User.created_at:type_name -> google.protobuf.Timestamp
+	8,  // 2: user.User.created_at:type_name -> google.protobuf.Timestamp
 	5,  // 3: user.User.role:type_name -> user.Role
-	6,  // 4: user.User.permissions:type_name -> user.Permission
-	9,  // 5: user.User.contacts:type_name -> user.UserContact
-	11, // 6: user.Role.created_at:type_name -> google.protobuf.Timestamp
-	6,  // 7: user.Role.permissions:type_name -> user.Permission
-	7,  // 8: user.Permission.action:type_name -> user.PermissionAction
-	8,  // 9: user.Permission.object:type_name -> user.PermissionObject
-	10, // 10: user.UserContact.type:type_name -> user.UserContactType
-	11, // 11: user.UserContact.created_at:type_name -> google.protobuf.Timestamp
-	11, // 12: user.UserContactType.created_at:type_name -> google.protobuf.Timestamp
-	0,  // 13: user.SUser.User:input_type -> user.UserRequest
-	2,  // 14: user.SUser.ListUsers:input_type -> user.ListUsersRequest
-	1,  // 15: user.SUser.User:output_type -> user.UserResponse
-	3,  // 16: user.SUser.ListUsers:output_type -> user.ListUsersResponse
-	15, // [15:17] is the sub-list for method output_type
-	13, // [13:15] is the sub-list for method input_type
-	13, // [13:13] is the sub-list for extension type_name
-	13, // [13:13] is the sub-list for extension extendee
-	0,  // [0:13] is the sub-list for field type_name
+	9,  // 4: user.User.permissions:type_name -> permission.Permission
+	6,  // 5: user.User.contacts:type_name -> user.UserContact
+	8,  // 6: user.Role.created_at:type_name -> google.protobuf.Timestamp
+	9,  // 7: user.Role.permissions:type_name -> permission.Permission
+	7,  // 8: user.UserContact.type:type_name -> user.UserContactType
+	8,  // 9: user.UserContact.created_at:type_name -> google.protobuf.Timestamp
+	8,  // 10: user.UserContactType.created_at:type_name -> google.protobuf.Timestamp
+	0,  // 11: user.UserService.GetUser:input_type -> user.UserRequest
+	2,  // 12: user.UserService.ListUsers:input_type -> user.ListUsersRequest
+	1,  // 13: user.UserService.GetUser:output_type -> user.UserResponse
+	3,  // 14: user.UserService.ListUsers:output_type -> user.ListUsersResponse
+	13, // [13:15] is the sub-list for method output_type
+	11, // [11:13] is the sub-list for method input_type
+	11, // [11:11] is the sub-list for extension type_name
+	11, // [11:11] is the sub-list for extension extendee
+	0,  // [0:11] is the sub-list for field type_name
 }
 
 func init() { file_apfish_user_proto_init() }
@@ -890,13 +656,14 @@ func file_apfish_user_proto_init() {
 	if File_apfish_user_proto != nil {
 		return
 	}
+	file_apfish_permission_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_apfish_user_proto_rawDesc), len(file_apfish_user_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   11,
+			NumMessages:   8,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

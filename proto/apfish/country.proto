@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package country;
+
+option go_package = "apfish.v1;apfishv1";
+
+import "google/protobuf/timestamp.proto";
+
+message Country {
+  int64 id = 1;
+  string name = 2;
+  string name_rus = 3;
+  string code = 4;
+  bool is_ilo = 5;
+  bool is_ballast_water = 6;
+  google.protobuf.Timestamp created_at = 7;
+
+  CallSignFlag call_sign_flag = 8;
+}
+
+message CallSignFlag {
+  int64 country_id = 1;
+  string series = 2;
+  string limit_lower = 3;
+  string limit_upper = 4;
+  google.protobuf.Timestamp created_at = 5;
+}

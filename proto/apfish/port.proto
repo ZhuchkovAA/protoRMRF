@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package port;
+
+option go_package = "apfish.v1;apfishv1";
+
+import "google/protobuf/timestamp.proto";
+import "apfish/country.proto";
+import "apfish/district.proto";
+
+message Port {
+  int64 id = 1;
+  string name = 2;
+  bool is_office = 3;
+  string code = 4;
+  google.protobuf.Timestamp created_at = 5;
+
+  country.Country country = 6;
+  district.District district = 7;
+}
