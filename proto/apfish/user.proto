@@ -91,9 +91,9 @@ message Permission {
   string code = 6;                // Machine-readable identifier (e.g., "inspection:read")
   google.protobuf.Timestamp created_at = 7;
 
-  repeated FieldShort countries= 8;
-  repeated FieldShort districts = 9;
-  repeated FieldShort ports = 10;
+  repeated Country countries= 8;
+  repeated District districts = 9;
+  repeated Port ports = 10;
 
   repeated User users = 11;
   repeated Role roles = 12;
@@ -119,11 +119,6 @@ message PermissionObject {
   google.protobuf.Timestamp created_at = 5;
 
   repeated Permission permissions = 6;
-}
-
-message FieldShort {
-  int64 id = 1;
-  string name = 2;
 }
 
 message Country {

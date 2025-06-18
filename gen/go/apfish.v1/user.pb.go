@@ -561,9 +561,9 @@ type Permission struct {
 	Name          string                 `protobuf:"bytes,5,opt,name=name,proto3" json:"name,omitempty"`               // Display name (e.g., "Read Inspections")
 	Code          string                 `protobuf:"bytes,6,opt,name=code,proto3" json:"code,omitempty"`               // Machine-readable identifier (e.g., "inspection:read")
 	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	Countries     []*FieldShort          `protobuf:"bytes,8,rep,name=countries,proto3" json:"countries,omitempty"`
-	Districts     []*FieldShort          `protobuf:"bytes,9,rep,name=districts,proto3" json:"districts,omitempty"`
-	Ports         []*FieldShort          `protobuf:"bytes,10,rep,name=ports,proto3" json:"ports,omitempty"`
+	Countries     []*Country             `protobuf:"bytes,8,rep,name=countries,proto3" json:"countries,omitempty"`
+	Districts     []*District            `protobuf:"bytes,9,rep,name=districts,proto3" json:"districts,omitempty"`
+	Ports         []*Port                `protobuf:"bytes,10,rep,name=ports,proto3" json:"ports,omitempty"`
 	Users         []*User                `protobuf:"bytes,11,rep,name=users,proto3" json:"users,omitempty"`
 	Roles         []*Role                `protobuf:"bytes,12,rep,name=roles,proto3" json:"roles,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -649,21 +649,21 @@ func (x *Permission) GetCreatedAt() *timestamppb.Timestamp {
 	return nil
 }
 
-func (x *Permission) GetCountries() []*FieldShort {
+func (x *Permission) GetCountries() []*Country {
 	if x != nil {
 		return x.Countries
 	}
 	return nil
 }
 
-func (x *Permission) GetDistricts() []*FieldShort {
+func (x *Permission) GetDistricts() []*District {
 	if x != nil {
 		return x.Districts
 	}
 	return nil
 }
 
-func (x *Permission) GetPorts() []*FieldShort {
+func (x *Permission) GetPorts() []*Port {
 	if x != nil {
 		return x.Ports
 	}
@@ -854,58 +854,6 @@ func (x *PermissionObject) GetPermissions() []*Permission {
 	return nil
 }
 
-type FieldShort struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *FieldShort) Reset() {
-	*x = FieldShort{}
-	mi := &file_apfish_user_proto_msgTypes[11]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *FieldShort) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*FieldShort) ProtoMessage() {}
-
-func (x *FieldShort) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_user_proto_msgTypes[11]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use FieldShort.ProtoReflect.Descriptor instead.
-func (*FieldShort) Descriptor() ([]byte, []int) {
-	return file_apfish_user_proto_rawDescGZIP(), []int{11}
-}
-
-func (x *FieldShort) GetId() int64 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
-}
-
-func (x *FieldShort) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
-
 type Country struct {
 	state          protoimpl.MessageState `protogen:"open.v1"`
 	Id             int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
@@ -924,7 +872,7 @@ type Country struct {
 
 func (x *Country) Reset() {
 	*x = Country{}
-	mi := &file_apfish_user_proto_msgTypes[12]
+	mi := &file_apfish_user_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -936,7 +884,7 @@ func (x *Country) String() string {
 func (*Country) ProtoMessage() {}
 
 func (x *Country) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_user_proto_msgTypes[12]
+	mi := &file_apfish_user_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -949,7 +897,7 @@ func (x *Country) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Country.ProtoReflect.Descriptor instead.
 func (*Country) Descriptor() ([]byte, []int) {
-	return file_apfish_user_proto_rawDescGZIP(), []int{12}
+	return file_apfish_user_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *Country) GetId() int64 {
@@ -1035,7 +983,7 @@ type District struct {
 
 func (x *District) Reset() {
 	*x = District{}
-	mi := &file_apfish_user_proto_msgTypes[13]
+	mi := &file_apfish_user_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1047,7 +995,7 @@ func (x *District) String() string {
 func (*District) ProtoMessage() {}
 
 func (x *District) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_user_proto_msgTypes[13]
+	mi := &file_apfish_user_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1060,7 +1008,7 @@ func (x *District) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use District.ProtoReflect.Descriptor instead.
 func (*District) Descriptor() ([]byte, []int) {
-	return file_apfish_user_proto_rawDescGZIP(), []int{13}
+	return file_apfish_user_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *District) GetId() int64 {
@@ -1113,7 +1061,7 @@ type Port struct {
 
 func (x *Port) Reset() {
 	*x = Port{}
-	mi := &file_apfish_user_proto_msgTypes[14]
+	mi := &file_apfish_user_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1125,7 +1073,7 @@ func (x *Port) String() string {
 func (*Port) ProtoMessage() {}
 
 func (x *Port) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_user_proto_msgTypes[14]
+	mi := &file_apfish_user_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1138,7 +1086,7 @@ func (x *Port) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Port.ProtoReflect.Descriptor instead.
 func (*Port) Descriptor() ([]byte, []int) {
-	return file_apfish_user_proto_rawDescGZIP(), []int{14}
+	return file_apfish_user_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *Port) GetId() int64 {
@@ -1205,7 +1153,7 @@ type CallSign struct {
 
 func (x *CallSign) Reset() {
 	*x = CallSign{}
-	mi := &file_apfish_user_proto_msgTypes[15]
+	mi := &file_apfish_user_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1217,7 +1165,7 @@ func (x *CallSign) String() string {
 func (*CallSign) ProtoMessage() {}
 
 func (x *CallSign) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_user_proto_msgTypes[15]
+	mi := &file_apfish_user_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1230,7 +1178,7 @@ func (x *CallSign) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CallSign.ProtoReflect.Descriptor instead.
 func (*CallSign) Descriptor() ([]byte, []int) {
-	return file_apfish_user_proto_rawDescGZIP(), []int{15}
+	return file_apfish_user_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *CallSign) GetId() int64 {
@@ -1305,7 +1253,7 @@ type Ship struct {
 
 func (x *Ship) Reset() {
 	*x = Ship{}
-	mi := &file_apfish_user_proto_msgTypes[16]
+	mi := &file_apfish_user_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1317,7 +1265,7 @@ func (x *Ship) String() string {
 func (*Ship) ProtoMessage() {}
 
 func (x *Ship) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_user_proto_msgTypes[16]
+	mi := &file_apfish_user_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1330,7 +1278,7 @@ func (x *Ship) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Ship.ProtoReflect.Descriptor instead.
 func (*Ship) Descriptor() ([]byte, []int) {
-	return file_apfish_user_proto_rawDescGZIP(), []int{16}
+	return file_apfish_user_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *Ship) GetId() int64 {
@@ -1450,7 +1398,7 @@ type Captain struct {
 
 func (x *Captain) Reset() {
 	*x = Captain{}
-	mi := &file_apfish_user_proto_msgTypes[17]
+	mi := &file_apfish_user_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1462,7 +1410,7 @@ func (x *Captain) String() string {
 func (*Captain) ProtoMessage() {}
 
 func (x *Captain) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_user_proto_msgTypes[17]
+	mi := &file_apfish_user_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1475,7 +1423,7 @@ func (x *Captain) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Captain.ProtoReflect.Descriptor instead.
 func (*Captain) Descriptor() ([]byte, []int) {
-	return file_apfish_user_proto_rawDescGZIP(), []int{17}
+	return file_apfish_user_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *Captain) GetId() int64 {
@@ -1518,7 +1466,7 @@ type ShipType struct {
 
 func (x *ShipType) Reset() {
 	*x = ShipType{}
-	mi := &file_apfish_user_proto_msgTypes[18]
+	mi := &file_apfish_user_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1530,7 +1478,7 @@ func (x *ShipType) String() string {
 func (*ShipType) ProtoMessage() {}
 
 func (x *ShipType) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_user_proto_msgTypes[18]
+	mi := &file_apfish_user_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1543,7 +1491,7 @@ func (x *ShipType) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ShipType.ProtoReflect.Descriptor instead.
 func (*ShipType) Descriptor() ([]byte, []int) {
-	return file_apfish_user_proto_rawDescGZIP(), []int{18}
+	return file_apfish_user_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *ShipType) GetId() int64 {
@@ -1586,7 +1534,7 @@ type ShipClass struct {
 
 func (x *ShipClass) Reset() {
 	*x = ShipClass{}
-	mi := &file_apfish_user_proto_msgTypes[19]
+	mi := &file_apfish_user_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1598,7 +1546,7 @@ func (x *ShipClass) String() string {
 func (*ShipClass) ProtoMessage() {}
 
 func (x *ShipClass) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_user_proto_msgTypes[19]
+	mi := &file_apfish_user_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1611,7 +1559,7 @@ func (x *ShipClass) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ShipClass.ProtoReflect.Descriptor instead.
 func (*ShipClass) Descriptor() ([]byte, []int) {
-	return file_apfish_user_proto_rawDescGZIP(), []int{19}
+	return file_apfish_user_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *ShipClass) GetId() int64 {
@@ -1691,7 +1639,7 @@ const file_apfish_user_proto_rawDesc = "" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x12\n" +
 	"\x04code\x18\x03 \x01(\tR\x04code\x129\n" +
 	"\n" +
-	"created_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"\xcd\x03\n" +
+	"created_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"\xc2\x03\n" +
 	"\n" +
 	"Permission\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12.\n" +
@@ -1701,11 +1649,12 @@ const file_apfish_user_proto_rawDesc = "" +
 	"\x04name\x18\x05 \x01(\tR\x04name\x12\x12\n" +
 	"\x04code\x18\x06 \x01(\tR\x04code\x129\n" +
 	"\n" +
-	"created_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x12.\n" +
-	"\tcountries\x18\b \x03(\v2\x10.user.FieldShortR\tcountries\x12.\n" +
-	"\tdistricts\x18\t \x03(\v2\x10.user.FieldShortR\tdistricts\x12&\n" +
+	"created_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x12+\n" +
+	"\tcountries\x18\b \x03(\v2\r.user.CountryR\tcountries\x12,\n" +
+	"\tdistricts\x18\t \x03(\v2\x0e.user.DistrictR\tdistricts\x12 \n" +
 	"\x05ports\x18\n" +
-	" \x03(\v2\x10.user.FieldShortR\x05ports\x12 \n" +
+	" \x03(\v2\n" +
+	".user.PortR\x05ports\x12 \n" +
 	"\x05users\x18\v \x03(\v2\n" +
 	".user.UserR\x05users\x12 \n" +
 	"\x05roles\x18\f \x03(\v2\n" +
@@ -1725,11 +1674,7 @@ const file_apfish_user_proto_rawDesc = "" +
 	"\x04code\x18\x04 \x01(\tR\x04code\x129\n" +
 	"\n" +
 	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x122\n" +
-	"\vpermissions\x18\x06 \x03(\v2\x10.user.PermissionR\vpermissions\"0\n" +
-	"\n" +
-	"FieldShort\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\"\xdd\x02\n" +
+	"\vpermissions\x18\x06 \x03(\v2\x10.user.PermissionR\vpermissions\"\xdd\x02\n" +
 	"\aCountry\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x19\n" +
@@ -1831,7 +1776,7 @@ func file_apfish_user_proto_rawDescGZIP() []byte {
 	return file_apfish_user_proto_rawDescData
 }
 
-var file_apfish_user_proto_msgTypes = make([]protoimpl.MessageInfo, 20)
+var file_apfish_user_proto_msgTypes = make([]protoimpl.MessageInfo, 19)
 var file_apfish_user_proto_goTypes = []any{
 	(*UserRequest)(nil),           // 0: user.UserRequest
 	(*UserResponse)(nil),          // 1: user.UserResponse
@@ -1844,70 +1789,69 @@ var file_apfish_user_proto_goTypes = []any{
 	(*Permission)(nil),            // 8: user.Permission
 	(*PermissionAction)(nil),      // 9: user.PermissionAction
 	(*PermissionObject)(nil),      // 10: user.PermissionObject
-	(*FieldShort)(nil),            // 11: user.FieldShort
-	(*Country)(nil),               // 12: user.Country
-	(*District)(nil),              // 13: user.District
-	(*Port)(nil),                  // 14: user.Port
-	(*CallSign)(nil),              // 15: user.CallSign
-	(*Ship)(nil),                  // 16: user.Ship
-	(*Captain)(nil),               // 17: user.Captain
-	(*ShipType)(nil),              // 18: user.ShipType
-	(*ShipClass)(nil),             // 19: user.ShipClass
-	(*timestamppb.Timestamp)(nil), // 20: google.protobuf.Timestamp
+	(*Country)(nil),               // 11: user.Country
+	(*District)(nil),              // 12: user.District
+	(*Port)(nil),                  // 13: user.Port
+	(*CallSign)(nil),              // 14: user.CallSign
+	(*Ship)(nil),                  // 15: user.Ship
+	(*Captain)(nil),               // 16: user.Captain
+	(*ShipType)(nil),              // 17: user.ShipType
+	(*ShipClass)(nil),             // 18: user.ShipClass
+	(*timestamppb.Timestamp)(nil), // 19: google.protobuf.Timestamp
 }
 var file_apfish_user_proto_depIdxs = []int32{
 	4,  // 0: user.UserResponse.user:type_name -> user.User
 	4,  // 1: user.ListUsersResponse.users:type_name -> user.User
 	5,  // 2: user.User.role:type_name -> user.Role
-	20, // 3: user.User.created_at:type_name -> google.protobuf.Timestamp
+	19, // 3: user.User.created_at:type_name -> google.protobuf.Timestamp
 	8,  // 4: user.User.permissions:type_name -> user.Permission
 	6,  // 5: user.User.contacts:type_name -> user.UserContact
-	20, // 6: user.Role.created_at:type_name -> google.protobuf.Timestamp
+	19, // 6: user.Role.created_at:type_name -> google.protobuf.Timestamp
 	4,  // 7: user.Role.users:type_name -> user.User
 	8,  // 8: user.Role.permissions:type_name -> user.Permission
 	7,  // 9: user.UserContact.type:type_name -> user.UserContactType
-	20, // 10: user.UserContact.created_at:type_name -> google.protobuf.Timestamp
-	20, // 11: user.UserContactType.created_at:type_name -> google.protobuf.Timestamp
+	19, // 10: user.UserContact.created_at:type_name -> google.protobuf.Timestamp
+	19, // 11: user.UserContactType.created_at:type_name -> google.protobuf.Timestamp
 	9,  // 12: user.Permission.action:type_name -> user.PermissionAction
 	10, // 13: user.Permission.object:type_name -> user.PermissionObject
-	20, // 14: user.Permission.created_at:type_name -> google.protobuf.Timestamp
-	11, // 15: user.Permission.countries:type_name -> user.FieldShort
-	11, // 16: user.Permission.districts:type_name -> user.FieldShort
-	11, // 17: user.Permission.ports:type_name -> user.FieldShort
+	19, // 14: user.Permission.created_at:type_name -> google.protobuf.Timestamp
+	11, // 15: user.Permission.countries:type_name -> user.Country
+	12, // 16: user.Permission.districts:type_name -> user.District
+	13, // 17: user.Permission.ports:type_name -> user.Port
 	4,  // 18: user.Permission.users:type_name -> user.User
 	5,  // 19: user.Permission.roles:type_name -> user.Role
-	20, // 20: user.PermissionAction.created_at:type_name -> google.protobuf.Timestamp
+	19, // 20: user.PermissionAction.created_at:type_name -> google.protobuf.Timestamp
 	8,  // 21: user.PermissionAction.permissions:type_name -> user.Permission
-	20, // 22: user.PermissionObject.created_at:type_name -> google.protobuf.Timestamp
+	19, // 22: user.PermissionObject.created_at:type_name -> google.protobuf.Timestamp
 	8,  // 23: user.PermissionObject.permissions:type_name -> user.Permission
-	20, // 24: user.Country.created_at:type_name -> google.protobuf.Timestamp
-	14, // 25: user.Country.ports:type_name -> user.Port
-	15, // 26: user.Country.call_signs:type_name -> user.CallSign
+	19, // 24: user.Country.created_at:type_name -> google.protobuf.Timestamp
+	13, // 25: user.Country.ports:type_name -> user.Port
+	14, // 26: user.Country.call_signs:type_name -> user.CallSign
 	8,  // 27: user.Country.permissions:type_name -> user.Permission
-	20, // 28: user.District.created_at:type_name -> google.protobuf.Timestamp
-	14, // 29: user.District.ports:type_name -> user.Port
+	19, // 28: user.District.created_at:type_name -> google.protobuf.Timestamp
+	13, // 29: user.District.ports:type_name -> user.Port
 	8,  // 30: user.District.permissions:type_name -> user.Permission
-	12, // 31: user.Port.country:type_name -> user.Country
-	13, // 32: user.Port.district:type_name -> user.District
-	20, // 33: user.Port.created_at:type_name -> google.protobuf.Timestamp
+	11, // 31: user.Port.country:type_name -> user.Country
+	12, // 32: user.Port.district:type_name -> user.District
+	19, // 33: user.Port.created_at:type_name -> google.protobuf.Timestamp
 	8,  // 34: user.Port.permissions:type_name -> user.Permission
-	20, // 35: user.CallSign.created_at:type_name -> google.protobuf.Timestamp
-	12, // 36: user.CallSign.countries:type_name -> user.Country
-	16, // 37: user.CallSign.ships:type_name -> user.Ship
-	18, // 38: user.Ship.type:type_name -> user.ShipType
-	19, // 39: user.Ship.class:type_name -> user.ShipClass
-	12, // 40: user.Ship.country:type_name -> user.Country
-	15, // 41: user.Ship.call_sign:type_name -> user.CallSign
-	20, // 42: user.Ship.date_build:type_name -> google.protobuf.Timestamp
-	20, // 43: user.Ship.created_at:type_name -> google.protobuf.Timestamp
-	17, // 44: user.Ship.captains:type_name -> user.Captain
+	19, // 35: user.CallSign.created_at:type_name -> google.protobuf.Timestamp
+	11, // 36: user.CallSign.countries:type_name -> user.Country
+	15, // 37: user.CallSign.ships:type_name -> user.Ship
+	17, // 38: user.Ship.type:type_name -> user.ShipType
+	18, // 39: user.Ship.class:type_name -> user.ShipClass
+	11, // 40: user.Ship.country:type_name -> user.Country
+	14, // 41: user.Ship.call_sign:type_name -> user.CallSign
+	19, // 42: user.Ship.date_build:type_name -> google.protobuf.Timestamp
+	19, // 43: user.Ship.created_at:type_name -> google.protobuf.Timestamp
+	16, // 44: user.Ship.captains:type_name -> user.Captain
 	8,  // 45: user.Ship.permissions:type_name -> user.Permission
-	20, // 46: user.Captain.created_at:type_name -> google.protobuf.Timestamp
-	16, // 47: user.Captain.ships:type_name -> user.Ship
-	20, // 48: user.ShipType.created_at:type_name -> google.protobuf.Timestamp
-	16, // 49: user.ShipType.ships:type_name -> user.Ship
-	20, // 50: user.ShipClass.created_at:type_name -> google.protobuf.Timestamp
-	16, // 51: user.ShipClass.ships:type_name -> user.Ship
+	19, // 46: user.Captain.created_at:type_name -> google.protobuf.Timestamp
+	15, // 47: user.Captain.ships:type_name -> user.Ship
+	19, // 48: user.ShipType.created_at:type_name -> google.protobuf.Timestamp
+	15, // 49: user.ShipType.ships:type_name -> user.Ship
+	19, // 50: user.ShipClass.created_at:type_name -> google.protobuf.Timestamp
+	15, // 51: user.ShipClass.ships:type_name -> user.Ship
 	0,  // 52: user.UserService.GetUser:input_type -> user.UserRequest
 	2,  // 53: user.UserService.ListUsers:input_type -> user.ListUsersRequest
 	1,  // 54: user.UserService.GetUser:output_type -> user.UserResponse
@@ -1930,7 +1874,7 @@ func file_apfish_user_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_apfish_user_proto_rawDesc), len(file_apfish_user_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   20,
+			NumMessages:   19,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
