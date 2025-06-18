@@ -1197,8 +1197,8 @@ type CallSign struct {
 	LimitLower    string                 `protobuf:"bytes,3,opt,name=limit_lower,json=limitLower,proto3" json:"limit_lower,omitempty"`
 	LimitUpper    string                 `protobuf:"bytes,4,opt,name=limit_upper,json=limitUpper,proto3" json:"limit_upper,omitempty"`
 	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	Countries     *Country               `protobuf:"bytes,6,opt,name=countries,proto3" json:"countries,omitempty"`
-	Ships         *Ship                  `protobuf:"bytes,7,opt,name=ships,proto3" json:"ships,omitempty"`
+	Countries     []*Country             `protobuf:"bytes,6,rep,name=countries,proto3" json:"countries,omitempty"`
+	Ships         []*Ship                `protobuf:"bytes,7,rep,name=ships,proto3" json:"ships,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1268,14 +1268,14 @@ func (x *CallSign) GetCreatedAt() *timestamppb.Timestamp {
 	return nil
 }
 
-func (x *CallSign) GetCountries() *Country {
+func (x *CallSign) GetCountries() []*Country {
 	if x != nil {
 		return x.Countries
 	}
 	return nil
 }
 
-func (x *CallSign) GetShips() *Ship {
+func (x *CallSign) GetShips() []*Ship {
 	if x != nil {
 		return x.Ships
 	}
@@ -1771,8 +1771,8 @@ const file_apfish_user_proto_rawDesc = "" +
 	"limitUpper\x129\n" +
 	"\n" +
 	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x12+\n" +
-	"\tcountries\x18\x06 \x01(\v2\r.user.CountryR\tcountries\x12 \n" +
-	"\x05ships\x18\a \x01(\v2\n" +
+	"\tcountries\x18\x06 \x03(\v2\r.user.CountryR\tcountries\x12 \n" +
+	"\x05ships\x18\a \x03(\v2\n" +
 	".user.ShipR\x05ships\"\xa9\x04\n" +
 	"\x04Ship\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x10\n" +

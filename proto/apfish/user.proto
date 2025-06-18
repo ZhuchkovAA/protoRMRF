@@ -167,8 +167,8 @@ message CallSign {
   string limit_upper = 4;
   google.protobuf.Timestamp created_at = 5;
 
-  Country countries = 6;
-  Ship ships = 7;
+  repeated Country countries = 6;
+  repeated Ship ships = 7;
 }
 
 message Ship {
