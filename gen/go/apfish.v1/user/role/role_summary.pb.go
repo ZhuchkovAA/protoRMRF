@@ -24,9 +24,10 @@ const (
 
 type RoleSummary struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`                               // Unique role ID.
-	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`                            // Human-readable name (e.g., "Admin").
-	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"` // When the role was created.
+	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`    // Unique role ID.
+	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"` // Human-readable name (e.g., "Admin").
+	Code          string                 `protobuf:"bytes,3,opt,name=code,proto3" json:"code,omitempty"`
+	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"` // When the role was created.
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -75,6 +76,13 @@ func (x *RoleSummary) GetName() string {
 	return ""
 }
 
+func (x *RoleSummary) GetCode() string {
+	if x != nil {
+		return x.Code
+	}
+	return ""
+}
+
 func (x *RoleSummary) GetCreatedAt() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreatedAt
@@ -86,12 +94,13 @@ var File_apfish_user_role_role_summary_proto protoreflect.FileDescriptor
 
 const file_apfish_user_role_role_summary_proto_rawDesc = "" +
 	"\n" +
-	"#apfish/user/role/role_summary.proto\x12\x04user\x1a\x1fgoogle/protobuf/timestamp.proto\"l\n" +
+	"#apfish/user/role/role_summary.proto\x12\x04user\x1a\x1fgoogle/protobuf/timestamp.proto\"\x80\x01\n" +
 	"\vRoleSummary\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x129\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12\x12\n" +
+	"\x04code\x18\x03 \x01(\tR\x04code\x129\n" +
 	"\n" +
-	"created_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAtB\x1eZ\x1capfish.v1/user/role;apfishv1b\x06proto3"
+	"created_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAtB\x1eZ\x1capfish.v1/user/role;apfishv1b\x06proto3"
 
 var (
 	file_apfish_user_role_role_summary_proto_rawDescOnce sync.Once

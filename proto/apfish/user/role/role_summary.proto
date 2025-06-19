@@ -9,5 +9,6 @@ import "google/protobuf/timestamp.proto";  // Standard Protocol Buffers timestam
 message RoleSummary {
   int64 id = 1;                       // Unique role ID.
   string name = 2;                    // Human-readable name (e.g., "Admin").
-  google.protobuf.Timestamp created_at = 3;  // When the role was created.
+  string code = 3;
+  google.protobuf.Timestamp created_at = 4;  // When the role was created.
 }
