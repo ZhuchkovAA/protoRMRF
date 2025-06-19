@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package user.contact;
+
+option go_package = "apfish.v1;apfishv1";
+
+import "google/protobuf/timestamp.proto";  // Standard Protocol Buffers timestamp
+
+import "apfish/user/contact/contact.proto";
+
+service TypeService {
+  rpc GetType (TypeRequest) returns (TypeResponse);
+}
+
+message TypeRequest {
+  int64 id = 1;
+}
+
+message TypeResponse {
+  int64 id = 1;
+}
+
+// Type of contact method (e.g., "Email", "Phone").
+message Type {
+  int64 id = 1;                       // Unique type ID.
+  string name = 2;                    // Human-readable name (e.g., "Email").
+  string code = 3;                    // Machine-friendly code (e.g., "email").
+  google.protobuf.Timestamp created_at = 4;  // When the type was defined.
+
+  repeated Contact contacts = 5;
+}
+
+// Type of contact method (e.g., "Email", "Phone").
+message TypeSummary {
+  int64 id = 1;                       // Unique type ID.
+  string name = 2;                    // Human-readable name (e.g., "Email").
+  google.protobuf.Timestamp created_at = 3;  // When the type was defined.
+}

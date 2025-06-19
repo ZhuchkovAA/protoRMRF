@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package ship;
+
+option go_package = "apfish.v1;apfishv1";
+
+import "google/protobuf/timestamp.proto";  // Standard Protocol Buffers timestamp
+
+import "apfish/ship/ship.proto";
+
+service ShipTypeService {
+  rpc GetType (TypeRequest) returns (TypeResponse);
+}
+
+message TypeRequest {
+  int64 id = 1;
+}
+
+message TypeResponse {
+  int64 id = 1;
+}
+
+message Type {
+  int64 id = 1;
+  string name = 2;
+  google.protobuf.Timestamp created_at = 3;
+
+  repeated ship.Ship ships = 4;
+}
+
+message TypeSummary {
+  int64 id = 1;
+  string name = 2;
+  google.protobuf.Timestamp created_at = 3;
+}

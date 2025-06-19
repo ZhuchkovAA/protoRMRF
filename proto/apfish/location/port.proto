@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+package location;
+
+option go_package = "apfish.v1;apfishv1";
+
+import "google/protobuf/timestamp.proto";  // Standard Protocol Buffers timestamp
+
+import "apfish/location/country.proto";
+import "apfish/location/district.proto";
+
+import "apfish/permission/permission.proto";
+
+service PortService {
+  rpc GetPort (PortRequest) returns (PortResponse);
+}
+
+message PortRequest {
+  int64 id = 1;
+}
+
+message PortResponse {
+  int64 id = 1;
+}
+
+message Port {
+  int64 id = 1;
+  string name = 2;
+  location.Country country = 3;
+  location.District district = 4;
+  string code = 5;
+  google.protobuf.Timestamp created_at = 6;
+
+  repeated permission.Permission permissions = 7;
+}
+
+message PortSummary {
+  int64 id = 1;
+  string name = 2;
+  location.CountrySummary country_summary = 3;
+  location.DistrictSummary district_summary = 4;
+  google.protobuf.Timestamp created_at = 5;
+}
