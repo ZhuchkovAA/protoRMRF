@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.6
 // 	protoc        v4.25.1
-// source: apfish/user/role/role_service.proto
+// source: apfish.v1/user/role/role_service.proto
 
 package apfishv1
 
@@ -30,7 +30,7 @@ type RoleRequest struct {
 
 func (x *RoleRequest) Reset() {
 	*x = RoleRequest{}
-	mi := &file_apfish_user_role_role_service_proto_msgTypes[0]
+	mi := &file_apfish_v1_user_role_role_service_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -42,7 +42,7 @@ func (x *RoleRequest) String() string {
 func (*RoleRequest) ProtoMessage() {}
 
 func (x *RoleRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_user_role_role_service_proto_msgTypes[0]
+	mi := &file_apfish_v1_user_role_role_service_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -55,7 +55,7 @@ func (x *RoleRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RoleRequest.ProtoReflect.Descriptor instead.
 func (*RoleRequest) Descriptor() ([]byte, []int) {
-	return file_apfish_user_role_role_service_proto_rawDescGZIP(), []int{0}
+	return file_apfish_v1_user_role_role_service_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *RoleRequest) GetId() int64 {
@@ -74,7 +74,7 @@ type RoleResponse struct {
 
 func (x *RoleResponse) Reset() {
 	*x = RoleResponse{}
-	mi := &file_apfish_user_role_role_service_proto_msgTypes[1]
+	mi := &file_apfish_v1_user_role_role_service_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -86,7 +86,7 @@ func (x *RoleResponse) String() string {
 func (*RoleResponse) ProtoMessage() {}
 
 func (x *RoleResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_user_role_role_service_proto_msgTypes[1]
+	mi := &file_apfish_v1_user_role_role_service_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -99,7 +99,7 @@ func (x *RoleResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RoleResponse.ProtoReflect.Descriptor instead.
 func (*RoleResponse) Descriptor() ([]byte, []int) {
-	return file_apfish_user_role_role_service_proto_rawDescGZIP(), []int{1}
+	return file_apfish_v1_user_role_role_service_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *RoleResponse) GetRole() *Role {
@@ -118,7 +118,7 @@ type RoleSummaryResponse struct {
 
 func (x *RoleSummaryResponse) Reset() {
 	*x = RoleSummaryResponse{}
-	mi := &file_apfish_user_role_role_service_proto_msgTypes[2]
+	mi := &file_apfish_v1_user_role_role_service_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -130,7 +130,7 @@ func (x *RoleSummaryResponse) String() string {
 func (*RoleSummaryResponse) ProtoMessage() {}
 
 func (x *RoleSummaryResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_user_role_role_service_proto_msgTypes[2]
+	mi := &file_apfish_v1_user_role_role_service_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -143,7 +143,7 @@ func (x *RoleSummaryResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RoleSummaryResponse.ProtoReflect.Descriptor instead.
 func (*RoleSummaryResponse) Descriptor() ([]byte, []int) {
-	return file_apfish_user_role_role_service_proto_rawDescGZIP(), []int{2}
+	return file_apfish_v1_user_role_role_service_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *RoleSummaryResponse) GetRole() *RoleSummary {
@@ -163,7 +163,7 @@ type ListRolesRequest struct {
 
 func (x *ListRolesRequest) Reset() {
 	*x = ListRolesRequest{}
-	mi := &file_apfish_user_role_role_service_proto_msgTypes[3]
+	mi := &file_apfish_v1_user_role_role_service_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -175,7 +175,7 @@ func (x *ListRolesRequest) String() string {
 func (*ListRolesRequest) ProtoMessage() {}
 
 func (x *ListRolesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_user_role_role_service_proto_msgTypes[3]
+	mi := &file_apfish_v1_user_role_role_service_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -188,7 +188,7 @@ func (x *ListRolesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListRolesRequest.ProtoReflect.Descriptor instead.
 func (*ListRolesRequest) Descriptor() ([]byte, []int) {
-	return file_apfish_user_role_role_service_proto_rawDescGZIP(), []int{3}
+	return file_apfish_v1_user_role_role_service_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *ListRolesRequest) GetPage() int64 {
@@ -215,7 +215,7 @@ type ListRolesResponse struct {
 
 func (x *ListRolesResponse) Reset() {
 	*x = ListRolesResponse{}
-	mi := &file_apfish_user_role_role_service_proto_msgTypes[4]
+	mi := &file_apfish_v1_user_role_role_service_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -227,7 +227,7 @@ func (x *ListRolesResponse) String() string {
 func (*ListRolesResponse) ProtoMessage() {}
 
 func (x *ListRolesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_user_role_role_service_proto_msgTypes[4]
+	mi := &file_apfish_v1_user_role_role_service_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -240,7 +240,7 @@ func (x *ListRolesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListRolesResponse.ProtoReflect.Descriptor instead.
 func (*ListRolesResponse) Descriptor() ([]byte, []int) {
-	return file_apfish_user_role_role_service_proto_rawDescGZIP(), []int{4}
+	return file_apfish_v1_user_role_role_service_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *ListRolesResponse) GetListRoles() []*RoleSummary {
@@ -257,11 +257,11 @@ func (x *ListRolesResponse) GetTotal() int64 {
 	return 0
 }
 
-var File_apfish_user_role_role_service_proto protoreflect.FileDescriptor
+var File_apfish_v1_user_role_role_service_proto protoreflect.FileDescriptor
 
-const file_apfish_user_role_role_service_proto_rawDesc = "" +
+const file_apfish_v1_user_role_role_service_proto_rawDesc = "" +
 	"\n" +
-	"#apfish/user/role/role_service.proto\x12\x04user\x1a\x1bapfish/user/role/role.proto\x1a#apfish/user/role/role_summary.proto\"\x1d\n" +
+	"&apfish.v1/user/role/role_service.proto\x12\x04user\x1a\x1eapfish.v1/user/role/role.proto\x1a&apfish.v1/user/role/role_summary.proto\"\x1d\n" +
 	"\vRoleRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\".\n" +
 	"\fRoleResponse\x12\x1e\n" +
@@ -282,19 +282,19 @@ const file_apfish_user_role_role_service_proto_rawDesc = "" +
 	"\tListRoles\x12\x16.user.ListRolesRequest\x1a\x17.user.ListRolesResponseB\x1eZ\x1capfish.v1/user/role;apfishv1b\x06proto3"
 
 var (
-	file_apfish_user_role_role_service_proto_rawDescOnce sync.Once
-	file_apfish_user_role_role_service_proto_rawDescData []byte
+	file_apfish_v1_user_role_role_service_proto_rawDescOnce sync.Once
+	file_apfish_v1_user_role_role_service_proto_rawDescData []byte
 )
 
-func file_apfish_user_role_role_service_proto_rawDescGZIP() []byte {
-	file_apfish_user_role_role_service_proto_rawDescOnce.Do(func() {
-		file_apfish_user_role_role_service_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_apfish_user_role_role_service_proto_rawDesc), len(file_apfish_user_role_role_service_proto_rawDesc)))
+func file_apfish_v1_user_role_role_service_proto_rawDescGZIP() []byte {
+	file_apfish_v1_user_role_role_service_proto_rawDescOnce.Do(func() {
+		file_apfish_v1_user_role_role_service_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_apfish_v1_user_role_role_service_proto_rawDesc), len(file_apfish_v1_user_role_role_service_proto_rawDesc)))
 	})
-	return file_apfish_user_role_role_service_proto_rawDescData
+	return file_apfish_v1_user_role_role_service_proto_rawDescData
 }
 
-var file_apfish_user_role_role_service_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
-var file_apfish_user_role_role_service_proto_goTypes = []any{
+var file_apfish_v1_user_role_role_service_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
+var file_apfish_v1_user_role_role_service_proto_goTypes = []any{
 	(*RoleRequest)(nil),         // 0: user.RoleRequest
 	(*RoleResponse)(nil),        // 1: user.RoleResponse
 	(*RoleSummaryResponse)(nil), // 2: user.RoleSummaryResponse
@@ -303,7 +303,7 @@ var file_apfish_user_role_role_service_proto_goTypes = []any{
 	(*Role)(nil),                // 5: user.Role
 	(*RoleSummary)(nil),         // 6: user.RoleSummary
 }
-var file_apfish_user_role_role_service_proto_depIdxs = []int32{
+var file_apfish_v1_user_role_role_service_proto_depIdxs = []int32{
 	5, // 0: user.RoleResponse.role:type_name -> user.Role
 	6, // 1: user.RoleSummaryResponse.role:type_name -> user.RoleSummary
 	6, // 2: user.ListRolesResponse.list_roles:type_name -> user.RoleSummary
@@ -320,28 +320,28 @@ var file_apfish_user_role_role_service_proto_depIdxs = []int32{
 	0, // [0:3] is the sub-list for field type_name
 }
 
-func init() { file_apfish_user_role_role_service_proto_init() }
-func file_apfish_user_role_role_service_proto_init() {
-	if File_apfish_user_role_role_service_proto != nil {
+func init() { file_apfish_v1_user_role_role_service_proto_init() }
+func file_apfish_v1_user_role_role_service_proto_init() {
+	if File_apfish_v1_user_role_role_service_proto != nil {
 		return
 	}
-	file_apfish_user_role_role_proto_init()
-	file_apfish_user_role_role_summary_proto_init()
+	file_apfish_v1_user_role_role_proto_init()
+	file_apfish_v1_user_role_role_summary_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_apfish_user_role_role_service_proto_rawDesc), len(file_apfish_user_role_role_service_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_apfish_v1_user_role_role_service_proto_rawDesc), len(file_apfish_v1_user_role_role_service_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   5,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_apfish_user_role_role_service_proto_goTypes,
-		DependencyIndexes: file_apfish_user_role_role_service_proto_depIdxs,
-		MessageInfos:      file_apfish_user_role_role_service_proto_msgTypes,
+		GoTypes:           file_apfish_v1_user_role_role_service_proto_goTypes,
+		DependencyIndexes: file_apfish_v1_user_role_role_service_proto_depIdxs,
+		MessageInfos:      file_apfish_v1_user_role_role_service_proto_msgTypes,
 	}.Build()
-	File_apfish_user_role_role_service_proto = out.File
-	file_apfish_user_role_role_service_proto_goTypes = nil
-	file_apfish_user_role_role_service_proto_depIdxs = nil
+	File_apfish_v1_user_role_role_service_proto = out.File
+	file_apfish_v1_user_role_role_service_proto_goTypes = nil
+	file_apfish_v1_user_role_role_service_proto_depIdxs = nil
 }

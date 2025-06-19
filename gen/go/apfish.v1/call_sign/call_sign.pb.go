@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.6
 // 	protoc        v4.25.1
-// source: apfish/call_sign/call_sign.proto
+// source: apfish.v1/call_sign/call_sign.proto
 
 package apfishv1
 
@@ -39,7 +39,7 @@ type CallSign struct {
 
 func (x *CallSign) Reset() {
 	*x = CallSign{}
-	mi := &file_apfish_call_sign_call_sign_proto_msgTypes[0]
+	mi := &file_apfish_v1_call_sign_call_sign_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -51,7 +51,7 @@ func (x *CallSign) String() string {
 func (*CallSign) ProtoMessage() {}
 
 func (x *CallSign) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_call_sign_call_sign_proto_msgTypes[0]
+	mi := &file_apfish_v1_call_sign_call_sign_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -64,7 +64,7 @@ func (x *CallSign) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CallSign.ProtoReflect.Descriptor instead.
 func (*CallSign) Descriptor() ([]byte, []int) {
-	return file_apfish_call_sign_call_sign_proto_rawDescGZIP(), []int{0}
+	return file_apfish_v1_call_sign_call_sign_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *CallSign) GetId() int64 {
@@ -116,11 +116,11 @@ func (x *CallSign) GetShips() []*ship.ShipSummary {
 	return nil
 }
 
-var File_apfish_call_sign_call_sign_proto protoreflect.FileDescriptor
+var File_apfish_v1_call_sign_call_sign_proto protoreflect.FileDescriptor
 
-const file_apfish_call_sign_call_sign_proto_rawDesc = "" +
+const file_apfish_v1_call_sign_call_sign_proto_rawDesc = "" +
 	"\n" +
-	" apfish/call_sign/call_sign.proto\x12\tcall_sign\x1a\x1fgoogle/protobuf/timestamp.proto\x1a-apfish/location/country/country_summary.proto\x1a#apfish/ship/ship/ship_summary.proto\"\x90\x02\n" +
+	"#apfish.v1/call_sign/call_sign.proto\x12\tcall_sign\x1a\x1fgoogle/protobuf/timestamp.proto\x1a0apfish.v1/location/country/country_summary.proto\x1a&apfish.v1/ship/ship/ship_summary.proto\"\x90\x02\n" +
 	"\bCallSign\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x16\n" +
 	"\x06series\x18\x02 \x01(\tR\x06series\x12\x1f\n" +
@@ -134,25 +134,25 @@ const file_apfish_call_sign_call_sign_proto_rawDesc = "" +
 	"\x05ships\x18\a \x03(\v2\x11.ship.ShipSummaryR\x05shipsB\x1eZ\x1capfish.v1/call_sign;apfishv1b\x06proto3"
 
 var (
-	file_apfish_call_sign_call_sign_proto_rawDescOnce sync.Once
-	file_apfish_call_sign_call_sign_proto_rawDescData []byte
+	file_apfish_v1_call_sign_call_sign_proto_rawDescOnce sync.Once
+	file_apfish_v1_call_sign_call_sign_proto_rawDescData []byte
 )
 
-func file_apfish_call_sign_call_sign_proto_rawDescGZIP() []byte {
-	file_apfish_call_sign_call_sign_proto_rawDescOnce.Do(func() {
-		file_apfish_call_sign_call_sign_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_apfish_call_sign_call_sign_proto_rawDesc), len(file_apfish_call_sign_call_sign_proto_rawDesc)))
+func file_apfish_v1_call_sign_call_sign_proto_rawDescGZIP() []byte {
+	file_apfish_v1_call_sign_call_sign_proto_rawDescOnce.Do(func() {
+		file_apfish_v1_call_sign_call_sign_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_apfish_v1_call_sign_call_sign_proto_rawDesc), len(file_apfish_v1_call_sign_call_sign_proto_rawDesc)))
 	})
-	return file_apfish_call_sign_call_sign_proto_rawDescData
+	return file_apfish_v1_call_sign_call_sign_proto_rawDescData
 }
 
-var file_apfish_call_sign_call_sign_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
-var file_apfish_call_sign_call_sign_proto_goTypes = []any{
+var file_apfish_v1_call_sign_call_sign_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
+var file_apfish_v1_call_sign_call_sign_proto_goTypes = []any{
 	(*CallSign)(nil),               // 0: call_sign.CallSign
 	(*timestamppb.Timestamp)(nil),  // 1: google.protobuf.Timestamp
 	(*country.CountrySummary)(nil), // 2: location.CountrySummary
 	(*ship.ShipSummary)(nil),       // 3: ship.ShipSummary
 }
-var file_apfish_call_sign_call_sign_proto_depIdxs = []int32{
+var file_apfish_v1_call_sign_call_sign_proto_depIdxs = []int32{
 	1, // 0: call_sign.CallSign.created_at:type_name -> google.protobuf.Timestamp
 	2, // 1: call_sign.CallSign.countries:type_name -> location.CountrySummary
 	3, // 2: call_sign.CallSign.ships:type_name -> ship.ShipSummary
@@ -163,26 +163,26 @@ var file_apfish_call_sign_call_sign_proto_depIdxs = []int32{
 	0, // [0:3] is the sub-list for field type_name
 }
 
-func init() { file_apfish_call_sign_call_sign_proto_init() }
-func file_apfish_call_sign_call_sign_proto_init() {
-	if File_apfish_call_sign_call_sign_proto != nil {
+func init() { file_apfish_v1_call_sign_call_sign_proto_init() }
+func file_apfish_v1_call_sign_call_sign_proto_init() {
+	if File_apfish_v1_call_sign_call_sign_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_apfish_call_sign_call_sign_proto_rawDesc), len(file_apfish_call_sign_call_sign_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_apfish_v1_call_sign_call_sign_proto_rawDesc), len(file_apfish_v1_call_sign_call_sign_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   1,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
-		GoTypes:           file_apfish_call_sign_call_sign_proto_goTypes,
-		DependencyIndexes: file_apfish_call_sign_call_sign_proto_depIdxs,
-		MessageInfos:      file_apfish_call_sign_call_sign_proto_msgTypes,
+		GoTypes:           file_apfish_v1_call_sign_call_sign_proto_goTypes,
+		DependencyIndexes: file_apfish_v1_call_sign_call_sign_proto_depIdxs,
+		MessageInfos:      file_apfish_v1_call_sign_call_sign_proto_msgTypes,
 	}.Build()
-	File_apfish_call_sign_call_sign_proto = out.File
-	file_apfish_call_sign_call_sign_proto_goTypes = nil
-	file_apfish_call_sign_call_sign_proto_depIdxs = nil
+	File_apfish_v1_call_sign_call_sign_proto = out.File
+	file_apfish_v1_call_sign_call_sign_proto_goTypes = nil
+	file_apfish_v1_call_sign_call_sign_proto_depIdxs = nil
 }

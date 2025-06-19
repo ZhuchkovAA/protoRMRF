@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package location;
+
+option go_package = "apfish.v1/location/port;apfishv1";
+
+import "apfish.v1/location/port/port.proto";
+import "apfish.v1/location/port/port_summary.proto";
+
+service PortService {
+  rpc GetPort (PortRequest) returns (PortResponse);
+  rpc GetPortSummary (PortRequest) returns (PortSummaryResponse);
+
+  rpc ListPorts (ListPortsRequest) returns (ListPortsResponse);
+}
+
+message PortRequest {
+  int64 id = 1;
+}
+
+message PortResponse {
+  Port port = 1;
+}
+
+message PortSummaryResponse {
+  PortSummary port = 1;
+}
+
+message ListPortsRequest {
+  int64 page = 1;      // Page number (1-based). Default: 1.
+  int64 per_page = 2;  // Items per page (default: 20, max: 100).
+}
+
+message ListPortsResponse {
+  repeated PortSummary list_ports = 1;
+  int64 total = 2;
+}

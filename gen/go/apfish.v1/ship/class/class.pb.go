@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.6
 // 	protoc        v4.25.1
-// source: apfish/ship/class/class.proto
+// source: apfish.v1/ship/class/class.proto
 
 package apfishv1
 
@@ -35,7 +35,7 @@ type Class struct {
 
 func (x *Class) Reset() {
 	*x = Class{}
-	mi := &file_apfish_ship_class_class_proto_msgTypes[0]
+	mi := &file_apfish_v1_ship_class_class_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -47,7 +47,7 @@ func (x *Class) String() string {
 func (*Class) ProtoMessage() {}
 
 func (x *Class) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_ship_class_class_proto_msgTypes[0]
+	mi := &file_apfish_v1_ship_class_class_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -60,7 +60,7 @@ func (x *Class) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Class.ProtoReflect.Descriptor instead.
 func (*Class) Descriptor() ([]byte, []int) {
-	return file_apfish_ship_class_class_proto_rawDescGZIP(), []int{0}
+	return file_apfish_v1_ship_class_class_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *Class) GetId() int64 {
@@ -91,11 +91,11 @@ func (x *Class) GetShips() []*ship.ShipSummary {
 	return nil
 }
 
-var File_apfish_ship_class_class_proto protoreflect.FileDescriptor
+var File_apfish_v1_ship_class_class_proto protoreflect.FileDescriptor
 
-const file_apfish_ship_class_class_proto_rawDesc = "" +
+const file_apfish_v1_ship_class_class_proto_rawDesc = "" +
 	"\n" +
-	"\x1dapfish/ship/class/class.proto\x12\x04ship\x1a\x1fgoogle/protobuf/timestamp.proto\x1a#apfish/ship/ship/ship_summary.proto\"\x8f\x01\n" +
+	" apfish.v1/ship/class/class.proto\x12\x04ship\x1a\x1fgoogle/protobuf/timestamp.proto\x1a&apfish.v1/ship/ship/ship_summary.proto\"\x8f\x01\n" +
 	"\x05Class\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x129\n" +
@@ -104,24 +104,24 @@ const file_apfish_ship_class_class_proto_rawDesc = "" +
 	"\x05ships\x18\x04 \x03(\v2\x11.ship.ShipSummaryR\x05shipsB\x1fZ\x1dapfish.v1/ship/class;apfishv1b\x06proto3"
 
 var (
-	file_apfish_ship_class_class_proto_rawDescOnce sync.Once
-	file_apfish_ship_class_class_proto_rawDescData []byte
+	file_apfish_v1_ship_class_class_proto_rawDescOnce sync.Once
+	file_apfish_v1_ship_class_class_proto_rawDescData []byte
 )
 
-func file_apfish_ship_class_class_proto_rawDescGZIP() []byte {
-	file_apfish_ship_class_class_proto_rawDescOnce.Do(func() {
-		file_apfish_ship_class_class_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_apfish_ship_class_class_proto_rawDesc), len(file_apfish_ship_class_class_proto_rawDesc)))
+func file_apfish_v1_ship_class_class_proto_rawDescGZIP() []byte {
+	file_apfish_v1_ship_class_class_proto_rawDescOnce.Do(func() {
+		file_apfish_v1_ship_class_class_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_apfish_v1_ship_class_class_proto_rawDesc), len(file_apfish_v1_ship_class_class_proto_rawDesc)))
 	})
-	return file_apfish_ship_class_class_proto_rawDescData
+	return file_apfish_v1_ship_class_class_proto_rawDescData
 }
 
-var file_apfish_ship_class_class_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
-var file_apfish_ship_class_class_proto_goTypes = []any{
+var file_apfish_v1_ship_class_class_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
+var file_apfish_v1_ship_class_class_proto_goTypes = []any{
 	(*Class)(nil),                 // 0: ship.Class
 	(*timestamppb.Timestamp)(nil), // 1: google.protobuf.Timestamp
 	(*ship.ShipSummary)(nil),      // 2: ship.ShipSummary
 }
-var file_apfish_ship_class_class_proto_depIdxs = []int32{
+var file_apfish_v1_ship_class_class_proto_depIdxs = []int32{
 	1, // 0: ship.Class.created_at:type_name -> google.protobuf.Timestamp
 	2, // 1: ship.Class.ships:type_name -> ship.ShipSummary
 	2, // [2:2] is the sub-list for method output_type
@@ -131,26 +131,26 @@ var file_apfish_ship_class_class_proto_depIdxs = []int32{
 	0, // [0:2] is the sub-list for field type_name
 }
 
-func init() { file_apfish_ship_class_class_proto_init() }
-func file_apfish_ship_class_class_proto_init() {
-	if File_apfish_ship_class_class_proto != nil {
+func init() { file_apfish_v1_ship_class_class_proto_init() }
+func file_apfish_v1_ship_class_class_proto_init() {
+	if File_apfish_v1_ship_class_class_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_apfish_ship_class_class_proto_rawDesc), len(file_apfish_ship_class_class_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_apfish_v1_ship_class_class_proto_rawDesc), len(file_apfish_v1_ship_class_class_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   1,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
-		GoTypes:           file_apfish_ship_class_class_proto_goTypes,
-		DependencyIndexes: file_apfish_ship_class_class_proto_depIdxs,
-		MessageInfos:      file_apfish_ship_class_class_proto_msgTypes,
+		GoTypes:           file_apfish_v1_ship_class_class_proto_goTypes,
+		DependencyIndexes: file_apfish_v1_ship_class_class_proto_depIdxs,
+		MessageInfos:      file_apfish_v1_ship_class_class_proto_msgTypes,
 	}.Build()
-	File_apfish_ship_class_class_proto = out.File
-	file_apfish_ship_class_class_proto_goTypes = nil
-	file_apfish_ship_class_class_proto_depIdxs = nil
+	File_apfish_v1_ship_class_class_proto = out.File
+	file_apfish_v1_ship_class_class_proto_goTypes = nil
+	file_apfish_v1_ship_class_class_proto_depIdxs = nil
 }

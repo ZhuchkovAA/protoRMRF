@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package ship;
+
+option go_package = "apfish.v1/ship/class;apfishv1";
+
+import "apfish.v1/ship/class/class.proto";
+import "apfish.v1/ship/class/class_summary.proto";
+
+service ClassService {
+  rpc GetClass (ClassRequest) returns (ClassResponse);
+  rpc GetClassSummary (ClassRequest) returns (ClassSummaryResponse);
+
+  rpc ListClasses (ListClassesRequest) returns (ListClassesResponse);
+}
+
+message ClassRequest {
+  int64 id = 1;
+}
+
+message ClassResponse {
+  Class class = 1;
+}
+
+message ClassSummaryResponse {
+  ClassSummary class = 1;
+}
+
+message ListClassesRequest {
+  int64 page = 1;      // Page number (1-based). Default: 1.
+  int64 per_page = 2;  // Items per page (default: 20, max: 100).
+}
+
+message ListClassesResponse {
+  repeated ClassSummary list_classes = 1;
+  int64 total = 2;
+}

@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.6
 // 	protoc        v4.25.1
-// source: apfish/location/country/country_service.proto
+// source: apfish.v1/location/country/country_service.proto
 
 package apfishv1
 
@@ -30,7 +30,7 @@ type CountryRequest struct {
 
 func (x *CountryRequest) Reset() {
 	*x = CountryRequest{}
-	mi := &file_apfish_location_country_country_service_proto_msgTypes[0]
+	mi := &file_apfish_v1_location_country_country_service_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -42,7 +42,7 @@ func (x *CountryRequest) String() string {
 func (*CountryRequest) ProtoMessage() {}
 
 func (x *CountryRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_location_country_country_service_proto_msgTypes[0]
+	mi := &file_apfish_v1_location_country_country_service_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -55,7 +55,7 @@ func (x *CountryRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CountryRequest.ProtoReflect.Descriptor instead.
 func (*CountryRequest) Descriptor() ([]byte, []int) {
-	return file_apfish_location_country_country_service_proto_rawDescGZIP(), []int{0}
+	return file_apfish_v1_location_country_country_service_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *CountryRequest) GetId() int64 {
@@ -74,7 +74,7 @@ type CountryResponse struct {
 
 func (x *CountryResponse) Reset() {
 	*x = CountryResponse{}
-	mi := &file_apfish_location_country_country_service_proto_msgTypes[1]
+	mi := &file_apfish_v1_location_country_country_service_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -86,7 +86,7 @@ func (x *CountryResponse) String() string {
 func (*CountryResponse) ProtoMessage() {}
 
 func (x *CountryResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_location_country_country_service_proto_msgTypes[1]
+	mi := &file_apfish_v1_location_country_country_service_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -99,7 +99,7 @@ func (x *CountryResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CountryResponse.ProtoReflect.Descriptor instead.
 func (*CountryResponse) Descriptor() ([]byte, []int) {
-	return file_apfish_location_country_country_service_proto_rawDescGZIP(), []int{1}
+	return file_apfish_v1_location_country_country_service_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *CountryResponse) GetCountry() *Country {
@@ -118,7 +118,7 @@ type CountrySummaryResponse struct {
 
 func (x *CountrySummaryResponse) Reset() {
 	*x = CountrySummaryResponse{}
-	mi := &file_apfish_location_country_country_service_proto_msgTypes[2]
+	mi := &file_apfish_v1_location_country_country_service_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -130,7 +130,7 @@ func (x *CountrySummaryResponse) String() string {
 func (*CountrySummaryResponse) ProtoMessage() {}
 
 func (x *CountrySummaryResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_location_country_country_service_proto_msgTypes[2]
+	mi := &file_apfish_v1_location_country_country_service_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -143,7 +143,7 @@ func (x *CountrySummaryResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CountrySummaryResponse.ProtoReflect.Descriptor instead.
 func (*CountrySummaryResponse) Descriptor() ([]byte, []int) {
-	return file_apfish_location_country_country_service_proto_rawDescGZIP(), []int{2}
+	return file_apfish_v1_location_country_country_service_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *CountrySummaryResponse) GetCountry() *CountrySummary {
@@ -163,7 +163,7 @@ type ListCountriesRequest struct {
 
 func (x *ListCountriesRequest) Reset() {
 	*x = ListCountriesRequest{}
-	mi := &file_apfish_location_country_country_service_proto_msgTypes[3]
+	mi := &file_apfish_v1_location_country_country_service_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -175,7 +175,7 @@ func (x *ListCountriesRequest) String() string {
 func (*ListCountriesRequest) ProtoMessage() {}
 
 func (x *ListCountriesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_location_country_country_service_proto_msgTypes[3]
+	mi := &file_apfish_v1_location_country_country_service_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -188,7 +188,7 @@ func (x *ListCountriesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListCountriesRequest.ProtoReflect.Descriptor instead.
 func (*ListCountriesRequest) Descriptor() ([]byte, []int) {
-	return file_apfish_location_country_country_service_proto_rawDescGZIP(), []int{3}
+	return file_apfish_v1_location_country_country_service_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *ListCountriesRequest) GetPage() int64 {
@@ -215,7 +215,7 @@ type ListCountriesResponse struct {
 
 func (x *ListCountriesResponse) Reset() {
 	*x = ListCountriesResponse{}
-	mi := &file_apfish_location_country_country_service_proto_msgTypes[4]
+	mi := &file_apfish_v1_location_country_country_service_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -227,7 +227,7 @@ func (x *ListCountriesResponse) String() string {
 func (*ListCountriesResponse) ProtoMessage() {}
 
 func (x *ListCountriesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_location_country_country_service_proto_msgTypes[4]
+	mi := &file_apfish_v1_location_country_country_service_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -240,7 +240,7 @@ func (x *ListCountriesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListCountriesResponse.ProtoReflect.Descriptor instead.
 func (*ListCountriesResponse) Descriptor() ([]byte, []int) {
-	return file_apfish_location_country_country_service_proto_rawDescGZIP(), []int{4}
+	return file_apfish_v1_location_country_country_service_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *ListCountriesResponse) GetListCountries() []*CountrySummary {
@@ -257,11 +257,11 @@ func (x *ListCountriesResponse) GetTotal() int64 {
 	return 0
 }
 
-var File_apfish_location_country_country_service_proto protoreflect.FileDescriptor
+var File_apfish_v1_location_country_country_service_proto protoreflect.FileDescriptor
 
-const file_apfish_location_country_country_service_proto_rawDesc = "" +
+const file_apfish_v1_location_country_country_service_proto_rawDesc = "" +
 	"\n" +
-	"-apfish/location/country/country_service.proto\x12\blocation\x1a%apfish/location/country/country.proto\x1a-apfish/location/country/country_summary.proto\" \n" +
+	"0apfish.v1/location/country/country_service.proto\x12\blocation\x1a(apfish.v1/location/country/country.proto\x1a0apfish.v1/location/country/country_summary.proto\" \n" +
 	"\x0eCountryRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\">\n" +
 	"\x0fCountryResponse\x12+\n" +
@@ -281,19 +281,19 @@ const file_apfish_location_country_country_service_proto_rawDesc = "" +
 	"\rListCountries\x12\x1e.location.ListCountriesRequest\x1a\x1f.location.ListCountriesResponseB%Z#apfish.v1/location/country;apfishv1b\x06proto3"
 
 var (
-	file_apfish_location_country_country_service_proto_rawDescOnce sync.Once
-	file_apfish_location_country_country_service_proto_rawDescData []byte
+	file_apfish_v1_location_country_country_service_proto_rawDescOnce sync.Once
+	file_apfish_v1_location_country_country_service_proto_rawDescData []byte
 )
 
-func file_apfish_location_country_country_service_proto_rawDescGZIP() []byte {
-	file_apfish_location_country_country_service_proto_rawDescOnce.Do(func() {
-		file_apfish_location_country_country_service_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_apfish_location_country_country_service_proto_rawDesc), len(file_apfish_location_country_country_service_proto_rawDesc)))
+func file_apfish_v1_location_country_country_service_proto_rawDescGZIP() []byte {
+	file_apfish_v1_location_country_country_service_proto_rawDescOnce.Do(func() {
+		file_apfish_v1_location_country_country_service_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_apfish_v1_location_country_country_service_proto_rawDesc), len(file_apfish_v1_location_country_country_service_proto_rawDesc)))
 	})
-	return file_apfish_location_country_country_service_proto_rawDescData
+	return file_apfish_v1_location_country_country_service_proto_rawDescData
 }
 
-var file_apfish_location_country_country_service_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
-var file_apfish_location_country_country_service_proto_goTypes = []any{
+var file_apfish_v1_location_country_country_service_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
+var file_apfish_v1_location_country_country_service_proto_goTypes = []any{
 	(*CountryRequest)(nil),         // 0: location.CountryRequest
 	(*CountryResponse)(nil),        // 1: location.CountryResponse
 	(*CountrySummaryResponse)(nil), // 2: location.CountrySummaryResponse
@@ -302,7 +302,7 @@ var file_apfish_location_country_country_service_proto_goTypes = []any{
 	(*Country)(nil),                // 5: location.Country
 	(*CountrySummary)(nil),         // 6: location.CountrySummary
 }
-var file_apfish_location_country_country_service_proto_depIdxs = []int32{
+var file_apfish_v1_location_country_country_service_proto_depIdxs = []int32{
 	5, // 0: location.CountryResponse.country:type_name -> location.Country
 	6, // 1: location.CountrySummaryResponse.country:type_name -> location.CountrySummary
 	6, // 2: location.ListCountriesResponse.list_countries:type_name -> location.CountrySummary
@@ -319,28 +319,28 @@ var file_apfish_location_country_country_service_proto_depIdxs = []int32{
 	0, // [0:3] is the sub-list for field type_name
 }
 
-func init() { file_apfish_location_country_country_service_proto_init() }
-func file_apfish_location_country_country_service_proto_init() {
-	if File_apfish_location_country_country_service_proto != nil {
+func init() { file_apfish_v1_location_country_country_service_proto_init() }
+func file_apfish_v1_location_country_country_service_proto_init() {
+	if File_apfish_v1_location_country_country_service_proto != nil {
 		return
 	}
-	file_apfish_location_country_country_proto_init()
-	file_apfish_location_country_country_summary_proto_init()
+	file_apfish_v1_location_country_country_proto_init()
+	file_apfish_v1_location_country_country_summary_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_apfish_location_country_country_service_proto_rawDesc), len(file_apfish_location_country_country_service_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_apfish_v1_location_country_country_service_proto_rawDesc), len(file_apfish_v1_location_country_country_service_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   5,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_apfish_location_country_country_service_proto_goTypes,
-		DependencyIndexes: file_apfish_location_country_country_service_proto_depIdxs,
-		MessageInfos:      file_apfish_location_country_country_service_proto_msgTypes,
+		GoTypes:           file_apfish_v1_location_country_country_service_proto_goTypes,
+		DependencyIndexes: file_apfish_v1_location_country_country_service_proto_depIdxs,
+		MessageInfos:      file_apfish_v1_location_country_country_service_proto_msgTypes,
 	}.Build()
-	File_apfish_location_country_country_service_proto = out.File
-	file_apfish_location_country_country_service_proto_goTypes = nil
-	file_apfish_location_country_country_service_proto_depIdxs = nil
+	File_apfish_v1_location_country_country_service_proto = out.File
+	file_apfish_v1_location_country_country_service_proto_goTypes = nil
+	file_apfish_v1_location_country_country_service_proto_depIdxs = nil
 }

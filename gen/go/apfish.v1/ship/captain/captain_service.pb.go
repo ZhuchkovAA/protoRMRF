@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.6
 // 	protoc        v4.25.1
-// source: apfish/ship/captain/captain_service.proto
+// source: apfish.v1/ship/captain/captain_service.proto
 
 package apfishv1
 
@@ -30,7 +30,7 @@ type CaptainRequest struct {
 
 func (x *CaptainRequest) Reset() {
 	*x = CaptainRequest{}
-	mi := &file_apfish_ship_captain_captain_service_proto_msgTypes[0]
+	mi := &file_apfish_v1_ship_captain_captain_service_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -42,7 +42,7 @@ func (x *CaptainRequest) String() string {
 func (*CaptainRequest) ProtoMessage() {}
 
 func (x *CaptainRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_ship_captain_captain_service_proto_msgTypes[0]
+	mi := &file_apfish_v1_ship_captain_captain_service_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -55,7 +55,7 @@ func (x *CaptainRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CaptainRequest.ProtoReflect.Descriptor instead.
 func (*CaptainRequest) Descriptor() ([]byte, []int) {
-	return file_apfish_ship_captain_captain_service_proto_rawDescGZIP(), []int{0}
+	return file_apfish_v1_ship_captain_captain_service_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *CaptainRequest) GetId() int64 {
@@ -74,7 +74,7 @@ type CaptainResponse struct {
 
 func (x *CaptainResponse) Reset() {
 	*x = CaptainResponse{}
-	mi := &file_apfish_ship_captain_captain_service_proto_msgTypes[1]
+	mi := &file_apfish_v1_ship_captain_captain_service_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -86,7 +86,7 @@ func (x *CaptainResponse) String() string {
 func (*CaptainResponse) ProtoMessage() {}
 
 func (x *CaptainResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_ship_captain_captain_service_proto_msgTypes[1]
+	mi := &file_apfish_v1_ship_captain_captain_service_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -99,7 +99,7 @@ func (x *CaptainResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CaptainResponse.ProtoReflect.Descriptor instead.
 func (*CaptainResponse) Descriptor() ([]byte, []int) {
-	return file_apfish_ship_captain_captain_service_proto_rawDescGZIP(), []int{1}
+	return file_apfish_v1_ship_captain_captain_service_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *CaptainResponse) GetCaptain() *Captain {
@@ -118,7 +118,7 @@ type CaptainSummaryResponse struct {
 
 func (x *CaptainSummaryResponse) Reset() {
 	*x = CaptainSummaryResponse{}
-	mi := &file_apfish_ship_captain_captain_service_proto_msgTypes[2]
+	mi := &file_apfish_v1_ship_captain_captain_service_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -130,7 +130,7 @@ func (x *CaptainSummaryResponse) String() string {
 func (*CaptainSummaryResponse) ProtoMessage() {}
 
 func (x *CaptainSummaryResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_ship_captain_captain_service_proto_msgTypes[2]
+	mi := &file_apfish_v1_ship_captain_captain_service_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -143,7 +143,7 @@ func (x *CaptainSummaryResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CaptainSummaryResponse.ProtoReflect.Descriptor instead.
 func (*CaptainSummaryResponse) Descriptor() ([]byte, []int) {
-	return file_apfish_ship_captain_captain_service_proto_rawDescGZIP(), []int{2}
+	return file_apfish_v1_ship_captain_captain_service_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *CaptainSummaryResponse) GetCaptain() *CaptainSummary {
@@ -163,7 +163,7 @@ type ListCaptainsRequest struct {
 
 func (x *ListCaptainsRequest) Reset() {
 	*x = ListCaptainsRequest{}
-	mi := &file_apfish_ship_captain_captain_service_proto_msgTypes[3]
+	mi := &file_apfish_v1_ship_captain_captain_service_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -175,7 +175,7 @@ func (x *ListCaptainsRequest) String() string {
 func (*ListCaptainsRequest) ProtoMessage() {}
 
 func (x *ListCaptainsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_ship_captain_captain_service_proto_msgTypes[3]
+	mi := &file_apfish_v1_ship_captain_captain_service_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -188,7 +188,7 @@ func (x *ListCaptainsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListCaptainsRequest.ProtoReflect.Descriptor instead.
 func (*ListCaptainsRequest) Descriptor() ([]byte, []int) {
-	return file_apfish_ship_captain_captain_service_proto_rawDescGZIP(), []int{3}
+	return file_apfish_v1_ship_captain_captain_service_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *ListCaptainsRequest) GetPage() int64 {
@@ -215,7 +215,7 @@ type ListCaptainsResponse struct {
 
 func (x *ListCaptainsResponse) Reset() {
 	*x = ListCaptainsResponse{}
-	mi := &file_apfish_ship_captain_captain_service_proto_msgTypes[4]
+	mi := &file_apfish_v1_ship_captain_captain_service_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -227,7 +227,7 @@ func (x *ListCaptainsResponse) String() string {
 func (*ListCaptainsResponse) ProtoMessage() {}
 
 func (x *ListCaptainsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_ship_captain_captain_service_proto_msgTypes[4]
+	mi := &file_apfish_v1_ship_captain_captain_service_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -240,7 +240,7 @@ func (x *ListCaptainsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListCaptainsResponse.ProtoReflect.Descriptor instead.
 func (*ListCaptainsResponse) Descriptor() ([]byte, []int) {
-	return file_apfish_ship_captain_captain_service_proto_rawDescGZIP(), []int{4}
+	return file_apfish_v1_ship_captain_captain_service_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *ListCaptainsResponse) GetListCaptains() []*CaptainSummary {
@@ -257,11 +257,11 @@ func (x *ListCaptainsResponse) GetTotal() int64 {
 	return 0
 }
 
-var File_apfish_ship_captain_captain_service_proto protoreflect.FileDescriptor
+var File_apfish_v1_ship_captain_captain_service_proto protoreflect.FileDescriptor
 
-const file_apfish_ship_captain_captain_service_proto_rawDesc = "" +
+const file_apfish_v1_ship_captain_captain_service_proto_rawDesc = "" +
 	"\n" +
-	")apfish/ship/captain/captain_service.proto\x12\x04ship\x1a!apfish/ship/captain/captain.proto\x1a)apfish/ship/captain/captain_summary.proto\" \n" +
+	",apfish.v1/ship/captain/captain_service.proto\x12\x04ship\x1a$apfish.v1/ship/captain/captain.proto\x1a,apfish.v1/ship/captain/captain_summary.proto\" \n" +
 	"\x0eCaptainRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\":\n" +
 	"\x0fCaptainResponse\x12'\n" +
@@ -281,19 +281,19 @@ const file_apfish_ship_captain_captain_service_proto_rawDesc = "" +
 	"\fListCaptains\x12\x19.ship.ListCaptainsRequest\x1a\x1a.ship.ListCaptainsResponseB!Z\x1fapfish.v1/ship/captain;apfishv1b\x06proto3"
 
 var (
-	file_apfish_ship_captain_captain_service_proto_rawDescOnce sync.Once
-	file_apfish_ship_captain_captain_service_proto_rawDescData []byte
+	file_apfish_v1_ship_captain_captain_service_proto_rawDescOnce sync.Once
+	file_apfish_v1_ship_captain_captain_service_proto_rawDescData []byte
 )
 
-func file_apfish_ship_captain_captain_service_proto_rawDescGZIP() []byte {
-	file_apfish_ship_captain_captain_service_proto_rawDescOnce.Do(func() {
-		file_apfish_ship_captain_captain_service_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_apfish_ship_captain_captain_service_proto_rawDesc), len(file_apfish_ship_captain_captain_service_proto_rawDesc)))
+func file_apfish_v1_ship_captain_captain_service_proto_rawDescGZIP() []byte {
+	file_apfish_v1_ship_captain_captain_service_proto_rawDescOnce.Do(func() {
+		file_apfish_v1_ship_captain_captain_service_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_apfish_v1_ship_captain_captain_service_proto_rawDesc), len(file_apfish_v1_ship_captain_captain_service_proto_rawDesc)))
 	})
-	return file_apfish_ship_captain_captain_service_proto_rawDescData
+	return file_apfish_v1_ship_captain_captain_service_proto_rawDescData
 }
 
-var file_apfish_ship_captain_captain_service_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
-var file_apfish_ship_captain_captain_service_proto_goTypes = []any{
+var file_apfish_v1_ship_captain_captain_service_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
+var file_apfish_v1_ship_captain_captain_service_proto_goTypes = []any{
 	(*CaptainRequest)(nil),         // 0: ship.CaptainRequest
 	(*CaptainResponse)(nil),        // 1: ship.CaptainResponse
 	(*CaptainSummaryResponse)(nil), // 2: ship.CaptainSummaryResponse
@@ -302,7 +302,7 @@ var file_apfish_ship_captain_captain_service_proto_goTypes = []any{
 	(*Captain)(nil),                // 5: ship.Captain
 	(*CaptainSummary)(nil),         // 6: ship.CaptainSummary
 }
-var file_apfish_ship_captain_captain_service_proto_depIdxs = []int32{
+var file_apfish_v1_ship_captain_captain_service_proto_depIdxs = []int32{
 	5, // 0: ship.CaptainResponse.captain:type_name -> ship.Captain
 	6, // 1: ship.CaptainSummaryResponse.captain:type_name -> ship.CaptainSummary
 	6, // 2: ship.ListCaptainsResponse.list_captains:type_name -> ship.CaptainSummary
@@ -319,28 +319,28 @@ var file_apfish_ship_captain_captain_service_proto_depIdxs = []int32{
 	0, // [0:3] is the sub-list for field type_name
 }
 
-func init() { file_apfish_ship_captain_captain_service_proto_init() }
-func file_apfish_ship_captain_captain_service_proto_init() {
-	if File_apfish_ship_captain_captain_service_proto != nil {
+func init() { file_apfish_v1_ship_captain_captain_service_proto_init() }
+func file_apfish_v1_ship_captain_captain_service_proto_init() {
+	if File_apfish_v1_ship_captain_captain_service_proto != nil {
 		return
 	}
-	file_apfish_ship_captain_captain_proto_init()
-	file_apfish_ship_captain_captain_summary_proto_init()
+	file_apfish_v1_ship_captain_captain_proto_init()
+	file_apfish_v1_ship_captain_captain_summary_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_apfish_ship_captain_captain_service_proto_rawDesc), len(file_apfish_ship_captain_captain_service_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_apfish_v1_ship_captain_captain_service_proto_rawDesc), len(file_apfish_v1_ship_captain_captain_service_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   5,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_apfish_ship_captain_captain_service_proto_goTypes,
-		DependencyIndexes: file_apfish_ship_captain_captain_service_proto_depIdxs,
-		MessageInfos:      file_apfish_ship_captain_captain_service_proto_msgTypes,
+		GoTypes:           file_apfish_v1_ship_captain_captain_service_proto_goTypes,
+		DependencyIndexes: file_apfish_v1_ship_captain_captain_service_proto_depIdxs,
+		MessageInfos:      file_apfish_v1_ship_captain_captain_service_proto_msgTypes,
 	}.Build()
-	File_apfish_ship_captain_captain_service_proto = out.File
-	file_apfish_ship_captain_captain_service_proto_goTypes = nil
-	file_apfish_ship_captain_captain_service_proto_depIdxs = nil
+	File_apfish_v1_ship_captain_captain_service_proto = out.File
+	file_apfish_v1_ship_captain_captain_service_proto_goTypes = nil
+	file_apfish_v1_ship_captain_captain_service_proto_depIdxs = nil
 }

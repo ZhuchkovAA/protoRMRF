@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package call_sign;
+
+option go_package = "apfish.v1/call_sign;apfishv1";
+
+import "google/protobuf/timestamp.proto";  // Standard Protocol Buffers timestamp
+
+import "apfish.v1/location/country/country_summary.proto";
+import "apfish.v1/ship/ship/ship_summary.proto";
+
+message CallSign {
+  int64 id = 1;
+  string series = 2;
+  string limit_lower = 3;
+  string limit_upper = 4;
+  google.protobuf.Timestamp created_at = 5;
+
+  repeated location.CountrySummary countries = 6;
+  repeated ship.ShipSummary ships = 7;
+}

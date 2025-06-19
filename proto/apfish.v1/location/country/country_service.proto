@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package location;
+
+option go_package = "apfish.v1/location/country;apfishv1";
+
+import "apfish.v1/location/country/country.proto";
+import "apfish.v1/location/country/country_summary.proto";
+
+service CountryService {
+  rpc GetCountry (CountryRequest) returns (CountryResponse);
+  rpc GetCountrySummary (CountryRequest) returns (CountrySummaryResponse);
+
+  rpc ListCountries (ListCountriesRequest) returns (ListCountriesResponse);
+}
+
+message CountryRequest {
+  int64 id = 1;
+}
+
+message CountryResponse {
+  Country country = 1;
+}
+
+message CountrySummaryResponse {
+  CountrySummary country = 1;
+}
+
+message ListCountriesRequest {
+  int64 page = 1;      // Page number (1-based). Default: 1.
+  int64 per_page = 2;  // Items per page (default: 20, max: 100).
+}
+
+message ListCountriesResponse {
+  repeated CountrySummary list_countries = 1;
+  int64 total = 2;
+}

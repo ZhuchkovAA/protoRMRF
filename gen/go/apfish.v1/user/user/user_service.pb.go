@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.6
 // 	protoc        v4.25.1
-// source: apfish/user/user/user_service.proto
+// source: apfish.v1/user/user/user_service.proto
 
 package apfishv1
 
@@ -31,7 +31,7 @@ type UserRequest struct {
 
 func (x *UserRequest) Reset() {
 	*x = UserRequest{}
-	mi := &file_apfish_user_user_user_service_proto_msgTypes[0]
+	mi := &file_apfish_v1_user_user_user_service_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -43,7 +43,7 @@ func (x *UserRequest) String() string {
 func (*UserRequest) ProtoMessage() {}
 
 func (x *UserRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_user_user_user_service_proto_msgTypes[0]
+	mi := &file_apfish_v1_user_user_user_service_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -56,7 +56,7 @@ func (x *UserRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UserRequest.ProtoReflect.Descriptor instead.
 func (*UserRequest) Descriptor() ([]byte, []int) {
-	return file_apfish_user_user_user_service_proto_rawDescGZIP(), []int{0}
+	return file_apfish_v1_user_user_user_service_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *UserRequest) GetLogin() string {
@@ -76,7 +76,7 @@ type UserResponse struct {
 
 func (x *UserResponse) Reset() {
 	*x = UserResponse{}
-	mi := &file_apfish_user_user_user_service_proto_msgTypes[1]
+	mi := &file_apfish_v1_user_user_user_service_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -88,7 +88,7 @@ func (x *UserResponse) String() string {
 func (*UserResponse) ProtoMessage() {}
 
 func (x *UserResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_user_user_user_service_proto_msgTypes[1]
+	mi := &file_apfish_v1_user_user_user_service_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -101,7 +101,7 @@ func (x *UserResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UserResponse.ProtoReflect.Descriptor instead.
 func (*UserResponse) Descriptor() ([]byte, []int) {
-	return file_apfish_user_user_user_service_proto_rawDescGZIP(), []int{1}
+	return file_apfish_v1_user_user_user_service_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *UserResponse) GetUser() *User {
@@ -123,7 +123,7 @@ type ListUsersRequest struct {
 
 func (x *ListUsersRequest) Reset() {
 	*x = ListUsersRequest{}
-	mi := &file_apfish_user_user_user_service_proto_msgTypes[2]
+	mi := &file_apfish_v1_user_user_user_service_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -135,7 +135,7 @@ func (x *ListUsersRequest) String() string {
 func (*ListUsersRequest) ProtoMessage() {}
 
 func (x *ListUsersRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_user_user_user_service_proto_msgTypes[2]
+	mi := &file_apfish_v1_user_user_user_service_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -148,7 +148,7 @@ func (x *ListUsersRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListUsersRequest.ProtoReflect.Descriptor instead.
 func (*ListUsersRequest) Descriptor() ([]byte, []int) {
-	return file_apfish_user_user_user_service_proto_rawDescGZIP(), []int{2}
+	return file_apfish_v1_user_user_user_service_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *ListUsersRequest) GetLogin() string {
@@ -183,7 +183,7 @@ type ListUsersResponse struct {
 
 func (x *ListUsersResponse) Reset() {
 	*x = ListUsersResponse{}
-	mi := &file_apfish_user_user_user_service_proto_msgTypes[3]
+	mi := &file_apfish_v1_user_user_user_service_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -195,7 +195,7 @@ func (x *ListUsersResponse) String() string {
 func (*ListUsersResponse) ProtoMessage() {}
 
 func (x *ListUsersResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_user_user_user_service_proto_msgTypes[3]
+	mi := &file_apfish_v1_user_user_user_service_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -208,7 +208,7 @@ func (x *ListUsersResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListUsersResponse.ProtoReflect.Descriptor instead.
 func (*ListUsersResponse) Descriptor() ([]byte, []int) {
-	return file_apfish_user_user_user_service_proto_rawDescGZIP(), []int{3}
+	return file_apfish_v1_user_user_user_service_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *ListUsersResponse) GetUsers() []*User {
@@ -225,11 +225,11 @@ func (x *ListUsersResponse) GetTotal() int64 {
 	return 0
 }
 
-var File_apfish_user_user_user_service_proto protoreflect.FileDescriptor
+var File_apfish_v1_user_user_user_service_proto protoreflect.FileDescriptor
 
-const file_apfish_user_user_user_service_proto_rawDesc = "" +
+const file_apfish_v1_user_user_user_service_proto_rawDesc = "" +
 	"\n" +
-	"#apfish/user/user/user_service.proto\x12\x04user\x1a\x1bapfish/user/user/user.proto\"#\n" +
+	"&apfish.v1/user/user/user_service.proto\x12\x04user\x1a\x1eapfish.v1/user/user/user.proto\"#\n" +
 	"\vUserRequest\x12\x14\n" +
 	"\x05login\x18\x01 \x01(\tR\x05login\".\n" +
 	"\fUserResponse\x12\x1e\n" +
@@ -248,26 +248,26 @@ const file_apfish_user_user_user_service_proto_rawDesc = "" +
 	"\tListUsers\x12\x16.user.ListUsersRequest\x1a\x17.user.ListUsersResponseB\x1eZ\x1capfish.v1/user/user;apfishv1b\x06proto3"
 
 var (
-	file_apfish_user_user_user_service_proto_rawDescOnce sync.Once
-	file_apfish_user_user_user_service_proto_rawDescData []byte
+	file_apfish_v1_user_user_user_service_proto_rawDescOnce sync.Once
+	file_apfish_v1_user_user_user_service_proto_rawDescData []byte
 )
 
-func file_apfish_user_user_user_service_proto_rawDescGZIP() []byte {
-	file_apfish_user_user_user_service_proto_rawDescOnce.Do(func() {
-		file_apfish_user_user_user_service_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_apfish_user_user_user_service_proto_rawDesc), len(file_apfish_user_user_user_service_proto_rawDesc)))
+func file_apfish_v1_user_user_user_service_proto_rawDescGZIP() []byte {
+	file_apfish_v1_user_user_user_service_proto_rawDescOnce.Do(func() {
+		file_apfish_v1_user_user_user_service_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_apfish_v1_user_user_user_service_proto_rawDesc), len(file_apfish_v1_user_user_user_service_proto_rawDesc)))
 	})
-	return file_apfish_user_user_user_service_proto_rawDescData
+	return file_apfish_v1_user_user_user_service_proto_rawDescData
 }
 
-var file_apfish_user_user_user_service_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
-var file_apfish_user_user_user_service_proto_goTypes = []any{
+var file_apfish_v1_user_user_user_service_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_apfish_v1_user_user_user_service_proto_goTypes = []any{
 	(*UserRequest)(nil),       // 0: user.UserRequest
 	(*UserResponse)(nil),      // 1: user.UserResponse
 	(*ListUsersRequest)(nil),  // 2: user.ListUsersRequest
 	(*ListUsersResponse)(nil), // 3: user.ListUsersResponse
 	(*User)(nil),              // 4: user.User
 }
-var file_apfish_user_user_user_service_proto_depIdxs = []int32{
+var file_apfish_v1_user_user_user_service_proto_depIdxs = []int32{
 	4, // 0: user.UserResponse.user:type_name -> user.User
 	4, // 1: user.ListUsersResponse.users:type_name -> user.User
 	0, // 2: user.UserService.GetUser:input_type -> user.UserRequest
@@ -281,27 +281,27 @@ var file_apfish_user_user_user_service_proto_depIdxs = []int32{
 	0, // [0:2] is the sub-list for field type_name
 }
 
-func init() { file_apfish_user_user_user_service_proto_init() }
-func file_apfish_user_user_user_service_proto_init() {
-	if File_apfish_user_user_user_service_proto != nil {
+func init() { file_apfish_v1_user_user_user_service_proto_init() }
+func file_apfish_v1_user_user_user_service_proto_init() {
+	if File_apfish_v1_user_user_user_service_proto != nil {
 		return
 	}
-	file_apfish_user_user_user_proto_init()
+	file_apfish_v1_user_user_user_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_apfish_user_user_user_service_proto_rawDesc), len(file_apfish_user_user_user_service_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_apfish_v1_user_user_user_service_proto_rawDesc), len(file_apfish_v1_user_user_user_service_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   4,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_apfish_user_user_user_service_proto_goTypes,
-		DependencyIndexes: file_apfish_user_user_user_service_proto_depIdxs,
-		MessageInfos:      file_apfish_user_user_user_service_proto_msgTypes,
+		GoTypes:           file_apfish_v1_user_user_user_service_proto_goTypes,
+		DependencyIndexes: file_apfish_v1_user_user_user_service_proto_depIdxs,
+		MessageInfos:      file_apfish_v1_user_user_user_service_proto_msgTypes,
 	}.Build()
-	File_apfish_user_user_user_service_proto = out.File
-	file_apfish_user_user_user_service_proto_goTypes = nil
-	file_apfish_user_user_user_service_proto_depIdxs = nil
+	File_apfish_v1_user_user_user_service_proto = out.File
+	file_apfish_v1_user_user_user_service_proto_goTypes = nil
+	file_apfish_v1_user_user_user_service_proto_depIdxs = nil
 }

@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.6
 // 	protoc        v4.25.1
-// source: apfish/user/contact/contact/contact_service.proto
+// source: apfish.v1/user/contact/contact/contact_service.proto
 
 package apfishv1
 
@@ -30,7 +30,7 @@ type ContactRequest struct {
 
 func (x *ContactRequest) Reset() {
 	*x = ContactRequest{}
-	mi := &file_apfish_user_contact_contact_contact_service_proto_msgTypes[0]
+	mi := &file_apfish_v1_user_contact_contact_contact_service_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -42,7 +42,7 @@ func (x *ContactRequest) String() string {
 func (*ContactRequest) ProtoMessage() {}
 
 func (x *ContactRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_user_contact_contact_contact_service_proto_msgTypes[0]
+	mi := &file_apfish_v1_user_contact_contact_contact_service_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -55,7 +55,7 @@ func (x *ContactRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ContactRequest.ProtoReflect.Descriptor instead.
 func (*ContactRequest) Descriptor() ([]byte, []int) {
-	return file_apfish_user_contact_contact_contact_service_proto_rawDescGZIP(), []int{0}
+	return file_apfish_v1_user_contact_contact_contact_service_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *ContactRequest) GetId() int64 {
@@ -74,7 +74,7 @@ type ContactResponse struct {
 
 func (x *ContactResponse) Reset() {
 	*x = ContactResponse{}
-	mi := &file_apfish_user_contact_contact_contact_service_proto_msgTypes[1]
+	mi := &file_apfish_v1_user_contact_contact_contact_service_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -86,7 +86,7 @@ func (x *ContactResponse) String() string {
 func (*ContactResponse) ProtoMessage() {}
 
 func (x *ContactResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_user_contact_contact_contact_service_proto_msgTypes[1]
+	mi := &file_apfish_v1_user_contact_contact_contact_service_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -99,7 +99,7 @@ func (x *ContactResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ContactResponse.ProtoReflect.Descriptor instead.
 func (*ContactResponse) Descriptor() ([]byte, []int) {
-	return file_apfish_user_contact_contact_contact_service_proto_rawDescGZIP(), []int{1}
+	return file_apfish_v1_user_contact_contact_contact_service_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *ContactResponse) GetContact() *Contact {
@@ -118,7 +118,7 @@ type ContactSummaryResponse struct {
 
 func (x *ContactSummaryResponse) Reset() {
 	*x = ContactSummaryResponse{}
-	mi := &file_apfish_user_contact_contact_contact_service_proto_msgTypes[2]
+	mi := &file_apfish_v1_user_contact_contact_contact_service_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -130,7 +130,7 @@ func (x *ContactSummaryResponse) String() string {
 func (*ContactSummaryResponse) ProtoMessage() {}
 
 func (x *ContactSummaryResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_user_contact_contact_contact_service_proto_msgTypes[2]
+	mi := &file_apfish_v1_user_contact_contact_contact_service_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -143,7 +143,7 @@ func (x *ContactSummaryResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ContactSummaryResponse.ProtoReflect.Descriptor instead.
 func (*ContactSummaryResponse) Descriptor() ([]byte, []int) {
-	return file_apfish_user_contact_contact_contact_service_proto_rawDescGZIP(), []int{2}
+	return file_apfish_v1_user_contact_contact_contact_service_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *ContactSummaryResponse) GetContact() *ContactSummary {
@@ -163,7 +163,7 @@ type ListContactsRequest struct {
 
 func (x *ListContactsRequest) Reset() {
 	*x = ListContactsRequest{}
-	mi := &file_apfish_user_contact_contact_contact_service_proto_msgTypes[3]
+	mi := &file_apfish_v1_user_contact_contact_contact_service_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -175,7 +175,7 @@ func (x *ListContactsRequest) String() string {
 func (*ListContactsRequest) ProtoMessage() {}
 
 func (x *ListContactsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_user_contact_contact_contact_service_proto_msgTypes[3]
+	mi := &file_apfish_v1_user_contact_contact_contact_service_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -188,7 +188,7 @@ func (x *ListContactsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListContactsRequest.ProtoReflect.Descriptor instead.
 func (*ListContactsRequest) Descriptor() ([]byte, []int) {
-	return file_apfish_user_contact_contact_contact_service_proto_rawDescGZIP(), []int{3}
+	return file_apfish_v1_user_contact_contact_contact_service_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *ListContactsRequest) GetPage() int64 {
@@ -215,7 +215,7 @@ type ListContactsResponse struct {
 
 func (x *ListContactsResponse) Reset() {
 	*x = ListContactsResponse{}
-	mi := &file_apfish_user_contact_contact_contact_service_proto_msgTypes[4]
+	mi := &file_apfish_v1_user_contact_contact_contact_service_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -227,7 +227,7 @@ func (x *ListContactsResponse) String() string {
 func (*ListContactsResponse) ProtoMessage() {}
 
 func (x *ListContactsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_user_contact_contact_contact_service_proto_msgTypes[4]
+	mi := &file_apfish_v1_user_contact_contact_contact_service_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -240,7 +240,7 @@ func (x *ListContactsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListContactsResponse.ProtoReflect.Descriptor instead.
 func (*ListContactsResponse) Descriptor() ([]byte, []int) {
-	return file_apfish_user_contact_contact_contact_service_proto_rawDescGZIP(), []int{4}
+	return file_apfish_v1_user_contact_contact_contact_service_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *ListContactsResponse) GetListContacts() []*ContactSummary {
@@ -257,11 +257,11 @@ func (x *ListContactsResponse) GetTotal() int64 {
 	return 0
 }
 
-var File_apfish_user_contact_contact_contact_service_proto protoreflect.FileDescriptor
+var File_apfish_v1_user_contact_contact_contact_service_proto protoreflect.FileDescriptor
 
-const file_apfish_user_contact_contact_contact_service_proto_rawDesc = "" +
+const file_apfish_v1_user_contact_contact_contact_service_proto_rawDesc = "" +
 	"\n" +
-	"1apfish/user/contact/contact/contact_service.proto\x12\fuser.contact\x1a)apfish/user/contact/contact/contact.proto\x1a1apfish/user/contact/contact/contact_summary.proto\" \n" +
+	"4apfish.v1/user/contact/contact/contact_service.proto\x12\fuser.contact\x1a,apfish.v1/user/contact/contact/contact.proto\x1a4apfish.v1/user/contact/contact/contact_summary.proto\" \n" +
 	"\x0eContactRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\"B\n" +
 	"\x0fContactResponse\x12/\n" +
@@ -281,19 +281,19 @@ const file_apfish_user_contact_contact_contact_service_proto_rawDesc = "" +
 	"\fListContacts\x12!.user.contact.ListContactsRequest\x1a\".user.contact.ListContactsResponseB)Z'apfish.v1/user/contact/contact;apfishv1b\x06proto3"
 
 var (
-	file_apfish_user_contact_contact_contact_service_proto_rawDescOnce sync.Once
-	file_apfish_user_contact_contact_contact_service_proto_rawDescData []byte
+	file_apfish_v1_user_contact_contact_contact_service_proto_rawDescOnce sync.Once
+	file_apfish_v1_user_contact_contact_contact_service_proto_rawDescData []byte
 )
 
-func file_apfish_user_contact_contact_contact_service_proto_rawDescGZIP() []byte {
-	file_apfish_user_contact_contact_contact_service_proto_rawDescOnce.Do(func() {
-		file_apfish_user_contact_contact_contact_service_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_apfish_user_contact_contact_contact_service_proto_rawDesc), len(file_apfish_user_contact_contact_contact_service_proto_rawDesc)))
+func file_apfish_v1_user_contact_contact_contact_service_proto_rawDescGZIP() []byte {
+	file_apfish_v1_user_contact_contact_contact_service_proto_rawDescOnce.Do(func() {
+		file_apfish_v1_user_contact_contact_contact_service_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_apfish_v1_user_contact_contact_contact_service_proto_rawDesc), len(file_apfish_v1_user_contact_contact_contact_service_proto_rawDesc)))
 	})
-	return file_apfish_user_contact_contact_contact_service_proto_rawDescData
+	return file_apfish_v1_user_contact_contact_contact_service_proto_rawDescData
 }
 
-var file_apfish_user_contact_contact_contact_service_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
-var file_apfish_user_contact_contact_contact_service_proto_goTypes = []any{
+var file_apfish_v1_user_contact_contact_contact_service_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
+var file_apfish_v1_user_contact_contact_contact_service_proto_goTypes = []any{
 	(*ContactRequest)(nil),         // 0: user.contact.ContactRequest
 	(*ContactResponse)(nil),        // 1: user.contact.ContactResponse
 	(*ContactSummaryResponse)(nil), // 2: user.contact.ContactSummaryResponse
@@ -302,7 +302,7 @@ var file_apfish_user_contact_contact_contact_service_proto_goTypes = []any{
 	(*Contact)(nil),                // 5: user.contact.Contact
 	(*ContactSummary)(nil),         // 6: user.contact.ContactSummary
 }
-var file_apfish_user_contact_contact_contact_service_proto_depIdxs = []int32{
+var file_apfish_v1_user_contact_contact_contact_service_proto_depIdxs = []int32{
 	5, // 0: user.contact.ContactResponse.contact:type_name -> user.contact.Contact
 	6, // 1: user.contact.ContactSummaryResponse.contact:type_name -> user.contact.ContactSummary
 	6, // 2: user.contact.ListContactsResponse.list_contacts:type_name -> user.contact.ContactSummary
@@ -319,28 +319,28 @@ var file_apfish_user_contact_contact_contact_service_proto_depIdxs = []int32{
 	0, // [0:3] is the sub-list for field type_name
 }
 
-func init() { file_apfish_user_contact_contact_contact_service_proto_init() }
-func file_apfish_user_contact_contact_contact_service_proto_init() {
-	if File_apfish_user_contact_contact_contact_service_proto != nil {
+func init() { file_apfish_v1_user_contact_contact_contact_service_proto_init() }
+func file_apfish_v1_user_contact_contact_contact_service_proto_init() {
+	if File_apfish_v1_user_contact_contact_contact_service_proto != nil {
 		return
 	}
-	file_apfish_user_contact_contact_contact_proto_init()
-	file_apfish_user_contact_contact_contact_summary_proto_init()
+	file_apfish_v1_user_contact_contact_contact_proto_init()
+	file_apfish_v1_user_contact_contact_contact_summary_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_apfish_user_contact_contact_contact_service_proto_rawDesc), len(file_apfish_user_contact_contact_contact_service_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_apfish_v1_user_contact_contact_contact_service_proto_rawDesc), len(file_apfish_v1_user_contact_contact_contact_service_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   5,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_apfish_user_contact_contact_contact_service_proto_goTypes,
-		DependencyIndexes: file_apfish_user_contact_contact_contact_service_proto_depIdxs,
-		MessageInfos:      file_apfish_user_contact_contact_contact_service_proto_msgTypes,
+		GoTypes:           file_apfish_v1_user_contact_contact_contact_service_proto_goTypes,
+		DependencyIndexes: file_apfish_v1_user_contact_contact_contact_service_proto_depIdxs,
+		MessageInfos:      file_apfish_v1_user_contact_contact_contact_service_proto_msgTypes,
 	}.Build()
-	File_apfish_user_contact_contact_contact_service_proto = out.File
-	file_apfish_user_contact_contact_contact_service_proto_goTypes = nil
-	file_apfish_user_contact_contact_contact_service_proto_depIdxs = nil
+	File_apfish_v1_user_contact_contact_contact_service_proto = out.File
+	file_apfish_v1_user_contact_contact_contact_service_proto_goTypes = nil
+	file_apfish_v1_user_contact_contact_contact_service_proto_depIdxs = nil
 }

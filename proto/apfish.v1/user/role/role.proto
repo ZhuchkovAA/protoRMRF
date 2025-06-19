@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package user;
+
+option go_package = "apfish.v1/user/role;apfishv1";
+
+import "google/protobuf/timestamp.proto";  // Standard Protocol Buffers timestamp
+
+import "apfish.v1/user/user/user_summary.proto";
+import "apfish.v1/permission/permission/permission_summary.proto";
+
+// Defines a user role (e.g., "Admin", "Editor").
+message Role {
+  int64 id = 1;                       // Unique role ID.
+  string name = 2;                    // Human-readable name (e.g., "Admin").
+  string code = 3;                    // Machine-friendly code (e.g., "admin").
+  google.protobuf.Timestamp created_at = 4;  // When the role was created.
+
+  repeated UserSummary users = 5;
+  repeated permission.PermissionSummary permissions = 6;  // Permissions granted by this role.
+}

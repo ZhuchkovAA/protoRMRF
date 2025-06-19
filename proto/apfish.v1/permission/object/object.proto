@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package permission;
+
+option go_package = "apfish.v1/permission/object;apfishv1";
+
+import "google/protobuf/timestamp.proto";  // Standard Protocol Buffers timestamp
+
+import "apfish.v1/permission/permission/permission_summary.proto";
+
+// Defines a type of resource or object that can be accessed in the system.
+message Object {
+  int64 id = 1;                   // Unique identifier for the object type
+  string name = 2;                // Human-readable name (e.g., "Inspection")
+  string description = 3;         // Detailed explanation of the object type
+  string code = 4;                // Machine-friendly code (e.g., "inspection")
+  google.protobuf.Timestamp created_at = 5;
+
+  repeated PermissionSummary permissions = 6;
+}

@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package permission;
+
+option go_package = "apfish.v1/permission/action;apfishv1";
+
+import "google/protobuf/timestamp.proto";  // Standard Protocol Buffers timestamp
+
+import "apfish.v1/permission/permission/permission_summary.proto";
+
+// Defines an actionable operation that can be performed in the system.
+message Action {
+  int64 id = 1;                   // Unique identifier for the action
+  string name = 2;                // Human-readable name (e.g., "Read")
+  string description = 3;         // Detailed explanation of the action
+  string code = 4;                // Machine-friendly code (e.g., "read")
+  google.protobuf.Timestamp created_at = 5;
+
+  repeated PermissionSummary permissions = 6;
+}

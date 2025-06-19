@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.6
 // 	protoc        v4.25.1
-// source: apfish/user/contact/contact/contact_summary.proto
+// source: apfish.v1/user/contact/contact/contact_summary.proto
 
 package apfishv1
 
@@ -35,7 +35,7 @@ type ContactSummary struct {
 
 func (x *ContactSummary) Reset() {
 	*x = ContactSummary{}
-	mi := &file_apfish_user_contact_contact_contact_summary_proto_msgTypes[0]
+	mi := &file_apfish_v1_user_contact_contact_contact_summary_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -47,7 +47,7 @@ func (x *ContactSummary) String() string {
 func (*ContactSummary) ProtoMessage() {}
 
 func (x *ContactSummary) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_user_contact_contact_contact_summary_proto_msgTypes[0]
+	mi := &file_apfish_v1_user_contact_contact_contact_summary_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -60,7 +60,7 @@ func (x *ContactSummary) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ContactSummary.ProtoReflect.Descriptor instead.
 func (*ContactSummary) Descriptor() ([]byte, []int) {
-	return file_apfish_user_contact_contact_contact_summary_proto_rawDescGZIP(), []int{0}
+	return file_apfish_v1_user_contact_contact_contact_summary_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *ContactSummary) GetId() int64 {
@@ -98,11 +98,11 @@ func (x *ContactSummary) GetCreatedAt() *timestamppb.Timestamp {
 	return nil
 }
 
-var File_apfish_user_contact_contact_contact_summary_proto protoreflect.FileDescriptor
+var File_apfish_v1_user_contact_contact_contact_summary_proto protoreflect.FileDescriptor
 
-const file_apfish_user_contact_contact_contact_summary_proto_rawDesc = "" +
+const file_apfish_v1_user_contact_contact_contact_summary_proto_rawDesc = "" +
 	"\n" +
-	"1apfish/user/contact/contact/contact_summary.proto\x12\fuser.contact\x1a\x1fgoogle/protobuf/timestamp.proto\"\xa3\x01\n" +
+	"4apfish.v1/user/contact/contact/contact_summary.proto\x12\fuser.contact\x1a\x1fgoogle/protobuf/timestamp.proto\"\xa3\x01\n" +
 	"\x0eContactSummary\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x17\n" +
 	"\auser_id\x18\x02 \x01(\x03R\x06userId\x12\x17\n" +
@@ -112,23 +112,23 @@ const file_apfish_user_contact_contact_contact_summary_proto_rawDesc = "" +
 	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAtB)Z'apfish.v1/user/contact/contact;apfishv1b\x06proto3"
 
 var (
-	file_apfish_user_contact_contact_contact_summary_proto_rawDescOnce sync.Once
-	file_apfish_user_contact_contact_contact_summary_proto_rawDescData []byte
+	file_apfish_v1_user_contact_contact_contact_summary_proto_rawDescOnce sync.Once
+	file_apfish_v1_user_contact_contact_contact_summary_proto_rawDescData []byte
 )
 
-func file_apfish_user_contact_contact_contact_summary_proto_rawDescGZIP() []byte {
-	file_apfish_user_contact_contact_contact_summary_proto_rawDescOnce.Do(func() {
-		file_apfish_user_contact_contact_contact_summary_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_apfish_user_contact_contact_contact_summary_proto_rawDesc), len(file_apfish_user_contact_contact_contact_summary_proto_rawDesc)))
+func file_apfish_v1_user_contact_contact_contact_summary_proto_rawDescGZIP() []byte {
+	file_apfish_v1_user_contact_contact_contact_summary_proto_rawDescOnce.Do(func() {
+		file_apfish_v1_user_contact_contact_contact_summary_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_apfish_v1_user_contact_contact_contact_summary_proto_rawDesc), len(file_apfish_v1_user_contact_contact_contact_summary_proto_rawDesc)))
 	})
-	return file_apfish_user_contact_contact_contact_summary_proto_rawDescData
+	return file_apfish_v1_user_contact_contact_contact_summary_proto_rawDescData
 }
 
-var file_apfish_user_contact_contact_contact_summary_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
-var file_apfish_user_contact_contact_contact_summary_proto_goTypes = []any{
+var file_apfish_v1_user_contact_contact_contact_summary_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
+var file_apfish_v1_user_contact_contact_contact_summary_proto_goTypes = []any{
 	(*ContactSummary)(nil),        // 0: user.contact.ContactSummary
 	(*timestamppb.Timestamp)(nil), // 1: google.protobuf.Timestamp
 }
-var file_apfish_user_contact_contact_contact_summary_proto_depIdxs = []int32{
+var file_apfish_v1_user_contact_contact_contact_summary_proto_depIdxs = []int32{
 	1, // 0: user.contact.ContactSummary.created_at:type_name -> google.protobuf.Timestamp
 	1, // [1:1] is the sub-list for method output_type
 	1, // [1:1] is the sub-list for method input_type
@@ -137,26 +137,26 @@ var file_apfish_user_contact_contact_contact_summary_proto_depIdxs = []int32{
 	0, // [0:1] is the sub-list for field type_name
 }
 
-func init() { file_apfish_user_contact_contact_contact_summary_proto_init() }
-func file_apfish_user_contact_contact_contact_summary_proto_init() {
-	if File_apfish_user_contact_contact_contact_summary_proto != nil {
+func init() { file_apfish_v1_user_contact_contact_contact_summary_proto_init() }
+func file_apfish_v1_user_contact_contact_contact_summary_proto_init() {
+	if File_apfish_v1_user_contact_contact_contact_summary_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_apfish_user_contact_contact_contact_summary_proto_rawDesc), len(file_apfish_user_contact_contact_contact_summary_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_apfish_v1_user_contact_contact_contact_summary_proto_rawDesc), len(file_apfish_v1_user_contact_contact_contact_summary_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   1,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
-		GoTypes:           file_apfish_user_contact_contact_contact_summary_proto_goTypes,
-		DependencyIndexes: file_apfish_user_contact_contact_contact_summary_proto_depIdxs,
-		MessageInfos:      file_apfish_user_contact_contact_contact_summary_proto_msgTypes,
+		GoTypes:           file_apfish_v1_user_contact_contact_contact_summary_proto_goTypes,
+		DependencyIndexes: file_apfish_v1_user_contact_contact_contact_summary_proto_depIdxs,
+		MessageInfos:      file_apfish_v1_user_contact_contact_contact_summary_proto_msgTypes,
 	}.Build()
-	File_apfish_user_contact_contact_contact_summary_proto = out.File
-	file_apfish_user_contact_contact_contact_summary_proto_goTypes = nil
-	file_apfish_user_contact_contact_contact_summary_proto_depIdxs = nil
+	File_apfish_v1_user_contact_contact_contact_summary_proto = out.File
+	file_apfish_v1_user_contact_contact_contact_summary_proto_goTypes = nil
+	file_apfish_v1_user_contact_contact_contact_summary_proto_depIdxs = nil
 }

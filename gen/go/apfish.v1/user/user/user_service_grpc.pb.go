@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.5.1
 // - protoc             v4.25.1
-// source: apfish/user/user/user_service.proto
+// source: apfish.v1/user/user/user_service.proto
 
 package apfishv1
 
@@ -167,5 +167,5 @@ var UserService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "apfish/user/user/user_service.proto",
+	Metadata: "apfish.v1/user/user/user_service.proto",
 }

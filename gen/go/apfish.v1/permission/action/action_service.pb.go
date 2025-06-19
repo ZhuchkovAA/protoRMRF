@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.6
 // 	protoc        v4.25.1
-// source: apfish/permission/action/action_service.proto
+// source: apfish.v1/permission/action/action_service.proto
 
 package apfishv1
 
@@ -30,7 +30,7 @@ type ActionRequest struct {
 
 func (x *ActionRequest) Reset() {
 	*x = ActionRequest{}
-	mi := &file_apfish_permission_action_action_service_proto_msgTypes[0]
+	mi := &file_apfish_v1_permission_action_action_service_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -42,7 +42,7 @@ func (x *ActionRequest) String() string {
 func (*ActionRequest) ProtoMessage() {}
 
 func (x *ActionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_permission_action_action_service_proto_msgTypes[0]
+	mi := &file_apfish_v1_permission_action_action_service_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -55,7 +55,7 @@ func (x *ActionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ActionRequest.ProtoReflect.Descriptor instead.
 func (*ActionRequest) Descriptor() ([]byte, []int) {
-	return file_apfish_permission_action_action_service_proto_rawDescGZIP(), []int{0}
+	return file_apfish_v1_permission_action_action_service_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *ActionRequest) GetId() int64 {
@@ -74,7 +74,7 @@ type ActionResponse struct {
 
 func (x *ActionResponse) Reset() {
 	*x = ActionResponse{}
-	mi := &file_apfish_permission_action_action_service_proto_msgTypes[1]
+	mi := &file_apfish_v1_permission_action_action_service_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -86,7 +86,7 @@ func (x *ActionResponse) String() string {
 func (*ActionResponse) ProtoMessage() {}
 
 func (x *ActionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_permission_action_action_service_proto_msgTypes[1]
+	mi := &file_apfish_v1_permission_action_action_service_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -99,7 +99,7 @@ func (x *ActionResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ActionResponse.ProtoReflect.Descriptor instead.
 func (*ActionResponse) Descriptor() ([]byte, []int) {
-	return file_apfish_permission_action_action_service_proto_rawDescGZIP(), []int{1}
+	return file_apfish_v1_permission_action_action_service_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *ActionResponse) GetAction() *Action {
@@ -118,7 +118,7 @@ type ActionSummaryResponse struct {
 
 func (x *ActionSummaryResponse) Reset() {
 	*x = ActionSummaryResponse{}
-	mi := &file_apfish_permission_action_action_service_proto_msgTypes[2]
+	mi := &file_apfish_v1_permission_action_action_service_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -130,7 +130,7 @@ func (x *ActionSummaryResponse) String() string {
 func (*ActionSummaryResponse) ProtoMessage() {}
 
 func (x *ActionSummaryResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_permission_action_action_service_proto_msgTypes[2]
+	mi := &file_apfish_v1_permission_action_action_service_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -143,7 +143,7 @@ func (x *ActionSummaryResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ActionSummaryResponse.ProtoReflect.Descriptor instead.
 func (*ActionSummaryResponse) Descriptor() ([]byte, []int) {
-	return file_apfish_permission_action_action_service_proto_rawDescGZIP(), []int{2}
+	return file_apfish_v1_permission_action_action_service_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *ActionSummaryResponse) GetAction() *ActionSummary {
@@ -163,7 +163,7 @@ type ListActionsRequest struct {
 
 func (x *ListActionsRequest) Reset() {
 	*x = ListActionsRequest{}
-	mi := &file_apfish_permission_action_action_service_proto_msgTypes[3]
+	mi := &file_apfish_v1_permission_action_action_service_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -175,7 +175,7 @@ func (x *ListActionsRequest) String() string {
 func (*ListActionsRequest) ProtoMessage() {}
 
 func (x *ListActionsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_permission_action_action_service_proto_msgTypes[3]
+	mi := &file_apfish_v1_permission_action_action_service_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -188,7 +188,7 @@ func (x *ListActionsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListActionsRequest.ProtoReflect.Descriptor instead.
 func (*ListActionsRequest) Descriptor() ([]byte, []int) {
-	return file_apfish_permission_action_action_service_proto_rawDescGZIP(), []int{3}
+	return file_apfish_v1_permission_action_action_service_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *ListActionsRequest) GetPage() int64 {
@@ -215,7 +215,7 @@ type ListActionsResponse struct {
 
 func (x *ListActionsResponse) Reset() {
 	*x = ListActionsResponse{}
-	mi := &file_apfish_permission_action_action_service_proto_msgTypes[4]
+	mi := &file_apfish_v1_permission_action_action_service_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -227,7 +227,7 @@ func (x *ListActionsResponse) String() string {
 func (*ListActionsResponse) ProtoMessage() {}
 
 func (x *ListActionsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_permission_action_action_service_proto_msgTypes[4]
+	mi := &file_apfish_v1_permission_action_action_service_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -240,7 +240,7 @@ func (x *ListActionsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListActionsResponse.ProtoReflect.Descriptor instead.
 func (*ListActionsResponse) Descriptor() ([]byte, []int) {
-	return file_apfish_permission_action_action_service_proto_rawDescGZIP(), []int{4}
+	return file_apfish_v1_permission_action_action_service_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *ListActionsResponse) GetListActions() []*ActionSummary {
@@ -257,12 +257,12 @@ func (x *ListActionsResponse) GetTotal() int64 {
 	return 0
 }
 
-var File_apfish_permission_action_action_service_proto protoreflect.FileDescriptor
+var File_apfish_v1_permission_action_action_service_proto protoreflect.FileDescriptor
 
-const file_apfish_permission_action_action_service_proto_rawDesc = "" +
+const file_apfish_v1_permission_action_action_service_proto_rawDesc = "" +
 	"\n" +
-	"-apfish/permission/action/action_service.proto\x12\n" +
-	"permission\x1a%apfish/permission/action/action.proto\x1a-apfish/permission/action/action_summary.proto\"\x1f\n" +
+	"0apfish.v1/permission/action/action_service.proto\x12\n" +
+	"permission\x1a(apfish.v1/permission/action/action.proto\x1a0apfish.v1/permission/action/action_summary.proto\"\x1f\n" +
 	"\rActionRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\"<\n" +
 	"\x0eActionResponse\x12*\n" +
@@ -281,19 +281,19 @@ const file_apfish_permission_action_action_service_proto_rawDesc = "" +
 	"\vListActions\x12\x1e.permission.ListActionsRequest\x1a\x1f.permission.ListActionsResponseB&Z$apfish.v1/permission/action;apfishv1b\x06proto3"
 
 var (
-	file_apfish_permission_action_action_service_proto_rawDescOnce sync.Once
-	file_apfish_permission_action_action_service_proto_rawDescData []byte
+	file_apfish_v1_permission_action_action_service_proto_rawDescOnce sync.Once
+	file_apfish_v1_permission_action_action_service_proto_rawDescData []byte
 )
 
-func file_apfish_permission_action_action_service_proto_rawDescGZIP() []byte {
-	file_apfish_permission_action_action_service_proto_rawDescOnce.Do(func() {
-		file_apfish_permission_action_action_service_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_apfish_permission_action_action_service_proto_rawDesc), len(file_apfish_permission_action_action_service_proto_rawDesc)))
+func file_apfish_v1_permission_action_action_service_proto_rawDescGZIP() []byte {
+	file_apfish_v1_permission_action_action_service_proto_rawDescOnce.Do(func() {
+		file_apfish_v1_permission_action_action_service_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_apfish_v1_permission_action_action_service_proto_rawDesc), len(file_apfish_v1_permission_action_action_service_proto_rawDesc)))
 	})
-	return file_apfish_permission_action_action_service_proto_rawDescData
+	return file_apfish_v1_permission_action_action_service_proto_rawDescData
 }
 
-var file_apfish_permission_action_action_service_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
-var file_apfish_permission_action_action_service_proto_goTypes = []any{
+var file_apfish_v1_permission_action_action_service_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
+var file_apfish_v1_permission_action_action_service_proto_goTypes = []any{
 	(*ActionRequest)(nil),         // 0: permission.ActionRequest
 	(*ActionResponse)(nil),        // 1: permission.ActionResponse
 	(*ActionSummaryResponse)(nil), // 2: permission.ActionSummaryResponse
@@ -302,7 +302,7 @@ var file_apfish_permission_action_action_service_proto_goTypes = []any{
 	(*Action)(nil),                // 5: permission.Action
 	(*ActionSummary)(nil),         // 6: permission.ActionSummary
 }
-var file_apfish_permission_action_action_service_proto_depIdxs = []int32{
+var file_apfish_v1_permission_action_action_service_proto_depIdxs = []int32{
 	5, // 0: permission.ActionResponse.action:type_name -> permission.Action
 	6, // 1: permission.ActionSummaryResponse.action:type_name -> permission.ActionSummary
 	6, // 2: permission.ListActionsResponse.list_actions:type_name -> permission.ActionSummary
@@ -319,28 +319,28 @@ var file_apfish_permission_action_action_service_proto_depIdxs = []int32{
 	0, // [0:3] is the sub-list for field type_name
 }
 
-func init() { file_apfish_permission_action_action_service_proto_init() }
-func file_apfish_permission_action_action_service_proto_init() {
-	if File_apfish_permission_action_action_service_proto != nil {
+func init() { file_apfish_v1_permission_action_action_service_proto_init() }
+func file_apfish_v1_permission_action_action_service_proto_init() {
+	if File_apfish_v1_permission_action_action_service_proto != nil {
 		return
 	}
-	file_apfish_permission_action_action_proto_init()
-	file_apfish_permission_action_action_summary_proto_init()
+	file_apfish_v1_permission_action_action_proto_init()
+	file_apfish_v1_permission_action_action_summary_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_apfish_permission_action_action_service_proto_rawDesc), len(file_apfish_permission_action_action_service_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_apfish_v1_permission_action_action_service_proto_rawDesc), len(file_apfish_v1_permission_action_action_service_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   5,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_apfish_permission_action_action_service_proto_goTypes,
-		DependencyIndexes: file_apfish_permission_action_action_service_proto_depIdxs,
-		MessageInfos:      file_apfish_permission_action_action_service_proto_msgTypes,
+		GoTypes:           file_apfish_v1_permission_action_action_service_proto_goTypes,
+		DependencyIndexes: file_apfish_v1_permission_action_action_service_proto_depIdxs,
+		MessageInfos:      file_apfish_v1_permission_action_action_service_proto_msgTypes,
 	}.Build()
-	File_apfish_permission_action_action_service_proto = out.File
-	file_apfish_permission_action_action_service_proto_goTypes = nil
-	file_apfish_permission_action_action_service_proto_depIdxs = nil
+	File_apfish_v1_permission_action_action_service_proto = out.File
+	file_apfish_v1_permission_action_action_service_proto_goTypes = nil
+	file_apfish_v1_permission_action_action_service_proto_depIdxs = nil
 }

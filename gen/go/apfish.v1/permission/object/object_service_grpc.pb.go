@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.5.1
 // - protoc             v4.25.1
-// source: apfish/permission/object/object_service.proto
+// source: apfish.v1/permission/object/object_service.proto
 
 package apfishv1
 
@@ -193,5 +193,5 @@ var ObjectService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "apfish/permission/object/object_service.proto",
+	Metadata: "apfish.v1/permission/object/object_service.proto",
 }

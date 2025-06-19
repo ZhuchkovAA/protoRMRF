@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.5.1
 // - protoc             v4.25.1
-// source: log/log.proto
+// source: log.v1/log.proto
 
 package logv1
 
@@ -117,5 +117,5 @@ var LogService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "log/log.proto",
+	Metadata: "log.v1/log.proto",
 }

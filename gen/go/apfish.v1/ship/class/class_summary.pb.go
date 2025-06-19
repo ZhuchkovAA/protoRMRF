@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.6
 // 	protoc        v4.25.1
-// source: apfish/ship/class/class_summary.proto
+// source: apfish.v1/ship/class/class_summary.proto
 
 package apfishv1
 
@@ -33,7 +33,7 @@ type ClassSummary struct {
 
 func (x *ClassSummary) Reset() {
 	*x = ClassSummary{}
-	mi := &file_apfish_ship_class_class_summary_proto_msgTypes[0]
+	mi := &file_apfish_v1_ship_class_class_summary_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -45,7 +45,7 @@ func (x *ClassSummary) String() string {
 func (*ClassSummary) ProtoMessage() {}
 
 func (x *ClassSummary) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_ship_class_class_summary_proto_msgTypes[0]
+	mi := &file_apfish_v1_ship_class_class_summary_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -58,7 +58,7 @@ func (x *ClassSummary) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ClassSummary.ProtoReflect.Descriptor instead.
 func (*ClassSummary) Descriptor() ([]byte, []int) {
-	return file_apfish_ship_class_class_summary_proto_rawDescGZIP(), []int{0}
+	return file_apfish_v1_ship_class_class_summary_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *ClassSummary) GetId() int64 {
@@ -82,11 +82,11 @@ func (x *ClassSummary) GetCreatedAt() *timestamppb.Timestamp {
 	return nil
 }
 
-var File_apfish_ship_class_class_summary_proto protoreflect.FileDescriptor
+var File_apfish_v1_ship_class_class_summary_proto protoreflect.FileDescriptor
 
-const file_apfish_ship_class_class_summary_proto_rawDesc = "" +
+const file_apfish_v1_ship_class_class_summary_proto_rawDesc = "" +
 	"\n" +
-	"%apfish/ship/class/class_summary.proto\x12\x04ship\x1a\x1fgoogle/protobuf/timestamp.proto\"m\n" +
+	"(apfish.v1/ship/class/class_summary.proto\x12\x04ship\x1a\x1fgoogle/protobuf/timestamp.proto\"m\n" +
 	"\fClassSummary\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x129\n" +
@@ -94,23 +94,23 @@ const file_apfish_ship_class_class_summary_proto_rawDesc = "" +
 	"created_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAtB\x1fZ\x1dapfish.v1/ship/class;apfishv1b\x06proto3"
 
 var (
-	file_apfish_ship_class_class_summary_proto_rawDescOnce sync.Once
-	file_apfish_ship_class_class_summary_proto_rawDescData []byte
+	file_apfish_v1_ship_class_class_summary_proto_rawDescOnce sync.Once
+	file_apfish_v1_ship_class_class_summary_proto_rawDescData []byte
 )
 
-func file_apfish_ship_class_class_summary_proto_rawDescGZIP() []byte {
-	file_apfish_ship_class_class_summary_proto_rawDescOnce.Do(func() {
-		file_apfish_ship_class_class_summary_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_apfish_ship_class_class_summary_proto_rawDesc), len(file_apfish_ship_class_class_summary_proto_rawDesc)))
+func file_apfish_v1_ship_class_class_summary_proto_rawDescGZIP() []byte {
+	file_apfish_v1_ship_class_class_summary_proto_rawDescOnce.Do(func() {
+		file_apfish_v1_ship_class_class_summary_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_apfish_v1_ship_class_class_summary_proto_rawDesc), len(file_apfish_v1_ship_class_class_summary_proto_rawDesc)))
 	})
-	return file_apfish_ship_class_class_summary_proto_rawDescData
+	return file_apfish_v1_ship_class_class_summary_proto_rawDescData
 }
 
-var file_apfish_ship_class_class_summary_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
-var file_apfish_ship_class_class_summary_proto_goTypes = []any{
+var file_apfish_v1_ship_class_class_summary_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
+var file_apfish_v1_ship_class_class_summary_proto_goTypes = []any{
 	(*ClassSummary)(nil),          // 0: ship.ClassSummary
 	(*timestamppb.Timestamp)(nil), // 1: google.protobuf.Timestamp
 }
-var file_apfish_ship_class_class_summary_proto_depIdxs = []int32{
+var file_apfish_v1_ship_class_class_summary_proto_depIdxs = []int32{
 	1, // 0: ship.ClassSummary.created_at:type_name -> google.protobuf.Timestamp
 	1, // [1:1] is the sub-list for method output_type
 	1, // [1:1] is the sub-list for method input_type
@@ -119,26 +119,26 @@ var file_apfish_ship_class_class_summary_proto_depIdxs = []int32{
 	0, // [0:1] is the sub-list for field type_name
 }
 
-func init() { file_apfish_ship_class_class_summary_proto_init() }
-func file_apfish_ship_class_class_summary_proto_init() {
-	if File_apfish_ship_class_class_summary_proto != nil {
+func init() { file_apfish_v1_ship_class_class_summary_proto_init() }
+func file_apfish_v1_ship_class_class_summary_proto_init() {
+	if File_apfish_v1_ship_class_class_summary_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_apfish_ship_class_class_summary_proto_rawDesc), len(file_apfish_ship_class_class_summary_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_apfish_v1_ship_class_class_summary_proto_rawDesc), len(file_apfish_v1_ship_class_class_summary_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   1,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
-		GoTypes:           file_apfish_ship_class_class_summary_proto_goTypes,
-		DependencyIndexes: file_apfish_ship_class_class_summary_proto_depIdxs,
-		MessageInfos:      file_apfish_ship_class_class_summary_proto_msgTypes,
+		GoTypes:           file_apfish_v1_ship_class_class_summary_proto_goTypes,
+		DependencyIndexes: file_apfish_v1_ship_class_class_summary_proto_depIdxs,
+		MessageInfos:      file_apfish_v1_ship_class_class_summary_proto_msgTypes,
 	}.Build()
-	File_apfish_ship_class_class_summary_proto = out.File
-	file_apfish_ship_class_class_summary_proto_goTypes = nil
-	file_apfish_ship_class_class_summary_proto_depIdxs = nil
+	File_apfish_v1_ship_class_class_summary_proto = out.File
+	file_apfish_v1_ship_class_class_summary_proto_goTypes = nil
+	file_apfish_v1_ship_class_class_summary_proto_depIdxs = nil
 }

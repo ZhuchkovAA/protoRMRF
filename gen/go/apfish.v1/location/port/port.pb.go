@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.6
 // 	protoc        v4.25.1
-// source: apfish/location/port/port.proto
+// source: apfish.v1/location/port/port.proto
 
 package apfishv1
 
@@ -40,7 +40,7 @@ type Port struct {
 
 func (x *Port) Reset() {
 	*x = Port{}
-	mi := &file_apfish_location_port_port_proto_msgTypes[0]
+	mi := &file_apfish_v1_location_port_port_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -52,7 +52,7 @@ func (x *Port) String() string {
 func (*Port) ProtoMessage() {}
 
 func (x *Port) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_location_port_port_proto_msgTypes[0]
+	mi := &file_apfish_v1_location_port_port_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -65,7 +65,7 @@ func (x *Port) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Port.ProtoReflect.Descriptor instead.
 func (*Port) Descriptor() ([]byte, []int) {
-	return file_apfish_location_port_port_proto_rawDescGZIP(), []int{0}
+	return file_apfish_v1_location_port_port_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *Port) GetId() int64 {
@@ -117,11 +117,11 @@ func (x *Port) GetPermissions() []*permission.PermissionSummary {
 	return nil
 }
 
-var File_apfish_location_port_port_proto protoreflect.FileDescriptor
+var File_apfish_v1_location_port_port_proto protoreflect.FileDescriptor
 
-const file_apfish_location_port_port_proto_rawDesc = "" +
+const file_apfish_v1_location_port_port_proto_rawDesc = "" +
 	"\n" +
-	"\x1fapfish/location/port/port.proto\x12\blocation\x1a\x1fgoogle/protobuf/timestamp.proto\x1a-apfish/location/country/country_summary.proto\x1a/apfish/location/district/district_summary.proto\x1a5apfish/permission/permission/permission_summary.proto\"\xa5\x02\n" +
+	"\"apfish.v1/location/port/port.proto\x12\blocation\x1a\x1fgoogle/protobuf/timestamp.proto\x1a0apfish.v1/location/country/country_summary.proto\x1a2apfish.v1/location/district/district_summary.proto\x1a8apfish.v1/permission/permission/permission_summary.proto\"\xa5\x02\n" +
 	"\x04Port\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x122\n" +
@@ -133,26 +133,26 @@ const file_apfish_location_port_port_proto_rawDesc = "" +
 	"\vpermissions\x18\a \x03(\v2\x1d.permission.PermissionSummaryR\vpermissionsB\"Z apfish.v1/location/port;apfishv1b\x06proto3"
 
 var (
-	file_apfish_location_port_port_proto_rawDescOnce sync.Once
-	file_apfish_location_port_port_proto_rawDescData []byte
+	file_apfish_v1_location_port_port_proto_rawDescOnce sync.Once
+	file_apfish_v1_location_port_port_proto_rawDescData []byte
 )
 
-func file_apfish_location_port_port_proto_rawDescGZIP() []byte {
-	file_apfish_location_port_port_proto_rawDescOnce.Do(func() {
-		file_apfish_location_port_port_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_apfish_location_port_port_proto_rawDesc), len(file_apfish_location_port_port_proto_rawDesc)))
+func file_apfish_v1_location_port_port_proto_rawDescGZIP() []byte {
+	file_apfish_v1_location_port_port_proto_rawDescOnce.Do(func() {
+		file_apfish_v1_location_port_port_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_apfish_v1_location_port_port_proto_rawDesc), len(file_apfish_v1_location_port_port_proto_rawDesc)))
 	})
-	return file_apfish_location_port_port_proto_rawDescData
+	return file_apfish_v1_location_port_port_proto_rawDescData
 }
 
-var file_apfish_location_port_port_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
-var file_apfish_location_port_port_proto_goTypes = []any{
+var file_apfish_v1_location_port_port_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
+var file_apfish_v1_location_port_port_proto_goTypes = []any{
 	(*Port)(nil),                         // 0: location.Port
 	(*country.CountrySummary)(nil),       // 1: location.CountrySummary
 	(*district.DistrictSummary)(nil),     // 2: location.DistrictSummary
 	(*timestamppb.Timestamp)(nil),        // 3: google.protobuf.Timestamp
 	(*permission.PermissionSummary)(nil), // 4: permission.PermissionSummary
 }
-var file_apfish_location_port_port_proto_depIdxs = []int32{
+var file_apfish_v1_location_port_port_proto_depIdxs = []int32{
 	1, // 0: location.Port.country:type_name -> location.CountrySummary
 	2, // 1: location.Port.district:type_name -> location.DistrictSummary
 	3, // 2: location.Port.created_at:type_name -> google.protobuf.Timestamp
@@ -164,26 +164,26 @@ var file_apfish_location_port_port_proto_depIdxs = []int32{
 	0, // [0:4] is the sub-list for field type_name
 }
 
-func init() { file_apfish_location_port_port_proto_init() }
-func file_apfish_location_port_port_proto_init() {
-	if File_apfish_location_port_port_proto != nil {
+func init() { file_apfish_v1_location_port_port_proto_init() }
+func file_apfish_v1_location_port_port_proto_init() {
+	if File_apfish_v1_location_port_port_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_apfish_location_port_port_proto_rawDesc), len(file_apfish_location_port_port_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_apfish_v1_location_port_port_proto_rawDesc), len(file_apfish_v1_location_port_port_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   1,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
-		GoTypes:           file_apfish_location_port_port_proto_goTypes,
-		DependencyIndexes: file_apfish_location_port_port_proto_depIdxs,
-		MessageInfos:      file_apfish_location_port_port_proto_msgTypes,
+		GoTypes:           file_apfish_v1_location_port_port_proto_goTypes,
+		DependencyIndexes: file_apfish_v1_location_port_port_proto_depIdxs,
+		MessageInfos:      file_apfish_v1_location_port_port_proto_msgTypes,
 	}.Build()
-	File_apfish_location_port_port_proto = out.File
-	file_apfish_location_port_port_proto_goTypes = nil
-	file_apfish_location_port_port_proto_depIdxs = nil
+	File_apfish_v1_location_port_port_proto = out.File
+	file_apfish_v1_location_port_port_proto_goTypes = nil
+	file_apfish_v1_location_port_port_proto_depIdxs = nil
 }

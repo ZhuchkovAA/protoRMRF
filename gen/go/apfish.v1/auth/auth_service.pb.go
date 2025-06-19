@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.6
 // 	protoc        v4.25.1
-// source: apfish/auth/auth_service.proto
+// source: apfish.v1/auth/auth_service.proto
 
 package apfishv1
 
@@ -31,7 +31,7 @@ type RegisterRequest struct {
 
 func (x *RegisterRequest) Reset() {
 	*x = RegisterRequest{}
-	mi := &file_apfish_auth_auth_service_proto_msgTypes[0]
+	mi := &file_apfish_v1_auth_auth_service_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -43,7 +43,7 @@ func (x *RegisterRequest) String() string {
 func (*RegisterRequest) ProtoMessage() {}
 
 func (x *RegisterRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_auth_auth_service_proto_msgTypes[0]
+	mi := &file_apfish_v1_auth_auth_service_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -56,7 +56,7 @@ func (x *RegisterRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RegisterRequest.ProtoReflect.Descriptor instead.
 func (*RegisterRequest) Descriptor() ([]byte, []int) {
-	return file_apfish_auth_auth_service_proto_rawDescGZIP(), []int{0}
+	return file_apfish_v1_auth_auth_service_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *RegisterRequest) GetLogin() string {
@@ -82,7 +82,7 @@ type RegisterResponse struct {
 
 func (x *RegisterResponse) Reset() {
 	*x = RegisterResponse{}
-	mi := &file_apfish_auth_auth_service_proto_msgTypes[1]
+	mi := &file_apfish_v1_auth_auth_service_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -94,7 +94,7 @@ func (x *RegisterResponse) String() string {
 func (*RegisterResponse) ProtoMessage() {}
 
 func (x *RegisterResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_auth_auth_service_proto_msgTypes[1]
+	mi := &file_apfish_v1_auth_auth_service_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -107,7 +107,7 @@ func (x *RegisterResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RegisterResponse.ProtoReflect.Descriptor instead.
 func (*RegisterResponse) Descriptor() ([]byte, []int) {
-	return file_apfish_auth_auth_service_proto_rawDescGZIP(), []int{1}
+	return file_apfish_v1_auth_auth_service_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *RegisterResponse) GetUserId() int64 {
@@ -128,7 +128,7 @@ type LoginRequest struct {
 
 func (x *LoginRequest) Reset() {
 	*x = LoginRequest{}
-	mi := &file_apfish_auth_auth_service_proto_msgTypes[2]
+	mi := &file_apfish_v1_auth_auth_service_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -140,7 +140,7 @@ func (x *LoginRequest) String() string {
 func (*LoginRequest) ProtoMessage() {}
 
 func (x *LoginRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_auth_auth_service_proto_msgTypes[2]
+	mi := &file_apfish_v1_auth_auth_service_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -153,7 +153,7 @@ func (x *LoginRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LoginRequest.ProtoReflect.Descriptor instead.
 func (*LoginRequest) Descriptor() ([]byte, []int) {
-	return file_apfish_auth_auth_service_proto_rawDescGZIP(), []int{2}
+	return file_apfish_v1_auth_auth_service_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *LoginRequest) GetLogin() string {
@@ -187,7 +187,7 @@ type LoginResponse struct {
 
 func (x *LoginResponse) Reset() {
 	*x = LoginResponse{}
-	mi := &file_apfish_auth_auth_service_proto_msgTypes[3]
+	mi := &file_apfish_v1_auth_auth_service_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -199,7 +199,7 @@ func (x *LoginResponse) String() string {
 func (*LoginResponse) ProtoMessage() {}
 
 func (x *LoginResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_auth_auth_service_proto_msgTypes[3]
+	mi := &file_apfish_v1_auth_auth_service_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -212,7 +212,7 @@ func (x *LoginResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LoginResponse.ProtoReflect.Descriptor instead.
 func (*LoginResponse) Descriptor() ([]byte, []int) {
-	return file_apfish_auth_auth_service_proto_rawDescGZIP(), []int{3}
+	return file_apfish_v1_auth_auth_service_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *LoginResponse) GetAccessToken() string {
@@ -238,7 +238,7 @@ type RefreshRequest struct {
 
 func (x *RefreshRequest) Reset() {
 	*x = RefreshRequest{}
-	mi := &file_apfish_auth_auth_service_proto_msgTypes[4]
+	mi := &file_apfish_v1_auth_auth_service_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -250,7 +250,7 @@ func (x *RefreshRequest) String() string {
 func (*RefreshRequest) ProtoMessage() {}
 
 func (x *RefreshRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_auth_auth_service_proto_msgTypes[4]
+	mi := &file_apfish_v1_auth_auth_service_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -263,7 +263,7 @@ func (x *RefreshRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RefreshRequest.ProtoReflect.Descriptor instead.
 func (*RefreshRequest) Descriptor() ([]byte, []int) {
-	return file_apfish_auth_auth_service_proto_rawDescGZIP(), []int{4}
+	return file_apfish_v1_auth_auth_service_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *RefreshRequest) GetRefreshToken() string {
@@ -282,7 +282,7 @@ type RefreshResponse struct {
 
 func (x *RefreshResponse) Reset() {
 	*x = RefreshResponse{}
-	mi := &file_apfish_auth_auth_service_proto_msgTypes[5]
+	mi := &file_apfish_v1_auth_auth_service_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -294,7 +294,7 @@ func (x *RefreshResponse) String() string {
 func (*RefreshResponse) ProtoMessage() {}
 
 func (x *RefreshResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_auth_auth_service_proto_msgTypes[5]
+	mi := &file_apfish_v1_auth_auth_service_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -307,7 +307,7 @@ func (x *RefreshResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RefreshResponse.ProtoReflect.Descriptor instead.
 func (*RefreshResponse) Descriptor() ([]byte, []int) {
-	return file_apfish_auth_auth_service_proto_rawDescGZIP(), []int{5}
+	return file_apfish_v1_auth_auth_service_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *RefreshResponse) GetAccessToken() string {
@@ -317,11 +317,11 @@ func (x *RefreshResponse) GetAccessToken() string {
 	return ""
 }
 
-var File_apfish_auth_auth_service_proto protoreflect.FileDescriptor
+var File_apfish_v1_auth_auth_service_proto protoreflect.FileDescriptor
 
-const file_apfish_auth_auth_service_proto_rawDesc = "" +
+const file_apfish_v1_auth_auth_service_proto_rawDesc = "" +
 	"\n" +
-	"\x1eapfish/auth/auth_service.proto\x12\x04auth\"C\n" +
+	"!apfish.v1/auth/auth_service.proto\x12\x04auth\"C\n" +
 	"\x0fRegisterRequest\x12\x14\n" +
 	"\x05login\x18\x01 \x01(\tR\x05login\x12\x1a\n" +
 	"\bpassword\x18\x02 \x01(\tR\bpassword\"+\n" +
@@ -344,19 +344,19 @@ const file_apfish_auth_auth_service_proto_rawDesc = "" +
 	"\aRefresh\x12\x14.auth.RefreshRequest\x1a\x15.auth.RefreshResponseB\x19Z\x17apfish.v1/auth;apfishv1b\x06proto3"
 
 var (
-	file_apfish_auth_auth_service_proto_rawDescOnce sync.Once
-	file_apfish_auth_auth_service_proto_rawDescData []byte
+	file_apfish_v1_auth_auth_service_proto_rawDescOnce sync.Once
+	file_apfish_v1_auth_auth_service_proto_rawDescData []byte
 )
 
-func file_apfish_auth_auth_service_proto_rawDescGZIP() []byte {
-	file_apfish_auth_auth_service_proto_rawDescOnce.Do(func() {
-		file_apfish_auth_auth_service_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_apfish_auth_auth_service_proto_rawDesc), len(file_apfish_auth_auth_service_proto_rawDesc)))
+func file_apfish_v1_auth_auth_service_proto_rawDescGZIP() []byte {
+	file_apfish_v1_auth_auth_service_proto_rawDescOnce.Do(func() {
+		file_apfish_v1_auth_auth_service_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_apfish_v1_auth_auth_service_proto_rawDesc), len(file_apfish_v1_auth_auth_service_proto_rawDesc)))
 	})
-	return file_apfish_auth_auth_service_proto_rawDescData
+	return file_apfish_v1_auth_auth_service_proto_rawDescData
 }
 
-var file_apfish_auth_auth_service_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
-var file_apfish_auth_auth_service_proto_goTypes = []any{
+var file_apfish_v1_auth_auth_service_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
+var file_apfish_v1_auth_auth_service_proto_goTypes = []any{
 	(*RegisterRequest)(nil),  // 0: auth.RegisterRequest
 	(*RegisterResponse)(nil), // 1: auth.RegisterResponse
 	(*LoginRequest)(nil),     // 2: auth.LoginRequest
@@ -364,7 +364,7 @@ var file_apfish_auth_auth_service_proto_goTypes = []any{
 	(*RefreshRequest)(nil),   // 4: auth.RefreshRequest
 	(*RefreshResponse)(nil),  // 5: auth.RefreshResponse
 }
-var file_apfish_auth_auth_service_proto_depIdxs = []int32{
+var file_apfish_v1_auth_auth_service_proto_depIdxs = []int32{
 	0, // 0: auth.AuthService.Register:input_type -> auth.RegisterRequest
 	2, // 1: auth.AuthService.Login:input_type -> auth.LoginRequest
 	4, // 2: auth.AuthService.Refresh:input_type -> auth.RefreshRequest
@@ -378,26 +378,26 @@ var file_apfish_auth_auth_service_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for field type_name
 }
 
-func init() { file_apfish_auth_auth_service_proto_init() }
-func file_apfish_auth_auth_service_proto_init() {
-	if File_apfish_auth_auth_service_proto != nil {
+func init() { file_apfish_v1_auth_auth_service_proto_init() }
+func file_apfish_v1_auth_auth_service_proto_init() {
+	if File_apfish_v1_auth_auth_service_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_apfish_auth_auth_service_proto_rawDesc), len(file_apfish_auth_auth_service_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_apfish_v1_auth_auth_service_proto_rawDesc), len(file_apfish_v1_auth_auth_service_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   6,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_apfish_auth_auth_service_proto_goTypes,
-		DependencyIndexes: file_apfish_auth_auth_service_proto_depIdxs,
-		MessageInfos:      file_apfish_auth_auth_service_proto_msgTypes,
+		GoTypes:           file_apfish_v1_auth_auth_service_proto_goTypes,
+		DependencyIndexes: file_apfish_v1_auth_auth_service_proto_depIdxs,
+		MessageInfos:      file_apfish_v1_auth_auth_service_proto_msgTypes,
 	}.Build()
-	File_apfish_auth_auth_service_proto = out.File
-	file_apfish_auth_auth_service_proto_goTypes = nil
-	file_apfish_auth_auth_service_proto_depIdxs = nil
+	File_apfish_v1_auth_auth_service_proto = out.File
+	file_apfish_v1_auth_auth_service_proto_goTypes = nil
+	file_apfish_v1_auth_auth_service_proto_depIdxs = nil
 }

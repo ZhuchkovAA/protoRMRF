@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.5.1
 // - protoc             v4.25.1
-// source: apfish/location/port/port_service.proto
+// source: apfish.v1/location/port/port_service.proto
 
 package apfishv1
 
@@ -193,5 +193,5 @@ var PortService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "apfish/location/port/port_service.proto",
+	Metadata: "apfish.v1/location/port/port_service.proto",
 }

@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package user;
+
+option go_package = "apfish.v1/user/user;apfishv1";
+
+import "google/protobuf/timestamp.proto";  // Standard Protocol Buffers timestamp
+
+import "apfish.v1/user/role/role_summary.proto";
+import "apfish.v1/user/contact/contact/contact_summary.proto";
+
+import "apfish.v1/permission/permission/permission_summary.proto";
+
+// Represents a user account in the system.
+message User {
+  int64 id = 1;                       // Unique system-generated ID.
+  string login = 2;                   // Unique login identifier.
+  string official_name = 3;           // Formal name (e.g., "John Doe").
+  RoleSummary role = 4;                      // Assigned role.
+  google.protobuf.Timestamp created_at = 5;  // When the user was created.
+  string created_by_login = 6;        // Login of the creator (e.g., "admin").
+
+  repeated contact.ContactSummary contacts = 7;   // User's contact methods.
+  repeated permission.PermissionSummary permissions = 8;  // Direct permissions (overrides role).
+}
+

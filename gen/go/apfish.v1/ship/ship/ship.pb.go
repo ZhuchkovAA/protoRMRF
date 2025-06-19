@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.6
 // 	protoc        v4.25.1
-// source: apfish/ship/ship/ship.proto
+// source: apfish.v1/ship/ship/ship.proto
 
 package apfishv1
 
@@ -51,7 +51,7 @@ type Ship struct {
 
 func (x *Ship) Reset() {
 	*x = Ship{}
-	mi := &file_apfish_ship_ship_ship_proto_msgTypes[0]
+	mi := &file_apfish_v1_ship_ship_ship_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -63,7 +63,7 @@ func (x *Ship) String() string {
 func (*Ship) ProtoMessage() {}
 
 func (x *Ship) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_ship_ship_ship_proto_msgTypes[0]
+	mi := &file_apfish_v1_ship_ship_ship_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -76,7 +76,7 @@ func (x *Ship) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Ship.ProtoReflect.Descriptor instead.
 func (*Ship) Descriptor() ([]byte, []int) {
-	return file_apfish_ship_ship_ship_proto_rawDescGZIP(), []int{0}
+	return file_apfish_v1_ship_ship_ship_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *Ship) GetId() int64 {
@@ -184,11 +184,11 @@ func (x *Ship) GetPermissions() []*permission.PermissionSummary {
 	return nil
 }
 
-var File_apfish_ship_ship_ship_proto protoreflect.FileDescriptor
+var File_apfish_v1_ship_ship_ship_proto protoreflect.FileDescriptor
 
-const file_apfish_ship_ship_ship_proto_rawDesc = "" +
+const file_apfish_v1_ship_ship_ship_proto_rawDesc = "" +
 	"\n" +
-	"\x1bapfish/ship/ship/ship.proto\x12\x04ship\x1a\x1fgoogle/protobuf/timestamp.proto\x1a#apfish/ship/type/type_summary.proto\x1a%apfish/ship/class/class_summary.proto\x1a-apfish/location/country/country_summary.proto\x1a(apfish/call_sign/call_sign_summary.proto\x1a)apfish/ship/captain/captain_summary.proto\x1a5apfish/permission/permission/permission_summary.proto\"\xda\x04\n" +
+	"\x1eapfish.v1/ship/ship/ship.proto\x12\x04ship\x1a\x1fgoogle/protobuf/timestamp.proto\x1a&apfish.v1/ship/type/type_summary.proto\x1a(apfish.v1/ship/class/class_summary.proto\x1a0apfish.v1/location/country/country_summary.proto\x1a+apfish.v1/call_sign/call_sign_summary.proto\x1a,apfish.v1/ship/captain/captain_summary.proto\x1a8apfish.v1/permission/permission/permission_summary.proto\"\xda\x04\n" +
 	"\x04Ship\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x10\n" +
 	"\x03imo\x18\x02 \x01(\x03R\x03imo\x12%\n" +
@@ -211,19 +211,19 @@ const file_apfish_ship_ship_ship_proto_rawDesc = "" +
 	"\vpermissions\x18\x0f \x03(\v2\x1d.permission.PermissionSummaryR\vpermissionsB\x1eZ\x1capfish.v1/ship/ship;apfishv1b\x06proto3"
 
 var (
-	file_apfish_ship_ship_ship_proto_rawDescOnce sync.Once
-	file_apfish_ship_ship_ship_proto_rawDescData []byte
+	file_apfish_v1_ship_ship_ship_proto_rawDescOnce sync.Once
+	file_apfish_v1_ship_ship_ship_proto_rawDescData []byte
 )
 
-func file_apfish_ship_ship_ship_proto_rawDescGZIP() []byte {
-	file_apfish_ship_ship_ship_proto_rawDescOnce.Do(func() {
-		file_apfish_ship_ship_ship_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_apfish_ship_ship_ship_proto_rawDesc), len(file_apfish_ship_ship_ship_proto_rawDesc)))
+func file_apfish_v1_ship_ship_ship_proto_rawDescGZIP() []byte {
+	file_apfish_v1_ship_ship_ship_proto_rawDescOnce.Do(func() {
+		file_apfish_v1_ship_ship_ship_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_apfish_v1_ship_ship_ship_proto_rawDesc), len(file_apfish_v1_ship_ship_ship_proto_rawDesc)))
 	})
-	return file_apfish_ship_ship_ship_proto_rawDescData
+	return file_apfish_v1_ship_ship_ship_proto_rawDescData
 }
 
-var file_apfish_ship_ship_ship_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
-var file_apfish_ship_ship_ship_proto_goTypes = []any{
+var file_apfish_v1_ship_ship_ship_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
+var file_apfish_v1_ship_ship_ship_proto_goTypes = []any{
 	(*Ship)(nil),                         // 0: ship.Ship
 	(*_type.TypeSummary)(nil),            // 1: ship.TypeSummary
 	(*class.ClassSummary)(nil),           // 2: ship.ClassSummary
@@ -233,7 +233,7 @@ var file_apfish_ship_ship_ship_proto_goTypes = []any{
 	(*captain.CaptainSummary)(nil),       // 6: ship.CaptainSummary
 	(*permission.PermissionSummary)(nil), // 7: permission.PermissionSummary
 }
-var file_apfish_ship_ship_ship_proto_depIdxs = []int32{
+var file_apfish_v1_ship_ship_ship_proto_depIdxs = []int32{
 	1, // 0: ship.Ship.type:type_name -> ship.TypeSummary
 	2, // 1: ship.Ship.class:type_name -> ship.ClassSummary
 	3, // 2: ship.Ship.country:type_name -> location.CountrySummary
@@ -249,26 +249,26 @@ var file_apfish_ship_ship_ship_proto_depIdxs = []int32{
 	0, // [0:8] is the sub-list for field type_name
 }
 
-func init() { file_apfish_ship_ship_ship_proto_init() }
-func file_apfish_ship_ship_ship_proto_init() {
-	if File_apfish_ship_ship_ship_proto != nil {
+func init() { file_apfish_v1_ship_ship_ship_proto_init() }
+func file_apfish_v1_ship_ship_ship_proto_init() {
+	if File_apfish_v1_ship_ship_ship_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_apfish_ship_ship_ship_proto_rawDesc), len(file_apfish_ship_ship_ship_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_apfish_v1_ship_ship_ship_proto_rawDesc), len(file_apfish_v1_ship_ship_ship_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   1,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
-		GoTypes:           file_apfish_ship_ship_ship_proto_goTypes,
-		DependencyIndexes: file_apfish_ship_ship_ship_proto_depIdxs,
-		MessageInfos:      file_apfish_ship_ship_ship_proto_msgTypes,
+		GoTypes:           file_apfish_v1_ship_ship_ship_proto_goTypes,
+		DependencyIndexes: file_apfish_v1_ship_ship_ship_proto_depIdxs,
+		MessageInfos:      file_apfish_v1_ship_ship_ship_proto_msgTypes,
 	}.Build()
-	File_apfish_ship_ship_ship_proto = out.File
-	file_apfish_ship_ship_ship_proto_goTypes = nil
-	file_apfish_ship_ship_ship_proto_depIdxs = nil
+	File_apfish_v1_ship_ship_ship_proto = out.File
+	file_apfish_v1_ship_ship_ship_proto_goTypes = nil
+	file_apfish_v1_ship_ship_ship_proto_depIdxs = nil
 }

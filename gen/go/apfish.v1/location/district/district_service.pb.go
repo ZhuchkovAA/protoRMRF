@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.6
 // 	protoc        v4.25.1
-// source: apfish/location/district/district_service.proto
+// source: apfish.v1/location/district/district_service.proto
 
 package apfishv1
 
@@ -30,7 +30,7 @@ type DistrictRequest struct {
 
 func (x *DistrictRequest) Reset() {
 	*x = DistrictRequest{}
-	mi := &file_apfish_location_district_district_service_proto_msgTypes[0]
+	mi := &file_apfish_v1_location_district_district_service_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -42,7 +42,7 @@ func (x *DistrictRequest) String() string {
 func (*DistrictRequest) ProtoMessage() {}
 
 func (x *DistrictRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_location_district_district_service_proto_msgTypes[0]
+	mi := &file_apfish_v1_location_district_district_service_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -55,7 +55,7 @@ func (x *DistrictRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DistrictRequest.ProtoReflect.Descriptor instead.
 func (*DistrictRequest) Descriptor() ([]byte, []int) {
-	return file_apfish_location_district_district_service_proto_rawDescGZIP(), []int{0}
+	return file_apfish_v1_location_district_district_service_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *DistrictRequest) GetId() int64 {
@@ -74,7 +74,7 @@ type DistrictResponse struct {
 
 func (x *DistrictResponse) Reset() {
 	*x = DistrictResponse{}
-	mi := &file_apfish_location_district_district_service_proto_msgTypes[1]
+	mi := &file_apfish_v1_location_district_district_service_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -86,7 +86,7 @@ func (x *DistrictResponse) String() string {
 func (*DistrictResponse) ProtoMessage() {}
 
 func (x *DistrictResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_location_district_district_service_proto_msgTypes[1]
+	mi := &file_apfish_v1_location_district_district_service_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -99,7 +99,7 @@ func (x *DistrictResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DistrictResponse.ProtoReflect.Descriptor instead.
 func (*DistrictResponse) Descriptor() ([]byte, []int) {
-	return file_apfish_location_district_district_service_proto_rawDescGZIP(), []int{1}
+	return file_apfish_v1_location_district_district_service_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *DistrictResponse) GetDistrict() *District {
@@ -118,7 +118,7 @@ type DistrictSummaryResponse struct {
 
 func (x *DistrictSummaryResponse) Reset() {
 	*x = DistrictSummaryResponse{}
-	mi := &file_apfish_location_district_district_service_proto_msgTypes[2]
+	mi := &file_apfish_v1_location_district_district_service_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -130,7 +130,7 @@ func (x *DistrictSummaryResponse) String() string {
 func (*DistrictSummaryResponse) ProtoMessage() {}
 
 func (x *DistrictSummaryResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_location_district_district_service_proto_msgTypes[2]
+	mi := &file_apfish_v1_location_district_district_service_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -143,7 +143,7 @@ func (x *DistrictSummaryResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DistrictSummaryResponse.ProtoReflect.Descriptor instead.
 func (*DistrictSummaryResponse) Descriptor() ([]byte, []int) {
-	return file_apfish_location_district_district_service_proto_rawDescGZIP(), []int{2}
+	return file_apfish_v1_location_district_district_service_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *DistrictSummaryResponse) GetDistrict() *DistrictSummary {
@@ -163,7 +163,7 @@ type ListDistrictsRequest struct {
 
 func (x *ListDistrictsRequest) Reset() {
 	*x = ListDistrictsRequest{}
-	mi := &file_apfish_location_district_district_service_proto_msgTypes[3]
+	mi := &file_apfish_v1_location_district_district_service_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -175,7 +175,7 @@ func (x *ListDistrictsRequest) String() string {
 func (*ListDistrictsRequest) ProtoMessage() {}
 
 func (x *ListDistrictsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_location_district_district_service_proto_msgTypes[3]
+	mi := &file_apfish_v1_location_district_district_service_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -188,7 +188,7 @@ func (x *ListDistrictsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListDistrictsRequest.ProtoReflect.Descriptor instead.
 func (*ListDistrictsRequest) Descriptor() ([]byte, []int) {
-	return file_apfish_location_district_district_service_proto_rawDescGZIP(), []int{3}
+	return file_apfish_v1_location_district_district_service_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *ListDistrictsRequest) GetPage() int64 {
@@ -215,7 +215,7 @@ type ListDistrictsResponse struct {
 
 func (x *ListDistrictsResponse) Reset() {
 	*x = ListDistrictsResponse{}
-	mi := &file_apfish_location_district_district_service_proto_msgTypes[4]
+	mi := &file_apfish_v1_location_district_district_service_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -227,7 +227,7 @@ func (x *ListDistrictsResponse) String() string {
 func (*ListDistrictsResponse) ProtoMessage() {}
 
 func (x *ListDistrictsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_location_district_district_service_proto_msgTypes[4]
+	mi := &file_apfish_v1_location_district_district_service_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -240,7 +240,7 @@ func (x *ListDistrictsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListDistrictsResponse.ProtoReflect.Descriptor instead.
 func (*ListDistrictsResponse) Descriptor() ([]byte, []int) {
-	return file_apfish_location_district_district_service_proto_rawDescGZIP(), []int{4}
+	return file_apfish_v1_location_district_district_service_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *ListDistrictsResponse) GetListDistricts() []*DistrictSummary {
@@ -257,11 +257,11 @@ func (x *ListDistrictsResponse) GetTotal() int64 {
 	return 0
 }
 
-var File_apfish_location_district_district_service_proto protoreflect.FileDescriptor
+var File_apfish_v1_location_district_district_service_proto protoreflect.FileDescriptor
 
-const file_apfish_location_district_district_service_proto_rawDesc = "" +
+const file_apfish_v1_location_district_district_service_proto_rawDesc = "" +
 	"\n" +
-	"/apfish/location/district/district_service.proto\x12\blocation\x1a'apfish/location/district/district.proto\x1a/apfish/location/district/district_summary.proto\"!\n" +
+	"2apfish.v1/location/district/district_service.proto\x12\blocation\x1a*apfish.v1/location/district/district.proto\x1a2apfish.v1/location/district/district_summary.proto\"!\n" +
 	"\x0fDistrictRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\"B\n" +
 	"\x10DistrictResponse\x12.\n" +
@@ -280,19 +280,19 @@ const file_apfish_location_district_district_service_proto_rawDesc = "" +
 	"\rListDistricts\x12\x1e.location.ListDistrictsRequest\x1a\x1f.location.ListDistrictsResponseB&Z$apfish.v1/location/district;apfishv1b\x06proto3"
 
 var (
-	file_apfish_location_district_district_service_proto_rawDescOnce sync.Once
-	file_apfish_location_district_district_service_proto_rawDescData []byte
+	file_apfish_v1_location_district_district_service_proto_rawDescOnce sync.Once
+	file_apfish_v1_location_district_district_service_proto_rawDescData []byte
 )
 
-func file_apfish_location_district_district_service_proto_rawDescGZIP() []byte {
-	file_apfish_location_district_district_service_proto_rawDescOnce.Do(func() {
-		file_apfish_location_district_district_service_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_apfish_location_district_district_service_proto_rawDesc), len(file_apfish_location_district_district_service_proto_rawDesc)))
+func file_apfish_v1_location_district_district_service_proto_rawDescGZIP() []byte {
+	file_apfish_v1_location_district_district_service_proto_rawDescOnce.Do(func() {
+		file_apfish_v1_location_district_district_service_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_apfish_v1_location_district_district_service_proto_rawDesc), len(file_apfish_v1_location_district_district_service_proto_rawDesc)))
 	})
-	return file_apfish_location_district_district_service_proto_rawDescData
+	return file_apfish_v1_location_district_district_service_proto_rawDescData
 }
 
-var file_apfish_location_district_district_service_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
-var file_apfish_location_district_district_service_proto_goTypes = []any{
+var file_apfish_v1_location_district_district_service_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
+var file_apfish_v1_location_district_district_service_proto_goTypes = []any{
 	(*DistrictRequest)(nil),         // 0: location.DistrictRequest
 	(*DistrictResponse)(nil),        // 1: location.DistrictResponse
 	(*DistrictSummaryResponse)(nil), // 2: location.DistrictSummaryResponse
@@ -301,7 +301,7 @@ var file_apfish_location_district_district_service_proto_goTypes = []any{
 	(*District)(nil),                // 5: location.District
 	(*DistrictSummary)(nil),         // 6: location.DistrictSummary
 }
-var file_apfish_location_district_district_service_proto_depIdxs = []int32{
+var file_apfish_v1_location_district_district_service_proto_depIdxs = []int32{
 	5, // 0: location.DistrictResponse.district:type_name -> location.District
 	6, // 1: location.DistrictSummaryResponse.district:type_name -> location.DistrictSummary
 	6, // 2: location.ListDistrictsResponse.list_districts:type_name -> location.DistrictSummary
@@ -318,28 +318,28 @@ var file_apfish_location_district_district_service_proto_depIdxs = []int32{
 	0, // [0:3] is the sub-list for field type_name
 }
 
-func init() { file_apfish_location_district_district_service_proto_init() }
-func file_apfish_location_district_district_service_proto_init() {
-	if File_apfish_location_district_district_service_proto != nil {
+func init() { file_apfish_v1_location_district_district_service_proto_init() }
+func file_apfish_v1_location_district_district_service_proto_init() {
+	if File_apfish_v1_location_district_district_service_proto != nil {
 		return
 	}
-	file_apfish_location_district_district_proto_init()
-	file_apfish_location_district_district_summary_proto_init()
+	file_apfish_v1_location_district_district_proto_init()
+	file_apfish_v1_location_district_district_summary_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_apfish_location_district_district_service_proto_rawDesc), len(file_apfish_location_district_district_service_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_apfish_v1_location_district_district_service_proto_rawDesc), len(file_apfish_v1_location_district_district_service_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   5,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_apfish_location_district_district_service_proto_goTypes,
-		DependencyIndexes: file_apfish_location_district_district_service_proto_depIdxs,
-		MessageInfos:      file_apfish_location_district_district_service_proto_msgTypes,
+		GoTypes:           file_apfish_v1_location_district_district_service_proto_goTypes,
+		DependencyIndexes: file_apfish_v1_location_district_district_service_proto_depIdxs,
+		MessageInfos:      file_apfish_v1_location_district_district_service_proto_msgTypes,
 	}.Build()
-	File_apfish_location_district_district_service_proto = out.File
-	file_apfish_location_district_district_service_proto_goTypes = nil
-	file_apfish_location_district_district_service_proto_depIdxs = nil
+	File_apfish_v1_location_district_district_service_proto = out.File
+	file_apfish_v1_location_district_district_service_proto_goTypes = nil
+	file_apfish_v1_location_district_district_service_proto_depIdxs = nil
 }

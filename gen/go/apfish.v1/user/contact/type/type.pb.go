@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.6
 // 	protoc        v4.25.1
-// source: apfish/user/contact/type/type.proto
+// source: apfish.v1/user/contact/type/type.proto
 
 package apfishv1
 
@@ -37,7 +37,7 @@ type Type struct {
 
 func (x *Type) Reset() {
 	*x = Type{}
-	mi := &file_apfish_user_contact_type_type_proto_msgTypes[0]
+	mi := &file_apfish_v1_user_contact_type_type_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -49,7 +49,7 @@ func (x *Type) String() string {
 func (*Type) ProtoMessage() {}
 
 func (x *Type) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_user_contact_type_type_proto_msgTypes[0]
+	mi := &file_apfish_v1_user_contact_type_type_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -62,7 +62,7 @@ func (x *Type) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Type.ProtoReflect.Descriptor instead.
 func (*Type) Descriptor() ([]byte, []int) {
-	return file_apfish_user_contact_type_type_proto_rawDescGZIP(), []int{0}
+	return file_apfish_v1_user_contact_type_type_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *Type) GetId() int64 {
@@ -100,11 +100,11 @@ func (x *Type) GetContacts() []*contact.ContactSummary {
 	return nil
 }
 
-var File_apfish_user_contact_type_type_proto protoreflect.FileDescriptor
+var File_apfish_v1_user_contact_type_type_proto protoreflect.FileDescriptor
 
-const file_apfish_user_contact_type_type_proto_rawDesc = "" +
+const file_apfish_v1_user_contact_type_type_proto_rawDesc = "" +
 	"\n" +
-	"#apfish/user/contact/type/type.proto\x12\fuser.contact\x1a\x1fgoogle/protobuf/timestamp.proto\x1a1apfish/user/contact/contact/contact_summary.proto\"\xb3\x01\n" +
+	"&apfish.v1/user/contact/type/type.proto\x12\fuser.contact\x1a\x1fgoogle/protobuf/timestamp.proto\x1a4apfish.v1/user/contact/contact/contact_summary.proto\"\xb3\x01\n" +
 	"\x04Type\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x12\n" +
@@ -114,24 +114,24 @@ const file_apfish_user_contact_type_type_proto_rawDesc = "" +
 	"\bcontacts\x18\x05 \x03(\v2\x1c.user.contact.ContactSummaryR\bcontactsB&Z$apfish.v1/user/contact/type;apfishv1b\x06proto3"
 
 var (
-	file_apfish_user_contact_type_type_proto_rawDescOnce sync.Once
-	file_apfish_user_contact_type_type_proto_rawDescData []byte
+	file_apfish_v1_user_contact_type_type_proto_rawDescOnce sync.Once
+	file_apfish_v1_user_contact_type_type_proto_rawDescData []byte
 )
 
-func file_apfish_user_contact_type_type_proto_rawDescGZIP() []byte {
-	file_apfish_user_contact_type_type_proto_rawDescOnce.Do(func() {
-		file_apfish_user_contact_type_type_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_apfish_user_contact_type_type_proto_rawDesc), len(file_apfish_user_contact_type_type_proto_rawDesc)))
+func file_apfish_v1_user_contact_type_type_proto_rawDescGZIP() []byte {
+	file_apfish_v1_user_contact_type_type_proto_rawDescOnce.Do(func() {
+		file_apfish_v1_user_contact_type_type_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_apfish_v1_user_contact_type_type_proto_rawDesc), len(file_apfish_v1_user_contact_type_type_proto_rawDesc)))
 	})
-	return file_apfish_user_contact_type_type_proto_rawDescData
+	return file_apfish_v1_user_contact_type_type_proto_rawDescData
 }
 
-var file_apfish_user_contact_type_type_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
-var file_apfish_user_contact_type_type_proto_goTypes = []any{
+var file_apfish_v1_user_contact_type_type_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
+var file_apfish_v1_user_contact_type_type_proto_goTypes = []any{
 	(*Type)(nil),                   // 0: user.contact.Type
 	(*timestamppb.Timestamp)(nil),  // 1: google.protobuf.Timestamp
 	(*contact.ContactSummary)(nil), // 2: user.contact.ContactSummary
 }
-var file_apfish_user_contact_type_type_proto_depIdxs = []int32{
+var file_apfish_v1_user_contact_type_type_proto_depIdxs = []int32{
 	1, // 0: user.contact.Type.created_at:type_name -> google.protobuf.Timestamp
 	2, // 1: user.contact.Type.contacts:type_name -> user.contact.ContactSummary
 	2, // [2:2] is the sub-list for method output_type
@@ -141,26 +141,26 @@ var file_apfish_user_contact_type_type_proto_depIdxs = []int32{
 	0, // [0:2] is the sub-list for field type_name
 }
 
-func init() { file_apfish_user_contact_type_type_proto_init() }
-func file_apfish_user_contact_type_type_proto_init() {
-	if File_apfish_user_contact_type_type_proto != nil {
+func init() { file_apfish_v1_user_contact_type_type_proto_init() }
+func file_apfish_v1_user_contact_type_type_proto_init() {
+	if File_apfish_v1_user_contact_type_type_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_apfish_user_contact_type_type_proto_rawDesc), len(file_apfish_user_contact_type_type_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_apfish_v1_user_contact_type_type_proto_rawDesc), len(file_apfish_v1_user_contact_type_type_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   1,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
-		GoTypes:           file_apfish_user_contact_type_type_proto_goTypes,
-		DependencyIndexes: file_apfish_user_contact_type_type_proto_depIdxs,
-		MessageInfos:      file_apfish_user_contact_type_type_proto_msgTypes,
+		GoTypes:           file_apfish_v1_user_contact_type_type_proto_goTypes,
+		DependencyIndexes: file_apfish_v1_user_contact_type_type_proto_depIdxs,
+		MessageInfos:      file_apfish_v1_user_contact_type_type_proto_msgTypes,
 	}.Build()
-	File_apfish_user_contact_type_type_proto = out.File
-	file_apfish_user_contact_type_type_proto_goTypes = nil
-	file_apfish_user_contact_type_type_proto_depIdxs = nil
+	File_apfish_v1_user_contact_type_type_proto = out.File
+	file_apfish_v1_user_contact_type_type_proto_goTypes = nil
+	file_apfish_v1_user_contact_type_type_proto_depIdxs = nil
 }

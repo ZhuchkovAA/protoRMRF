@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package permission;
+
+option go_package = "apfish.v1/permission/object;apfishv1";
+
+import "apfish.v1/permission/object/object.proto";
+import "apfish.v1/permission/object/object_summary.proto";
+
+service ObjectService {
+  rpc GetObject (ObjectRequest) returns (ObjectResponse);
+  rpc GetObjectSummary (ObjectRequest) returns (ObjectSummaryResponse);
+
+  rpc ListObjects (ListObjectsRequest) returns (ListObjectsResponse);
+}
+
+message ObjectRequest {
+  int64 id = 1;
+}
+
+message ObjectResponse {
+  Object object = 1;
+}
+
+message ObjectSummaryResponse {
+  ObjectSummary object = 1;
+}
+
+message ListObjectsRequest {
+  int64 page = 1;      // Page number (1-based). Default: 1.
+  int64 per_page = 2;  // Items per page (default: 20, max: 100).
+}
+
+message ListObjectsResponse {
+  repeated ObjectSummary list_objects = 1;
+  int64 total = 2;
+}

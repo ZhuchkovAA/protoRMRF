@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package ship;
+
+option go_package = "apfish.v1/ship/captain;apfishv1";
+
+import "apfish.v1/ship/captain/captain.proto";
+import "apfish.v1/ship/captain/captain_summary.proto";
+
+service CaptainService {
+  rpc GetCaptain (CaptainRequest) returns (CaptainResponse);
+  rpc GetCaptainSummary (CaptainRequest) returns (CaptainSummaryResponse);
+
+  rpc ListCaptains (ListCaptainsRequest) returns (ListCaptainsResponse);
+}
+
+message CaptainRequest {
+  int64 id = 1;
+}
+
+message CaptainResponse {
+  Captain captain = 1;
+}
+
+message CaptainSummaryResponse {
+  CaptainSummary captain = 1;
+}
+
+message ListCaptainsRequest {
+  int64 page = 1;      // Page number (1-based). Default: 1.
+  int64 per_page = 2;  // Items per page (default: 20, max: 100).
+}
+
+message ListCaptainsResponse {
+  repeated CaptainSummary list_captains = 1;
+  int64 total = 2;
+}

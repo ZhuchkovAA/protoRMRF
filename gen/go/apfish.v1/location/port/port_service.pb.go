@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.6
 // 	protoc        v4.25.1
-// source: apfish/location/port/port_service.proto
+// source: apfish.v1/location/port/port_service.proto
 
 package apfishv1
 
@@ -30,7 +30,7 @@ type PortRequest struct {
 
 func (x *PortRequest) Reset() {
 	*x = PortRequest{}
-	mi := &file_apfish_location_port_port_service_proto_msgTypes[0]
+	mi := &file_apfish_v1_location_port_port_service_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -42,7 +42,7 @@ func (x *PortRequest) String() string {
 func (*PortRequest) ProtoMessage() {}
 
 func (x *PortRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_location_port_port_service_proto_msgTypes[0]
+	mi := &file_apfish_v1_location_port_port_service_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -55,7 +55,7 @@ func (x *PortRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PortRequest.ProtoReflect.Descriptor instead.
 func (*PortRequest) Descriptor() ([]byte, []int) {
-	return file_apfish_location_port_port_service_proto_rawDescGZIP(), []int{0}
+	return file_apfish_v1_location_port_port_service_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *PortRequest) GetId() int64 {
@@ -74,7 +74,7 @@ type PortResponse struct {
 
 func (x *PortResponse) Reset() {
 	*x = PortResponse{}
-	mi := &file_apfish_location_port_port_service_proto_msgTypes[1]
+	mi := &file_apfish_v1_location_port_port_service_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -86,7 +86,7 @@ func (x *PortResponse) String() string {
 func (*PortResponse) ProtoMessage() {}
 
 func (x *PortResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_location_port_port_service_proto_msgTypes[1]
+	mi := &file_apfish_v1_location_port_port_service_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -99,7 +99,7 @@ func (x *PortResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PortResponse.ProtoReflect.Descriptor instead.
 func (*PortResponse) Descriptor() ([]byte, []int) {
-	return file_apfish_location_port_port_service_proto_rawDescGZIP(), []int{1}
+	return file_apfish_v1_location_port_port_service_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *PortResponse) GetPort() *Port {
@@ -118,7 +118,7 @@ type PortSummaryResponse struct {
 
 func (x *PortSummaryResponse) Reset() {
 	*x = PortSummaryResponse{}
-	mi := &file_apfish_location_port_port_service_proto_msgTypes[2]
+	mi := &file_apfish_v1_location_port_port_service_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -130,7 +130,7 @@ func (x *PortSummaryResponse) String() string {
 func (*PortSummaryResponse) ProtoMessage() {}
 
 func (x *PortSummaryResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_location_port_port_service_proto_msgTypes[2]
+	mi := &file_apfish_v1_location_port_port_service_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -143,7 +143,7 @@ func (x *PortSummaryResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PortSummaryResponse.ProtoReflect.Descriptor instead.
 func (*PortSummaryResponse) Descriptor() ([]byte, []int) {
-	return file_apfish_location_port_port_service_proto_rawDescGZIP(), []int{2}
+	return file_apfish_v1_location_port_port_service_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *PortSummaryResponse) GetPort() *PortSummary {
@@ -163,7 +163,7 @@ type ListPortsRequest struct {
 
 func (x *ListPortsRequest) Reset() {
 	*x = ListPortsRequest{}
-	mi := &file_apfish_location_port_port_service_proto_msgTypes[3]
+	mi := &file_apfish_v1_location_port_port_service_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -175,7 +175,7 @@ func (x *ListPortsRequest) String() string {
 func (*ListPortsRequest) ProtoMessage() {}
 
 func (x *ListPortsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_location_port_port_service_proto_msgTypes[3]
+	mi := &file_apfish_v1_location_port_port_service_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -188,7 +188,7 @@ func (x *ListPortsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListPortsRequest.ProtoReflect.Descriptor instead.
 func (*ListPortsRequest) Descriptor() ([]byte, []int) {
-	return file_apfish_location_port_port_service_proto_rawDescGZIP(), []int{3}
+	return file_apfish_v1_location_port_port_service_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *ListPortsRequest) GetPage() int64 {
@@ -215,7 +215,7 @@ type ListPortsResponse struct {
 
 func (x *ListPortsResponse) Reset() {
 	*x = ListPortsResponse{}
-	mi := &file_apfish_location_port_port_service_proto_msgTypes[4]
+	mi := &file_apfish_v1_location_port_port_service_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -227,7 +227,7 @@ func (x *ListPortsResponse) String() string {
 func (*ListPortsResponse) ProtoMessage() {}
 
 func (x *ListPortsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_location_port_port_service_proto_msgTypes[4]
+	mi := &file_apfish_v1_location_port_port_service_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -240,7 +240,7 @@ func (x *ListPortsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListPortsResponse.ProtoReflect.Descriptor instead.
 func (*ListPortsResponse) Descriptor() ([]byte, []int) {
-	return file_apfish_location_port_port_service_proto_rawDescGZIP(), []int{4}
+	return file_apfish_v1_location_port_port_service_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *ListPortsResponse) GetListPorts() []*PortSummary {
@@ -257,11 +257,11 @@ func (x *ListPortsResponse) GetTotal() int64 {
 	return 0
 }
 
-var File_apfish_location_port_port_service_proto protoreflect.FileDescriptor
+var File_apfish_v1_location_port_port_service_proto protoreflect.FileDescriptor
 
-const file_apfish_location_port_port_service_proto_rawDesc = "" +
+const file_apfish_v1_location_port_port_service_proto_rawDesc = "" +
 	"\n" +
-	"'apfish/location/port/port_service.proto\x12\blocation\x1a\x1fapfish/location/port/port.proto\x1a'apfish/location/port/port_summary.proto\"\x1d\n" +
+	"*apfish.v1/location/port/port_service.proto\x12\blocation\x1a\"apfish.v1/location/port/port.proto\x1a*apfish.v1/location/port/port_summary.proto\"\x1d\n" +
 	"\vPortRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\"2\n" +
 	"\fPortResponse\x12\"\n" +
@@ -281,19 +281,19 @@ const file_apfish_location_port_port_service_proto_rawDesc = "" +
 	"\tListPorts\x12\x1a.location.ListPortsRequest\x1a\x1b.location.ListPortsResponseB\"Z apfish.v1/location/port;apfishv1b\x06proto3"
 
 var (
-	file_apfish_location_port_port_service_proto_rawDescOnce sync.Once
-	file_apfish_location_port_port_service_proto_rawDescData []byte
+	file_apfish_v1_location_port_port_service_proto_rawDescOnce sync.Once
+	file_apfish_v1_location_port_port_service_proto_rawDescData []byte
 )
 
-func file_apfish_location_port_port_service_proto_rawDescGZIP() []byte {
-	file_apfish_location_port_port_service_proto_rawDescOnce.Do(func() {
-		file_apfish_location_port_port_service_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_apfish_location_port_port_service_proto_rawDesc), len(file_apfish_location_port_port_service_proto_rawDesc)))
+func file_apfish_v1_location_port_port_service_proto_rawDescGZIP() []byte {
+	file_apfish_v1_location_port_port_service_proto_rawDescOnce.Do(func() {
+		file_apfish_v1_location_port_port_service_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_apfish_v1_location_port_port_service_proto_rawDesc), len(file_apfish_v1_location_port_port_service_proto_rawDesc)))
 	})
-	return file_apfish_location_port_port_service_proto_rawDescData
+	return file_apfish_v1_location_port_port_service_proto_rawDescData
 }
 
-var file_apfish_location_port_port_service_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
-var file_apfish_location_port_port_service_proto_goTypes = []any{
+var file_apfish_v1_location_port_port_service_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
+var file_apfish_v1_location_port_port_service_proto_goTypes = []any{
 	(*PortRequest)(nil),         // 0: location.PortRequest
 	(*PortResponse)(nil),        // 1: location.PortResponse
 	(*PortSummaryResponse)(nil), // 2: location.PortSummaryResponse
@@ -302,7 +302,7 @@ var file_apfish_location_port_port_service_proto_goTypes = []any{
 	(*Port)(nil),                // 5: location.Port
 	(*PortSummary)(nil),         // 6: location.PortSummary
 }
-var file_apfish_location_port_port_service_proto_depIdxs = []int32{
+var file_apfish_v1_location_port_port_service_proto_depIdxs = []int32{
 	5, // 0: location.PortResponse.port:type_name -> location.Port
 	6, // 1: location.PortSummaryResponse.port:type_name -> location.PortSummary
 	6, // 2: location.ListPortsResponse.list_ports:type_name -> location.PortSummary
@@ -319,28 +319,28 @@ var file_apfish_location_port_port_service_proto_depIdxs = []int32{
 	0, // [0:3] is the sub-list for field type_name
 }
 
-func init() { file_apfish_location_port_port_service_proto_init() }
-func file_apfish_location_port_port_service_proto_init() {
-	if File_apfish_location_port_port_service_proto != nil {
+func init() { file_apfish_v1_location_port_port_service_proto_init() }
+func file_apfish_v1_location_port_port_service_proto_init() {
+	if File_apfish_v1_location_port_port_service_proto != nil {
 		return
 	}
-	file_apfish_location_port_port_proto_init()
-	file_apfish_location_port_port_summary_proto_init()
+	file_apfish_v1_location_port_port_proto_init()
+	file_apfish_v1_location_port_port_summary_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_apfish_location_port_port_service_proto_rawDesc), len(file_apfish_location_port_port_service_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_apfish_v1_location_port_port_service_proto_rawDesc), len(file_apfish_v1_location_port_port_service_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   5,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_apfish_location_port_port_service_proto_goTypes,
-		DependencyIndexes: file_apfish_location_port_port_service_proto_depIdxs,
-		MessageInfos:      file_apfish_location_port_port_service_proto_msgTypes,
+		GoTypes:           file_apfish_v1_location_port_port_service_proto_goTypes,
+		DependencyIndexes: file_apfish_v1_location_port_port_service_proto_depIdxs,
+		MessageInfos:      file_apfish_v1_location_port_port_service_proto_msgTypes,
 	}.Build()
-	File_apfish_location_port_port_service_proto = out.File
-	file_apfish_location_port_port_service_proto_goTypes = nil
-	file_apfish_location_port_port_service_proto_depIdxs = nil
+	File_apfish_v1_location_port_port_service_proto = out.File
+	file_apfish_v1_location_port_port_service_proto_goTypes = nil
+	file_apfish_v1_location_port_port_service_proto_depIdxs = nil
 }

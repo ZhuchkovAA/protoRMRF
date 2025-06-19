@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.5.1
 // - protoc             v4.25.1
-// source: apfish/auth/auth_service.proto
+// source: apfish.v1/auth/auth_service.proto
 
 package apfishv1
 
@@ -203,5 +203,5 @@ var AuthService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "apfish/auth/auth_service.proto",
+	Metadata: "apfish.v1/auth/auth_service.proto",
 }
