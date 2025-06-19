@@ -28,7 +28,8 @@ type PortSummary struct {
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	CountryId     int64                  `protobuf:"varint,3,opt,name=country_id,json=countryId,proto3" json:"country_id,omitempty"`
 	DistrictId    int64                  `protobuf:"varint,4,opt,name=district_id,json=districtId,proto3" json:"district_id,omitempty"`
-	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	Code          string                 `protobuf:"bytes,5,opt,name=code,proto3" json:"code,omitempty"`
+	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -91,6 +92,13 @@ func (x *PortSummary) GetDistrictId() int64 {
 	return 0
 }
 
+func (x *PortSummary) GetCode() string {
+	if x != nil {
+		return x.Code
+	}
+	return ""
+}
+
 func (x *PortSummary) GetCreatedAt() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreatedAt
@@ -102,16 +110,17 @@ var File_apfish_location_port_port_summary_proto protoreflect.FileDescriptor
 
 const file_apfish_location_port_port_summary_proto_rawDesc = "" +
 	"\n" +
-	"'apfish/location/port/port_summary.proto\x12\blocation\x1a\x1fgoogle/protobuf/timestamp.proto\"\xac\x01\n" +
+	"'apfish/location/port/port_summary.proto\x12\blocation\x1a\x1fgoogle/protobuf/timestamp.proto\"\xc0\x01\n" +
 	"\vPortSummary\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x1d\n" +
 	"\n" +
 	"country_id\x18\x03 \x01(\x03R\tcountryId\x12\x1f\n" +
 	"\vdistrict_id\x18\x04 \x01(\x03R\n" +
-	"districtId\x129\n" +
+	"districtId\x12\x12\n" +
+	"\x04code\x18\x05 \x01(\tR\x04code\x129\n" +
 	"\n" +
-	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAtB\"Z apfish.v1/location/port;apfishv1b\x06proto3"
+	"created_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAtB\"Z apfish.v1/location/port;apfishv1b\x06proto3"
 
 var (
 	file_apfish_location_port_port_summary_proto_rawDescOnce sync.Once
