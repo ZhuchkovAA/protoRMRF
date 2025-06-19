@@ -5,6 +5,7 @@ package permission;
 option go_package = "apfish.v1;apfishv1";
 
 import "apfish/permission/action/action.proto";
+import "apfish/permission/action/action_summary.proto";
 
 service ActionService {
   rpc GetAction (ActionRequest) returns (ActionResponse);

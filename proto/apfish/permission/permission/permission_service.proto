@@ -5,6 +5,7 @@ package permission;
 option go_package = "apfish.v1;apfishv1";
 
 import "apfish/permission/permission/permission.proto";
+import "apfish/permission/permission/permission_summary.proto";
 
 service PermissionService {
   rpc GetPermission (PermissionRequest) returns (PermissionResponse);

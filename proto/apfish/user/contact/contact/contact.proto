@@ -6,22 +6,14 @@ option go_package = "apfish.v1;apfishv1";
 
 import "google/protobuf/timestamp.proto";  // Standard Protocol Buffers timestamp
 
-import "apfish/user/user/user.proto";
-import "apfish/user/contact/type.proto";
+import "apfish/user/user/user_summary.proto";
+import "apfish/user/contact/type/type_summary.proto";
 
 // A user's contact method (e.g., email, phone).
 message Contact {
   int64 id = 1;                       // Unique contact ID.
-  user.User user = 2;
-  Type type = 3;           // Contact type.
-  string value = 4;                   // Contact value (e.g., "user@example.com").
-  google.protobuf.Timestamp created_at = 5;  // When the contact was added.
-}
-
-message ContactSummary {
-  int64 id = 1;                       // Unique contact ID.
-  user.UserSummary user_summary = 2;
-  TypeSummary type_summary = 3;           // Contact type.
+  user.UserSummary user = 2;
+  TypeSummary type = 3;           // Contact type.
   string value = 4;                   // Contact value (e.g., "user@example.com").
   google.protobuf.Timestamp created_at = 5;  // When the contact was added.
 }

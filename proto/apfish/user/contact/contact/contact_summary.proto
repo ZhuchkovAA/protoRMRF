@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package user.contact;
+
+option go_package = "apfish.v1;apfishv1";
+
+import "google/protobuf/timestamp.proto";  // Standard Protocol Buffers timestamp
+
+message ContactSummary {
+  int64 id = 1;                       // Unique contact ID.
+  int64 user_id = 2;
+  int64 type_id = 3;           // Contact type.
+  string value = 4;                   // Contact value (e.g., "user@example.com").
+  google.protobuf.Timestamp created_at = 5;  // When the contact was added.
+}

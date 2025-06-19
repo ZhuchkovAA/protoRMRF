@@ -5,6 +5,7 @@ package location;
 option go_package = "apfish.v1;apfishv1";
 
 import "apfish/location/district/district.proto";
+import "apfish/location/district/district_summary.proto";
 
 service DistrictService {
   rpc GetDistrict (DistrictRequest) returns (DistrictResponse);

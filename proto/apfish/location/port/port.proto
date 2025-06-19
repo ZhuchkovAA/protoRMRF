@@ -6,26 +6,18 @@ option go_package = "apfish.v1;apfishv1";
 
 import "google/protobuf/timestamp.proto";  // Standard Protocol Buffers timestamp
 
-import "apfish/location/country/country.proto";
-import "apfish/location/district/district.proto";
+import "apfish/location/country/country_summary.proto";
+import "apfish/location/district/district_summary.proto";
 
-import "apfish/permission/permission/permission.proto";
+import "apfish/permission/permission/permission_summary.proto";
 
 message Port {
   int64 id = 1;
   string name = 2;
-  location.Country country = 3;
-  location.District district = 4;
+  location.CountrySummary country = 3;
+  location.DistrictSummary district = 4;
   string code = 5;
   google.protobuf.Timestamp created_at = 6;
 
-  repeated permission.Permission permissions = 7;
-}
-
-message PortSummary {
-  int64 id = 1;
-  string name = 2;
-  location.CountrySummary country_summary = 3;
-  location.DistrictSummary district_summary = 4;
-  google.protobuf.Timestamp created_at = 5;
+  repeated permission.PermissionSummary permissions = 7;
 }

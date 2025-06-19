@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package user;
+
+option go_package = "apfish.v1;apfishv1";
+
+import "google/protobuf/timestamp.proto";  // Standard Protocol Buffers timestamp
+
+message RoleSummary {
+  int64 id = 1;                       // Unique role ID.
+  string name = 2;                    // Human-readable name (e.g., "Admin").
+  google.protobuf.Timestamp created_at = 3;  // When the role was created.
+}

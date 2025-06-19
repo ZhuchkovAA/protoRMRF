@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package call_sign;
+
+option go_package = "apfish.v1;apfishv1";
+
+import "google/protobuf/timestamp.proto";  // Standard Protocol Buffers timestamp
+
+message CallSignSummary {
+  int64 id = 1;
+  string series = 2;
+  string limit_lower = 3;
+  string limit_upper = 4;
+  google.protobuf.Timestamp created_at = 5;
+}

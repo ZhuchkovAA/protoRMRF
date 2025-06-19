@@ -6,42 +6,31 @@ option go_package = "apfish.v1;apfishv1";
 
 import "google/protobuf/timestamp.proto";  // Standard Protocol Buffers timestamp
 
-import "apfish/permission/action/action.proto";
-import "apfish/permission/object/object.proto";
+import "apfish/permission/action/action_summary.proto";
+import "apfish/permission/object/object_summary.proto";
 
-import "apfish/location/country/country.proto";
-import "apfish/location/district/district.proto";
-import "apfish/location/port/port.proto";
+import "apfish/location/country/country_summary.proto";
+import "apfish/location/district/district_summary.proto";
+import "apfish/location/port/port_summary.proto";
 
-import "apfish/user/user/user.proto";
-import "apfish/user/role.proto";
+import "apfish/user/user/user_summary.proto";
+import "apfish/user/role/role_summary.proto";
 
 // Defines an access permission in the system.
 // Permissions combine an Action and Object to create granular access controls (e.g., "read:inspection").
 message Permission {
   int64 id = 1;                   // Unique identifier for the permission
-  Action action = 2;     // The operation this permission allows (e.g., "read", "create")
-  Object object = 3;     // The resource this permission applies to (e.g., "inspection", "user")
+  ActionSummary action = 2;     // The operation this permission allows (e.g., "read", "create")
+  ObjectSummary object = 3;     // The resource this permission applies to (e.g., "inspection", "user")
   string description = 4;          // Human-readable explanation of the permission
   string name = 5;                // Display name (e.g., "Read Inspections")
   string code = 6;                // Machine-readable identifier (e.g., "inspection:read")
   google.protobuf.Timestamp created_at = 7;
 
-  repeated location.Country countries= 8;
-  repeated location.District districts = 9;
-  repeated location.Port ports = 10;
+  repeated location.CountrySummary countries= 8;
+  repeated location.DistrictSummary districts = 9;
+  repeated location.PortSummary ports = 10;
 
-  repeated user.User users = 11;
-  repeated user.Role roles = 12;
-}
-
-message PermissionSummary {
-  int64 id = 1;
-  ActionSummary action_summary = 2;
-  ObjectSummary object_summary = 3;
-  string name = 4;
-
-  repeated location.CountrySummary countries = 5;
-  repeated location.DistrictSummary districts = 6;
-  repeated location.PortSummary ports = 7;
+  repeated user.UserSummary users = 11;
+  repeated user.RoleSummary roles = 12;
 }

@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package permission;
+
+option go_package = "apfish.v1;apfishv1";
+
+import "google/protobuf/timestamp.proto";  // Standard Protocol Buffers timestamp
+
+message ObjectSummary {
+  int64 id = 1;                   // Unique identifier for the object type
+  string name = 2;                // Human-readable name (e.g., "Inspection")
+  string description = 3;         // Detailed explanation of the action
+  string code = 4;                // Machine-friendly code (e.g., "read")
+  google.protobuf.Timestamp created_at = 5;
+}

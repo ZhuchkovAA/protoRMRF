@@ -5,6 +5,7 @@ package permission;
 option go_package = "apfish.v1;apfishv1";
 
 import "apfish/permission/object/object.proto";
+import "apfish/permission/object/object_summary.proto";
 
 service ObjectService {
   rpc GetObject (ObjectRequest) returns (ObjectResponse);

@@ -5,6 +5,7 @@ package location;
 option go_package = "apfish.v1;apfishv1";
 
 import "apfish/location/port/port.proto";
+import "apfish/location/port/port_summary.proto";
 
 service PortService {
   rpc GetPort (PortRequest) returns (PortResponse);

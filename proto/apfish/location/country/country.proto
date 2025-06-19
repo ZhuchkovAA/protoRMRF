@@ -6,10 +6,10 @@ option go_package = "apfish.v1;apfishv1";
 
 import "google/protobuf/timestamp.proto";  // Standard Protocol Buffers timestamp
 
-import "apfish/location/port/port.proto";
-import "apfish/call_sign/call_sign.proto";
+import "apfish/location/port/port_summary.proto";
+import "apfish/call_sign/call_sign_summary.proto";
 
-import "apfish/permission/permission/permission.proto";
+import "apfish/permission/permission/permission_summary.proto";
 
 message Country {
   int64 id = 1;
@@ -20,18 +20,7 @@ message Country {
   bool is_ballast_water = 6;
   google.protobuf.Timestamp created_at = 7;
 
-  repeated Port ports = 8;
-  repeated call_sign.CallSign call_signs = 9;
-  repeated permission.Permission permissions = 10;
-}
-
-
-message CountrySummary {
-  int64 id = 1;
-  string name = 2;
-  string name_rus = 3;
-  string code = 4;
-  bool is_ilo = 5;
-  bool is_ballast_water = 6;
-  google.protobuf.Timestamp created_at = 7;
+  repeated PortSummary ports = 8;
+  repeated call_sign.CallSignSummary call_signs = 9;
+  repeated permission.PermissionSummary permissions = 10;
 }

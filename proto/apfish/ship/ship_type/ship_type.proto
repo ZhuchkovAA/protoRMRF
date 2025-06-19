@@ -6,18 +6,12 @@ option go_package = "apfish.v1;apfishv1";
 
 import "google/protobuf/timestamp.proto";  // Standard Protocol Buffers timestamp
 
-import "apfish/ship/ship/ship.proto";
+import "apfish/ship/ship/ship_summary.proto";
 
 message Type {
   int64 id = 1;
   string name = 2;
   google.protobuf.Timestamp created_at = 3;
 
-  repeated ship.Ship ships = 4;
-}
-
-message TypeSummary {
-  int64 id = 1;
-  string name = 2;
-  google.protobuf.Timestamp created_at = 3;
+  repeated ship.ShipSummary ships = 4;
 }

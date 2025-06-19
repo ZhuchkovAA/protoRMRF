@@ -6,44 +6,28 @@ option go_package = "apfish.v1;apfishv1";
 
 import "google/protobuf/timestamp.proto";  // Standard Protocol Buffers timestamp
 
-import "apfish/ship/type/type.proto";
-import "apfish/ship/class/class.proto";
-import "apfish/location/country/country.proto";
-import "apfish/call_sign/call_sign.proto";
-import "apfish/ship/captain/captain.proto";
-import "apfish/permission/permission/permission.proto";
+import "apfish/ship/ship_type/ship_type_summary.proto";
+import "apfish/ship/class/class_summary.proto";
+import "apfish/location/country/country_summary.proto";
+import "apfish/call_sign/call_sign_summary.proto";
+import "apfish/ship/captain/captain_summary.proto";
+import "apfish/permission/permission/permission_summary.proto";
 
 message Ship {
   int64 id = 1;
   int64 imo = 2;
-  Type type = 3;
-  Class class = 4;
-  location.Country country = 5;
+  TypeSummary type = 3;
+  ClassSummary class = 4;
+  location.CountrySummary country = 5;
   string name = 6;
   int64 mmsi = 7;
-  call_sign.CallSign call_sign = 8;
+  call_sign.CallSignSummary call_sign = 8;
   string call_sign_value = 9;
   google.protobuf.Timestamp date_build = 10;
   int64 dead_weight = 11;
   int64 tonnage = 12;
   google.protobuf.Timestamp created_at = 13;
 
-  repeated Captain captains = 14;
-  repeated permission.Permission permissions = 15;
-}
-
-message ShipSummary {
-  int64 id = 1;
-  int64 imo = 2;
-  TypeSummary type_summary = 3;
-  ClassSummary class_summary = 4;
-  location.CountrySummary country_summary = 5;
-  string name = 6;
-  int64 mmsi = 7;
-  call_sign.CallSignSummary call_sign_summary = 8;
-  string call_sign_value = 9;
-  google.protobuf.Timestamp date_build = 10;
-  int64 dead_weight = 11;
-  int64 tonnage = 12;
-  google.protobuf.Timestamp created_at = 13;
+  repeated CaptainSummary captains = 14;
+  repeated permission.PermissionSummary permissions = 15;
 }

@@ -4,9 +4,8 @@ package call_sign;
 
 option go_package = "apfish.v1;apfishv1";
 
-import "google/protobuf/timestamp.proto";  // Standard Protocol Buffers timestamp
-
 import "apfish/call_sign/call_sign.proto";
+import "apfish/call_sign/call_sign_summary.proto";
 
 service CallSignService {
   rpc GetCallSign (CallSignRequest) returns (CallSignResponse);

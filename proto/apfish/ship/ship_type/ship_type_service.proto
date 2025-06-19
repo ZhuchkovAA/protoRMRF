@@ -4,7 +4,8 @@ package ship;
 
 option go_package = "apfish.v1;apfishv1";
 
-import "apfish/ship/type/type.proto";
+import "apfish/ship/ship_type/ship_type.proto";
+import "apfish/ship/ship_type/ship_type_summary.proto";
 
 service TypeService {
   rpc GetType (TypeRequest) returns (TypeResponse);

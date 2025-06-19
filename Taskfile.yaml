@@ -9,3 +9,9 @@ tasks:
     desc: "Generate code from proto files"
     cmds:
       - protoc --proto_path=proto --go_out=gen/go --go-grpc_out=gen/go proto/**/*.proto
+  generate-docker:
+    aliases:
+      - gen-d
+    desc: "Generate code from proto files with docker"
+    cmds:
+      - docker run --rm -v ${PWD}:/app -w /app protoc-gen ./protoc-gen.sh

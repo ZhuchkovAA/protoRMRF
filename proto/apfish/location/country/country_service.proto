@@ -5,6 +5,7 @@ package location;
 option go_package = "apfish.v1;apfishv1";
 
 import "apfish/location/country/country.proto";
+import "apfish/location/country/country_summary.proto";
 
 service CountryService {
   rpc GetCountry (CountryRequest) returns (CountryResponse);

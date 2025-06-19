@@ -5,6 +5,7 @@ package ship;
 option go_package = "apfish.v1;apfishv1";
 
 import "apfish/ship/class/class.proto";
+import "apfish/ship/class/class_summary.proto";
 
 service ClassService {
   rpc GetClass (ClassRequest) returns (ClassResponse);

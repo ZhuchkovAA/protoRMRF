@@ -4,8 +4,6 @@ package user;
 
 option go_package = "apfish.v1;apfishv1";
 
-import "google/protobuf/timestamp.proto";  // Standard Protocol Buffers timestamp
-
 import "apfish/user/user/user.proto";
 
 // User defines RPC methods for user management.
@@ -17,6 +15,8 @@ service UserService {
   // ListUsers searches for users by login prefix (case-insensitive)
   // and returns paginated results.
   rpc ListUsers (ListUsersRequest) returns (ListUsersResponse);
+
+
 }
 
 // Request to fetch a specific user.

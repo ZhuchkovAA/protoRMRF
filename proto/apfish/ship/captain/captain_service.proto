@@ -5,6 +5,7 @@ package ship;
 option go_package = "apfish.v1;apfishv1";
 
 import "apfish/ship/captain/captain.proto";
+import "apfish/ship/captain/captain_summary.proto";
 
 service CaptainService {
   rpc GetCaptain (CaptainRequest) returns (CaptainResponse);

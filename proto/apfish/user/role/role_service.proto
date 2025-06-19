@@ -5,6 +5,7 @@ package user;
 option go_package = "apfish.v1;apfishv1";
 
 import "apfish/user/role/role.proto";
+import "apfish/user/role/role_summary.proto";
 
 service RoleService {
   rpc GetRole (RoleRequest) returns (RoleResponse);
