@@ -27,11 +27,13 @@ type PermissionSummary struct {
 	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	ActionId      int64                  `protobuf:"varint,2,opt,name=action_id,json=actionId,proto3" json:"action_id,omitempty"`
 	ObjectId      int64                  `protobuf:"varint,3,opt,name=object_id,json=objectId,proto3" json:"object_id,omitempty"`
-	Name          string                 `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
-	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	CountriesId   []int64                `protobuf:"varint,6,rep,packed,name=countries_id,json=countriesId,proto3" json:"countries_id,omitempty"`
-	DistrictsId   []int64                `protobuf:"varint,7,rep,packed,name=districts_id,json=districtsId,proto3" json:"districts_id,omitempty"`
-	PortsId       []int64                `protobuf:"varint,8,rep,packed,name=ports_id,json=portsId,proto3" json:"ports_id,omitempty"`
+	Description   string                 `protobuf:"bytes,4,opt,name=description,proto3" json:"description,omitempty"` // Human-readable explanation of the permission
+	Name          string                 `protobuf:"bytes,5,opt,name=name,proto3" json:"name,omitempty"`               // Display name (e.g., "Read Inspections")
+	Code          string                 `protobuf:"bytes,6,opt,name=code,proto3" json:"code,omitempty"`               // Machine-readable identifier (e.g., "inspection:read")
+	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	CountriesId   []int64                `protobuf:"varint,8,rep,packed,name=countries_id,json=countriesId,proto3" json:"countries_id,omitempty"`
+	DistrictsId   []int64                `protobuf:"varint,9,rep,packed,name=districts_id,json=districtsId,proto3" json:"districts_id,omitempty"`
+	PortsId       []int64                `protobuf:"varint,10,rep,packed,name=ports_id,json=portsId,proto3" json:"ports_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -87,9 +89,23 @@ func (x *PermissionSummary) GetObjectId() int64 {
 	return 0
 }
 
+func (x *PermissionSummary) GetDescription() string {
+	if x != nil {
+		return x.Description
+	}
+	return ""
+}
+
 func (x *PermissionSummary) GetName() string {
 	if x != nil {
 		return x.Name
+	}
+	return ""
+}
+
+func (x *PermissionSummary) GetCode() string {
+	if x != nil {
+		return x.Code
 	}
 	return ""
 }
@@ -127,17 +143,20 @@ var File_apfish_permission_permission_permission_summary_proto protoreflect.File
 const file_apfish_permission_permission_permission_summary_proto_rawDesc = "" +
 	"\n" +
 	"5apfish/permission/permission/permission_summary.proto\x12\n" +
-	"permission\x1a\x1fgoogle/protobuf/timestamp.proto\"\x8d\x02\n" +
+	"permission\x1a\x1fgoogle/protobuf/timestamp.proto\"\xc3\x02\n" +
 	"\x11PermissionSummary\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x1b\n" +
 	"\taction_id\x18\x02 \x01(\x03R\bactionId\x12\x1b\n" +
-	"\tobject_id\x18\x03 \x01(\x03R\bobjectId\x12\x12\n" +
-	"\x04name\x18\x04 \x01(\tR\x04name\x129\n" +
+	"\tobject_id\x18\x03 \x01(\x03R\bobjectId\x12 \n" +
+	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x12\n" +
+	"\x04name\x18\x05 \x01(\tR\x04name\x12\x12\n" +
+	"\x04code\x18\x06 \x01(\tR\x04code\x129\n" +
 	"\n" +
-	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x12!\n" +
-	"\fcountries_id\x18\x06 \x03(\x03R\vcountriesId\x12!\n" +
-	"\fdistricts_id\x18\a \x03(\x03R\vdistrictsId\x12\x19\n" +
-	"\bports_id\x18\b \x03(\x03R\aportsIdB*Z(apfish.v1/permission/permission;apfishv1b\x06proto3"
+	"created_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x12!\n" +
+	"\fcountries_id\x18\b \x03(\x03R\vcountriesId\x12!\n" +
+	"\fdistricts_id\x18\t \x03(\x03R\vdistrictsId\x12\x19\n" +
+	"\bports_id\x18\n" +
+	" \x03(\x03R\aportsIdB*Z(apfish.v1/permission/permission;apfishv1b\x06proto3"
 
 var (
 	file_apfish_permission_permission_permission_summary_proto_rawDescOnce sync.Once
