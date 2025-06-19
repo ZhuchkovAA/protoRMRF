@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package permission;
 
-option go_package = "apfish.v1;apfishv1";
+option go_package = "apfish.v1/permission/action;apfishv1";
 
 import "apfish/permission/action/action.proto";
 import "apfish/permission/action/action_summary.proto";

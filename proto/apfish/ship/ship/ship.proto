@@ -2,11 +2,11 @@ syntax = "proto3";
 
 package ship;
 
-option go_package = "apfish.v1;apfishv1";
+option go_package = "apfish.v1/ship/ship;apfishv1";
 
 import "google/protobuf/timestamp.proto";  // Standard Protocol Buffers timestamp
 
-import "apfish/ship/ship_type/ship_type_summary.proto";
+import "apfish/ship/type/type_summary.proto";
 import "apfish/ship/class/class_summary.proto";
 import "apfish/location/country/country_summary.proto";
 import "apfish/call_sign/call_sign_summary.proto";

@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package call_sign;
 
-option go_package = "apfish.v1;apfishv1";
+option go_package = "apfish.v1/call_sign;apfishv1";
 
 import "apfish/call_sign/call_sign.proto";
 import "apfish/call_sign/call_sign_summary.proto";

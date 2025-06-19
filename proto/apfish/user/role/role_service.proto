@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package user;
 
-option go_package = "apfish.v1;apfishv1";
+option go_package = "apfish.v1/user/role;apfishv1";
 
 import "apfish/user/role/role.proto";
 import "apfish/user/role/role_summary.proto";

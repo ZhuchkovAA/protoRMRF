@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package location;
 
-option go_package = "apfish.v1;apfishv1";
+option go_package = "apfish.v1/location/country;apfishv1";
 
 import "apfish/location/country/country.proto";
 import "apfish/location/country/country_summary.proto";

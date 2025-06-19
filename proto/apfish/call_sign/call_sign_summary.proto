@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package call_sign;
 
-option go_package = "apfish.v1;apfishv1";
+option go_package = "apfish.v1/call_sign;apfishv1";
 
 import "google/protobuf/timestamp.proto";  // Standard Protocol Buffers timestamp
 

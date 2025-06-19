@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package ship;
 
-option go_package = "apfish.v1;apfishv1";
+option go_package = "apfish.v1/ship/captain;apfishv1";
 
 import "apfish/ship/captain/captain.proto";
 import "apfish/ship/captain/captain_summary.proto";
