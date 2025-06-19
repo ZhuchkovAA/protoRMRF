@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package permission;
+
+option go_package = "apfish.v1;apfishv1";
+
+import "apfish/permission/permission/permission.proto";
+
+service PermissionService {
+  rpc GetPermission (PermissionRequest) returns (PermissionResponse);
+  rpc GetPermissionSummary (PermissionRequest) returns (PermissionSummaryResponse);
+
+  rpc ListPermissions (ListPermissionsRequest) returns (ListPermissionsResponse);
+}
+
+message PermissionRequest {
+  int64 id = 1;
+}
+
+message PermissionResponse {
+  Permission permission = 1;
+}
+
+message PermissionSummaryResponse {
+  PermissionSummary permission = 1;
+}
+
+message ListPermissionsRequest {
+  int64 page = 1;      // Page number (1-based). Default: 1.
+  int64 per_page = 2;  // Items per page (default: 20, max: 100).
+}
+
+message ListPermissionsResponse {
+  repeated PermissionSummary list_permissions = 1;
+  int64 total = 2;
+}

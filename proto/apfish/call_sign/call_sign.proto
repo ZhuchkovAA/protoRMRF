@@ -6,20 +6,8 @@ option go_package = "apfish.v1;apfishv1";
 
 import "google/protobuf/timestamp.proto";  // Standard Protocol Buffers timestamp
 
-import "apfish/location/country.proto";
-import "apfish/ship/ship.proto";
-
-service CallSignService {
-  rpc GetCallSign (CallSignRequest) returns (CallSignResponse);
-}
-
-message CallSignRequest {
-  int64 id = 1;
-}
-
-message CallSignResponse {
-  int64 id = 1;
-}
+import "apfish/location/country/country.proto";
+import "apfish/ship/ship/ship.proto";
 
 message CallSign {
   int64 id = 1;

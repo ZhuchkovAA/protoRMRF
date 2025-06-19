@@ -6,20 +6,8 @@ option go_package = "apfish.v1;apfishv1";
 
 import "google/protobuf/timestamp.proto";  // Standard Protocol Buffers timestamp
 
-import "apfish/user/user.proto";
-import "apfish/permission/permission.proto";
-
-service UserRoleService {
-  rpc GetRole (RoleRequest) returns (RoleResponse);
-}
-
-message RoleRequest {
-  int64 id = 1;
-}
-
-message RoleResponse {
-  int64 id = 1;
-}
+import "apfish/user/user/user.proto";
+import "apfish/permission/permission/permission.proto";
 
 // Defines a user role (e.g., "Admin", "Editor").
 message Role {

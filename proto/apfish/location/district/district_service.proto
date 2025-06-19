@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package location;
+
+option go_package = "apfish.v1;apfishv1";
+
+import "apfish/location/district/district.proto";
+
+service DistrictService {
+  rpc GetDistrict (DistrictRequest) returns (DistrictResponse);
+  rpc GetDistrictSummary (DistrictRequest) returns (DistrictSummaryResponse);
+
+  rpc ListDistricts (ListDistrictsRequest) returns (ListDistrictsResponse);
+}
+
+message DistrictRequest {
+  int64 id = 1;
+}
+
+message DistrictResponse {
+  District district = 1;
+}
+
+message DistrictSummaryResponse {
+  DistrictSummary district = 1;
+}
+
+message ListDistrictsRequest {
+  int64 page = 1;      // Page number (1-based). Default: 1.
+  int64 per_page = 2;  // Items per page (default: 20, max: 100).
+}
+
+message ListDistrictsResponse {
+  repeated DistrictSummary list_districts = 1;
+  int64 total = 2;
+}

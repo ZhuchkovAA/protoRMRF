@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package ship;
+
+option go_package = "apfish.v1;apfishv1";
+
+import "apfish/ship/type/type.proto";
+
+service TypeService {
+  rpc GetType (TypeRequest) returns (TypeResponse);
+  rpc GetTypeSummary (TypeRequest) returns (TypeSummaryResponse);
+
+  rpc ListTypes (ListTypesRequest) returns (ListTypesResponse);
+}
+
+message TypeRequest {
+  int64 id = 1;
+}
+
+message TypeResponse {
+  Type type = 1;
+}
+
+message TypeSummaryResponse {
+  TypeSummary type = 1;
+}
+
+message ListTypesRequest {
+  int64 page = 1;      // Page number (1-based). Default: 1.
+  int64 per_page = 2;  // Items per page (default: 20, max: 100).
+}
+
+message ListTypesResponse {
+  repeated TypeSummary list_types = 1;
+  int64 total = 2;
+}

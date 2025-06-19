@@ -6,22 +6,10 @@ option go_package = "apfish.v1;apfishv1";
 
 import "google/protobuf/timestamp.proto";  // Standard Protocol Buffers timestamp
 
-import "apfish/location/port.proto";
-import "apfish/callsign/callsign.proto";
+import "apfish/location/port/port.proto";
+import "apfish/call_sign/call_sign.proto";
 
-import "apfish/permission/permission.proto";
-
-service CountryService {
-  rpc GetCountry (CountryRequest) returns (CountryResponse);
-}
-
-message CountryRequest {
-  int64 id = 1;
-}
-
-message CountryResponse {
-  int64 id = 1;
-}
+import "apfish/permission/permission/permission.proto";
 
 message Country {
   int64 id = 1;

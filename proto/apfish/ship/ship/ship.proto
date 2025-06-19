@@ -6,24 +6,12 @@ option go_package = "apfish.v1;apfishv1";
 
 import "google/protobuf/timestamp.proto";  // Standard Protocol Buffers timestamp
 
-import "apfish/ship/type.proto";
-import "apfish/ship/class.proto";
-import "apfish/location/country.proto";
-import "apfish/callsign/callsign.proto";
-import "apfish/ship/captain.proto";
-import "apfish/permission/permission.proto";
-
-service ShipService {
-  rpc GetShip (ShipRequest) returns (ShipResponse);
-}
-
-message ShipRequest {
-  int64 id = 1;
-}
-
-message ShipResponse {
-  int64 id = 1;
-}
+import "apfish/ship/type/type.proto";
+import "apfish/ship/class/class.proto";
+import "apfish/location/country/country.proto";
+import "apfish/call_sign/call_sign.proto";
+import "apfish/ship/captain/captain.proto";
+import "apfish/permission/permission/permission.proto";
 
 message Ship {
   int64 id = 1;

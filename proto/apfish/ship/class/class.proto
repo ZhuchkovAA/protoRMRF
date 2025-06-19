@@ -8,19 +8,7 @@ import "google/protobuf/timestamp.proto";  // Standard Protocol Buffers timestam
 
 import "apfish/ship/ship.proto";
 
-service ShipCaptainService {
-  rpc GetCaptain (CaptainRequest) returns (CaptainResponse);
-}
-
-message CaptainRequest {
-  int64 id = 1;
-}
-
-message CaptainResponse {
-  int64 id = 1;
-}
-
-message Captain {
+message Class {
   int64 id = 1;
   string name = 2;
   google.protobuf.Timestamp created_at = 3;
@@ -28,7 +16,7 @@ message Captain {
   repeated Ship ships = 4;
 }
 
-message CaptainSummary {
+message ClassSummary {
   int64 id = 1;
   string name = 2;
   google.protobuf.Timestamp created_at = 3;

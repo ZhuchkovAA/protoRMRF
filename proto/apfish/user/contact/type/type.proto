@@ -6,19 +6,7 @@ option go_package = "apfish.v1;apfishv1";
 
 import "google/protobuf/timestamp.proto";  // Standard Protocol Buffers timestamp
 
-import "apfish/user/contact/contact.proto";
-
-service TypeService {
-  rpc GetType (TypeRequest) returns (TypeResponse);
-}
-
-message TypeRequest {
-  int64 id = 1;
-}
-
-message TypeResponse {
-  int64 id = 1;
-}
+import "apfish/user/contact/contact/contact.proto";
 
 // Type of contact method (e.g., "Email", "Phone").
 message Type {
