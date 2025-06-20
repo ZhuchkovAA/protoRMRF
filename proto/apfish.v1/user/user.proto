@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package apfish.v1.user;
 
-option go_package = "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/user;user";
+option go_package = "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user;user";
 
 import "google/protobuf/timestamp.proto";  // Standard Protocol Buffers timestamp
 

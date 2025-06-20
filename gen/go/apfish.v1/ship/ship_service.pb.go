@@ -7,7 +7,7 @@
 package ship
 
 import (
-	summary "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/ship/ship/summary"
+	summary "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/ship/summary"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -279,7 +279,7 @@ const file_apfish_v1_ship_ship_service_proto_rawDesc = "" +
 	"\vShipService\x12D\n" +
 	"\aGetShip\x12\x1b.apfish.v1.ship.ShipRequest\x1a\x1c.apfish.v1.ship.ShipResponse\x12R\n" +
 	"\x0eGetShipSummary\x12\x1b.apfish.v1.ship.ShipRequest\x1a#.apfish.v1.ship.ShipSummaryResponse\x12P\n" +
-	"\tListShips\x12 .apfish.v1.ship.ListShipsRequest\x1a!.apfish.v1.ship.ListShipsResponseBAZ?github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/ship/ship;shipb\x06proto3"
+	"\tListShips\x12 .apfish.v1.ship.ListShipsRequest\x1a!.apfish.v1.ship.ListShipsResponseB<Z:github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/ship;shipb\x06proto3"
 
 var (
 	file_apfish_v1_ship_ship_service_proto_rawDescOnce sync.Once

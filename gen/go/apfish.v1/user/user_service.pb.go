@@ -243,7 +243,7 @@ const file_apfish_v1_user_user_service_proto_rawDesc = "" +
 	"\x05total\x18\x02 \x01(\x03R\x05total2\xa5\x01\n" +
 	"\vUserService\x12D\n" +
 	"\aGetUser\x12\x1b.apfish.v1.user.UserRequest\x1a\x1c.apfish.v1.user.UserResponse\x12P\n" +
-	"\tListUsers\x12 .apfish.v1.user.ListUsersRequest\x1a!.apfish.v1.user.ListUsersResponseBAZ?github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/user;userb\x06proto3"
+	"\tListUsers\x12 .apfish.v1.user.ListUsersRequest\x1a!.apfish.v1.user.ListUsersResponseB<Z:github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user;userb\x06proto3"
 
 var (
 	file_apfish_v1_user_user_service_proto_rawDescOnce sync.Once

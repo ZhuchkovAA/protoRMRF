@@ -9,7 +9,7 @@ package ship
 import (
 	summary3 "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/call_sign/summary"
 	summary2 "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/country/summary"
-	summary5 "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/permission/summary"
+	summary5 "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/summary"
 	summary4 "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/ship/captain/summary"
 	summary1 "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/ship/class/summary"
 	summary "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/ship/type/summary"
@@ -208,7 +208,7 @@ const file_apfish_v1_ship_ship_proto_rawDesc = "" +
 	"\n" +
 	"created_at\x18\r \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x12J\n" +
 	"\bcaptains\x18\x0e \x03(\v2..apfish.v1.ship.captain.summary.CaptainSummaryR\bcaptains\x12Q\n" +
-	"\vpermissions\x18\x0f \x03(\v2/.apfish.v1.permission.summary.PermissionSummaryR\vpermissionsBAZ?github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/ship/ship;shipb\x06proto3"
+	"\vpermissions\x18\x0f \x03(\v2/.apfish.v1.permission.summary.PermissionSummaryR\vpermissionsB<Z:github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/ship;shipb\x06proto3"
 
 var (
 	file_apfish_v1_ship_ship_proto_rawDescOnce sync.Once

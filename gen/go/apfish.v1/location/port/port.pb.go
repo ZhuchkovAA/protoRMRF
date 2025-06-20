@@ -9,7 +9,7 @@ package location_port
 import (
 	summary "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/country/summary"
 	summary1 "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/district/summary"
-	summary2 "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/permission/summary"
+	summary2 "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/summary"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"

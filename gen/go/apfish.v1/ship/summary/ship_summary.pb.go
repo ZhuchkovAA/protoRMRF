@@ -186,7 +186,7 @@ const file_apfish_v1_ship_summary_ship_summary_proto_rawDesc = "" +
 	"deadWeight\x12\x18\n" +
 	"\atonnage\x18\f \x01(\x03R\atonnage\x129\n" +
 	"\n" +
-	"created_at\x18\r \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAtBQZOgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/ship/ship/summary;ship_summaryb\x06proto3"
+	"created_at\x18\r \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAtBLZJgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/ship/summary;ship_summaryb\x06proto3"
 
 var (
 	file_apfish_v1_ship_summary_ship_summary_proto_rawDescOnce sync.Once

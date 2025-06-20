@@ -7,7 +7,7 @@
 package permission
 
 import (
-	summary "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/permission/summary"
+	summary "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/summary"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -282,7 +282,7 @@ const file_apfish_v1_permission_permission_service_proto_rawDesc = "" +
 	"\x11PermissionService\x12b\n" +
 	"\rGetPermission\x12'.apfish.v1.permission.PermissionRequest\x1a(.apfish.v1.permission.PermissionResponse\x12p\n" +
 	"\x14GetPermissionSummary\x12'.apfish.v1.permission.PermissionRequest\x1a/.apfish.v1.permission.PermissionSummaryResponse\x12n\n" +
-	"\x0fListPermissions\x12,.apfish.v1.permission.ListPermissionsRequest\x1a-.apfish.v1.permission.ListPermissionsResponseBSZQgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/permission;permissionb\x06proto3"
+	"\x0fListPermissions\x12,.apfish.v1.permission.ListPermissionsRequest\x1a-.apfish.v1.permission.ListPermissionsResponseBHZFgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission;permissionb\x06proto3"
 
 var (
 	file_apfish_v1_permission_permission_service_proto_rawDescOnce sync.Once

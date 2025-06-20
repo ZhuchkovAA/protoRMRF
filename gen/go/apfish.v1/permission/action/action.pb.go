@@ -7,7 +7,7 @@
 package permission_action
 
 import (
-	summary "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/permission/summary"
+	summary "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/summary"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"

@@ -7,7 +7,7 @@
 package user
 
 import (
-	summary2 "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/permission/summary"
+	summary2 "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/summary"
 	summary1 "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/contact/contact/summary"
 	summary "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/role/summary"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -140,7 +140,7 @@ const file_apfish_v1_user_user_proto_rawDesc = "" +
 	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x12(\n" +
 	"\x10created_by_login\x18\x06 \x01(\tR\x0ecreatedByLogin\x12J\n" +
 	"\bcontacts\x18\a \x03(\v2..apfish.v1.user.contact.summary.ContactSummaryR\bcontacts\x12Q\n" +
-	"\vpermissions\x18\b \x03(\v2/.apfish.v1.permission.summary.PermissionSummaryR\vpermissionsBAZ?github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/user;userb\x06proto3"
+	"\vpermissions\x18\b \x03(\v2/.apfish.v1.permission.summary.PermissionSummaryR\vpermissionsB<Z:github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user;userb\x06proto3"
 
 var (
 	file_apfish_v1_user_user_proto_rawDescOnce sync.Once

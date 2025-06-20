@@ -13,7 +13,7 @@ import (
 	summary "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/action/summary"
 	summary1 "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/object/summary"
 	summary6 "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/role/summary"
-	summary5 "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/user/summary"
+	summary5 "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/summary"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -183,7 +183,7 @@ const file_apfish_v1_permission_permission_proto_rawDesc = "" +
 	"\x05ports\x18\n" +
 	" \x03(\v2,.apfish.v1.location.port.summary.PortSummaryR\x05ports\x129\n" +
 	"\x05users\x18\v \x03(\v2#.apfish.v1.user.summary.UserSummaryR\x05users\x12>\n" +
-	"\x05roles\x18\f \x03(\v2(.apfish.v1.user.role.summary.RoleSummaryR\x05rolesBSZQgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/permission;permissionb\x06proto3"
+	"\x05roles\x18\f \x03(\v2(.apfish.v1.user.role.summary.RoleSummaryR\x05rolesBHZFgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission;permissionb\x06proto3"
 
 var (
 	file_apfish_v1_permission_permission_proto_rawDescOnce sync.Once

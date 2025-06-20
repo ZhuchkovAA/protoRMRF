@@ -7,7 +7,7 @@
 package ship_type
 
 import (
-	summary "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/ship/ship/summary"
+	summary "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/ship/summary"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
