@@ -1,11 +1,11 @@
 syntax = "proto3";
 
-package permission;
+package apfish.v1.permission.action;
 
 option go_package = "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/action;permission_action";
 
 import "apfish.v1/permission/action/action.proto";
-import "apfish.v1/permission/action/action_summary.proto";
+import "apfish.v1/permission/action/summary/action_summary.proto";
 
 service ActionService {
   rpc GetAction (ActionRequest) returns (ActionResponse);
@@ -23,7 +23,7 @@ message ActionResponse {
 }
 
 message ActionSummaryResponse {
-  ActionSummary action = 1;
+  permission.action.summary.ActionSummary action = 1;
 }
 
 message ListActionsRequest {
@@ -32,6 +32,6 @@ message ListActionsRequest {
 }
 
 message ListActionsResponse {
-  repeated ActionSummary list_actions = 1;
+  repeated permission.action.summary.ActionSummary list_actions = 1;
   int64 total = 2;
 }

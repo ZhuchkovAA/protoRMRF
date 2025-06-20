@@ -1,12 +1,12 @@
 syntax = "proto3";
 
-package permission;
+package apfish.v1.permission.action;
 
 option go_package = "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/action;permission_action";
 
 import "google/protobuf/timestamp.proto";  // Standard Protocol Buffers timestamp
 
-import "apfish.v1/permission/permission/permission_summary.proto";
+import "apfish.v1/permission/summary/permission_summary.proto";
 
 // Defines an actionable operation that can be performed in the system.
 message Action {
@@ -16,5 +16,5 @@ message Action {
   string code = 4;                // Machine-friendly code (e.g., "read")
   google.protobuf.Timestamp created_at = 5;
 
-  repeated PermissionSummary permissions = 6;
+  repeated apfish.v1.permission.summary.PermissionSummary permissions = 6;
 }

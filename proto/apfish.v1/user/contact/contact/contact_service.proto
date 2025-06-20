@@ -1,11 +1,11 @@
 syntax = "proto3";
 
-package user.contact;
+package apfish.v1.user.contact;
 
 option go_package = "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/contact/contact;user_contact";
 
 import "apfish.v1/user/contact/contact/contact.proto";
-import "apfish.v1/user/contact/contact/contact_summary.proto";
+import "apfish.v1/user/contact/contact/summary/contact_summary.proto";
 
 service ContactService {
   rpc GetContact (ContactRequest) returns (ContactResponse);
@@ -23,7 +23,7 @@ message ContactResponse {
 }
 
 message ContactSummaryResponse {
-  ContactSummary contact = 1;
+  user.contact.summary.ContactSummary contact = 1;
 }
 
 message ListContactsRequest {
@@ -32,6 +32,6 @@ message ListContactsRequest {
 }
 
 message ListContactsResponse {
-  repeated ContactSummary list_contacts = 1;
+  repeated user.contact.summary.ContactSummary list_contacts = 1;
   int64 total = 2;
 }

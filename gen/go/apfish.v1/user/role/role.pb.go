@@ -7,8 +7,8 @@
 package user_role
 
 import (
-	permission "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/permission"
-	user "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/user"
+	summary1 "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/permission/summary"
+	summary "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/user/summary"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -26,13 +26,13 @@ const (
 
 // Defines a user role (e.g., "Admin", "Editor").
 type Role struct {
-	state         protoimpl.MessageState          `protogen:"open.v1"`
-	Id            int64                           `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`                               // Unique role ID.
-	Name          string                          `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`                            // Human-readable name (e.g., "Admin").
-	Code          string                          `protobuf:"bytes,3,opt,name=code,proto3" json:"code,omitempty"`                            // Machine-friendly code (e.g., "admin").
-	CreatedAt     *timestamppb.Timestamp          `protobuf:"bytes,4,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"` // When the role was created.
-	Users         []*user.UserSummary             `protobuf:"bytes,5,rep,name=users,proto3" json:"users,omitempty"`
-	Permissions   []*permission.PermissionSummary `protobuf:"bytes,6,rep,name=permissions,proto3" json:"permissions,omitempty"` // Permissions granted by this role.
+	state         protoimpl.MessageState        `protogen:"open.v1"`
+	Id            int64                         `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`                               // Unique role ID.
+	Name          string                        `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`                            // Human-readable name (e.g., "Admin").
+	Code          string                        `protobuf:"bytes,3,opt,name=code,proto3" json:"code,omitempty"`                            // Machine-friendly code (e.g., "admin").
+	CreatedAt     *timestamppb.Timestamp        `protobuf:"bytes,4,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"` // When the role was created.
+	Users         []*summary.UserSummary        `protobuf:"bytes,5,rep,name=users,proto3" json:"users,omitempty"`
+	Permissions   []*summary1.PermissionSummary `protobuf:"bytes,6,rep,name=permissions,proto3" json:"permissions,omitempty"` // Permissions granted by this role.
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -95,14 +95,14 @@ func (x *Role) GetCreatedAt() *timestamppb.Timestamp {
 	return nil
 }
 
-func (x *Role) GetUsers() []*user.UserSummary {
+func (x *Role) GetUsers() []*summary.UserSummary {
 	if x != nil {
 		return x.Users
 	}
 	return nil
 }
 
-func (x *Role) GetPermissions() []*permission.PermissionSummary {
+func (x *Role) GetPermissions() []*summary1.PermissionSummary {
 	if x != nil {
 		return x.Permissions
 	}
@@ -113,15 +113,15 @@ var File_apfish_v1_user_role_role_proto protoreflect.FileDescriptor
 
 const file_apfish_v1_user_role_role_proto_rawDesc = "" +
 	"\n" +
-	"\x1eapfish.v1/user/role/role.proto\x12\x04user\x1a\x1fgoogle/protobuf/timestamp.proto\x1a&apfish.v1/user/user/user_summary.proto\x1a8apfish.v1/permission/permission/permission_summary.proto\"\xe3\x01\n" +
+	"\x1eapfish.v1/user/role/role.proto\x12\x13apfish.v1.user.role\x1a\x1fgoogle/protobuf/timestamp.proto\x1a)apfish.v1/user/summary/user_summary.proto\x1a5apfish.v1/permission/summary/permission_summary.proto\"\x87\x02\n" +
 	"\x04Role\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x12\n" +
 	"\x04code\x18\x03 \x01(\tR\x04code\x129\n" +
 	"\n" +
-	"created_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x12'\n" +
-	"\x05users\x18\x05 \x03(\v2\x11.user.UserSummaryR\x05users\x12?\n" +
-	"\vpermissions\x18\x06 \x03(\v2\x1d.permission.PermissionSummaryR\vpermissionsBFZDgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/role;user_roleb\x06proto3"
+	"created_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
+	"\x05users\x18\x05 \x03(\v2#.apfish.v1.user.summary.UserSummaryR\x05users\x12Q\n" +
+	"\vpermissions\x18\x06 \x03(\v2/.apfish.v1.permission.summary.PermissionSummaryR\vpermissionsBFZDgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/role;user_roleb\x06proto3"
 
 var (
 	file_apfish_v1_user_role_role_proto_rawDescOnce sync.Once
@@ -137,15 +137,15 @@ func file_apfish_v1_user_role_role_proto_rawDescGZIP() []byte {
 
 var file_apfish_v1_user_role_role_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_apfish_v1_user_role_role_proto_goTypes = []any{
-	(*Role)(nil),                         // 0: user.Role
-	(*timestamppb.Timestamp)(nil),        // 1: google.protobuf.Timestamp
-	(*user.UserSummary)(nil),             // 2: user.UserSummary
-	(*permission.PermissionSummary)(nil), // 3: permission.PermissionSummary
+	(*Role)(nil),                       // 0: apfish.v1.user.role.Role
+	(*timestamppb.Timestamp)(nil),      // 1: google.protobuf.Timestamp
+	(*summary.UserSummary)(nil),        // 2: apfish.v1.user.summary.UserSummary
+	(*summary1.PermissionSummary)(nil), // 3: apfish.v1.permission.summary.PermissionSummary
 }
 var file_apfish_v1_user_role_role_proto_depIdxs = []int32{
-	1, // 0: user.Role.created_at:type_name -> google.protobuf.Timestamp
-	2, // 1: user.Role.users:type_name -> user.UserSummary
-	3, // 2: user.Role.permissions:type_name -> permission.PermissionSummary
+	1, // 0: apfish.v1.user.role.Role.created_at:type_name -> google.protobuf.Timestamp
+	2, // 1: apfish.v1.user.role.Role.users:type_name -> apfish.v1.user.summary.UserSummary
+	3, // 2: apfish.v1.user.role.Role.permissions:type_name -> apfish.v1.permission.summary.PermissionSummary
 	3, // [3:3] is the sub-list for method output_type
 	3, // [3:3] is the sub-list for method input_type
 	3, // [3:3] is the sub-list for extension type_name

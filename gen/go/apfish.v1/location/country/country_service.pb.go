@@ -7,6 +7,7 @@
 package location_country
 
 import (
+	summary "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/country/summary"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -110,8 +111,8 @@ func (x *CountryResponse) GetCountry() *Country {
 }
 
 type CountrySummaryResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Country       *CountrySummary        `protobuf:"bytes,1,opt,name=country,proto3" json:"country,omitempty"`
+	state         protoimpl.MessageState  `protogen:"open.v1"`
+	Country       *summary.CountrySummary `protobuf:"bytes,1,opt,name=country,proto3" json:"country,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -146,7 +147,7 @@ func (*CountrySummaryResponse) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_location_country_country_service_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *CountrySummaryResponse) GetCountry() *CountrySummary {
+func (x *CountrySummaryResponse) GetCountry() *summary.CountrySummary {
 	if x != nil {
 		return x.Country
 	}
@@ -206,9 +207,9 @@ func (x *ListCountriesRequest) GetPerPage() int64 {
 }
 
 type ListCountriesResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	ListCountries []*CountrySummary      `protobuf:"bytes,1,rep,name=list_countries,json=listCountries,proto3" json:"list_countries,omitempty"`
-	Total         int64                  `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	state         protoimpl.MessageState    `protogen:"open.v1"`
+	ListCountries []*summary.CountrySummary `protobuf:"bytes,1,rep,name=list_countries,json=listCountries,proto3" json:"list_countries,omitempty"`
+	Total         int64                     `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -243,7 +244,7 @@ func (*ListCountriesResponse) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_location_country_country_service_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *ListCountriesResponse) GetListCountries() []*CountrySummary {
+func (x *ListCountriesResponse) GetListCountries() []*summary.CountrySummary {
 	if x != nil {
 		return x.ListCountries
 	}
@@ -261,24 +262,24 @@ var File_apfish_v1_location_country_country_service_proto protoreflect.FileDescr
 
 const file_apfish_v1_location_country_country_service_proto_rawDesc = "" +
 	"\n" +
-	"0apfish.v1/location/country/country_service.proto\x12\blocation\x1a(apfish.v1/location/country/country.proto\x1a0apfish.v1/location/country/country_summary.proto\" \n" +
+	"0apfish.v1/location/country/country_service.proto\x12\x1aapfish.v1.location.country\x1a(apfish.v1/location/country/country.proto\x1a8apfish.v1/location/country/summary/country_summary.proto\" \n" +
 	"\x0eCountryRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\">\n" +
-	"\x0fCountryResponse\x12+\n" +
-	"\acountry\x18\x01 \x01(\v2\x11.location.CountryR\acountry\"L\n" +
-	"\x16CountrySummaryResponse\x122\n" +
-	"\acountry\x18\x01 \x01(\v2\x18.location.CountrySummaryR\acountry\"E\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\"P\n" +
+	"\x0fCountryResponse\x12=\n" +
+	"\acountry\x18\x01 \x01(\v2#.apfish.v1.location.country.CountryR\acountry\"f\n" +
+	"\x16CountrySummaryResponse\x12L\n" +
+	"\acountry\x18\x01 \x01(\v22.apfish.v1.location.country.summary.CountrySummaryR\acountry\"E\n" +
 	"\x14ListCountriesRequest\x12\x12\n" +
 	"\x04page\x18\x01 \x01(\x03R\x04page\x12\x19\n" +
-	"\bper_page\x18\x02 \x01(\x03R\aperPage\"n\n" +
-	"\x15ListCountriesResponse\x12?\n" +
-	"\x0elist_countries\x18\x01 \x03(\v2\x18.location.CountrySummaryR\rlistCountries\x12\x14\n" +
-	"\x05total\x18\x02 \x01(\x03R\x05total2\xf6\x01\n" +
-	"\x0eCountryService\x12A\n" +
+	"\bper_page\x18\x02 \x01(\x03R\aperPage\"\x88\x01\n" +
+	"\x15ListCountriesResponse\x12Y\n" +
+	"\x0elist_countries\x18\x01 \x03(\v22.apfish.v1.location.country.summary.CountrySummaryR\rlistCountries\x12\x14\n" +
+	"\x05total\x18\x02 \x01(\x03R\x05total2\xe2\x02\n" +
+	"\x0eCountryService\x12e\n" +
 	"\n" +
-	"GetCountry\x12\x18.location.CountryRequest\x1a\x19.location.CountryResponse\x12O\n" +
-	"\x11GetCountrySummary\x12\x18.location.CountryRequest\x1a .location.CountrySummaryResponse\x12P\n" +
-	"\rListCountries\x12\x1e.location.ListCountriesRequest\x1a\x1f.location.ListCountriesResponseBTZRgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/country;location_countryb\x06proto3"
+	"GetCountry\x12*.apfish.v1.location.country.CountryRequest\x1a+.apfish.v1.location.country.CountryResponse\x12s\n" +
+	"\x11GetCountrySummary\x12*.apfish.v1.location.country.CountryRequest\x1a2.apfish.v1.location.country.CountrySummaryResponse\x12t\n" +
+	"\rListCountries\x120.apfish.v1.location.country.ListCountriesRequest\x1a1.apfish.v1.location.country.ListCountriesResponseBTZRgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/country;location_countryb\x06proto3"
 
 var (
 	file_apfish_v1_location_country_country_service_proto_rawDescOnce sync.Once
@@ -294,24 +295,24 @@ func file_apfish_v1_location_country_country_service_proto_rawDescGZIP() []byte 
 
 var file_apfish_v1_location_country_country_service_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
 var file_apfish_v1_location_country_country_service_proto_goTypes = []any{
-	(*CountryRequest)(nil),         // 0: location.CountryRequest
-	(*CountryResponse)(nil),        // 1: location.CountryResponse
-	(*CountrySummaryResponse)(nil), // 2: location.CountrySummaryResponse
-	(*ListCountriesRequest)(nil),   // 3: location.ListCountriesRequest
-	(*ListCountriesResponse)(nil),  // 4: location.ListCountriesResponse
-	(*Country)(nil),                // 5: location.Country
-	(*CountrySummary)(nil),         // 6: location.CountrySummary
+	(*CountryRequest)(nil),         // 0: apfish.v1.location.country.CountryRequest
+	(*CountryResponse)(nil),        // 1: apfish.v1.location.country.CountryResponse
+	(*CountrySummaryResponse)(nil), // 2: apfish.v1.location.country.CountrySummaryResponse
+	(*ListCountriesRequest)(nil),   // 3: apfish.v1.location.country.ListCountriesRequest
+	(*ListCountriesResponse)(nil),  // 4: apfish.v1.location.country.ListCountriesResponse
+	(*Country)(nil),                // 5: apfish.v1.location.country.Country
+	(*summary.CountrySummary)(nil), // 6: apfish.v1.location.country.summary.CountrySummary
 }
 var file_apfish_v1_location_country_country_service_proto_depIdxs = []int32{
-	5, // 0: location.CountryResponse.country:type_name -> location.Country
-	6, // 1: location.CountrySummaryResponse.country:type_name -> location.CountrySummary
-	6, // 2: location.ListCountriesResponse.list_countries:type_name -> location.CountrySummary
-	0, // 3: location.CountryService.GetCountry:input_type -> location.CountryRequest
-	0, // 4: location.CountryService.GetCountrySummary:input_type -> location.CountryRequest
-	3, // 5: location.CountryService.ListCountries:input_type -> location.ListCountriesRequest
-	1, // 6: location.CountryService.GetCountry:output_type -> location.CountryResponse
-	2, // 7: location.CountryService.GetCountrySummary:output_type -> location.CountrySummaryResponse
-	4, // 8: location.CountryService.ListCountries:output_type -> location.ListCountriesResponse
+	5, // 0: apfish.v1.location.country.CountryResponse.country:type_name -> apfish.v1.location.country.Country
+	6, // 1: apfish.v1.location.country.CountrySummaryResponse.country:type_name -> apfish.v1.location.country.summary.CountrySummary
+	6, // 2: apfish.v1.location.country.ListCountriesResponse.list_countries:type_name -> apfish.v1.location.country.summary.CountrySummary
+	0, // 3: apfish.v1.location.country.CountryService.GetCountry:input_type -> apfish.v1.location.country.CountryRequest
+	0, // 4: apfish.v1.location.country.CountryService.GetCountrySummary:input_type -> apfish.v1.location.country.CountryRequest
+	3, // 5: apfish.v1.location.country.CountryService.ListCountries:input_type -> apfish.v1.location.country.ListCountriesRequest
+	1, // 6: apfish.v1.location.country.CountryService.GetCountry:output_type -> apfish.v1.location.country.CountryResponse
+	2, // 7: apfish.v1.location.country.CountryService.GetCountrySummary:output_type -> apfish.v1.location.country.CountrySummaryResponse
+	4, // 8: apfish.v1.location.country.CountryService.ListCountries:output_type -> apfish.v1.location.country.ListCountriesResponse
 	6, // [6:9] is the sub-list for method output_type
 	3, // [3:6] is the sub-list for method input_type
 	3, // [3:3] is the sub-list for extension type_name
@@ -325,7 +326,6 @@ func file_apfish_v1_location_country_country_service_proto_init() {
 		return
 	}
 	file_apfish_v1_location_country_country_proto_init()
-	file_apfish_v1_location_country_country_summary_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{

@@ -7,7 +7,7 @@
 package permission_object
 
 import (
-	permission "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/permission"
+	summary "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/permission/summary"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -25,13 +25,13 @@ const (
 
 // Defines a type of resource or object that can be accessed in the system.
 type Object struct {
-	state         protoimpl.MessageState          `protogen:"open.v1"`
-	Id            int64                           `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`                  // Unique identifier for the object type
-	Name          string                          `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`               // Human-readable name (e.g., "Inspection")
-	Description   string                          `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"` // Detailed explanation of the object type
-	Code          string                          `protobuf:"bytes,4,opt,name=code,proto3" json:"code,omitempty"`               // Machine-friendly code (e.g., "inspection")
-	CreatedAt     *timestamppb.Timestamp          `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	Permissions   []*permission.PermissionSummary `protobuf:"bytes,6,rep,name=permissions,proto3" json:"permissions,omitempty"`
+	state         protoimpl.MessageState       `protogen:"open.v1"`
+	Id            int64                        `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`                  // Unique identifier for the object type
+	Name          string                       `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`               // Human-readable name (e.g., "Inspection")
+	Description   string                       `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"` // Detailed explanation of the object type
+	Code          string                       `protobuf:"bytes,4,opt,name=code,proto3" json:"code,omitempty"`               // Machine-friendly code (e.g., "inspection")
+	CreatedAt     *timestamppb.Timestamp       `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	Permissions   []*summary.PermissionSummary `protobuf:"bytes,6,rep,name=permissions,proto3" json:"permissions,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -101,7 +101,7 @@ func (x *Object) GetCreatedAt() *timestamppb.Timestamp {
 	return nil
 }
 
-func (x *Object) GetPermissions() []*permission.PermissionSummary {
+func (x *Object) GetPermissions() []*summary.PermissionSummary {
 	if x != nil {
 		return x.Permissions
 	}
@@ -112,16 +112,15 @@ var File_apfish_v1_permission_object_object_proto protoreflect.FileDescriptor
 
 const file_apfish_v1_permission_object_object_proto_rawDesc = "" +
 	"\n" +
-	"(apfish.v1/permission/object/object.proto\x12\n" +
-	"permission\x1a\x1fgoogle/protobuf/timestamp.proto\x1a8apfish.v1/permission/permission/permission_summary.proto\"\xde\x01\n" +
+	"(apfish.v1/permission/object/object.proto\x12\x1bapfish.v1.permission.object\x1a\x1fgoogle/protobuf/timestamp.proto\x1a5apfish.v1/permission/summary/permission_summary.proto\"\xf0\x01\n" +
 	"\x06Object\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12 \n" +
 	"\vdescription\x18\x03 \x01(\tR\vdescription\x12\x12\n" +
 	"\x04code\x18\x04 \x01(\tR\x04code\x129\n" +
 	"\n" +
-	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x12?\n" +
-	"\vpermissions\x18\x06 \x03(\v2\x1d.permission.PermissionSummaryR\vpermissionsBVZTgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/object;permission_objectb\x06proto3"
+	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x12Q\n" +
+	"\vpermissions\x18\x06 \x03(\v2/.apfish.v1.permission.summary.PermissionSummaryR\vpermissionsBVZTgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/object;permission_objectb\x06proto3"
 
 var (
 	file_apfish_v1_permission_object_object_proto_rawDescOnce sync.Once
@@ -137,13 +136,13 @@ func file_apfish_v1_permission_object_object_proto_rawDescGZIP() []byte {
 
 var file_apfish_v1_permission_object_object_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_apfish_v1_permission_object_object_proto_goTypes = []any{
-	(*Object)(nil),                       // 0: permission.Object
-	(*timestamppb.Timestamp)(nil),        // 1: google.protobuf.Timestamp
-	(*permission.PermissionSummary)(nil), // 2: permission.PermissionSummary
+	(*Object)(nil),                    // 0: apfish.v1.permission.object.Object
+	(*timestamppb.Timestamp)(nil),     // 1: google.protobuf.Timestamp
+	(*summary.PermissionSummary)(nil), // 2: apfish.v1.permission.summary.PermissionSummary
 }
 var file_apfish_v1_permission_object_object_proto_depIdxs = []int32{
-	1, // 0: permission.Object.created_at:type_name -> google.protobuf.Timestamp
-	2, // 1: permission.Object.permissions:type_name -> permission.PermissionSummary
+	1, // 0: apfish.v1.permission.object.Object.created_at:type_name -> google.protobuf.Timestamp
+	2, // 1: apfish.v1.permission.object.Object.permissions:type_name -> apfish.v1.permission.summary.PermissionSummary
 	2, // [2:2] is the sub-list for method output_type
 	2, // [2:2] is the sub-list for method input_type
 	2, // [2:2] is the sub-list for extension type_name

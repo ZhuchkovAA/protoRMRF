@@ -7,6 +7,7 @@
 package user_contact_type
 
 import (
+	summary "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/contact/type/summary"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -111,7 +112,7 @@ func (x *TypeResponse) GetType() *Type {
 
 type TypeSummaryResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Type          *TypeSummary           `protobuf:"bytes,1,opt,name=type,proto3" json:"type,omitempty"`
+	Type          *summary.TypeSummary   `protobuf:"bytes,1,opt,name=type,proto3" json:"type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -146,7 +147,7 @@ func (*TypeSummaryResponse) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_user_contact_type_type_service_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *TypeSummaryResponse) GetType() *TypeSummary {
+func (x *TypeSummaryResponse) GetType() *summary.TypeSummary {
 	if x != nil {
 		return x.Type
 	}
@@ -207,7 +208,7 @@ func (x *ListTypesRequest) GetPerPage() int64 {
 
 type ListTypesResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	ListTypes     []*TypeSummary         `protobuf:"bytes,1,rep,name=list_types,json=listTypes,proto3" json:"list_types,omitempty"`
+	ListTypes     []*summary.TypeSummary `protobuf:"bytes,1,rep,name=list_types,json=listTypes,proto3" json:"list_types,omitempty"`
 	Total         int64                  `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -243,7 +244,7 @@ func (*ListTypesResponse) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_user_contact_type_type_service_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *ListTypesResponse) GetListTypes() []*TypeSummary {
+func (x *ListTypesResponse) GetListTypes() []*summary.TypeSummary {
 	if x != nil {
 		return x.ListTypes
 	}
@@ -261,24 +262,24 @@ var File_apfish_v1_user_contact_type_type_service_proto protoreflect.FileDescrip
 
 const file_apfish_v1_user_contact_type_type_service_proto_rawDesc = "" +
 	"\n" +
-	".apfish.v1/user/contact/type/type_service.proto\x12\fuser.contact\x1a&apfish.v1/user/contact/type/type.proto\x1a.apfish.v1/user/contact/type/type_summary.proto\"\x1d\n" +
+	".apfish.v1/user/contact/type/type_service.proto\x12\x1bapfish.v1.user.contact.type\x1a&apfish.v1/user/contact/type/type.proto\x1a6apfish.v1/user/contact/type/summary/type_summary.proto\"\x1d\n" +
 	"\vTypeRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\"6\n" +
-	"\fTypeResponse\x12&\n" +
-	"\x04type\x18\x01 \x01(\v2\x12.user.contact.TypeR\x04type\"D\n" +
-	"\x13TypeSummaryResponse\x12-\n" +
-	"\x04type\x18\x01 \x01(\v2\x19.user.contact.TypeSummaryR\x04type\"A\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\"E\n" +
+	"\fTypeResponse\x125\n" +
+	"\x04type\x18\x01 \x01(\v2!.apfish.v1.user.contact.type.TypeR\x04type\"[\n" +
+	"\x13TypeSummaryResponse\x12D\n" +
+	"\x04type\x18\x01 \x01(\v20.apfish.v1.user.contact.type.summary.TypeSummaryR\x04type\"A\n" +
 	"\x10ListTypesRequest\x12\x12\n" +
 	"\x04page\x18\x01 \x01(\x03R\x04page\x12\x19\n" +
-	"\bper_page\x18\x02 \x01(\x03R\aperPage\"c\n" +
-	"\x11ListTypesResponse\x128\n" +
+	"\bper_page\x18\x02 \x01(\x03R\aperPage\"z\n" +
+	"\x11ListTypesResponse\x12O\n" +
 	"\n" +
-	"list_types\x18\x01 \x03(\v2\x19.user.contact.TypeSummaryR\tlistTypes\x12\x14\n" +
-	"\x05total\x18\x02 \x01(\x03R\x05total2\xed\x01\n" +
-	"\vTypeService\x12@\n" +
-	"\aGetType\x12\x19.user.contact.TypeRequest\x1a\x1a.user.contact.TypeResponse\x12N\n" +
-	"\x0eGetTypeSummary\x12\x19.user.contact.TypeRequest\x1a!.user.contact.TypeSummaryResponse\x12L\n" +
-	"\tListTypes\x12\x1e.user.contact.ListTypesRequest\x1a\x1f.user.contact.ListTypesResponseBVZTgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/contact/type;user_contact_typeb\x06proto3"
+	"list_types\x18\x01 \x03(\v20.apfish.v1.user.contact.type.summary.TypeSummaryR\tlistTypes\x12\x14\n" +
+	"\x05total\x18\x02 \x01(\x03R\x05total2\xc7\x02\n" +
+	"\vTypeService\x12^\n" +
+	"\aGetType\x12(.apfish.v1.user.contact.type.TypeRequest\x1a).apfish.v1.user.contact.type.TypeResponse\x12l\n" +
+	"\x0eGetTypeSummary\x12(.apfish.v1.user.contact.type.TypeRequest\x1a0.apfish.v1.user.contact.type.TypeSummaryResponse\x12j\n" +
+	"\tListTypes\x12-.apfish.v1.user.contact.type.ListTypesRequest\x1a..apfish.v1.user.contact.type.ListTypesResponseBVZTgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/contact/type;user_contact_typeb\x06proto3"
 
 var (
 	file_apfish_v1_user_contact_type_type_service_proto_rawDescOnce sync.Once
@@ -294,24 +295,24 @@ func file_apfish_v1_user_contact_type_type_service_proto_rawDescGZIP() []byte {
 
 var file_apfish_v1_user_contact_type_type_service_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
 var file_apfish_v1_user_contact_type_type_service_proto_goTypes = []any{
-	(*TypeRequest)(nil),         // 0: user.contact.TypeRequest
-	(*TypeResponse)(nil),        // 1: user.contact.TypeResponse
-	(*TypeSummaryResponse)(nil), // 2: user.contact.TypeSummaryResponse
-	(*ListTypesRequest)(nil),    // 3: user.contact.ListTypesRequest
-	(*ListTypesResponse)(nil),   // 4: user.contact.ListTypesResponse
-	(*Type)(nil),                // 5: user.contact.Type
-	(*TypeSummary)(nil),         // 6: user.contact.TypeSummary
+	(*TypeRequest)(nil),         // 0: apfish.v1.user.contact.type.TypeRequest
+	(*TypeResponse)(nil),        // 1: apfish.v1.user.contact.type.TypeResponse
+	(*TypeSummaryResponse)(nil), // 2: apfish.v1.user.contact.type.TypeSummaryResponse
+	(*ListTypesRequest)(nil),    // 3: apfish.v1.user.contact.type.ListTypesRequest
+	(*ListTypesResponse)(nil),   // 4: apfish.v1.user.contact.type.ListTypesResponse
+	(*Type)(nil),                // 5: apfish.v1.user.contact.type.Type
+	(*summary.TypeSummary)(nil), // 6: apfish.v1.user.contact.type.summary.TypeSummary
 }
 var file_apfish_v1_user_contact_type_type_service_proto_depIdxs = []int32{
-	5, // 0: user.contact.TypeResponse.type:type_name -> user.contact.Type
-	6, // 1: user.contact.TypeSummaryResponse.type:type_name -> user.contact.TypeSummary
-	6, // 2: user.contact.ListTypesResponse.list_types:type_name -> user.contact.TypeSummary
-	0, // 3: user.contact.TypeService.GetType:input_type -> user.contact.TypeRequest
-	0, // 4: user.contact.TypeService.GetTypeSummary:input_type -> user.contact.TypeRequest
-	3, // 5: user.contact.TypeService.ListTypes:input_type -> user.contact.ListTypesRequest
-	1, // 6: user.contact.TypeService.GetType:output_type -> user.contact.TypeResponse
-	2, // 7: user.contact.TypeService.GetTypeSummary:output_type -> user.contact.TypeSummaryResponse
-	4, // 8: user.contact.TypeService.ListTypes:output_type -> user.contact.ListTypesResponse
+	5, // 0: apfish.v1.user.contact.type.TypeResponse.type:type_name -> apfish.v1.user.contact.type.Type
+	6, // 1: apfish.v1.user.contact.type.TypeSummaryResponse.type:type_name -> apfish.v1.user.contact.type.summary.TypeSummary
+	6, // 2: apfish.v1.user.contact.type.ListTypesResponse.list_types:type_name -> apfish.v1.user.contact.type.summary.TypeSummary
+	0, // 3: apfish.v1.user.contact.type.TypeService.GetType:input_type -> apfish.v1.user.contact.type.TypeRequest
+	0, // 4: apfish.v1.user.contact.type.TypeService.GetTypeSummary:input_type -> apfish.v1.user.contact.type.TypeRequest
+	3, // 5: apfish.v1.user.contact.type.TypeService.ListTypes:input_type -> apfish.v1.user.contact.type.ListTypesRequest
+	1, // 6: apfish.v1.user.contact.type.TypeService.GetType:output_type -> apfish.v1.user.contact.type.TypeResponse
+	2, // 7: apfish.v1.user.contact.type.TypeService.GetTypeSummary:output_type -> apfish.v1.user.contact.type.TypeSummaryResponse
+	4, // 8: apfish.v1.user.contact.type.TypeService.ListTypes:output_type -> apfish.v1.user.contact.type.ListTypesResponse
 	6, // [6:9] is the sub-list for method output_type
 	3, // [3:6] is the sub-list for method input_type
 	3, // [3:3] is the sub-list for extension type_name
@@ -325,7 +326,6 @@ func file_apfish_v1_user_contact_type_type_service_proto_init() {
 		return
 	}
 	file_apfish_v1_user_contact_type_type_proto_init()
-	file_apfish_v1_user_contact_type_type_summary_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{

@@ -1,15 +1,15 @@
 syntax = "proto3";
 
-package location;
+package apfish.v1.location.country;
 
 option go_package = "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/country;location_country";
 
 import "google/protobuf/timestamp.proto";  // Standard Protocol Buffers timestamp
 
-import "apfish.v1/location/port/port_summary.proto";
-import "apfish.v1/call_sign/call_sign_summary.proto";
+import "apfish.v1/location/port/summary/port_summary.proto";
+import "apfish.v1/call_sign/summary/call_sign_summary.proto";
 
-import "apfish.v1/permission/permission/permission_summary.proto";
+import "apfish.v1/permission/summary/permission_summary.proto";
 
 message Country {
   int64 id = 1;
@@ -20,7 +20,7 @@ message Country {
   bool is_ballast_water = 6;
   google.protobuf.Timestamp created_at = 7;
 
-  repeated PortSummary ports = 8;
-  repeated call_sign.CallSignSummary call_signs = 9;
-  repeated permission.PermissionSummary permissions = 10;
+  repeated apfish.v1.location.port.summary.PortSummary ports = 8;
+  repeated apfish.v1.call_sign.summary.CallSignSummary call_signs = 9;
+  repeated apfish.v1.permission.summary.PermissionSummary permissions = 10;
 }

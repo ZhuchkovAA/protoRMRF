@@ -7,8 +7,8 @@
 package call_sign
 
 import (
-	country "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/country"
-	ship "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/ship/ship"
+	summary "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/country/summary"
+	summary1 "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/ship/ship/summary"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -31,8 +31,8 @@ type CallSign struct {
 	LimitLower    string                    `protobuf:"bytes,3,opt,name=limit_lower,json=limitLower,proto3" json:"limit_lower,omitempty"`
 	LimitUpper    string                    `protobuf:"bytes,4,opt,name=limit_upper,json=limitUpper,proto3" json:"limit_upper,omitempty"`
 	CreatedAt     *timestamppb.Timestamp    `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	Countries     []*country.CountrySummary `protobuf:"bytes,6,rep,name=countries,proto3" json:"countries,omitempty"`
-	Ships         []*ship.ShipSummary       `protobuf:"bytes,7,rep,name=ships,proto3" json:"ships,omitempty"`
+	Countries     []*summary.CountrySummary `protobuf:"bytes,6,rep,name=countries,proto3" json:"countries,omitempty"`
+	Ships         []*summary1.ShipSummary   `protobuf:"bytes,7,rep,name=ships,proto3" json:"ships,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -102,14 +102,14 @@ func (x *CallSign) GetCreatedAt() *timestamppb.Timestamp {
 	return nil
 }
 
-func (x *CallSign) GetCountries() []*country.CountrySummary {
+func (x *CallSign) GetCountries() []*summary.CountrySummary {
 	if x != nil {
 		return x.Countries
 	}
 	return nil
 }
 
-func (x *CallSign) GetShips() []*ship.ShipSummary {
+func (x *CallSign) GetShips() []*summary1.ShipSummary {
 	if x != nil {
 		return x.Ships
 	}
@@ -120,7 +120,7 @@ var File_apfish_v1_call_sign_call_sign_proto protoreflect.FileDescriptor
 
 const file_apfish_v1_call_sign_call_sign_proto_rawDesc = "" +
 	"\n" +
-	"#apfish.v1/call_sign/call_sign.proto\x12\tcall_sign\x1a\x1fgoogle/protobuf/timestamp.proto\x1a0apfish.v1/location/country/country_summary.proto\x1a&apfish.v1/ship/ship/ship_summary.proto\"\x90\x02\n" +
+	"#apfish.v1/call_sign/call_sign.proto\x12\x13apfish.v1.call_sign\x1a\x1fgoogle/protobuf/timestamp.proto\x1a8apfish.v1/location/country/summary/country_summary.proto\x1a)apfish.v1/ship/summary/ship_summary.proto\"\xbc\x02\n" +
 	"\bCallSign\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x16\n" +
 	"\x06series\x18\x02 \x01(\tR\x06series\x12\x1f\n" +
@@ -129,9 +129,9 @@ const file_apfish_v1_call_sign_call_sign_proto_rawDesc = "" +
 	"\vlimit_upper\x18\x04 \x01(\tR\n" +
 	"limitUpper\x129\n" +
 	"\n" +
-	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x126\n" +
-	"\tcountries\x18\x06 \x03(\v2\x18.location.CountrySummaryR\tcountries\x12'\n" +
-	"\x05ships\x18\a \x03(\v2\x11.ship.ShipSummaryR\x05shipsBFZDgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/call_sign;call_signb\x06proto3"
+	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x12P\n" +
+	"\tcountries\x18\x06 \x03(\v22.apfish.v1.location.country.summary.CountrySummaryR\tcountries\x129\n" +
+	"\x05ships\x18\a \x03(\v2#.apfish.v1.ship.summary.ShipSummaryR\x05shipsBFZDgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/call_sign;call_signb\x06proto3"
 
 var (
 	file_apfish_v1_call_sign_call_sign_proto_rawDescOnce sync.Once
@@ -147,15 +147,15 @@ func file_apfish_v1_call_sign_call_sign_proto_rawDescGZIP() []byte {
 
 var file_apfish_v1_call_sign_call_sign_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_apfish_v1_call_sign_call_sign_proto_goTypes = []any{
-	(*CallSign)(nil),               // 0: call_sign.CallSign
+	(*CallSign)(nil),               // 0: apfish.v1.call_sign.CallSign
 	(*timestamppb.Timestamp)(nil),  // 1: google.protobuf.Timestamp
-	(*country.CountrySummary)(nil), // 2: location.CountrySummary
-	(*ship.ShipSummary)(nil),       // 3: ship.ShipSummary
+	(*summary.CountrySummary)(nil), // 2: apfish.v1.location.country.summary.CountrySummary
+	(*summary1.ShipSummary)(nil),   // 3: apfish.v1.ship.summary.ShipSummary
 }
 var file_apfish_v1_call_sign_call_sign_proto_depIdxs = []int32{
-	1, // 0: call_sign.CallSign.created_at:type_name -> google.protobuf.Timestamp
-	2, // 1: call_sign.CallSign.countries:type_name -> location.CountrySummary
-	3, // 2: call_sign.CallSign.ships:type_name -> ship.ShipSummary
+	1, // 0: apfish.v1.call_sign.CallSign.created_at:type_name -> google.protobuf.Timestamp
+	2, // 1: apfish.v1.call_sign.CallSign.countries:type_name -> apfish.v1.location.country.summary.CountrySummary
+	3, // 2: apfish.v1.call_sign.CallSign.ships:type_name -> apfish.v1.ship.summary.ShipSummary
 	3, // [3:3] is the sub-list for method output_type
 	3, // [3:3] is the sub-list for method input_type
 	3, // [3:3] is the sub-list for extension type_name

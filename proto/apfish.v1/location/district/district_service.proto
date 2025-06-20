@@ -1,11 +1,11 @@
 syntax = "proto3";
 
-package location;
+package apfish.v1.location.district;
 
 option go_package = "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/district;location_district";
 
 import "apfish.v1/location/district/district.proto";
-import "apfish.v1/location/district/district_summary.proto";
+import "apfish.v1/location/district/summary/district_summary.proto";
 
 service DistrictService {
   rpc GetDistrict (DistrictRequest) returns (DistrictResponse);
@@ -23,7 +23,7 @@ message DistrictResponse {
 }
 
 message DistrictSummaryResponse {
-  DistrictSummary district = 1;
+ location.district.summary.DistrictSummary district = 1;
 }
 
 message ListDistrictsRequest {
@@ -32,6 +32,6 @@ message ListDistrictsRequest {
 }
 
 message ListDistrictsResponse {
-  repeated DistrictSummary list_districts = 1;
+  repeated location.district.summary.DistrictSummary list_districts = 1;
   int64 total = 2;
 }

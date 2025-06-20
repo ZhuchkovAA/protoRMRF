@@ -19,9 +19,9 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	TypeService_GetType_FullMethodName        = "/ship.TypeService/GetType"
-	TypeService_GetTypeSummary_FullMethodName = "/ship.TypeService/GetTypeSummary"
-	TypeService_ListTypes_FullMethodName      = "/ship.TypeService/ListTypes"
+	TypeService_GetType_FullMethodName        = "/apfish.v1.ship.type.TypeService/GetType"
+	TypeService_GetTypeSummary_FullMethodName = "/apfish.v1.ship.type.TypeService/GetTypeSummary"
+	TypeService_ListTypes_FullMethodName      = "/apfish.v1.ship.type.TypeService/ListTypes"
 )
 
 // TypeServiceClient is the client API for TypeService service.
@@ -176,7 +176,7 @@ func _TypeService_ListTypes_Handler(srv interface{}, ctx context.Context, dec fu
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var TypeService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "ship.TypeService",
+	ServiceName: "apfish.v1.ship.type.TypeService",
 	HandlerType: (*TypeServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{

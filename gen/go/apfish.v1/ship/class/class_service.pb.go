@@ -7,6 +7,7 @@
 package ship_class
 
 import (
+	summary "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/ship/class/summary"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -111,7 +112,7 @@ func (x *ClassResponse) GetClass() *Class {
 
 type ClassSummaryResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Class         *ClassSummary          `protobuf:"bytes,1,opt,name=class,proto3" json:"class,omitempty"`
+	Class         *summary.ClassSummary  `protobuf:"bytes,1,opt,name=class,proto3" json:"class,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -146,7 +147,7 @@ func (*ClassSummaryResponse) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_ship_class_class_service_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *ClassSummaryResponse) GetClass() *ClassSummary {
+func (x *ClassSummaryResponse) GetClass() *summary.ClassSummary {
 	if x != nil {
 		return x.Class
 	}
@@ -206,9 +207,9 @@ func (x *ListClassesRequest) GetPerPage() int64 {
 }
 
 type ListClassesResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	ListClasses   []*ClassSummary        `protobuf:"bytes,1,rep,name=list_classes,json=listClasses,proto3" json:"list_classes,omitempty"`
-	Total         int64                  `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	state         protoimpl.MessageState  `protogen:"open.v1"`
+	ListClasses   []*summary.ClassSummary `protobuf:"bytes,1,rep,name=list_classes,json=listClasses,proto3" json:"list_classes,omitempty"`
+	Total         int64                   `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -243,7 +244,7 @@ func (*ListClassesResponse) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_ship_class_class_service_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *ListClassesResponse) GetListClasses() []*ClassSummary {
+func (x *ListClassesResponse) GetListClasses() []*summary.ClassSummary {
 	if x != nil {
 		return x.ListClasses
 	}
@@ -261,23 +262,23 @@ var File_apfish_v1_ship_class_class_service_proto protoreflect.FileDescriptor
 
 const file_apfish_v1_ship_class_class_service_proto_rawDesc = "" +
 	"\n" +
-	"(apfish.v1/ship/class/class_service.proto\x12\x04ship\x1a apfish.v1/ship/class/class.proto\x1a(apfish.v1/ship/class/class_summary.proto\"\x1e\n" +
+	"(apfish.v1/ship/class/class_service.proto\x12\x14apfish.v1.ship.class\x1a apfish.v1/ship/class/class.proto\x1a0apfish.v1/ship/class/summary/class_summary.proto\"\x1e\n" +
 	"\fClassRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\"2\n" +
-	"\rClassResponse\x12!\n" +
-	"\x05class\x18\x01 \x01(\v2\v.ship.ClassR\x05class\"@\n" +
-	"\x14ClassSummaryResponse\x12(\n" +
-	"\x05class\x18\x01 \x01(\v2\x12.ship.ClassSummaryR\x05class\"C\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\"B\n" +
+	"\rClassResponse\x121\n" +
+	"\x05class\x18\x01 \x01(\v2\x1b.apfish.v1.ship.class.ClassR\x05class\"X\n" +
+	"\x14ClassSummaryResponse\x12@\n" +
+	"\x05class\x18\x01 \x01(\v2*.apfish.v1.ship.class.summary.ClassSummaryR\x05class\"C\n" +
 	"\x12ListClassesRequest\x12\x12\n" +
 	"\x04page\x18\x01 \x01(\x03R\x04page\x12\x19\n" +
-	"\bper_page\x18\x02 \x01(\x03R\aperPage\"b\n" +
-	"\x13ListClassesResponse\x125\n" +
-	"\flist_classes\x18\x01 \x03(\v2\x12.ship.ClassSummaryR\vlistClasses\x12\x14\n" +
-	"\x05total\x18\x02 \x01(\x03R\x05total2\xca\x01\n" +
-	"\fClassService\x123\n" +
-	"\bGetClass\x12\x12.ship.ClassRequest\x1a\x13.ship.ClassResponse\x12A\n" +
-	"\x0fGetClassSummary\x12\x12.ship.ClassRequest\x1a\x1a.ship.ClassSummaryResponse\x12B\n" +
-	"\vListClasses\x12\x18.ship.ListClassesRequest\x1a\x19.ship.ListClassesResponseBHZFgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/ship/class;ship_classb\x06proto3"
+	"\bper_page\x18\x02 \x01(\x03R\aperPage\"z\n" +
+	"\x13ListClassesResponse\x12M\n" +
+	"\flist_classes\x18\x01 \x03(\v2*.apfish.v1.ship.class.summary.ClassSummaryR\vlistClasses\x12\x14\n" +
+	"\x05total\x18\x02 \x01(\x03R\x05total2\xaa\x02\n" +
+	"\fClassService\x12S\n" +
+	"\bGetClass\x12\".apfish.v1.ship.class.ClassRequest\x1a#.apfish.v1.ship.class.ClassResponse\x12a\n" +
+	"\x0fGetClassSummary\x12\".apfish.v1.ship.class.ClassRequest\x1a*.apfish.v1.ship.class.ClassSummaryResponse\x12b\n" +
+	"\vListClasses\x12(.apfish.v1.ship.class.ListClassesRequest\x1a).apfish.v1.ship.class.ListClassesResponseBHZFgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/ship/class;ship_classb\x06proto3"
 
 var (
 	file_apfish_v1_ship_class_class_service_proto_rawDescOnce sync.Once
@@ -293,24 +294,24 @@ func file_apfish_v1_ship_class_class_service_proto_rawDescGZIP() []byte {
 
 var file_apfish_v1_ship_class_class_service_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
 var file_apfish_v1_ship_class_class_service_proto_goTypes = []any{
-	(*ClassRequest)(nil),         // 0: ship.ClassRequest
-	(*ClassResponse)(nil),        // 1: ship.ClassResponse
-	(*ClassSummaryResponse)(nil), // 2: ship.ClassSummaryResponse
-	(*ListClassesRequest)(nil),   // 3: ship.ListClassesRequest
-	(*ListClassesResponse)(nil),  // 4: ship.ListClassesResponse
-	(*Class)(nil),                // 5: ship.Class
-	(*ClassSummary)(nil),         // 6: ship.ClassSummary
+	(*ClassRequest)(nil),         // 0: apfish.v1.ship.class.ClassRequest
+	(*ClassResponse)(nil),        // 1: apfish.v1.ship.class.ClassResponse
+	(*ClassSummaryResponse)(nil), // 2: apfish.v1.ship.class.ClassSummaryResponse
+	(*ListClassesRequest)(nil),   // 3: apfish.v1.ship.class.ListClassesRequest
+	(*ListClassesResponse)(nil),  // 4: apfish.v1.ship.class.ListClassesResponse
+	(*Class)(nil),                // 5: apfish.v1.ship.class.Class
+	(*summary.ClassSummary)(nil), // 6: apfish.v1.ship.class.summary.ClassSummary
 }
 var file_apfish_v1_ship_class_class_service_proto_depIdxs = []int32{
-	5, // 0: ship.ClassResponse.class:type_name -> ship.Class
-	6, // 1: ship.ClassSummaryResponse.class:type_name -> ship.ClassSummary
-	6, // 2: ship.ListClassesResponse.list_classes:type_name -> ship.ClassSummary
-	0, // 3: ship.ClassService.GetClass:input_type -> ship.ClassRequest
-	0, // 4: ship.ClassService.GetClassSummary:input_type -> ship.ClassRequest
-	3, // 5: ship.ClassService.ListClasses:input_type -> ship.ListClassesRequest
-	1, // 6: ship.ClassService.GetClass:output_type -> ship.ClassResponse
-	2, // 7: ship.ClassService.GetClassSummary:output_type -> ship.ClassSummaryResponse
-	4, // 8: ship.ClassService.ListClasses:output_type -> ship.ListClassesResponse
+	5, // 0: apfish.v1.ship.class.ClassResponse.class:type_name -> apfish.v1.ship.class.Class
+	6, // 1: apfish.v1.ship.class.ClassSummaryResponse.class:type_name -> apfish.v1.ship.class.summary.ClassSummary
+	6, // 2: apfish.v1.ship.class.ListClassesResponse.list_classes:type_name -> apfish.v1.ship.class.summary.ClassSummary
+	0, // 3: apfish.v1.ship.class.ClassService.GetClass:input_type -> apfish.v1.ship.class.ClassRequest
+	0, // 4: apfish.v1.ship.class.ClassService.GetClassSummary:input_type -> apfish.v1.ship.class.ClassRequest
+	3, // 5: apfish.v1.ship.class.ClassService.ListClasses:input_type -> apfish.v1.ship.class.ListClassesRequest
+	1, // 6: apfish.v1.ship.class.ClassService.GetClass:output_type -> apfish.v1.ship.class.ClassResponse
+	2, // 7: apfish.v1.ship.class.ClassService.GetClassSummary:output_type -> apfish.v1.ship.class.ClassSummaryResponse
+	4, // 8: apfish.v1.ship.class.ClassService.ListClasses:output_type -> apfish.v1.ship.class.ListClassesResponse
 	6, // [6:9] is the sub-list for method output_type
 	3, // [3:6] is the sub-list for method input_type
 	3, // [3:3] is the sub-list for extension type_name
@@ -324,7 +325,6 @@ func file_apfish_v1_ship_class_class_service_proto_init() {
 		return
 	}
 	file_apfish_v1_ship_class_class_proto_init()
-	file_apfish_v1_ship_class_class_summary_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{

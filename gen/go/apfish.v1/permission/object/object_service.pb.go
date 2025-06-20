@@ -7,6 +7,7 @@
 package permission_object
 
 import (
+	summary "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/object/summary"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -111,7 +112,7 @@ func (x *ObjectResponse) GetObject() *Object {
 
 type ObjectSummaryResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Object        *ObjectSummary         `protobuf:"bytes,1,opt,name=object,proto3" json:"object,omitempty"`
+	Object        *summary.ObjectSummary `protobuf:"bytes,1,opt,name=object,proto3" json:"object,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -146,7 +147,7 @@ func (*ObjectSummaryResponse) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_permission_object_object_service_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *ObjectSummaryResponse) GetObject() *ObjectSummary {
+func (x *ObjectSummaryResponse) GetObject() *summary.ObjectSummary {
 	if x != nil {
 		return x.Object
 	}
@@ -206,9 +207,9 @@ func (x *ListObjectsRequest) GetPerPage() int64 {
 }
 
 type ListObjectsResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	ListObjects   []*ObjectSummary       `protobuf:"bytes,1,rep,name=list_objects,json=listObjects,proto3" json:"list_objects,omitempty"`
-	Total         int64                  `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	state         protoimpl.MessageState   `protogen:"open.v1"`
+	ListObjects   []*summary.ObjectSummary `protobuf:"bytes,1,rep,name=list_objects,json=listObjects,proto3" json:"list_objects,omitempty"`
+	Total         int64                    `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -243,7 +244,7 @@ func (*ListObjectsResponse) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_permission_object_object_service_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *ListObjectsResponse) GetListObjects() []*ObjectSummary {
+func (x *ListObjectsResponse) GetListObjects() []*summary.ObjectSummary {
 	if x != nil {
 		return x.ListObjects
 	}
@@ -261,24 +262,23 @@ var File_apfish_v1_permission_object_object_service_proto protoreflect.FileDescr
 
 const file_apfish_v1_permission_object_object_service_proto_rawDesc = "" +
 	"\n" +
-	"0apfish.v1/permission/object/object_service.proto\x12\n" +
-	"permission\x1a(apfish.v1/permission/object/object.proto\x1a0apfish.v1/permission/object/object_summary.proto\"\x1f\n" +
+	"0apfish.v1/permission/object/object_service.proto\x12\x1bapfish.v1.permission.object\x1a(apfish.v1/permission/object/object.proto\x1a8apfish.v1/permission/object/summary/object_summary.proto\"\x1f\n" +
 	"\rObjectRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\"<\n" +
-	"\x0eObjectResponse\x12*\n" +
-	"\x06object\x18\x01 \x01(\v2\x12.permission.ObjectR\x06object\"J\n" +
-	"\x15ObjectSummaryResponse\x121\n" +
-	"\x06object\x18\x01 \x01(\v2\x19.permission.ObjectSummaryR\x06object\"C\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\"M\n" +
+	"\x0eObjectResponse\x12;\n" +
+	"\x06object\x18\x01 \x01(\v2#.apfish.v1.permission.object.ObjectR\x06object\"c\n" +
+	"\x15ObjectSummaryResponse\x12J\n" +
+	"\x06object\x18\x01 \x01(\v22.apfish.v1.permission.object.summary.ObjectSummaryR\x06object\"C\n" +
 	"\x12ListObjectsRequest\x12\x12\n" +
 	"\x04page\x18\x01 \x01(\x03R\x04page\x12\x19\n" +
-	"\bper_page\x18\x02 \x01(\x03R\aperPage\"i\n" +
-	"\x13ListObjectsResponse\x12<\n" +
-	"\flist_objects\x18\x01 \x03(\v2\x19.permission.ObjectSummaryR\vlistObjects\x12\x14\n" +
-	"\x05total\x18\x02 \x01(\x03R\x05total2\xf5\x01\n" +
-	"\rObjectService\x12B\n" +
-	"\tGetObject\x12\x19.permission.ObjectRequest\x1a\x1a.permission.ObjectResponse\x12P\n" +
-	"\x10GetObjectSummary\x12\x19.permission.ObjectRequest\x1a!.permission.ObjectSummaryResponse\x12N\n" +
-	"\vListObjects\x12\x1e.permission.ListObjectsRequest\x1a\x1f.permission.ListObjectsResponseBVZTgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/object;permission_objectb\x06proto3"
+	"\bper_page\x18\x02 \x01(\x03R\aperPage\"\x82\x01\n" +
+	"\x13ListObjectsResponse\x12U\n" +
+	"\flist_objects\x18\x01 \x03(\v22.apfish.v1.permission.object.summary.ObjectSummaryR\vlistObjects\x12\x14\n" +
+	"\x05total\x18\x02 \x01(\x03R\x05total2\xdb\x02\n" +
+	"\rObjectService\x12d\n" +
+	"\tGetObject\x12*.apfish.v1.permission.object.ObjectRequest\x1a+.apfish.v1.permission.object.ObjectResponse\x12r\n" +
+	"\x10GetObjectSummary\x12*.apfish.v1.permission.object.ObjectRequest\x1a2.apfish.v1.permission.object.ObjectSummaryResponse\x12p\n" +
+	"\vListObjects\x12/.apfish.v1.permission.object.ListObjectsRequest\x1a0.apfish.v1.permission.object.ListObjectsResponseBVZTgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/object;permission_objectb\x06proto3"
 
 var (
 	file_apfish_v1_permission_object_object_service_proto_rawDescOnce sync.Once
@@ -294,24 +294,24 @@ func file_apfish_v1_permission_object_object_service_proto_rawDescGZIP() []byte 
 
 var file_apfish_v1_permission_object_object_service_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
 var file_apfish_v1_permission_object_object_service_proto_goTypes = []any{
-	(*ObjectRequest)(nil),         // 0: permission.ObjectRequest
-	(*ObjectResponse)(nil),        // 1: permission.ObjectResponse
-	(*ObjectSummaryResponse)(nil), // 2: permission.ObjectSummaryResponse
-	(*ListObjectsRequest)(nil),    // 3: permission.ListObjectsRequest
-	(*ListObjectsResponse)(nil),   // 4: permission.ListObjectsResponse
-	(*Object)(nil),                // 5: permission.Object
-	(*ObjectSummary)(nil),         // 6: permission.ObjectSummary
+	(*ObjectRequest)(nil),         // 0: apfish.v1.permission.object.ObjectRequest
+	(*ObjectResponse)(nil),        // 1: apfish.v1.permission.object.ObjectResponse
+	(*ObjectSummaryResponse)(nil), // 2: apfish.v1.permission.object.ObjectSummaryResponse
+	(*ListObjectsRequest)(nil),    // 3: apfish.v1.permission.object.ListObjectsRequest
+	(*ListObjectsResponse)(nil),   // 4: apfish.v1.permission.object.ListObjectsResponse
+	(*Object)(nil),                // 5: apfish.v1.permission.object.Object
+	(*summary.ObjectSummary)(nil), // 6: apfish.v1.permission.object.summary.ObjectSummary
 }
 var file_apfish_v1_permission_object_object_service_proto_depIdxs = []int32{
-	5, // 0: permission.ObjectResponse.object:type_name -> permission.Object
-	6, // 1: permission.ObjectSummaryResponse.object:type_name -> permission.ObjectSummary
-	6, // 2: permission.ListObjectsResponse.list_objects:type_name -> permission.ObjectSummary
-	0, // 3: permission.ObjectService.GetObject:input_type -> permission.ObjectRequest
-	0, // 4: permission.ObjectService.GetObjectSummary:input_type -> permission.ObjectRequest
-	3, // 5: permission.ObjectService.ListObjects:input_type -> permission.ListObjectsRequest
-	1, // 6: permission.ObjectService.GetObject:output_type -> permission.ObjectResponse
-	2, // 7: permission.ObjectService.GetObjectSummary:output_type -> permission.ObjectSummaryResponse
-	4, // 8: permission.ObjectService.ListObjects:output_type -> permission.ListObjectsResponse
+	5, // 0: apfish.v1.permission.object.ObjectResponse.object:type_name -> apfish.v1.permission.object.Object
+	6, // 1: apfish.v1.permission.object.ObjectSummaryResponse.object:type_name -> apfish.v1.permission.object.summary.ObjectSummary
+	6, // 2: apfish.v1.permission.object.ListObjectsResponse.list_objects:type_name -> apfish.v1.permission.object.summary.ObjectSummary
+	0, // 3: apfish.v1.permission.object.ObjectService.GetObject:input_type -> apfish.v1.permission.object.ObjectRequest
+	0, // 4: apfish.v1.permission.object.ObjectService.GetObjectSummary:input_type -> apfish.v1.permission.object.ObjectRequest
+	3, // 5: apfish.v1.permission.object.ObjectService.ListObjects:input_type -> apfish.v1.permission.object.ListObjectsRequest
+	1, // 6: apfish.v1.permission.object.ObjectService.GetObject:output_type -> apfish.v1.permission.object.ObjectResponse
+	2, // 7: apfish.v1.permission.object.ObjectService.GetObjectSummary:output_type -> apfish.v1.permission.object.ObjectSummaryResponse
+	4, // 8: apfish.v1.permission.object.ObjectService.ListObjects:output_type -> apfish.v1.permission.object.ListObjectsResponse
 	6, // [6:9] is the sub-list for method output_type
 	3, // [3:6] is the sub-list for method input_type
 	3, // [3:3] is the sub-list for extension type_name
@@ -325,7 +325,6 @@ func file_apfish_v1_permission_object_object_service_proto_init() {
 		return
 	}
 	file_apfish_v1_permission_object_object_proto_init()
-	file_apfish_v1_permission_object_object_summary_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{

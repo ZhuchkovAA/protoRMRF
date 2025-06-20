@@ -19,9 +19,9 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	CallSignService_GetCallSign_FullMethodName        = "/call_sign.CallSignService/GetCallSign"
-	CallSignService_GetCallSignSummary_FullMethodName = "/call_sign.CallSignService/GetCallSignSummary"
-	CallSignService_ListCallSigns_FullMethodName      = "/call_sign.CallSignService/ListCallSigns"
+	CallSignService_GetCallSign_FullMethodName        = "/apfish.v1.call_sign.CallSignService/GetCallSign"
+	CallSignService_GetCallSignSummary_FullMethodName = "/apfish.v1.call_sign.CallSignService/GetCallSignSummary"
+	CallSignService_ListCallSigns_FullMethodName      = "/apfish.v1.call_sign.CallSignService/ListCallSigns"
 )
 
 // CallSignServiceClient is the client API for CallSignService service.
@@ -176,7 +176,7 @@ func _CallSignService_ListCallSigns_Handler(srv interface{}, ctx context.Context
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var CallSignService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "call_sign.CallSignService",
+	ServiceName: "apfish.v1.call_sign.CallSignService",
 	HandlerType: (*CallSignServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{

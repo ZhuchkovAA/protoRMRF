@@ -19,9 +19,9 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	PortService_GetPort_FullMethodName        = "/location.PortService/GetPort"
-	PortService_GetPortSummary_FullMethodName = "/location.PortService/GetPortSummary"
-	PortService_ListPorts_FullMethodName      = "/location.PortService/ListPorts"
+	PortService_GetPort_FullMethodName        = "/apfish.v1.location.port.PortService/GetPort"
+	PortService_GetPortSummary_FullMethodName = "/apfish.v1.location.port.PortService/GetPortSummary"
+	PortService_ListPorts_FullMethodName      = "/apfish.v1.location.port.PortService/ListPorts"
 )
 
 // PortServiceClient is the client API for PortService service.
@@ -176,7 +176,7 @@ func _PortService_ListPorts_Handler(srv interface{}, ctx context.Context, dec fu
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var PortService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "location.PortService",
+	ServiceName: "apfish.v1.location.port.PortService",
 	HandlerType: (*PortServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{

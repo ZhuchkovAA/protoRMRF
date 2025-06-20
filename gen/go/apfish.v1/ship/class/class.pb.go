@@ -7,7 +7,7 @@
 package ship_class
 
 import (
-	ship "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/ship/ship"
+	summary "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/ship/ship/summary"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -28,7 +28,7 @@ type Class struct {
 	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	Ships         []*ship.ShipSummary    `protobuf:"bytes,4,rep,name=ships,proto3" json:"ships,omitempty"`
+	Ships         []*summary.ShipSummary `protobuf:"bytes,4,rep,name=ships,proto3" json:"ships,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -84,7 +84,7 @@ func (x *Class) GetCreatedAt() *timestamppb.Timestamp {
 	return nil
 }
 
-func (x *Class) GetShips() []*ship.ShipSummary {
+func (x *Class) GetShips() []*summary.ShipSummary {
 	if x != nil {
 		return x.Ships
 	}
@@ -95,13 +95,13 @@ var File_apfish_v1_ship_class_class_proto protoreflect.FileDescriptor
 
 const file_apfish_v1_ship_class_class_proto_rawDesc = "" +
 	"\n" +
-	" apfish.v1/ship/class/class.proto\x12\x04ship\x1a\x1fgoogle/protobuf/timestamp.proto\x1a&apfish.v1/ship/ship/ship_summary.proto\"\x8f\x01\n" +
+	" apfish.v1/ship/class/class.proto\x12\x14apfish.v1.ship.class\x1a\x1fgoogle/protobuf/timestamp.proto\x1a)apfish.v1/ship/summary/ship_summary.proto\"\xa1\x01\n" +
 	"\x05Class\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x129\n" +
 	"\n" +
-	"created_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x12'\n" +
-	"\x05ships\x18\x04 \x03(\v2\x11.ship.ShipSummaryR\x05shipsBHZFgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/ship/class;ship_classb\x06proto3"
+	"created_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
+	"\x05ships\x18\x04 \x03(\v2#.apfish.v1.ship.summary.ShipSummaryR\x05shipsBHZFgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/ship/class;ship_classb\x06proto3"
 
 var (
 	file_apfish_v1_ship_class_class_proto_rawDescOnce sync.Once
@@ -117,13 +117,13 @@ func file_apfish_v1_ship_class_class_proto_rawDescGZIP() []byte {
 
 var file_apfish_v1_ship_class_class_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_apfish_v1_ship_class_class_proto_goTypes = []any{
-	(*Class)(nil),                 // 0: ship.Class
+	(*Class)(nil),                 // 0: apfish.v1.ship.class.Class
 	(*timestamppb.Timestamp)(nil), // 1: google.protobuf.Timestamp
-	(*ship.ShipSummary)(nil),      // 2: ship.ShipSummary
+	(*summary.ShipSummary)(nil),   // 2: apfish.v1.ship.summary.ShipSummary
 }
 var file_apfish_v1_ship_class_class_proto_depIdxs = []int32{
-	1, // 0: ship.Class.created_at:type_name -> google.protobuf.Timestamp
-	2, // 1: ship.Class.ships:type_name -> ship.ShipSummary
+	1, // 0: apfish.v1.ship.class.Class.created_at:type_name -> google.protobuf.Timestamp
+	2, // 1: apfish.v1.ship.class.Class.ships:type_name -> apfish.v1.ship.summary.ShipSummary
 	2, // [2:2] is the sub-list for method output_type
 	2, // [2:2] is the sub-list for method input_type
 	2, // [2:2] is the sub-list for extension type_name

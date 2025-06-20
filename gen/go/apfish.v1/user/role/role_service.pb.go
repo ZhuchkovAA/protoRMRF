@@ -7,6 +7,7 @@
 package user_role
 
 import (
+	summary "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/role/summary"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -111,7 +112,7 @@ func (x *RoleResponse) GetRole() *Role {
 
 type RoleSummaryResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Role          *RoleSummary           `protobuf:"bytes,1,opt,name=role,proto3" json:"role,omitempty"`
+	Role          *summary.RoleSummary   `protobuf:"bytes,1,opt,name=role,proto3" json:"role,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -146,7 +147,7 @@ func (*RoleSummaryResponse) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_user_role_role_service_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *RoleSummaryResponse) GetRole() *RoleSummary {
+func (x *RoleSummaryResponse) GetRole() *summary.RoleSummary {
 	if x != nil {
 		return x.Role
 	}
@@ -207,7 +208,7 @@ func (x *ListRolesRequest) GetPerPage() int64 {
 
 type ListRolesResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	ListRoles     []*RoleSummary         `protobuf:"bytes,1,rep,name=list_roles,json=listRoles,proto3" json:"list_roles,omitempty"`
+	ListRoles     []*summary.RoleSummary `protobuf:"bytes,1,rep,name=list_roles,json=listRoles,proto3" json:"list_roles,omitempty"`
 	Total         int64                  `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -243,7 +244,7 @@ func (*ListRolesResponse) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_user_role_role_service_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *ListRolesResponse) GetListRoles() []*RoleSummary {
+func (x *ListRolesResponse) GetListRoles() []*summary.RoleSummary {
 	if x != nil {
 		return x.ListRoles
 	}
@@ -261,25 +262,24 @@ var File_apfish_v1_user_role_role_service_proto protoreflect.FileDescriptor
 
 const file_apfish_v1_user_role_role_service_proto_rawDesc = "" +
 	"\n" +
-	"&apfish.v1/user/role/role_service.proto\x12\x04user\x1a\x1eapfish.v1/user/role/role.proto\x1a&apfish.v1/user/role/role_summary.proto\"\x1d\n" +
+	"&apfish.v1/user/role/role_service.proto\x12\x13apfish.v1.user.role\x1a\x1eapfish.v1/user/role/role.proto\x1a.apfish.v1/user/role/summary/role_summary.proto\"\x1d\n" +
 	"\vRoleRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\".\n" +
-	"\fRoleResponse\x12\x1e\n" +
-	"\x04role\x18\x01 \x01(\v2\n" +
-	".user.RoleR\x04role\"<\n" +
-	"\x13RoleSummaryResponse\x12%\n" +
-	"\x04role\x18\x01 \x01(\v2\x11.user.RoleSummaryR\x04role\"A\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\"=\n" +
+	"\fRoleResponse\x12-\n" +
+	"\x04role\x18\x01 \x01(\v2\x19.apfish.v1.user.role.RoleR\x04role\"S\n" +
+	"\x13RoleSummaryResponse\x12<\n" +
+	"\x04role\x18\x01 \x01(\v2(.apfish.v1.user.role.summary.RoleSummaryR\x04role\"A\n" +
 	"\x10ListRolesRequest\x12\x12\n" +
 	"\x04page\x18\x01 \x01(\x03R\x04page\x12\x19\n" +
-	"\bper_page\x18\x02 \x01(\x03R\aperPage\"[\n" +
-	"\x11ListRolesResponse\x120\n" +
+	"\bper_page\x18\x02 \x01(\x03R\aperPage\"r\n" +
+	"\x11ListRolesResponse\x12G\n" +
 	"\n" +
-	"list_roles\x18\x01 \x03(\v2\x11.user.RoleSummaryR\tlistRoles\x12\x14\n" +
-	"\x05total\x18\x02 \x01(\x03R\x05total2\xbd\x01\n" +
-	"\vRoleService\x120\n" +
-	"\aGetRole\x12\x11.user.RoleRequest\x1a\x12.user.RoleResponse\x12>\n" +
-	"\x0eGetRoleSummary\x12\x11.user.RoleRequest\x1a\x19.user.RoleSummaryResponse\x12<\n" +
-	"\tListRoles\x12\x16.user.ListRolesRequest\x1a\x17.user.ListRolesResponseBFZDgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/role;user_roleb\x06proto3"
+	"list_roles\x18\x01 \x03(\v2(.apfish.v1.user.role.summary.RoleSummaryR\tlistRoles\x12\x14\n" +
+	"\x05total\x18\x02 \x01(\x03R\x05total2\x97\x02\n" +
+	"\vRoleService\x12N\n" +
+	"\aGetRole\x12 .apfish.v1.user.role.RoleRequest\x1a!.apfish.v1.user.role.RoleResponse\x12\\\n" +
+	"\x0eGetRoleSummary\x12 .apfish.v1.user.role.RoleRequest\x1a(.apfish.v1.user.role.RoleSummaryResponse\x12Z\n" +
+	"\tListRoles\x12%.apfish.v1.user.role.ListRolesRequest\x1a&.apfish.v1.user.role.ListRolesResponseBFZDgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/role;user_roleb\x06proto3"
 
 var (
 	file_apfish_v1_user_role_role_service_proto_rawDescOnce sync.Once
@@ -295,24 +295,24 @@ func file_apfish_v1_user_role_role_service_proto_rawDescGZIP() []byte {
 
 var file_apfish_v1_user_role_role_service_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
 var file_apfish_v1_user_role_role_service_proto_goTypes = []any{
-	(*RoleRequest)(nil),         // 0: user.RoleRequest
-	(*RoleResponse)(nil),        // 1: user.RoleResponse
-	(*RoleSummaryResponse)(nil), // 2: user.RoleSummaryResponse
-	(*ListRolesRequest)(nil),    // 3: user.ListRolesRequest
-	(*ListRolesResponse)(nil),   // 4: user.ListRolesResponse
-	(*Role)(nil),                // 5: user.Role
-	(*RoleSummary)(nil),         // 6: user.RoleSummary
+	(*RoleRequest)(nil),         // 0: apfish.v1.user.role.RoleRequest
+	(*RoleResponse)(nil),        // 1: apfish.v1.user.role.RoleResponse
+	(*RoleSummaryResponse)(nil), // 2: apfish.v1.user.role.RoleSummaryResponse
+	(*ListRolesRequest)(nil),    // 3: apfish.v1.user.role.ListRolesRequest
+	(*ListRolesResponse)(nil),   // 4: apfish.v1.user.role.ListRolesResponse
+	(*Role)(nil),                // 5: apfish.v1.user.role.Role
+	(*summary.RoleSummary)(nil), // 6: apfish.v1.user.role.summary.RoleSummary
 }
 var file_apfish_v1_user_role_role_service_proto_depIdxs = []int32{
-	5, // 0: user.RoleResponse.role:type_name -> user.Role
-	6, // 1: user.RoleSummaryResponse.role:type_name -> user.RoleSummary
-	6, // 2: user.ListRolesResponse.list_roles:type_name -> user.RoleSummary
-	0, // 3: user.RoleService.GetRole:input_type -> user.RoleRequest
-	0, // 4: user.RoleService.GetRoleSummary:input_type -> user.RoleRequest
-	3, // 5: user.RoleService.ListRoles:input_type -> user.ListRolesRequest
-	1, // 6: user.RoleService.GetRole:output_type -> user.RoleResponse
-	2, // 7: user.RoleService.GetRoleSummary:output_type -> user.RoleSummaryResponse
-	4, // 8: user.RoleService.ListRoles:output_type -> user.ListRolesResponse
+	5, // 0: apfish.v1.user.role.RoleResponse.role:type_name -> apfish.v1.user.role.Role
+	6, // 1: apfish.v1.user.role.RoleSummaryResponse.role:type_name -> apfish.v1.user.role.summary.RoleSummary
+	6, // 2: apfish.v1.user.role.ListRolesResponse.list_roles:type_name -> apfish.v1.user.role.summary.RoleSummary
+	0, // 3: apfish.v1.user.role.RoleService.GetRole:input_type -> apfish.v1.user.role.RoleRequest
+	0, // 4: apfish.v1.user.role.RoleService.GetRoleSummary:input_type -> apfish.v1.user.role.RoleRequest
+	3, // 5: apfish.v1.user.role.RoleService.ListRoles:input_type -> apfish.v1.user.role.ListRolesRequest
+	1, // 6: apfish.v1.user.role.RoleService.GetRole:output_type -> apfish.v1.user.role.RoleResponse
+	2, // 7: apfish.v1.user.role.RoleService.GetRoleSummary:output_type -> apfish.v1.user.role.RoleSummaryResponse
+	4, // 8: apfish.v1.user.role.RoleService.ListRoles:output_type -> apfish.v1.user.role.ListRolesResponse
 	6, // [6:9] is the sub-list for method output_type
 	3, // [3:6] is the sub-list for method input_type
 	3, // [3:3] is the sub-list for extension type_name
@@ -326,7 +326,6 @@ func file_apfish_v1_user_role_role_service_proto_init() {
 		return
 	}
 	file_apfish_v1_user_role_role_proto_init()
-	file_apfish_v1_user_role_role_summary_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{

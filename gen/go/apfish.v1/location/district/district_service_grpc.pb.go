@@ -19,9 +19,9 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	DistrictService_GetDistrict_FullMethodName        = "/location.DistrictService/GetDistrict"
-	DistrictService_GetDistrictSummary_FullMethodName = "/location.DistrictService/GetDistrictSummary"
-	DistrictService_ListDistricts_FullMethodName      = "/location.DistrictService/ListDistricts"
+	DistrictService_GetDistrict_FullMethodName        = "/apfish.v1.location.district.DistrictService/GetDistrict"
+	DistrictService_GetDistrictSummary_FullMethodName = "/apfish.v1.location.district.DistrictService/GetDistrictSummary"
+	DistrictService_ListDistricts_FullMethodName      = "/apfish.v1.location.district.DistrictService/ListDistricts"
 )
 
 // DistrictServiceClient is the client API for DistrictService service.
@@ -176,7 +176,7 @@ func _DistrictService_ListDistricts_Handler(srv interface{}, ctx context.Context
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var DistrictService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "location.DistrictService",
+	ServiceName: "apfish.v1.location.district.DistrictService",
 	HandlerType: (*DistrictServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{

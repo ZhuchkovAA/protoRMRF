@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package apfish.v1.permission;
+
+option go_package = "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/permission;permission";
+
+import "google/protobuf/timestamp.proto";  // Standard Protocol Buffers timestamp
+
+import "apfish.v1/permission/action/summary/action_summary.proto";
+import "apfish.v1/permission/object/summary/object_summary.proto";
+
+import "apfish.v1/location/country/summary/country_summary.proto";
+import "apfish.v1/location/district/summary/district_summary.proto";
+import "apfish.v1/location/port/summary/port_summary.proto";
+
+import "apfish.v1/user/summary/user_summary.proto";
+import "apfish.v1/user/role/summary/role_summary.proto";
+
+// Defines an access permission in the system.
+// Permissions combine an Action and Object to create granular access controls (e.g., "read:inspection").
+message Permission {
+  int64 id = 1;                   // Unique identifier for the permission
+  apfish.v1.permission.action.summary.ActionSummary action = 2;     // The operation this permission allows (e.g., "read", "create")
+  apfish.v1.permission.object.summary.ObjectSummary object = 3;     // The resource this permission applies to (e.g., "inspection", "user")
+  string description = 4;          // Human-readable explanation of the permission
+  string name = 5;                // Display name (e.g., "Read Inspections")
+  string code = 6;                // Machine-readable identifier (e.g., "inspection:read")
+  google.protobuf.Timestamp created_at = 7;
+
+  repeated apfish.v1.location.country.summary.CountrySummary countries= 8;
+  repeated apfish.v1.location.district.summary.DistrictSummary districts = 9;
+  repeated apfish.v1.location.port.summary.PortSummary ports = 10;
+
+  repeated apfish.v1.user.summary.UserSummary users = 11;
+  repeated apfish.v1.user.role.summary.RoleSummary roles = 12;
+}

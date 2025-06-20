@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package apfish.v1.ship.type.summary;
+
+option go_package = "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/ship/type/summary;ship_type_summary";
+
+import "google/protobuf/timestamp.proto";  // Standard Protocol Buffers timestamp
+
+message TypeSummary {
+  int64 id = 1;
+  string name = 2;
+  google.protobuf.Timestamp created_at = 3;
+}

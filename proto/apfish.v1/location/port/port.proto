@@ -1,23 +1,23 @@
 syntax = "proto3";
 
-package location;
+package apfish.v1.location.port;
 
 option go_package = "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/port;location_port";
 
 import "google/protobuf/timestamp.proto";  // Standard Protocol Buffers timestamp
 
-import "apfish.v1/location/country/country_summary.proto";
-import "apfish.v1/location/district/district_summary.proto";
+import "apfish.v1/location/country/summary/country_summary.proto";
+import "apfish.v1/location/district/summary/district_summary.proto";
 
-import "apfish.v1/permission/permission/permission_summary.proto";
+import "apfish.v1/permission/summary/permission_summary.proto";
 
 message Port {
   int64 id = 1;
   string name = 2;
-  location.CountrySummary country = 3;
-  location.DistrictSummary district = 4;
+  location.country.summary.CountrySummary country = 3;
+  location.district.summary.DistrictSummary district = 4;
   string code = 5;
   google.protobuf.Timestamp created_at = 6;
 
-  repeated permission.PermissionSummary permissions = 7;
+  repeated apfish.v1.permission.summary.PermissionSummary permissions = 7;
 }

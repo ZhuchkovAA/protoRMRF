@@ -7,9 +7,9 @@
 package location_country
 
 import (
-	call_sign "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/call_sign"
-	port "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/port"
-	permission "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/permission"
+	summary1 "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/call_sign/summary"
+	summary "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/port/summary"
+	summary2 "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/permission/summary"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -26,17 +26,17 @@ const (
 )
 
 type Country struct {
-	state          protoimpl.MessageState          `protogen:"open.v1"`
-	Id             int64                           `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Name           string                          `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	NameRus        string                          `protobuf:"bytes,3,opt,name=name_rus,json=nameRus,proto3" json:"name_rus,omitempty"`
-	Code           string                          `protobuf:"bytes,4,opt,name=code,proto3" json:"code,omitempty"`
-	IsIlo          bool                            `protobuf:"varint,5,opt,name=is_ilo,json=isIlo,proto3" json:"is_ilo,omitempty"`
-	IsBallastWater bool                            `protobuf:"varint,6,opt,name=is_ballast_water,json=isBallastWater,proto3" json:"is_ballast_water,omitempty"`
-	CreatedAt      *timestamppb.Timestamp          `protobuf:"bytes,7,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	Ports          []*port.PortSummary             `protobuf:"bytes,8,rep,name=ports,proto3" json:"ports,omitempty"`
-	CallSigns      []*call_sign.CallSignSummary    `protobuf:"bytes,9,rep,name=call_signs,json=callSigns,proto3" json:"call_signs,omitempty"`
-	Permissions    []*permission.PermissionSummary `protobuf:"bytes,10,rep,name=permissions,proto3" json:"permissions,omitempty"`
+	state          protoimpl.MessageState        `protogen:"open.v1"`
+	Id             int64                         `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Name           string                        `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	NameRus        string                        `protobuf:"bytes,3,opt,name=name_rus,json=nameRus,proto3" json:"name_rus,omitempty"`
+	Code           string                        `protobuf:"bytes,4,opt,name=code,proto3" json:"code,omitempty"`
+	IsIlo          bool                          `protobuf:"varint,5,opt,name=is_ilo,json=isIlo,proto3" json:"is_ilo,omitempty"`
+	IsBallastWater bool                          `protobuf:"varint,6,opt,name=is_ballast_water,json=isBallastWater,proto3" json:"is_ballast_water,omitempty"`
+	CreatedAt      *timestamppb.Timestamp        `protobuf:"bytes,7,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	Ports          []*summary.PortSummary        `protobuf:"bytes,8,rep,name=ports,proto3" json:"ports,omitempty"`
+	CallSigns      []*summary1.CallSignSummary   `protobuf:"bytes,9,rep,name=call_signs,json=callSigns,proto3" json:"call_signs,omitempty"`
+	Permissions    []*summary2.PermissionSummary `protobuf:"bytes,10,rep,name=permissions,proto3" json:"permissions,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
@@ -120,21 +120,21 @@ func (x *Country) GetCreatedAt() *timestamppb.Timestamp {
 	return nil
 }
 
-func (x *Country) GetPorts() []*port.PortSummary {
+func (x *Country) GetPorts() []*summary.PortSummary {
 	if x != nil {
 		return x.Ports
 	}
 	return nil
 }
 
-func (x *Country) GetCallSigns() []*call_sign.CallSignSummary {
+func (x *Country) GetCallSigns() []*summary1.CallSignSummary {
 	if x != nil {
 		return x.CallSigns
 	}
 	return nil
 }
 
-func (x *Country) GetPermissions() []*permission.PermissionSummary {
+func (x *Country) GetPermissions() []*summary2.PermissionSummary {
 	if x != nil {
 		return x.Permissions
 	}
@@ -145,7 +145,7 @@ var File_apfish_v1_location_country_country_proto protoreflect.FileDescriptor
 
 const file_apfish_v1_location_country_country_proto_rawDesc = "" +
 	"\n" +
-	"(apfish.v1/location/country/country.proto\x12\blocation\x1a\x1fgoogle/protobuf/timestamp.proto\x1a*apfish.v1/location/port/port_summary.proto\x1a+apfish.v1/call_sign/call_sign_summary.proto\x1a8apfish.v1/permission/permission/permission_summary.proto\"\x81\x03\n" +
+	"(apfish.v1/location/country/country.proto\x12\x1aapfish.v1.location.country\x1a\x1fgoogle/protobuf/timestamp.proto\x1a2apfish.v1/location/port/summary/port_summary.proto\x1a3apfish.v1/call_sign/summary/call_sign_summary.proto\x1a5apfish.v1/permission/summary/permission_summary.proto\"\xbc\x03\n" +
 	"\aCountry\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x19\n" +
@@ -154,12 +154,12 @@ const file_apfish_v1_location_country_country_proto_rawDesc = "" +
 	"\x06is_ilo\x18\x05 \x01(\bR\x05isIlo\x12(\n" +
 	"\x10is_ballast_water\x18\x06 \x01(\bR\x0eisBallastWater\x129\n" +
 	"\n" +
-	"created_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x12+\n" +
-	"\x05ports\x18\b \x03(\v2\x15.location.PortSummaryR\x05ports\x129\n" +
+	"created_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x12B\n" +
+	"\x05ports\x18\b \x03(\v2,.apfish.v1.location.port.summary.PortSummaryR\x05ports\x12K\n" +
 	"\n" +
-	"call_signs\x18\t \x03(\v2\x1a.call_sign.CallSignSummaryR\tcallSigns\x12?\n" +
+	"call_signs\x18\t \x03(\v2,.apfish.v1.call_sign.summary.CallSignSummaryR\tcallSigns\x12Q\n" +
 	"\vpermissions\x18\n" +
-	" \x03(\v2\x1d.permission.PermissionSummaryR\vpermissionsBTZRgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/country;location_countryb\x06proto3"
+	" \x03(\v2/.apfish.v1.permission.summary.PermissionSummaryR\vpermissionsBTZRgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/country;location_countryb\x06proto3"
 
 var (
 	file_apfish_v1_location_country_country_proto_rawDescOnce sync.Once
@@ -175,17 +175,17 @@ func file_apfish_v1_location_country_country_proto_rawDescGZIP() []byte {
 
 var file_apfish_v1_location_country_country_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_apfish_v1_location_country_country_proto_goTypes = []any{
-	(*Country)(nil),                      // 0: location.Country
-	(*timestamppb.Timestamp)(nil),        // 1: google.protobuf.Timestamp
-	(*port.PortSummary)(nil),             // 2: location.PortSummary
-	(*call_sign.CallSignSummary)(nil),    // 3: call_sign.CallSignSummary
-	(*permission.PermissionSummary)(nil), // 4: permission.PermissionSummary
+	(*Country)(nil),                    // 0: apfish.v1.location.country.Country
+	(*timestamppb.Timestamp)(nil),      // 1: google.protobuf.Timestamp
+	(*summary.PortSummary)(nil),        // 2: apfish.v1.location.port.summary.PortSummary
+	(*summary1.CallSignSummary)(nil),   // 3: apfish.v1.call_sign.summary.CallSignSummary
+	(*summary2.PermissionSummary)(nil), // 4: apfish.v1.permission.summary.PermissionSummary
 }
 var file_apfish_v1_location_country_country_proto_depIdxs = []int32{
-	1, // 0: location.Country.created_at:type_name -> google.protobuf.Timestamp
-	2, // 1: location.Country.ports:type_name -> location.PortSummary
-	3, // 2: location.Country.call_signs:type_name -> call_sign.CallSignSummary
-	4, // 3: location.Country.permissions:type_name -> permission.PermissionSummary
+	1, // 0: apfish.v1.location.country.Country.created_at:type_name -> google.protobuf.Timestamp
+	2, // 1: apfish.v1.location.country.Country.ports:type_name -> apfish.v1.location.port.summary.PortSummary
+	3, // 2: apfish.v1.location.country.Country.call_signs:type_name -> apfish.v1.call_sign.summary.CallSignSummary
+	4, // 3: apfish.v1.location.country.Country.permissions:type_name -> apfish.v1.permission.summary.PermissionSummary
 	4, // [4:4] is the sub-list for method output_type
 	4, // [4:4] is the sub-list for method input_type
 	4, // [4:4] is the sub-list for extension type_name

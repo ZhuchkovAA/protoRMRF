@@ -19,9 +19,9 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	ContactService_GetContact_FullMethodName        = "/user.contact.ContactService/GetContact"
-	ContactService_GetContactSummary_FullMethodName = "/user.contact.ContactService/GetContactSummary"
-	ContactService_ListContacts_FullMethodName      = "/user.contact.ContactService/ListContacts"
+	ContactService_GetContact_FullMethodName        = "/apfish.v1.user.contact.ContactService/GetContact"
+	ContactService_GetContactSummary_FullMethodName = "/apfish.v1.user.contact.ContactService/GetContactSummary"
+	ContactService_ListContacts_FullMethodName      = "/apfish.v1.user.contact.ContactService/ListContacts"
 )
 
 // ContactServiceClient is the client API for ContactService service.
@@ -176,7 +176,7 @@ func _ContactService_ListContacts_Handler(srv interface{}, ctx context.Context, 
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var ContactService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "user.contact.ContactService",
+	ServiceName: "apfish.v1.user.contact.ContactService",
 	HandlerType: (*ContactServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{

@@ -19,9 +19,9 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	RoleService_GetRole_FullMethodName        = "/user.RoleService/GetRole"
-	RoleService_GetRoleSummary_FullMethodName = "/user.RoleService/GetRoleSummary"
-	RoleService_ListRoles_FullMethodName      = "/user.RoleService/ListRoles"
+	RoleService_GetRole_FullMethodName        = "/apfish.v1.user.role.RoleService/GetRole"
+	RoleService_GetRoleSummary_FullMethodName = "/apfish.v1.user.role.RoleService/GetRoleSummary"
+	RoleService_ListRoles_FullMethodName      = "/apfish.v1.user.role.RoleService/ListRoles"
 )
 
 // RoleServiceClient is the client API for RoleService service.
@@ -176,7 +176,7 @@ func _RoleService_ListRoles_Handler(srv interface{}, ctx context.Context, dec fu
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var RoleService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "user.RoleService",
+	ServiceName: "apfish.v1.user.role.RoleService",
 	HandlerType: (*RoleServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{

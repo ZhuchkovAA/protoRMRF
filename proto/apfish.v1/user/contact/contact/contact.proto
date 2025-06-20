@@ -1,19 +1,19 @@
 syntax = "proto3";
 
-package user.contact;
+package apfish.v1.user.contact;
 
 option go_package = "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/contact/contact;user_contact";
 
 import "google/protobuf/timestamp.proto";  // Standard Protocol Buffers timestamp
 
-import "apfish.v1/user/user/user_summary.proto";
-import "apfish.v1/user/contact/type/type_summary.proto";
+import "apfish.v1/user/summary/user_summary.proto";
+import "apfish.v1/user/contact/type/summary/type_summary.proto";
 
 // A user's contact method (e.g., email, phone).
 message Contact {
   int64 id = 1;                       // Unique contact ID.
-  user.UserSummary user = 2;
-  TypeSummary type = 3;           // Contact type.
+  user.summary.UserSummary user = 2;
+  apfish.v1.user.contact.type.summary.TypeSummary type = 3;           // Contact type.
   string value = 4;                   // Contact value (e.g., "user@example.com").
   google.protobuf.Timestamp created_at = 5;  // When the contact was added.
 }

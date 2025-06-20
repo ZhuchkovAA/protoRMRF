@@ -19,9 +19,9 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	ActionService_GetAction_FullMethodName        = "/permission.ActionService/GetAction"
-	ActionService_GetActionSummary_FullMethodName = "/permission.ActionService/GetActionSummary"
-	ActionService_ListActions_FullMethodName      = "/permission.ActionService/ListActions"
+	ActionService_GetAction_FullMethodName        = "/apfish.v1.permission.action.ActionService/GetAction"
+	ActionService_GetActionSummary_FullMethodName = "/apfish.v1.permission.action.ActionService/GetActionSummary"
+	ActionService_ListActions_FullMethodName      = "/apfish.v1.permission.action.ActionService/ListActions"
 )
 
 // ActionServiceClient is the client API for ActionService service.
@@ -176,7 +176,7 @@ func _ActionService_ListActions_Handler(srv interface{}, ctx context.Context, de
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var ActionService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "permission.ActionService",
+	ServiceName: "apfish.v1.permission.action.ActionService",
 	HandlerType: (*ActionServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{

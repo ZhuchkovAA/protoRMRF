@@ -7,6 +7,7 @@
 package ship_captain
 
 import (
+	summary "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/ship/captain/summary"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -110,8 +111,8 @@ func (x *CaptainResponse) GetCaptain() *Captain {
 }
 
 type CaptainSummaryResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Captain       *CaptainSummary        `protobuf:"bytes,1,opt,name=captain,proto3" json:"captain,omitempty"`
+	state         protoimpl.MessageState  `protogen:"open.v1"`
+	Captain       *summary.CaptainSummary `protobuf:"bytes,1,opt,name=captain,proto3" json:"captain,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -146,7 +147,7 @@ func (*CaptainSummaryResponse) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_ship_captain_captain_service_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *CaptainSummaryResponse) GetCaptain() *CaptainSummary {
+func (x *CaptainSummaryResponse) GetCaptain() *summary.CaptainSummary {
 	if x != nil {
 		return x.Captain
 	}
@@ -206,9 +207,9 @@ func (x *ListCaptainsRequest) GetPerPage() int64 {
 }
 
 type ListCaptainsResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	ListCaptains  []*CaptainSummary      `protobuf:"bytes,1,rep,name=list_captains,json=listCaptains,proto3" json:"list_captains,omitempty"`
-	Total         int64                  `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	state         protoimpl.MessageState    `protogen:"open.v1"`
+	ListCaptains  []*summary.CaptainSummary `protobuf:"bytes,1,rep,name=list_captains,json=listCaptains,proto3" json:"list_captains,omitempty"`
+	Total         int64                     `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -243,7 +244,7 @@ func (*ListCaptainsResponse) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_ship_captain_captain_service_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *ListCaptainsResponse) GetListCaptains() []*CaptainSummary {
+func (x *ListCaptainsResponse) GetListCaptains() []*summary.CaptainSummary {
 	if x != nil {
 		return x.ListCaptains
 	}
@@ -261,24 +262,24 @@ var File_apfish_v1_ship_captain_captain_service_proto protoreflect.FileDescripto
 
 const file_apfish_v1_ship_captain_captain_service_proto_rawDesc = "" +
 	"\n" +
-	",apfish.v1/ship/captain/captain_service.proto\x12\x04ship\x1a$apfish.v1/ship/captain/captain.proto\x1a,apfish.v1/ship/captain/captain_summary.proto\" \n" +
+	",apfish.v1/ship/captain/captain_service.proto\x12\x16apfish.v1.ship.captain\x1a$apfish.v1/ship/captain/captain.proto\x1a4apfish.v1/ship/captain/summary/captain_summary.proto\" \n" +
 	"\x0eCaptainRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\":\n" +
-	"\x0fCaptainResponse\x12'\n" +
-	"\acaptain\x18\x01 \x01(\v2\r.ship.CaptainR\acaptain\"H\n" +
-	"\x16CaptainSummaryResponse\x12.\n" +
-	"\acaptain\x18\x01 \x01(\v2\x14.ship.CaptainSummaryR\acaptain\"D\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\"L\n" +
+	"\x0fCaptainResponse\x129\n" +
+	"\acaptain\x18\x01 \x01(\v2\x1f.apfish.v1.ship.captain.CaptainR\acaptain\"b\n" +
+	"\x16CaptainSummaryResponse\x12H\n" +
+	"\acaptain\x18\x01 \x01(\v2..apfish.v1.ship.captain.summary.CaptainSummaryR\acaptain\"D\n" +
 	"\x13ListCaptainsRequest\x12\x12\n" +
 	"\x04page\x18\x01 \x01(\x03R\x04page\x12\x19\n" +
-	"\bper_page\x18\x02 \x01(\x03R\aperPage\"g\n" +
-	"\x14ListCaptainsResponse\x129\n" +
-	"\rlist_captains\x18\x01 \x03(\v2\x14.ship.CaptainSummaryR\flistCaptains\x12\x14\n" +
-	"\x05total\x18\x02 \x01(\x03R\x05total2\xdb\x01\n" +
-	"\x0eCaptainService\x129\n" +
+	"\bper_page\x18\x02 \x01(\x03R\aperPage\"\x81\x01\n" +
+	"\x14ListCaptainsResponse\x12S\n" +
+	"\rlist_captains\x18\x01 \x03(\v2..apfish.v1.ship.captain.summary.CaptainSummaryR\flistCaptains\x12\x14\n" +
+	"\x05total\x18\x02 \x01(\x03R\x05total2\xc7\x02\n" +
+	"\x0eCaptainService\x12]\n" +
 	"\n" +
-	"GetCaptain\x12\x14.ship.CaptainRequest\x1a\x15.ship.CaptainResponse\x12G\n" +
-	"\x11GetCaptainSummary\x12\x14.ship.CaptainRequest\x1a\x1c.ship.CaptainSummaryResponse\x12E\n" +
-	"\fListCaptains\x12\x19.ship.ListCaptainsRequest\x1a\x1a.ship.ListCaptainsResponseBLZJgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/ship/captain;ship_captainb\x06proto3"
+	"GetCaptain\x12&.apfish.v1.ship.captain.CaptainRequest\x1a'.apfish.v1.ship.captain.CaptainResponse\x12k\n" +
+	"\x11GetCaptainSummary\x12&.apfish.v1.ship.captain.CaptainRequest\x1a..apfish.v1.ship.captain.CaptainSummaryResponse\x12i\n" +
+	"\fListCaptains\x12+.apfish.v1.ship.captain.ListCaptainsRequest\x1a,.apfish.v1.ship.captain.ListCaptainsResponseBLZJgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/ship/captain;ship_captainb\x06proto3"
 
 var (
 	file_apfish_v1_ship_captain_captain_service_proto_rawDescOnce sync.Once
@@ -294,24 +295,24 @@ func file_apfish_v1_ship_captain_captain_service_proto_rawDescGZIP() []byte {
 
 var file_apfish_v1_ship_captain_captain_service_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
 var file_apfish_v1_ship_captain_captain_service_proto_goTypes = []any{
-	(*CaptainRequest)(nil),         // 0: ship.CaptainRequest
-	(*CaptainResponse)(nil),        // 1: ship.CaptainResponse
-	(*CaptainSummaryResponse)(nil), // 2: ship.CaptainSummaryResponse
-	(*ListCaptainsRequest)(nil),    // 3: ship.ListCaptainsRequest
-	(*ListCaptainsResponse)(nil),   // 4: ship.ListCaptainsResponse
-	(*Captain)(nil),                // 5: ship.Captain
-	(*CaptainSummary)(nil),         // 6: ship.CaptainSummary
+	(*CaptainRequest)(nil),         // 0: apfish.v1.ship.captain.CaptainRequest
+	(*CaptainResponse)(nil),        // 1: apfish.v1.ship.captain.CaptainResponse
+	(*CaptainSummaryResponse)(nil), // 2: apfish.v1.ship.captain.CaptainSummaryResponse
+	(*ListCaptainsRequest)(nil),    // 3: apfish.v1.ship.captain.ListCaptainsRequest
+	(*ListCaptainsResponse)(nil),   // 4: apfish.v1.ship.captain.ListCaptainsResponse
+	(*Captain)(nil),                // 5: apfish.v1.ship.captain.Captain
+	(*summary.CaptainSummary)(nil), // 6: apfish.v1.ship.captain.summary.CaptainSummary
 }
 var file_apfish_v1_ship_captain_captain_service_proto_depIdxs = []int32{
-	5, // 0: ship.CaptainResponse.captain:type_name -> ship.Captain
-	6, // 1: ship.CaptainSummaryResponse.captain:type_name -> ship.CaptainSummary
-	6, // 2: ship.ListCaptainsResponse.list_captains:type_name -> ship.CaptainSummary
-	0, // 3: ship.CaptainService.GetCaptain:input_type -> ship.CaptainRequest
-	0, // 4: ship.CaptainService.GetCaptainSummary:input_type -> ship.CaptainRequest
-	3, // 5: ship.CaptainService.ListCaptains:input_type -> ship.ListCaptainsRequest
-	1, // 6: ship.CaptainService.GetCaptain:output_type -> ship.CaptainResponse
-	2, // 7: ship.CaptainService.GetCaptainSummary:output_type -> ship.CaptainSummaryResponse
-	4, // 8: ship.CaptainService.ListCaptains:output_type -> ship.ListCaptainsResponse
+	5, // 0: apfish.v1.ship.captain.CaptainResponse.captain:type_name -> apfish.v1.ship.captain.Captain
+	6, // 1: apfish.v1.ship.captain.CaptainSummaryResponse.captain:type_name -> apfish.v1.ship.captain.summary.CaptainSummary
+	6, // 2: apfish.v1.ship.captain.ListCaptainsResponse.list_captains:type_name -> apfish.v1.ship.captain.summary.CaptainSummary
+	0, // 3: apfish.v1.ship.captain.CaptainService.GetCaptain:input_type -> apfish.v1.ship.captain.CaptainRequest
+	0, // 4: apfish.v1.ship.captain.CaptainService.GetCaptainSummary:input_type -> apfish.v1.ship.captain.CaptainRequest
+	3, // 5: apfish.v1.ship.captain.CaptainService.ListCaptains:input_type -> apfish.v1.ship.captain.ListCaptainsRequest
+	1, // 6: apfish.v1.ship.captain.CaptainService.GetCaptain:output_type -> apfish.v1.ship.captain.CaptainResponse
+	2, // 7: apfish.v1.ship.captain.CaptainService.GetCaptainSummary:output_type -> apfish.v1.ship.captain.CaptainSummaryResponse
+	4, // 8: apfish.v1.ship.captain.CaptainService.ListCaptains:output_type -> apfish.v1.ship.captain.ListCaptainsResponse
 	6, // [6:9] is the sub-list for method output_type
 	3, // [3:6] is the sub-list for method input_type
 	3, // [3:3] is the sub-list for extension type_name
@@ -325,7 +326,6 @@ func file_apfish_v1_ship_captain_captain_service_proto_init() {
 		return
 	}
 	file_apfish_v1_ship_captain_captain_proto_init()
-	file_apfish_v1_ship_captain_captain_summary_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{

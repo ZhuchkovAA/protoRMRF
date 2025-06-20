@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package apfish.v1.ship;
+
+option go_package = "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/ship/ship;ship";
+
+import "apfish.v1/ship/ship.proto";
+import "apfish.v1/ship/summary/ship_summary.proto";
+
+service ShipService {
+  rpc GetShip (ShipRequest) returns (ShipResponse);
+  rpc GetShipSummary (ShipRequest) returns (ShipSummaryResponse);
+
+  rpc ListShips (ListShipsRequest) returns (ListShipsResponse);
+}
+
+message ShipRequest {
+  int64 id = 1;
+}
+
+message ShipResponse {
+  Ship ship = 1;
+}
+
+message ShipSummaryResponse {
+  ship.summary.ShipSummary ship = 1;
+}
+
+message ListShipsRequest {
+  int64 page = 1;      // Page number (1-based). Default: 1.
+  int64 per_page = 2;  // Items per page (default: 20, max: 100).
+}
+
+message ListShipsResponse {
+  repeated ship.summary.ShipSummary list_ships = 1;
+  int64 total = 2;
+}

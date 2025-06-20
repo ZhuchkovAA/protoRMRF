@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package apfish.v1.permission.action.summary;
+
+option go_package = "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/action/summary;permission_action_summary";
+
+import "google/protobuf/timestamp.proto";  // Standard Protocol Buffers timestamp
+
+message ActionSummary {
+  int64 id = 1;                   // Unique identifier for the action
+  string name = 2;                // Human-readable name (e.g., "Read")
+  string description = 3;         // Detailed explanation of the action
+  string code = 4;                // Machine-friendly code (e.g., "read")
+  google.protobuf.Timestamp created_at = 5;
+}

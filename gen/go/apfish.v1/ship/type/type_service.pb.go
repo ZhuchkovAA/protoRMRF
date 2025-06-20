@@ -7,6 +7,7 @@
 package ship_type
 
 import (
+	summary "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/ship/type/summary"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -111,7 +112,7 @@ func (x *TypeResponse) GetType() *Type {
 
 type TypeSummaryResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Type          *TypeSummary           `protobuf:"bytes,1,opt,name=type,proto3" json:"type,omitempty"`
+	Type          *summary.TypeSummary   `protobuf:"bytes,1,opt,name=type,proto3" json:"type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -146,7 +147,7 @@ func (*TypeSummaryResponse) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_ship_type_type_service_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *TypeSummaryResponse) GetType() *TypeSummary {
+func (x *TypeSummaryResponse) GetType() *summary.TypeSummary {
 	if x != nil {
 		return x.Type
 	}
@@ -207,7 +208,7 @@ func (x *ListTypesRequest) GetPerPage() int64 {
 
 type ListTypesResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	ListTypes     []*TypeSummary         `protobuf:"bytes,1,rep,name=list_types,json=listTypes,proto3" json:"list_types,omitempty"`
+	ListTypes     []*summary.TypeSummary `protobuf:"bytes,1,rep,name=list_types,json=listTypes,proto3" json:"list_types,omitempty"`
 	Total         int64                  `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -243,7 +244,7 @@ func (*ListTypesResponse) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_ship_type_type_service_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *ListTypesResponse) GetListTypes() []*TypeSummary {
+func (x *ListTypesResponse) GetListTypes() []*summary.TypeSummary {
 	if x != nil {
 		return x.ListTypes
 	}
@@ -261,25 +262,24 @@ var File_apfish_v1_ship_type_type_service_proto protoreflect.FileDescriptor
 
 const file_apfish_v1_ship_type_type_service_proto_rawDesc = "" +
 	"\n" +
-	"&apfish.v1/ship/type/type_service.proto\x12\x04ship\x1a\x1eapfish.v1/ship/type/type.proto\x1a&apfish.v1/ship/type/type_summary.proto\"\x1d\n" +
+	"&apfish.v1/ship/type/type_service.proto\x12\x13apfish.v1.ship.type\x1a\x1eapfish.v1/ship/type/type.proto\x1a.apfish.v1/ship/type/summary/type_summary.proto\"\x1d\n" +
 	"\vTypeRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\".\n" +
-	"\fTypeResponse\x12\x1e\n" +
-	"\x04type\x18\x01 \x01(\v2\n" +
-	".ship.TypeR\x04type\"<\n" +
-	"\x13TypeSummaryResponse\x12%\n" +
-	"\x04type\x18\x01 \x01(\v2\x11.ship.TypeSummaryR\x04type\"A\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\"=\n" +
+	"\fTypeResponse\x12-\n" +
+	"\x04type\x18\x01 \x01(\v2\x19.apfish.v1.ship.type.TypeR\x04type\"S\n" +
+	"\x13TypeSummaryResponse\x12<\n" +
+	"\x04type\x18\x01 \x01(\v2(.apfish.v1.ship.type.summary.TypeSummaryR\x04type\"A\n" +
 	"\x10ListTypesRequest\x12\x12\n" +
 	"\x04page\x18\x01 \x01(\x03R\x04page\x12\x19\n" +
-	"\bper_page\x18\x02 \x01(\x03R\aperPage\"[\n" +
-	"\x11ListTypesResponse\x120\n" +
+	"\bper_page\x18\x02 \x01(\x03R\aperPage\"r\n" +
+	"\x11ListTypesResponse\x12G\n" +
 	"\n" +
-	"list_types\x18\x01 \x03(\v2\x11.ship.TypeSummaryR\tlistTypes\x12\x14\n" +
-	"\x05total\x18\x02 \x01(\x03R\x05total2\xbd\x01\n" +
-	"\vTypeService\x120\n" +
-	"\aGetType\x12\x11.ship.TypeRequest\x1a\x12.ship.TypeResponse\x12>\n" +
-	"\x0eGetTypeSummary\x12\x11.ship.TypeRequest\x1a\x19.ship.TypeSummaryResponse\x12<\n" +
-	"\tListTypes\x12\x16.ship.ListTypesRequest\x1a\x17.ship.ListTypesResponseBFZDgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/ship/type;ship_typeb\x06proto3"
+	"list_types\x18\x01 \x03(\v2(.apfish.v1.ship.type.summary.TypeSummaryR\tlistTypes\x12\x14\n" +
+	"\x05total\x18\x02 \x01(\x03R\x05total2\x97\x02\n" +
+	"\vTypeService\x12N\n" +
+	"\aGetType\x12 .apfish.v1.ship.type.TypeRequest\x1a!.apfish.v1.ship.type.TypeResponse\x12\\\n" +
+	"\x0eGetTypeSummary\x12 .apfish.v1.ship.type.TypeRequest\x1a(.apfish.v1.ship.type.TypeSummaryResponse\x12Z\n" +
+	"\tListTypes\x12%.apfish.v1.ship.type.ListTypesRequest\x1a&.apfish.v1.ship.type.ListTypesResponseBFZDgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/ship/type;ship_typeb\x06proto3"
 
 var (
 	file_apfish_v1_ship_type_type_service_proto_rawDescOnce sync.Once
@@ -295,24 +295,24 @@ func file_apfish_v1_ship_type_type_service_proto_rawDescGZIP() []byte {
 
 var file_apfish_v1_ship_type_type_service_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
 var file_apfish_v1_ship_type_type_service_proto_goTypes = []any{
-	(*TypeRequest)(nil),         // 0: ship.TypeRequest
-	(*TypeResponse)(nil),        // 1: ship.TypeResponse
-	(*TypeSummaryResponse)(nil), // 2: ship.TypeSummaryResponse
-	(*ListTypesRequest)(nil),    // 3: ship.ListTypesRequest
-	(*ListTypesResponse)(nil),   // 4: ship.ListTypesResponse
-	(*Type)(nil),                // 5: ship.Type
-	(*TypeSummary)(nil),         // 6: ship.TypeSummary
+	(*TypeRequest)(nil),         // 0: apfish.v1.ship.type.TypeRequest
+	(*TypeResponse)(nil),        // 1: apfish.v1.ship.type.TypeResponse
+	(*TypeSummaryResponse)(nil), // 2: apfish.v1.ship.type.TypeSummaryResponse
+	(*ListTypesRequest)(nil),    // 3: apfish.v1.ship.type.ListTypesRequest
+	(*ListTypesResponse)(nil),   // 4: apfish.v1.ship.type.ListTypesResponse
+	(*Type)(nil),                // 5: apfish.v1.ship.type.Type
+	(*summary.TypeSummary)(nil), // 6: apfish.v1.ship.type.summary.TypeSummary
 }
 var file_apfish_v1_ship_type_type_service_proto_depIdxs = []int32{
-	5, // 0: ship.TypeResponse.type:type_name -> ship.Type
-	6, // 1: ship.TypeSummaryResponse.type:type_name -> ship.TypeSummary
-	6, // 2: ship.ListTypesResponse.list_types:type_name -> ship.TypeSummary
-	0, // 3: ship.TypeService.GetType:input_type -> ship.TypeRequest
-	0, // 4: ship.TypeService.GetTypeSummary:input_type -> ship.TypeRequest
-	3, // 5: ship.TypeService.ListTypes:input_type -> ship.ListTypesRequest
-	1, // 6: ship.TypeService.GetType:output_type -> ship.TypeResponse
-	2, // 7: ship.TypeService.GetTypeSummary:output_type -> ship.TypeSummaryResponse
-	4, // 8: ship.TypeService.ListTypes:output_type -> ship.ListTypesResponse
+	5, // 0: apfish.v1.ship.type.TypeResponse.type:type_name -> apfish.v1.ship.type.Type
+	6, // 1: apfish.v1.ship.type.TypeSummaryResponse.type:type_name -> apfish.v1.ship.type.summary.TypeSummary
+	6, // 2: apfish.v1.ship.type.ListTypesResponse.list_types:type_name -> apfish.v1.ship.type.summary.TypeSummary
+	0, // 3: apfish.v1.ship.type.TypeService.GetType:input_type -> apfish.v1.ship.type.TypeRequest
+	0, // 4: apfish.v1.ship.type.TypeService.GetTypeSummary:input_type -> apfish.v1.ship.type.TypeRequest
+	3, // 5: apfish.v1.ship.type.TypeService.ListTypes:input_type -> apfish.v1.ship.type.ListTypesRequest
+	1, // 6: apfish.v1.ship.type.TypeService.GetType:output_type -> apfish.v1.ship.type.TypeResponse
+	2, // 7: apfish.v1.ship.type.TypeService.GetTypeSummary:output_type -> apfish.v1.ship.type.TypeSummaryResponse
+	4, // 8: apfish.v1.ship.type.TypeService.ListTypes:output_type -> apfish.v1.ship.type.ListTypesResponse
 	6, // [6:9] is the sub-list for method output_type
 	3, // [3:6] is the sub-list for method input_type
 	3, // [3:3] is the sub-list for extension type_name
@@ -326,7 +326,6 @@ func file_apfish_v1_ship_type_type_service_proto_init() {
 		return
 	}
 	file_apfish_v1_ship_type_type_proto_init()
-	file_apfish_v1_ship_type_type_summary_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{

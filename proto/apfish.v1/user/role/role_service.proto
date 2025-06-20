@@ -1,11 +1,11 @@
 syntax = "proto3";
 
-package user;
+package apfish.v1.user.role;
 
 option go_package = "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/role;user_role";
 
 import "apfish.v1/user/role/role.proto";
-import "apfish.v1/user/role/role_summary.proto";
+import "apfish.v1/user/role/summary/role_summary.proto";
 
 service RoleService {
   rpc GetRole (RoleRequest) returns (RoleResponse);
@@ -23,7 +23,7 @@ message RoleResponse {
 }
 
 message RoleSummaryResponse {
-  RoleSummary role = 1;
+  user.role.summary.RoleSummary role = 1;
 }
 
 message ListRolesRequest {
@@ -32,6 +32,6 @@ message ListRolesRequest {
 }
 
 message ListRolesResponse {
-  repeated RoleSummary list_roles = 1;
+  repeated user.role.summary.RoleSummary list_roles = 1;
   int64 total = 2;
 }

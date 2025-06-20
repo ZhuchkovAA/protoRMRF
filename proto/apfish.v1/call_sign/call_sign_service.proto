@@ -1,11 +1,11 @@
 syntax = "proto3";
 
-package call_sign;
+package apfish.v1.call_sign;
 
 option go_package = "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/call_sign;call_sign";
 
 import "apfish.v1/call_sign/call_sign.proto";
-import "apfish.v1/call_sign/call_sign_summary.proto";
+import "apfish.v1/call_sign/summary/call_sign_summary.proto";
 
 service CallSignService {
   rpc GetCallSign (CallSignRequest) returns (CallSignResponse);
@@ -23,7 +23,7 @@ message CallSignResponse {
 }
 
 message CallSignSummaryResponse {
-  CallSignSummary call_sign = 1;
+  call_sign.summary.CallSignSummary call_sign = 1;
 }
 
 message ListCallSignsRequest {
@@ -32,6 +32,6 @@ message ListCallSignsRequest {
 }
 
 message ListCallSignsResponse {
-  repeated CallSignSummary list_call_signs = 1;
+  repeated call_sign.summary.CallSignSummary list_call_signs = 1;
   int64 total = 2;
 }

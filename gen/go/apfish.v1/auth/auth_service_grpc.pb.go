@@ -19,9 +19,9 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	AuthService_Register_FullMethodName = "/auth.AuthService/Register"
-	AuthService_Login_FullMethodName    = "/auth.AuthService/Login"
-	AuthService_Refresh_FullMethodName  = "/auth.AuthService/Refresh"
+	AuthService_Register_FullMethodName = "/apfish.v1.auth.AuthService/Register"
+	AuthService_Login_FullMethodName    = "/apfish.v1.auth.AuthService/Login"
+	AuthService_Refresh_FullMethodName  = "/apfish.v1.auth.AuthService/Refresh"
 )
 
 // AuthServiceClient is the client API for AuthService service.
@@ -186,7 +186,7 @@ func _AuthService_Refresh_Handler(srv interface{}, ctx context.Context, dec func
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var AuthService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "auth.AuthService",
+	ServiceName: "apfish.v1.auth.AuthService",
 	HandlerType: (*AuthServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{

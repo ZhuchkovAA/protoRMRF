@@ -7,6 +7,7 @@
 package location_port
 
 import (
+	summary "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/port/summary"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -111,7 +112,7 @@ func (x *PortResponse) GetPort() *Port {
 
 type PortSummaryResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Port          *PortSummary           `protobuf:"bytes,1,opt,name=port,proto3" json:"port,omitempty"`
+	Port          *summary.PortSummary   `protobuf:"bytes,1,opt,name=port,proto3" json:"port,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -146,7 +147,7 @@ func (*PortSummaryResponse) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_location_port_port_service_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *PortSummaryResponse) GetPort() *PortSummary {
+func (x *PortSummaryResponse) GetPort() *summary.PortSummary {
 	if x != nil {
 		return x.Port
 	}
@@ -207,7 +208,7 @@ func (x *ListPortsRequest) GetPerPage() int64 {
 
 type ListPortsResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	ListPorts     []*PortSummary         `protobuf:"bytes,1,rep,name=list_ports,json=listPorts,proto3" json:"list_ports,omitempty"`
+	ListPorts     []*summary.PortSummary `protobuf:"bytes,1,rep,name=list_ports,json=listPorts,proto3" json:"list_ports,omitempty"`
 	Total         int64                  `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -243,7 +244,7 @@ func (*ListPortsResponse) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_location_port_port_service_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *ListPortsResponse) GetListPorts() []*PortSummary {
+func (x *ListPortsResponse) GetListPorts() []*summary.PortSummary {
 	if x != nil {
 		return x.ListPorts
 	}
@@ -261,24 +262,24 @@ var File_apfish_v1_location_port_port_service_proto protoreflect.FileDescriptor
 
 const file_apfish_v1_location_port_port_service_proto_rawDesc = "" +
 	"\n" +
-	"*apfish.v1/location/port/port_service.proto\x12\blocation\x1a\"apfish.v1/location/port/port.proto\x1a*apfish.v1/location/port/port_summary.proto\"\x1d\n" +
+	"*apfish.v1/location/port/port_service.proto\x12\x17apfish.v1.location.port\x1a\"apfish.v1/location/port/port.proto\x1a2apfish.v1/location/port/summary/port_summary.proto\"\x1d\n" +
 	"\vPortRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\"2\n" +
-	"\fPortResponse\x12\"\n" +
-	"\x04port\x18\x01 \x01(\v2\x0e.location.PortR\x04port\"@\n" +
-	"\x13PortSummaryResponse\x12)\n" +
-	"\x04port\x18\x01 \x01(\v2\x15.location.PortSummaryR\x04port\"A\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\"A\n" +
+	"\fPortResponse\x121\n" +
+	"\x04port\x18\x01 \x01(\v2\x1d.apfish.v1.location.port.PortR\x04port\"W\n" +
+	"\x13PortSummaryResponse\x12@\n" +
+	"\x04port\x18\x01 \x01(\v2,.apfish.v1.location.port.summary.PortSummaryR\x04port\"A\n" +
 	"\x10ListPortsRequest\x12\x12\n" +
 	"\x04page\x18\x01 \x01(\x03R\x04page\x12\x19\n" +
-	"\bper_page\x18\x02 \x01(\x03R\aperPage\"_\n" +
-	"\x11ListPortsResponse\x124\n" +
+	"\bper_page\x18\x02 \x01(\x03R\aperPage\"v\n" +
+	"\x11ListPortsResponse\x12K\n" +
 	"\n" +
-	"list_ports\x18\x01 \x03(\v2\x15.location.PortSummaryR\tlistPorts\x12\x14\n" +
-	"\x05total\x18\x02 \x01(\x03R\x05total2\xd5\x01\n" +
-	"\vPortService\x128\n" +
-	"\aGetPort\x12\x15.location.PortRequest\x1a\x16.location.PortResponse\x12F\n" +
-	"\x0eGetPortSummary\x12\x15.location.PortRequest\x1a\x1d.location.PortSummaryResponse\x12D\n" +
-	"\tListPorts\x12\x1a.location.ListPortsRequest\x1a\x1b.location.ListPortsResponseBNZLgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/port;location_portb\x06proto3"
+	"list_ports\x18\x01 \x03(\v2,.apfish.v1.location.port.summary.PortSummaryR\tlistPorts\x12\x14\n" +
+	"\x05total\x18\x02 \x01(\x03R\x05total2\xaf\x02\n" +
+	"\vPortService\x12V\n" +
+	"\aGetPort\x12$.apfish.v1.location.port.PortRequest\x1a%.apfish.v1.location.port.PortResponse\x12d\n" +
+	"\x0eGetPortSummary\x12$.apfish.v1.location.port.PortRequest\x1a,.apfish.v1.location.port.PortSummaryResponse\x12b\n" +
+	"\tListPorts\x12).apfish.v1.location.port.ListPortsRequest\x1a*.apfish.v1.location.port.ListPortsResponseBNZLgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/port;location_portb\x06proto3"
 
 var (
 	file_apfish_v1_location_port_port_service_proto_rawDescOnce sync.Once
@@ -294,24 +295,24 @@ func file_apfish_v1_location_port_port_service_proto_rawDescGZIP() []byte {
 
 var file_apfish_v1_location_port_port_service_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
 var file_apfish_v1_location_port_port_service_proto_goTypes = []any{
-	(*PortRequest)(nil),         // 0: location.PortRequest
-	(*PortResponse)(nil),        // 1: location.PortResponse
-	(*PortSummaryResponse)(nil), // 2: location.PortSummaryResponse
-	(*ListPortsRequest)(nil),    // 3: location.ListPortsRequest
-	(*ListPortsResponse)(nil),   // 4: location.ListPortsResponse
-	(*Port)(nil),                // 5: location.Port
-	(*PortSummary)(nil),         // 6: location.PortSummary
+	(*PortRequest)(nil),         // 0: apfish.v1.location.port.PortRequest
+	(*PortResponse)(nil),        // 1: apfish.v1.location.port.PortResponse
+	(*PortSummaryResponse)(nil), // 2: apfish.v1.location.port.PortSummaryResponse
+	(*ListPortsRequest)(nil),    // 3: apfish.v1.location.port.ListPortsRequest
+	(*ListPortsResponse)(nil),   // 4: apfish.v1.location.port.ListPortsResponse
+	(*Port)(nil),                // 5: apfish.v1.location.port.Port
+	(*summary.PortSummary)(nil), // 6: apfish.v1.location.port.summary.PortSummary
 }
 var file_apfish_v1_location_port_port_service_proto_depIdxs = []int32{
-	5, // 0: location.PortResponse.port:type_name -> location.Port
-	6, // 1: location.PortSummaryResponse.port:type_name -> location.PortSummary
-	6, // 2: location.ListPortsResponse.list_ports:type_name -> location.PortSummary
-	0, // 3: location.PortService.GetPort:input_type -> location.PortRequest
-	0, // 4: location.PortService.GetPortSummary:input_type -> location.PortRequest
-	3, // 5: location.PortService.ListPorts:input_type -> location.ListPortsRequest
-	1, // 6: location.PortService.GetPort:output_type -> location.PortResponse
-	2, // 7: location.PortService.GetPortSummary:output_type -> location.PortSummaryResponse
-	4, // 8: location.PortService.ListPorts:output_type -> location.ListPortsResponse
+	5, // 0: apfish.v1.location.port.PortResponse.port:type_name -> apfish.v1.location.port.Port
+	6, // 1: apfish.v1.location.port.PortSummaryResponse.port:type_name -> apfish.v1.location.port.summary.PortSummary
+	6, // 2: apfish.v1.location.port.ListPortsResponse.list_ports:type_name -> apfish.v1.location.port.summary.PortSummary
+	0, // 3: apfish.v1.location.port.PortService.GetPort:input_type -> apfish.v1.location.port.PortRequest
+	0, // 4: apfish.v1.location.port.PortService.GetPortSummary:input_type -> apfish.v1.location.port.PortRequest
+	3, // 5: apfish.v1.location.port.PortService.ListPorts:input_type -> apfish.v1.location.port.ListPortsRequest
+	1, // 6: apfish.v1.location.port.PortService.GetPort:output_type -> apfish.v1.location.port.PortResponse
+	2, // 7: apfish.v1.location.port.PortService.GetPortSummary:output_type -> apfish.v1.location.port.PortSummaryResponse
+	4, // 8: apfish.v1.location.port.PortService.ListPorts:output_type -> apfish.v1.location.port.ListPortsResponse
 	6, // [6:9] is the sub-list for method output_type
 	3, // [3:6] is the sub-list for method input_type
 	3, // [3:3] is the sub-list for extension type_name
@@ -325,7 +326,6 @@ func file_apfish_v1_location_port_port_service_proto_init() {
 		return
 	}
 	file_apfish_v1_location_port_port_proto_init()
-	file_apfish_v1_location_port_port_summary_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{

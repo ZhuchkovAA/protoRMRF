@@ -321,7 +321,7 @@ var File_apfish_v1_auth_auth_service_proto protoreflect.FileDescriptor
 
 const file_apfish_v1_auth_auth_service_proto_rawDesc = "" +
 	"\n" +
-	"!apfish.v1/auth/auth_service.proto\x12\x04auth\"C\n" +
+	"!apfish.v1/auth/auth_service.proto\x12\x0eapfish.v1.auth\"C\n" +
 	"\x0fRegisterRequest\x12\x14\n" +
 	"\x05login\x18\x01 \x01(\tR\x05login\x12\x1a\n" +
 	"\bpassword\x18\x02 \x01(\tR\bpassword\"+\n" +
@@ -337,11 +337,11 @@ const file_apfish_v1_auth_auth_service_proto_rawDesc = "" +
 	"\x0eRefreshRequest\x12#\n" +
 	"\rrefresh_token\x18\x01 \x01(\tR\frefreshToken\"4\n" +
 	"\x0fRefreshResponse\x12!\n" +
-	"\faccess_token\x18\x01 \x01(\tR\vaccessToken2\xb2\x01\n" +
-	"\vAuthService\x129\n" +
-	"\bRegister\x12\x15.auth.RegisterRequest\x1a\x16.auth.RegisterResponse\x120\n" +
-	"\x05Login\x12\x12.auth.LoginRequest\x1a\x13.auth.LoginResponse\x126\n" +
-	"\aRefresh\x12\x14.auth.RefreshRequest\x1a\x15.auth.RefreshResponseB<Z:github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/auth;authb\x06proto3"
+	"\faccess_token\x18\x01 \x01(\tR\vaccessToken2\xee\x01\n" +
+	"\vAuthService\x12M\n" +
+	"\bRegister\x12\x1f.apfish.v1.auth.RegisterRequest\x1a .apfish.v1.auth.RegisterResponse\x12D\n" +
+	"\x05Login\x12\x1c.apfish.v1.auth.LoginRequest\x1a\x1d.apfish.v1.auth.LoginResponse\x12J\n" +
+	"\aRefresh\x12\x1e.apfish.v1.auth.RefreshRequest\x1a\x1f.apfish.v1.auth.RefreshResponseB<Z:github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/auth;authb\x06proto3"
 
 var (
 	file_apfish_v1_auth_auth_service_proto_rawDescOnce sync.Once
@@ -357,20 +357,20 @@ func file_apfish_v1_auth_auth_service_proto_rawDescGZIP() []byte {
 
 var file_apfish_v1_auth_auth_service_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_apfish_v1_auth_auth_service_proto_goTypes = []any{
-	(*RegisterRequest)(nil),  // 0: auth.RegisterRequest
-	(*RegisterResponse)(nil), // 1: auth.RegisterResponse
-	(*LoginRequest)(nil),     // 2: auth.LoginRequest
-	(*LoginResponse)(nil),    // 3: auth.LoginResponse
-	(*RefreshRequest)(nil),   // 4: auth.RefreshRequest
-	(*RefreshResponse)(nil),  // 5: auth.RefreshResponse
+	(*RegisterRequest)(nil),  // 0: apfish.v1.auth.RegisterRequest
+	(*RegisterResponse)(nil), // 1: apfish.v1.auth.RegisterResponse
+	(*LoginRequest)(nil),     // 2: apfish.v1.auth.LoginRequest
+	(*LoginResponse)(nil),    // 3: apfish.v1.auth.LoginResponse
+	(*RefreshRequest)(nil),   // 4: apfish.v1.auth.RefreshRequest
+	(*RefreshResponse)(nil),  // 5: apfish.v1.auth.RefreshResponse
 }
 var file_apfish_v1_auth_auth_service_proto_depIdxs = []int32{
-	0, // 0: auth.AuthService.Register:input_type -> auth.RegisterRequest
-	2, // 1: auth.AuthService.Login:input_type -> auth.LoginRequest
-	4, // 2: auth.AuthService.Refresh:input_type -> auth.RefreshRequest
-	1, // 3: auth.AuthService.Register:output_type -> auth.RegisterResponse
-	3, // 4: auth.AuthService.Login:output_type -> auth.LoginResponse
-	5, // 5: auth.AuthService.Refresh:output_type -> auth.RefreshResponse
+	0, // 0: apfish.v1.auth.AuthService.Register:input_type -> apfish.v1.auth.RegisterRequest
+	2, // 1: apfish.v1.auth.AuthService.Login:input_type -> apfish.v1.auth.LoginRequest
+	4, // 2: apfish.v1.auth.AuthService.Refresh:input_type -> apfish.v1.auth.RefreshRequest
+	1, // 3: apfish.v1.auth.AuthService.Register:output_type -> apfish.v1.auth.RegisterResponse
+	3, // 4: apfish.v1.auth.AuthService.Login:output_type -> apfish.v1.auth.LoginResponse
+	5, // 5: apfish.v1.auth.AuthService.Refresh:output_type -> apfish.v1.auth.RefreshResponse
 	3, // [3:6] is the sub-list for method output_type
 	0, // [0:3] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name

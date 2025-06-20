@@ -1,11 +1,11 @@
 syntax = "proto3";
 
-package user.contact;
+package apfish.v1.user.contact.type;
 
 option go_package = "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/contact/type;user_contact_type";
 
 import "apfish.v1/user/contact/type/type.proto";
-import "apfish.v1/user/contact/type/type_summary.proto";
+import "apfish.v1/user/contact/type/summary/type_summary.proto";
 
 service TypeService {
   rpc GetType (TypeRequest) returns (TypeResponse);
@@ -23,7 +23,7 @@ message TypeResponse {
 }
 
 message TypeSummaryResponse {
-  TypeSummary type = 1;
+  user.contact.type.summary.TypeSummary type = 1;
 }
 
 message ListTypesRequest {
@@ -32,7 +32,7 @@ message ListTypesRequest {
 }
 
 message ListTypesResponse {
-  repeated TypeSummary list_types = 1;
+  repeated user.contact.type.summary.TypeSummary list_types = 1;
   int64 total = 2;
 }
 

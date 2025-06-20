@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+package apfish.v1.user;
+
+option go_package = "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/user;user";
+
+import "apfish.v1/user/user.proto";
+
+// User defines RPC methods for user management.
+service UserService {
+  // GetUser retrieves a single user by their unique login.
+  // Returns NOT_FOUND if the user does not exist.
+  rpc GetUser (UserRequest) returns (UserResponse);
+
+  // ListUsers searches for users by login prefix (case-insensitive)
+  // and returns paginated results.
+  rpc ListUsers (ListUsersRequest) returns (ListUsersResponse);
+
+
+}
+
+// Request to fetch a specific user.
+message UserRequest {
+  string login = 1;  // Exact login identifier (e.g., "john.doe").
+}
+
+// Response containing the requested user.
+message UserResponse {
+  User user = 1;  // Full user profile data.
+}
+
+// Paginated request for user search.
+message ListUsersRequest {
+  string login = 1;    // Optional login prefix filter (e.g., "joh").
+  int64 page = 2;      // Page number (1-based). Default: 1.
+  int64 per_page = 3;  // Items per page (default: 20, max: 100).
+}
+
+// Paginated user list response.
+message ListUsersResponse {
+  repeated User users = 1;  // Users matching the query (max `per_page` entries).
+  int64 total = 2;         // Total matching users (ignoring pagination).
+}

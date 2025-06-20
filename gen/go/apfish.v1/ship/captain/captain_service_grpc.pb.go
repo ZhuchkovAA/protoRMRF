@@ -19,9 +19,9 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	CaptainService_GetCaptain_FullMethodName        = "/ship.CaptainService/GetCaptain"
-	CaptainService_GetCaptainSummary_FullMethodName = "/ship.CaptainService/GetCaptainSummary"
-	CaptainService_ListCaptains_FullMethodName      = "/ship.CaptainService/ListCaptains"
+	CaptainService_GetCaptain_FullMethodName        = "/apfish.v1.ship.captain.CaptainService/GetCaptain"
+	CaptainService_GetCaptainSummary_FullMethodName = "/apfish.v1.ship.captain.CaptainService/GetCaptainSummary"
+	CaptainService_ListCaptains_FullMethodName      = "/apfish.v1.ship.captain.CaptainService/ListCaptains"
 )
 
 // CaptainServiceClient is the client API for CaptainService service.
@@ -176,7 +176,7 @@ func _CaptainService_ListCaptains_Handler(srv interface{}, ctx context.Context, 
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var CaptainService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "ship.CaptainService",
+	ServiceName: "apfish.v1.ship.captain.CaptainService",
 	HandlerType: (*CaptainServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{

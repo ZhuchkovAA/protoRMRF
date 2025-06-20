@@ -7,6 +7,7 @@
 package call_sign
 
 import (
+	summary "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/call_sign/summary"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -110,8 +111,8 @@ func (x *CallSignResponse) GetCallSign() *CallSign {
 }
 
 type CallSignSummaryResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	CallSign      *CallSignSummary       `protobuf:"bytes,1,opt,name=call_sign,json=callSign,proto3" json:"call_sign,omitempty"`
+	state         protoimpl.MessageState   `protogen:"open.v1"`
+	CallSign      *summary.CallSignSummary `protobuf:"bytes,1,opt,name=call_sign,json=callSign,proto3" json:"call_sign,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -146,7 +147,7 @@ func (*CallSignSummaryResponse) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_call_sign_call_sign_service_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *CallSignSummaryResponse) GetCallSign() *CallSignSummary {
+func (x *CallSignSummaryResponse) GetCallSign() *summary.CallSignSummary {
 	if x != nil {
 		return x.CallSign
 	}
@@ -206,9 +207,9 @@ func (x *ListCallSignsRequest) GetPerPage() int64 {
 }
 
 type ListCallSignsResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	ListCallSigns []*CallSignSummary     `protobuf:"bytes,1,rep,name=list_call_signs,json=listCallSigns,proto3" json:"list_call_signs,omitempty"`
-	Total         int64                  `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	state         protoimpl.MessageState     `protogen:"open.v1"`
+	ListCallSigns []*summary.CallSignSummary `protobuf:"bytes,1,rep,name=list_call_signs,json=listCallSigns,proto3" json:"list_call_signs,omitempty"`
+	Total         int64                      `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -243,7 +244,7 @@ func (*ListCallSignsResponse) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_call_sign_call_sign_service_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *ListCallSignsResponse) GetListCallSigns() []*CallSignSummary {
+func (x *ListCallSignsResponse) GetListCallSigns() []*summary.CallSignSummary {
 	if x != nil {
 		return x.ListCallSigns
 	}
@@ -261,23 +262,23 @@ var File_apfish_v1_call_sign_call_sign_service_proto protoreflect.FileDescriptor
 
 const file_apfish_v1_call_sign_call_sign_service_proto_rawDesc = "" +
 	"\n" +
-	"+apfish.v1/call_sign/call_sign_service.proto\x12\tcall_sign\x1a#apfish.v1/call_sign/call_sign.proto\x1a+apfish.v1/call_sign/call_sign_summary.proto\"!\n" +
+	"+apfish.v1/call_sign/call_sign_service.proto\x12\x13apfish.v1.call_sign\x1a#apfish.v1/call_sign/call_sign.proto\x1a3apfish.v1/call_sign/summary/call_sign_summary.proto\"!\n" +
 	"\x0fCallSignRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\"D\n" +
-	"\x10CallSignResponse\x120\n" +
-	"\tcall_sign\x18\x01 \x01(\v2\x13.call_sign.CallSignR\bcallSign\"R\n" +
-	"\x17CallSignSummaryResponse\x127\n" +
-	"\tcall_sign\x18\x01 \x01(\v2\x1a.call_sign.CallSignSummaryR\bcallSign\"E\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\"N\n" +
+	"\x10CallSignResponse\x12:\n" +
+	"\tcall_sign\x18\x01 \x01(\v2\x1d.apfish.v1.call_sign.CallSignR\bcallSign\"d\n" +
+	"\x17CallSignSummaryResponse\x12I\n" +
+	"\tcall_sign\x18\x01 \x01(\v2,.apfish.v1.call_sign.summary.CallSignSummaryR\bcallSign\"E\n" +
 	"\x14ListCallSignsRequest\x12\x12\n" +
 	"\x04page\x18\x01 \x01(\x03R\x04page\x12\x19\n" +
-	"\bper_page\x18\x02 \x01(\x03R\aperPage\"q\n" +
-	"\x15ListCallSignsResponse\x12B\n" +
-	"\x0flist_call_signs\x18\x01 \x03(\v2\x1a.call_sign.CallSignSummaryR\rlistCallSigns\x12\x14\n" +
-	"\x05total\x18\x02 \x01(\x03R\x05total2\x83\x02\n" +
-	"\x0fCallSignService\x12F\n" +
-	"\vGetCallSign\x12\x1a.call_sign.CallSignRequest\x1a\x1b.call_sign.CallSignResponse\x12T\n" +
-	"\x12GetCallSignSummary\x12\x1a.call_sign.CallSignRequest\x1a\".call_sign.CallSignSummaryResponse\x12R\n" +
-	"\rListCallSigns\x12\x1f.call_sign.ListCallSignsRequest\x1a .call_sign.ListCallSignsResponseBFZDgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/call_sign;call_signb\x06proto3"
+	"\bper_page\x18\x02 \x01(\x03R\aperPage\"\x83\x01\n" +
+	"\x15ListCallSignsResponse\x12T\n" +
+	"\x0flist_call_signs\x18\x01 \x03(\v2,.apfish.v1.call_sign.summary.CallSignSummaryR\rlistCallSigns\x12\x14\n" +
+	"\x05total\x18\x02 \x01(\x03R\x05total2\xbf\x02\n" +
+	"\x0fCallSignService\x12Z\n" +
+	"\vGetCallSign\x12$.apfish.v1.call_sign.CallSignRequest\x1a%.apfish.v1.call_sign.CallSignResponse\x12h\n" +
+	"\x12GetCallSignSummary\x12$.apfish.v1.call_sign.CallSignRequest\x1a,.apfish.v1.call_sign.CallSignSummaryResponse\x12f\n" +
+	"\rListCallSigns\x12).apfish.v1.call_sign.ListCallSignsRequest\x1a*.apfish.v1.call_sign.ListCallSignsResponseBFZDgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/call_sign;call_signb\x06proto3"
 
 var (
 	file_apfish_v1_call_sign_call_sign_service_proto_rawDescOnce sync.Once
@@ -293,24 +294,24 @@ func file_apfish_v1_call_sign_call_sign_service_proto_rawDescGZIP() []byte {
 
 var file_apfish_v1_call_sign_call_sign_service_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
 var file_apfish_v1_call_sign_call_sign_service_proto_goTypes = []any{
-	(*CallSignRequest)(nil),         // 0: call_sign.CallSignRequest
-	(*CallSignResponse)(nil),        // 1: call_sign.CallSignResponse
-	(*CallSignSummaryResponse)(nil), // 2: call_sign.CallSignSummaryResponse
-	(*ListCallSignsRequest)(nil),    // 3: call_sign.ListCallSignsRequest
-	(*ListCallSignsResponse)(nil),   // 4: call_sign.ListCallSignsResponse
-	(*CallSign)(nil),                // 5: call_sign.CallSign
-	(*CallSignSummary)(nil),         // 6: call_sign.CallSignSummary
+	(*CallSignRequest)(nil),         // 0: apfish.v1.call_sign.CallSignRequest
+	(*CallSignResponse)(nil),        // 1: apfish.v1.call_sign.CallSignResponse
+	(*CallSignSummaryResponse)(nil), // 2: apfish.v1.call_sign.CallSignSummaryResponse
+	(*ListCallSignsRequest)(nil),    // 3: apfish.v1.call_sign.ListCallSignsRequest
+	(*ListCallSignsResponse)(nil),   // 4: apfish.v1.call_sign.ListCallSignsResponse
+	(*CallSign)(nil),                // 5: apfish.v1.call_sign.CallSign
+	(*summary.CallSignSummary)(nil), // 6: apfish.v1.call_sign.summary.CallSignSummary
 }
 var file_apfish_v1_call_sign_call_sign_service_proto_depIdxs = []int32{
-	5, // 0: call_sign.CallSignResponse.call_sign:type_name -> call_sign.CallSign
-	6, // 1: call_sign.CallSignSummaryResponse.call_sign:type_name -> call_sign.CallSignSummary
-	6, // 2: call_sign.ListCallSignsResponse.list_call_signs:type_name -> call_sign.CallSignSummary
-	0, // 3: call_sign.CallSignService.GetCallSign:input_type -> call_sign.CallSignRequest
-	0, // 4: call_sign.CallSignService.GetCallSignSummary:input_type -> call_sign.CallSignRequest
-	3, // 5: call_sign.CallSignService.ListCallSigns:input_type -> call_sign.ListCallSignsRequest
-	1, // 6: call_sign.CallSignService.GetCallSign:output_type -> call_sign.CallSignResponse
-	2, // 7: call_sign.CallSignService.GetCallSignSummary:output_type -> call_sign.CallSignSummaryResponse
-	4, // 8: call_sign.CallSignService.ListCallSigns:output_type -> call_sign.ListCallSignsResponse
+	5, // 0: apfish.v1.call_sign.CallSignResponse.call_sign:type_name -> apfish.v1.call_sign.CallSign
+	6, // 1: apfish.v1.call_sign.CallSignSummaryResponse.call_sign:type_name -> apfish.v1.call_sign.summary.CallSignSummary
+	6, // 2: apfish.v1.call_sign.ListCallSignsResponse.list_call_signs:type_name -> apfish.v1.call_sign.summary.CallSignSummary
+	0, // 3: apfish.v1.call_sign.CallSignService.GetCallSign:input_type -> apfish.v1.call_sign.CallSignRequest
+	0, // 4: apfish.v1.call_sign.CallSignService.GetCallSignSummary:input_type -> apfish.v1.call_sign.CallSignRequest
+	3, // 5: apfish.v1.call_sign.CallSignService.ListCallSigns:input_type -> apfish.v1.call_sign.ListCallSignsRequest
+	1, // 6: apfish.v1.call_sign.CallSignService.GetCallSign:output_type -> apfish.v1.call_sign.CallSignResponse
+	2, // 7: apfish.v1.call_sign.CallSignService.GetCallSignSummary:output_type -> apfish.v1.call_sign.CallSignSummaryResponse
+	4, // 8: apfish.v1.call_sign.CallSignService.ListCallSigns:output_type -> apfish.v1.call_sign.ListCallSignsResponse
 	6, // [6:9] is the sub-list for method output_type
 	3, // [3:6] is the sub-list for method input_type
 	3, // [3:3] is the sub-list for extension type_name
@@ -324,7 +325,6 @@ func file_apfish_v1_call_sign_call_sign_service_proto_init() {
 		return
 	}
 	file_apfish_v1_call_sign_call_sign_proto_init()
-	file_apfish_v1_call_sign_call_sign_summary_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{

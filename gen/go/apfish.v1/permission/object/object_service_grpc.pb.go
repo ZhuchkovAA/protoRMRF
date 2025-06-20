@@ -19,9 +19,9 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	ObjectService_GetObject_FullMethodName        = "/permission.ObjectService/GetObject"
-	ObjectService_GetObjectSummary_FullMethodName = "/permission.ObjectService/GetObjectSummary"
-	ObjectService_ListObjects_FullMethodName      = "/permission.ObjectService/ListObjects"
+	ObjectService_GetObject_FullMethodName        = "/apfish.v1.permission.object.ObjectService/GetObject"
+	ObjectService_GetObjectSummary_FullMethodName = "/apfish.v1.permission.object.ObjectService/GetObjectSummary"
+	ObjectService_ListObjects_FullMethodName      = "/apfish.v1.permission.object.ObjectService/ListObjects"
 )
 
 // ObjectServiceClient is the client API for ObjectService service.
@@ -176,7 +176,7 @@ func _ObjectService_ListObjects_Handler(srv interface{}, ctx context.Context, de
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var ObjectService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "permission.ObjectService",
+	ServiceName: "apfish.v1.permission.object.ObjectService",
 	HandlerType: (*ObjectServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{

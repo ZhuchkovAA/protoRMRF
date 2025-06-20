@@ -1,11 +1,11 @@
 syntax = "proto3";
 
-package ship;
+package apfish.v1.ship.class;
 
 option go_package = "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/ship/class;ship_class";
 
 import "apfish.v1/ship/class/class.proto";
-import "apfish.v1/ship/class/class_summary.proto";
+import "apfish.v1/ship/class/summary/class_summary.proto";
 
 service ClassService {
   rpc GetClass (ClassRequest) returns (ClassResponse);
@@ -23,7 +23,7 @@ message ClassResponse {
 }
 
 message ClassSummaryResponse {
-  ClassSummary class = 1;
+  ship.class.summary.ClassSummary class = 1;
 }
 
 message ListClassesRequest {
@@ -32,6 +32,6 @@ message ListClassesRequest {
 }
 
 message ListClassesResponse {
-  repeated ClassSummary list_classes = 1;
+  repeated ship.class.summary.ClassSummary list_classes = 1;
   int64 total = 2;
 }

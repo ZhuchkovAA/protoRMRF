@@ -19,9 +19,9 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	CountryService_GetCountry_FullMethodName        = "/location.CountryService/GetCountry"
-	CountryService_GetCountrySummary_FullMethodName = "/location.CountryService/GetCountrySummary"
-	CountryService_ListCountries_FullMethodName     = "/location.CountryService/ListCountries"
+	CountryService_GetCountry_FullMethodName        = "/apfish.v1.location.country.CountryService/GetCountry"
+	CountryService_GetCountrySummary_FullMethodName = "/apfish.v1.location.country.CountryService/GetCountrySummary"
+	CountryService_ListCountries_FullMethodName     = "/apfish.v1.location.country.CountryService/ListCountries"
 )
 
 // CountryServiceClient is the client API for CountryService service.
@@ -176,7 +176,7 @@ func _CountryService_ListCountries_Handler(srv interface{}, ctx context.Context,
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var CountryService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "location.CountryService",
+	ServiceName: "apfish.v1.location.country.CountryService",
 	HandlerType: (*CountryServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{

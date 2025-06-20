@@ -19,9 +19,9 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	ClassService_GetClass_FullMethodName        = "/ship.ClassService/GetClass"
-	ClassService_GetClassSummary_FullMethodName = "/ship.ClassService/GetClassSummary"
-	ClassService_ListClasses_FullMethodName     = "/ship.ClassService/ListClasses"
+	ClassService_GetClass_FullMethodName        = "/apfish.v1.ship.class.ClassService/GetClass"
+	ClassService_GetClassSummary_FullMethodName = "/apfish.v1.ship.class.ClassService/GetClassSummary"
+	ClassService_ListClasses_FullMethodName     = "/apfish.v1.ship.class.ClassService/ListClasses"
 )
 
 // ClassServiceClient is the client API for ClassService service.
@@ -176,7 +176,7 @@ func _ClassService_ListClasses_Handler(srv interface{}, ctx context.Context, dec
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var ClassService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "ship.ClassService",
+	ServiceName: "apfish.v1.ship.class.ClassService",
 	HandlerType: (*ClassServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{

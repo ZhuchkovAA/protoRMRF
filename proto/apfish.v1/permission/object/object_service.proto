@@ -1,11 +1,11 @@
 syntax = "proto3";
 
-package permission;
+package apfish.v1.permission.object;
 
 option go_package = "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/object;permission_object";
 
 import "apfish.v1/permission/object/object.proto";
-import "apfish.v1/permission/object/object_summary.proto";
+import "apfish.v1/permission/object/summary/object_summary.proto";
 
 service ObjectService {
   rpc GetObject (ObjectRequest) returns (ObjectResponse);
@@ -23,7 +23,7 @@ message ObjectResponse {
 }
 
 message ObjectSummaryResponse {
-  ObjectSummary object = 1;
+  permission.object.summary.ObjectSummary object = 1;
 }
 
 message ListObjectsRequest {
@@ -32,6 +32,6 @@ message ListObjectsRequest {
 }
 
 message ListObjectsResponse {
-  repeated ObjectSummary list_objects = 1;
+  repeated permission.object.summary.ObjectSummary list_objects = 1;
   int64 total = 2;
 }

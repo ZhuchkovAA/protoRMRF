@@ -7,7 +7,7 @@
 package user_contact_type
 
 import (
-	contact "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/contact/contact"
+	summary "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/contact/contact/summary"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -30,7 +30,7 @@ type Type struct {
 	Name          string                    `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`                            // Human-readable name (e.g., "Email").
 	Code          string                    `protobuf:"bytes,3,opt,name=code,proto3" json:"code,omitempty"`                            // Machine-friendly code (e.g., "email").
 	CreatedAt     *timestamppb.Timestamp    `protobuf:"bytes,4,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"` // When the type was defined.
-	Contacts      []*contact.ContactSummary `protobuf:"bytes,5,rep,name=contacts,proto3" json:"contacts,omitempty"`
+	Contacts      []*summary.ContactSummary `protobuf:"bytes,5,rep,name=contacts,proto3" json:"contacts,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -93,7 +93,7 @@ func (x *Type) GetCreatedAt() *timestamppb.Timestamp {
 	return nil
 }
 
-func (x *Type) GetContacts() []*contact.ContactSummary {
+func (x *Type) GetContacts() []*summary.ContactSummary {
 	if x != nil {
 		return x.Contacts
 	}
@@ -104,14 +104,14 @@ var File_apfish_v1_user_contact_type_type_proto protoreflect.FileDescriptor
 
 const file_apfish_v1_user_contact_type_type_proto_rawDesc = "" +
 	"\n" +
-	"&apfish.v1/user/contact/type/type.proto\x12\fuser.contact\x1a\x1fgoogle/protobuf/timestamp.proto\x1a4apfish.v1/user/contact/contact/contact_summary.proto\"\xb3\x01\n" +
+	"&apfish.v1/user/contact/type/type.proto\x12\x1bapfish.v1.user.contact.type\x1a\x1fgoogle/protobuf/timestamp.proto\x1a<apfish.v1/user/contact/contact/summary/contact_summary.proto\"\xc5\x01\n" +
 	"\x04Type\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x12\n" +
 	"\x04code\x18\x03 \x01(\tR\x04code\x129\n" +
 	"\n" +
-	"created_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x128\n" +
-	"\bcontacts\x18\x05 \x03(\v2\x1c.user.contact.ContactSummaryR\bcontactsBVZTgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/contact/type;user_contact_typeb\x06proto3"
+	"created_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x12J\n" +
+	"\bcontacts\x18\x05 \x03(\v2..apfish.v1.user.contact.summary.ContactSummaryR\bcontactsBVZTgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/contact/type;user_contact_typeb\x06proto3"
 
 var (
 	file_apfish_v1_user_contact_type_type_proto_rawDescOnce sync.Once
@@ -127,13 +127,13 @@ func file_apfish_v1_user_contact_type_type_proto_rawDescGZIP() []byte {
 
 var file_apfish_v1_user_contact_type_type_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_apfish_v1_user_contact_type_type_proto_goTypes = []any{
-	(*Type)(nil),                   // 0: user.contact.Type
+	(*Type)(nil),                   // 0: apfish.v1.user.contact.type.Type
 	(*timestamppb.Timestamp)(nil),  // 1: google.protobuf.Timestamp
-	(*contact.ContactSummary)(nil), // 2: user.contact.ContactSummary
+	(*summary.ContactSummary)(nil), // 2: apfish.v1.user.contact.summary.ContactSummary
 }
 var file_apfish_v1_user_contact_type_type_proto_depIdxs = []int32{
-	1, // 0: user.contact.Type.created_at:type_name -> google.protobuf.Timestamp
-	2, // 1: user.contact.Type.contacts:type_name -> user.contact.ContactSummary
+	1, // 0: apfish.v1.user.contact.type.Type.created_at:type_name -> google.protobuf.Timestamp
+	2, // 1: apfish.v1.user.contact.type.Type.contacts:type_name -> apfish.v1.user.contact.summary.ContactSummary
 	2, // [2:2] is the sub-list for method output_type
 	2, // [2:2] is the sub-list for method input_type
 	2, // [2:2] is the sub-list for extension type_name
