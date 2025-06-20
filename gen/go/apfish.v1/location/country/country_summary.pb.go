@@ -4,7 +4,7 @@
 // 	protoc        v4.25.1
 // source: apfish.v1/location/country/country_summary.proto
 
-package apfishv1
+package location_country
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -127,7 +127,7 @@ const file_apfish_v1_location_country_country_summary_proto_rawDesc = "" +
 	"\x06is_ilo\x18\x05 \x01(\bR\x05isIlo\x12(\n" +
 	"\x10is_ballast_water\x18\x06 \x01(\bR\x0eisBallastWater\x129\n" +
 	"\n" +
-	"created_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAtBLZJgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/country;apfishv1b\x06proto3"
+	"created_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAtBTZRgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/country;location_countryb\x06proto3"
 
 var (
 	file_apfish_v1_location_country_country_summary_proto_rawDescOnce sync.Once

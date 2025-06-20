@@ -4,7 +4,7 @@
 // 	protoc        v4.25.1
 // source: apfish.v1/call_sign/call_sign.proto
 
-package apfishv1
+package call_sign
 
 import (
 	country "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/country"
@@ -131,7 +131,7 @@ const file_apfish_v1_call_sign_call_sign_proto_rawDesc = "" +
 	"\n" +
 	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x126\n" +
 	"\tcountries\x18\x06 \x03(\v2\x18.location.CountrySummaryR\tcountries\x12'\n" +
-	"\x05ships\x18\a \x03(\v2\x11.ship.ShipSummaryR\x05shipsBEZCgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/call_sign;apfishv1b\x06proto3"
+	"\x05ships\x18\a \x03(\v2\x11.ship.ShipSummaryR\x05shipsBFZDgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/call_sign;call_signb\x06proto3"
 
 var (
 	file_apfish_v1_call_sign_call_sign_proto_rawDescOnce sync.Once

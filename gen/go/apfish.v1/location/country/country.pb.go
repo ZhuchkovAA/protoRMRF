@@ -4,7 +4,7 @@
 // 	protoc        v4.25.1
 // source: apfish.v1/location/country/country.proto
 
-package apfishv1
+package location_country
 
 import (
 	call_sign "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/call_sign"
@@ -159,7 +159,7 @@ const file_apfish_v1_location_country_country_proto_rawDesc = "" +
 	"\n" +
 	"call_signs\x18\t \x03(\v2\x1a.call_sign.CallSignSummaryR\tcallSigns\x12?\n" +
 	"\vpermissions\x18\n" +
-	" \x03(\v2\x1d.permission.PermissionSummaryR\vpermissionsBLZJgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/country;apfishv1b\x06proto3"
+	" \x03(\v2\x1d.permission.PermissionSummaryR\vpermissionsBTZRgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/country;location_countryb\x06proto3"
 
 var (
 	file_apfish_v1_location_country_country_proto_rawDescOnce sync.Once

@@ -4,7 +4,7 @@
 // 	protoc        v4.25.1
 // source: apfish.v1/location/port/port_summary.proto
 
-package apfishv1
+package location_port
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -120,7 +120,7 @@ const file_apfish_v1_location_port_port_summary_proto_rawDesc = "" +
 	"districtId\x12\x12\n" +
 	"\x04code\x18\x05 \x01(\tR\x04code\x129\n" +
 	"\n" +
-	"created_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAtBIZGgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/port;apfishv1b\x06proto3"
+	"created_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAtBNZLgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/port;location_portb\x06proto3"
 
 var (
 	file_apfish_v1_location_port_port_summary_proto_rawDescOnce sync.Once

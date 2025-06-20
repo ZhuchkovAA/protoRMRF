@@ -4,7 +4,7 @@
 // - protoc             v4.25.1
 // source: apfish.v1/ship/type/type_service.proto
 
-package apfishv1
+package ship_type
 
 import (
 	context "context"

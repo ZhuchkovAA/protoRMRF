@@ -4,7 +4,7 @@
 // - protoc             v4.25.1
 // source: apfish.v1/permission/object/object_service.proto
 
-package apfishv1
+package permission_object
 
 import (
 	context "context"

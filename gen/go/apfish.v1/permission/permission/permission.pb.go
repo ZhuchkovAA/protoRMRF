@@ -4,7 +4,7 @@
 // 	protoc        v4.25.1
 // source: apfish.v1/permission/permission/permission.proto
 
-package apfishv1
+package permission
 
 import (
 	country "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/country"
@@ -184,7 +184,7 @@ const file_apfish_v1_permission_permission_permission_proto_rawDesc = "" +
 	"\x05ports\x18\n" +
 	" \x03(\v2\x15.location.PortSummaryR\x05ports\x12'\n" +
 	"\x05users\x18\v \x03(\v2\x11.user.UserSummaryR\x05users\x12'\n" +
-	"\x05roles\x18\f \x03(\v2\x11.user.RoleSummaryR\x05rolesBQZOgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/permission;apfishv1b\x06proto3"
+	"\x05roles\x18\f \x03(\v2\x11.user.RoleSummaryR\x05rolesBSZQgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/permission;permissionb\x06proto3"
 
 var (
 	file_apfish_v1_permission_permission_permission_proto_rawDescOnce sync.Once

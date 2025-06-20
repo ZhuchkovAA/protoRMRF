@@ -4,7 +4,7 @@
 // - protoc             v4.25.1
 // source: apfish.v1/permission/permission/permission_service.proto
 
-package apfishv1
+package permission
 
 import (
 	context "context"

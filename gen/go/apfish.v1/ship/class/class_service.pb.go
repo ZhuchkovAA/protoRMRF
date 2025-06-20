@@ -4,7 +4,7 @@
 // 	protoc        v4.25.1
 // source: apfish.v1/ship/class/class_service.proto
 
-package apfishv1
+package ship_class
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -277,7 +277,7 @@ const file_apfish_v1_ship_class_class_service_proto_rawDesc = "" +
 	"\fClassService\x123\n" +
 	"\bGetClass\x12\x12.ship.ClassRequest\x1a\x13.ship.ClassResponse\x12A\n" +
 	"\x0fGetClassSummary\x12\x12.ship.ClassRequest\x1a\x1a.ship.ClassSummaryResponse\x12B\n" +
-	"\vListClasses\x12\x18.ship.ListClassesRequest\x1a\x19.ship.ListClassesResponseBFZDgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/ship/class;apfishv1b\x06proto3"
+	"\vListClasses\x12\x18.ship.ListClassesRequest\x1a\x19.ship.ListClassesResponseBHZFgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/ship/class;ship_classb\x06proto3"
 
 var (
 	file_apfish_v1_ship_class_class_service_proto_rawDescOnce sync.Once

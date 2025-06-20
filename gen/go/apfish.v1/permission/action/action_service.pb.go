@@ -4,7 +4,7 @@
 // 	protoc        v4.25.1
 // source: apfish.v1/permission/action/action_service.proto
 
-package apfishv1
+package permission_action
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -278,7 +278,7 @@ const file_apfish_v1_permission_action_action_service_proto_rawDesc = "" +
 	"\rActionService\x12B\n" +
 	"\tGetAction\x12\x19.permission.ActionRequest\x1a\x1a.permission.ActionResponse\x12P\n" +
 	"\x10GetActionSummary\x12\x19.permission.ActionRequest\x1a!.permission.ActionSummaryResponse\x12N\n" +
-	"\vListActions\x12\x1e.permission.ListActionsRequest\x1a\x1f.permission.ListActionsResponseBMZKgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/action;apfishv1b\x06proto3"
+	"\vListActions\x12\x1e.permission.ListActionsRequest\x1a\x1f.permission.ListActionsResponseBVZTgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/action;permission_actionb\x06proto3"
 
 var (
 	file_apfish_v1_permission_action_action_service_proto_rawDescOnce sync.Once

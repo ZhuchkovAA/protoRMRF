@@ -4,7 +4,7 @@
 // 	protoc        v4.25.1
 // source: apfish.v1/user/contact/contact/contact_service.proto
 
-package apfishv1
+package user_contact
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -278,7 +278,7 @@ const file_apfish_v1_user_contact_contact_contact_service_proto_rawDesc = "" +
 	"\n" +
 	"GetContact\x12\x1c.user.contact.ContactRequest\x1a\x1d.user.contact.ContactResponse\x12W\n" +
 	"\x11GetContactSummary\x12\x1c.user.contact.ContactRequest\x1a$.user.contact.ContactSummaryResponse\x12U\n" +
-	"\fListContacts\x12!.user.contact.ListContactsRequest\x1a\".user.contact.ListContactsResponseBPZNgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/contact/contact;apfishv1b\x06proto3"
+	"\fListContacts\x12!.user.contact.ListContactsRequest\x1a\".user.contact.ListContactsResponseBTZRgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/contact/contact;user_contactb\x06proto3"
 
 var (
 	file_apfish_v1_user_contact_contact_contact_service_proto_rawDescOnce sync.Once

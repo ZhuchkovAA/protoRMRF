@@ -4,7 +4,7 @@
 // 	protoc        v4.25.1
 // source: apfish.v1/ship/type/type_summary.proto
 
-package apfishv1
+package ship_type
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -91,7 +91,7 @@ const file_apfish_v1_ship_type_type_summary_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x129\n" +
 	"\n" +
-	"created_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAtBEZCgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/ship/type;apfishv1b\x06proto3"
+	"created_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAtBFZDgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/ship/type;ship_typeb\x06proto3"
 
 var (
 	file_apfish_v1_ship_type_type_summary_proto_rawDescOnce sync.Once

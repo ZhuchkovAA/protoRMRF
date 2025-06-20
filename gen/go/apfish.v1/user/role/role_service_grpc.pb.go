@@ -4,7 +4,7 @@
 // - protoc             v4.25.1
 // source: apfish.v1/user/role/role_service.proto
 
-package apfishv1
+package user_role
 
 import (
 	context "context"

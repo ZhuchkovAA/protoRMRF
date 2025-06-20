@@ -4,7 +4,7 @@
 // - protoc             v4.25.1
 // source: apfish.v1/location/port/port_service.proto
 
-package apfishv1
+package location_port
 
 import (
 	context "context"

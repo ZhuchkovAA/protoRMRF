@@ -4,7 +4,7 @@
 // 	protoc        v4.25.1
 // source: apfish.v1/call_sign/call_sign_summary.proto
 
-package apfishv1
+package call_sign
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -111,7 +111,7 @@ const file_apfish_v1_call_sign_call_sign_summary_proto_rawDesc = "" +
 	"\vlimit_upper\x18\x04 \x01(\tR\n" +
 	"limitUpper\x129\n" +
 	"\n" +
-	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAtBEZCgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/call_sign;apfishv1b\x06proto3"
+	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAtBFZDgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/call_sign;call_signb\x06proto3"
 
 var (
 	file_apfish_v1_call_sign_call_sign_summary_proto_rawDescOnce sync.Once

@@ -4,7 +4,7 @@
 // 	protoc        v4.25.1
 // source: apfish.v1/location/district/district.proto
 
-package apfishv1
+package location_district
 
 import (
 	port "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/port"
@@ -111,7 +111,7 @@ const file_apfish_v1_location_district_district_proto_rawDesc = "" +
 	"\n" +
 	"created_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x12+\n" +
 	"\x05ports\x18\x04 \x03(\v2\x15.location.PortSummaryR\x05ports\x12?\n" +
-	"\vpermissions\x18\x05 \x03(\v2\x1d.permission.PermissionSummaryR\vpermissionsBMZKgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/district;apfishv1b\x06proto3"
+	"\vpermissions\x18\x05 \x03(\v2\x1d.permission.PermissionSummaryR\vpermissionsBVZTgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/district;location_districtb\x06proto3"
 
 var (
 	file_apfish_v1_location_district_district_proto_rawDescOnce sync.Once

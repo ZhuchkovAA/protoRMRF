@@ -4,7 +4,7 @@
 // 	protoc        v4.25.1
 // source: apfish.v1/location/district/district_service.proto
 
-package apfishv1
+package location_district
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -277,7 +277,7 @@ const file_apfish_v1_location_district_district_service_proto_rawDesc = "" +
 	"\x0fDistrictService\x12D\n" +
 	"\vGetDistrict\x12\x19.location.DistrictRequest\x1a\x1a.location.DistrictResponse\x12R\n" +
 	"\x12GetDistrictSummary\x12\x19.location.DistrictRequest\x1a!.location.DistrictSummaryResponse\x12P\n" +
-	"\rListDistricts\x12\x1e.location.ListDistrictsRequest\x1a\x1f.location.ListDistrictsResponseBMZKgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/district;apfishv1b\x06proto3"
+	"\rListDistricts\x12\x1e.location.ListDistrictsRequest\x1a\x1f.location.ListDistrictsResponseBVZTgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/district;location_districtb\x06proto3"
 
 var (
 	file_apfish_v1_location_district_district_service_proto_rawDescOnce sync.Once

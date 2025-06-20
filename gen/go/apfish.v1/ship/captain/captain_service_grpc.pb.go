@@ -4,7 +4,7 @@
 // - protoc             v4.25.1
 // source: apfish.v1/ship/captain/captain_service.proto
 
-package apfishv1
+package ship_captain
 
 import (
 	context "context"

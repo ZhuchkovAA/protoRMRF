@@ -4,7 +4,7 @@
 // 	protoc        v4.25.1
 // source: apfish.v1/ship/type/type_service.proto
 
-package apfishv1
+package ship_type
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -279,7 +279,7 @@ const file_apfish_v1_ship_type_type_service_proto_rawDesc = "" +
 	"\vTypeService\x120\n" +
 	"\aGetType\x12\x11.ship.TypeRequest\x1a\x12.ship.TypeResponse\x12>\n" +
 	"\x0eGetTypeSummary\x12\x11.ship.TypeRequest\x1a\x19.ship.TypeSummaryResponse\x12<\n" +
-	"\tListTypes\x12\x16.ship.ListTypesRequest\x1a\x17.ship.ListTypesResponseBEZCgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/ship/type;apfishv1b\x06proto3"
+	"\tListTypes\x12\x16.ship.ListTypesRequest\x1a\x17.ship.ListTypesResponseBFZDgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/ship/type;ship_typeb\x06proto3"
 
 var (
 	file_apfish_v1_ship_type_type_service_proto_rawDescOnce sync.Once

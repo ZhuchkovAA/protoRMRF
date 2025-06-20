@@ -4,7 +4,7 @@
 // 	protoc        v4.25.1
 // source: apfish.v1/call_sign/call_sign_service.proto
 
-package apfishv1
+package call_sign
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -277,7 +277,7 @@ const file_apfish_v1_call_sign_call_sign_service_proto_rawDesc = "" +
 	"\x0fCallSignService\x12F\n" +
 	"\vGetCallSign\x12\x1a.call_sign.CallSignRequest\x1a\x1b.call_sign.CallSignResponse\x12T\n" +
 	"\x12GetCallSignSummary\x12\x1a.call_sign.CallSignRequest\x1a\".call_sign.CallSignSummaryResponse\x12R\n" +
-	"\rListCallSigns\x12\x1f.call_sign.ListCallSignsRequest\x1a .call_sign.ListCallSignsResponseBEZCgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/call_sign;apfishv1b\x06proto3"
+	"\rListCallSigns\x12\x1f.call_sign.ListCallSignsRequest\x1a .call_sign.ListCallSignsResponseBFZDgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/call_sign;call_signb\x06proto3"
 
 var (
 	file_apfish_v1_call_sign_call_sign_service_proto_rawDescOnce sync.Once

@@ -4,7 +4,7 @@
 // 	protoc        v4.25.1
 // source: apfish.v1/user/role/role_service.proto
 
-package apfishv1
+package user_role
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -279,7 +279,7 @@ const file_apfish_v1_user_role_role_service_proto_rawDesc = "" +
 	"\vRoleService\x120\n" +
 	"\aGetRole\x12\x11.user.RoleRequest\x1a\x12.user.RoleResponse\x12>\n" +
 	"\x0eGetRoleSummary\x12\x11.user.RoleRequest\x1a\x19.user.RoleSummaryResponse\x12<\n" +
-	"\tListRoles\x12\x16.user.ListRolesRequest\x1a\x17.user.ListRolesResponseBEZCgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/role;apfishv1b\x06proto3"
+	"\tListRoles\x12\x16.user.ListRolesRequest\x1a\x17.user.ListRolesResponseBFZDgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/role;user_roleb\x06proto3"
 
 var (
 	file_apfish_v1_user_role_role_service_proto_rawDescOnce sync.Once

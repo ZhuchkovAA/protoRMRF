@@ -4,7 +4,7 @@
 // - protoc             v4.25.1
 // source: apfish.v1/call_sign/call_sign_service.proto
 
-package apfishv1
+package call_sign
 
 import (
 	context "context"

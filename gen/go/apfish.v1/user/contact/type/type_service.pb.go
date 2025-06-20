@@ -4,7 +4,7 @@
 // 	protoc        v4.25.1
 // source: apfish.v1/user/contact/type/type_service.proto
 
-package apfishv1
+package user_contact_type
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -278,7 +278,7 @@ const file_apfish_v1_user_contact_type_type_service_proto_rawDesc = "" +
 	"\vTypeService\x12@\n" +
 	"\aGetType\x12\x19.user.contact.TypeRequest\x1a\x1a.user.contact.TypeResponse\x12N\n" +
 	"\x0eGetTypeSummary\x12\x19.user.contact.TypeRequest\x1a!.user.contact.TypeSummaryResponse\x12L\n" +
-	"\tListTypes\x12\x1e.user.contact.ListTypesRequest\x1a\x1f.user.contact.ListTypesResponseBMZKgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/contact/type;apfishv1b\x06proto3"
+	"\tListTypes\x12\x1e.user.contact.ListTypesRequest\x1a\x1f.user.contact.ListTypesResponseBVZTgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/contact/type;user_contact_typeb\x06proto3"
 
 var (
 	file_apfish_v1_user_contact_type_type_service_proto_rawDescOnce sync.Once

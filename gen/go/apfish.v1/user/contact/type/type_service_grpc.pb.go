@@ -4,7 +4,7 @@
 // - protoc             v4.25.1
 // source: apfish.v1/user/contact/type/type_service.proto
 
-package apfishv1
+package user_contact_type
 
 import (
 	context "context"

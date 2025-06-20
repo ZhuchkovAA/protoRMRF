@@ -4,7 +4,7 @@
 // 	protoc        v4.25.1
 // source: apfish.v1/user/contact/contact/contact.proto
 
-package apfishv1
+package user_contact
 
 import (
 	_type "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/contact/type"
@@ -112,7 +112,7 @@ const file_apfish_v1_user_contact_contact_contact_proto_rawDesc = "" +
 	"\x04type\x18\x03 \x01(\v2\x19.user.contact.TypeSummaryR\x04type\x12\x14\n" +
 	"\x05value\x18\x04 \x01(\tR\x05value\x129\n" +
 	"\n" +
-	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAtBPZNgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/contact/contact;apfishv1b\x06proto3"
+	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAtBTZRgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/contact/contact;user_contactb\x06proto3"
 
 var (
 	file_apfish_v1_user_contact_contact_contact_proto_rawDescOnce sync.Once

@@ -4,7 +4,7 @@
 // 	protoc        v4.25.1
 // source: apfish.v1/location/port/port.proto
 
-package apfishv1
+package location_port
 
 import (
 	country "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/country"
@@ -130,7 +130,7 @@ const file_apfish_v1_location_port_port_proto_rawDesc = "" +
 	"\x04code\x18\x05 \x01(\tR\x04code\x129\n" +
 	"\n" +
 	"created_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x12?\n" +
-	"\vpermissions\x18\a \x03(\v2\x1d.permission.PermissionSummaryR\vpermissionsBIZGgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/port;apfishv1b\x06proto3"
+	"\vpermissions\x18\a \x03(\v2\x1d.permission.PermissionSummaryR\vpermissionsBNZLgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/port;location_portb\x06proto3"
 
 var (
 	file_apfish_v1_location_port_port_proto_rawDescOnce sync.Once

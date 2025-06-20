@@ -4,7 +4,7 @@
 // 	protoc        v4.25.1
 // source: apfish.v1/user/user/user.proto
 
-package apfishv1
+package user
 
 import (
 	permission "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/permission"
@@ -140,7 +140,7 @@ const file_apfish_v1_user_user_user_proto_rawDesc = "" +
 	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x12(\n" +
 	"\x10created_by_login\x18\x06 \x01(\tR\x0ecreatedByLogin\x128\n" +
 	"\bcontacts\x18\a \x03(\v2\x1c.user.contact.ContactSummaryR\bcontacts\x12?\n" +
-	"\vpermissions\x18\b \x03(\v2\x1d.permission.PermissionSummaryR\vpermissionsBEZCgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/user;apfishv1b\x06proto3"
+	"\vpermissions\x18\b \x03(\v2\x1d.permission.PermissionSummaryR\vpermissionsBAZ?github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/user;userb\x06proto3"
 
 var (
 	file_apfish_v1_user_user_user_proto_rawDescOnce sync.Once

@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package ship;
 
-option go_package = "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/ship/type;apfishv1";
+option go_package = "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/ship/type;ship_type";
 
 import "apfish.v1/ship/type/type.proto";
 import "apfish.v1/ship/type/type_summary.proto";

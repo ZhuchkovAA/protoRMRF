@@ -4,7 +4,7 @@
 // 	protoc        v4.25.1
 // source: apfish.v1/permission/action/action_summary.proto
 
-package apfishv1
+package permission_action
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -110,7 +110,7 @@ const file_apfish_v1_permission_action_action_summary_proto_rawDesc = "" +
 	"\vdescription\x18\x03 \x01(\tR\vdescription\x12\x12\n" +
 	"\x04code\x18\x04 \x01(\tR\x04code\x129\n" +
 	"\n" +
-	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAtBMZKgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/action;apfishv1b\x06proto3"
+	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAtBVZTgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/action;permission_actionb\x06proto3"
 
 var (
 	file_apfish_v1_permission_action_action_summary_proto_rawDescOnce sync.Once

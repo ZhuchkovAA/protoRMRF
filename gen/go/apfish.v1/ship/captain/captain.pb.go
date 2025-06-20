@@ -4,7 +4,7 @@
 // 	protoc        v4.25.1
 // source: apfish.v1/ship/captain/captain.proto
 
-package apfishv1
+package ship_captain
 
 import (
 	ship "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/ship/ship"
@@ -101,7 +101,7 @@ const file_apfish_v1_ship_captain_captain_proto_rawDesc = "" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x129\n" +
 	"\n" +
 	"created_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x12'\n" +
-	"\x05ships\x18\x04 \x03(\v2\x11.ship.ShipSummaryR\x05shipsBHZFgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/ship/captain;apfishv1b\x06proto3"
+	"\x05ships\x18\x04 \x03(\v2\x11.ship.ShipSummaryR\x05shipsBLZJgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/ship/captain;ship_captainb\x06proto3"
 
 var (
 	file_apfish_v1_ship_captain_captain_proto_rawDescOnce sync.Once

@@ -4,7 +4,7 @@
 // 	protoc        v4.25.1
 // source: apfish.v1/user/user/user_service.proto
 
-package apfishv1
+package user
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -245,7 +245,7 @@ const file_apfish_v1_user_user_user_service_proto_rawDesc = "" +
 	"\x05total\x18\x02 \x01(\x03R\x05total2}\n" +
 	"\vUserService\x120\n" +
 	"\aGetUser\x12\x11.user.UserRequest\x1a\x12.user.UserResponse\x12<\n" +
-	"\tListUsers\x12\x16.user.ListUsersRequest\x1a\x17.user.ListUsersResponseBEZCgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/user;apfishv1b\x06proto3"
+	"\tListUsers\x12\x16.user.ListUsersRequest\x1a\x17.user.ListUsersResponseBAZ?github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/user;userb\x06proto3"
 
 var (
 	file_apfish_v1_user_user_user_service_proto_rawDescOnce sync.Once

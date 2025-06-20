@@ -4,7 +4,7 @@
 // 	protoc        v4.25.1
 // source: apfish.v1/permission/action/action.proto
 
-package apfishv1
+package permission_action
 
 import (
 	permission "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/permission"
@@ -121,7 +121,7 @@ const file_apfish_v1_permission_action_action_proto_rawDesc = "" +
 	"\x04code\x18\x04 \x01(\tR\x04code\x129\n" +
 	"\n" +
 	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x12?\n" +
-	"\vpermissions\x18\x06 \x03(\v2\x1d.permission.PermissionSummaryR\vpermissionsBMZKgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/action;apfishv1b\x06proto3"
+	"\vpermissions\x18\x06 \x03(\v2\x1d.permission.PermissionSummaryR\vpermissionsBVZTgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/action;permission_actionb\x06proto3"
 
 var (
 	file_apfish_v1_permission_action_action_proto_rawDescOnce sync.Once
