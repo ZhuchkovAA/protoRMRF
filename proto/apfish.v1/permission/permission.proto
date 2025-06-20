@@ -12,6 +12,7 @@ import "apfish.v1/permission/object/summary/object_summary.proto";
 import "apfish.v1/location/country/summary/country_summary.proto";
 import "apfish.v1/location/district/summary/district_summary.proto";
 import "apfish.v1/location/port/summary/port_summary.proto";
+import "apfish.v1/ship/summary/ship_summary.proto";
 
 import "apfish.v1/user/summary/user_summary.proto";
 import "apfish.v1/user/role/summary/role_summary.proto";
@@ -30,7 +31,8 @@ message Permission {
   repeated apfish.v1.location.country.summary.CountrySummary countries= 8;
   repeated apfish.v1.location.district.summary.DistrictSummary districts = 9;
   repeated apfish.v1.location.port.summary.PortSummary ports = 10;
+  repeated apfish.v1.ship.summary.ShipSummary ships = 11;
 
-  repeated apfish.v1.user.summary.UserSummary users = 11;
-  repeated apfish.v1.user.role.summary.RoleSummary roles = 12;
+  repeated apfish.v1.user.summary.UserSummary users = 12;
+  repeated apfish.v1.user.role.summary.RoleSummary roles = 13;
 }

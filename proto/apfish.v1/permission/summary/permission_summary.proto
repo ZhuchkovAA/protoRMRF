@@ -14,8 +14,4 @@ message PermissionSummary {
   string name = 5;                // Display name (e.g., "Read Inspections")
   string code = 6;                // Machine-readable identifier (e.g., "inspection:read")
   google.protobuf.Timestamp created_at = 7;
-
-  repeated int64 countries_id = 8;
-  repeated int64 districts_id = 9;
-  repeated int64 ports_id = 10;
 }

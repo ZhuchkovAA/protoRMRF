@@ -31,9 +31,6 @@ type PermissionSummary struct {
 	Name          string                 `protobuf:"bytes,5,opt,name=name,proto3" json:"name,omitempty"`               // Display name (e.g., "Read Inspections")
 	Code          string                 `protobuf:"bytes,6,opt,name=code,proto3" json:"code,omitempty"`               // Machine-readable identifier (e.g., "inspection:read")
 	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	CountriesId   []int64                `protobuf:"varint,8,rep,packed,name=countries_id,json=countriesId,proto3" json:"countries_id,omitempty"`
-	DistrictsId   []int64                `protobuf:"varint,9,rep,packed,name=districts_id,json=districtsId,proto3" json:"districts_id,omitempty"`
-	PortsId       []int64                `protobuf:"varint,10,rep,packed,name=ports_id,json=portsId,proto3" json:"ports_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -117,32 +114,11 @@ func (x *PermissionSummary) GetCreatedAt() *timestamppb.Timestamp {
 	return nil
 }
 
-func (x *PermissionSummary) GetCountriesId() []int64 {
-	if x != nil {
-		return x.CountriesId
-	}
-	return nil
-}
-
-func (x *PermissionSummary) GetDistrictsId() []int64 {
-	if x != nil {
-		return x.DistrictsId
-	}
-	return nil
-}
-
-func (x *PermissionSummary) GetPortsId() []int64 {
-	if x != nil {
-		return x.PortsId
-	}
-	return nil
-}
-
 var File_apfish_v1_permission_summary_permission_summary_proto protoreflect.FileDescriptor
 
 const file_apfish_v1_permission_summary_permission_summary_proto_rawDesc = "" +
 	"\n" +
-	"5apfish.v1/permission/summary/permission_summary.proto\x12\x1capfish.v1.permission.summary\x1a\x1fgoogle/protobuf/timestamp.proto\"\xc3\x02\n" +
+	"5apfish.v1/permission/summary/permission_summary.proto\x12\x1capfish.v1.permission.summary\x1a\x1fgoogle/protobuf/timestamp.proto\"\xe2\x01\n" +
 	"\x11PermissionSummary\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x1b\n" +
 	"\taction_id\x18\x02 \x01(\x03R\bactionId\x12\x1b\n" +
@@ -151,11 +127,7 @@ const file_apfish_v1_permission_summary_permission_summary_proto_rawDesc = "" +
 	"\x04name\x18\x05 \x01(\tR\x04name\x12\x12\n" +
 	"\x04code\x18\x06 \x01(\tR\x04code\x129\n" +
 	"\n" +
-	"created_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x12!\n" +
-	"\fcountries_id\x18\b \x03(\x03R\vcountriesId\x12!\n" +
-	"\fdistricts_id\x18\t \x03(\x03R\vdistrictsId\x12\x19\n" +
-	"\bports_id\x18\n" +
-	" \x03(\x03R\aportsIdBXZVgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/summary;permission_summaryb\x06proto3"
+	"created_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAtBXZVgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/summary;permission_summaryb\x06proto3"
 
 var (
 	file_apfish_v1_permission_summary_permission_summary_proto_rawDescOnce sync.Once
