@@ -101,7 +101,7 @@ const file_apfish_v1_user_contact_type_type_summary_proto_rawDesc = "" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x12\n" +
 	"\x04code\x18\x03 \x01(\tR\x04code\x129\n" +
 	"\n" +
-	"created_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAtB&Z$apfish.v1/user/contact/type;apfishv1b\x06proto3"
+	"created_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAtBMZKgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/contact/type;apfishv1b\x06proto3"
 
 var (
 	file_apfish_v1_user_contact_type_type_summary_proto_rawDescOnce sync.Once

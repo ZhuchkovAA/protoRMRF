@@ -7,8 +7,8 @@
 package apfishv1
 
 import (
-	permission "apfish.v1/permission/permission"
-	user "apfish.v1/user/user"
+	permission "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/permission"
+	user "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/user"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -121,7 +121,7 @@ const file_apfish_v1_user_role_role_proto_rawDesc = "" +
 	"\n" +
 	"created_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x12'\n" +
 	"\x05users\x18\x05 \x03(\v2\x11.user.UserSummaryR\x05users\x12?\n" +
-	"\vpermissions\x18\x06 \x03(\v2\x1d.permission.PermissionSummaryR\vpermissionsB\x1eZ\x1capfish.v1/user/role;apfishv1b\x06proto3"
+	"\vpermissions\x18\x06 \x03(\v2\x1d.permission.PermissionSummaryR\vpermissionsBEZCgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/role;apfishv1b\x06proto3"
 
 var (
 	file_apfish_v1_user_role_role_proto_rawDescOnce sync.Once

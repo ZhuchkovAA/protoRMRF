@@ -278,7 +278,7 @@ const file_apfish_v1_location_port_port_service_proto_rawDesc = "" +
 	"\vPortService\x128\n" +
 	"\aGetPort\x12\x15.location.PortRequest\x1a\x16.location.PortResponse\x12F\n" +
 	"\x0eGetPortSummary\x12\x15.location.PortRequest\x1a\x1d.location.PortSummaryResponse\x12D\n" +
-	"\tListPorts\x12\x1a.location.ListPortsRequest\x1a\x1b.location.ListPortsResponseB\"Z apfish.v1/location/port;apfishv1b\x06proto3"
+	"\tListPorts\x12\x1a.location.ListPortsRequest\x1a\x1b.location.ListPortsResponseBIZGgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/port;apfishv1b\x06proto3"
 
 var (
 	file_apfish_v1_location_port_port_service_proto_rawDescOnce sync.Once

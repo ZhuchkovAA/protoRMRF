@@ -279,7 +279,7 @@ const file_apfish_v1_ship_type_type_service_proto_rawDesc = "" +
 	"\vTypeService\x120\n" +
 	"\aGetType\x12\x11.ship.TypeRequest\x1a\x12.ship.TypeResponse\x12>\n" +
 	"\x0eGetTypeSummary\x12\x11.ship.TypeRequest\x1a\x19.ship.TypeSummaryResponse\x12<\n" +
-	"\tListTypes\x12\x16.ship.ListTypesRequest\x1a\x17.ship.ListTypesResponseB\x1eZ\x1capfish.v1/ship/type;apfishv1b\x06proto3"
+	"\tListTypes\x12\x16.ship.ListTypesRequest\x1a\x17.ship.ListTypesResponseBEZCgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/ship/type;apfishv1b\x06proto3"
 
 var (
 	file_apfish_v1_ship_type_type_service_proto_rawDescOnce sync.Once

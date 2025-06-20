@@ -278,7 +278,7 @@ const file_apfish_v1_ship_captain_captain_service_proto_rawDesc = "" +
 	"\n" +
 	"GetCaptain\x12\x14.ship.CaptainRequest\x1a\x15.ship.CaptainResponse\x12G\n" +
 	"\x11GetCaptainSummary\x12\x14.ship.CaptainRequest\x1a\x1c.ship.CaptainSummaryResponse\x12E\n" +
-	"\fListCaptains\x12\x19.ship.ListCaptainsRequest\x1a\x1a.ship.ListCaptainsResponseB!Z\x1fapfish.v1/ship/captain;apfishv1b\x06proto3"
+	"\fListCaptains\x12\x19.ship.ListCaptainsRequest\x1a\x1a.ship.ListCaptainsResponseBHZFgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/ship/captain;apfishv1b\x06proto3"
 
 var (
 	file_apfish_v1_ship_captain_captain_service_proto_rawDescOnce sync.Once

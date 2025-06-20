@@ -7,8 +7,8 @@
 package apfishv1
 
 import (
-	country "apfish.v1/location/country"
-	ship "apfish.v1/ship/ship"
+	country "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/country"
+	ship "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/ship/ship"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -131,7 +131,7 @@ const file_apfish_v1_call_sign_call_sign_proto_rawDesc = "" +
 	"\n" +
 	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x126\n" +
 	"\tcountries\x18\x06 \x03(\v2\x18.location.CountrySummaryR\tcountries\x12'\n" +
-	"\x05ships\x18\a \x03(\v2\x11.ship.ShipSummaryR\x05shipsB\x1eZ\x1capfish.v1/call_sign;apfishv1b\x06proto3"
+	"\x05ships\x18\a \x03(\v2\x11.ship.ShipSummaryR\x05shipsBEZCgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/call_sign;apfishv1b\x06proto3"
 
 var (
 	file_apfish_v1_call_sign_call_sign_proto_rawDescOnce sync.Once

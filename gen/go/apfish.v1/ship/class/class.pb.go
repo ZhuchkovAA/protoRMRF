@@ -7,7 +7,7 @@
 package apfishv1
 
 import (
-	ship "apfish.v1/ship/ship"
+	ship "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/ship/ship"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -101,7 +101,7 @@ const file_apfish_v1_ship_class_class_proto_rawDesc = "" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x129\n" +
 	"\n" +
 	"created_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x12'\n" +
-	"\x05ships\x18\x04 \x03(\v2\x11.ship.ShipSummaryR\x05shipsB\x1fZ\x1dapfish.v1/ship/class;apfishv1b\x06proto3"
+	"\x05ships\x18\x04 \x03(\v2\x11.ship.ShipSummaryR\x05shipsBFZDgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/ship/class;apfishv1b\x06proto3"
 
 var (
 	file_apfish_v1_ship_class_class_proto_rawDescOnce sync.Once

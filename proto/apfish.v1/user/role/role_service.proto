@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package user;
 
-option go_package = "apfish.v1/user/role;apfishv1";
+option go_package = "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/role;apfishv1";
 
 import "apfish.v1/user/role/role.proto";
 import "apfish.v1/user/role/role_summary.proto";

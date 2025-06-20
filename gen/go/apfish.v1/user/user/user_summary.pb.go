@@ -118,7 +118,7 @@ const file_apfish_v1_user_user_user_summary_proto_rawDesc = "" +
 	"\arole_id\x18\x04 \x01(\x03R\x06roleId\x129\n" +
 	"\n" +
 	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x12(\n" +
-	"\x10created_by_login\x18\x06 \x01(\tR\x0ecreatedByLoginB\x1eZ\x1capfish.v1/user/user;apfishv1b\x06proto3"
+	"\x10created_by_login\x18\x06 \x01(\tR\x0ecreatedByLoginBEZCgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/user;apfishv1b\x06proto3"
 
 var (
 	file_apfish_v1_user_user_user_summary_proto_rawDescOnce sync.Once

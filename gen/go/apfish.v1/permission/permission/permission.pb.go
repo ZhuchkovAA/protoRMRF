@@ -7,13 +7,13 @@
 package apfishv1
 
 import (
-	country "apfish.v1/location/country"
-	district "apfish.v1/location/district"
-	port "apfish.v1/location/port"
-	action "apfish.v1/permission/action"
-	object "apfish.v1/permission/object"
-	role "apfish.v1/user/role"
-	user "apfish.v1/user/user"
+	country "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/country"
+	district "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/district"
+	port "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/port"
+	action "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/action"
+	object "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/object"
+	role "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/role"
+	user "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/user"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -184,7 +184,7 @@ const file_apfish_v1_permission_permission_permission_proto_rawDesc = "" +
 	"\x05ports\x18\n" +
 	" \x03(\v2\x15.location.PortSummaryR\x05ports\x12'\n" +
 	"\x05users\x18\v \x03(\v2\x11.user.UserSummaryR\x05users\x12'\n" +
-	"\x05roles\x18\f \x03(\v2\x11.user.RoleSummaryR\x05rolesB*Z(apfish.v1/permission/permission;apfishv1b\x06proto3"
+	"\x05roles\x18\f \x03(\v2\x11.user.RoleSummaryR\x05rolesBQZOgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/permission;apfishv1b\x06proto3"
 
 var (
 	file_apfish_v1_permission_permission_permission_proto_rawDescOnce sync.Once

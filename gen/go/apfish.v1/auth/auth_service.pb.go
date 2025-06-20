@@ -341,7 +341,7 @@ const file_apfish_v1_auth_auth_service_proto_rawDesc = "" +
 	"\vAuthService\x129\n" +
 	"\bRegister\x12\x15.auth.RegisterRequest\x1a\x16.auth.RegisterResponse\x120\n" +
 	"\x05Login\x12\x12.auth.LoginRequest\x1a\x13.auth.LoginResponse\x126\n" +
-	"\aRefresh\x12\x14.auth.RefreshRequest\x1a\x15.auth.RefreshResponseB\x19Z\x17apfish.v1/auth;apfishv1b\x06proto3"
+	"\aRefresh\x12\x14.auth.RefreshRequest\x1a\x15.auth.RefreshResponseB@Z>github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/auth;apfishv1b\x06proto3"
 
 var (
 	file_apfish_v1_auth_auth_service_proto_rawDescOnce sync.Once

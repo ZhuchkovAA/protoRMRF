@@ -7,7 +7,7 @@
 package apfishv1
 
 import (
-	contact "apfish.v1/user/contact/contact"
+	contact "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/contact/contact"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -111,7 +111,7 @@ const file_apfish_v1_user_contact_type_type_proto_rawDesc = "" +
 	"\x04code\x18\x03 \x01(\tR\x04code\x129\n" +
 	"\n" +
 	"created_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x128\n" +
-	"\bcontacts\x18\x05 \x03(\v2\x1c.user.contact.ContactSummaryR\bcontactsB&Z$apfish.v1/user/contact/type;apfishv1b\x06proto3"
+	"\bcontacts\x18\x05 \x03(\v2\x1c.user.contact.ContactSummaryR\bcontactsBMZKgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/contact/type;apfishv1b\x06proto3"
 
 var (
 	file_apfish_v1_user_contact_type_type_proto_rawDescOnce sync.Once

@@ -7,9 +7,9 @@
 package apfishv1
 
 import (
-	country "apfish.v1/location/country"
-	district "apfish.v1/location/district"
-	permission "apfish.v1/permission/permission"
+	country "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/country"
+	district "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/district"
+	permission "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/permission"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -130,7 +130,7 @@ const file_apfish_v1_location_port_port_proto_rawDesc = "" +
 	"\x04code\x18\x05 \x01(\tR\x04code\x129\n" +
 	"\n" +
 	"created_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x12?\n" +
-	"\vpermissions\x18\a \x03(\v2\x1d.permission.PermissionSummaryR\vpermissionsB\"Z apfish.v1/location/port;apfishv1b\x06proto3"
+	"\vpermissions\x18\a \x03(\v2\x1d.permission.PermissionSummaryR\vpermissionsBIZGgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/port;apfishv1b\x06proto3"
 
 var (
 	file_apfish_v1_location_port_port_proto_rawDescOnce sync.Once

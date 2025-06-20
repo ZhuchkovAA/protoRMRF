@@ -278,7 +278,7 @@ const file_apfish_v1_location_country_country_service_proto_rawDesc = "" +
 	"\n" +
 	"GetCountry\x12\x18.location.CountryRequest\x1a\x19.location.CountryResponse\x12O\n" +
 	"\x11GetCountrySummary\x12\x18.location.CountryRequest\x1a .location.CountrySummaryResponse\x12P\n" +
-	"\rListCountries\x12\x1e.location.ListCountriesRequest\x1a\x1f.location.ListCountriesResponseB%Z#apfish.v1/location/country;apfishv1b\x06proto3"
+	"\rListCountries\x12\x1e.location.ListCountriesRequest\x1a\x1f.location.ListCountriesResponseBLZJgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/country;apfishv1b\x06proto3"
 
 var (
 	file_apfish_v1_location_country_country_service_proto_rawDescOnce sync.Once

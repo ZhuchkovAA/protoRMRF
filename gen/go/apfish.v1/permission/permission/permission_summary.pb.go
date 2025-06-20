@@ -156,7 +156,7 @@ const file_apfish_v1_permission_permission_permission_summary_proto_rawDesc = ""
 	"\fcountries_id\x18\b \x03(\x03R\vcountriesId\x12!\n" +
 	"\fdistricts_id\x18\t \x03(\x03R\vdistrictsId\x12\x19\n" +
 	"\bports_id\x18\n" +
-	" \x03(\x03R\aportsIdB*Z(apfish.v1/permission/permission;apfishv1b\x06proto3"
+	" \x03(\x03R\aportsIdBQZOgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/permission;apfishv1b\x06proto3"
 
 var (
 	file_apfish_v1_permission_permission_permission_summary_proto_rawDescOnce sync.Once

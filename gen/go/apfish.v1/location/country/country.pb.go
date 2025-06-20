@@ -7,9 +7,9 @@
 package apfishv1
 
 import (
-	call_sign "apfish.v1/call_sign"
-	port "apfish.v1/location/port"
-	permission "apfish.v1/permission/permission"
+	call_sign "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/call_sign"
+	port "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/port"
+	permission "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/permission"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -159,7 +159,7 @@ const file_apfish_v1_location_country_country_proto_rawDesc = "" +
 	"\n" +
 	"call_signs\x18\t \x03(\v2\x1a.call_sign.CallSignSummaryR\tcallSigns\x12?\n" +
 	"\vpermissions\x18\n" +
-	" \x03(\v2\x1d.permission.PermissionSummaryR\vpermissionsB%Z#apfish.v1/location/country;apfishv1b\x06proto3"
+	" \x03(\v2\x1d.permission.PermissionSummaryR\vpermissionsBLZJgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/country;apfishv1b\x06proto3"
 
 var (
 	file_apfish_v1_location_country_country_proto_rawDescOnce sync.Once

@@ -109,7 +109,7 @@ const file_apfish_v1_user_contact_contact_contact_summary_proto_rawDesc = "" +
 	"\atype_id\x18\x03 \x01(\x03R\x06typeId\x12\x14\n" +
 	"\x05value\x18\x04 \x01(\tR\x05value\x129\n" +
 	"\n" +
-	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAtB)Z'apfish.v1/user/contact/contact;apfishv1b\x06proto3"
+	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAtBPZNgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/contact/contact;apfishv1b\x06proto3"
 
 var (
 	file_apfish_v1_user_contact_contact_contact_summary_proto_rawDescOnce sync.Once

@@ -7,12 +7,12 @@
 package apfishv1
 
 import (
-	call_sign "apfish.v1/call_sign"
-	country "apfish.v1/location/country"
-	permission "apfish.v1/permission/permission"
-	captain "apfish.v1/ship/captain"
-	class "apfish.v1/ship/class"
-	_type "apfish.v1/ship/type"
+	call_sign "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/call_sign"
+	country "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/country"
+	permission "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/permission"
+	captain "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/ship/captain"
+	class "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/ship/class"
+	_type "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/ship/type"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -208,7 +208,7 @@ const file_apfish_v1_ship_ship_ship_proto_rawDesc = "" +
 	"\n" +
 	"created_at\x18\r \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x120\n" +
 	"\bcaptains\x18\x0e \x03(\v2\x14.ship.CaptainSummaryR\bcaptains\x12?\n" +
-	"\vpermissions\x18\x0f \x03(\v2\x1d.permission.PermissionSummaryR\vpermissionsB\x1eZ\x1capfish.v1/ship/ship;apfishv1b\x06proto3"
+	"\vpermissions\x18\x0f \x03(\v2\x1d.permission.PermissionSummaryR\vpermissionsBEZCgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/ship/ship;apfishv1b\x06proto3"
 
 var (
 	file_apfish_v1_ship_ship_ship_proto_rawDescOnce sync.Once

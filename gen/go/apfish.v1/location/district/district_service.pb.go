@@ -277,7 +277,7 @@ const file_apfish_v1_location_district_district_service_proto_rawDesc = "" +
 	"\x0fDistrictService\x12D\n" +
 	"\vGetDistrict\x12\x19.location.DistrictRequest\x1a\x1a.location.DistrictResponse\x12R\n" +
 	"\x12GetDistrictSummary\x12\x19.location.DistrictRequest\x1a!.location.DistrictSummaryResponse\x12P\n" +
-	"\rListDistricts\x12\x1e.location.ListDistrictsRequest\x1a\x1f.location.ListDistrictsResponseB&Z$apfish.v1/location/district;apfishv1b\x06proto3"
+	"\rListDistricts\x12\x1e.location.ListDistrictsRequest\x1a\x1f.location.ListDistrictsResponseBMZKgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/district;apfishv1b\x06proto3"
 
 var (
 	file_apfish_v1_location_district_district_service_proto_rawDescOnce sync.Once
