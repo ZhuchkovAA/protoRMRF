@@ -29,7 +29,7 @@ type LogRequest struct {
 	Level         string                     `protobuf:"bytes,2,opt,name=level,proto3" json:"level,omitempty"`
 	Message       string                     `protobuf:"bytes,3,opt,name=message,proto3" json:"message,omitempty"`
 	Fields        map[string]*structpb.Value `protobuf:"bytes,4,rep,name=fields,proto3" json:"fields,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	Timestamp     int32                      `protobuf:"varint,5,opt,name=timestamp,proto3" json:"timestamp,omitempty"`
+	Timestamp     int64                      `protobuf:"varint,5,opt,name=timestamp,proto3" json:"timestamp,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -92,7 +92,7 @@ func (x *LogRequest) GetFields() map[string]*structpb.Value {
 	return nil
 }
 
-func (x *LogRequest) GetTimestamp() int32 {
+func (x *LogRequest) GetTimestamp() int64 {
 	if x != nil {
 		return x.Timestamp
 	}
@@ -171,7 +171,7 @@ const file_log_v1_log_proto_rawDesc = "" +
 	"\x05level\x18\x02 \x01(\tR\x05level\x12\x18\n" +
 	"\amessage\x18\x03 \x01(\tR\amessage\x12:\n" +
 	"\x06fields\x18\x04 \x03(\v2\".logservice.LogRequest.FieldsEntryR\x06fields\x12\x1c\n" +
-	"\ttimestamp\x18\x05 \x01(\x05R\ttimestamp\x1aQ\n" +
+	"\ttimestamp\x18\x05 \x01(\x03R\ttimestamp\x1aQ\n" +
 	"\vFieldsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12,\n" +
 	"\x05value\x18\x02 \x01(\v2\x16.google.protobuf.ValueR\x05value:\x028\x01\"{\n" +
