@@ -24,7 +24,7 @@ const (
 
 type PermissionRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -59,7 +59,7 @@ func (*PermissionRequest) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_permission_permission_service_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *PermissionRequest) GetId() int64 {
+func (x *PermissionRequest) GetId() int32 {
 	if x != nil {
 		return x.Id
 	}
@@ -156,8 +156,8 @@ func (x *PermissionSummaryResponse) GetPermission() *summary.PermissionSummary {
 
 type ListPermissionsRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Page          int64                  `protobuf:"varint,1,opt,name=page,proto3" json:"page,omitempty"`                      // Page number (1-based). Default: 1.
-	PerPage       int64                  `protobuf:"varint,2,opt,name=per_page,json=perPage,proto3" json:"per_page,omitempty"` // Items per page (default: 20, max: 100).
+	Page          int32                  `protobuf:"varint,1,opt,name=page,proto3" json:"page,omitempty"`                      // Page number (1-based). Default: 1.
+	PerPage       int32                  `protobuf:"varint,2,opt,name=per_page,json=perPage,proto3" json:"per_page,omitempty"` // Items per page (default: 20, max: 100).
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -192,14 +192,14 @@ func (*ListPermissionsRequest) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_permission_permission_service_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *ListPermissionsRequest) GetPage() int64 {
+func (x *ListPermissionsRequest) GetPage() int32 {
 	if x != nil {
 		return x.Page
 	}
 	return 0
 }
 
-func (x *ListPermissionsRequest) GetPerPage() int64 {
+func (x *ListPermissionsRequest) GetPerPage() int32 {
 	if x != nil {
 		return x.PerPage
 	}
@@ -209,7 +209,7 @@ func (x *ListPermissionsRequest) GetPerPage() int64 {
 type ListPermissionsResponse struct {
 	state           protoimpl.MessageState       `protogen:"open.v1"`
 	ListPermissions []*summary.PermissionSummary `protobuf:"bytes,1,rep,name=list_permissions,json=listPermissions,proto3" json:"list_permissions,omitempty"`
-	Total           int64                        `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	Total           int32                        `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
 	unknownFields   protoimpl.UnknownFields
 	sizeCache       protoimpl.SizeCache
 }
@@ -251,7 +251,7 @@ func (x *ListPermissionsResponse) GetListPermissions() []*summary.PermissionSumm
 	return nil
 }
 
-func (x *ListPermissionsResponse) GetTotal() int64 {
+func (x *ListPermissionsResponse) GetTotal() int32 {
 	if x != nil {
 		return x.Total
 	}
@@ -264,7 +264,7 @@ const file_apfish_v1_permission_permission_service_proto_rawDesc = "" +
 	"\n" +
 	"-apfish.v1/permission/permission_service.proto\x12\x14apfish.v1.permission\x1a%apfish.v1/permission/permission.proto\x1a5apfish.v1/permission/summary/permission_summary.proto\"#\n" +
 	"\x11PermissionRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\"V\n" +
+	"\x02id\x18\x01 \x01(\x05R\x02id\"V\n" +
 	"\x12PermissionResponse\x12@\n" +
 	"\n" +
 	"permission\x18\x01 \x01(\v2 .apfish.v1.permission.PermissionR\n" +
@@ -274,11 +274,11 @@ const file_apfish_v1_permission_permission_service_proto_rawDesc = "" +
 	"permission\x18\x01 \x01(\v2/.apfish.v1.permission.summary.PermissionSummaryR\n" +
 	"permission\"G\n" +
 	"\x16ListPermissionsRequest\x12\x12\n" +
-	"\x04page\x18\x01 \x01(\x03R\x04page\x12\x19\n" +
-	"\bper_page\x18\x02 \x01(\x03R\aperPage\"\x8b\x01\n" +
+	"\x04page\x18\x01 \x01(\x05R\x04page\x12\x19\n" +
+	"\bper_page\x18\x02 \x01(\x05R\aperPage\"\x8b\x01\n" +
 	"\x17ListPermissionsResponse\x12Z\n" +
 	"\x10list_permissions\x18\x01 \x03(\v2/.apfish.v1.permission.summary.PermissionSummaryR\x0flistPermissions\x12\x14\n" +
-	"\x05total\x18\x02 \x01(\x03R\x05total2\xd9\x02\n" +
+	"\x05total\x18\x02 \x01(\x05R\x05total2\xd9\x02\n" +
 	"\x11PermissionService\x12b\n" +
 	"\rGetPermission\x12'.apfish.v1.permission.PermissionRequest\x1a(.apfish.v1.permission.PermissionResponse\x12p\n" +
 	"\x14GetPermissionSummary\x12'.apfish.v1.permission.PermissionRequest\x1a/.apfish.v1.permission.PermissionSummaryResponse\x12n\n" +

@@ -13,13 +13,13 @@ export const protobufPackage = "apfish.v1.user.summary";
 
 export interface UserSummary {
   /** Unique system-generated ID. */
-  id: Long;
+  id: number;
   /** Unique login identifier. */
   login: string;
   /** Formal name (e.g., "John Doe"). */
   officialName: string;
   /** Assigned role. */
-  roleId: Long;
+  roleId: number;
   /** When the user was created. */
   createdAt:
     | Date
@@ -29,13 +29,13 @@ export interface UserSummary {
 }
 
 function createBaseUserSummary(): UserSummary {
-  return { id: Long.ZERO, login: "", officialName: "", roleId: Long.ZERO, createdAt: undefined, createdByLogin: "" };
+  return { id: 0, login: "", officialName: "", roleId: 0, createdAt: undefined, createdByLogin: "" };
 }
 
 export const UserSummary = {
   encode(message: UserSummary, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.id.equals(Long.ZERO)) {
-      writer.uint32(8).int64(message.id);
+    if (message.id !== 0) {
+      writer.uint32(8).int32(message.id);
     }
     if (message.login !== "") {
       writer.uint32(18).string(message.login);
@@ -43,8 +43,8 @@ export const UserSummary = {
     if (message.officialName !== "") {
       writer.uint32(26).string(message.officialName);
     }
-    if (!message.roleId.equals(Long.ZERO)) {
-      writer.uint32(32).int64(message.roleId);
+    if (message.roleId !== 0) {
+      writer.uint32(32).int32(message.roleId);
     }
     if (message.createdAt !== undefined) {
       Timestamp.encode(toTimestamp(message.createdAt), writer.uint32(42).fork()).ldelim();
@@ -67,7 +67,7 @@ export const UserSummary = {
             break;
           }
 
-          message.id = reader.int64() as Long;
+          message.id = reader.int32();
           continue;
         case 2:
           if (tag !== 18) {
@@ -88,7 +88,7 @@ export const UserSummary = {
             break;
           }
 
-          message.roleId = reader.int64() as Long;
+          message.roleId = reader.int32();
           continue;
         case 5:
           if (tag !== 42) {
@@ -115,10 +115,10 @@ export const UserSummary = {
 
   fromJSON(object: any): UserSummary {
     return {
-      id: isSet(object.id) ? Long.fromValue(object.id) : Long.ZERO,
+      id: isSet(object.id) ? globalThis.Number(object.id) : 0,
       login: isSet(object.login) ? globalThis.String(object.login) : "",
       officialName: isSet(object.officialName) ? globalThis.String(object.officialName) : "",
-      roleId: isSet(object.roleId) ? Long.fromValue(object.roleId) : Long.ZERO,
+      roleId: isSet(object.roleId) ? globalThis.Number(object.roleId) : 0,
       createdAt: isSet(object.createdAt) ? fromJsonTimestamp(object.createdAt) : undefined,
       createdByLogin: isSet(object.createdByLogin) ? globalThis.String(object.createdByLogin) : "",
     };
@@ -126,8 +126,8 @@ export const UserSummary = {
 
   toJSON(message: UserSummary): unknown {
     const obj: any = {};
-    if (!message.id.equals(Long.ZERO)) {
-      obj.id = (message.id || Long.ZERO).toString();
+    if (message.id !== 0) {
+      obj.id = Math.round(message.id);
     }
     if (message.login !== "") {
       obj.login = message.login;
@@ -135,8 +135,8 @@ export const UserSummary = {
     if (message.officialName !== "") {
       obj.officialName = message.officialName;
     }
-    if (!message.roleId.equals(Long.ZERO)) {
-      obj.roleId = (message.roleId || Long.ZERO).toString();
+    if (message.roleId !== 0) {
+      obj.roleId = Math.round(message.roleId);
     }
     if (message.createdAt !== undefined) {
       obj.createdAt = message.createdAt.toISOString();
@@ -152,12 +152,10 @@ export const UserSummary = {
   },
   fromPartial<I extends Exact<DeepPartial<UserSummary>, I>>(object: I): UserSummary {
     const message = createBaseUserSummary();
-    message.id = (object.id !== undefined && object.id !== null) ? Long.fromValue(object.id) : Long.ZERO;
+    message.id = object.id ?? 0;
     message.login = object.login ?? "";
     message.officialName = object.officialName ?? "";
-    message.roleId = (object.roleId !== undefined && object.roleId !== null)
-      ? Long.fromValue(object.roleId)
-      : Long.ZERO;
+    message.roleId = object.roleId ?? 0;
     message.createdAt = object.createdAt ?? undefined;
     message.createdByLogin = object.createdByLogin ?? "";
     return message;

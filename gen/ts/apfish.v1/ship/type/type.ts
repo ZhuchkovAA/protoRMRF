@@ -13,20 +13,20 @@ import { ShipSummary } from "../summary/ship_summary";
 export const protobufPackage = "apfish.v1.ship.type";
 
 export interface Type {
-  id: Long;
+  id: number;
   name: string;
   createdAt: Date | undefined;
   ships: ShipSummary[];
 }
 
 function createBaseType(): Type {
-  return { id: Long.ZERO, name: "", createdAt: undefined, ships: [] };
+  return { id: 0, name: "", createdAt: undefined, ships: [] };
 }
 
 export const Type = {
   encode(message: Type, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.id.equals(Long.ZERO)) {
-      writer.uint32(8).int64(message.id);
+    if (message.id !== 0) {
+      writer.uint32(8).int32(message.id);
     }
     if (message.name !== "") {
       writer.uint32(18).string(message.name);
@@ -52,7 +52,7 @@ export const Type = {
             break;
           }
 
-          message.id = reader.int64() as Long;
+          message.id = reader.int32();
           continue;
         case 2:
           if (tag !== 18) {
@@ -86,7 +86,7 @@ export const Type = {
 
   fromJSON(object: any): Type {
     return {
-      id: isSet(object.id) ? Long.fromValue(object.id) : Long.ZERO,
+      id: isSet(object.id) ? globalThis.Number(object.id) : 0,
       name: isSet(object.name) ? globalThis.String(object.name) : "",
       createdAt: isSet(object.createdAt) ? fromJsonTimestamp(object.createdAt) : undefined,
       ships: globalThis.Array.isArray(object?.ships) ? object.ships.map((e: any) => ShipSummary.fromJSON(e)) : [],
@@ -95,8 +95,8 @@ export const Type = {
 
   toJSON(message: Type): unknown {
     const obj: any = {};
-    if (!message.id.equals(Long.ZERO)) {
-      obj.id = (message.id || Long.ZERO).toString();
+    if (message.id !== 0) {
+      obj.id = Math.round(message.id);
     }
     if (message.name !== "") {
       obj.name = message.name;
@@ -115,7 +115,7 @@ export const Type = {
   },
   fromPartial<I extends Exact<DeepPartial<Type>, I>>(object: I): Type {
     const message = createBaseType();
-    message.id = (object.id !== undefined && object.id !== null) ? Long.fromValue(object.id) : Long.ZERO;
+    message.id = object.id ?? 0;
     message.name = object.name ?? "";
     message.createdAt = object.createdAt ?? undefined;
     message.ships = object.ships?.map((e) => ShipSummary.fromPartial(e)) || [];

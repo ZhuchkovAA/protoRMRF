@@ -25,7 +25,7 @@ import { ContactSummary } from "./summary/contact_summary";
 export const protobufPackage = "apfish.v1.user.contact";
 
 export interface ContactRequest {
-  id: Long;
+  id: number;
 }
 
 export interface ContactResponse {
@@ -38,24 +38,24 @@ export interface ContactSummaryResponse {
 
 export interface ListContactsRequest {
   /** Page number (1-based). Default: 1. */
-  page: Long;
+  page: number;
   /** Items per page (default: 20, max: 100). */
-  perPage: Long;
+  perPage: number;
 }
 
 export interface ListContactsResponse {
   listContacts: ContactSummary[];
-  total: Long;
+  total: number;
 }
 
 function createBaseContactRequest(): ContactRequest {
-  return { id: Long.ZERO };
+  return { id: 0 };
 }
 
 export const ContactRequest = {
   encode(message: ContactRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.id.equals(Long.ZERO)) {
-      writer.uint32(8).int64(message.id);
+    if (message.id !== 0) {
+      writer.uint32(8).int32(message.id);
     }
     return writer;
   },
@@ -72,7 +72,7 @@ export const ContactRequest = {
             break;
           }
 
-          message.id = reader.int64() as Long;
+          message.id = reader.int32();
           continue;
       }
       if ((tag & 7) === 4 || tag === 0) {
@@ -84,13 +84,13 @@ export const ContactRequest = {
   },
 
   fromJSON(object: any): ContactRequest {
-    return { id: isSet(object.id) ? Long.fromValue(object.id) : Long.ZERO };
+    return { id: isSet(object.id) ? globalThis.Number(object.id) : 0 };
   },
 
   toJSON(message: ContactRequest): unknown {
     const obj: any = {};
-    if (!message.id.equals(Long.ZERO)) {
-      obj.id = (message.id || Long.ZERO).toString();
+    if (message.id !== 0) {
+      obj.id = Math.round(message.id);
     }
     return obj;
   },
@@ -100,7 +100,7 @@ export const ContactRequest = {
   },
   fromPartial<I extends Exact<DeepPartial<ContactRequest>, I>>(object: I): ContactRequest {
     const message = createBaseContactRequest();
-    message.id = (object.id !== undefined && object.id !== null) ? Long.fromValue(object.id) : Long.ZERO;
+    message.id = object.id ?? 0;
     return message;
   },
 };
@@ -224,16 +224,16 @@ export const ContactSummaryResponse = {
 };
 
 function createBaseListContactsRequest(): ListContactsRequest {
-  return { page: Long.ZERO, perPage: Long.ZERO };
+  return { page: 0, perPage: 0 };
 }
 
 export const ListContactsRequest = {
   encode(message: ListContactsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.page.equals(Long.ZERO)) {
-      writer.uint32(8).int64(message.page);
+    if (message.page !== 0) {
+      writer.uint32(8).int32(message.page);
     }
-    if (!message.perPage.equals(Long.ZERO)) {
-      writer.uint32(16).int64(message.perPage);
+    if (message.perPage !== 0) {
+      writer.uint32(16).int32(message.perPage);
     }
     return writer;
   },
@@ -250,14 +250,14 @@ export const ListContactsRequest = {
             break;
           }
 
-          message.page = reader.int64() as Long;
+          message.page = reader.int32();
           continue;
         case 2:
           if (tag !== 16) {
             break;
           }
 
-          message.perPage = reader.int64() as Long;
+          message.perPage = reader.int32();
           continue;
       }
       if ((tag & 7) === 4 || tag === 0) {
@@ -270,18 +270,18 @@ export const ListContactsRequest = {
 
   fromJSON(object: any): ListContactsRequest {
     return {
-      page: isSet(object.page) ? Long.fromValue(object.page) : Long.ZERO,
-      perPage: isSet(object.perPage) ? Long.fromValue(object.perPage) : Long.ZERO,
+      page: isSet(object.page) ? globalThis.Number(object.page) : 0,
+      perPage: isSet(object.perPage) ? globalThis.Number(object.perPage) : 0,
     };
   },
 
   toJSON(message: ListContactsRequest): unknown {
     const obj: any = {};
-    if (!message.page.equals(Long.ZERO)) {
-      obj.page = (message.page || Long.ZERO).toString();
+    if (message.page !== 0) {
+      obj.page = Math.round(message.page);
     }
-    if (!message.perPage.equals(Long.ZERO)) {
-      obj.perPage = (message.perPage || Long.ZERO).toString();
+    if (message.perPage !== 0) {
+      obj.perPage = Math.round(message.perPage);
     }
     return obj;
   },
@@ -291,16 +291,14 @@ export const ListContactsRequest = {
   },
   fromPartial<I extends Exact<DeepPartial<ListContactsRequest>, I>>(object: I): ListContactsRequest {
     const message = createBaseListContactsRequest();
-    message.page = (object.page !== undefined && object.page !== null) ? Long.fromValue(object.page) : Long.ZERO;
-    message.perPage = (object.perPage !== undefined && object.perPage !== null)
-      ? Long.fromValue(object.perPage)
-      : Long.ZERO;
+    message.page = object.page ?? 0;
+    message.perPage = object.perPage ?? 0;
     return message;
   },
 };
 
 function createBaseListContactsResponse(): ListContactsResponse {
-  return { listContacts: [], total: Long.ZERO };
+  return { listContacts: [], total: 0 };
 }
 
 export const ListContactsResponse = {
@@ -308,8 +306,8 @@ export const ListContactsResponse = {
     for (const v of message.listContacts) {
       ContactSummary.encode(v!, writer.uint32(10).fork()).ldelim();
     }
-    if (!message.total.equals(Long.ZERO)) {
-      writer.uint32(16).int64(message.total);
+    if (message.total !== 0) {
+      writer.uint32(16).int32(message.total);
     }
     return writer;
   },
@@ -333,7 +331,7 @@ export const ListContactsResponse = {
             break;
           }
 
-          message.total = reader.int64() as Long;
+          message.total = reader.int32();
           continue;
       }
       if ((tag & 7) === 4 || tag === 0) {
@@ -349,7 +347,7 @@ export const ListContactsResponse = {
       listContacts: globalThis.Array.isArray(object?.listContacts)
         ? object.listContacts.map((e: any) => ContactSummary.fromJSON(e))
         : [],
-      total: isSet(object.total) ? Long.fromValue(object.total) : Long.ZERO,
+      total: isSet(object.total) ? globalThis.Number(object.total) : 0,
     };
   },
 
@@ -358,8 +356,8 @@ export const ListContactsResponse = {
     if (message.listContacts?.length) {
       obj.listContacts = message.listContacts.map((e) => ContactSummary.toJSON(e));
     }
-    if (!message.total.equals(Long.ZERO)) {
-      obj.total = (message.total || Long.ZERO).toString();
+    if (message.total !== 0) {
+      obj.total = Math.round(message.total);
     }
     return obj;
   },
@@ -370,7 +368,7 @@ export const ListContactsResponse = {
   fromPartial<I extends Exact<DeepPartial<ListContactsResponse>, I>>(object: I): ListContactsResponse {
     const message = createBaseListContactsResponse();
     message.listContacts = object.listContacts?.map((e) => ContactSummary.fromPartial(e)) || [];
-    message.total = (object.total !== undefined && object.total !== null) ? Long.fromValue(object.total) : Long.ZERO;
+    message.total = object.total ?? 0;
     return message;
   },
 };

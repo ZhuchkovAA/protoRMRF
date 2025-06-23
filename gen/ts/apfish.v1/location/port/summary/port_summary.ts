@@ -12,31 +12,31 @@ import { Timestamp } from "../../../../google/protobuf/timestamp";
 export const protobufPackage = "apfish.v1.location.port.summary";
 
 export interface PortSummary {
-  id: Long;
+  id: number;
   name: string;
-  countryId: Long;
-  districtId: Long;
+  countryId: number;
+  districtId: number;
   code: string;
   createdAt: Date | undefined;
 }
 
 function createBasePortSummary(): PortSummary {
-  return { id: Long.ZERO, name: "", countryId: Long.ZERO, districtId: Long.ZERO, code: "", createdAt: undefined };
+  return { id: 0, name: "", countryId: 0, districtId: 0, code: "", createdAt: undefined };
 }
 
 export const PortSummary = {
   encode(message: PortSummary, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.id.equals(Long.ZERO)) {
-      writer.uint32(8).int64(message.id);
+    if (message.id !== 0) {
+      writer.uint32(8).int32(message.id);
     }
     if (message.name !== "") {
       writer.uint32(18).string(message.name);
     }
-    if (!message.countryId.equals(Long.ZERO)) {
-      writer.uint32(24).int64(message.countryId);
+    if (message.countryId !== 0) {
+      writer.uint32(24).int32(message.countryId);
     }
-    if (!message.districtId.equals(Long.ZERO)) {
-      writer.uint32(32).int64(message.districtId);
+    if (message.districtId !== 0) {
+      writer.uint32(32).int32(message.districtId);
     }
     if (message.code !== "") {
       writer.uint32(42).string(message.code);
@@ -59,7 +59,7 @@ export const PortSummary = {
             break;
           }
 
-          message.id = reader.int64() as Long;
+          message.id = reader.int32();
           continue;
         case 2:
           if (tag !== 18) {
@@ -73,14 +73,14 @@ export const PortSummary = {
             break;
           }
 
-          message.countryId = reader.int64() as Long;
+          message.countryId = reader.int32();
           continue;
         case 4:
           if (tag !== 32) {
             break;
           }
 
-          message.districtId = reader.int64() as Long;
+          message.districtId = reader.int32();
           continue;
         case 5:
           if (tag !== 42) {
@@ -107,10 +107,10 @@ export const PortSummary = {
 
   fromJSON(object: any): PortSummary {
     return {
-      id: isSet(object.id) ? Long.fromValue(object.id) : Long.ZERO,
+      id: isSet(object.id) ? globalThis.Number(object.id) : 0,
       name: isSet(object.name) ? globalThis.String(object.name) : "",
-      countryId: isSet(object.countryId) ? Long.fromValue(object.countryId) : Long.ZERO,
-      districtId: isSet(object.districtId) ? Long.fromValue(object.districtId) : Long.ZERO,
+      countryId: isSet(object.countryId) ? globalThis.Number(object.countryId) : 0,
+      districtId: isSet(object.districtId) ? globalThis.Number(object.districtId) : 0,
       code: isSet(object.code) ? globalThis.String(object.code) : "",
       createdAt: isSet(object.createdAt) ? fromJsonTimestamp(object.createdAt) : undefined,
     };
@@ -118,17 +118,17 @@ export const PortSummary = {
 
   toJSON(message: PortSummary): unknown {
     const obj: any = {};
-    if (!message.id.equals(Long.ZERO)) {
-      obj.id = (message.id || Long.ZERO).toString();
+    if (message.id !== 0) {
+      obj.id = Math.round(message.id);
     }
     if (message.name !== "") {
       obj.name = message.name;
     }
-    if (!message.countryId.equals(Long.ZERO)) {
-      obj.countryId = (message.countryId || Long.ZERO).toString();
+    if (message.countryId !== 0) {
+      obj.countryId = Math.round(message.countryId);
     }
-    if (!message.districtId.equals(Long.ZERO)) {
-      obj.districtId = (message.districtId || Long.ZERO).toString();
+    if (message.districtId !== 0) {
+      obj.districtId = Math.round(message.districtId);
     }
     if (message.code !== "") {
       obj.code = message.code;
@@ -144,14 +144,10 @@ export const PortSummary = {
   },
   fromPartial<I extends Exact<DeepPartial<PortSummary>, I>>(object: I): PortSummary {
     const message = createBasePortSummary();
-    message.id = (object.id !== undefined && object.id !== null) ? Long.fromValue(object.id) : Long.ZERO;
+    message.id = object.id ?? 0;
     message.name = object.name ?? "";
-    message.countryId = (object.countryId !== undefined && object.countryId !== null)
-      ? Long.fromValue(object.countryId)
-      : Long.ZERO;
-    message.districtId = (object.districtId !== undefined && object.districtId !== null)
-      ? Long.fromValue(object.districtId)
-      : Long.ZERO;
+    message.countryId = object.countryId ?? 0;
+    message.districtId = object.districtId ?? 0;
     message.code = object.code ?? "";
     message.createdAt = object.createdAt ?? undefined;
     return message;

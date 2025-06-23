@@ -27,7 +27,7 @@ const (
 
 type Port struct {
 	state         protoimpl.MessageState        `protogen:"open.v1"`
-	Id            int64                         `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id            int32                         `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	Name          string                        `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	Country       *summary.CountrySummary       `protobuf:"bytes,3,opt,name=country,proto3" json:"country,omitempty"`
 	District      *summary1.DistrictSummary     `protobuf:"bytes,4,opt,name=district,proto3" json:"district,omitempty"`
@@ -68,7 +68,7 @@ func (*Port) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_location_port_port_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *Port) GetId() int64 {
+func (x *Port) GetId() int32 {
 	if x != nil {
 		return x.Id
 	}
@@ -123,7 +123,7 @@ const file_apfish_v1_location_port_port_proto_rawDesc = "" +
 	"\n" +
 	"\"apfish.v1/location/port/port.proto\x12\x17apfish.v1.location.port\x1a\x1fgoogle/protobuf/timestamp.proto\x1a8apfish.v1/location/country/summary/country_summary.proto\x1a:apfish.v1/location/district/summary/district_summary.proto\x1a5apfish.v1/permission/summary/permission_summary.proto\"\xec\x02\n" +
 	"\x04Port\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x12\n" +
+	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12L\n" +
 	"\acountry\x18\x03 \x01(\v22.apfish.v1.location.country.summary.CountrySummaryR\acountry\x12P\n" +
 	"\bdistrict\x18\x04 \x01(\v24.apfish.v1.location.district.summary.DistrictSummaryR\bdistrict\x12\x12\n" +

@@ -28,7 +28,7 @@ const (
 // Represents a user account in the system.
 type User struct {
 	state          protoimpl.MessageState        `protogen:"open.v1"`
-	Id             int64                         `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`                                                // Unique system-generated ID.
+	Id             int32                         `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`                                                // Unique system-generated ID.
 	Login          string                        `protobuf:"bytes,2,opt,name=login,proto3" json:"login,omitempty"`                                           // Unique login identifier.
 	OfficialName   string                        `protobuf:"bytes,3,opt,name=official_name,json=officialName,proto3" json:"official_name,omitempty"`         // Formal name (e.g., "John Doe").
 	Role           *summary.RoleSummary          `protobuf:"bytes,4,opt,name=role,proto3" json:"role,omitempty"`                                             // Assigned role.
@@ -70,7 +70,7 @@ func (*User) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_user_user_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *User) GetId() int64 {
+func (x *User) GetId() int32 {
 	if x != nil {
 		return x.Id
 	}
@@ -132,7 +132,7 @@ const file_apfish_v1_user_user_proto_rawDesc = "" +
 	"\n" +
 	"\x19apfish.v1/user/user.proto\x12\x0eapfish.v1.user\x1a\x1fgoogle/protobuf/timestamp.proto\x1a.apfish.v1/user/role/summary/role_summary.proto\x1a<apfish.v1/user/contact/contact/summary/contact_summary.proto\x1a5apfish.v1/permission/summary/permission_summary.proto\"\x93\x03\n" +
 	"\x04User\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x14\n" +
+	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x14\n" +
 	"\x05login\x18\x02 \x01(\tR\x05login\x12#\n" +
 	"\rofficial_name\x18\x03 \x01(\tR\fofficialName\x12<\n" +
 	"\x04role\x18\x04 \x01(\v2(.apfish.v1.user.role.summary.RoleSummaryR\x04role\x129\n" +

@@ -115,8 +115,8 @@ func (x *UserResponse) GetUser() *User {
 type ListUsersRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Login         string                 `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"`                     // Optional login prefix filter (e.g., "joh").
-	Page          int64                  `protobuf:"varint,2,opt,name=page,proto3" json:"page,omitempty"`                      // Page number (1-based). Default: 1.
-	PerPage       int64                  `protobuf:"varint,3,opt,name=per_page,json=perPage,proto3" json:"per_page,omitempty"` // Items per page (default: 20, max: 100).
+	Page          int32                  `protobuf:"varint,2,opt,name=page,proto3" json:"page,omitempty"`                      // Page number (1-based). Default: 1.
+	PerPage       int32                  `protobuf:"varint,3,opt,name=per_page,json=perPage,proto3" json:"per_page,omitempty"` // Items per page (default: 20, max: 100).
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -158,14 +158,14 @@ func (x *ListUsersRequest) GetLogin() string {
 	return ""
 }
 
-func (x *ListUsersRequest) GetPage() int64 {
+func (x *ListUsersRequest) GetPage() int32 {
 	if x != nil {
 		return x.Page
 	}
 	return 0
 }
 
-func (x *ListUsersRequest) GetPerPage() int64 {
+func (x *ListUsersRequest) GetPerPage() int32 {
 	if x != nil {
 		return x.PerPage
 	}
@@ -176,7 +176,7 @@ func (x *ListUsersRequest) GetPerPage() int64 {
 type ListUsersResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Users         []*User                `protobuf:"bytes,1,rep,name=users,proto3" json:"users,omitempty"`  // Users matching the query (max `per_page` entries).
-	Total         int64                  `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"` // Total matching users (ignoring pagination).
+	Total         int32                  `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"` // Total matching users (ignoring pagination).
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -218,7 +218,7 @@ func (x *ListUsersResponse) GetUsers() []*User {
 	return nil
 }
 
-func (x *ListUsersResponse) GetTotal() int64 {
+func (x *ListUsersResponse) GetTotal() int32 {
 	if x != nil {
 		return x.Total
 	}
@@ -236,11 +236,11 @@ const file_apfish_v1_user_user_service_proto_rawDesc = "" +
 	"\x04user\x18\x01 \x01(\v2\x14.apfish.v1.user.UserR\x04user\"W\n" +
 	"\x10ListUsersRequest\x12\x14\n" +
 	"\x05login\x18\x01 \x01(\tR\x05login\x12\x12\n" +
-	"\x04page\x18\x02 \x01(\x03R\x04page\x12\x19\n" +
-	"\bper_page\x18\x03 \x01(\x03R\aperPage\"U\n" +
+	"\x04page\x18\x02 \x01(\x05R\x04page\x12\x19\n" +
+	"\bper_page\x18\x03 \x01(\x05R\aperPage\"U\n" +
 	"\x11ListUsersResponse\x12*\n" +
 	"\x05users\x18\x01 \x03(\v2\x14.apfish.v1.user.UserR\x05users\x12\x14\n" +
-	"\x05total\x18\x02 \x01(\x03R\x05total2\xa5\x01\n" +
+	"\x05total\x18\x02 \x01(\x05R\x05total2\xa5\x01\n" +
 	"\vUserService\x12D\n" +
 	"\aGetUser\x12\x1b.apfish.v1.user.UserRequest\x1a\x1c.apfish.v1.user.UserResponse\x12P\n" +
 	"\tListUsers\x12 .apfish.v1.user.ListUsersRequest\x1a!.apfish.v1.user.ListUsersResponseB<Z:github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user;userb\x06proto3"

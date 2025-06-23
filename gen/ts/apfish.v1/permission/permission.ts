@@ -25,7 +25,7 @@ export const protobufPackage = "apfish.v1.permission";
  */
 export interface Permission {
   /** Unique identifier for the permission */
-  id: Long;
+  id: number;
   /** The operation this permission allows (e.g., "read", "create") */
   action:
     | ActionSummary
@@ -51,7 +51,7 @@ export interface Permission {
 
 function createBasePermission(): Permission {
   return {
-    id: Long.ZERO,
+    id: 0,
     action: undefined,
     object: undefined,
     description: "",
@@ -69,8 +69,8 @@ function createBasePermission(): Permission {
 
 export const Permission = {
   encode(message: Permission, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.id.equals(Long.ZERO)) {
-      writer.uint32(8).int64(message.id);
+    if (message.id !== 0) {
+      writer.uint32(8).int32(message.id);
     }
     if (message.action !== undefined) {
       ActionSummary.encode(message.action, writer.uint32(18).fork()).ldelim();
@@ -123,7 +123,7 @@ export const Permission = {
             break;
           }
 
-          message.id = reader.int64() as Long;
+          message.id = reader.int32();
           continue;
         case 2:
           if (tag !== 18) {
@@ -220,7 +220,7 @@ export const Permission = {
 
   fromJSON(object: any): Permission {
     return {
-      id: isSet(object.id) ? Long.fromValue(object.id) : Long.ZERO,
+      id: isSet(object.id) ? globalThis.Number(object.id) : 0,
       action: isSet(object.action) ? ActionSummary.fromJSON(object.action) : undefined,
       object: isSet(object.object) ? ObjectSummary.fromJSON(object.object) : undefined,
       description: isSet(object.description) ? globalThis.String(object.description) : "",
@@ -242,8 +242,8 @@ export const Permission = {
 
   toJSON(message: Permission): unknown {
     const obj: any = {};
-    if (!message.id.equals(Long.ZERO)) {
-      obj.id = (message.id || Long.ZERO).toString();
+    if (message.id !== 0) {
+      obj.id = Math.round(message.id);
     }
     if (message.action !== undefined) {
       obj.action = ActionSummary.toJSON(message.action);
@@ -289,7 +289,7 @@ export const Permission = {
   },
   fromPartial<I extends Exact<DeepPartial<Permission>, I>>(object: I): Permission {
     const message = createBasePermission();
-    message.id = (object.id !== undefined && object.id !== null) ? Long.fromValue(object.id) : Long.ZERO;
+    message.id = object.id ?? 0;
     message.action = (object.action !== undefined && object.action !== null)
       ? ActionSummary.fromPartial(object.action)
       : undefined;

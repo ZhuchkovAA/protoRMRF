@@ -27,7 +27,7 @@ const (
 // A user's contact method (e.g., email, phone).
 type Contact struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"` // Unique contact ID.
+	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"` // Unique contact ID.
 	User          *summary.UserSummary   `protobuf:"bytes,2,opt,name=user,proto3" json:"user,omitempty"`
 	Type          *summary1.TypeSummary  `protobuf:"bytes,3,opt,name=type,proto3" json:"type,omitempty"`                            // Contact type.
 	Value         string                 `protobuf:"bytes,4,opt,name=value,proto3" json:"value,omitempty"`                          // Contact value (e.g., "user@example.com").
@@ -66,7 +66,7 @@ func (*Contact) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_user_contact_contact_contact_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *Contact) GetId() int64 {
+func (x *Contact) GetId() int32 {
 	if x != nil {
 		return x.Id
 	}
@@ -107,7 +107,7 @@ const file_apfish_v1_user_contact_contact_contact_proto_rawDesc = "" +
 	"\n" +
 	",apfish.v1/user/contact/contact/contact.proto\x12\x16apfish.v1.user.contact\x1a\x1fgoogle/protobuf/timestamp.proto\x1a)apfish.v1/user/summary/user_summary.proto\x1a6apfish.v1/user/contact/type/summary/type_summary.proto\"\xe9\x01\n" +
 	"\aContact\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x127\n" +
+	"\x02id\x18\x01 \x01(\x05R\x02id\x127\n" +
 	"\x04user\x18\x02 \x01(\v2#.apfish.v1.user.summary.UserSummaryR\x04user\x12D\n" +
 	"\x04type\x18\x03 \x01(\v20.apfish.v1.user.contact.type.summary.TypeSummaryR\x04type\x12\x14\n" +
 	"\x05value\x18\x04 \x01(\tR\x05value\x129\n" +

@@ -24,7 +24,7 @@ const (
 
 type ObjectRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -59,7 +59,7 @@ func (*ObjectRequest) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_permission_object_object_service_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *ObjectRequest) GetId() int64 {
+func (x *ObjectRequest) GetId() int32 {
 	if x != nil {
 		return x.Id
 	}
@@ -156,8 +156,8 @@ func (x *ObjectSummaryResponse) GetObject() *summary.ObjectSummary {
 
 type ListObjectsRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Page          int64                  `protobuf:"varint,1,opt,name=page,proto3" json:"page,omitempty"`                      // Page number (1-based). Default: 1.
-	PerPage       int64                  `protobuf:"varint,2,opt,name=per_page,json=perPage,proto3" json:"per_page,omitempty"` // Items per page (default: 20, max: 100).
+	Page          int32                  `protobuf:"varint,1,opt,name=page,proto3" json:"page,omitempty"`                      // Page number (1-based). Default: 1.
+	PerPage       int32                  `protobuf:"varint,2,opt,name=per_page,json=perPage,proto3" json:"per_page,omitempty"` // Items per page (default: 20, max: 100).
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -192,14 +192,14 @@ func (*ListObjectsRequest) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_permission_object_object_service_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *ListObjectsRequest) GetPage() int64 {
+func (x *ListObjectsRequest) GetPage() int32 {
 	if x != nil {
 		return x.Page
 	}
 	return 0
 }
 
-func (x *ListObjectsRequest) GetPerPage() int64 {
+func (x *ListObjectsRequest) GetPerPage() int32 {
 	if x != nil {
 		return x.PerPage
 	}
@@ -209,7 +209,7 @@ func (x *ListObjectsRequest) GetPerPage() int64 {
 type ListObjectsResponse struct {
 	state         protoimpl.MessageState   `protogen:"open.v1"`
 	ListObjects   []*summary.ObjectSummary `protobuf:"bytes,1,rep,name=list_objects,json=listObjects,proto3" json:"list_objects,omitempty"`
-	Total         int64                    `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	Total         int32                    `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -251,7 +251,7 @@ func (x *ListObjectsResponse) GetListObjects() []*summary.ObjectSummary {
 	return nil
 }
 
-func (x *ListObjectsResponse) GetTotal() int64 {
+func (x *ListObjectsResponse) GetTotal() int32 {
 	if x != nil {
 		return x.Total
 	}
@@ -264,17 +264,17 @@ const file_apfish_v1_permission_object_object_service_proto_rawDesc = "" +
 	"\n" +
 	"0apfish.v1/permission/object/object_service.proto\x12\x1bapfish.v1.permission.object\x1a(apfish.v1/permission/object/object.proto\x1a8apfish.v1/permission/object/summary/object_summary.proto\"\x1f\n" +
 	"\rObjectRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\"M\n" +
+	"\x02id\x18\x01 \x01(\x05R\x02id\"M\n" +
 	"\x0eObjectResponse\x12;\n" +
 	"\x06object\x18\x01 \x01(\v2#.apfish.v1.permission.object.ObjectR\x06object\"c\n" +
 	"\x15ObjectSummaryResponse\x12J\n" +
 	"\x06object\x18\x01 \x01(\v22.apfish.v1.permission.object.summary.ObjectSummaryR\x06object\"C\n" +
 	"\x12ListObjectsRequest\x12\x12\n" +
-	"\x04page\x18\x01 \x01(\x03R\x04page\x12\x19\n" +
-	"\bper_page\x18\x02 \x01(\x03R\aperPage\"\x82\x01\n" +
+	"\x04page\x18\x01 \x01(\x05R\x04page\x12\x19\n" +
+	"\bper_page\x18\x02 \x01(\x05R\aperPage\"\x82\x01\n" +
 	"\x13ListObjectsResponse\x12U\n" +
 	"\flist_objects\x18\x01 \x03(\v22.apfish.v1.permission.object.summary.ObjectSummaryR\vlistObjects\x12\x14\n" +
-	"\x05total\x18\x02 \x01(\x03R\x05total2\xdb\x02\n" +
+	"\x05total\x18\x02 \x01(\x05R\x05total2\xdb\x02\n" +
 	"\rObjectService\x12d\n" +
 	"\tGetObject\x12*.apfish.v1.permission.object.ObjectRequest\x1a+.apfish.v1.permission.object.ObjectResponse\x12r\n" +
 	"\x10GetObjectSummary\x12*.apfish.v1.permission.object.ObjectRequest\x1a2.apfish.v1.permission.object.ObjectSummaryResponse\x12p\n" +

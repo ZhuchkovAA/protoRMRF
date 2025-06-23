@@ -15,7 +15,7 @@ export const protobufPackage = "apfish.v1.permission.object";
 /** Defines a type of resource or object that can be accessed in the system. */
 export interface Object {
   /** Unique identifier for the object type */
-  id: Long;
+  id: number;
   /** Human-readable name (e.g., "Inspection") */
   name: string;
   /** Detailed explanation of the object type */
@@ -27,13 +27,13 @@ export interface Object {
 }
 
 function createBaseObject(): Object {
-  return { id: Long.ZERO, name: "", description: "", code: "", createdAt: undefined, permissions: [] };
+  return { id: 0, name: "", description: "", code: "", createdAt: undefined, permissions: [] };
 }
 
 export const Object = {
   encode(message: Object, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.id.equals(Long.ZERO)) {
-      writer.uint32(8).int64(message.id);
+    if (message.id !== 0) {
+      writer.uint32(8).int32(message.id);
     }
     if (message.name !== "") {
       writer.uint32(18).string(message.name);
@@ -65,7 +65,7 @@ export const Object = {
             break;
           }
 
-          message.id = reader.int64() as Long;
+          message.id = reader.int32();
           continue;
         case 2:
           if (tag !== 18) {
@@ -113,7 +113,7 @@ export const Object = {
 
   fromJSON(object: any): Object {
     return {
-      id: isSet(object.id) ? Long.fromValue(object.id) : Long.ZERO,
+      id: isSet(object.id) ? globalThis.Number(object.id) : 0,
       name: isSet(object.name) ? globalThis.String(object.name) : "",
       description: isSet(object.description) ? globalThis.String(object.description) : "",
       code: isSet(object.code) ? globalThis.String(object.code) : "",
@@ -126,8 +126,8 @@ export const Object = {
 
   toJSON(message: Object): unknown {
     const obj: any = {};
-    if (!message.id.equals(Long.ZERO)) {
-      obj.id = (message.id || Long.ZERO).toString();
+    if (message.id !== 0) {
+      obj.id = Math.round(message.id);
     }
     if (message.name !== "") {
       obj.name = message.name;
@@ -152,7 +152,7 @@ export const Object = {
   },
   fromPartial<I extends Exact<DeepPartial<Object>, I>>(object: I): Object {
     const message = createBaseObject();
-    message.id = (object.id !== undefined && object.id !== null) ? Long.fromValue(object.id) : Long.ZERO;
+    message.id = object.id ?? 0;
     message.name = object.name ?? "";
     message.description = object.description ?? "";
     message.code = object.code ?? "";

@@ -25,7 +25,7 @@ import { CaptainSummary } from "./summary/captain_summary";
 export const protobufPackage = "apfish.v1.ship.captain";
 
 export interface CaptainRequest {
-  id: Long;
+  id: number;
 }
 
 export interface CaptainResponse {
@@ -38,24 +38,24 @@ export interface CaptainSummaryResponse {
 
 export interface ListCaptainsRequest {
   /** Page number (1-based). Default: 1. */
-  page: Long;
+  page: number;
   /** Items per page (default: 20, max: 100). */
-  perPage: Long;
+  perPage: number;
 }
 
 export interface ListCaptainsResponse {
   listCaptains: CaptainSummary[];
-  total: Long;
+  total: number;
 }
 
 function createBaseCaptainRequest(): CaptainRequest {
-  return { id: Long.ZERO };
+  return { id: 0 };
 }
 
 export const CaptainRequest = {
   encode(message: CaptainRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.id.equals(Long.ZERO)) {
-      writer.uint32(8).int64(message.id);
+    if (message.id !== 0) {
+      writer.uint32(8).int32(message.id);
     }
     return writer;
   },
@@ -72,7 +72,7 @@ export const CaptainRequest = {
             break;
           }
 
-          message.id = reader.int64() as Long;
+          message.id = reader.int32();
           continue;
       }
       if ((tag & 7) === 4 || tag === 0) {
@@ -84,13 +84,13 @@ export const CaptainRequest = {
   },
 
   fromJSON(object: any): CaptainRequest {
-    return { id: isSet(object.id) ? Long.fromValue(object.id) : Long.ZERO };
+    return { id: isSet(object.id) ? globalThis.Number(object.id) : 0 };
   },
 
   toJSON(message: CaptainRequest): unknown {
     const obj: any = {};
-    if (!message.id.equals(Long.ZERO)) {
-      obj.id = (message.id || Long.ZERO).toString();
+    if (message.id !== 0) {
+      obj.id = Math.round(message.id);
     }
     return obj;
   },
@@ -100,7 +100,7 @@ export const CaptainRequest = {
   },
   fromPartial<I extends Exact<DeepPartial<CaptainRequest>, I>>(object: I): CaptainRequest {
     const message = createBaseCaptainRequest();
-    message.id = (object.id !== undefined && object.id !== null) ? Long.fromValue(object.id) : Long.ZERO;
+    message.id = object.id ?? 0;
     return message;
   },
 };
@@ -224,16 +224,16 @@ export const CaptainSummaryResponse = {
 };
 
 function createBaseListCaptainsRequest(): ListCaptainsRequest {
-  return { page: Long.ZERO, perPage: Long.ZERO };
+  return { page: 0, perPage: 0 };
 }
 
 export const ListCaptainsRequest = {
   encode(message: ListCaptainsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.page.equals(Long.ZERO)) {
-      writer.uint32(8).int64(message.page);
+    if (message.page !== 0) {
+      writer.uint32(8).int32(message.page);
     }
-    if (!message.perPage.equals(Long.ZERO)) {
-      writer.uint32(16).int64(message.perPage);
+    if (message.perPage !== 0) {
+      writer.uint32(16).int32(message.perPage);
     }
     return writer;
   },
@@ -250,14 +250,14 @@ export const ListCaptainsRequest = {
             break;
           }
 
-          message.page = reader.int64() as Long;
+          message.page = reader.int32();
           continue;
         case 2:
           if (tag !== 16) {
             break;
           }
 
-          message.perPage = reader.int64() as Long;
+          message.perPage = reader.int32();
           continue;
       }
       if ((tag & 7) === 4 || tag === 0) {
@@ -270,18 +270,18 @@ export const ListCaptainsRequest = {
 
   fromJSON(object: any): ListCaptainsRequest {
     return {
-      page: isSet(object.page) ? Long.fromValue(object.page) : Long.ZERO,
-      perPage: isSet(object.perPage) ? Long.fromValue(object.perPage) : Long.ZERO,
+      page: isSet(object.page) ? globalThis.Number(object.page) : 0,
+      perPage: isSet(object.perPage) ? globalThis.Number(object.perPage) : 0,
     };
   },
 
   toJSON(message: ListCaptainsRequest): unknown {
     const obj: any = {};
-    if (!message.page.equals(Long.ZERO)) {
-      obj.page = (message.page || Long.ZERO).toString();
+    if (message.page !== 0) {
+      obj.page = Math.round(message.page);
     }
-    if (!message.perPage.equals(Long.ZERO)) {
-      obj.perPage = (message.perPage || Long.ZERO).toString();
+    if (message.perPage !== 0) {
+      obj.perPage = Math.round(message.perPage);
     }
     return obj;
   },
@@ -291,16 +291,14 @@ export const ListCaptainsRequest = {
   },
   fromPartial<I extends Exact<DeepPartial<ListCaptainsRequest>, I>>(object: I): ListCaptainsRequest {
     const message = createBaseListCaptainsRequest();
-    message.page = (object.page !== undefined && object.page !== null) ? Long.fromValue(object.page) : Long.ZERO;
-    message.perPage = (object.perPage !== undefined && object.perPage !== null)
-      ? Long.fromValue(object.perPage)
-      : Long.ZERO;
+    message.page = object.page ?? 0;
+    message.perPage = object.perPage ?? 0;
     return message;
   },
 };
 
 function createBaseListCaptainsResponse(): ListCaptainsResponse {
-  return { listCaptains: [], total: Long.ZERO };
+  return { listCaptains: [], total: 0 };
 }
 
 export const ListCaptainsResponse = {
@@ -308,8 +306,8 @@ export const ListCaptainsResponse = {
     for (const v of message.listCaptains) {
       CaptainSummary.encode(v!, writer.uint32(10).fork()).ldelim();
     }
-    if (!message.total.equals(Long.ZERO)) {
-      writer.uint32(16).int64(message.total);
+    if (message.total !== 0) {
+      writer.uint32(16).int32(message.total);
     }
     return writer;
   },
@@ -333,7 +331,7 @@ export const ListCaptainsResponse = {
             break;
           }
 
-          message.total = reader.int64() as Long;
+          message.total = reader.int32();
           continue;
       }
       if ((tag & 7) === 4 || tag === 0) {
@@ -349,7 +347,7 @@ export const ListCaptainsResponse = {
       listCaptains: globalThis.Array.isArray(object?.listCaptains)
         ? object.listCaptains.map((e: any) => CaptainSummary.fromJSON(e))
         : [],
-      total: isSet(object.total) ? Long.fromValue(object.total) : Long.ZERO,
+      total: isSet(object.total) ? globalThis.Number(object.total) : 0,
     };
   },
 
@@ -358,8 +356,8 @@ export const ListCaptainsResponse = {
     if (message.listCaptains?.length) {
       obj.listCaptains = message.listCaptains.map((e) => CaptainSummary.toJSON(e));
     }
-    if (!message.total.equals(Long.ZERO)) {
-      obj.total = (message.total || Long.ZERO).toString();
+    if (message.total !== 0) {
+      obj.total = Math.round(message.total);
     }
     return obj;
   },
@@ -370,7 +368,7 @@ export const ListCaptainsResponse = {
   fromPartial<I extends Exact<DeepPartial<ListCaptainsResponse>, I>>(object: I): ListCaptainsResponse {
     const message = createBaseListCaptainsResponse();
     message.listCaptains = object.listCaptains?.map((e) => CaptainSummary.fromPartial(e)) || [];
-    message.total = (object.total !== undefined && object.total !== null) ? Long.fromValue(object.total) : Long.ZERO;
+    message.total = object.total ?? 0;
     return message;
   },
 };

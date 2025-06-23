@@ -24,7 +24,7 @@ const (
 
 type PortRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -59,7 +59,7 @@ func (*PortRequest) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_location_port_port_service_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *PortRequest) GetId() int64 {
+func (x *PortRequest) GetId() int32 {
 	if x != nil {
 		return x.Id
 	}
@@ -156,8 +156,8 @@ func (x *PortSummaryResponse) GetPort() *summary.PortSummary {
 
 type ListPortsRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Page          int64                  `protobuf:"varint,1,opt,name=page,proto3" json:"page,omitempty"`                      // Page number (1-based). Default: 1.
-	PerPage       int64                  `protobuf:"varint,2,opt,name=per_page,json=perPage,proto3" json:"per_page,omitempty"` // Items per page (default: 20, max: 100).
+	Page          int32                  `protobuf:"varint,1,opt,name=page,proto3" json:"page,omitempty"`                      // Page number (1-based). Default: 1.
+	PerPage       int32                  `protobuf:"varint,2,opt,name=per_page,json=perPage,proto3" json:"per_page,omitempty"` // Items per page (default: 20, max: 100).
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -192,14 +192,14 @@ func (*ListPortsRequest) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_location_port_port_service_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *ListPortsRequest) GetPage() int64 {
+func (x *ListPortsRequest) GetPage() int32 {
 	if x != nil {
 		return x.Page
 	}
 	return 0
 }
 
-func (x *ListPortsRequest) GetPerPage() int64 {
+func (x *ListPortsRequest) GetPerPage() int32 {
 	if x != nil {
 		return x.PerPage
 	}
@@ -209,7 +209,7 @@ func (x *ListPortsRequest) GetPerPage() int64 {
 type ListPortsResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ListPorts     []*summary.PortSummary `protobuf:"bytes,1,rep,name=list_ports,json=listPorts,proto3" json:"list_ports,omitempty"`
-	Total         int64                  `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	Total         int32                  `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -251,7 +251,7 @@ func (x *ListPortsResponse) GetListPorts() []*summary.PortSummary {
 	return nil
 }
 
-func (x *ListPortsResponse) GetTotal() int64 {
+func (x *ListPortsResponse) GetTotal() int32 {
 	if x != nil {
 		return x.Total
 	}
@@ -264,18 +264,18 @@ const file_apfish_v1_location_port_port_service_proto_rawDesc = "" +
 	"\n" +
 	"*apfish.v1/location/port/port_service.proto\x12\x17apfish.v1.location.port\x1a\"apfish.v1/location/port/port.proto\x1a2apfish.v1/location/port/summary/port_summary.proto\"\x1d\n" +
 	"\vPortRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\"A\n" +
+	"\x02id\x18\x01 \x01(\x05R\x02id\"A\n" +
 	"\fPortResponse\x121\n" +
 	"\x04port\x18\x01 \x01(\v2\x1d.apfish.v1.location.port.PortR\x04port\"W\n" +
 	"\x13PortSummaryResponse\x12@\n" +
 	"\x04port\x18\x01 \x01(\v2,.apfish.v1.location.port.summary.PortSummaryR\x04port\"A\n" +
 	"\x10ListPortsRequest\x12\x12\n" +
-	"\x04page\x18\x01 \x01(\x03R\x04page\x12\x19\n" +
-	"\bper_page\x18\x02 \x01(\x03R\aperPage\"v\n" +
+	"\x04page\x18\x01 \x01(\x05R\x04page\x12\x19\n" +
+	"\bper_page\x18\x02 \x01(\x05R\aperPage\"v\n" +
 	"\x11ListPortsResponse\x12K\n" +
 	"\n" +
 	"list_ports\x18\x01 \x03(\v2,.apfish.v1.location.port.summary.PortSummaryR\tlistPorts\x12\x14\n" +
-	"\x05total\x18\x02 \x01(\x03R\x05total2\xaf\x02\n" +
+	"\x05total\x18\x02 \x01(\x05R\x05total2\xaf\x02\n" +
 	"\vPortService\x12V\n" +
 	"\aGetPort\x12$.apfish.v1.location.port.PortRequest\x1a%.apfish.v1.location.port.PortResponse\x12d\n" +
 	"\x0eGetPortSummary\x12$.apfish.v1.location.port.PortRequest\x1a,.apfish.v1.location.port.PortSummaryResponse\x12b\n" +

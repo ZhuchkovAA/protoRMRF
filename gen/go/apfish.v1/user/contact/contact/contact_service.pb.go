@@ -24,7 +24,7 @@ const (
 
 type ContactRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -59,7 +59,7 @@ func (*ContactRequest) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_user_contact_contact_contact_service_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *ContactRequest) GetId() int64 {
+func (x *ContactRequest) GetId() int32 {
 	if x != nil {
 		return x.Id
 	}
@@ -156,8 +156,8 @@ func (x *ContactSummaryResponse) GetContact() *summary.ContactSummary {
 
 type ListContactsRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Page          int64                  `protobuf:"varint,1,opt,name=page,proto3" json:"page,omitempty"`                      // Page number (1-based). Default: 1.
-	PerPage       int64                  `protobuf:"varint,2,opt,name=per_page,json=perPage,proto3" json:"per_page,omitempty"` // Items per page (default: 20, max: 100).
+	Page          int32                  `protobuf:"varint,1,opt,name=page,proto3" json:"page,omitempty"`                      // Page number (1-based). Default: 1.
+	PerPage       int32                  `protobuf:"varint,2,opt,name=per_page,json=perPage,proto3" json:"per_page,omitempty"` // Items per page (default: 20, max: 100).
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -192,14 +192,14 @@ func (*ListContactsRequest) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_user_contact_contact_contact_service_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *ListContactsRequest) GetPage() int64 {
+func (x *ListContactsRequest) GetPage() int32 {
 	if x != nil {
 		return x.Page
 	}
 	return 0
 }
 
-func (x *ListContactsRequest) GetPerPage() int64 {
+func (x *ListContactsRequest) GetPerPage() int32 {
 	if x != nil {
 		return x.PerPage
 	}
@@ -209,7 +209,7 @@ func (x *ListContactsRequest) GetPerPage() int64 {
 type ListContactsResponse struct {
 	state         protoimpl.MessageState    `protogen:"open.v1"`
 	ListContacts  []*summary.ContactSummary `protobuf:"bytes,1,rep,name=list_contacts,json=listContacts,proto3" json:"list_contacts,omitempty"`
-	Total         int64                     `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	Total         int32                     `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -251,7 +251,7 @@ func (x *ListContactsResponse) GetListContacts() []*summary.ContactSummary {
 	return nil
 }
 
-func (x *ListContactsResponse) GetTotal() int64 {
+func (x *ListContactsResponse) GetTotal() int32 {
 	if x != nil {
 		return x.Total
 	}
@@ -264,17 +264,17 @@ const file_apfish_v1_user_contact_contact_contact_service_proto_rawDesc = "" +
 	"\n" +
 	"4apfish.v1/user/contact/contact/contact_service.proto\x12\x16apfish.v1.user.contact\x1a,apfish.v1/user/contact/contact/contact.proto\x1a<apfish.v1/user/contact/contact/summary/contact_summary.proto\" \n" +
 	"\x0eContactRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\"L\n" +
+	"\x02id\x18\x01 \x01(\x05R\x02id\"L\n" +
 	"\x0fContactResponse\x129\n" +
 	"\acontact\x18\x01 \x01(\v2\x1f.apfish.v1.user.contact.ContactR\acontact\"b\n" +
 	"\x16ContactSummaryResponse\x12H\n" +
 	"\acontact\x18\x01 \x01(\v2..apfish.v1.user.contact.summary.ContactSummaryR\acontact\"D\n" +
 	"\x13ListContactsRequest\x12\x12\n" +
-	"\x04page\x18\x01 \x01(\x03R\x04page\x12\x19\n" +
-	"\bper_page\x18\x02 \x01(\x03R\aperPage\"\x81\x01\n" +
+	"\x04page\x18\x01 \x01(\x05R\x04page\x12\x19\n" +
+	"\bper_page\x18\x02 \x01(\x05R\aperPage\"\x81\x01\n" +
 	"\x14ListContactsResponse\x12S\n" +
 	"\rlist_contacts\x18\x01 \x03(\v2..apfish.v1.user.contact.summary.ContactSummaryR\flistContacts\x12\x14\n" +
-	"\x05total\x18\x02 \x01(\x03R\x05total2\xc7\x02\n" +
+	"\x05total\x18\x02 \x01(\x05R\x05total2\xc7\x02\n" +
 	"\x0eContactService\x12]\n" +
 	"\n" +
 	"GetContact\x12&.apfish.v1.user.contact.ContactRequest\x1a'.apfish.v1.user.contact.ContactResponse\x12k\n" +

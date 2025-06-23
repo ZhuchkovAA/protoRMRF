@@ -29,7 +29,7 @@ export interface LogRequest {
   level: string;
   message: string;
   fields: { [key: string]: any | undefined };
-  timestamp: Long;
+  timestamp: number;
 }
 
 export interface LogRequest_FieldsEntry {
@@ -44,7 +44,7 @@ export interface LogResponse {
 }
 
 function createBaseLogRequest(): LogRequest {
-  return { service: "", level: "", message: "", fields: {}, timestamp: Long.ZERO };
+  return { service: "", level: "", message: "", fields: {}, timestamp: 0 };
 }
 
 export const LogRequest = {
@@ -63,8 +63,8 @@ export const LogRequest = {
         LogRequest_FieldsEntry.encode({ key: key as any, value }, writer.uint32(34).fork()).ldelim();
       }
     });
-    if (!message.timestamp.equals(Long.ZERO)) {
-      writer.uint32(40).int64(message.timestamp);
+    if (message.timestamp !== 0) {
+      writer.uint32(40).int32(message.timestamp);
     }
     return writer;
   },
@@ -112,7 +112,7 @@ export const LogRequest = {
             break;
           }
 
-          message.timestamp = reader.int64() as Long;
+          message.timestamp = reader.int32();
           continue;
       }
       if ((tag & 7) === 4 || tag === 0) {
@@ -134,7 +134,7 @@ export const LogRequest = {
           return acc;
         }, {})
         : {},
-      timestamp: isSet(object.timestamp) ? Long.fromValue(object.timestamp) : Long.ZERO,
+      timestamp: isSet(object.timestamp) ? globalThis.Number(object.timestamp) : 0,
     };
   },
 
@@ -158,8 +158,8 @@ export const LogRequest = {
         });
       }
     }
-    if (!message.timestamp.equals(Long.ZERO)) {
-      obj.timestamp = (message.timestamp || Long.ZERO).toString();
+    if (message.timestamp !== 0) {
+      obj.timestamp = Math.round(message.timestamp);
     }
     return obj;
   },
@@ -181,9 +181,7 @@ export const LogRequest = {
       },
       {},
     );
-    message.timestamp = (object.timestamp !== undefined && object.timestamp !== null)
-      ? Long.fromValue(object.timestamp)
-      : Long.ZERO;
+    message.timestamp = object.timestamp ?? 0;
     return message;
   },
 };

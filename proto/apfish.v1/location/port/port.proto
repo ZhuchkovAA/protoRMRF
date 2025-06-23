@@ -12,7 +12,7 @@ import "apfish.v1/location/district/summary/district_summary.proto";
 import "apfish.v1/permission/summary/permission_summary.proto";
 
 message Port {
-  int64 id = 1;
+  int32 id = 1;
   string name = 2;
   location.country.summary.CountrySummary country = 3;
   location.district.summary.DistrictSummary district = 4;

@@ -24,7 +24,7 @@ const (
 
 type RoleRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -59,7 +59,7 @@ func (*RoleRequest) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_user_role_role_service_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *RoleRequest) GetId() int64 {
+func (x *RoleRequest) GetId() int32 {
 	if x != nil {
 		return x.Id
 	}
@@ -156,8 +156,8 @@ func (x *RoleSummaryResponse) GetRole() *summary.RoleSummary {
 
 type ListRolesRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Page          int64                  `protobuf:"varint,1,opt,name=page,proto3" json:"page,omitempty"`                      // Page number (1-based). Default: 1.
-	PerPage       int64                  `protobuf:"varint,2,opt,name=per_page,json=perPage,proto3" json:"per_page,omitempty"` // Items per page (default: 20, max: 100).
+	Page          int32                  `protobuf:"varint,1,opt,name=page,proto3" json:"page,omitempty"`                      // Page number (1-based). Default: 1.
+	PerPage       int32                  `protobuf:"varint,2,opt,name=per_page,json=perPage,proto3" json:"per_page,omitempty"` // Items per page (default: 20, max: 100).
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -192,14 +192,14 @@ func (*ListRolesRequest) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_user_role_role_service_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *ListRolesRequest) GetPage() int64 {
+func (x *ListRolesRequest) GetPage() int32 {
 	if x != nil {
 		return x.Page
 	}
 	return 0
 }
 
-func (x *ListRolesRequest) GetPerPage() int64 {
+func (x *ListRolesRequest) GetPerPage() int32 {
 	if x != nil {
 		return x.PerPage
 	}
@@ -209,7 +209,7 @@ func (x *ListRolesRequest) GetPerPage() int64 {
 type ListRolesResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ListRoles     []*summary.RoleSummary `protobuf:"bytes,1,rep,name=list_roles,json=listRoles,proto3" json:"list_roles,omitempty"`
-	Total         int64                  `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	Total         int32                  `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -251,7 +251,7 @@ func (x *ListRolesResponse) GetListRoles() []*summary.RoleSummary {
 	return nil
 }
 
-func (x *ListRolesResponse) GetTotal() int64 {
+func (x *ListRolesResponse) GetTotal() int32 {
 	if x != nil {
 		return x.Total
 	}
@@ -264,18 +264,18 @@ const file_apfish_v1_user_role_role_service_proto_rawDesc = "" +
 	"\n" +
 	"&apfish.v1/user/role/role_service.proto\x12\x13apfish.v1.user.role\x1a\x1eapfish.v1/user/role/role.proto\x1a.apfish.v1/user/role/summary/role_summary.proto\"\x1d\n" +
 	"\vRoleRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\"=\n" +
+	"\x02id\x18\x01 \x01(\x05R\x02id\"=\n" +
 	"\fRoleResponse\x12-\n" +
 	"\x04role\x18\x01 \x01(\v2\x19.apfish.v1.user.role.RoleR\x04role\"S\n" +
 	"\x13RoleSummaryResponse\x12<\n" +
 	"\x04role\x18\x01 \x01(\v2(.apfish.v1.user.role.summary.RoleSummaryR\x04role\"A\n" +
 	"\x10ListRolesRequest\x12\x12\n" +
-	"\x04page\x18\x01 \x01(\x03R\x04page\x12\x19\n" +
-	"\bper_page\x18\x02 \x01(\x03R\aperPage\"r\n" +
+	"\x04page\x18\x01 \x01(\x05R\x04page\x12\x19\n" +
+	"\bper_page\x18\x02 \x01(\x05R\aperPage\"r\n" +
 	"\x11ListRolesResponse\x12G\n" +
 	"\n" +
 	"list_roles\x18\x01 \x03(\v2(.apfish.v1.user.role.summary.RoleSummaryR\tlistRoles\x12\x14\n" +
-	"\x05total\x18\x02 \x01(\x03R\x05total2\x97\x02\n" +
+	"\x05total\x18\x02 \x01(\x05R\x05total2\x97\x02\n" +
 	"\vRoleService\x12N\n" +
 	"\aGetRole\x12 .apfish.v1.user.role.RoleRequest\x1a!.apfish.v1.user.role.RoleResponse\x12\\\n" +
 	"\x0eGetRoleSummary\x12 .apfish.v1.user.role.RoleRequest\x1a(.apfish.v1.user.role.RoleSummaryResponse\x12Z\n" +

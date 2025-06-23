@@ -25,7 +25,7 @@ import { ClassSummary } from "./summary/class_summary";
 export const protobufPackage = "apfish.v1.ship.class";
 
 export interface ClassRequest {
-  id: Long;
+  id: number;
 }
 
 export interface ClassResponse {
@@ -38,24 +38,24 @@ export interface ClassSummaryResponse {
 
 export interface ListClassesRequest {
   /** Page number (1-based). Default: 1. */
-  page: Long;
+  page: number;
   /** Items per page (default: 20, max: 100). */
-  perPage: Long;
+  perPage: number;
 }
 
 export interface ListClassesResponse {
   listClasses: ClassSummary[];
-  total: Long;
+  total: number;
 }
 
 function createBaseClassRequest(): ClassRequest {
-  return { id: Long.ZERO };
+  return { id: 0 };
 }
 
 export const ClassRequest = {
   encode(message: ClassRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.id.equals(Long.ZERO)) {
-      writer.uint32(8).int64(message.id);
+    if (message.id !== 0) {
+      writer.uint32(8).int32(message.id);
     }
     return writer;
   },
@@ -72,7 +72,7 @@ export const ClassRequest = {
             break;
           }
 
-          message.id = reader.int64() as Long;
+          message.id = reader.int32();
           continue;
       }
       if ((tag & 7) === 4 || tag === 0) {
@@ -84,13 +84,13 @@ export const ClassRequest = {
   },
 
   fromJSON(object: any): ClassRequest {
-    return { id: isSet(object.id) ? Long.fromValue(object.id) : Long.ZERO };
+    return { id: isSet(object.id) ? globalThis.Number(object.id) : 0 };
   },
 
   toJSON(message: ClassRequest): unknown {
     const obj: any = {};
-    if (!message.id.equals(Long.ZERO)) {
-      obj.id = (message.id || Long.ZERO).toString();
+    if (message.id !== 0) {
+      obj.id = Math.round(message.id);
     }
     return obj;
   },
@@ -100,7 +100,7 @@ export const ClassRequest = {
   },
   fromPartial<I extends Exact<DeepPartial<ClassRequest>, I>>(object: I): ClassRequest {
     const message = createBaseClassRequest();
-    message.id = (object.id !== undefined && object.id !== null) ? Long.fromValue(object.id) : Long.ZERO;
+    message.id = object.id ?? 0;
     return message;
   },
 };
@@ -222,16 +222,16 @@ export const ClassSummaryResponse = {
 };
 
 function createBaseListClassesRequest(): ListClassesRequest {
-  return { page: Long.ZERO, perPage: Long.ZERO };
+  return { page: 0, perPage: 0 };
 }
 
 export const ListClassesRequest = {
   encode(message: ListClassesRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.page.equals(Long.ZERO)) {
-      writer.uint32(8).int64(message.page);
+    if (message.page !== 0) {
+      writer.uint32(8).int32(message.page);
     }
-    if (!message.perPage.equals(Long.ZERO)) {
-      writer.uint32(16).int64(message.perPage);
+    if (message.perPage !== 0) {
+      writer.uint32(16).int32(message.perPage);
     }
     return writer;
   },
@@ -248,14 +248,14 @@ export const ListClassesRequest = {
             break;
           }
 
-          message.page = reader.int64() as Long;
+          message.page = reader.int32();
           continue;
         case 2:
           if (tag !== 16) {
             break;
           }
 
-          message.perPage = reader.int64() as Long;
+          message.perPage = reader.int32();
           continue;
       }
       if ((tag & 7) === 4 || tag === 0) {
@@ -268,18 +268,18 @@ export const ListClassesRequest = {
 
   fromJSON(object: any): ListClassesRequest {
     return {
-      page: isSet(object.page) ? Long.fromValue(object.page) : Long.ZERO,
-      perPage: isSet(object.perPage) ? Long.fromValue(object.perPage) : Long.ZERO,
+      page: isSet(object.page) ? globalThis.Number(object.page) : 0,
+      perPage: isSet(object.perPage) ? globalThis.Number(object.perPage) : 0,
     };
   },
 
   toJSON(message: ListClassesRequest): unknown {
     const obj: any = {};
-    if (!message.page.equals(Long.ZERO)) {
-      obj.page = (message.page || Long.ZERO).toString();
+    if (message.page !== 0) {
+      obj.page = Math.round(message.page);
     }
-    if (!message.perPage.equals(Long.ZERO)) {
-      obj.perPage = (message.perPage || Long.ZERO).toString();
+    if (message.perPage !== 0) {
+      obj.perPage = Math.round(message.perPage);
     }
     return obj;
   },
@@ -289,16 +289,14 @@ export const ListClassesRequest = {
   },
   fromPartial<I extends Exact<DeepPartial<ListClassesRequest>, I>>(object: I): ListClassesRequest {
     const message = createBaseListClassesRequest();
-    message.page = (object.page !== undefined && object.page !== null) ? Long.fromValue(object.page) : Long.ZERO;
-    message.perPage = (object.perPage !== undefined && object.perPage !== null)
-      ? Long.fromValue(object.perPage)
-      : Long.ZERO;
+    message.page = object.page ?? 0;
+    message.perPage = object.perPage ?? 0;
     return message;
   },
 };
 
 function createBaseListClassesResponse(): ListClassesResponse {
-  return { listClasses: [], total: Long.ZERO };
+  return { listClasses: [], total: 0 };
 }
 
 export const ListClassesResponse = {
@@ -306,8 +304,8 @@ export const ListClassesResponse = {
     for (const v of message.listClasses) {
       ClassSummary.encode(v!, writer.uint32(10).fork()).ldelim();
     }
-    if (!message.total.equals(Long.ZERO)) {
-      writer.uint32(16).int64(message.total);
+    if (message.total !== 0) {
+      writer.uint32(16).int32(message.total);
     }
     return writer;
   },
@@ -331,7 +329,7 @@ export const ListClassesResponse = {
             break;
           }
 
-          message.total = reader.int64() as Long;
+          message.total = reader.int32();
           continue;
       }
       if ((tag & 7) === 4 || tag === 0) {
@@ -347,7 +345,7 @@ export const ListClassesResponse = {
       listClasses: globalThis.Array.isArray(object?.listClasses)
         ? object.listClasses.map((e: any) => ClassSummary.fromJSON(e))
         : [],
-      total: isSet(object.total) ? Long.fromValue(object.total) : Long.ZERO,
+      total: isSet(object.total) ? globalThis.Number(object.total) : 0,
     };
   },
 
@@ -356,8 +354,8 @@ export const ListClassesResponse = {
     if (message.listClasses?.length) {
       obj.listClasses = message.listClasses.map((e) => ClassSummary.toJSON(e));
     }
-    if (!message.total.equals(Long.ZERO)) {
-      obj.total = (message.total || Long.ZERO).toString();
+    if (message.total !== 0) {
+      obj.total = Math.round(message.total);
     }
     return obj;
   },
@@ -368,7 +366,7 @@ export const ListClassesResponse = {
   fromPartial<I extends Exact<DeepPartial<ListClassesResponse>, I>>(object: I): ListClassesResponse {
     const message = createBaseListClassesResponse();
     message.listClasses = object.listClasses?.map((e) => ClassSummary.fromPartial(e)) || [];
-    message.total = (object.total !== undefined && object.total !== null) ? Long.fromValue(object.total) : Long.ZERO;
+    message.total = object.total ?? 0;
     return message;
   },
 };

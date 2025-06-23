@@ -17,7 +17,7 @@ export const protobufPackage = "apfish.v1.user";
 /** Represents a user account in the system. */
 export interface User {
   /** Unique system-generated ID. */
-  id: Long;
+  id: number;
   /** Unique login identifier. */
   login: string;
   /** Formal name (e.g., "John Doe"). */
@@ -40,7 +40,7 @@ export interface User {
 
 function createBaseUser(): User {
   return {
-    id: Long.ZERO,
+    id: 0,
     login: "",
     officialName: "",
     role: undefined,
@@ -53,8 +53,8 @@ function createBaseUser(): User {
 
 export const User = {
   encode(message: User, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.id.equals(Long.ZERO)) {
-      writer.uint32(8).int64(message.id);
+    if (message.id !== 0) {
+      writer.uint32(8).int32(message.id);
     }
     if (message.login !== "") {
       writer.uint32(18).string(message.login);
@@ -92,7 +92,7 @@ export const User = {
             break;
           }
 
-          message.id = reader.int64() as Long;
+          message.id = reader.int32();
           continue;
         case 2:
           if (tag !== 18) {
@@ -154,7 +154,7 @@ export const User = {
 
   fromJSON(object: any): User {
     return {
-      id: isSet(object.id) ? Long.fromValue(object.id) : Long.ZERO,
+      id: isSet(object.id) ? globalThis.Number(object.id) : 0,
       login: isSet(object.login) ? globalThis.String(object.login) : "",
       officialName: isSet(object.officialName) ? globalThis.String(object.officialName) : "",
       role: isSet(object.role) ? RoleSummary.fromJSON(object.role) : undefined,
@@ -171,8 +171,8 @@ export const User = {
 
   toJSON(message: User): unknown {
     const obj: any = {};
-    if (!message.id.equals(Long.ZERO)) {
-      obj.id = (message.id || Long.ZERO).toString();
+    if (message.id !== 0) {
+      obj.id = Math.round(message.id);
     }
     if (message.login !== "") {
       obj.login = message.login;
@@ -203,7 +203,7 @@ export const User = {
   },
   fromPartial<I extends Exact<DeepPartial<User>, I>>(object: I): User {
     const message = createBaseUser();
-    message.id = (object.id !== undefined && object.id !== null) ? Long.fromValue(object.id) : Long.ZERO;
+    message.id = object.id ?? 0;
     message.login = object.login ?? "";
     message.officialName = object.officialName ?? "";
     message.role = (object.role !== undefined && object.role !== null)

@@ -15,7 +15,7 @@ import { DistrictSummary } from "../district/summary/district_summary";
 export const protobufPackage = "apfish.v1.location.port";
 
 export interface Port {
-  id: Long;
+  id: number;
   name: string;
   country: CountrySummary | undefined;
   district: DistrictSummary | undefined;
@@ -25,21 +25,13 @@ export interface Port {
 }
 
 function createBasePort(): Port {
-  return {
-    id: Long.ZERO,
-    name: "",
-    country: undefined,
-    district: undefined,
-    code: "",
-    createdAt: undefined,
-    permissions: [],
-  };
+  return { id: 0, name: "", country: undefined, district: undefined, code: "", createdAt: undefined, permissions: [] };
 }
 
 export const Port = {
   encode(message: Port, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.id.equals(Long.ZERO)) {
-      writer.uint32(8).int64(message.id);
+    if (message.id !== 0) {
+      writer.uint32(8).int32(message.id);
     }
     if (message.name !== "") {
       writer.uint32(18).string(message.name);
@@ -74,7 +66,7 @@ export const Port = {
             break;
           }
 
-          message.id = reader.int64() as Long;
+          message.id = reader.int32();
           continue;
         case 2:
           if (tag !== 18) {
@@ -129,7 +121,7 @@ export const Port = {
 
   fromJSON(object: any): Port {
     return {
-      id: isSet(object.id) ? Long.fromValue(object.id) : Long.ZERO,
+      id: isSet(object.id) ? globalThis.Number(object.id) : 0,
       name: isSet(object.name) ? globalThis.String(object.name) : "",
       country: isSet(object.country) ? CountrySummary.fromJSON(object.country) : undefined,
       district: isSet(object.district) ? DistrictSummary.fromJSON(object.district) : undefined,
@@ -143,8 +135,8 @@ export const Port = {
 
   toJSON(message: Port): unknown {
     const obj: any = {};
-    if (!message.id.equals(Long.ZERO)) {
-      obj.id = (message.id || Long.ZERO).toString();
+    if (message.id !== 0) {
+      obj.id = Math.round(message.id);
     }
     if (message.name !== "") {
       obj.name = message.name;
@@ -172,7 +164,7 @@ export const Port = {
   },
   fromPartial<I extends Exact<DeepPartial<Port>, I>>(object: I): Port {
     const message = createBasePort();
-    message.id = (object.id !== undefined && object.id !== null) ? Long.fromValue(object.id) : Long.ZERO;
+    message.id = object.id ?? 0;
     message.name = object.name ?? "";
     message.country = (object.country !== undefined && object.country !== null)
       ? CountrySummary.fromPartial(object.country)

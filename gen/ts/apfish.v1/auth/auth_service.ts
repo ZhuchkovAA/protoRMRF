@@ -31,7 +31,7 @@ export interface RegisterRequest {
 
 export interface RegisterResponse {
   /** User ID of the registered user. */
-  userId: Long;
+  userId: number;
 }
 
 export interface LoginRequest {
@@ -133,13 +133,13 @@ export const RegisterRequest = {
 };
 
 function createBaseRegisterResponse(): RegisterResponse {
-  return { userId: Long.ZERO };
+  return { userId: 0 };
 }
 
 export const RegisterResponse = {
   encode(message: RegisterResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.userId.equals(Long.ZERO)) {
-      writer.uint32(8).int64(message.userId);
+    if (message.userId !== 0) {
+      writer.uint32(8).int32(message.userId);
     }
     return writer;
   },
@@ -156,7 +156,7 @@ export const RegisterResponse = {
             break;
           }
 
-          message.userId = reader.int64() as Long;
+          message.userId = reader.int32();
           continue;
       }
       if ((tag & 7) === 4 || tag === 0) {
@@ -168,13 +168,13 @@ export const RegisterResponse = {
   },
 
   fromJSON(object: any): RegisterResponse {
-    return { userId: isSet(object.userId) ? Long.fromValue(object.userId) : Long.ZERO };
+    return { userId: isSet(object.userId) ? globalThis.Number(object.userId) : 0 };
   },
 
   toJSON(message: RegisterResponse): unknown {
     const obj: any = {};
-    if (!message.userId.equals(Long.ZERO)) {
-      obj.userId = (message.userId || Long.ZERO).toString();
+    if (message.userId !== 0) {
+      obj.userId = Math.round(message.userId);
     }
     return obj;
   },
@@ -184,9 +184,7 @@ export const RegisterResponse = {
   },
   fromPartial<I extends Exact<DeepPartial<RegisterResponse>, I>>(object: I): RegisterResponse {
     const message = createBaseRegisterResponse();
-    message.userId = (object.userId !== undefined && object.userId !== null)
-      ? Long.fromValue(object.userId)
-      : Long.ZERO;
+    message.userId = object.userId ?? 0;
     return message;
   },
 };

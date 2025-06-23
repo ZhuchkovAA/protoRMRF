@@ -24,10 +24,10 @@ const (
 
 type UserSummary struct {
 	state          protoimpl.MessageState `protogen:"open.v1"`
-	Id             int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`                                                // Unique system-generated ID.
+	Id             int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`                                                // Unique system-generated ID.
 	Login          string                 `protobuf:"bytes,2,opt,name=login,proto3" json:"login,omitempty"`                                           // Unique login identifier.
 	OfficialName   string                 `protobuf:"bytes,3,opt,name=official_name,json=officialName,proto3" json:"official_name,omitempty"`         // Formal name (e.g., "John Doe").
-	RoleId         int64                  `protobuf:"varint,4,opt,name=role_id,json=roleId,proto3" json:"role_id,omitempty"`                          // Assigned role.
+	RoleId         int32                  `protobuf:"varint,4,opt,name=role_id,json=roleId,proto3" json:"role_id,omitempty"`                          // Assigned role.
 	CreatedAt      *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`                  // When the user was created.
 	CreatedByLogin string                 `protobuf:"bytes,6,opt,name=created_by_login,json=createdByLogin,proto3" json:"created_by_login,omitempty"` // Login of the creator (e.g., "admin").
 	unknownFields  protoimpl.UnknownFields
@@ -64,7 +64,7 @@ func (*UserSummary) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_user_summary_user_summary_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *UserSummary) GetId() int64 {
+func (x *UserSummary) GetId() int32 {
 	if x != nil {
 		return x.Id
 	}
@@ -85,7 +85,7 @@ func (x *UserSummary) GetOfficialName() string {
 	return ""
 }
 
-func (x *UserSummary) GetRoleId() int64 {
+func (x *UserSummary) GetRoleId() int32 {
 	if x != nil {
 		return x.RoleId
 	}
@@ -112,10 +112,10 @@ const file_apfish_v1_user_summary_user_summary_proto_rawDesc = "" +
 	"\n" +
 	")apfish.v1/user/summary/user_summary.proto\x12\x16apfish.v1.user.summary\x1a\x1fgoogle/protobuf/timestamp.proto\"\xd6\x01\n" +
 	"\vUserSummary\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x14\n" +
+	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x14\n" +
 	"\x05login\x18\x02 \x01(\tR\x05login\x12#\n" +
 	"\rofficial_name\x18\x03 \x01(\tR\fofficialName\x12\x17\n" +
-	"\arole_id\x18\x04 \x01(\x03R\x06roleId\x129\n" +
+	"\arole_id\x18\x04 \x01(\x05R\x06roleId\x129\n" +
 	"\n" +
 	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x12(\n" +
 	"\x10created_by_login\x18\x06 \x01(\tR\x0ecreatedByLoginBLZJgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/summary;user_summaryb\x06proto3"

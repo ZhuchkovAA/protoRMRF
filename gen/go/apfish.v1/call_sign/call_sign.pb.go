@@ -26,7 +26,7 @@ const (
 
 type CallSign struct {
 	state         protoimpl.MessageState    `protogen:"open.v1"`
-	Id            int64                     `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id            int32                     `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	Series        string                    `protobuf:"bytes,2,opt,name=series,proto3" json:"series,omitempty"`
 	LimitLower    string                    `protobuf:"bytes,3,opt,name=limit_lower,json=limitLower,proto3" json:"limit_lower,omitempty"`
 	LimitUpper    string                    `protobuf:"bytes,4,opt,name=limit_upper,json=limitUpper,proto3" json:"limit_upper,omitempty"`
@@ -67,7 +67,7 @@ func (*CallSign) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_call_sign_call_sign_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *CallSign) GetId() int64 {
+func (x *CallSign) GetId() int32 {
 	if x != nil {
 		return x.Id
 	}
@@ -122,7 +122,7 @@ const file_apfish_v1_call_sign_call_sign_proto_rawDesc = "" +
 	"\n" +
 	"#apfish.v1/call_sign/call_sign.proto\x12\x13apfish.v1.call_sign\x1a\x1fgoogle/protobuf/timestamp.proto\x1a8apfish.v1/location/country/summary/country_summary.proto\x1a)apfish.v1/ship/summary/ship_summary.proto\"\xbc\x02\n" +
 	"\bCallSign\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x16\n" +
+	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x16\n" +
 	"\x06series\x18\x02 \x01(\tR\x06series\x12\x1f\n" +
 	"\vlimit_lower\x18\x03 \x01(\tR\n" +
 	"limitLower\x12\x1f\n" +

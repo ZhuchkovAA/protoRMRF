@@ -34,7 +34,7 @@ const (
 // Permissions combine an Action and Object to create granular access controls (e.g., "read:inspection").
 type Permission struct {
 	state         protoimpl.MessageState      `protogen:"open.v1"`
-	Id            int64                       `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`                  // Unique identifier for the permission
+	Id            int32                       `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`                  // Unique identifier for the permission
 	Action        *summary.ActionSummary      `protobuf:"bytes,2,opt,name=action,proto3" json:"action,omitempty"`           // The operation this permission allows (e.g., "read", "create")
 	Object        *summary1.ObjectSummary     `protobuf:"bytes,3,opt,name=object,proto3" json:"object,omitempty"`           // The resource this permission applies to (e.g., "inspection", "user")
 	Description   string                      `protobuf:"bytes,4,opt,name=description,proto3" json:"description,omitempty"` // Human-readable explanation of the permission
@@ -81,7 +81,7 @@ func (*Permission) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_permission_permission_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *Permission) GetId() int64 {
+func (x *Permission) GetId() int32 {
 	if x != nil {
 		return x.Id
 	}
@@ -179,7 +179,7 @@ const file_apfish_v1_permission_permission_proto_rawDesc = "" +
 	"%apfish.v1/permission/permission.proto\x12\x14apfish.v1.permission\x1a\x1fgoogle/protobuf/timestamp.proto\x1a8apfish.v1/permission/action/summary/action_summary.proto\x1a8apfish.v1/permission/object/summary/object_summary.proto\x1a8apfish.v1/location/country/summary/country_summary.proto\x1a:apfish.v1/location/district/summary/district_summary.proto\x1a2apfish.v1/location/port/summary/port_summary.proto\x1a)apfish.v1/ship/summary/ship_summary.proto\x1a)apfish.v1/user/summary/user_summary.proto\x1a.apfish.v1/user/role/summary/role_summary.proto\"\xd9\x05\n" +
 	"\n" +
 	"Permission\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12J\n" +
+	"\x02id\x18\x01 \x01(\x05R\x02id\x12J\n" +
 	"\x06action\x18\x02 \x01(\v22.apfish.v1.permission.action.summary.ActionSummaryR\x06action\x12J\n" +
 	"\x06object\x18\x03 \x01(\v22.apfish.v1.permission.object.summary.ObjectSummaryR\x06object\x12 \n" +
 	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x12\n" +

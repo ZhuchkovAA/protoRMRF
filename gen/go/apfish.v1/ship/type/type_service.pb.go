@@ -24,7 +24,7 @@ const (
 
 type TypeRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -59,7 +59,7 @@ func (*TypeRequest) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_ship_type_type_service_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *TypeRequest) GetId() int64 {
+func (x *TypeRequest) GetId() int32 {
 	if x != nil {
 		return x.Id
 	}
@@ -156,8 +156,8 @@ func (x *TypeSummaryResponse) GetType() *summary.TypeSummary {
 
 type ListTypesRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Page          int64                  `protobuf:"varint,1,opt,name=page,proto3" json:"page,omitempty"`                      // Page number (1-based). Default: 1.
-	PerPage       int64                  `protobuf:"varint,2,opt,name=per_page,json=perPage,proto3" json:"per_page,omitempty"` // Items per page (default: 20, max: 100).
+	Page          int32                  `protobuf:"varint,1,opt,name=page,proto3" json:"page,omitempty"`                      // Page number (1-based). Default: 1.
+	PerPage       int32                  `protobuf:"varint,2,opt,name=per_page,json=perPage,proto3" json:"per_page,omitempty"` // Items per page (default: 20, max: 100).
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -192,14 +192,14 @@ func (*ListTypesRequest) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_ship_type_type_service_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *ListTypesRequest) GetPage() int64 {
+func (x *ListTypesRequest) GetPage() int32 {
 	if x != nil {
 		return x.Page
 	}
 	return 0
 }
 
-func (x *ListTypesRequest) GetPerPage() int64 {
+func (x *ListTypesRequest) GetPerPage() int32 {
 	if x != nil {
 		return x.PerPage
 	}
@@ -209,7 +209,7 @@ func (x *ListTypesRequest) GetPerPage() int64 {
 type ListTypesResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ListTypes     []*summary.TypeSummary `protobuf:"bytes,1,rep,name=list_types,json=listTypes,proto3" json:"list_types,omitempty"`
-	Total         int64                  `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	Total         int32                  `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -251,7 +251,7 @@ func (x *ListTypesResponse) GetListTypes() []*summary.TypeSummary {
 	return nil
 }
 
-func (x *ListTypesResponse) GetTotal() int64 {
+func (x *ListTypesResponse) GetTotal() int32 {
 	if x != nil {
 		return x.Total
 	}
@@ -264,18 +264,18 @@ const file_apfish_v1_ship_type_type_service_proto_rawDesc = "" +
 	"\n" +
 	"&apfish.v1/ship/type/type_service.proto\x12\x13apfish.v1.ship.type\x1a\x1eapfish.v1/ship/type/type.proto\x1a.apfish.v1/ship/type/summary/type_summary.proto\"\x1d\n" +
 	"\vTypeRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\"=\n" +
+	"\x02id\x18\x01 \x01(\x05R\x02id\"=\n" +
 	"\fTypeResponse\x12-\n" +
 	"\x04type\x18\x01 \x01(\v2\x19.apfish.v1.ship.type.TypeR\x04type\"S\n" +
 	"\x13TypeSummaryResponse\x12<\n" +
 	"\x04type\x18\x01 \x01(\v2(.apfish.v1.ship.type.summary.TypeSummaryR\x04type\"A\n" +
 	"\x10ListTypesRequest\x12\x12\n" +
-	"\x04page\x18\x01 \x01(\x03R\x04page\x12\x19\n" +
-	"\bper_page\x18\x02 \x01(\x03R\aperPage\"r\n" +
+	"\x04page\x18\x01 \x01(\x05R\x04page\x12\x19\n" +
+	"\bper_page\x18\x02 \x01(\x05R\aperPage\"r\n" +
 	"\x11ListTypesResponse\x12G\n" +
 	"\n" +
 	"list_types\x18\x01 \x03(\v2(.apfish.v1.ship.type.summary.TypeSummaryR\tlistTypes\x12\x14\n" +
-	"\x05total\x18\x02 \x01(\x03R\x05total2\x97\x02\n" +
+	"\x05total\x18\x02 \x01(\x05R\x05total2\x97\x02\n" +
 	"\vTypeService\x12N\n" +
 	"\aGetType\x12 .apfish.v1.ship.type.TypeRequest\x1a!.apfish.v1.ship.type.TypeResponse\x12\\\n" +
 	"\x0eGetTypeSummary\x12 .apfish.v1.ship.type.TypeRequest\x1a(.apfish.v1.ship.type.TypeSummaryResponse\x12Z\n" +

@@ -20,7 +20,7 @@ import "apfish.v1/user/role/summary/role_summary.proto";
 // Defines an access permission in the system.
 // Permissions combine an Action and Object to create granular access controls (e.g., "read:inspection").
 message Permission {
-  int64 id = 1;                   // Unique identifier for the permission
+  int32 id = 1;                   // Unique identifier for the permission
   apfish.v1.permission.action.summary.ActionSummary action = 2;     // The operation this permission allows (e.g., "read", "create")
   apfish.v1.permission.object.summary.ObjectSummary object = 3;     // The resource this permission applies to (e.g., "inspection", "user")
   string description = 4;          // Human-readable explanation of the permission

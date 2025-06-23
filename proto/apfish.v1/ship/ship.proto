@@ -14,18 +14,18 @@ import "apfish.v1/ship/captain/summary/captain_summary.proto";
 import "apfish.v1/permission/summary/permission_summary.proto";
 
 message Ship {
-  int64 id = 1;
-  int64 imo = 2;
+  int32 id = 1;
+  int32 imo = 2;
   apfish.v1.ship.type.summary.TypeSummary type = 3;
   apfish.v1.ship.class.summary.ClassSummary class = 4;
   apfish.v1.location.country.summary.CountrySummary country = 5;
   string name = 6;
-  int64 mmsi = 7;
+  int32 mmsi = 7;
   apfish.v1.call_sign.summary.CallSignSummary call_sign = 8;
   string call_sign_value = 9;
   google.protobuf.Timestamp date_build = 10;
-  int64 dead_weight = 11;
-  int64 tonnage = 12;
+  int32 dead_weight = 11;
+  int32 tonnage = 12;
   google.protobuf.Timestamp created_at = 13;
 
   repeated apfish.v1.ship.captain.summary.CaptainSummary captains = 14;

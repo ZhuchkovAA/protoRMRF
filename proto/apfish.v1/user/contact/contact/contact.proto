@@ -11,7 +11,7 @@ import "apfish.v1/user/contact/type/summary/type_summary.proto";
 
 // A user's contact method (e.g., email, phone).
 message Contact {
-  int64 id = 1;                       // Unique contact ID.
+  int32 id = 1;                       // Unique contact ID.
   user.summary.UserSummary user = 2;
   apfish.v1.user.contact.type.summary.TypeSummary type = 3;           // Contact type.
   string value = 4;                   // Contact value (e.g., "user@example.com").

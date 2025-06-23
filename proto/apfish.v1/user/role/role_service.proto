@@ -15,7 +15,7 @@ service RoleService {
 }
 
 message RoleRequest {
-  int64 id = 1;
+  int32 id = 1;
 }
 
 message RoleResponse {
@@ -27,11 +27,11 @@ message RoleSummaryResponse {
 }
 
 message ListRolesRequest {
-  int64 page = 1;      // Page number (1-based). Default: 1.
-  int64 per_page = 2;  // Items per page (default: 20, max: 100).
+  int32 page = 1;      // Page number (1-based). Default: 1.
+  int32 per_page = 2;  // Items per page (default: 20, max: 100).
 }
 
 message ListRolesResponse {
   repeated user.role.summary.RoleSummary list_roles = 1;
-  int64 total = 2;
+  int32 total = 2;
 }

@@ -26,7 +26,7 @@ const (
 // Defines a type of resource or object that can be accessed in the system.
 type Object struct {
 	state         protoimpl.MessageState       `protogen:"open.v1"`
-	Id            int64                        `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`                  // Unique identifier for the object type
+	Id            int32                        `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`                  // Unique identifier for the object type
 	Name          string                       `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`               // Human-readable name (e.g., "Inspection")
 	Description   string                       `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"` // Detailed explanation of the object type
 	Code          string                       `protobuf:"bytes,4,opt,name=code,proto3" json:"code,omitempty"`               // Machine-friendly code (e.g., "inspection")
@@ -66,7 +66,7 @@ func (*Object) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_permission_object_object_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *Object) GetId() int64 {
+func (x *Object) GetId() int32 {
 	if x != nil {
 		return x.Id
 	}
@@ -114,7 +114,7 @@ const file_apfish_v1_permission_object_object_proto_rawDesc = "" +
 	"\n" +
 	"(apfish.v1/permission/object/object.proto\x12\x1bapfish.v1.permission.object\x1a\x1fgoogle/protobuf/timestamp.proto\x1a5apfish.v1/permission/summary/permission_summary.proto\"\xf0\x01\n" +
 	"\x06Object\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x12\n" +
+	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12 \n" +
 	"\vdescription\x18\x03 \x01(\tR\vdescription\x12\x12\n" +
 	"\x04code\x18\x04 \x01(\tR\x04code\x129\n" +

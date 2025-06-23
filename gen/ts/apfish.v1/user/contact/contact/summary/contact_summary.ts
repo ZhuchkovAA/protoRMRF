@@ -13,10 +13,10 @@ export const protobufPackage = "apfish.v1.user.contact.summary";
 
 export interface ContactSummary {
   /** Unique contact ID. */
-  id: Long;
-  userId: Long;
+  id: number;
+  userId: number;
   /** Contact type. */
-  typeId: Long;
+  typeId: number;
   /** Contact value (e.g., "user@example.com"). */
   value: string;
   /** When the contact was added. */
@@ -24,19 +24,19 @@ export interface ContactSummary {
 }
 
 function createBaseContactSummary(): ContactSummary {
-  return { id: Long.ZERO, userId: Long.ZERO, typeId: Long.ZERO, value: "", createdAt: undefined };
+  return { id: 0, userId: 0, typeId: 0, value: "", createdAt: undefined };
 }
 
 export const ContactSummary = {
   encode(message: ContactSummary, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.id.equals(Long.ZERO)) {
-      writer.uint32(8).int64(message.id);
+    if (message.id !== 0) {
+      writer.uint32(8).int32(message.id);
     }
-    if (!message.userId.equals(Long.ZERO)) {
-      writer.uint32(16).int64(message.userId);
+    if (message.userId !== 0) {
+      writer.uint32(16).int32(message.userId);
     }
-    if (!message.typeId.equals(Long.ZERO)) {
-      writer.uint32(24).int64(message.typeId);
+    if (message.typeId !== 0) {
+      writer.uint32(24).int32(message.typeId);
     }
     if (message.value !== "") {
       writer.uint32(34).string(message.value);
@@ -59,21 +59,21 @@ export const ContactSummary = {
             break;
           }
 
-          message.id = reader.int64() as Long;
+          message.id = reader.int32();
           continue;
         case 2:
           if (tag !== 16) {
             break;
           }
 
-          message.userId = reader.int64() as Long;
+          message.userId = reader.int32();
           continue;
         case 3:
           if (tag !== 24) {
             break;
           }
 
-          message.typeId = reader.int64() as Long;
+          message.typeId = reader.int32();
           continue;
         case 4:
           if (tag !== 34) {
@@ -100,9 +100,9 @@ export const ContactSummary = {
 
   fromJSON(object: any): ContactSummary {
     return {
-      id: isSet(object.id) ? Long.fromValue(object.id) : Long.ZERO,
-      userId: isSet(object.userId) ? Long.fromValue(object.userId) : Long.ZERO,
-      typeId: isSet(object.typeId) ? Long.fromValue(object.typeId) : Long.ZERO,
+      id: isSet(object.id) ? globalThis.Number(object.id) : 0,
+      userId: isSet(object.userId) ? globalThis.Number(object.userId) : 0,
+      typeId: isSet(object.typeId) ? globalThis.Number(object.typeId) : 0,
       value: isSet(object.value) ? globalThis.String(object.value) : "",
       createdAt: isSet(object.createdAt) ? fromJsonTimestamp(object.createdAt) : undefined,
     };
@@ -110,14 +110,14 @@ export const ContactSummary = {
 
   toJSON(message: ContactSummary): unknown {
     const obj: any = {};
-    if (!message.id.equals(Long.ZERO)) {
-      obj.id = (message.id || Long.ZERO).toString();
+    if (message.id !== 0) {
+      obj.id = Math.round(message.id);
     }
-    if (!message.userId.equals(Long.ZERO)) {
-      obj.userId = (message.userId || Long.ZERO).toString();
+    if (message.userId !== 0) {
+      obj.userId = Math.round(message.userId);
     }
-    if (!message.typeId.equals(Long.ZERO)) {
-      obj.typeId = (message.typeId || Long.ZERO).toString();
+    if (message.typeId !== 0) {
+      obj.typeId = Math.round(message.typeId);
     }
     if (message.value !== "") {
       obj.value = message.value;
@@ -133,13 +133,9 @@ export const ContactSummary = {
   },
   fromPartial<I extends Exact<DeepPartial<ContactSummary>, I>>(object: I): ContactSummary {
     const message = createBaseContactSummary();
-    message.id = (object.id !== undefined && object.id !== null) ? Long.fromValue(object.id) : Long.ZERO;
-    message.userId = (object.userId !== undefined && object.userId !== null)
-      ? Long.fromValue(object.userId)
-      : Long.ZERO;
-    message.typeId = (object.typeId !== undefined && object.typeId !== null)
-      ? Long.fromValue(object.typeId)
-      : Long.ZERO;
+    message.id = object.id ?? 0;
+    message.userId = object.userId ?? 0;
+    message.typeId = object.typeId ?? 0;
     message.value = object.value ?? "";
     message.createdAt = object.createdAt ?? undefined;
     return message;

@@ -24,7 +24,7 @@ const (
 
 type CountrySummary struct {
 	state          protoimpl.MessageState `protogen:"open.v1"`
-	Id             int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id             int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	Name           string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	NameRus        string                 `protobuf:"bytes,3,opt,name=name_rus,json=nameRus,proto3" json:"name_rus,omitempty"`
 	Code           string                 `protobuf:"bytes,4,opt,name=code,proto3" json:"code,omitempty"`
@@ -65,7 +65,7 @@ func (*CountrySummary) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_location_country_summary_country_summary_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *CountrySummary) GetId() int64 {
+func (x *CountrySummary) GetId() int32 {
 	if x != nil {
 		return x.Id
 	}
@@ -120,7 +120,7 @@ const file_apfish_v1_location_country_summary_country_summary_proto_rawDesc = ""
 	"\n" +
 	"8apfish.v1/location/country/summary/country_summary.proto\x12\"apfish.v1.location.country.summary\x1a\x1fgoogle/protobuf/timestamp.proto\"\xdf\x01\n" +
 	"\x0eCountrySummary\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x12\n" +
+	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x19\n" +
 	"\bname_rus\x18\x03 \x01(\tR\anameRus\x12\x12\n" +
 	"\x04code\x18\x04 \x01(\tR\x04code\x12\x15\n" +

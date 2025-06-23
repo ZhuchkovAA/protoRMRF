@@ -25,7 +25,7 @@ import { ActionSummary } from "./summary/action_summary";
 export const protobufPackage = "apfish.v1.permission.action";
 
 export interface ActionRequest {
-  id: Long;
+  id: number;
 }
 
 export interface ActionResponse {
@@ -38,24 +38,24 @@ export interface ActionSummaryResponse {
 
 export interface ListActionsRequest {
   /** Page number (1-based). Default: 1. */
-  page: Long;
+  page: number;
   /** Items per page (default: 20, max: 100). */
-  perPage: Long;
+  perPage: number;
 }
 
 export interface ListActionsResponse {
   listActions: ActionSummary[];
-  total: Long;
+  total: number;
 }
 
 function createBaseActionRequest(): ActionRequest {
-  return { id: Long.ZERO };
+  return { id: 0 };
 }
 
 export const ActionRequest = {
   encode(message: ActionRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.id.equals(Long.ZERO)) {
-      writer.uint32(8).int64(message.id);
+    if (message.id !== 0) {
+      writer.uint32(8).int32(message.id);
     }
     return writer;
   },
@@ -72,7 +72,7 @@ export const ActionRequest = {
             break;
           }
 
-          message.id = reader.int64() as Long;
+          message.id = reader.int32();
           continue;
       }
       if ((tag & 7) === 4 || tag === 0) {
@@ -84,13 +84,13 @@ export const ActionRequest = {
   },
 
   fromJSON(object: any): ActionRequest {
-    return { id: isSet(object.id) ? Long.fromValue(object.id) : Long.ZERO };
+    return { id: isSet(object.id) ? globalThis.Number(object.id) : 0 };
   },
 
   toJSON(message: ActionRequest): unknown {
     const obj: any = {};
-    if (!message.id.equals(Long.ZERO)) {
-      obj.id = (message.id || Long.ZERO).toString();
+    if (message.id !== 0) {
+      obj.id = Math.round(message.id);
     }
     return obj;
   },
@@ -100,7 +100,7 @@ export const ActionRequest = {
   },
   fromPartial<I extends Exact<DeepPartial<ActionRequest>, I>>(object: I): ActionRequest {
     const message = createBaseActionRequest();
-    message.id = (object.id !== undefined && object.id !== null) ? Long.fromValue(object.id) : Long.ZERO;
+    message.id = object.id ?? 0;
     return message;
   },
 };
@@ -224,16 +224,16 @@ export const ActionSummaryResponse = {
 };
 
 function createBaseListActionsRequest(): ListActionsRequest {
-  return { page: Long.ZERO, perPage: Long.ZERO };
+  return { page: 0, perPage: 0 };
 }
 
 export const ListActionsRequest = {
   encode(message: ListActionsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.page.equals(Long.ZERO)) {
-      writer.uint32(8).int64(message.page);
+    if (message.page !== 0) {
+      writer.uint32(8).int32(message.page);
     }
-    if (!message.perPage.equals(Long.ZERO)) {
-      writer.uint32(16).int64(message.perPage);
+    if (message.perPage !== 0) {
+      writer.uint32(16).int32(message.perPage);
     }
     return writer;
   },
@@ -250,14 +250,14 @@ export const ListActionsRequest = {
             break;
           }
 
-          message.page = reader.int64() as Long;
+          message.page = reader.int32();
           continue;
         case 2:
           if (tag !== 16) {
             break;
           }
 
-          message.perPage = reader.int64() as Long;
+          message.perPage = reader.int32();
           continue;
       }
       if ((tag & 7) === 4 || tag === 0) {
@@ -270,18 +270,18 @@ export const ListActionsRequest = {
 
   fromJSON(object: any): ListActionsRequest {
     return {
-      page: isSet(object.page) ? Long.fromValue(object.page) : Long.ZERO,
-      perPage: isSet(object.perPage) ? Long.fromValue(object.perPage) : Long.ZERO,
+      page: isSet(object.page) ? globalThis.Number(object.page) : 0,
+      perPage: isSet(object.perPage) ? globalThis.Number(object.perPage) : 0,
     };
   },
 
   toJSON(message: ListActionsRequest): unknown {
     const obj: any = {};
-    if (!message.page.equals(Long.ZERO)) {
-      obj.page = (message.page || Long.ZERO).toString();
+    if (message.page !== 0) {
+      obj.page = Math.round(message.page);
     }
-    if (!message.perPage.equals(Long.ZERO)) {
-      obj.perPage = (message.perPage || Long.ZERO).toString();
+    if (message.perPage !== 0) {
+      obj.perPage = Math.round(message.perPage);
     }
     return obj;
   },
@@ -291,16 +291,14 @@ export const ListActionsRequest = {
   },
   fromPartial<I extends Exact<DeepPartial<ListActionsRequest>, I>>(object: I): ListActionsRequest {
     const message = createBaseListActionsRequest();
-    message.page = (object.page !== undefined && object.page !== null) ? Long.fromValue(object.page) : Long.ZERO;
-    message.perPage = (object.perPage !== undefined && object.perPage !== null)
-      ? Long.fromValue(object.perPage)
-      : Long.ZERO;
+    message.page = object.page ?? 0;
+    message.perPage = object.perPage ?? 0;
     return message;
   },
 };
 
 function createBaseListActionsResponse(): ListActionsResponse {
-  return { listActions: [], total: Long.ZERO };
+  return { listActions: [], total: 0 };
 }
 
 export const ListActionsResponse = {
@@ -308,8 +306,8 @@ export const ListActionsResponse = {
     for (const v of message.listActions) {
       ActionSummary.encode(v!, writer.uint32(10).fork()).ldelim();
     }
-    if (!message.total.equals(Long.ZERO)) {
-      writer.uint32(16).int64(message.total);
+    if (message.total !== 0) {
+      writer.uint32(16).int32(message.total);
     }
     return writer;
   },
@@ -333,7 +331,7 @@ export const ListActionsResponse = {
             break;
           }
 
-          message.total = reader.int64() as Long;
+          message.total = reader.int32();
           continue;
       }
       if ((tag & 7) === 4 || tag === 0) {
@@ -349,7 +347,7 @@ export const ListActionsResponse = {
       listActions: globalThis.Array.isArray(object?.listActions)
         ? object.listActions.map((e: any) => ActionSummary.fromJSON(e))
         : [],
-      total: isSet(object.total) ? Long.fromValue(object.total) : Long.ZERO,
+      total: isSet(object.total) ? globalThis.Number(object.total) : 0,
     };
   },
 
@@ -358,8 +356,8 @@ export const ListActionsResponse = {
     if (message.listActions?.length) {
       obj.listActions = message.listActions.map((e) => ActionSummary.toJSON(e));
     }
-    if (!message.total.equals(Long.ZERO)) {
-      obj.total = (message.total || Long.ZERO).toString();
+    if (message.total !== 0) {
+      obj.total = Math.round(message.total);
     }
     return obj;
   },
@@ -370,7 +368,7 @@ export const ListActionsResponse = {
   fromPartial<I extends Exact<DeepPartial<ListActionsResponse>, I>>(object: I): ListActionsResponse {
     const message = createBaseListActionsResponse();
     message.listActions = object.listActions?.map((e) => ActionSummary.fromPartial(e)) || [];
-    message.total = (object.total !== undefined && object.total !== null) ? Long.fromValue(object.total) : Long.ZERO;
+    message.total = object.total ?? 0;
     return message;
   },
 };

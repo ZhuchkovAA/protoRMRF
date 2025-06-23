@@ -24,7 +24,7 @@ const (
 
 type CallSignRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -59,7 +59,7 @@ func (*CallSignRequest) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_call_sign_call_sign_service_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *CallSignRequest) GetId() int64 {
+func (x *CallSignRequest) GetId() int32 {
 	if x != nil {
 		return x.Id
 	}
@@ -156,8 +156,8 @@ func (x *CallSignSummaryResponse) GetCallSign() *summary.CallSignSummary {
 
 type ListCallSignsRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Page          int64                  `protobuf:"varint,1,opt,name=page,proto3" json:"page,omitempty"`                      // Page number (1-based). Default: 1.
-	PerPage       int64                  `protobuf:"varint,2,opt,name=per_page,json=perPage,proto3" json:"per_page,omitempty"` // Items per page (default: 20, max: 100).
+	Page          int32                  `protobuf:"varint,1,opt,name=page,proto3" json:"page,omitempty"`                      // Page number (1-based). Default: 1.
+	PerPage       int32                  `protobuf:"varint,2,opt,name=per_page,json=perPage,proto3" json:"per_page,omitempty"` // Items per page (default: 20, max: 100).
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -192,14 +192,14 @@ func (*ListCallSignsRequest) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_call_sign_call_sign_service_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *ListCallSignsRequest) GetPage() int64 {
+func (x *ListCallSignsRequest) GetPage() int32 {
 	if x != nil {
 		return x.Page
 	}
 	return 0
 }
 
-func (x *ListCallSignsRequest) GetPerPage() int64 {
+func (x *ListCallSignsRequest) GetPerPage() int32 {
 	if x != nil {
 		return x.PerPage
 	}
@@ -209,7 +209,7 @@ func (x *ListCallSignsRequest) GetPerPage() int64 {
 type ListCallSignsResponse struct {
 	state         protoimpl.MessageState     `protogen:"open.v1"`
 	ListCallSigns []*summary.CallSignSummary `protobuf:"bytes,1,rep,name=list_call_signs,json=listCallSigns,proto3" json:"list_call_signs,omitempty"`
-	Total         int64                      `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	Total         int32                      `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -251,7 +251,7 @@ func (x *ListCallSignsResponse) GetListCallSigns() []*summary.CallSignSummary {
 	return nil
 }
 
-func (x *ListCallSignsResponse) GetTotal() int64 {
+func (x *ListCallSignsResponse) GetTotal() int32 {
 	if x != nil {
 		return x.Total
 	}
@@ -264,17 +264,17 @@ const file_apfish_v1_call_sign_call_sign_service_proto_rawDesc = "" +
 	"\n" +
 	"+apfish.v1/call_sign/call_sign_service.proto\x12\x13apfish.v1.call_sign\x1a#apfish.v1/call_sign/call_sign.proto\x1a3apfish.v1/call_sign/summary/call_sign_summary.proto\"!\n" +
 	"\x0fCallSignRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\"N\n" +
+	"\x02id\x18\x01 \x01(\x05R\x02id\"N\n" +
 	"\x10CallSignResponse\x12:\n" +
 	"\tcall_sign\x18\x01 \x01(\v2\x1d.apfish.v1.call_sign.CallSignR\bcallSign\"d\n" +
 	"\x17CallSignSummaryResponse\x12I\n" +
 	"\tcall_sign\x18\x01 \x01(\v2,.apfish.v1.call_sign.summary.CallSignSummaryR\bcallSign\"E\n" +
 	"\x14ListCallSignsRequest\x12\x12\n" +
-	"\x04page\x18\x01 \x01(\x03R\x04page\x12\x19\n" +
-	"\bper_page\x18\x02 \x01(\x03R\aperPage\"\x83\x01\n" +
+	"\x04page\x18\x01 \x01(\x05R\x04page\x12\x19\n" +
+	"\bper_page\x18\x02 \x01(\x05R\aperPage\"\x83\x01\n" +
 	"\x15ListCallSignsResponse\x12T\n" +
 	"\x0flist_call_signs\x18\x01 \x03(\v2,.apfish.v1.call_sign.summary.CallSignSummaryR\rlistCallSigns\x12\x14\n" +
-	"\x05total\x18\x02 \x01(\x03R\x05total2\xbf\x02\n" +
+	"\x05total\x18\x02 \x01(\x05R\x05total2\xbf\x02\n" +
 	"\x0fCallSignService\x12Z\n" +
 	"\vGetCallSign\x12$.apfish.v1.call_sign.CallSignRequest\x1a%.apfish.v1.call_sign.CallSignResponse\x12h\n" +
 	"\x12GetCallSignSummary\x12$.apfish.v1.call_sign.CallSignRequest\x1a,.apfish.v1.call_sign.CallSignSummaryResponse\x12f\n" +

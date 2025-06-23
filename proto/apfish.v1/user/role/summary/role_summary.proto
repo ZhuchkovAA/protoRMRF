@@ -7,7 +7,7 @@ option go_package = "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/role/
 import "google/protobuf/timestamp.proto";  // Standard Protocol Buffers timestamp
 
 message RoleSummary {
-  int64 id = 1;                       // Unique role ID.
+  int32 id = 1;                       // Unique role ID.
   string name = 2;                    // Human-readable name (e.g., "Admin").
   string code = 3;
   google.protobuf.Timestamp created_at = 4;  // When the role was created.

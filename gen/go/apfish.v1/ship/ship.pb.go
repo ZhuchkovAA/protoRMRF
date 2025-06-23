@@ -30,18 +30,18 @@ const (
 
 type Ship struct {
 	state         protoimpl.MessageState        `protogen:"open.v1"`
-	Id            int64                         `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Imo           int64                         `protobuf:"varint,2,opt,name=imo,proto3" json:"imo,omitempty"`
+	Id            int32                         `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Imo           int32                         `protobuf:"varint,2,opt,name=imo,proto3" json:"imo,omitempty"`
 	Type          *summary.TypeSummary          `protobuf:"bytes,3,opt,name=type,proto3" json:"type,omitempty"`
 	Class         *summary1.ClassSummary        `protobuf:"bytes,4,opt,name=class,proto3" json:"class,omitempty"`
 	Country       *summary2.CountrySummary      `protobuf:"bytes,5,opt,name=country,proto3" json:"country,omitempty"`
 	Name          string                        `protobuf:"bytes,6,opt,name=name,proto3" json:"name,omitempty"`
-	Mmsi          int64                         `protobuf:"varint,7,opt,name=mmsi,proto3" json:"mmsi,omitempty"`
+	Mmsi          int32                         `protobuf:"varint,7,opt,name=mmsi,proto3" json:"mmsi,omitempty"`
 	CallSign      *summary3.CallSignSummary     `protobuf:"bytes,8,opt,name=call_sign,json=callSign,proto3" json:"call_sign,omitempty"`
 	CallSignValue string                        `protobuf:"bytes,9,opt,name=call_sign_value,json=callSignValue,proto3" json:"call_sign_value,omitempty"`
 	DateBuild     *timestamppb.Timestamp        `protobuf:"bytes,10,opt,name=date_build,json=dateBuild,proto3" json:"date_build,omitempty"`
-	DeadWeight    int64                         `protobuf:"varint,11,opt,name=dead_weight,json=deadWeight,proto3" json:"dead_weight,omitempty"`
-	Tonnage       int64                         `protobuf:"varint,12,opt,name=tonnage,proto3" json:"tonnage,omitempty"`
+	DeadWeight    int32                         `protobuf:"varint,11,opt,name=dead_weight,json=deadWeight,proto3" json:"dead_weight,omitempty"`
+	Tonnage       int32                         `protobuf:"varint,12,opt,name=tonnage,proto3" json:"tonnage,omitempty"`
 	CreatedAt     *timestamppb.Timestamp        `protobuf:"bytes,13,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	Captains      []*summary4.CaptainSummary    `protobuf:"bytes,14,rep,name=captains,proto3" json:"captains,omitempty"`
 	Permissions   []*summary5.PermissionSummary `protobuf:"bytes,15,rep,name=permissions,proto3" json:"permissions,omitempty"`
@@ -79,14 +79,14 @@ func (*Ship) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_ship_ship_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *Ship) GetId() int64 {
+func (x *Ship) GetId() int32 {
 	if x != nil {
 		return x.Id
 	}
 	return 0
 }
 
-func (x *Ship) GetImo() int64 {
+func (x *Ship) GetImo() int32 {
 	if x != nil {
 		return x.Imo
 	}
@@ -121,7 +121,7 @@ func (x *Ship) GetName() string {
 	return ""
 }
 
-func (x *Ship) GetMmsi() int64 {
+func (x *Ship) GetMmsi() int32 {
 	if x != nil {
 		return x.Mmsi
 	}
@@ -149,14 +149,14 @@ func (x *Ship) GetDateBuild() *timestamppb.Timestamp {
 	return nil
 }
 
-func (x *Ship) GetDeadWeight() int64 {
+func (x *Ship) GetDeadWeight() int32 {
 	if x != nil {
 		return x.DeadWeight
 	}
 	return 0
 }
 
-func (x *Ship) GetTonnage() int64 {
+func (x *Ship) GetTonnage() int32 {
 	if x != nil {
 		return x.Tonnage
 	}
@@ -190,21 +190,21 @@ const file_apfish_v1_ship_ship_proto_rawDesc = "" +
 	"\n" +
 	"\x19apfish.v1/ship/ship.proto\x12\x0eapfish.v1.ship\x1a\x1fgoogle/protobuf/timestamp.proto\x1a.apfish.v1/ship/type/summary/type_summary.proto\x1a0apfish.v1/ship/class/summary/class_summary.proto\x1a8apfish.v1/location/country/summary/country_summary.proto\x1a3apfish.v1/call_sign/summary/call_sign_summary.proto\x1a4apfish.v1/ship/captain/summary/captain_summary.proto\x1a5apfish.v1/permission/summary/permission_summary.proto\"\xe1\x05\n" +
 	"\x04Ship\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x10\n" +
-	"\x03imo\x18\x02 \x01(\x03R\x03imo\x12<\n" +
+	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x10\n" +
+	"\x03imo\x18\x02 \x01(\x05R\x03imo\x12<\n" +
 	"\x04type\x18\x03 \x01(\v2(.apfish.v1.ship.type.summary.TypeSummaryR\x04type\x12@\n" +
 	"\x05class\x18\x04 \x01(\v2*.apfish.v1.ship.class.summary.ClassSummaryR\x05class\x12L\n" +
 	"\acountry\x18\x05 \x01(\v22.apfish.v1.location.country.summary.CountrySummaryR\acountry\x12\x12\n" +
 	"\x04name\x18\x06 \x01(\tR\x04name\x12\x12\n" +
-	"\x04mmsi\x18\a \x01(\x03R\x04mmsi\x12I\n" +
+	"\x04mmsi\x18\a \x01(\x05R\x04mmsi\x12I\n" +
 	"\tcall_sign\x18\b \x01(\v2,.apfish.v1.call_sign.summary.CallSignSummaryR\bcallSign\x12&\n" +
 	"\x0fcall_sign_value\x18\t \x01(\tR\rcallSignValue\x129\n" +
 	"\n" +
 	"date_build\x18\n" +
 	" \x01(\v2\x1a.google.protobuf.TimestampR\tdateBuild\x12\x1f\n" +
-	"\vdead_weight\x18\v \x01(\x03R\n" +
+	"\vdead_weight\x18\v \x01(\x05R\n" +
 	"deadWeight\x12\x18\n" +
-	"\atonnage\x18\f \x01(\x03R\atonnage\x129\n" +
+	"\atonnage\x18\f \x01(\x05R\atonnage\x129\n" +
 	"\n" +
 	"created_at\x18\r \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x12J\n" +
 	"\bcaptains\x18\x0e \x03(\v2..apfish.v1.ship.captain.summary.CaptainSummaryR\bcaptains\x12Q\n" +

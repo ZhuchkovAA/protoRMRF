@@ -10,7 +10,7 @@ import "apfish.v1/permission/summary/permission_summary.proto";
 
 // Defines an actionable operation that can be performed in the system.
 message Action {
-  int64 id = 1;                   // Unique identifier for the action
+  int32 id = 1;                   // Unique identifier for the action
   string name = 2;                // Human-readable name (e.g., "Read")
   string description = 3;         // Detailed explanation of the action
   string code = 4;                // Machine-friendly code (e.g., "read")

@@ -24,18 +24,18 @@ const (
 
 type ShipSummary struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Imo           int64                  `protobuf:"varint,2,opt,name=imo,proto3" json:"imo,omitempty"`
-	TypeId        int64                  `protobuf:"varint,3,opt,name=type_id,json=typeId,proto3" json:"type_id,omitempty"`
-	ClassId       int64                  `protobuf:"varint,4,opt,name=class_id,json=classId,proto3" json:"class_id,omitempty"`
-	CountryId     int64                  `protobuf:"varint,5,opt,name=country_id,json=countryId,proto3" json:"country_id,omitempty"`
+	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Imo           int32                  `protobuf:"varint,2,opt,name=imo,proto3" json:"imo,omitempty"`
+	TypeId        int32                  `protobuf:"varint,3,opt,name=type_id,json=typeId,proto3" json:"type_id,omitempty"`
+	ClassId       int32                  `protobuf:"varint,4,opt,name=class_id,json=classId,proto3" json:"class_id,omitempty"`
+	CountryId     int32                  `protobuf:"varint,5,opt,name=country_id,json=countryId,proto3" json:"country_id,omitempty"`
 	Name          string                 `protobuf:"bytes,6,opt,name=name,proto3" json:"name,omitempty"`
-	Mmsi          int64                  `protobuf:"varint,7,opt,name=mmsi,proto3" json:"mmsi,omitempty"`
-	CallSignId    int64                  `protobuf:"varint,8,opt,name=call_sign_id,json=callSignId,proto3" json:"call_sign_id,omitempty"`
+	Mmsi          int32                  `protobuf:"varint,7,opt,name=mmsi,proto3" json:"mmsi,omitempty"`
+	CallSignId    int32                  `protobuf:"varint,8,opt,name=call_sign_id,json=callSignId,proto3" json:"call_sign_id,omitempty"`
 	CallSignValue string                 `protobuf:"bytes,9,opt,name=call_sign_value,json=callSignValue,proto3" json:"call_sign_value,omitempty"`
 	DateBuild     *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=date_build,json=dateBuild,proto3" json:"date_build,omitempty"`
-	DeadWeight    int64                  `protobuf:"varint,11,opt,name=dead_weight,json=deadWeight,proto3" json:"dead_weight,omitempty"`
-	Tonnage       int64                  `protobuf:"varint,12,opt,name=tonnage,proto3" json:"tonnage,omitempty"`
+	DeadWeight    int32                  `protobuf:"varint,11,opt,name=dead_weight,json=deadWeight,proto3" json:"dead_weight,omitempty"`
+	Tonnage       int32                  `protobuf:"varint,12,opt,name=tonnage,proto3" json:"tonnage,omitempty"`
 	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,13,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -71,35 +71,35 @@ func (*ShipSummary) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_ship_summary_ship_summary_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *ShipSummary) GetId() int64 {
+func (x *ShipSummary) GetId() int32 {
 	if x != nil {
 		return x.Id
 	}
 	return 0
 }
 
-func (x *ShipSummary) GetImo() int64 {
+func (x *ShipSummary) GetImo() int32 {
 	if x != nil {
 		return x.Imo
 	}
 	return 0
 }
 
-func (x *ShipSummary) GetTypeId() int64 {
+func (x *ShipSummary) GetTypeId() int32 {
 	if x != nil {
 		return x.TypeId
 	}
 	return 0
 }
 
-func (x *ShipSummary) GetClassId() int64 {
+func (x *ShipSummary) GetClassId() int32 {
 	if x != nil {
 		return x.ClassId
 	}
 	return 0
 }
 
-func (x *ShipSummary) GetCountryId() int64 {
+func (x *ShipSummary) GetCountryId() int32 {
 	if x != nil {
 		return x.CountryId
 	}
@@ -113,14 +113,14 @@ func (x *ShipSummary) GetName() string {
 	return ""
 }
 
-func (x *ShipSummary) GetMmsi() int64 {
+func (x *ShipSummary) GetMmsi() int32 {
 	if x != nil {
 		return x.Mmsi
 	}
 	return 0
 }
 
-func (x *ShipSummary) GetCallSignId() int64 {
+func (x *ShipSummary) GetCallSignId() int32 {
 	if x != nil {
 		return x.CallSignId
 	}
@@ -141,14 +141,14 @@ func (x *ShipSummary) GetDateBuild() *timestamppb.Timestamp {
 	return nil
 }
 
-func (x *ShipSummary) GetDeadWeight() int64 {
+func (x *ShipSummary) GetDeadWeight() int32 {
 	if x != nil {
 		return x.DeadWeight
 	}
 	return 0
 }
 
-func (x *ShipSummary) GetTonnage() int64 {
+func (x *ShipSummary) GetTonnage() int32 {
 	if x != nil {
 		return x.Tonnage
 	}
@@ -168,23 +168,23 @@ const file_apfish_v1_ship_summary_ship_summary_proto_rawDesc = "" +
 	"\n" +
 	")apfish.v1/ship/summary/ship_summary.proto\x12\x16apfish.v1.ship.summary\x1a\x1fgoogle/protobuf/timestamp.proto\"\xa5\x03\n" +
 	"\vShipSummary\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x10\n" +
-	"\x03imo\x18\x02 \x01(\x03R\x03imo\x12\x17\n" +
-	"\atype_id\x18\x03 \x01(\x03R\x06typeId\x12\x19\n" +
-	"\bclass_id\x18\x04 \x01(\x03R\aclassId\x12\x1d\n" +
+	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x10\n" +
+	"\x03imo\x18\x02 \x01(\x05R\x03imo\x12\x17\n" +
+	"\atype_id\x18\x03 \x01(\x05R\x06typeId\x12\x19\n" +
+	"\bclass_id\x18\x04 \x01(\x05R\aclassId\x12\x1d\n" +
 	"\n" +
-	"country_id\x18\x05 \x01(\x03R\tcountryId\x12\x12\n" +
+	"country_id\x18\x05 \x01(\x05R\tcountryId\x12\x12\n" +
 	"\x04name\x18\x06 \x01(\tR\x04name\x12\x12\n" +
-	"\x04mmsi\x18\a \x01(\x03R\x04mmsi\x12 \n" +
-	"\fcall_sign_id\x18\b \x01(\x03R\n" +
+	"\x04mmsi\x18\a \x01(\x05R\x04mmsi\x12 \n" +
+	"\fcall_sign_id\x18\b \x01(\x05R\n" +
 	"callSignId\x12&\n" +
 	"\x0fcall_sign_value\x18\t \x01(\tR\rcallSignValue\x129\n" +
 	"\n" +
 	"date_build\x18\n" +
 	" \x01(\v2\x1a.google.protobuf.TimestampR\tdateBuild\x12\x1f\n" +
-	"\vdead_weight\x18\v \x01(\x03R\n" +
+	"\vdead_weight\x18\v \x01(\x05R\n" +
 	"deadWeight\x12\x18\n" +
-	"\atonnage\x18\f \x01(\x03R\atonnage\x129\n" +
+	"\atonnage\x18\f \x01(\x05R\atonnage\x129\n" +
 	"\n" +
 	"created_at\x18\r \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAtBLZJgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/ship/summary;ship_summaryb\x06proto3"
 

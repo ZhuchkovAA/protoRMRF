@@ -25,7 +25,7 @@ const (
 // Type of contact method (e.g., "Email", "Phone").
 type TypeSummary struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`    // Unique type ID.
+	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`    // Unique type ID.
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"` // Human-readable name (e.g., "Email").
 	Code          string                 `protobuf:"bytes,3,opt,name=code,proto3" json:"code,omitempty"`
 	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"` // When the type was defined.
@@ -63,7 +63,7 @@ func (*TypeSummary) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_user_contact_type_summary_type_summary_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *TypeSummary) GetId() int64 {
+func (x *TypeSummary) GetId() int32 {
 	if x != nil {
 		return x.Id
 	}
@@ -97,7 +97,7 @@ const file_apfish_v1_user_contact_type_summary_type_summary_proto_rawDesc = "" +
 	"\n" +
 	"6apfish.v1/user/contact/type/summary/type_summary.proto\x12#apfish.v1.user.contact.type.summary\x1a\x1fgoogle/protobuf/timestamp.proto\"\x80\x01\n" +
 	"\vTypeSummary\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x12\n" +
+	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x12\n" +
 	"\x04code\x18\x03 \x01(\tR\x04code\x129\n" +
 	"\n" +

@@ -32,12 +32,12 @@ message UserResponse {
 // Paginated request for user search.
 message ListUsersRequest {
   string login = 1;    // Optional login prefix filter (e.g., "joh").
-  int64 page = 2;      // Page number (1-based). Default: 1.
-  int64 per_page = 3;  // Items per page (default: 20, max: 100).
+  int32 page = 2;      // Page number (1-based). Default: 1.
+  int32 per_page = 3;  // Items per page (default: 20, max: 100).
 }
 
 // Paginated user list response.
 message ListUsersResponse {
   repeated User users = 1;  // Users matching the query (max `per_page` entries).
-  int64 total = 2;         // Total matching users (ignoring pagination).
+  int32 total = 2;         // Total matching users (ignoring pagination).
 }

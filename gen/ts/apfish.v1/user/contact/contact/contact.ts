@@ -16,7 +16,7 @@ export const protobufPackage = "apfish.v1.user.contact";
 /** A user's contact method (e.g., email, phone). */
 export interface Contact {
   /** Unique contact ID. */
-  id: Long;
+  id: number;
   user:
     | UserSummary
     | undefined;
@@ -31,13 +31,13 @@ export interface Contact {
 }
 
 function createBaseContact(): Contact {
-  return { id: Long.ZERO, user: undefined, type: undefined, value: "", createdAt: undefined };
+  return { id: 0, user: undefined, type: undefined, value: "", createdAt: undefined };
 }
 
 export const Contact = {
   encode(message: Contact, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.id.equals(Long.ZERO)) {
-      writer.uint32(8).int64(message.id);
+    if (message.id !== 0) {
+      writer.uint32(8).int32(message.id);
     }
     if (message.user !== undefined) {
       UserSummary.encode(message.user, writer.uint32(18).fork()).ldelim();
@@ -66,7 +66,7 @@ export const Contact = {
             break;
           }
 
-          message.id = reader.int64() as Long;
+          message.id = reader.int32();
           continue;
         case 2:
           if (tag !== 18) {
@@ -107,7 +107,7 @@ export const Contact = {
 
   fromJSON(object: any): Contact {
     return {
-      id: isSet(object.id) ? Long.fromValue(object.id) : Long.ZERO,
+      id: isSet(object.id) ? globalThis.Number(object.id) : 0,
       user: isSet(object.user) ? UserSummary.fromJSON(object.user) : undefined,
       type: isSet(object.type) ? TypeSummary.fromJSON(object.type) : undefined,
       value: isSet(object.value) ? globalThis.String(object.value) : "",
@@ -117,8 +117,8 @@ export const Contact = {
 
   toJSON(message: Contact): unknown {
     const obj: any = {};
-    if (!message.id.equals(Long.ZERO)) {
-      obj.id = (message.id || Long.ZERO).toString();
+    if (message.id !== 0) {
+      obj.id = Math.round(message.id);
     }
     if (message.user !== undefined) {
       obj.user = UserSummary.toJSON(message.user);
@@ -140,7 +140,7 @@ export const Contact = {
   },
   fromPartial<I extends Exact<DeepPartial<Contact>, I>>(object: I): Contact {
     const message = createBaseContact();
-    message.id = (object.id !== undefined && object.id !== null) ? Long.fromValue(object.id) : Long.ZERO;
+    message.id = object.id ?? 0;
     message.user = (object.user !== undefined && object.user !== null)
       ? UserSummary.fromPartial(object.user)
       : undefined;

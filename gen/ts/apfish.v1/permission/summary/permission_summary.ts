@@ -12,9 +12,9 @@ import { Timestamp } from "../../../google/protobuf/timestamp";
 export const protobufPackage = "apfish.v1.permission.summary";
 
 export interface PermissionSummary {
-  id: Long;
-  actionId: Long;
-  objectId: Long;
+  id: number;
+  actionId: number;
+  objectId: number;
   /** Human-readable explanation of the permission */
   description: string;
   /** Display name (e.g., "Read Inspections") */
@@ -25,27 +25,19 @@ export interface PermissionSummary {
 }
 
 function createBasePermissionSummary(): PermissionSummary {
-  return {
-    id: Long.ZERO,
-    actionId: Long.ZERO,
-    objectId: Long.ZERO,
-    description: "",
-    name: "",
-    code: "",
-    createdAt: undefined,
-  };
+  return { id: 0, actionId: 0, objectId: 0, description: "", name: "", code: "", createdAt: undefined };
 }
 
 export const PermissionSummary = {
   encode(message: PermissionSummary, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.id.equals(Long.ZERO)) {
-      writer.uint32(8).int64(message.id);
+    if (message.id !== 0) {
+      writer.uint32(8).int32(message.id);
     }
-    if (!message.actionId.equals(Long.ZERO)) {
-      writer.uint32(16).int64(message.actionId);
+    if (message.actionId !== 0) {
+      writer.uint32(16).int32(message.actionId);
     }
-    if (!message.objectId.equals(Long.ZERO)) {
-      writer.uint32(24).int64(message.objectId);
+    if (message.objectId !== 0) {
+      writer.uint32(24).int32(message.objectId);
     }
     if (message.description !== "") {
       writer.uint32(34).string(message.description);
@@ -74,21 +66,21 @@ export const PermissionSummary = {
             break;
           }
 
-          message.id = reader.int64() as Long;
+          message.id = reader.int32();
           continue;
         case 2:
           if (tag !== 16) {
             break;
           }
 
-          message.actionId = reader.int64() as Long;
+          message.actionId = reader.int32();
           continue;
         case 3:
           if (tag !== 24) {
             break;
           }
 
-          message.objectId = reader.int64() as Long;
+          message.objectId = reader.int32();
           continue;
         case 4:
           if (tag !== 34) {
@@ -129,9 +121,9 @@ export const PermissionSummary = {
 
   fromJSON(object: any): PermissionSummary {
     return {
-      id: isSet(object.id) ? Long.fromValue(object.id) : Long.ZERO,
-      actionId: isSet(object.actionId) ? Long.fromValue(object.actionId) : Long.ZERO,
-      objectId: isSet(object.objectId) ? Long.fromValue(object.objectId) : Long.ZERO,
+      id: isSet(object.id) ? globalThis.Number(object.id) : 0,
+      actionId: isSet(object.actionId) ? globalThis.Number(object.actionId) : 0,
+      objectId: isSet(object.objectId) ? globalThis.Number(object.objectId) : 0,
       description: isSet(object.description) ? globalThis.String(object.description) : "",
       name: isSet(object.name) ? globalThis.String(object.name) : "",
       code: isSet(object.code) ? globalThis.String(object.code) : "",
@@ -141,14 +133,14 @@ export const PermissionSummary = {
 
   toJSON(message: PermissionSummary): unknown {
     const obj: any = {};
-    if (!message.id.equals(Long.ZERO)) {
-      obj.id = (message.id || Long.ZERO).toString();
+    if (message.id !== 0) {
+      obj.id = Math.round(message.id);
     }
-    if (!message.actionId.equals(Long.ZERO)) {
-      obj.actionId = (message.actionId || Long.ZERO).toString();
+    if (message.actionId !== 0) {
+      obj.actionId = Math.round(message.actionId);
     }
-    if (!message.objectId.equals(Long.ZERO)) {
-      obj.objectId = (message.objectId || Long.ZERO).toString();
+    if (message.objectId !== 0) {
+      obj.objectId = Math.round(message.objectId);
     }
     if (message.description !== "") {
       obj.description = message.description;
@@ -170,13 +162,9 @@ export const PermissionSummary = {
   },
   fromPartial<I extends Exact<DeepPartial<PermissionSummary>, I>>(object: I): PermissionSummary {
     const message = createBasePermissionSummary();
-    message.id = (object.id !== undefined && object.id !== null) ? Long.fromValue(object.id) : Long.ZERO;
-    message.actionId = (object.actionId !== undefined && object.actionId !== null)
-      ? Long.fromValue(object.actionId)
-      : Long.ZERO;
-    message.objectId = (object.objectId !== undefined && object.objectId !== null)
-      ? Long.fromValue(object.objectId)
-      : Long.ZERO;
+    message.id = object.id ?? 0;
+    message.actionId = object.actionId ?? 0;
+    message.objectId = object.objectId ?? 0;
     message.description = object.description ?? "";
     message.name = object.name ?? "";
     message.code = object.code ?? "";

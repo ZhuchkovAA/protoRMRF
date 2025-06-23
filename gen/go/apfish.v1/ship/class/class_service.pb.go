@@ -24,7 +24,7 @@ const (
 
 type ClassRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -59,7 +59,7 @@ func (*ClassRequest) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_ship_class_class_service_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *ClassRequest) GetId() int64 {
+func (x *ClassRequest) GetId() int32 {
 	if x != nil {
 		return x.Id
 	}
@@ -156,8 +156,8 @@ func (x *ClassSummaryResponse) GetClass() *summary.ClassSummary {
 
 type ListClassesRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Page          int64                  `protobuf:"varint,1,opt,name=page,proto3" json:"page,omitempty"`                      // Page number (1-based). Default: 1.
-	PerPage       int64                  `protobuf:"varint,2,opt,name=per_page,json=perPage,proto3" json:"per_page,omitempty"` // Items per page (default: 20, max: 100).
+	Page          int32                  `protobuf:"varint,1,opt,name=page,proto3" json:"page,omitempty"`                      // Page number (1-based). Default: 1.
+	PerPage       int32                  `protobuf:"varint,2,opt,name=per_page,json=perPage,proto3" json:"per_page,omitempty"` // Items per page (default: 20, max: 100).
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -192,14 +192,14 @@ func (*ListClassesRequest) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_ship_class_class_service_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *ListClassesRequest) GetPage() int64 {
+func (x *ListClassesRequest) GetPage() int32 {
 	if x != nil {
 		return x.Page
 	}
 	return 0
 }
 
-func (x *ListClassesRequest) GetPerPage() int64 {
+func (x *ListClassesRequest) GetPerPage() int32 {
 	if x != nil {
 		return x.PerPage
 	}
@@ -209,7 +209,7 @@ func (x *ListClassesRequest) GetPerPage() int64 {
 type ListClassesResponse struct {
 	state         protoimpl.MessageState  `protogen:"open.v1"`
 	ListClasses   []*summary.ClassSummary `protobuf:"bytes,1,rep,name=list_classes,json=listClasses,proto3" json:"list_classes,omitempty"`
-	Total         int64                   `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	Total         int32                   `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -251,7 +251,7 @@ func (x *ListClassesResponse) GetListClasses() []*summary.ClassSummary {
 	return nil
 }
 
-func (x *ListClassesResponse) GetTotal() int64 {
+func (x *ListClassesResponse) GetTotal() int32 {
 	if x != nil {
 		return x.Total
 	}
@@ -264,17 +264,17 @@ const file_apfish_v1_ship_class_class_service_proto_rawDesc = "" +
 	"\n" +
 	"(apfish.v1/ship/class/class_service.proto\x12\x14apfish.v1.ship.class\x1a apfish.v1/ship/class/class.proto\x1a0apfish.v1/ship/class/summary/class_summary.proto\"\x1e\n" +
 	"\fClassRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\"B\n" +
+	"\x02id\x18\x01 \x01(\x05R\x02id\"B\n" +
 	"\rClassResponse\x121\n" +
 	"\x05class\x18\x01 \x01(\v2\x1b.apfish.v1.ship.class.ClassR\x05class\"X\n" +
 	"\x14ClassSummaryResponse\x12@\n" +
 	"\x05class\x18\x01 \x01(\v2*.apfish.v1.ship.class.summary.ClassSummaryR\x05class\"C\n" +
 	"\x12ListClassesRequest\x12\x12\n" +
-	"\x04page\x18\x01 \x01(\x03R\x04page\x12\x19\n" +
-	"\bper_page\x18\x02 \x01(\x03R\aperPage\"z\n" +
+	"\x04page\x18\x01 \x01(\x05R\x04page\x12\x19\n" +
+	"\bper_page\x18\x02 \x01(\x05R\aperPage\"z\n" +
 	"\x13ListClassesResponse\x12M\n" +
 	"\flist_classes\x18\x01 \x03(\v2*.apfish.v1.ship.class.summary.ClassSummaryR\vlistClasses\x12\x14\n" +
-	"\x05total\x18\x02 \x01(\x03R\x05total2\xaa\x02\n" +
+	"\x05total\x18\x02 \x01(\x05R\x05total2\xaa\x02\n" +
 	"\fClassService\x12S\n" +
 	"\bGetClass\x12\".apfish.v1.ship.class.ClassRequest\x1a#.apfish.v1.ship.class.ClassResponse\x12a\n" +
 	"\x0fGetClassSummary\x12\".apfish.v1.ship.class.ClassRequest\x1a*.apfish.v1.ship.class.ClassSummaryResponse\x12b\n" +

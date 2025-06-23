@@ -40,9 +40,9 @@ export interface ListUsersRequest {
   /** Optional login prefix filter (e.g., "joh"). */
   login: string;
   /** Page number (1-based). Default: 1. */
-  page: Long;
+  page: number;
   /** Items per page (default: 20, max: 100). */
-  perPage: Long;
+  perPage: number;
 }
 
 /** Paginated user list response. */
@@ -50,7 +50,7 @@ export interface ListUsersResponse {
   /** Users matching the query (max `per_page` entries). */
   users: User[];
   /** Total matching users (ignoring pagination). */
-  total: Long;
+  total: number;
 }
 
 function createBaseUserRequest(): UserRequest {
@@ -168,7 +168,7 @@ export const UserResponse = {
 };
 
 function createBaseListUsersRequest(): ListUsersRequest {
-  return { login: "", page: Long.ZERO, perPage: Long.ZERO };
+  return { login: "", page: 0, perPage: 0 };
 }
 
 export const ListUsersRequest = {
@@ -176,11 +176,11 @@ export const ListUsersRequest = {
     if (message.login !== "") {
       writer.uint32(10).string(message.login);
     }
-    if (!message.page.equals(Long.ZERO)) {
-      writer.uint32(16).int64(message.page);
+    if (message.page !== 0) {
+      writer.uint32(16).int32(message.page);
     }
-    if (!message.perPage.equals(Long.ZERO)) {
-      writer.uint32(24).int64(message.perPage);
+    if (message.perPage !== 0) {
+      writer.uint32(24).int32(message.perPage);
     }
     return writer;
   },
@@ -204,14 +204,14 @@ export const ListUsersRequest = {
             break;
           }
 
-          message.page = reader.int64() as Long;
+          message.page = reader.int32();
           continue;
         case 3:
           if (tag !== 24) {
             break;
           }
 
-          message.perPage = reader.int64() as Long;
+          message.perPage = reader.int32();
           continue;
       }
       if ((tag & 7) === 4 || tag === 0) {
@@ -225,8 +225,8 @@ export const ListUsersRequest = {
   fromJSON(object: any): ListUsersRequest {
     return {
       login: isSet(object.login) ? globalThis.String(object.login) : "",
-      page: isSet(object.page) ? Long.fromValue(object.page) : Long.ZERO,
-      perPage: isSet(object.perPage) ? Long.fromValue(object.perPage) : Long.ZERO,
+      page: isSet(object.page) ? globalThis.Number(object.page) : 0,
+      perPage: isSet(object.perPage) ? globalThis.Number(object.perPage) : 0,
     };
   },
 
@@ -235,11 +235,11 @@ export const ListUsersRequest = {
     if (message.login !== "") {
       obj.login = message.login;
     }
-    if (!message.page.equals(Long.ZERO)) {
-      obj.page = (message.page || Long.ZERO).toString();
+    if (message.page !== 0) {
+      obj.page = Math.round(message.page);
     }
-    if (!message.perPage.equals(Long.ZERO)) {
-      obj.perPage = (message.perPage || Long.ZERO).toString();
+    if (message.perPage !== 0) {
+      obj.perPage = Math.round(message.perPage);
     }
     return obj;
   },
@@ -250,16 +250,14 @@ export const ListUsersRequest = {
   fromPartial<I extends Exact<DeepPartial<ListUsersRequest>, I>>(object: I): ListUsersRequest {
     const message = createBaseListUsersRequest();
     message.login = object.login ?? "";
-    message.page = (object.page !== undefined && object.page !== null) ? Long.fromValue(object.page) : Long.ZERO;
-    message.perPage = (object.perPage !== undefined && object.perPage !== null)
-      ? Long.fromValue(object.perPage)
-      : Long.ZERO;
+    message.page = object.page ?? 0;
+    message.perPage = object.perPage ?? 0;
     return message;
   },
 };
 
 function createBaseListUsersResponse(): ListUsersResponse {
-  return { users: [], total: Long.ZERO };
+  return { users: [], total: 0 };
 }
 
 export const ListUsersResponse = {
@@ -267,8 +265,8 @@ export const ListUsersResponse = {
     for (const v of message.users) {
       User.encode(v!, writer.uint32(10).fork()).ldelim();
     }
-    if (!message.total.equals(Long.ZERO)) {
-      writer.uint32(16).int64(message.total);
+    if (message.total !== 0) {
+      writer.uint32(16).int32(message.total);
     }
     return writer;
   },
@@ -292,7 +290,7 @@ export const ListUsersResponse = {
             break;
           }
 
-          message.total = reader.int64() as Long;
+          message.total = reader.int32();
           continue;
       }
       if ((tag & 7) === 4 || tag === 0) {
@@ -306,7 +304,7 @@ export const ListUsersResponse = {
   fromJSON(object: any): ListUsersResponse {
     return {
       users: globalThis.Array.isArray(object?.users) ? object.users.map((e: any) => User.fromJSON(e)) : [],
-      total: isSet(object.total) ? Long.fromValue(object.total) : Long.ZERO,
+      total: isSet(object.total) ? globalThis.Number(object.total) : 0,
     };
   },
 
@@ -315,8 +313,8 @@ export const ListUsersResponse = {
     if (message.users?.length) {
       obj.users = message.users.map((e) => User.toJSON(e));
     }
-    if (!message.total.equals(Long.ZERO)) {
-      obj.total = (message.total || Long.ZERO).toString();
+    if (message.total !== 0) {
+      obj.total = Math.round(message.total);
     }
     return obj;
   },
@@ -327,7 +325,7 @@ export const ListUsersResponse = {
   fromPartial<I extends Exact<DeepPartial<ListUsersResponse>, I>>(object: I): ListUsersResponse {
     const message = createBaseListUsersResponse();
     message.users = object.users?.map((e) => User.fromPartial(e)) || [];
-    message.total = (object.total !== undefined && object.total !== null) ? Long.fromValue(object.total) : Long.ZERO;
+    message.total = object.total ?? 0;
     return message;
   },
 };

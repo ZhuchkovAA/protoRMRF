@@ -13,7 +13,7 @@ export const protobufPackage = "apfish.v1.user.role.summary";
 
 export interface RoleSummary {
   /** Unique role ID. */
-  id: Long;
+  id: number;
   /** Human-readable name (e.g., "Admin"). */
   name: string;
   code: string;
@@ -22,13 +22,13 @@ export interface RoleSummary {
 }
 
 function createBaseRoleSummary(): RoleSummary {
-  return { id: Long.ZERO, name: "", code: "", createdAt: undefined };
+  return { id: 0, name: "", code: "", createdAt: undefined };
 }
 
 export const RoleSummary = {
   encode(message: RoleSummary, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.id.equals(Long.ZERO)) {
-      writer.uint32(8).int64(message.id);
+    if (message.id !== 0) {
+      writer.uint32(8).int32(message.id);
     }
     if (message.name !== "") {
       writer.uint32(18).string(message.name);
@@ -54,7 +54,7 @@ export const RoleSummary = {
             break;
           }
 
-          message.id = reader.int64() as Long;
+          message.id = reader.int32();
           continue;
         case 2:
           if (tag !== 18) {
@@ -88,7 +88,7 @@ export const RoleSummary = {
 
   fromJSON(object: any): RoleSummary {
     return {
-      id: isSet(object.id) ? Long.fromValue(object.id) : Long.ZERO,
+      id: isSet(object.id) ? globalThis.Number(object.id) : 0,
       name: isSet(object.name) ? globalThis.String(object.name) : "",
       code: isSet(object.code) ? globalThis.String(object.code) : "",
       createdAt: isSet(object.createdAt) ? fromJsonTimestamp(object.createdAt) : undefined,
@@ -97,8 +97,8 @@ export const RoleSummary = {
 
   toJSON(message: RoleSummary): unknown {
     const obj: any = {};
-    if (!message.id.equals(Long.ZERO)) {
-      obj.id = (message.id || Long.ZERO).toString();
+    if (message.id !== 0) {
+      obj.id = Math.round(message.id);
     }
     if (message.name !== "") {
       obj.name = message.name;
@@ -117,7 +117,7 @@ export const RoleSummary = {
   },
   fromPartial<I extends Exact<DeepPartial<RoleSummary>, I>>(object: I): RoleSummary {
     const message = createBaseRoleSummary();
-    message.id = (object.id !== undefined && object.id !== null) ? Long.fromValue(object.id) : Long.ZERO;
+    message.id = object.id ?? 0;
     message.name = object.name ?? "";
     message.code = object.code ?? "";
     message.createdAt = object.createdAt ?? undefined;

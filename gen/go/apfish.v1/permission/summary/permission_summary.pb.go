@@ -24,9 +24,9 @@ const (
 
 type PermissionSummary struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	ActionId      int64                  `protobuf:"varint,2,opt,name=action_id,json=actionId,proto3" json:"action_id,omitempty"`
-	ObjectId      int64                  `protobuf:"varint,3,opt,name=object_id,json=objectId,proto3" json:"object_id,omitempty"`
+	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	ActionId      int32                  `protobuf:"varint,2,opt,name=action_id,json=actionId,proto3" json:"action_id,omitempty"`
+	ObjectId      int32                  `protobuf:"varint,3,opt,name=object_id,json=objectId,proto3" json:"object_id,omitempty"`
 	Description   string                 `protobuf:"bytes,4,opt,name=description,proto3" json:"description,omitempty"` // Human-readable explanation of the permission
 	Name          string                 `protobuf:"bytes,5,opt,name=name,proto3" json:"name,omitempty"`               // Display name (e.g., "Read Inspections")
 	Code          string                 `protobuf:"bytes,6,opt,name=code,proto3" json:"code,omitempty"`               // Machine-readable identifier (e.g., "inspection:read")
@@ -65,21 +65,21 @@ func (*PermissionSummary) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_permission_summary_permission_summary_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *PermissionSummary) GetId() int64 {
+func (x *PermissionSummary) GetId() int32 {
 	if x != nil {
 		return x.Id
 	}
 	return 0
 }
 
-func (x *PermissionSummary) GetActionId() int64 {
+func (x *PermissionSummary) GetActionId() int32 {
 	if x != nil {
 		return x.ActionId
 	}
 	return 0
 }
 
-func (x *PermissionSummary) GetObjectId() int64 {
+func (x *PermissionSummary) GetObjectId() int32 {
 	if x != nil {
 		return x.ObjectId
 	}
@@ -120,9 +120,9 @@ const file_apfish_v1_permission_summary_permission_summary_proto_rawDesc = "" +
 	"\n" +
 	"5apfish.v1/permission/summary/permission_summary.proto\x12\x1capfish.v1.permission.summary\x1a\x1fgoogle/protobuf/timestamp.proto\"\xe2\x01\n" +
 	"\x11PermissionSummary\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x1b\n" +
-	"\taction_id\x18\x02 \x01(\x03R\bactionId\x12\x1b\n" +
-	"\tobject_id\x18\x03 \x01(\x03R\bobjectId\x12 \n" +
+	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x1b\n" +
+	"\taction_id\x18\x02 \x01(\x05R\bactionId\x12\x1b\n" +
+	"\tobject_id\x18\x03 \x01(\x05R\bobjectId\x12 \n" +
 	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x12\n" +
 	"\x04name\x18\x05 \x01(\tR\x04name\x12\x12\n" +
 	"\x04code\x18\x06 \x01(\tR\x04code\x129\n" +

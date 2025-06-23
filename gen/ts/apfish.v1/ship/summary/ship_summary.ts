@@ -12,64 +12,64 @@ import { Timestamp } from "../../../google/protobuf/timestamp";
 export const protobufPackage = "apfish.v1.ship.summary";
 
 export interface ShipSummary {
-  id: Long;
-  imo: Long;
-  typeId: Long;
-  classId: Long;
-  countryId: Long;
+  id: number;
+  imo: number;
+  typeId: number;
+  classId: number;
+  countryId: number;
   name: string;
-  mmsi: Long;
-  callSignId: Long;
+  mmsi: number;
+  callSignId: number;
   callSignValue: string;
   dateBuild: Date | undefined;
-  deadWeight: Long;
-  tonnage: Long;
+  deadWeight: number;
+  tonnage: number;
   createdAt: Date | undefined;
 }
 
 function createBaseShipSummary(): ShipSummary {
   return {
-    id: Long.ZERO,
-    imo: Long.ZERO,
-    typeId: Long.ZERO,
-    classId: Long.ZERO,
-    countryId: Long.ZERO,
+    id: 0,
+    imo: 0,
+    typeId: 0,
+    classId: 0,
+    countryId: 0,
     name: "",
-    mmsi: Long.ZERO,
-    callSignId: Long.ZERO,
+    mmsi: 0,
+    callSignId: 0,
     callSignValue: "",
     dateBuild: undefined,
-    deadWeight: Long.ZERO,
-    tonnage: Long.ZERO,
+    deadWeight: 0,
+    tonnage: 0,
     createdAt: undefined,
   };
 }
 
 export const ShipSummary = {
   encode(message: ShipSummary, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.id.equals(Long.ZERO)) {
-      writer.uint32(8).int64(message.id);
+    if (message.id !== 0) {
+      writer.uint32(8).int32(message.id);
     }
-    if (!message.imo.equals(Long.ZERO)) {
-      writer.uint32(16).int64(message.imo);
+    if (message.imo !== 0) {
+      writer.uint32(16).int32(message.imo);
     }
-    if (!message.typeId.equals(Long.ZERO)) {
-      writer.uint32(24).int64(message.typeId);
+    if (message.typeId !== 0) {
+      writer.uint32(24).int32(message.typeId);
     }
-    if (!message.classId.equals(Long.ZERO)) {
-      writer.uint32(32).int64(message.classId);
+    if (message.classId !== 0) {
+      writer.uint32(32).int32(message.classId);
     }
-    if (!message.countryId.equals(Long.ZERO)) {
-      writer.uint32(40).int64(message.countryId);
+    if (message.countryId !== 0) {
+      writer.uint32(40).int32(message.countryId);
     }
     if (message.name !== "") {
       writer.uint32(50).string(message.name);
     }
-    if (!message.mmsi.equals(Long.ZERO)) {
-      writer.uint32(56).int64(message.mmsi);
+    if (message.mmsi !== 0) {
+      writer.uint32(56).int32(message.mmsi);
     }
-    if (!message.callSignId.equals(Long.ZERO)) {
-      writer.uint32(64).int64(message.callSignId);
+    if (message.callSignId !== 0) {
+      writer.uint32(64).int32(message.callSignId);
     }
     if (message.callSignValue !== "") {
       writer.uint32(74).string(message.callSignValue);
@@ -77,11 +77,11 @@ export const ShipSummary = {
     if (message.dateBuild !== undefined) {
       Timestamp.encode(toTimestamp(message.dateBuild), writer.uint32(82).fork()).ldelim();
     }
-    if (!message.deadWeight.equals(Long.ZERO)) {
-      writer.uint32(88).int64(message.deadWeight);
+    if (message.deadWeight !== 0) {
+      writer.uint32(88).int32(message.deadWeight);
     }
-    if (!message.tonnage.equals(Long.ZERO)) {
-      writer.uint32(96).int64(message.tonnage);
+    if (message.tonnage !== 0) {
+      writer.uint32(96).int32(message.tonnage);
     }
     if (message.createdAt !== undefined) {
       Timestamp.encode(toTimestamp(message.createdAt), writer.uint32(106).fork()).ldelim();
@@ -101,35 +101,35 @@ export const ShipSummary = {
             break;
           }
 
-          message.id = reader.int64() as Long;
+          message.id = reader.int32();
           continue;
         case 2:
           if (tag !== 16) {
             break;
           }
 
-          message.imo = reader.int64() as Long;
+          message.imo = reader.int32();
           continue;
         case 3:
           if (tag !== 24) {
             break;
           }
 
-          message.typeId = reader.int64() as Long;
+          message.typeId = reader.int32();
           continue;
         case 4:
           if (tag !== 32) {
             break;
           }
 
-          message.classId = reader.int64() as Long;
+          message.classId = reader.int32();
           continue;
         case 5:
           if (tag !== 40) {
             break;
           }
 
-          message.countryId = reader.int64() as Long;
+          message.countryId = reader.int32();
           continue;
         case 6:
           if (tag !== 50) {
@@ -143,14 +143,14 @@ export const ShipSummary = {
             break;
           }
 
-          message.mmsi = reader.int64() as Long;
+          message.mmsi = reader.int32();
           continue;
         case 8:
           if (tag !== 64) {
             break;
           }
 
-          message.callSignId = reader.int64() as Long;
+          message.callSignId = reader.int32();
           continue;
         case 9:
           if (tag !== 74) {
@@ -171,14 +171,14 @@ export const ShipSummary = {
             break;
           }
 
-          message.deadWeight = reader.int64() as Long;
+          message.deadWeight = reader.int32();
           continue;
         case 12:
           if (tag !== 96) {
             break;
           }
 
-          message.tonnage = reader.int64() as Long;
+          message.tonnage = reader.int32();
           continue;
         case 13:
           if (tag !== 106) {
@@ -198,47 +198,47 @@ export const ShipSummary = {
 
   fromJSON(object: any): ShipSummary {
     return {
-      id: isSet(object.id) ? Long.fromValue(object.id) : Long.ZERO,
-      imo: isSet(object.imo) ? Long.fromValue(object.imo) : Long.ZERO,
-      typeId: isSet(object.typeId) ? Long.fromValue(object.typeId) : Long.ZERO,
-      classId: isSet(object.classId) ? Long.fromValue(object.classId) : Long.ZERO,
-      countryId: isSet(object.countryId) ? Long.fromValue(object.countryId) : Long.ZERO,
+      id: isSet(object.id) ? globalThis.Number(object.id) : 0,
+      imo: isSet(object.imo) ? globalThis.Number(object.imo) : 0,
+      typeId: isSet(object.typeId) ? globalThis.Number(object.typeId) : 0,
+      classId: isSet(object.classId) ? globalThis.Number(object.classId) : 0,
+      countryId: isSet(object.countryId) ? globalThis.Number(object.countryId) : 0,
       name: isSet(object.name) ? globalThis.String(object.name) : "",
-      mmsi: isSet(object.mmsi) ? Long.fromValue(object.mmsi) : Long.ZERO,
-      callSignId: isSet(object.callSignId) ? Long.fromValue(object.callSignId) : Long.ZERO,
+      mmsi: isSet(object.mmsi) ? globalThis.Number(object.mmsi) : 0,
+      callSignId: isSet(object.callSignId) ? globalThis.Number(object.callSignId) : 0,
       callSignValue: isSet(object.callSignValue) ? globalThis.String(object.callSignValue) : "",
       dateBuild: isSet(object.dateBuild) ? fromJsonTimestamp(object.dateBuild) : undefined,
-      deadWeight: isSet(object.deadWeight) ? Long.fromValue(object.deadWeight) : Long.ZERO,
-      tonnage: isSet(object.tonnage) ? Long.fromValue(object.tonnage) : Long.ZERO,
+      deadWeight: isSet(object.deadWeight) ? globalThis.Number(object.deadWeight) : 0,
+      tonnage: isSet(object.tonnage) ? globalThis.Number(object.tonnage) : 0,
       createdAt: isSet(object.createdAt) ? fromJsonTimestamp(object.createdAt) : undefined,
     };
   },
 
   toJSON(message: ShipSummary): unknown {
     const obj: any = {};
-    if (!message.id.equals(Long.ZERO)) {
-      obj.id = (message.id || Long.ZERO).toString();
+    if (message.id !== 0) {
+      obj.id = Math.round(message.id);
     }
-    if (!message.imo.equals(Long.ZERO)) {
-      obj.imo = (message.imo || Long.ZERO).toString();
+    if (message.imo !== 0) {
+      obj.imo = Math.round(message.imo);
     }
-    if (!message.typeId.equals(Long.ZERO)) {
-      obj.typeId = (message.typeId || Long.ZERO).toString();
+    if (message.typeId !== 0) {
+      obj.typeId = Math.round(message.typeId);
     }
-    if (!message.classId.equals(Long.ZERO)) {
-      obj.classId = (message.classId || Long.ZERO).toString();
+    if (message.classId !== 0) {
+      obj.classId = Math.round(message.classId);
     }
-    if (!message.countryId.equals(Long.ZERO)) {
-      obj.countryId = (message.countryId || Long.ZERO).toString();
+    if (message.countryId !== 0) {
+      obj.countryId = Math.round(message.countryId);
     }
     if (message.name !== "") {
       obj.name = message.name;
     }
-    if (!message.mmsi.equals(Long.ZERO)) {
-      obj.mmsi = (message.mmsi || Long.ZERO).toString();
+    if (message.mmsi !== 0) {
+      obj.mmsi = Math.round(message.mmsi);
     }
-    if (!message.callSignId.equals(Long.ZERO)) {
-      obj.callSignId = (message.callSignId || Long.ZERO).toString();
+    if (message.callSignId !== 0) {
+      obj.callSignId = Math.round(message.callSignId);
     }
     if (message.callSignValue !== "") {
       obj.callSignValue = message.callSignValue;
@@ -246,11 +246,11 @@ export const ShipSummary = {
     if (message.dateBuild !== undefined) {
       obj.dateBuild = message.dateBuild.toISOString();
     }
-    if (!message.deadWeight.equals(Long.ZERO)) {
-      obj.deadWeight = (message.deadWeight || Long.ZERO).toString();
+    if (message.deadWeight !== 0) {
+      obj.deadWeight = Math.round(message.deadWeight);
     }
-    if (!message.tonnage.equals(Long.ZERO)) {
-      obj.tonnage = (message.tonnage || Long.ZERO).toString();
+    if (message.tonnage !== 0) {
+      obj.tonnage = Math.round(message.tonnage);
     }
     if (message.createdAt !== undefined) {
       obj.createdAt = message.createdAt.toISOString();
@@ -263,30 +263,18 @@ export const ShipSummary = {
   },
   fromPartial<I extends Exact<DeepPartial<ShipSummary>, I>>(object: I): ShipSummary {
     const message = createBaseShipSummary();
-    message.id = (object.id !== undefined && object.id !== null) ? Long.fromValue(object.id) : Long.ZERO;
-    message.imo = (object.imo !== undefined && object.imo !== null) ? Long.fromValue(object.imo) : Long.ZERO;
-    message.typeId = (object.typeId !== undefined && object.typeId !== null)
-      ? Long.fromValue(object.typeId)
-      : Long.ZERO;
-    message.classId = (object.classId !== undefined && object.classId !== null)
-      ? Long.fromValue(object.classId)
-      : Long.ZERO;
-    message.countryId = (object.countryId !== undefined && object.countryId !== null)
-      ? Long.fromValue(object.countryId)
-      : Long.ZERO;
+    message.id = object.id ?? 0;
+    message.imo = object.imo ?? 0;
+    message.typeId = object.typeId ?? 0;
+    message.classId = object.classId ?? 0;
+    message.countryId = object.countryId ?? 0;
     message.name = object.name ?? "";
-    message.mmsi = (object.mmsi !== undefined && object.mmsi !== null) ? Long.fromValue(object.mmsi) : Long.ZERO;
-    message.callSignId = (object.callSignId !== undefined && object.callSignId !== null)
-      ? Long.fromValue(object.callSignId)
-      : Long.ZERO;
+    message.mmsi = object.mmsi ?? 0;
+    message.callSignId = object.callSignId ?? 0;
     message.callSignValue = object.callSignValue ?? "";
     message.dateBuild = object.dateBuild ?? undefined;
-    message.deadWeight = (object.deadWeight !== undefined && object.deadWeight !== null)
-      ? Long.fromValue(object.deadWeight)
-      : Long.ZERO;
-    message.tonnage = (object.tonnage !== undefined && object.tonnage !== null)
-      ? Long.fromValue(object.tonnage)
-      : Long.ZERO;
+    message.deadWeight = object.deadWeight ?? 0;
+    message.tonnage = object.tonnage ?? 0;
     message.createdAt = object.createdAt ?? undefined;
     return message;
   },

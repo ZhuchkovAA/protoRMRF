@@ -15,7 +15,7 @@ service ActionService {
 }
 
 message ActionRequest {
-  int64 id = 1;
+  int32 id = 1;
 }
 
 message ActionResponse {
@@ -27,11 +27,11 @@ message ActionSummaryResponse {
 }
 
 message ListActionsRequest {
-  int64 page = 1;      // Page number (1-based). Default: 1.
-  int64 per_page = 2;  // Items per page (default: 20, max: 100).
+  int32 page = 1;      // Page number (1-based). Default: 1.
+  int32 per_page = 2;  // Items per page (default: 20, max: 100).
 }
 
 message ListActionsResponse {
   repeated permission.action.summary.ActionSummary list_actions = 1;
-  int64 total = 2;
+  int32 total = 2;
 }

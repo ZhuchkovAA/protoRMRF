@@ -24,7 +24,7 @@ const (
 
 type DistrictRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -59,7 +59,7 @@ func (*DistrictRequest) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_location_district_district_service_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *DistrictRequest) GetId() int64 {
+func (x *DistrictRequest) GetId() int32 {
 	if x != nil {
 		return x.Id
 	}
@@ -156,8 +156,8 @@ func (x *DistrictSummaryResponse) GetDistrict() *summary.DistrictSummary {
 
 type ListDistrictsRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Page          int64                  `protobuf:"varint,1,opt,name=page,proto3" json:"page,omitempty"`                      // Page number (1-based). Default: 1.
-	PerPage       int64                  `protobuf:"varint,2,opt,name=per_page,json=perPage,proto3" json:"per_page,omitempty"` // Items per page (default: 20, max: 100).
+	Page          int32                  `protobuf:"varint,1,opt,name=page,proto3" json:"page,omitempty"`                      // Page number (1-based). Default: 1.
+	PerPage       int32                  `protobuf:"varint,2,opt,name=per_page,json=perPage,proto3" json:"per_page,omitempty"` // Items per page (default: 20, max: 100).
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -192,14 +192,14 @@ func (*ListDistrictsRequest) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_location_district_district_service_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *ListDistrictsRequest) GetPage() int64 {
+func (x *ListDistrictsRequest) GetPage() int32 {
 	if x != nil {
 		return x.Page
 	}
 	return 0
 }
 
-func (x *ListDistrictsRequest) GetPerPage() int64 {
+func (x *ListDistrictsRequest) GetPerPage() int32 {
 	if x != nil {
 		return x.PerPage
 	}
@@ -209,7 +209,7 @@ func (x *ListDistrictsRequest) GetPerPage() int64 {
 type ListDistrictsResponse struct {
 	state         protoimpl.MessageState     `protogen:"open.v1"`
 	ListDistricts []*summary.DistrictSummary `protobuf:"bytes,1,rep,name=list_districts,json=listDistricts,proto3" json:"list_districts,omitempty"`
-	Total         int64                      `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	Total         int32                      `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -251,7 +251,7 @@ func (x *ListDistrictsResponse) GetListDistricts() []*summary.DistrictSummary {
 	return nil
 }
 
-func (x *ListDistrictsResponse) GetTotal() int64 {
+func (x *ListDistrictsResponse) GetTotal() int32 {
 	if x != nil {
 		return x.Total
 	}
@@ -264,17 +264,17 @@ const file_apfish_v1_location_district_district_service_proto_rawDesc = "" +
 	"\n" +
 	"2apfish.v1/location/district/district_service.proto\x12\x1bapfish.v1.location.district\x1a*apfish.v1/location/district/district.proto\x1a:apfish.v1/location/district/summary/district_summary.proto\"!\n" +
 	"\x0fDistrictRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\"U\n" +
+	"\x02id\x18\x01 \x01(\x05R\x02id\"U\n" +
 	"\x10DistrictResponse\x12A\n" +
 	"\bdistrict\x18\x01 \x01(\v2%.apfish.v1.location.district.DistrictR\bdistrict\"k\n" +
 	"\x17DistrictSummaryResponse\x12P\n" +
 	"\bdistrict\x18\x01 \x01(\v24.apfish.v1.location.district.summary.DistrictSummaryR\bdistrict\"E\n" +
 	"\x14ListDistrictsRequest\x12\x12\n" +
-	"\x04page\x18\x01 \x01(\x03R\x04page\x12\x19\n" +
-	"\bper_page\x18\x02 \x01(\x03R\aperPage\"\x8a\x01\n" +
+	"\x04page\x18\x01 \x01(\x05R\x04page\x12\x19\n" +
+	"\bper_page\x18\x02 \x01(\x05R\aperPage\"\x8a\x01\n" +
 	"\x15ListDistrictsResponse\x12[\n" +
 	"\x0elist_districts\x18\x01 \x03(\v24.apfish.v1.location.district.summary.DistrictSummaryR\rlistDistricts\x12\x14\n" +
-	"\x05total\x18\x02 \x01(\x03R\x05total2\xef\x02\n" +
+	"\x05total\x18\x02 \x01(\x05R\x05total2\xef\x02\n" +
 	"\x0fDistrictService\x12j\n" +
 	"\vGetDistrict\x12,.apfish.v1.location.district.DistrictRequest\x1a-.apfish.v1.location.district.DistrictResponse\x12x\n" +
 	"\x12GetDistrictSummary\x12,.apfish.v1.location.district.DistrictRequest\x1a4.apfish.v1.location.district.DistrictSummaryResponse\x12v\n" +
