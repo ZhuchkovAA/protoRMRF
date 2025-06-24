@@ -18,9 +18,10 @@ message User {
   string official_name = 3;           // Formal name (e.g., "John Doe").
   apfish.v1.user.role.summary.RoleSummary role = 4;                      // Assigned role.
   google.protobuf.Timestamp created_at = 5;  // When the user was created.
-  string created_by_login = 6;        // Login of the creator (e.g., "admin").
+  bool is_active = 6;
+  string created_by_login = 7;        // Login of the creator (e.g., "admin").
 
-  repeated apfish.v1.user.contact.summary.ContactSummary contacts = 7;   // User's contact methods.
-  repeated apfish.v1.permission.summary.PermissionSummary permissions = 8;  // Direct permissions (overrides role).
+  repeated apfish.v1.user.contact.summary.ContactSummary contacts = 8;   // User's contact methods.
+  repeated apfish.v1.permission.summary.PermissionSummary permissions = 9;  // Direct permissions (overrides role).
 }
 

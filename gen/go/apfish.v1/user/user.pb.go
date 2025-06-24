@@ -28,14 +28,15 @@ const (
 // Represents a user account in the system.
 type User struct {
 	state          protoimpl.MessageState        `protogen:"open.v1"`
-	Id             int32                         `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`                                                // Unique system-generated ID.
-	Login          string                        `protobuf:"bytes,2,opt,name=login,proto3" json:"login,omitempty"`                                           // Unique login identifier.
-	OfficialName   string                        `protobuf:"bytes,3,opt,name=official_name,json=officialName,proto3" json:"official_name,omitempty"`         // Formal name (e.g., "John Doe").
-	Role           *summary.RoleSummary          `protobuf:"bytes,4,opt,name=role,proto3" json:"role,omitempty"`                                             // Assigned role.
-	CreatedAt      *timestamppb.Timestamp        `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`                  // When the user was created.
-	CreatedByLogin string                        `protobuf:"bytes,6,opt,name=created_by_login,json=createdByLogin,proto3" json:"created_by_login,omitempty"` // Login of the creator (e.g., "admin").
-	Contacts       []*summary1.ContactSummary    `protobuf:"bytes,7,rep,name=contacts,proto3" json:"contacts,omitempty"`                                     // User's contact methods.
-	Permissions    []*summary2.PermissionSummary `protobuf:"bytes,8,rep,name=permissions,proto3" json:"permissions,omitempty"`                               // Direct permissions (overrides role).
+	Id             int32                         `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`                                        // Unique system-generated ID.
+	Login          string                        `protobuf:"bytes,2,opt,name=login,proto3" json:"login,omitempty"`                                   // Unique login identifier.
+	OfficialName   string                        `protobuf:"bytes,3,opt,name=official_name,json=officialName,proto3" json:"official_name,omitempty"` // Formal name (e.g., "John Doe").
+	Role           *summary.RoleSummary          `protobuf:"bytes,4,opt,name=role,proto3" json:"role,omitempty"`                                     // Assigned role.
+	CreatedAt      *timestamppb.Timestamp        `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`          // When the user was created.
+	IsActive       bool                          `protobuf:"varint,6,opt,name=is_active,json=isActive,proto3" json:"is_active,omitempty"`
+	CreatedByLogin string                        `protobuf:"bytes,7,opt,name=created_by_login,json=createdByLogin,proto3" json:"created_by_login,omitempty"` // Login of the creator (e.g., "admin").
+	Contacts       []*summary1.ContactSummary    `protobuf:"bytes,8,rep,name=contacts,proto3" json:"contacts,omitempty"`                                     // User's contact methods.
+	Permissions    []*summary2.PermissionSummary `protobuf:"bytes,9,rep,name=permissions,proto3" json:"permissions,omitempty"`                               // Direct permissions (overrides role).
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
@@ -105,6 +106,13 @@ func (x *User) GetCreatedAt() *timestamppb.Timestamp {
 	return nil
 }
 
+func (x *User) GetIsActive() bool {
+	if x != nil {
+		return x.IsActive
+	}
+	return false
+}
+
 func (x *User) GetCreatedByLogin() string {
 	if x != nil {
 		return x.CreatedByLogin
@@ -130,17 +138,18 @@ var File_apfish_v1_user_user_proto protoreflect.FileDescriptor
 
 const file_apfish_v1_user_user_proto_rawDesc = "" +
 	"\n" +
-	"\x19apfish.v1/user/user.proto\x12\x0eapfish.v1.user\x1a\x1fgoogle/protobuf/timestamp.proto\x1a.apfish.v1/user/role/summary/role_summary.proto\x1a<apfish.v1/user/contact/contact/summary/contact_summary.proto\x1a5apfish.v1/permission/summary/permission_summary.proto\"\x93\x03\n" +
+	"\x19apfish.v1/user/user.proto\x12\x0eapfish.v1.user\x1a\x1fgoogle/protobuf/timestamp.proto\x1a.apfish.v1/user/role/summary/role_summary.proto\x1a<apfish.v1/user/contact/contact/summary/contact_summary.proto\x1a5apfish.v1/permission/summary/permission_summary.proto\"\xb0\x03\n" +
 	"\x04User\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x14\n" +
 	"\x05login\x18\x02 \x01(\tR\x05login\x12#\n" +
 	"\rofficial_name\x18\x03 \x01(\tR\fofficialName\x12<\n" +
 	"\x04role\x18\x04 \x01(\v2(.apfish.v1.user.role.summary.RoleSummaryR\x04role\x129\n" +
 	"\n" +
-	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x12(\n" +
-	"\x10created_by_login\x18\x06 \x01(\tR\x0ecreatedByLogin\x12J\n" +
-	"\bcontacts\x18\a \x03(\v2..apfish.v1.user.contact.summary.ContactSummaryR\bcontacts\x12Q\n" +
-	"\vpermissions\x18\b \x03(\v2/.apfish.v1.permission.summary.PermissionSummaryR\vpermissionsB<Z:github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user;userb\x06proto3"
+	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x12\x1b\n" +
+	"\tis_active\x18\x06 \x01(\bR\bisActive\x12(\n" +
+	"\x10created_by_login\x18\a \x01(\tR\x0ecreatedByLogin\x12J\n" +
+	"\bcontacts\x18\b \x03(\v2..apfish.v1.user.contact.summary.ContactSummaryR\bcontacts\x12Q\n" +
+	"\vpermissions\x18\t \x03(\v2/.apfish.v1.permission.summary.PermissionSummaryR\vpermissionsB<Z:github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user;userb\x06proto3"
 
 var (
 	file_apfish_v1_user_user_proto_rawDescOnce sync.Once
