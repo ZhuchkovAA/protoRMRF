@@ -16,8 +16,9 @@ export interface UserSummary {
   id: number;
   /** Unique login identifier. */
   login: string;
-  /** Formal name (e.g., "John Doe"). */
-  officialName: string;
+  firstName: string;
+  lastName: string;
+  middleName: string;
   /** Assigned role. */
   roleId: number;
   /** When the user was created. */
@@ -28,7 +29,17 @@ export interface UserSummary {
 }
 
 function createBaseUserSummary(): UserSummary {
-  return { id: 0, login: "", officialName: "", roleId: 0, createdAt: undefined, isActive: false, createdByLogin: "" };
+  return {
+    id: 0,
+    login: "",
+    firstName: "",
+    lastName: "",
+    middleName: "",
+    roleId: 0,
+    createdAt: undefined,
+    isActive: false,
+    createdByLogin: "",
+  };
 }
 
 export const UserSummary = {
@@ -39,20 +50,26 @@ export const UserSummary = {
     if (message.login !== "") {
       writer.uint32(18).string(message.login);
     }
-    if (message.officialName !== "") {
-      writer.uint32(26).string(message.officialName);
+    if (message.firstName !== "") {
+      writer.uint32(26).string(message.firstName);
+    }
+    if (message.lastName !== "") {
+      writer.uint32(34).string(message.lastName);
+    }
+    if (message.middleName !== "") {
+      writer.uint32(42).string(message.middleName);
     }
     if (message.roleId !== 0) {
-      writer.uint32(32).int32(message.roleId);
+      writer.uint32(48).int32(message.roleId);
     }
     if (message.createdAt !== undefined) {
-      Timestamp.encode(toTimestamp(message.createdAt), writer.uint32(42).fork()).ldelim();
+      Timestamp.encode(toTimestamp(message.createdAt), writer.uint32(58).fork()).ldelim();
     }
     if (message.isActive !== false) {
-      writer.uint32(48).bool(message.isActive);
+      writer.uint32(64).bool(message.isActive);
     }
     if (message.createdByLogin !== "") {
-      writer.uint32(58).string(message.createdByLogin);
+      writer.uint32(74).string(message.createdByLogin);
     }
     return writer;
   },
@@ -83,31 +100,45 @@ export const UserSummary = {
             break;
           }
 
-          message.officialName = reader.string();
+          message.firstName = reader.string();
           continue;
         case 4:
-          if (tag !== 32) {
+          if (tag !== 34) {
             break;
           }
 
-          message.roleId = reader.int32();
+          message.lastName = reader.string();
           continue;
         case 5:
           if (tag !== 42) {
             break;
           }
 
-          message.createdAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          message.middleName = reader.string();
           continue;
         case 6:
           if (tag !== 48) {
             break;
           }
 
-          message.isActive = reader.bool();
+          message.roleId = reader.int32();
           continue;
         case 7:
           if (tag !== 58) {
+            break;
+          }
+
+          message.createdAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          continue;
+        case 8:
+          if (tag !== 64) {
+            break;
+          }
+
+          message.isActive = reader.bool();
+          continue;
+        case 9:
+          if (tag !== 74) {
             break;
           }
 
@@ -126,7 +157,9 @@ export const UserSummary = {
     return {
       id: isSet(object.id) ? globalThis.Number(object.id) : 0,
       login: isSet(object.login) ? globalThis.String(object.login) : "",
-      officialName: isSet(object.officialName) ? globalThis.String(object.officialName) : "",
+      firstName: isSet(object.firstName) ? globalThis.String(object.firstName) : "",
+      lastName: isSet(object.lastName) ? globalThis.String(object.lastName) : "",
+      middleName: isSet(object.middleName) ? globalThis.String(object.middleName) : "",
       roleId: isSet(object.roleId) ? globalThis.Number(object.roleId) : 0,
       createdAt: isSet(object.createdAt) ? fromJsonTimestamp(object.createdAt) : undefined,
       isActive: isSet(object.isActive) ? globalThis.Boolean(object.isActive) : false,
@@ -142,8 +175,14 @@ export const UserSummary = {
     if (message.login !== "") {
       obj.login = message.login;
     }
-    if (message.officialName !== "") {
-      obj.officialName = message.officialName;
+    if (message.firstName !== "") {
+      obj.firstName = message.firstName;
+    }
+    if (message.lastName !== "") {
+      obj.lastName = message.lastName;
+    }
+    if (message.middleName !== "") {
+      obj.middleName = message.middleName;
     }
     if (message.roleId !== 0) {
       obj.roleId = Math.round(message.roleId);
@@ -167,7 +206,9 @@ export const UserSummary = {
     const message = createBaseUserSummary();
     message.id = object.id ?? 0;
     message.login = object.login ?? "";
-    message.officialName = object.officialName ?? "";
+    message.firstName = object.firstName ?? "";
+    message.lastName = object.lastName ?? "";
+    message.middleName = object.middleName ?? "";
     message.roleId = object.roleId ?? 0;
     message.createdAt = object.createdAt ?? undefined;
     message.isActive = object.isActive ?? false;

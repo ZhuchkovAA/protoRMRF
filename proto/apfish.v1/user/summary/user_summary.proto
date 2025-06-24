@@ -9,9 +9,11 @@ import "google/protobuf/timestamp.proto";  // Standard Protocol Buffers timestam
 message UserSummary {
   int32 id = 1;                       // Unique system-generated ID.
   string login = 2;                   // Unique login identifier.
-  string official_name = 3;           // Formal name (e.g., "John Doe").
-  int32 role_id = 4;                      // Assigned role.
-  google.protobuf.Timestamp created_at = 5;  // When the user was created.
-  bool is_active = 6;
-  string created_by_login = 7;        // Login of the creator (e.g., "admin").
+  string first_name = 3;
+  string last_name = 4;
+  string middle_name = 5;
+  int32 role_id = 6;                      // Assigned role.
+  google.protobuf.Timestamp created_at = 7;  // When the user was created.
+  bool is_active = 8;
+  string created_by_login = 9;        // Login of the creator (e.g., "admin").
 }
