@@ -24,6 +24,15 @@ export interface PermissionSummary {
   createdAt: Date | undefined;
 }
 
+export interface PermissionJwt {
+  actionId: number;
+  objectId: number;
+  countriesId: number[];
+  districtsId: number[];
+  portsId: number[];
+  shipsId: number[];
+}
+
 function createBasePermissionSummary(): PermissionSummary {
   return { id: 0, actionId: 0, objectId: 0, description: "", name: "", code: "", createdAt: undefined };
 }
@@ -169,6 +178,192 @@ export const PermissionSummary = {
     message.name = object.name ?? "";
     message.code = object.code ?? "";
     message.createdAt = object.createdAt ?? undefined;
+    return message;
+  },
+};
+
+function createBasePermissionJwt(): PermissionJwt {
+  return { actionId: 0, objectId: 0, countriesId: [], districtsId: [], portsId: [], shipsId: [] };
+}
+
+export const PermissionJwt = {
+  encode(message: PermissionJwt, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.actionId !== 0) {
+      writer.uint32(8).int32(message.actionId);
+    }
+    if (message.objectId !== 0) {
+      writer.uint32(16).int32(message.objectId);
+    }
+    writer.uint32(26).fork();
+    for (const v of message.countriesId) {
+      writer.int32(v);
+    }
+    writer.ldelim();
+    writer.uint32(34).fork();
+    for (const v of message.districtsId) {
+      writer.int32(v);
+    }
+    writer.ldelim();
+    writer.uint32(42).fork();
+    for (const v of message.portsId) {
+      writer.int32(v);
+    }
+    writer.ldelim();
+    writer.uint32(50).fork();
+    for (const v of message.shipsId) {
+      writer.int32(v);
+    }
+    writer.ldelim();
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): PermissionJwt {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBasePermissionJwt();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag !== 8) {
+            break;
+          }
+
+          message.actionId = reader.int32();
+          continue;
+        case 2:
+          if (tag !== 16) {
+            break;
+          }
+
+          message.objectId = reader.int32();
+          continue;
+        case 3:
+          if (tag === 24) {
+            message.countriesId.push(reader.int32());
+
+            continue;
+          }
+
+          if (tag === 26) {
+            const end2 = reader.uint32() + reader.pos;
+            while (reader.pos < end2) {
+              message.countriesId.push(reader.int32());
+            }
+
+            continue;
+          }
+
+          break;
+        case 4:
+          if (tag === 32) {
+            message.districtsId.push(reader.int32());
+
+            continue;
+          }
+
+          if (tag === 34) {
+            const end2 = reader.uint32() + reader.pos;
+            while (reader.pos < end2) {
+              message.districtsId.push(reader.int32());
+            }
+
+            continue;
+          }
+
+          break;
+        case 5:
+          if (tag === 40) {
+            message.portsId.push(reader.int32());
+
+            continue;
+          }
+
+          if (tag === 42) {
+            const end2 = reader.uint32() + reader.pos;
+            while (reader.pos < end2) {
+              message.portsId.push(reader.int32());
+            }
+
+            continue;
+          }
+
+          break;
+        case 6:
+          if (tag === 48) {
+            message.shipsId.push(reader.int32());
+
+            continue;
+          }
+
+          if (tag === 50) {
+            const end2 = reader.uint32() + reader.pos;
+            while (reader.pos < end2) {
+              message.shipsId.push(reader.int32());
+            }
+
+            continue;
+          }
+
+          break;
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): PermissionJwt {
+    return {
+      actionId: isSet(object.actionId) ? globalThis.Number(object.actionId) : 0,
+      objectId: isSet(object.objectId) ? globalThis.Number(object.objectId) : 0,
+      countriesId: globalThis.Array.isArray(object?.countriesId)
+        ? object.countriesId.map((e: any) => globalThis.Number(e))
+        : [],
+      districtsId: globalThis.Array.isArray(object?.districtsId)
+        ? object.districtsId.map((e: any) => globalThis.Number(e))
+        : [],
+      portsId: globalThis.Array.isArray(object?.portsId) ? object.portsId.map((e: any) => globalThis.Number(e)) : [],
+      shipsId: globalThis.Array.isArray(object?.shipsId) ? object.shipsId.map((e: any) => globalThis.Number(e)) : [],
+    };
+  },
+
+  toJSON(message: PermissionJwt): unknown {
+    const obj: any = {};
+    if (message.actionId !== 0) {
+      obj.actionId = Math.round(message.actionId);
+    }
+    if (message.objectId !== 0) {
+      obj.objectId = Math.round(message.objectId);
+    }
+    if (message.countriesId?.length) {
+      obj.countriesId = message.countriesId.map((e) => Math.round(e));
+    }
+    if (message.districtsId?.length) {
+      obj.districtsId = message.districtsId.map((e) => Math.round(e));
+    }
+    if (message.portsId?.length) {
+      obj.portsId = message.portsId.map((e) => Math.round(e));
+    }
+    if (message.shipsId?.length) {
+      obj.shipsId = message.shipsId.map((e) => Math.round(e));
+    }
+    return obj;
+  },
+
+  create<I extends Exact<DeepPartial<PermissionJwt>, I>>(base?: I): PermissionJwt {
+    return PermissionJwt.fromPartial(base ?? ({} as any));
+  },
+  fromPartial<I extends Exact<DeepPartial<PermissionJwt>, I>>(object: I): PermissionJwt {
+    const message = createBasePermissionJwt();
+    message.actionId = object.actionId ?? 0;
+    message.objectId = object.objectId ?? 0;
+    message.countriesId = object.countriesId?.map((e) => e) || [];
+    message.districtsId = object.districtsId?.map((e) => e) || [];
+    message.portsId = object.portsId?.map((e) => e) || [];
+    message.shipsId = object.shipsId?.map((e) => e) || [];
     return message;
   },
 };

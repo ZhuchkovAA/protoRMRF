@@ -4,6 +4,8 @@ package apfish.v1.auth;
 
 option go_package = "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/auth;auth";
 
+import "apfish.v1/permission/summary/permission_summary.proto";
+
 // Auth is service for managing permissions and roles.
 service AuthService {
   // Register registers a new user.
@@ -44,3 +46,9 @@ message RefreshRequest {
 message RefreshResponse {
   string access_token = 1;
 }
+
+message JwtData {
+  string login = 1;
+  repeated apfish.v1.permission.summary.PermissionJwt permissions = 2;
+}
+

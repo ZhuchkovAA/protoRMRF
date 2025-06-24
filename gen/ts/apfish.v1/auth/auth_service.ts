@@ -19,6 +19,7 @@ import {
 } from "@grpc/grpc-js";
 import Long from "long";
 import _m0 from "protobufjs/minimal";
+import { PermissionJwt } from "../permission/summary/permission_summary";
 
 export const protobufPackage = "apfish.v1.auth";
 
@@ -56,6 +57,11 @@ export interface RefreshRequest {
 
 export interface RefreshResponse {
   accessToken: string;
+}
+
+export interface JwtData {
+  login: string;
+  permissions: PermissionJwt[];
 }
 
 function createBaseRegisterRequest(): RegisterRequest {
@@ -462,6 +468,82 @@ export const RefreshResponse = {
   fromPartial<I extends Exact<DeepPartial<RefreshResponse>, I>>(object: I): RefreshResponse {
     const message = createBaseRefreshResponse();
     message.accessToken = object.accessToken ?? "";
+    return message;
+  },
+};
+
+function createBaseJwtData(): JwtData {
+  return { login: "", permissions: [] };
+}
+
+export const JwtData = {
+  encode(message: JwtData, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.login !== "") {
+      writer.uint32(10).string(message.login);
+    }
+    for (const v of message.permissions) {
+      PermissionJwt.encode(v!, writer.uint32(18).fork()).ldelim();
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): JwtData {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseJwtData();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag !== 10) {
+            break;
+          }
+
+          message.login = reader.string();
+          continue;
+        case 2:
+          if (tag !== 18) {
+            break;
+          }
+
+          message.permissions.push(PermissionJwt.decode(reader, reader.uint32()));
+          continue;
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): JwtData {
+    return {
+      login: isSet(object.login) ? globalThis.String(object.login) : "",
+      permissions: globalThis.Array.isArray(object?.permissions)
+        ? object.permissions.map((e: any) => PermissionJwt.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: JwtData): unknown {
+    const obj: any = {};
+    if (message.login !== "") {
+      obj.login = message.login;
+    }
+    if (message.permissions?.length) {
+      obj.permissions = message.permissions.map((e) => PermissionJwt.toJSON(e));
+    }
+    return obj;
+  },
+
+  create<I extends Exact<DeepPartial<JwtData>, I>>(base?: I): JwtData {
+    return JwtData.fromPartial(base ?? ({} as any));
+  },
+  fromPartial<I extends Exact<DeepPartial<JwtData>, I>>(object: I): JwtData {
+    const message = createBaseJwtData();
+    message.login = object.login ?? "";
+    message.permissions = object.permissions?.map((e) => PermissionJwt.fromPartial(e)) || [];
     return message;
   },
 };

@@ -7,6 +7,7 @@
 package auth
 
 import (
+	summary "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/summary"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -317,11 +318,63 @@ func (x *RefreshResponse) GetAccessToken() string {
 	return ""
 }
 
+type JwtData struct {
+	state         protoimpl.MessageState   `protogen:"open.v1"`
+	Login         string                   `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"`
+	Permissions   []*summary.PermissionJwt `protobuf:"bytes,2,rep,name=permissions,proto3" json:"permissions,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *JwtData) Reset() {
+	*x = JwtData{}
+	mi := &file_apfish_v1_auth_auth_service_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *JwtData) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*JwtData) ProtoMessage() {}
+
+func (x *JwtData) ProtoReflect() protoreflect.Message {
+	mi := &file_apfish_v1_auth_auth_service_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use JwtData.ProtoReflect.Descriptor instead.
+func (*JwtData) Descriptor() ([]byte, []int) {
+	return file_apfish_v1_auth_auth_service_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *JwtData) GetLogin() string {
+	if x != nil {
+		return x.Login
+	}
+	return ""
+}
+
+func (x *JwtData) GetPermissions() []*summary.PermissionJwt {
+	if x != nil {
+		return x.Permissions
+	}
+	return nil
+}
+
 var File_apfish_v1_auth_auth_service_proto protoreflect.FileDescriptor
 
 const file_apfish_v1_auth_auth_service_proto_rawDesc = "" +
 	"\n" +
-	"!apfish.v1/auth/auth_service.proto\x12\x0eapfish.v1.auth\"C\n" +
+	"!apfish.v1/auth/auth_service.proto\x12\x0eapfish.v1.auth\x1a5apfish.v1/permission/summary/permission_summary.proto\"C\n" +
 	"\x0fRegisterRequest\x12\x14\n" +
 	"\x05login\x18\x01 \x01(\tR\x05login\x12\x1a\n" +
 	"\bpassword\x18\x02 \x01(\tR\bpassword\"+\n" +
@@ -337,7 +390,10 @@ const file_apfish_v1_auth_auth_service_proto_rawDesc = "" +
 	"\x0eRefreshRequest\x12#\n" +
 	"\rrefresh_token\x18\x01 \x01(\tR\frefreshToken\"4\n" +
 	"\x0fRefreshResponse\x12!\n" +
-	"\faccess_token\x18\x01 \x01(\tR\vaccessToken2\xee\x01\n" +
+	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\"n\n" +
+	"\aJwtData\x12\x14\n" +
+	"\x05login\x18\x01 \x01(\tR\x05login\x12M\n" +
+	"\vpermissions\x18\x02 \x03(\v2+.apfish.v1.permission.summary.PermissionJwtR\vpermissions2\xee\x01\n" +
 	"\vAuthService\x12M\n" +
 	"\bRegister\x12\x1f.apfish.v1.auth.RegisterRequest\x1a .apfish.v1.auth.RegisterResponse\x12D\n" +
 	"\x05Login\x12\x1c.apfish.v1.auth.LoginRequest\x1a\x1d.apfish.v1.auth.LoginResponse\x12J\n" +
@@ -355,27 +411,30 @@ func file_apfish_v1_auth_auth_service_proto_rawDescGZIP() []byte {
 	return file_apfish_v1_auth_auth_service_proto_rawDescData
 }
 
-var file_apfish_v1_auth_auth_service_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
+var file_apfish_v1_auth_auth_service_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
 var file_apfish_v1_auth_auth_service_proto_goTypes = []any{
-	(*RegisterRequest)(nil),  // 0: apfish.v1.auth.RegisterRequest
-	(*RegisterResponse)(nil), // 1: apfish.v1.auth.RegisterResponse
-	(*LoginRequest)(nil),     // 2: apfish.v1.auth.LoginRequest
-	(*LoginResponse)(nil),    // 3: apfish.v1.auth.LoginResponse
-	(*RefreshRequest)(nil),   // 4: apfish.v1.auth.RefreshRequest
-	(*RefreshResponse)(nil),  // 5: apfish.v1.auth.RefreshResponse
+	(*RegisterRequest)(nil),       // 0: apfish.v1.auth.RegisterRequest
+	(*RegisterResponse)(nil),      // 1: apfish.v1.auth.RegisterResponse
+	(*LoginRequest)(nil),          // 2: apfish.v1.auth.LoginRequest
+	(*LoginResponse)(nil),         // 3: apfish.v1.auth.LoginResponse
+	(*RefreshRequest)(nil),        // 4: apfish.v1.auth.RefreshRequest
+	(*RefreshResponse)(nil),       // 5: apfish.v1.auth.RefreshResponse
+	(*JwtData)(nil),               // 6: apfish.v1.auth.JwtData
+	(*summary.PermissionJwt)(nil), // 7: apfish.v1.permission.summary.PermissionJwt
 }
 var file_apfish_v1_auth_auth_service_proto_depIdxs = []int32{
-	0, // 0: apfish.v1.auth.AuthService.Register:input_type -> apfish.v1.auth.RegisterRequest
-	2, // 1: apfish.v1.auth.AuthService.Login:input_type -> apfish.v1.auth.LoginRequest
-	4, // 2: apfish.v1.auth.AuthService.Refresh:input_type -> apfish.v1.auth.RefreshRequest
-	1, // 3: apfish.v1.auth.AuthService.Register:output_type -> apfish.v1.auth.RegisterResponse
-	3, // 4: apfish.v1.auth.AuthService.Login:output_type -> apfish.v1.auth.LoginResponse
-	5, // 5: apfish.v1.auth.AuthService.Refresh:output_type -> apfish.v1.auth.RefreshResponse
-	3, // [3:6] is the sub-list for method output_type
-	0, // [0:3] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	7, // 0: apfish.v1.auth.JwtData.permissions:type_name -> apfish.v1.permission.summary.PermissionJwt
+	0, // 1: apfish.v1.auth.AuthService.Register:input_type -> apfish.v1.auth.RegisterRequest
+	2, // 2: apfish.v1.auth.AuthService.Login:input_type -> apfish.v1.auth.LoginRequest
+	4, // 3: apfish.v1.auth.AuthService.Refresh:input_type -> apfish.v1.auth.RefreshRequest
+	1, // 4: apfish.v1.auth.AuthService.Register:output_type -> apfish.v1.auth.RegisterResponse
+	3, // 5: apfish.v1.auth.AuthService.Login:output_type -> apfish.v1.auth.LoginResponse
+	5, // 6: apfish.v1.auth.AuthService.Refresh:output_type -> apfish.v1.auth.RefreshResponse
+	4, // [4:7] is the sub-list for method output_type
+	1, // [1:4] is the sub-list for method input_type
+	1, // [1:1] is the sub-list for extension type_name
+	1, // [1:1] is the sub-list for extension extendee
+	0, // [0:1] is the sub-list for field type_name
 }
 
 func init() { file_apfish_v1_auth_auth_service_proto_init() }
@@ -389,7 +448,7 @@ func file_apfish_v1_auth_auth_service_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_apfish_v1_auth_auth_service_proto_rawDesc), len(file_apfish_v1_auth_auth_service_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   6,
+			NumMessages:   7,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

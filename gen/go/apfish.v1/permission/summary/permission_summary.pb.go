@@ -114,6 +114,90 @@ func (x *PermissionSummary) GetCreatedAt() *timestamppb.Timestamp {
 	return nil
 }
 
+type PermissionJwt struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ActionId      int32                  `protobuf:"varint,1,opt,name=action_id,json=actionId,proto3" json:"action_id,omitempty"`
+	ObjectId      int32                  `protobuf:"varint,2,opt,name=object_id,json=objectId,proto3" json:"object_id,omitempty"`
+	CountriesId   []int32                `protobuf:"varint,3,rep,packed,name=countries_id,json=countriesId,proto3" json:"countries_id,omitempty"`
+	DistrictsId   []int32                `protobuf:"varint,4,rep,packed,name=districts_id,json=districtsId,proto3" json:"districts_id,omitempty"`
+	PortsId       []int32                `protobuf:"varint,5,rep,packed,name=ports_id,json=portsId,proto3" json:"ports_id,omitempty"`
+	ShipsId       []int32                `protobuf:"varint,6,rep,packed,name=ships_id,json=shipsId,proto3" json:"ships_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *PermissionJwt) Reset() {
+	*x = PermissionJwt{}
+	mi := &file_apfish_v1_permission_summary_permission_summary_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PermissionJwt) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PermissionJwt) ProtoMessage() {}
+
+func (x *PermissionJwt) ProtoReflect() protoreflect.Message {
+	mi := &file_apfish_v1_permission_summary_permission_summary_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PermissionJwt.ProtoReflect.Descriptor instead.
+func (*PermissionJwt) Descriptor() ([]byte, []int) {
+	return file_apfish_v1_permission_summary_permission_summary_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *PermissionJwt) GetActionId() int32 {
+	if x != nil {
+		return x.ActionId
+	}
+	return 0
+}
+
+func (x *PermissionJwt) GetObjectId() int32 {
+	if x != nil {
+		return x.ObjectId
+	}
+	return 0
+}
+
+func (x *PermissionJwt) GetCountriesId() []int32 {
+	if x != nil {
+		return x.CountriesId
+	}
+	return nil
+}
+
+func (x *PermissionJwt) GetDistrictsId() []int32 {
+	if x != nil {
+		return x.DistrictsId
+	}
+	return nil
+}
+
+func (x *PermissionJwt) GetPortsId() []int32 {
+	if x != nil {
+		return x.PortsId
+	}
+	return nil
+}
+
+func (x *PermissionJwt) GetShipsId() []int32 {
+	if x != nil {
+		return x.ShipsId
+	}
+	return nil
+}
+
 var File_apfish_v1_permission_summary_permission_summary_proto protoreflect.FileDescriptor
 
 const file_apfish_v1_permission_summary_permission_summary_proto_rawDesc = "" +
@@ -127,7 +211,14 @@ const file_apfish_v1_permission_summary_permission_summary_proto_rawDesc = "" +
 	"\x04name\x18\x05 \x01(\tR\x04name\x12\x12\n" +
 	"\x04code\x18\x06 \x01(\tR\x04code\x129\n" +
 	"\n" +
-	"created_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAtBXZVgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/summary;permission_summaryb\x06proto3"
+	"created_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"\xc5\x01\n" +
+	"\rPermissionJwt\x12\x1b\n" +
+	"\taction_id\x18\x01 \x01(\x05R\bactionId\x12\x1b\n" +
+	"\tobject_id\x18\x02 \x01(\x05R\bobjectId\x12!\n" +
+	"\fcountries_id\x18\x03 \x03(\x05R\vcountriesId\x12!\n" +
+	"\fdistricts_id\x18\x04 \x03(\x05R\vdistrictsId\x12\x19\n" +
+	"\bports_id\x18\x05 \x03(\x05R\aportsId\x12\x19\n" +
+	"\bships_id\x18\x06 \x03(\x05R\ashipsIdBXZVgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/summary;permission_summaryb\x06proto3"
 
 var (
 	file_apfish_v1_permission_summary_permission_summary_proto_rawDescOnce sync.Once
@@ -141,13 +232,14 @@ func file_apfish_v1_permission_summary_permission_summary_proto_rawDescGZIP() []
 	return file_apfish_v1_permission_summary_permission_summary_proto_rawDescData
 }
 
-var file_apfish_v1_permission_summary_permission_summary_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
+var file_apfish_v1_permission_summary_permission_summary_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_apfish_v1_permission_summary_permission_summary_proto_goTypes = []any{
 	(*PermissionSummary)(nil),     // 0: apfish.v1.permission.summary.PermissionSummary
-	(*timestamppb.Timestamp)(nil), // 1: google.protobuf.Timestamp
+	(*PermissionJwt)(nil),         // 1: apfish.v1.permission.summary.PermissionJwt
+	(*timestamppb.Timestamp)(nil), // 2: google.protobuf.Timestamp
 }
 var file_apfish_v1_permission_summary_permission_summary_proto_depIdxs = []int32{
-	1, // 0: apfish.v1.permission.summary.PermissionSummary.created_at:type_name -> google.protobuf.Timestamp
+	2, // 0: apfish.v1.permission.summary.PermissionSummary.created_at:type_name -> google.protobuf.Timestamp
 	1, // [1:1] is the sub-list for method output_type
 	1, // [1:1] is the sub-list for method input_type
 	1, // [1:1] is the sub-list for extension type_name
@@ -166,7 +258,7 @@ func file_apfish_v1_permission_summary_permission_summary_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_apfish_v1_permission_summary_permission_summary_proto_rawDesc), len(file_apfish_v1_permission_summary_permission_summary_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   1,
+			NumMessages:   2,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
