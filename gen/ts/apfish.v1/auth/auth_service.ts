@@ -62,6 +62,8 @@ export interface RefreshResponse {
 export interface JwtData {
   login: string;
   permissions: PermissionJwt[];
+  exp: Long;
+  iat: Long;
 }
 
 function createBaseRegisterRequest(): RegisterRequest {
@@ -473,7 +475,7 @@ export const RefreshResponse = {
 };
 
 function createBaseJwtData(): JwtData {
-  return { login: "", permissions: [] };
+  return { login: "", permissions: [], exp: Long.ZERO, iat: Long.ZERO };
 }
 
 export const JwtData = {
@@ -483,6 +485,12 @@ export const JwtData = {
     }
     for (const v of message.permissions) {
       PermissionJwt.encode(v!, writer.uint32(18).fork()).ldelim();
+    }
+    if (!message.exp.equals(Long.ZERO)) {
+      writer.uint32(24).int64(message.exp);
+    }
+    if (!message.iat.equals(Long.ZERO)) {
+      writer.uint32(32).int64(message.iat);
     }
     return writer;
   },
@@ -508,6 +516,20 @@ export const JwtData = {
 
           message.permissions.push(PermissionJwt.decode(reader, reader.uint32()));
           continue;
+        case 3:
+          if (tag !== 24) {
+            break;
+          }
+
+          message.exp = reader.int64() as Long;
+          continue;
+        case 4:
+          if (tag !== 32) {
+            break;
+          }
+
+          message.iat = reader.int64() as Long;
+          continue;
       }
       if ((tag & 7) === 4 || tag === 0) {
         break;
@@ -523,6 +545,8 @@ export const JwtData = {
       permissions: globalThis.Array.isArray(object?.permissions)
         ? object.permissions.map((e: any) => PermissionJwt.fromJSON(e))
         : [],
+      exp: isSet(object.exp) ? Long.fromValue(object.exp) : Long.ZERO,
+      iat: isSet(object.iat) ? Long.fromValue(object.iat) : Long.ZERO,
     };
   },
 
@@ -534,6 +558,12 @@ export const JwtData = {
     if (message.permissions?.length) {
       obj.permissions = message.permissions.map((e) => PermissionJwt.toJSON(e));
     }
+    if (!message.exp.equals(Long.ZERO)) {
+      obj.exp = (message.exp || Long.ZERO).toString();
+    }
+    if (!message.iat.equals(Long.ZERO)) {
+      obj.iat = (message.iat || Long.ZERO).toString();
+    }
     return obj;
   },
 
@@ -544,6 +574,8 @@ export const JwtData = {
     const message = createBaseJwtData();
     message.login = object.login ?? "";
     message.permissions = object.permissions?.map((e) => PermissionJwt.fromPartial(e)) || [];
+    message.exp = (object.exp !== undefined && object.exp !== null) ? Long.fromValue(object.exp) : Long.ZERO;
+    message.iat = (object.iat !== undefined && object.iat !== null) ? Long.fromValue(object.iat) : Long.ZERO;
     return message;
   },
 };
