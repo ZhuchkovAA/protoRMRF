@@ -49,8 +49,9 @@ message RefreshResponse {
 
 message JwtData {
   string login = 1;
-  repeated apfish.v1.permission.summary.PermissionJwt permissions = 2;
-  int64 exp = 3;
-  int64 iat = 4;
+  int32 role_id = 2;
+  repeated apfish.v1.permission.summary.PermissionJwt permissions = 3;
+  int64 exp = 4;
+  int64 iat = 5;
 }
 

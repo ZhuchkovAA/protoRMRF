@@ -321,9 +321,10 @@ func (x *RefreshResponse) GetAccessToken() string {
 type JwtData struct {
 	state         protoimpl.MessageState   `protogen:"open.v1"`
 	Login         string                   `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"`
-	Permissions   []*summary.PermissionJwt `protobuf:"bytes,2,rep,name=permissions,proto3" json:"permissions,omitempty"`
-	Exp           int64                    `protobuf:"varint,3,opt,name=exp,proto3" json:"exp,omitempty"`
-	Iat           int64                    `protobuf:"varint,4,opt,name=iat,proto3" json:"iat,omitempty"`
+	RoleId        int32                    `protobuf:"varint,2,opt,name=role_id,json=roleId,proto3" json:"role_id,omitempty"`
+	Permissions   []*summary.PermissionJwt `protobuf:"bytes,3,rep,name=permissions,proto3" json:"permissions,omitempty"`
+	Exp           int64                    `protobuf:"varint,4,opt,name=exp,proto3" json:"exp,omitempty"`
+	Iat           int64                    `protobuf:"varint,5,opt,name=iat,proto3" json:"iat,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -363,6 +364,13 @@ func (x *JwtData) GetLogin() string {
 		return x.Login
 	}
 	return ""
+}
+
+func (x *JwtData) GetRoleId() int32 {
+	if x != nil {
+		return x.RoleId
+	}
+	return 0
 }
 
 func (x *JwtData) GetPermissions() []*summary.PermissionJwt {
@@ -406,12 +414,13 @@ const file_apfish_v1_auth_auth_service_proto_rawDesc = "" +
 	"\x0eRefreshRequest\x12#\n" +
 	"\rrefresh_token\x18\x01 \x01(\tR\frefreshToken\"4\n" +
 	"\x0fRefreshResponse\x12!\n" +
-	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\"\x92\x01\n" +
+	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\"\xab\x01\n" +
 	"\aJwtData\x12\x14\n" +
-	"\x05login\x18\x01 \x01(\tR\x05login\x12M\n" +
-	"\vpermissions\x18\x02 \x03(\v2+.apfish.v1.permission.summary.PermissionJwtR\vpermissions\x12\x10\n" +
-	"\x03exp\x18\x03 \x01(\x03R\x03exp\x12\x10\n" +
-	"\x03iat\x18\x04 \x01(\x03R\x03iat2\xee\x01\n" +
+	"\x05login\x18\x01 \x01(\tR\x05login\x12\x17\n" +
+	"\arole_id\x18\x02 \x01(\x05R\x06roleId\x12M\n" +
+	"\vpermissions\x18\x03 \x03(\v2+.apfish.v1.permission.summary.PermissionJwtR\vpermissions\x12\x10\n" +
+	"\x03exp\x18\x04 \x01(\x03R\x03exp\x12\x10\n" +
+	"\x03iat\x18\x05 \x01(\x03R\x03iat2\xee\x01\n" +
 	"\vAuthService\x12M\n" +
 	"\bRegister\x12\x1f.apfish.v1.auth.RegisterRequest\x1a .apfish.v1.auth.RegisterResponse\x12D\n" +
 	"\x05Login\x12\x1c.apfish.v1.auth.LoginRequest\x1a\x1d.apfish.v1.auth.LoginResponse\x12J\n" +

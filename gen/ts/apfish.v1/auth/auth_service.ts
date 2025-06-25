@@ -61,6 +61,7 @@ export interface RefreshResponse {
 
 export interface JwtData {
   login: string;
+  roleId: number;
   permissions: PermissionJwt[];
   exp: Long;
   iat: Long;
@@ -475,7 +476,7 @@ export const RefreshResponse = {
 };
 
 function createBaseJwtData(): JwtData {
-  return { login: "", permissions: [], exp: Long.ZERO, iat: Long.ZERO };
+  return { login: "", roleId: 0, permissions: [], exp: Long.ZERO, iat: Long.ZERO };
 }
 
 export const JwtData = {
@@ -483,14 +484,17 @@ export const JwtData = {
     if (message.login !== "") {
       writer.uint32(10).string(message.login);
     }
+    if (message.roleId !== 0) {
+      writer.uint32(16).int32(message.roleId);
+    }
     for (const v of message.permissions) {
-      PermissionJwt.encode(v!, writer.uint32(18).fork()).ldelim();
+      PermissionJwt.encode(v!, writer.uint32(26).fork()).ldelim();
     }
     if (!message.exp.equals(Long.ZERO)) {
-      writer.uint32(24).int64(message.exp);
+      writer.uint32(32).int64(message.exp);
     }
     if (!message.iat.equals(Long.ZERO)) {
-      writer.uint32(32).int64(message.iat);
+      writer.uint32(40).int64(message.iat);
     }
     return writer;
   },
@@ -510,21 +514,28 @@ export const JwtData = {
           message.login = reader.string();
           continue;
         case 2:
-          if (tag !== 18) {
+          if (tag !== 16) {
+            break;
+          }
+
+          message.roleId = reader.int32();
+          continue;
+        case 3:
+          if (tag !== 26) {
             break;
           }
 
           message.permissions.push(PermissionJwt.decode(reader, reader.uint32()));
           continue;
-        case 3:
-          if (tag !== 24) {
+        case 4:
+          if (tag !== 32) {
             break;
           }
 
           message.exp = reader.int64() as Long;
           continue;
-        case 4:
-          if (tag !== 32) {
+        case 5:
+          if (tag !== 40) {
             break;
           }
 
@@ -542,6 +553,7 @@ export const JwtData = {
   fromJSON(object: any): JwtData {
     return {
       login: isSet(object.login) ? globalThis.String(object.login) : "",
+      roleId: isSet(object.roleId) ? globalThis.Number(object.roleId) : 0,
       permissions: globalThis.Array.isArray(object?.permissions)
         ? object.permissions.map((e: any) => PermissionJwt.fromJSON(e))
         : [],
@@ -554,6 +566,9 @@ export const JwtData = {
     const obj: any = {};
     if (message.login !== "") {
       obj.login = message.login;
+    }
+    if (message.roleId !== 0) {
+      obj.roleId = Math.round(message.roleId);
     }
     if (message.permissions?.length) {
       obj.permissions = message.permissions.map((e) => PermissionJwt.toJSON(e));
@@ -573,6 +588,7 @@ export const JwtData = {
   fromPartial<I extends Exact<DeepPartial<JwtData>, I>>(object: I): JwtData {
     const message = createBaseJwtData();
     message.login = object.login ?? "";
+    message.roleId = object.roleId ?? 0;
     message.permissions = object.permissions?.map((e) => PermissionJwt.fromPartial(e)) || [];
     message.exp = (object.exp !== undefined && object.exp !== null) ? Long.fromValue(object.exp) : Long.ZERO;
     message.iat = (object.iat !== undefined && object.iat !== null) ? Long.fromValue(object.iat) : Long.ZERO;
