@@ -60,7 +60,7 @@ export interface RefreshResponse {
 }
 
 export interface JwtData {
-  login: string;
+  id: number;
   roleId: number;
   permissions: PermissionJwt[];
   exp: Long;
@@ -476,13 +476,13 @@ export const RefreshResponse = {
 };
 
 function createBaseJwtData(): JwtData {
-  return { login: "", roleId: 0, permissions: [], exp: Long.ZERO, iat: Long.ZERO };
+  return { id: 0, roleId: 0, permissions: [], exp: Long.ZERO, iat: Long.ZERO };
 }
 
 export const JwtData = {
   encode(message: JwtData, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.login !== "") {
-      writer.uint32(10).string(message.login);
+    if (message.id !== 0) {
+      writer.uint32(8).int32(message.id);
     }
     if (message.roleId !== 0) {
       writer.uint32(16).int32(message.roleId);
@@ -507,11 +507,11 @@ export const JwtData = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag !== 10) {
+          if (tag !== 8) {
             break;
           }
 
-          message.login = reader.string();
+          message.id = reader.int32();
           continue;
         case 2:
           if (tag !== 16) {
@@ -552,7 +552,7 @@ export const JwtData = {
 
   fromJSON(object: any): JwtData {
     return {
-      login: isSet(object.login) ? globalThis.String(object.login) : "",
+      id: isSet(object.id) ? globalThis.Number(object.id) : 0,
       roleId: isSet(object.roleId) ? globalThis.Number(object.roleId) : 0,
       permissions: globalThis.Array.isArray(object?.permissions)
         ? object.permissions.map((e: any) => PermissionJwt.fromJSON(e))
@@ -564,8 +564,8 @@ export const JwtData = {
 
   toJSON(message: JwtData): unknown {
     const obj: any = {};
-    if (message.login !== "") {
-      obj.login = message.login;
+    if (message.id !== 0) {
+      obj.id = Math.round(message.id);
     }
     if (message.roleId !== 0) {
       obj.roleId = Math.round(message.roleId);
@@ -587,7 +587,7 @@ export const JwtData = {
   },
   fromPartial<I extends Exact<DeepPartial<JwtData>, I>>(object: I): JwtData {
     const message = createBaseJwtData();
-    message.login = object.login ?? "";
+    message.id = object.id ?? 0;
     message.roleId = object.roleId ?? 0;
     message.permissions = object.permissions?.map((e) => PermissionJwt.fromPartial(e)) || [];
     message.exp = (object.exp !== undefined && object.exp !== null) ? Long.fromValue(object.exp) : Long.ZERO;

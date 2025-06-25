@@ -320,7 +320,7 @@ func (x *RefreshResponse) GetAccessToken() string {
 
 type JwtData struct {
 	state         protoimpl.MessageState   `protogen:"open.v1"`
-	Login         string                   `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"`
+	Id            int32                    `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	RoleId        int32                    `protobuf:"varint,2,opt,name=role_id,json=roleId,proto3" json:"role_id,omitempty"`
 	Permissions   []*summary.PermissionJwt `protobuf:"bytes,3,rep,name=permissions,proto3" json:"permissions,omitempty"`
 	Exp           int64                    `protobuf:"varint,4,opt,name=exp,proto3" json:"exp,omitempty"`
@@ -359,11 +359,11 @@ func (*JwtData) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_auth_auth_service_proto_rawDescGZIP(), []int{6}
 }
 
-func (x *JwtData) GetLogin() string {
+func (x *JwtData) GetId() int32 {
 	if x != nil {
-		return x.Login
+		return x.Id
 	}
-	return ""
+	return 0
 }
 
 func (x *JwtData) GetRoleId() int32 {
@@ -414,9 +414,9 @@ const file_apfish_v1_auth_auth_service_proto_rawDesc = "" +
 	"\x0eRefreshRequest\x12#\n" +
 	"\rrefresh_token\x18\x01 \x01(\tR\frefreshToken\"4\n" +
 	"\x0fRefreshResponse\x12!\n" +
-	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\"\xab\x01\n" +
-	"\aJwtData\x12\x14\n" +
-	"\x05login\x18\x01 \x01(\tR\x05login\x12\x17\n" +
+	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\"\xa5\x01\n" +
+	"\aJwtData\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x17\n" +
 	"\arole_id\x18\x02 \x01(\x05R\x06roleId\x12M\n" +
 	"\vpermissions\x18\x03 \x03(\v2+.apfish.v1.permission.summary.PermissionJwtR\vpermissions\x12\x10\n" +
 	"\x03exp\x18\x04 \x01(\x03R\x03exp\x12\x10\n" +
