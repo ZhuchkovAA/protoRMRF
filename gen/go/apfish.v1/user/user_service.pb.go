@@ -24,7 +24,7 @@ const (
 // Request to fetch a specific user.
 type UserRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Login         string                 `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"` // Exact login identifier (e.g., "john.doe").
+	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -59,11 +59,11 @@ func (*UserRequest) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_user_user_service_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *UserRequest) GetLogin() string {
+func (x *UserRequest) GetId() int32 {
 	if x != nil {
-		return x.Login
+		return x.Id
 	}
-	return ""
+	return 0
 }
 
 // Response containing the requested user.
@@ -225,13 +225,133 @@ func (x *ListUsersResponse) GetTotal() int32 {
 	return 0
 }
 
+type CreateUserRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Login         string                 `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"`
+	FirstName     string                 `protobuf:"bytes,2,opt,name=first_name,json=firstName,proto3" json:"first_name,omitempty"`
+	LastName      string                 `protobuf:"bytes,3,opt,name=last_name,json=lastName,proto3" json:"last_name,omitempty"`
+	MiddleName    string                 `protobuf:"bytes,4,opt,name=middle_name,json=middleName,proto3" json:"middle_name,omitempty"`
+	RoleId        int32                  `protobuf:"varint,5,opt,name=role_id,json=roleId,proto3" json:"role_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateUserRequest) Reset() {
+	*x = CreateUserRequest{}
+	mi := &file_apfish_v1_user_user_service_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateUserRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateUserRequest) ProtoMessage() {}
+
+func (x *CreateUserRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_apfish_v1_user_user_service_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateUserRequest.ProtoReflect.Descriptor instead.
+func (*CreateUserRequest) Descriptor() ([]byte, []int) {
+	return file_apfish_v1_user_user_service_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *CreateUserRequest) GetLogin() string {
+	if x != nil {
+		return x.Login
+	}
+	return ""
+}
+
+func (x *CreateUserRequest) GetFirstName() string {
+	if x != nil {
+		return x.FirstName
+	}
+	return ""
+}
+
+func (x *CreateUserRequest) GetLastName() string {
+	if x != nil {
+		return x.LastName
+	}
+	return ""
+}
+
+func (x *CreateUserRequest) GetMiddleName() string {
+	if x != nil {
+		return x.MiddleName
+	}
+	return ""
+}
+
+func (x *CreateUserRequest) GetRoleId() int32 {
+	if x != nil {
+		return x.RoleId
+	}
+	return 0
+}
+
+type CreateUserResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	UserId        int32                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateUserResponse) Reset() {
+	*x = CreateUserResponse{}
+	mi := &file_apfish_v1_user_user_service_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateUserResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateUserResponse) ProtoMessage() {}
+
+func (x *CreateUserResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_apfish_v1_user_user_service_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateUserResponse.ProtoReflect.Descriptor instead.
+func (*CreateUserResponse) Descriptor() ([]byte, []int) {
+	return file_apfish_v1_user_user_service_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *CreateUserResponse) GetUserId() int32 {
+	if x != nil {
+		return x.UserId
+	}
+	return 0
+}
+
 var File_apfish_v1_user_user_service_proto protoreflect.FileDescriptor
 
 const file_apfish_v1_user_user_service_proto_rawDesc = "" +
 	"\n" +
-	"!apfish.v1/user/user_service.proto\x12\x0eapfish.v1.user\x1a\x19apfish.v1/user/user.proto\"#\n" +
-	"\vUserRequest\x12\x14\n" +
-	"\x05login\x18\x01 \x01(\tR\x05login\"8\n" +
+	"!apfish.v1/user/user_service.proto\x12\x0eapfish.v1.user\x1a\x19apfish.v1/user/user.proto\"\x1d\n" +
+	"\vUserRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x05R\x02id\"8\n" +
 	"\fUserResponse\x12(\n" +
 	"\x04user\x18\x01 \x01(\v2\x14.apfish.v1.user.UserR\x04user\"W\n" +
 	"\x10ListUsersRequest\x12\x14\n" +
@@ -240,10 +360,22 @@ const file_apfish_v1_user_user_service_proto_rawDesc = "" +
 	"\bper_page\x18\x03 \x01(\x05R\aperPage\"U\n" +
 	"\x11ListUsersResponse\x12*\n" +
 	"\x05users\x18\x01 \x03(\v2\x14.apfish.v1.user.UserR\x05users\x12\x14\n" +
-	"\x05total\x18\x02 \x01(\x05R\x05total2\xa5\x01\n" +
+	"\x05total\x18\x02 \x01(\x05R\x05total\"\x9f\x01\n" +
+	"\x11CreateUserRequest\x12\x14\n" +
+	"\x05login\x18\x01 \x01(\tR\x05login\x12\x1d\n" +
+	"\n" +
+	"first_name\x18\x02 \x01(\tR\tfirstName\x12\x1b\n" +
+	"\tlast_name\x18\x03 \x01(\tR\blastName\x12\x1f\n" +
+	"\vmiddle_name\x18\x04 \x01(\tR\n" +
+	"middleName\x12\x17\n" +
+	"\arole_id\x18\x05 \x01(\x05R\x06roleId\"-\n" +
+	"\x12CreateUserResponse\x12\x17\n" +
+	"\auser_id\x18\x01 \x01(\x05R\x06userId2\xfa\x01\n" +
 	"\vUserService\x12D\n" +
 	"\aGetUser\x12\x1b.apfish.v1.user.UserRequest\x1a\x1c.apfish.v1.user.UserResponse\x12P\n" +
-	"\tListUsers\x12 .apfish.v1.user.ListUsersRequest\x1a!.apfish.v1.user.ListUsersResponseB<Z:github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user;userb\x06proto3"
+	"\tListUsers\x12 .apfish.v1.user.ListUsersRequest\x1a!.apfish.v1.user.ListUsersResponse\x12S\n" +
+	"\n" +
+	"CreateUser\x12!.apfish.v1.user.CreateUserRequest\x1a\".apfish.v1.user.CreateUserResponseB<Z:github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user;userb\x06proto3"
 
 var (
 	file_apfish_v1_user_user_service_proto_rawDescOnce sync.Once
@@ -257,23 +389,27 @@ func file_apfish_v1_user_user_service_proto_rawDescGZIP() []byte {
 	return file_apfish_v1_user_user_service_proto_rawDescData
 }
 
-var file_apfish_v1_user_user_service_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_apfish_v1_user_user_service_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_apfish_v1_user_user_service_proto_goTypes = []any{
-	(*UserRequest)(nil),       // 0: apfish.v1.user.UserRequest
-	(*UserResponse)(nil),      // 1: apfish.v1.user.UserResponse
-	(*ListUsersRequest)(nil),  // 2: apfish.v1.user.ListUsersRequest
-	(*ListUsersResponse)(nil), // 3: apfish.v1.user.ListUsersResponse
-	(*User)(nil),              // 4: apfish.v1.user.User
+	(*UserRequest)(nil),        // 0: apfish.v1.user.UserRequest
+	(*UserResponse)(nil),       // 1: apfish.v1.user.UserResponse
+	(*ListUsersRequest)(nil),   // 2: apfish.v1.user.ListUsersRequest
+	(*ListUsersResponse)(nil),  // 3: apfish.v1.user.ListUsersResponse
+	(*CreateUserRequest)(nil),  // 4: apfish.v1.user.CreateUserRequest
+	(*CreateUserResponse)(nil), // 5: apfish.v1.user.CreateUserResponse
+	(*User)(nil),               // 6: apfish.v1.user.User
 }
 var file_apfish_v1_user_user_service_proto_depIdxs = []int32{
-	4, // 0: apfish.v1.user.UserResponse.user:type_name -> apfish.v1.user.User
-	4, // 1: apfish.v1.user.ListUsersResponse.users:type_name -> apfish.v1.user.User
+	6, // 0: apfish.v1.user.UserResponse.user:type_name -> apfish.v1.user.User
+	6, // 1: apfish.v1.user.ListUsersResponse.users:type_name -> apfish.v1.user.User
 	0, // 2: apfish.v1.user.UserService.GetUser:input_type -> apfish.v1.user.UserRequest
 	2, // 3: apfish.v1.user.UserService.ListUsers:input_type -> apfish.v1.user.ListUsersRequest
-	1, // 4: apfish.v1.user.UserService.GetUser:output_type -> apfish.v1.user.UserResponse
-	3, // 5: apfish.v1.user.UserService.ListUsers:output_type -> apfish.v1.user.ListUsersResponse
-	4, // [4:6] is the sub-list for method output_type
-	2, // [2:4] is the sub-list for method input_type
+	4, // 4: apfish.v1.user.UserService.CreateUser:input_type -> apfish.v1.user.CreateUserRequest
+	1, // 5: apfish.v1.user.UserService.GetUser:output_type -> apfish.v1.user.UserResponse
+	3, // 6: apfish.v1.user.UserService.ListUsers:output_type -> apfish.v1.user.ListUsersResponse
+	5, // 7: apfish.v1.user.UserService.CreateUser:output_type -> apfish.v1.user.CreateUserResponse
+	5, // [5:8] is the sub-list for method output_type
+	2, // [2:5] is the sub-list for method input_type
 	2, // [2:2] is the sub-list for extension type_name
 	2, // [2:2] is the sub-list for extension extendee
 	0, // [0:2] is the sub-list for field type_name
@@ -291,7 +427,7 @@ func file_apfish_v1_user_user_service_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_apfish_v1_user_user_service_proto_rawDesc), len(file_apfish_v1_user_user_service_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   4,
+			NumMessages:   6,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

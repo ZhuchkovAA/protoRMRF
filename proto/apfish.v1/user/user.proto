@@ -26,4 +26,3 @@ message User {
   repeated apfish.v1.user.contact.summary.ContactSummary contacts = 10;   // User's contact methods.
   repeated apfish.v1.permission.summary.PermissionSummary permissions = 11;  // Direct permissions (overrides role).
 }
-

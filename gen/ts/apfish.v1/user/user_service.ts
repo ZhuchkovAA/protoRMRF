@@ -25,8 +25,7 @@ export const protobufPackage = "apfish.v1.user";
 
 /** Request to fetch a specific user. */
 export interface UserRequest {
-  /** Exact login identifier (e.g., "john.doe"). */
-  login: string;
+  id: number;
 }
 
 /** Response containing the requested user. */
@@ -53,14 +52,26 @@ export interface ListUsersResponse {
   total: number;
 }
 
+export interface CreateUserRequest {
+  login: string;
+  firstName: string;
+  lastName: string;
+  middleName: string;
+  roleId: number;
+}
+
+export interface CreateUserResponse {
+  userId: number;
+}
+
 function createBaseUserRequest(): UserRequest {
-  return { login: "" };
+  return { id: 0 };
 }
 
 export const UserRequest = {
   encode(message: UserRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.login !== "") {
-      writer.uint32(10).string(message.login);
+    if (message.id !== 0) {
+      writer.uint32(8).int32(message.id);
     }
     return writer;
   },
@@ -73,11 +84,11 @@ export const UserRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag !== 10) {
+          if (tag !== 8) {
             break;
           }
 
-          message.login = reader.string();
+          message.id = reader.int32();
           continue;
       }
       if ((tag & 7) === 4 || tag === 0) {
@@ -89,13 +100,13 @@ export const UserRequest = {
   },
 
   fromJSON(object: any): UserRequest {
-    return { login: isSet(object.login) ? globalThis.String(object.login) : "" };
+    return { id: isSet(object.id) ? globalThis.Number(object.id) : 0 };
   },
 
   toJSON(message: UserRequest): unknown {
     const obj: any = {};
-    if (message.login !== "") {
-      obj.login = message.login;
+    if (message.id !== 0) {
+      obj.id = Math.round(message.id);
     }
     return obj;
   },
@@ -105,7 +116,7 @@ export const UserRequest = {
   },
   fromPartial<I extends Exact<DeepPartial<UserRequest>, I>>(object: I): UserRequest {
     const message = createBaseUserRequest();
-    message.login = object.login ?? "";
+    message.id = object.id ?? 0;
     return message;
   },
 };
@@ -330,6 +341,182 @@ export const ListUsersResponse = {
   },
 };
 
+function createBaseCreateUserRequest(): CreateUserRequest {
+  return { login: "", firstName: "", lastName: "", middleName: "", roleId: 0 };
+}
+
+export const CreateUserRequest = {
+  encode(message: CreateUserRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.login !== "") {
+      writer.uint32(10).string(message.login);
+    }
+    if (message.firstName !== "") {
+      writer.uint32(18).string(message.firstName);
+    }
+    if (message.lastName !== "") {
+      writer.uint32(26).string(message.lastName);
+    }
+    if (message.middleName !== "") {
+      writer.uint32(34).string(message.middleName);
+    }
+    if (message.roleId !== 0) {
+      writer.uint32(40).int32(message.roleId);
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): CreateUserRequest {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCreateUserRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag !== 10) {
+            break;
+          }
+
+          message.login = reader.string();
+          continue;
+        case 2:
+          if (tag !== 18) {
+            break;
+          }
+
+          message.firstName = reader.string();
+          continue;
+        case 3:
+          if (tag !== 26) {
+            break;
+          }
+
+          message.lastName = reader.string();
+          continue;
+        case 4:
+          if (tag !== 34) {
+            break;
+          }
+
+          message.middleName = reader.string();
+          continue;
+        case 5:
+          if (tag !== 40) {
+            break;
+          }
+
+          message.roleId = reader.int32();
+          continue;
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CreateUserRequest {
+    return {
+      login: isSet(object.login) ? globalThis.String(object.login) : "",
+      firstName: isSet(object.firstName) ? globalThis.String(object.firstName) : "",
+      lastName: isSet(object.lastName) ? globalThis.String(object.lastName) : "",
+      middleName: isSet(object.middleName) ? globalThis.String(object.middleName) : "",
+      roleId: isSet(object.roleId) ? globalThis.Number(object.roleId) : 0,
+    };
+  },
+
+  toJSON(message: CreateUserRequest): unknown {
+    const obj: any = {};
+    if (message.login !== "") {
+      obj.login = message.login;
+    }
+    if (message.firstName !== "") {
+      obj.firstName = message.firstName;
+    }
+    if (message.lastName !== "") {
+      obj.lastName = message.lastName;
+    }
+    if (message.middleName !== "") {
+      obj.middleName = message.middleName;
+    }
+    if (message.roleId !== 0) {
+      obj.roleId = Math.round(message.roleId);
+    }
+    return obj;
+  },
+
+  create<I extends Exact<DeepPartial<CreateUserRequest>, I>>(base?: I): CreateUserRequest {
+    return CreateUserRequest.fromPartial(base ?? ({} as any));
+  },
+  fromPartial<I extends Exact<DeepPartial<CreateUserRequest>, I>>(object: I): CreateUserRequest {
+    const message = createBaseCreateUserRequest();
+    message.login = object.login ?? "";
+    message.firstName = object.firstName ?? "";
+    message.lastName = object.lastName ?? "";
+    message.middleName = object.middleName ?? "";
+    message.roleId = object.roleId ?? 0;
+    return message;
+  },
+};
+
+function createBaseCreateUserResponse(): CreateUserResponse {
+  return { userId: 0 };
+}
+
+export const CreateUserResponse = {
+  encode(message: CreateUserResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.userId !== 0) {
+      writer.uint32(8).int32(message.userId);
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): CreateUserResponse {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCreateUserResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag !== 8) {
+            break;
+          }
+
+          message.userId = reader.int32();
+          continue;
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CreateUserResponse {
+    return { userId: isSet(object.userId) ? globalThis.Number(object.userId) : 0 };
+  },
+
+  toJSON(message: CreateUserResponse): unknown {
+    const obj: any = {};
+    if (message.userId !== 0) {
+      obj.userId = Math.round(message.userId);
+    }
+    return obj;
+  },
+
+  create<I extends Exact<DeepPartial<CreateUserResponse>, I>>(base?: I): CreateUserResponse {
+    return CreateUserResponse.fromPartial(base ?? ({} as any));
+  },
+  fromPartial<I extends Exact<DeepPartial<CreateUserResponse>, I>>(object: I): CreateUserResponse {
+    const message = createBaseCreateUserResponse();
+    message.userId = object.userId ?? 0;
+    return message;
+  },
+};
+
 /** User defines RPC methods for user management. */
 export type UserServiceService = typeof UserServiceService;
 export const UserServiceService = {
@@ -359,6 +546,15 @@ export const UserServiceService = {
     responseSerialize: (value: ListUsersResponse) => Buffer.from(ListUsersResponse.encode(value).finish()),
     responseDeserialize: (value: Buffer) => ListUsersResponse.decode(value),
   },
+  createUser: {
+    path: "/apfish.v1.user.UserService/CreateUser",
+    requestStream: false,
+    responseStream: false,
+    requestSerialize: (value: CreateUserRequest) => Buffer.from(CreateUserRequest.encode(value).finish()),
+    requestDeserialize: (value: Buffer) => CreateUserRequest.decode(value),
+    responseSerialize: (value: CreateUserResponse) => Buffer.from(CreateUserResponse.encode(value).finish()),
+    responseDeserialize: (value: Buffer) => CreateUserResponse.decode(value),
+  },
 } as const;
 
 export interface UserServiceServer extends UntypedServiceImplementation {
@@ -372,6 +568,7 @@ export interface UserServiceServer extends UntypedServiceImplementation {
    * and returns paginated results.
    */
   listUsers: handleUnaryCall<ListUsersRequest, ListUsersResponse>;
+  createUser: handleUnaryCall<CreateUserRequest, CreateUserResponse>;
 }
 
 export interface UserServiceClient extends Client {
@@ -412,6 +609,21 @@ export interface UserServiceClient extends Client {
     metadata: Metadata,
     options: Partial<CallOptions>,
     callback: (error: ServiceError | null, response: ListUsersResponse) => void,
+  ): ClientUnaryCall;
+  createUser(
+    request: CreateUserRequest,
+    callback: (error: ServiceError | null, response: CreateUserResponse) => void,
+  ): ClientUnaryCall;
+  createUser(
+    request: CreateUserRequest,
+    metadata: Metadata,
+    callback: (error: ServiceError | null, response: CreateUserResponse) => void,
+  ): ClientUnaryCall;
+  createUser(
+    request: CreateUserRequest,
+    metadata: Metadata,
+    options: Partial<CallOptions>,
+    callback: (error: ServiceError | null, response: CreateUserResponse) => void,
   ): ClientUnaryCall;
 }
 

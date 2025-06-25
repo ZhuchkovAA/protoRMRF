@@ -16,12 +16,12 @@ service UserService {
   // and returns paginated results.
   rpc ListUsers (ListUsersRequest) returns (ListUsersResponse);
 
-
+  rpc CreateUser (CreateUserRequest) returns (CreateUserResponse);
 }
 
 // Request to fetch a specific user.
 message UserRequest {
-  string login = 1;  // Exact login identifier (e.g., "john.doe").
+  int32 id = 1;
 }
 
 // Response containing the requested user.
@@ -40,4 +40,16 @@ message ListUsersRequest {
 message ListUsersResponse {
   repeated User users = 1;  // Users matching the query (max `per_page` entries).
   int32 total = 2;         // Total matching users (ignoring pagination).
+}
+
+message CreateUserRequest {
+  string login = 1;
+  string first_name = 2;
+  string last_name = 3;
+  string middle_name = 4;
+  int32 role_id = 5;
+}
+
+message CreateUserResponse {
+  int32 user_id = 1;
 }
