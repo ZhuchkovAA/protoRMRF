@@ -228,10 +228,10 @@ func (x *ListUsersResponse) GetTotal() int32 {
 type CreateUserRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Login         string                 `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"`
-	FirstName     string                 `protobuf:"bytes,2,opt,name=first_name,json=firstName,proto3" json:"first_name,omitempty"`
-	LastName      string                 `protobuf:"bytes,3,opt,name=last_name,json=lastName,proto3" json:"last_name,omitempty"`
-	MiddleName    string                 `protobuf:"bytes,4,opt,name=middle_name,json=middleName,proto3" json:"middle_name,omitempty"`
-	RoleId        int32                  `protobuf:"varint,5,opt,name=role_id,json=roleId,proto3" json:"role_id,omitempty"`
+	Password      string                 `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`
+	FirstName     string                 `protobuf:"bytes,3,opt,name=first_name,json=firstName,proto3" json:"first_name,omitempty"`
+	LastName      string                 `protobuf:"bytes,4,opt,name=last_name,json=lastName,proto3" json:"last_name,omitempty"`
+	MiddleName    string                 `protobuf:"bytes,5,opt,name=middle_name,json=middleName,proto3" json:"middle_name,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -273,6 +273,13 @@ func (x *CreateUserRequest) GetLogin() string {
 	return ""
 }
 
+func (x *CreateUserRequest) GetPassword() string {
+	if x != nil {
+		return x.Password
+	}
+	return ""
+}
+
 func (x *CreateUserRequest) GetFirstName() string {
 	if x != nil {
 		return x.FirstName
@@ -292,13 +299,6 @@ func (x *CreateUserRequest) GetMiddleName() string {
 		return x.MiddleName
 	}
 	return ""
-}
-
-func (x *CreateUserRequest) GetRoleId() int32 {
-	if x != nil {
-		return x.RoleId
-	}
-	return 0
 }
 
 type CreateUserResponse struct {
@@ -360,15 +360,15 @@ const file_apfish_v1_user_user_service_proto_rawDesc = "" +
 	"\bper_page\x18\x03 \x01(\x05R\aperPage\"U\n" +
 	"\x11ListUsersResponse\x12*\n" +
 	"\x05users\x18\x01 \x03(\v2\x14.apfish.v1.user.UserR\x05users\x12\x14\n" +
-	"\x05total\x18\x02 \x01(\x05R\x05total\"\x9f\x01\n" +
+	"\x05total\x18\x02 \x01(\x05R\x05total\"\xa2\x01\n" +
 	"\x11CreateUserRequest\x12\x14\n" +
-	"\x05login\x18\x01 \x01(\tR\x05login\x12\x1d\n" +
+	"\x05login\x18\x01 \x01(\tR\x05login\x12\x1a\n" +
+	"\bpassword\x18\x02 \x01(\tR\bpassword\x12\x1d\n" +
 	"\n" +
-	"first_name\x18\x02 \x01(\tR\tfirstName\x12\x1b\n" +
-	"\tlast_name\x18\x03 \x01(\tR\blastName\x12\x1f\n" +
-	"\vmiddle_name\x18\x04 \x01(\tR\n" +
-	"middleName\x12\x17\n" +
-	"\arole_id\x18\x05 \x01(\x05R\x06roleId\"-\n" +
+	"first_name\x18\x03 \x01(\tR\tfirstName\x12\x1b\n" +
+	"\tlast_name\x18\x04 \x01(\tR\blastName\x12\x1f\n" +
+	"\vmiddle_name\x18\x05 \x01(\tR\n" +
+	"middleName\"-\n" +
 	"\x12CreateUserResponse\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x05R\x06userId2\xfa\x01\n" +
 	"\vUserService\x12D\n" +

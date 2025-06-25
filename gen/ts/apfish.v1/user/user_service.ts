@@ -54,10 +54,10 @@ export interface ListUsersResponse {
 
 export interface CreateUserRequest {
   login: string;
+  password: string;
   firstName: string;
   lastName: string;
   middleName: string;
-  roleId: number;
 }
 
 export interface CreateUserResponse {
@@ -342,7 +342,7 @@ export const ListUsersResponse = {
 };
 
 function createBaseCreateUserRequest(): CreateUserRequest {
-  return { login: "", firstName: "", lastName: "", middleName: "", roleId: 0 };
+  return { login: "", password: "", firstName: "", lastName: "", middleName: "" };
 }
 
 export const CreateUserRequest = {
@@ -350,17 +350,17 @@ export const CreateUserRequest = {
     if (message.login !== "") {
       writer.uint32(10).string(message.login);
     }
+    if (message.password !== "") {
+      writer.uint32(18).string(message.password);
+    }
     if (message.firstName !== "") {
-      writer.uint32(18).string(message.firstName);
+      writer.uint32(26).string(message.firstName);
     }
     if (message.lastName !== "") {
-      writer.uint32(26).string(message.lastName);
+      writer.uint32(34).string(message.lastName);
     }
     if (message.middleName !== "") {
-      writer.uint32(34).string(message.middleName);
-    }
-    if (message.roleId !== 0) {
-      writer.uint32(40).int32(message.roleId);
+      writer.uint32(42).string(message.middleName);
     }
     return writer;
   },
@@ -384,28 +384,28 @@ export const CreateUserRequest = {
             break;
           }
 
-          message.firstName = reader.string();
+          message.password = reader.string();
           continue;
         case 3:
           if (tag !== 26) {
             break;
           }
 
-          message.lastName = reader.string();
+          message.firstName = reader.string();
           continue;
         case 4:
           if (tag !== 34) {
             break;
           }
 
-          message.middleName = reader.string();
+          message.lastName = reader.string();
           continue;
         case 5:
-          if (tag !== 40) {
+          if (tag !== 42) {
             break;
           }
 
-          message.roleId = reader.int32();
+          message.middleName = reader.string();
           continue;
       }
       if ((tag & 7) === 4 || tag === 0) {
@@ -419,10 +419,10 @@ export const CreateUserRequest = {
   fromJSON(object: any): CreateUserRequest {
     return {
       login: isSet(object.login) ? globalThis.String(object.login) : "",
+      password: isSet(object.password) ? globalThis.String(object.password) : "",
       firstName: isSet(object.firstName) ? globalThis.String(object.firstName) : "",
       lastName: isSet(object.lastName) ? globalThis.String(object.lastName) : "",
       middleName: isSet(object.middleName) ? globalThis.String(object.middleName) : "",
-      roleId: isSet(object.roleId) ? globalThis.Number(object.roleId) : 0,
     };
   },
 
@@ -430,6 +430,9 @@ export const CreateUserRequest = {
     const obj: any = {};
     if (message.login !== "") {
       obj.login = message.login;
+    }
+    if (message.password !== "") {
+      obj.password = message.password;
     }
     if (message.firstName !== "") {
       obj.firstName = message.firstName;
@@ -440,9 +443,6 @@ export const CreateUserRequest = {
     if (message.middleName !== "") {
       obj.middleName = message.middleName;
     }
-    if (message.roleId !== 0) {
-      obj.roleId = Math.round(message.roleId);
-    }
     return obj;
   },
 
@@ -452,10 +452,10 @@ export const CreateUserRequest = {
   fromPartial<I extends Exact<DeepPartial<CreateUserRequest>, I>>(object: I): CreateUserRequest {
     const message = createBaseCreateUserRequest();
     message.login = object.login ?? "";
+    message.password = object.password ?? "";
     message.firstName = object.firstName ?? "";
     message.lastName = object.lastName ?? "";
     message.middleName = object.middleName ?? "";
-    message.roleId = object.roleId ?? 0;
     return message;
   },
 };
