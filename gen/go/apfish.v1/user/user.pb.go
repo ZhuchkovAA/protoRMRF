@@ -7,9 +7,10 @@
 package user
 
 import (
-	summary2 "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/summary"
-	summary1 "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/contact/contact/summary"
+	summary3 "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/summary"
+	summary2 "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/contact/contact/summary"
 	summary "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/role/summary"
+	summary1 "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/summary"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -27,20 +28,20 @@ const (
 
 // Represents a user account in the system.
 type User struct {
-	state          protoimpl.MessageState        `protogen:"open.v1"`
-	Id             int32                         `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`      // Unique system-generated ID.
-	Login          string                        `protobuf:"bytes,2,opt,name=login,proto3" json:"login,omitempty"` // Unique login identifier.
-	FirstName      string                        `protobuf:"bytes,3,opt,name=first_name,json=firstName,proto3" json:"first_name,omitempty"`
-	LastName       string                        `protobuf:"bytes,4,opt,name=last_name,json=lastName,proto3" json:"last_name,omitempty"`
-	MiddleName     string                        `protobuf:"bytes,5,opt,name=middle_name,json=middleName,proto3" json:"middle_name,omitempty"`
-	Role           *summary.RoleSummary          `protobuf:"bytes,6,opt,name=role,proto3" json:"role,omitempty"`                            // Assigned role.
-	CreatedAt      *timestamppb.Timestamp        `protobuf:"bytes,7,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"` // When the user was created.
-	IsActive       bool                          `protobuf:"varint,8,opt,name=is_active,json=isActive,proto3" json:"is_active,omitempty"`
-	CreatedByLogin string                        `protobuf:"bytes,9,opt,name=created_by_login,json=createdByLogin,proto3" json:"created_by_login,omitempty"` // Login of the creator (e.g., "admin").
-	Contacts       []*summary1.ContactSummary    `protobuf:"bytes,10,rep,name=contacts,proto3" json:"contacts,omitempty"`                                    // User's contact methods.
-	Permissions    []*summary2.PermissionSummary `protobuf:"bytes,11,rep,name=permissions,proto3" json:"permissions,omitempty"`                              // Direct permissions (overrides role).
-	unknownFields  protoimpl.UnknownFields
-	sizeCache      protoimpl.SizeCache
+	state         protoimpl.MessageState        `protogen:"open.v1"`
+	Id            int32                         `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`      // Unique system-generated ID.
+	Login         string                        `protobuf:"bytes,2,opt,name=login,proto3" json:"login,omitempty"` // Unique login identifier.
+	FirstName     string                        `protobuf:"bytes,3,opt,name=first_name,json=firstName,proto3" json:"first_name,omitempty"`
+	LastName      string                        `protobuf:"bytes,4,opt,name=last_name,json=lastName,proto3" json:"last_name,omitempty"`
+	MiddleName    string                        `protobuf:"bytes,5,opt,name=middle_name,json=middleName,proto3" json:"middle_name,omitempty"`
+	Role          *summary.RoleSummary          `protobuf:"bytes,6,opt,name=role,proto3" json:"role,omitempty"`                            // Assigned role.
+	CreatedAt     *timestamppb.Timestamp        `protobuf:"bytes,7,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"` // When the user was created.
+	IsActive      bool                          `protobuf:"varint,8,opt,name=is_active,json=isActive,proto3" json:"is_active,omitempty"`
+	CreatedBy     *summary1.UserSummary         `protobuf:"bytes,9,opt,name=created_by,json=createdBy,proto3" json:"created_by,omitempty"` // Login of the creator (e.g., "admin").
+	Contacts      []*summary2.ContactSummary    `protobuf:"bytes,10,rep,name=contacts,proto3" json:"contacts,omitempty"`                   // User's contact methods.
+	Permissions   []*summary3.PermissionSummary `protobuf:"bytes,11,rep,name=permissions,proto3" json:"permissions,omitempty"`             // Direct permissions (overrides role).
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *User) Reset() {
@@ -129,21 +130,21 @@ func (x *User) GetIsActive() bool {
 	return false
 }
 
-func (x *User) GetCreatedByLogin() string {
+func (x *User) GetCreatedBy() *summary1.UserSummary {
 	if x != nil {
-		return x.CreatedByLogin
+		return x.CreatedBy
 	}
-	return ""
+	return nil
 }
 
-func (x *User) GetContacts() []*summary1.ContactSummary {
+func (x *User) GetContacts() []*summary2.ContactSummary {
 	if x != nil {
 		return x.Contacts
 	}
 	return nil
 }
 
-func (x *User) GetPermissions() []*summary2.PermissionSummary {
+func (x *User) GetPermissions() []*summary3.PermissionSummary {
 	if x != nil {
 		return x.Permissions
 	}
@@ -154,7 +155,7 @@ var File_apfish_v1_user_user_proto protoreflect.FileDescriptor
 
 const file_apfish_v1_user_user_proto_rawDesc = "" +
 	"\n" +
-	"\x19apfish.v1/user/user.proto\x12\x0eapfish.v1.user\x1a\x1fgoogle/protobuf/timestamp.proto\x1a.apfish.v1/user/role/summary/role_summary.proto\x1a<apfish.v1/user/contact/contact/summary/contact_summary.proto\x1a5apfish.v1/permission/summary/permission_summary.proto\"\xe8\x03\n" +
+	"\x19apfish.v1/user/user.proto\x12\x0eapfish.v1.user\x1a\x1fgoogle/protobuf/timestamp.proto\x1a.apfish.v1/user/role/summary/role_summary.proto\x1a)apfish.v1/user/summary/user_summary.proto\x1a<apfish.v1/user/contact/contact/summary/contact_summary.proto\x1a5apfish.v1/permission/summary/permission_summary.proto\"\x82\x04\n" +
 	"\x04User\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x14\n" +
 	"\x05login\x18\x02 \x01(\tR\x05login\x12\x1d\n" +
@@ -166,8 +167,9 @@ const file_apfish_v1_user_user_proto_rawDesc = "" +
 	"\x04role\x18\x06 \x01(\v2(.apfish.v1.user.role.summary.RoleSummaryR\x04role\x129\n" +
 	"\n" +
 	"created_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x12\x1b\n" +
-	"\tis_active\x18\b \x01(\bR\bisActive\x12(\n" +
-	"\x10created_by_login\x18\t \x01(\tR\x0ecreatedByLogin\x12J\n" +
+	"\tis_active\x18\b \x01(\bR\bisActive\x12B\n" +
+	"\n" +
+	"created_by\x18\t \x01(\v2#.apfish.v1.user.summary.UserSummaryR\tcreatedBy\x12J\n" +
 	"\bcontacts\x18\n" +
 	" \x03(\v2..apfish.v1.user.contact.summary.ContactSummaryR\bcontacts\x12Q\n" +
 	"\vpermissions\x18\v \x03(\v2/.apfish.v1.permission.summary.PermissionSummaryR\vpermissionsB<Z:github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user;userb\x06proto3"
@@ -189,19 +191,21 @@ var file_apfish_v1_user_user_proto_goTypes = []any{
 	(*User)(nil),                       // 0: apfish.v1.user.User
 	(*summary.RoleSummary)(nil),        // 1: apfish.v1.user.role.summary.RoleSummary
 	(*timestamppb.Timestamp)(nil),      // 2: google.protobuf.Timestamp
-	(*summary1.ContactSummary)(nil),    // 3: apfish.v1.user.contact.summary.ContactSummary
-	(*summary2.PermissionSummary)(nil), // 4: apfish.v1.permission.summary.PermissionSummary
+	(*summary1.UserSummary)(nil),       // 3: apfish.v1.user.summary.UserSummary
+	(*summary2.ContactSummary)(nil),    // 4: apfish.v1.user.contact.summary.ContactSummary
+	(*summary3.PermissionSummary)(nil), // 5: apfish.v1.permission.summary.PermissionSummary
 }
 var file_apfish_v1_user_user_proto_depIdxs = []int32{
 	1, // 0: apfish.v1.user.User.role:type_name -> apfish.v1.user.role.summary.RoleSummary
 	2, // 1: apfish.v1.user.User.created_at:type_name -> google.protobuf.Timestamp
-	3, // 2: apfish.v1.user.User.contacts:type_name -> apfish.v1.user.contact.summary.ContactSummary
-	4, // 3: apfish.v1.user.User.permissions:type_name -> apfish.v1.permission.summary.PermissionSummary
-	4, // [4:4] is the sub-list for method output_type
-	4, // [4:4] is the sub-list for method input_type
-	4, // [4:4] is the sub-list for extension type_name
-	4, // [4:4] is the sub-list for extension extendee
-	0, // [0:4] is the sub-list for field type_name
+	3, // 2: apfish.v1.user.User.created_by:type_name -> apfish.v1.user.summary.UserSummary
+	4, // 3: apfish.v1.user.User.contacts:type_name -> apfish.v1.user.contact.summary.ContactSummary
+	5, // 4: apfish.v1.user.User.permissions:type_name -> apfish.v1.permission.summary.PermissionSummary
+	5, // [5:5] is the sub-list for method output_type
+	5, // [5:5] is the sub-list for method input_type
+	5, // [5:5] is the sub-list for extension type_name
+	5, // [5:5] is the sub-list for extension extendee
+	0, // [0:5] is the sub-list for field type_name
 }
 
 func init() { file_apfish_v1_user_user_proto_init() }

@@ -7,6 +7,7 @@ option go_package = "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user;user"
 import "google/protobuf/timestamp.proto";  // Standard Protocol Buffers timestamp
 
 import "apfish.v1/user/role/summary/role_summary.proto";
+import "apfish.v1/user/summary/user_summary.proto";
 import "apfish.v1/user/contact/contact/summary/contact_summary.proto";
 
 import "apfish.v1/permission/summary/permission_summary.proto";
@@ -21,7 +22,7 @@ message User {
   apfish.v1.user.role.summary.RoleSummary role = 6;                      // Assigned role.
   google.protobuf.Timestamp created_at = 7;  // When the user was created.
   bool is_active = 8;
-  string created_by_login = 9;        // Login of the creator (e.g., "admin").
+  apfish.v1.user.summary.UserSummary created_by = 9;        // Login of the creator (e.g., "admin").
 
   repeated apfish.v1.user.contact.summary.ContactSummary contacts = 10;   // User's contact methods.
   repeated apfish.v1.permission.summary.PermissionSummary permissions = 11;  // Direct permissions (overrides role).

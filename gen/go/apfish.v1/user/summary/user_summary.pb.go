@@ -23,18 +23,18 @@ const (
 )
 
 type UserSummary struct {
-	state          protoimpl.MessageState `protogen:"open.v1"`
-	Id             int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`      // Unique system-generated ID.
-	Login          string                 `protobuf:"bytes,2,opt,name=login,proto3" json:"login,omitempty"` // Unique login identifier.
-	FirstName      string                 `protobuf:"bytes,3,opt,name=first_name,json=firstName,proto3" json:"first_name,omitempty"`
-	LastName       string                 `protobuf:"bytes,4,opt,name=last_name,json=lastName,proto3" json:"last_name,omitempty"`
-	MiddleName     string                 `protobuf:"bytes,5,opt,name=middle_name,json=middleName,proto3" json:"middle_name,omitempty"`
-	RoleId         int32                  `protobuf:"varint,6,opt,name=role_id,json=roleId,proto3" json:"role_id,omitempty"`         // Assigned role.
-	CreatedAt      *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"` // When the user was created.
-	IsActive       bool                   `protobuf:"varint,8,opt,name=is_active,json=isActive,proto3" json:"is_active,omitempty"`
-	CreatedByLogin string                 `protobuf:"bytes,9,opt,name=created_by_login,json=createdByLogin,proto3" json:"created_by_login,omitempty"` // Login of the creator (e.g., "admin").
-	unknownFields  protoimpl.UnknownFields
-	sizeCache      protoimpl.SizeCache
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`      // Unique system-generated ID.
+	Login         string                 `protobuf:"bytes,2,opt,name=login,proto3" json:"login,omitempty"` // Unique login identifier.
+	FirstName     string                 `protobuf:"bytes,3,opt,name=first_name,json=firstName,proto3" json:"first_name,omitempty"`
+	LastName      string                 `protobuf:"bytes,4,opt,name=last_name,json=lastName,proto3" json:"last_name,omitempty"`
+	MiddleName    string                 `protobuf:"bytes,5,opt,name=middle_name,json=middleName,proto3" json:"middle_name,omitempty"`
+	RoleId        int32                  `protobuf:"varint,6,opt,name=role_id,json=roleId,proto3" json:"role_id,omitempty"`         // Assigned role.
+	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"` // When the user was created.
+	IsActive      bool                   `protobuf:"varint,8,opt,name=is_active,json=isActive,proto3" json:"is_active,omitempty"`
+	CreatedById   int32                  `protobuf:"varint,9,opt,name=created_by_id,json=createdById,proto3" json:"created_by_id,omitempty"` // Login of the creator (e.g., "admin").
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *UserSummary) Reset() {
@@ -123,18 +123,18 @@ func (x *UserSummary) GetIsActive() bool {
 	return false
 }
 
-func (x *UserSummary) GetCreatedByLogin() string {
+func (x *UserSummary) GetCreatedById() int32 {
 	if x != nil {
-		return x.CreatedByLogin
+		return x.CreatedById
 	}
-	return ""
+	return 0
 }
 
 var File_apfish_v1_user_summary_user_summary_proto protoreflect.FileDescriptor
 
 const file_apfish_v1_user_summary_user_summary_proto_rawDesc = "" +
 	"\n" +
-	")apfish.v1/user/summary/user_summary.proto\x12\x16apfish.v1.user.summary\x1a\x1fgoogle/protobuf/timestamp.proto\"\xab\x02\n" +
+	")apfish.v1/user/summary/user_summary.proto\x12\x16apfish.v1.user.summary\x1a\x1fgoogle/protobuf/timestamp.proto\"\xa5\x02\n" +
 	"\vUserSummary\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x14\n" +
 	"\x05login\x18\x02 \x01(\tR\x05login\x12\x1d\n" +
@@ -146,8 +146,8 @@ const file_apfish_v1_user_summary_user_summary_proto_rawDesc = "" +
 	"\arole_id\x18\x06 \x01(\x05R\x06roleId\x129\n" +
 	"\n" +
 	"created_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x12\x1b\n" +
-	"\tis_active\x18\b \x01(\bR\bisActive\x12(\n" +
-	"\x10created_by_login\x18\t \x01(\tR\x0ecreatedByLoginBLZJgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/summary;user_summaryb\x06proto3"
+	"\tis_active\x18\b \x01(\bR\bisActive\x12\"\n" +
+	"\rcreated_by_id\x18\t \x01(\x05R\vcreatedByIdBLZJgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/summary;user_summaryb\x06proto3"
 
 var (
 	file_apfish_v1_user_summary_user_summary_proto_rawDescOnce sync.Once

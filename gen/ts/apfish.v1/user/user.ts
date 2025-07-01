@@ -11,6 +11,7 @@ import { Timestamp } from "../../google/protobuf/timestamp";
 import { PermissionSummary } from "../permission/summary/permission_summary";
 import { ContactSummary } from "./contact/contact/summary/contact_summary";
 import { RoleSummary } from "./role/summary/role_summary";
+import { UserSummary } from "./summary/user_summary";
 
 export const protobufPackage = "apfish.v1.user";
 
@@ -31,7 +32,9 @@ export interface User {
   createdAt: Date | undefined;
   isActive: boolean;
   /** Login of the creator (e.g., "admin"). */
-  createdByLogin: string;
+  createdBy:
+    | UserSummary
+    | undefined;
   /** User's contact methods. */
   contacts: ContactSummary[];
   /** Direct permissions (overrides role). */
@@ -48,7 +51,7 @@ function createBaseUser(): User {
     role: undefined,
     createdAt: undefined,
     isActive: false,
-    createdByLogin: "",
+    createdBy: undefined,
     contacts: [],
     permissions: [],
   };
@@ -80,8 +83,8 @@ export const User = {
     if (message.isActive !== false) {
       writer.uint32(64).bool(message.isActive);
     }
-    if (message.createdByLogin !== "") {
-      writer.uint32(74).string(message.createdByLogin);
+    if (message.createdBy !== undefined) {
+      UserSummary.encode(message.createdBy, writer.uint32(74).fork()).ldelim();
     }
     for (const v of message.contacts) {
       ContactSummary.encode(v!, writer.uint32(82).fork()).ldelim();
@@ -160,7 +163,7 @@ export const User = {
             break;
           }
 
-          message.createdByLogin = reader.string();
+          message.createdBy = UserSummary.decode(reader, reader.uint32());
           continue;
         case 10:
           if (tag !== 82) {
@@ -195,7 +198,7 @@ export const User = {
       role: isSet(object.role) ? RoleSummary.fromJSON(object.role) : undefined,
       createdAt: isSet(object.createdAt) ? fromJsonTimestamp(object.createdAt) : undefined,
       isActive: isSet(object.isActive) ? globalThis.Boolean(object.isActive) : false,
-      createdByLogin: isSet(object.createdByLogin) ? globalThis.String(object.createdByLogin) : "",
+      createdBy: isSet(object.createdBy) ? UserSummary.fromJSON(object.createdBy) : undefined,
       contacts: globalThis.Array.isArray(object?.contacts)
         ? object.contacts.map((e: any) => ContactSummary.fromJSON(e))
         : [],
@@ -231,8 +234,8 @@ export const User = {
     if (message.isActive !== false) {
       obj.isActive = message.isActive;
     }
-    if (message.createdByLogin !== "") {
-      obj.createdByLogin = message.createdByLogin;
+    if (message.createdBy !== undefined) {
+      obj.createdBy = UserSummary.toJSON(message.createdBy);
     }
     if (message.contacts?.length) {
       obj.contacts = message.contacts.map((e) => ContactSummary.toJSON(e));
@@ -258,7 +261,9 @@ export const User = {
       : undefined;
     message.createdAt = object.createdAt ?? undefined;
     message.isActive = object.isActive ?? false;
-    message.createdByLogin = object.createdByLogin ?? "";
+    message.createdBy = (object.createdBy !== undefined && object.createdBy !== null)
+      ? UserSummary.fromPartial(object.createdBy)
+      : undefined;
     message.contacts = object.contacts?.map((e) => ContactSummary.fromPartial(e)) || [];
     message.permissions = object.permissions?.map((e) => PermissionSummary.fromPartial(e)) || [];
     return message;

@@ -25,7 +25,7 @@ export interface UserSummary {
   createdAt: Date | undefined;
   isActive: boolean;
   /** Login of the creator (e.g., "admin"). */
-  createdByLogin: string;
+  createdById: number;
 }
 
 function createBaseUserSummary(): UserSummary {
@@ -38,7 +38,7 @@ function createBaseUserSummary(): UserSummary {
     roleId: 0,
     createdAt: undefined,
     isActive: false,
-    createdByLogin: "",
+    createdById: 0,
   };
 }
 
@@ -68,8 +68,8 @@ export const UserSummary = {
     if (message.isActive !== false) {
       writer.uint32(64).bool(message.isActive);
     }
-    if (message.createdByLogin !== "") {
-      writer.uint32(74).string(message.createdByLogin);
+    if (message.createdById !== 0) {
+      writer.uint32(72).int32(message.createdById);
     }
     return writer;
   },
@@ -138,11 +138,11 @@ export const UserSummary = {
           message.isActive = reader.bool();
           continue;
         case 9:
-          if (tag !== 74) {
+          if (tag !== 72) {
             break;
           }
 
-          message.createdByLogin = reader.string();
+          message.createdById = reader.int32();
           continue;
       }
       if ((tag & 7) === 4 || tag === 0) {
@@ -163,7 +163,7 @@ export const UserSummary = {
       roleId: isSet(object.roleId) ? globalThis.Number(object.roleId) : 0,
       createdAt: isSet(object.createdAt) ? fromJsonTimestamp(object.createdAt) : undefined,
       isActive: isSet(object.isActive) ? globalThis.Boolean(object.isActive) : false,
-      createdByLogin: isSet(object.createdByLogin) ? globalThis.String(object.createdByLogin) : "",
+      createdById: isSet(object.createdById) ? globalThis.Number(object.createdById) : 0,
     };
   },
 
@@ -193,8 +193,8 @@ export const UserSummary = {
     if (message.isActive !== false) {
       obj.isActive = message.isActive;
     }
-    if (message.createdByLogin !== "") {
-      obj.createdByLogin = message.createdByLogin;
+    if (message.createdById !== 0) {
+      obj.createdById = Math.round(message.createdById);
     }
     return obj;
   },
@@ -212,7 +212,7 @@ export const UserSummary = {
     message.roleId = object.roleId ?? 0;
     message.createdAt = object.createdAt ?? undefined;
     message.isActive = object.isActive ?? false;
-    message.createdByLogin = object.createdByLogin ?? "";
+    message.createdById = object.createdById ?? 0;
     return message;
   },
 };
