@@ -9,7 +9,7 @@ import Long from "long";
 import _m0 from "protobufjs/minimal";
 import { Timestamp } from "../../google/protobuf/timestamp";
 import { PermissionSummary } from "../permission/summary/permission_summary";
-import { ContactSummary } from "./contact/contact/summary/contact_summary";
+import { ContactSummary } from "./contact/summary/contact_summary";
 import { RoleSummary } from "./role/summary/role_summary";
 import { UserSummary } from "./summary/user_summary";
 

@@ -8,7 +8,7 @@ import "google/protobuf/timestamp.proto";  // Standard Protocol Buffers timestam
 
 import "apfish.v1/user/role/summary/role_summary.proto";
 import "apfish.v1/user/summary/user_summary.proto";
-import "apfish.v1/user/contact/contact/summary/contact_summary.proto";
+import "apfish.v1/user/contact/summary/contact_summary.proto";
 
 import "apfish.v1/permission/summary/permission_summary.proto";
 

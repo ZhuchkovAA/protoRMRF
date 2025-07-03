@@ -2,57 +2,62 @@
 // versions:
 //   protoc-gen-ts_proto  v1.181.2
 //   protoc               v4.25.1
-// source: apfish.v1/user/contact/type/type.proto
+// source: apfish.v1/user/contact/contact.proto
 
 /* eslint-disable */
 import Long from "long";
 import _m0 from "protobufjs/minimal";
-import { Timestamp } from "../../../../google/protobuf/timestamp";
-import { ContactSummary } from "../summary/contact_summary";
+import { Timestamp } from "../../../google/protobuf/timestamp";
+import { UserSummary } from "../summary/user_summary";
+import { TypeSummary } from "./type/summary/type_summary";
 
-export const protobufPackage = "apfish.v1.user.contact.type";
+export const protobufPackage = "apfish.v1.user.contact";
 
-/** Type of contact method (e.g., "Email", "Phone"). */
-export interface Type {
-  /** Unique type ID. */
+/** A user's contact method (e.g., email, phone). */
+export interface Contact {
+  /** Unique contact ID. */
   id: number;
-  /** Human-readable name (e.g., "Email"). */
-  name: string;
-  /** Machine-friendly code (e.g., "email"). */
-  code: string;
-  /** When the type was defined. */
+  user:
+    | UserSummary
+    | undefined;
+  /** Contact type. */
+  type:
+    | TypeSummary
+    | undefined;
+  /** Contact value (e.g., "user@example.com"). */
+  value: string;
+  /** When the contact was added. */
   createdAt: Date | undefined;
-  contacts: ContactSummary[];
 }
 
-function createBaseType(): Type {
-  return { id: 0, name: "", code: "", createdAt: undefined, contacts: [] };
+function createBaseContact(): Contact {
+  return { id: 0, user: undefined, type: undefined, value: "", createdAt: undefined };
 }
 
-export const Type = {
-  encode(message: Type, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+export const Contact = {
+  encode(message: Contact, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.id !== 0) {
       writer.uint32(8).int32(message.id);
     }
-    if (message.name !== "") {
-      writer.uint32(18).string(message.name);
+    if (message.user !== undefined) {
+      UserSummary.encode(message.user, writer.uint32(18).fork()).ldelim();
     }
-    if (message.code !== "") {
-      writer.uint32(26).string(message.code);
+    if (message.type !== undefined) {
+      TypeSummary.encode(message.type, writer.uint32(26).fork()).ldelim();
+    }
+    if (message.value !== "") {
+      writer.uint32(34).string(message.value);
     }
     if (message.createdAt !== undefined) {
-      Timestamp.encode(toTimestamp(message.createdAt), writer.uint32(34).fork()).ldelim();
-    }
-    for (const v of message.contacts) {
-      ContactSummary.encode(v!, writer.uint32(42).fork()).ldelim();
+      Timestamp.encode(toTimestamp(message.createdAt), writer.uint32(42).fork()).ldelim();
     }
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): Type {
+  decode(input: _m0.Reader | Uint8Array, length?: number): Contact {
     const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseType();
+    const message = createBaseContact();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -68,28 +73,28 @@ export const Type = {
             break;
           }
 
-          message.name = reader.string();
+          message.user = UserSummary.decode(reader, reader.uint32());
           continue;
         case 3:
           if (tag !== 26) {
             break;
           }
 
-          message.code = reader.string();
+          message.type = TypeSummary.decode(reader, reader.uint32());
           continue;
         case 4:
           if (tag !== 34) {
             break;
           }
 
-          message.createdAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          message.value = reader.string();
           continue;
         case 5:
           if (tag !== 42) {
             break;
           }
 
-          message.contacts.push(ContactSummary.decode(reader, reader.uint32()));
+          message.createdAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           continue;
       }
       if ((tag & 7) === 4 || tag === 0) {
@@ -100,48 +105,50 @@ export const Type = {
     return message;
   },
 
-  fromJSON(object: any): Type {
+  fromJSON(object: any): Contact {
     return {
       id: isSet(object.id) ? globalThis.Number(object.id) : 0,
-      name: isSet(object.name) ? globalThis.String(object.name) : "",
-      code: isSet(object.code) ? globalThis.String(object.code) : "",
+      user: isSet(object.user) ? UserSummary.fromJSON(object.user) : undefined,
+      type: isSet(object.type) ? TypeSummary.fromJSON(object.type) : undefined,
+      value: isSet(object.value) ? globalThis.String(object.value) : "",
       createdAt: isSet(object.createdAt) ? fromJsonTimestamp(object.createdAt) : undefined,
-      contacts: globalThis.Array.isArray(object?.contacts)
-        ? object.contacts.map((e: any) => ContactSummary.fromJSON(e))
-        : [],
     };
   },
 
-  toJSON(message: Type): unknown {
+  toJSON(message: Contact): unknown {
     const obj: any = {};
     if (message.id !== 0) {
       obj.id = Math.round(message.id);
     }
-    if (message.name !== "") {
-      obj.name = message.name;
+    if (message.user !== undefined) {
+      obj.user = UserSummary.toJSON(message.user);
     }
-    if (message.code !== "") {
-      obj.code = message.code;
+    if (message.type !== undefined) {
+      obj.type = TypeSummary.toJSON(message.type);
+    }
+    if (message.value !== "") {
+      obj.value = message.value;
     }
     if (message.createdAt !== undefined) {
       obj.createdAt = message.createdAt.toISOString();
     }
-    if (message.contacts?.length) {
-      obj.contacts = message.contacts.map((e) => ContactSummary.toJSON(e));
-    }
     return obj;
   },
 
-  create<I extends Exact<DeepPartial<Type>, I>>(base?: I): Type {
-    return Type.fromPartial(base ?? ({} as any));
+  create<I extends Exact<DeepPartial<Contact>, I>>(base?: I): Contact {
+    return Contact.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<Type>, I>>(object: I): Type {
-    const message = createBaseType();
+  fromPartial<I extends Exact<DeepPartial<Contact>, I>>(object: I): Contact {
+    const message = createBaseContact();
     message.id = object.id ?? 0;
-    message.name = object.name ?? "";
-    message.code = object.code ?? "";
+    message.user = (object.user !== undefined && object.user !== null)
+      ? UserSummary.fromPartial(object.user)
+      : undefined;
+    message.type = (object.type !== undefined && object.type !== null)
+      ? TypeSummary.fromPartial(object.type)
+      : undefined;
+    message.value = object.value ?? "";
     message.createdAt = object.createdAt ?? undefined;
-    message.contacts = object.contacts?.map((e) => ContactSummary.fromPartial(e)) || [];
     return message;
   },
 };

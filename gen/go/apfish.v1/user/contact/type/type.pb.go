@@ -104,7 +104,7 @@ var File_apfish_v1_user_contact_type_type_proto protoreflect.FileDescriptor
 
 const file_apfish_v1_user_contact_type_type_proto_rawDesc = "" +
 	"\n" +
-	"&apfish.v1/user/contact/type/type.proto\x12\x1bapfish.v1.user.contact.type\x1a\x1fgoogle/protobuf/timestamp.proto\x1a<apfish.v1/user/contact/contact/summary/contact_summary.proto\"\xc5\x01\n" +
+	"&apfish.v1/user/contact/type/type.proto\x12\x1bapfish.v1.user.contact.type\x1a\x1fgoogle/protobuf/timestamp.proto\x1a4apfish.v1/user/contact/summary/contact_summary.proto\"\xc5\x01\n" +
 	"\x04Type\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x12\n" +

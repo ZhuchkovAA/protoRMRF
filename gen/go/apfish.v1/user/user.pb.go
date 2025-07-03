@@ -155,7 +155,7 @@ var File_apfish_v1_user_user_proto protoreflect.FileDescriptor
 
 const file_apfish_v1_user_user_proto_rawDesc = "" +
 	"\n" +
-	"\x19apfish.v1/user/user.proto\x12\x0eapfish.v1.user\x1a\x1fgoogle/protobuf/timestamp.proto\x1a.apfish.v1/user/role/summary/role_summary.proto\x1a)apfish.v1/user/summary/user_summary.proto\x1a<apfish.v1/user/contact/contact/summary/contact_summary.proto\x1a5apfish.v1/permission/summary/permission_summary.proto\"\x82\x04\n" +
+	"\x19apfish.v1/user/user.proto\x12\x0eapfish.v1.user\x1a\x1fgoogle/protobuf/timestamp.proto\x1a.apfish.v1/user/role/summary/role_summary.proto\x1a)apfish.v1/user/summary/user_summary.proto\x1a4apfish.v1/user/contact/summary/contact_summary.proto\x1a5apfish.v1/permission/summary/permission_summary.proto\"\x82\x04\n" +
 	"\x04User\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x14\n" +
 	"\x05login\x18\x02 \x01(\tR\x05login\x12\x1d\n" +
