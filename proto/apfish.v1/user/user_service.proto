@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package apfish.v1.user;
 
+import "google/protobuf/wrappers.proto";
+
 option go_package = "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user;user";
 
 import "apfish.v1/user/user.proto";
@@ -17,6 +19,8 @@ service UserService {
   rpc ListUsers (ListUsersRequest) returns (ListUsersResponse);
 
   rpc CreateUser (CreateUserRequest) returns (CreateUserResponse);
+
+  rpc UpdateUser(UpdateUserRequest) returns (UpdateUserResponse);
 }
 
 // Request to fetch a specific user.
@@ -52,4 +56,18 @@ message CreateUserRequest {
 
 message CreateUserResponse {
   int32 user_id = 1;
+}
+
+message UpdateUserRequest {
+  int32 user_id = 1;
+
+  google.protobuf.StringValue login = 2;
+  google.protobuf.StringValue first_name = 3;
+  google.protobuf.StringValue last_name = 4;
+  google.protobuf.StringValue middle_name = 5;
+  google.protobuf.BoolValue is_active = 6;
+}
+
+message UpdateUserResponse {
+  bool success = 1;
 }

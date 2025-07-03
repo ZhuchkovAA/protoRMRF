@@ -19,6 +19,7 @@ import {
 } from "@grpc/grpc-js";
 import Long from "long";
 import _m0 from "protobufjs/minimal";
+import { BoolValue, StringValue } from "../../google/protobuf/wrappers";
 import { User } from "./user";
 
 export const protobufPackage = "apfish.v1.user";
@@ -62,6 +63,19 @@ export interface CreateUserRequest {
 
 export interface CreateUserResponse {
   userId: number;
+}
+
+export interface UpdateUserRequest {
+  userId: number;
+  login: string | undefined;
+  firstName: string | undefined;
+  lastName: string | undefined;
+  middleName: string | undefined;
+  isActive: boolean | undefined;
+}
+
+export interface UpdateUserResponse {
+  success: boolean;
 }
 
 function createBaseUserRequest(): UserRequest {
@@ -517,6 +531,204 @@ export const CreateUserResponse = {
   },
 };
 
+function createBaseUpdateUserRequest(): UpdateUserRequest {
+  return {
+    userId: 0,
+    login: undefined,
+    firstName: undefined,
+    lastName: undefined,
+    middleName: undefined,
+    isActive: undefined,
+  };
+}
+
+export const UpdateUserRequest = {
+  encode(message: UpdateUserRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.userId !== 0) {
+      writer.uint32(8).int32(message.userId);
+    }
+    if (message.login !== undefined) {
+      StringValue.encode({ value: message.login! }, writer.uint32(18).fork()).ldelim();
+    }
+    if (message.firstName !== undefined) {
+      StringValue.encode({ value: message.firstName! }, writer.uint32(26).fork()).ldelim();
+    }
+    if (message.lastName !== undefined) {
+      StringValue.encode({ value: message.lastName! }, writer.uint32(34).fork()).ldelim();
+    }
+    if (message.middleName !== undefined) {
+      StringValue.encode({ value: message.middleName! }, writer.uint32(42).fork()).ldelim();
+    }
+    if (message.isActive !== undefined) {
+      BoolValue.encode({ value: message.isActive! }, writer.uint32(50).fork()).ldelim();
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): UpdateUserRequest {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseUpdateUserRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag !== 8) {
+            break;
+          }
+
+          message.userId = reader.int32();
+          continue;
+        case 2:
+          if (tag !== 18) {
+            break;
+          }
+
+          message.login = StringValue.decode(reader, reader.uint32()).value;
+          continue;
+        case 3:
+          if (tag !== 26) {
+            break;
+          }
+
+          message.firstName = StringValue.decode(reader, reader.uint32()).value;
+          continue;
+        case 4:
+          if (tag !== 34) {
+            break;
+          }
+
+          message.lastName = StringValue.decode(reader, reader.uint32()).value;
+          continue;
+        case 5:
+          if (tag !== 42) {
+            break;
+          }
+
+          message.middleName = StringValue.decode(reader, reader.uint32()).value;
+          continue;
+        case 6:
+          if (tag !== 50) {
+            break;
+          }
+
+          message.isActive = BoolValue.decode(reader, reader.uint32()).value;
+          continue;
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): UpdateUserRequest {
+    return {
+      userId: isSet(object.userId) ? globalThis.Number(object.userId) : 0,
+      login: isSet(object.login) ? String(object.login) : undefined,
+      firstName: isSet(object.firstName) ? String(object.firstName) : undefined,
+      lastName: isSet(object.lastName) ? String(object.lastName) : undefined,
+      middleName: isSet(object.middleName) ? String(object.middleName) : undefined,
+      isActive: isSet(object.isActive) ? Boolean(object.isActive) : undefined,
+    };
+  },
+
+  toJSON(message: UpdateUserRequest): unknown {
+    const obj: any = {};
+    if (message.userId !== 0) {
+      obj.userId = Math.round(message.userId);
+    }
+    if (message.login !== undefined) {
+      obj.login = message.login;
+    }
+    if (message.firstName !== undefined) {
+      obj.firstName = message.firstName;
+    }
+    if (message.lastName !== undefined) {
+      obj.lastName = message.lastName;
+    }
+    if (message.middleName !== undefined) {
+      obj.middleName = message.middleName;
+    }
+    if (message.isActive !== undefined) {
+      obj.isActive = message.isActive;
+    }
+    return obj;
+  },
+
+  create<I extends Exact<DeepPartial<UpdateUserRequest>, I>>(base?: I): UpdateUserRequest {
+    return UpdateUserRequest.fromPartial(base ?? ({} as any));
+  },
+  fromPartial<I extends Exact<DeepPartial<UpdateUserRequest>, I>>(object: I): UpdateUserRequest {
+    const message = createBaseUpdateUserRequest();
+    message.userId = object.userId ?? 0;
+    message.login = object.login ?? undefined;
+    message.firstName = object.firstName ?? undefined;
+    message.lastName = object.lastName ?? undefined;
+    message.middleName = object.middleName ?? undefined;
+    message.isActive = object.isActive ?? undefined;
+    return message;
+  },
+};
+
+function createBaseUpdateUserResponse(): UpdateUserResponse {
+  return { success: false };
+}
+
+export const UpdateUserResponse = {
+  encode(message: UpdateUserResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.success !== false) {
+      writer.uint32(8).bool(message.success);
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): UpdateUserResponse {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseUpdateUserResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag !== 8) {
+            break;
+          }
+
+          message.success = reader.bool();
+          continue;
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): UpdateUserResponse {
+    return { success: isSet(object.success) ? globalThis.Boolean(object.success) : false };
+  },
+
+  toJSON(message: UpdateUserResponse): unknown {
+    const obj: any = {};
+    if (message.success !== false) {
+      obj.success = message.success;
+    }
+    return obj;
+  },
+
+  create<I extends Exact<DeepPartial<UpdateUserResponse>, I>>(base?: I): UpdateUserResponse {
+    return UpdateUserResponse.fromPartial(base ?? ({} as any));
+  },
+  fromPartial<I extends Exact<DeepPartial<UpdateUserResponse>, I>>(object: I): UpdateUserResponse {
+    const message = createBaseUpdateUserResponse();
+    message.success = object.success ?? false;
+    return message;
+  },
+};
+
 /** User defines RPC methods for user management. */
 export type UserServiceService = typeof UserServiceService;
 export const UserServiceService = {
@@ -555,6 +767,15 @@ export const UserServiceService = {
     responseSerialize: (value: CreateUserResponse) => Buffer.from(CreateUserResponse.encode(value).finish()),
     responseDeserialize: (value: Buffer) => CreateUserResponse.decode(value),
   },
+  updateUser: {
+    path: "/apfish.v1.user.UserService/UpdateUser",
+    requestStream: false,
+    responseStream: false,
+    requestSerialize: (value: UpdateUserRequest) => Buffer.from(UpdateUserRequest.encode(value).finish()),
+    requestDeserialize: (value: Buffer) => UpdateUserRequest.decode(value),
+    responseSerialize: (value: UpdateUserResponse) => Buffer.from(UpdateUserResponse.encode(value).finish()),
+    responseDeserialize: (value: Buffer) => UpdateUserResponse.decode(value),
+  },
 } as const;
 
 export interface UserServiceServer extends UntypedServiceImplementation {
@@ -569,6 +790,7 @@ export interface UserServiceServer extends UntypedServiceImplementation {
    */
   listUsers: handleUnaryCall<ListUsersRequest, ListUsersResponse>;
   createUser: handleUnaryCall<CreateUserRequest, CreateUserResponse>;
+  updateUser: handleUnaryCall<UpdateUserRequest, UpdateUserResponse>;
 }
 
 export interface UserServiceClient extends Client {
@@ -624,6 +846,21 @@ export interface UserServiceClient extends Client {
     metadata: Metadata,
     options: Partial<CallOptions>,
     callback: (error: ServiceError | null, response: CreateUserResponse) => void,
+  ): ClientUnaryCall;
+  updateUser(
+    request: UpdateUserRequest,
+    callback: (error: ServiceError | null, response: UpdateUserResponse) => void,
+  ): ClientUnaryCall;
+  updateUser(
+    request: UpdateUserRequest,
+    metadata: Metadata,
+    callback: (error: ServiceError | null, response: UpdateUserResponse) => void,
+  ): ClientUnaryCall;
+  updateUser(
+    request: UpdateUserRequest,
+    metadata: Metadata,
+    options: Partial<CallOptions>,
+    callback: (error: ServiceError | null, response: UpdateUserResponse) => void,
   ): ClientUnaryCall;
 }
 
