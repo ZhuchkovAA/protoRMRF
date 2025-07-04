@@ -11,6 +11,7 @@ import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
@@ -100,18 +101,82 @@ func (x *Type) GetContacts() []*summary.ContactSummary {
 	return nil
 }
 
+type TypePatch struct {
+	state         protoimpl.MessageState  `protogen:"open.v1"`
+	Id            int32                   `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Name          *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	Code          *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=code,proto3" json:"code,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *TypePatch) Reset() {
+	*x = TypePatch{}
+	mi := &file_apfish_v1_user_contact_type_type_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *TypePatch) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TypePatch) ProtoMessage() {}
+
+func (x *TypePatch) ProtoReflect() protoreflect.Message {
+	mi := &file_apfish_v1_user_contact_type_type_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TypePatch.ProtoReflect.Descriptor instead.
+func (*TypePatch) Descriptor() ([]byte, []int) {
+	return file_apfish_v1_user_contact_type_type_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *TypePatch) GetId() int32 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *TypePatch) GetName() *wrapperspb.StringValue {
+	if x != nil {
+		return x.Name
+	}
+	return nil
+}
+
+func (x *TypePatch) GetCode() *wrapperspb.StringValue {
+	if x != nil {
+		return x.Code
+	}
+	return nil
+}
+
 var File_apfish_v1_user_contact_type_type_proto protoreflect.FileDescriptor
 
 const file_apfish_v1_user_contact_type_type_proto_rawDesc = "" +
 	"\n" +
-	"&apfish.v1/user/contact/type/type.proto\x12\x1bapfish.v1.user.contact.type\x1a\x1fgoogle/protobuf/timestamp.proto\x1a4apfish.v1/user/contact/summary/contact_summary.proto\"\xc5\x01\n" +
+	"&apfish.v1/user/contact/type/type.proto\x12\x1bapfish.v1.user.contact.type\x1a\x1egoogle/protobuf/wrappers.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a4apfish.v1/user/contact/summary/contact_summary.proto\"\xc5\x01\n" +
 	"\x04Type\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x12\n" +
 	"\x04code\x18\x03 \x01(\tR\x04code\x129\n" +
 	"\n" +
 	"created_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x12J\n" +
-	"\bcontacts\x18\x05 \x03(\v2..apfish.v1.user.contact.summary.ContactSummaryR\bcontactsBVZTgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/contact/type;user_contact_typeb\x06proto3"
+	"\bcontacts\x18\x05 \x03(\v2..apfish.v1.user.contact.summary.ContactSummaryR\bcontacts\"\x7f\n" +
+	"\tTypePatch\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x05R\x02id\x120\n" +
+	"\x04name\x18\x02 \x01(\v2\x1c.google.protobuf.StringValueR\x04name\x120\n" +
+	"\x04code\x18\x03 \x01(\v2\x1c.google.protobuf.StringValueR\x04codeBVZTgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/contact/type;user_contact_typeb\x06proto3"
 
 var (
 	file_apfish_v1_user_contact_type_type_proto_rawDescOnce sync.Once
@@ -125,20 +190,24 @@ func file_apfish_v1_user_contact_type_type_proto_rawDescGZIP() []byte {
 	return file_apfish_v1_user_contact_type_type_proto_rawDescData
 }
 
-var file_apfish_v1_user_contact_type_type_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
+var file_apfish_v1_user_contact_type_type_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_apfish_v1_user_contact_type_type_proto_goTypes = []any{
 	(*Type)(nil),                   // 0: apfish.v1.user.contact.type.Type
-	(*timestamppb.Timestamp)(nil),  // 1: google.protobuf.Timestamp
-	(*summary.ContactSummary)(nil), // 2: apfish.v1.user.contact.summary.ContactSummary
+	(*TypePatch)(nil),              // 1: apfish.v1.user.contact.type.TypePatch
+	(*timestamppb.Timestamp)(nil),  // 2: google.protobuf.Timestamp
+	(*summary.ContactSummary)(nil), // 3: apfish.v1.user.contact.summary.ContactSummary
+	(*wrapperspb.StringValue)(nil), // 4: google.protobuf.StringValue
 }
 var file_apfish_v1_user_contact_type_type_proto_depIdxs = []int32{
-	1, // 0: apfish.v1.user.contact.type.Type.created_at:type_name -> google.protobuf.Timestamp
-	2, // 1: apfish.v1.user.contact.type.Type.contacts:type_name -> apfish.v1.user.contact.summary.ContactSummary
-	2, // [2:2] is the sub-list for method output_type
-	2, // [2:2] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	2, // 0: apfish.v1.user.contact.type.Type.created_at:type_name -> google.protobuf.Timestamp
+	3, // 1: apfish.v1.user.contact.type.Type.contacts:type_name -> apfish.v1.user.contact.summary.ContactSummary
+	4, // 2: apfish.v1.user.contact.type.TypePatch.name:type_name -> google.protobuf.StringValue
+	4, // 3: apfish.v1.user.contact.type.TypePatch.code:type_name -> google.protobuf.StringValue
+	4, // [4:4] is the sub-list for method output_type
+	4, // [4:4] is the sub-list for method input_type
+	4, // [4:4] is the sub-list for extension type_name
+	4, // [4:4] is the sub-list for extension extendee
+	0, // [0:4] is the sub-list for field type_name
 }
 
 func init() { file_apfish_v1_user_contact_type_type_proto_init() }
@@ -152,7 +221,7 @@ func file_apfish_v1_user_contact_type_type_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_apfish_v1_user_contact_type_type_proto_rawDesc), len(file_apfish_v1_user_contact_type_type_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   1,
+			NumMessages:   2,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

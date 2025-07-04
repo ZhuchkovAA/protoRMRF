@@ -9,7 +9,6 @@ package user
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
-	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
@@ -347,12 +346,8 @@ func (x *CreateUserResponse) GetSuccess() bool {
 }
 
 type UpdateUserRequest struct {
-	state         protoimpl.MessageState  `protogen:"open.v1"`
-	Login         string                  `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"`
-	FirstName     *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=first_name,json=firstName,proto3" json:"first_name,omitempty"`
-	LastName      *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=last_name,json=lastName,proto3" json:"last_name,omitempty"`
-	MiddleName    *wrapperspb.StringValue `protobuf:"bytes,4,opt,name=middle_name,json=middleName,proto3" json:"middle_name,omitempty"`
-	IsActive      *wrapperspb.BoolValue   `protobuf:"bytes,5,opt,name=is_active,json=isActive,proto3" json:"is_active,omitempty"`
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	User          *UserPatch             `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -387,37 +382,9 @@ func (*UpdateUserRequest) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_user_user_service_proto_rawDescGZIP(), []int{6}
 }
 
-func (x *UpdateUserRequest) GetLogin() string {
+func (x *UpdateUserRequest) GetUser() *UserPatch {
 	if x != nil {
-		return x.Login
-	}
-	return ""
-}
-
-func (x *UpdateUserRequest) GetFirstName() *wrapperspb.StringValue {
-	if x != nil {
-		return x.FirstName
-	}
-	return nil
-}
-
-func (x *UpdateUserRequest) GetLastName() *wrapperspb.StringValue {
-	if x != nil {
-		return x.LastName
-	}
-	return nil
-}
-
-func (x *UpdateUserRequest) GetMiddleName() *wrapperspb.StringValue {
-	if x != nil {
-		return x.MiddleName
-	}
-	return nil
-}
-
-func (x *UpdateUserRequest) GetIsActive() *wrapperspb.BoolValue {
-	if x != nil {
-		return x.IsActive
+		return x.User
 	}
 	return nil
 }
@@ -470,7 +437,7 @@ var File_apfish_v1_user_user_service_proto protoreflect.FileDescriptor
 
 const file_apfish_v1_user_user_service_proto_rawDesc = "" +
 	"\n" +
-	"!apfish.v1/user/user_service.proto\x12\x0eapfish.v1.user\x1a\x1egoogle/protobuf/wrappers.proto\x1a\x19apfish.v1/user/user.proto\"#\n" +
+	"!apfish.v1/user/user_service.proto\x12\x0eapfish.v1.user\x1a\x19apfish.v1/user/user.proto\"#\n" +
 	"\vUserRequest\x12\x14\n" +
 	"\x05login\x18\x01 \x01(\tR\x05login\"8\n" +
 	"\fUserResponse\x12(\n" +
@@ -491,15 +458,9 @@ const file_apfish_v1_user_user_service_proto_rawDesc = "" +
 	"\vmiddle_name\x18\x05 \x01(\tR\n" +
 	"middleName\".\n" +
 	"\x12CreateUserResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess\"\x99\x02\n" +
-	"\x11UpdateUserRequest\x12\x14\n" +
-	"\x05login\x18\x01 \x01(\tR\x05login\x12;\n" +
-	"\n" +
-	"first_name\x18\x02 \x01(\v2\x1c.google.protobuf.StringValueR\tfirstName\x129\n" +
-	"\tlast_name\x18\x03 \x01(\v2\x1c.google.protobuf.StringValueR\blastName\x12=\n" +
-	"\vmiddle_name\x18\x04 \x01(\v2\x1c.google.protobuf.StringValueR\n" +
-	"middleName\x127\n" +
-	"\tis_active\x18\x05 \x01(\v2\x1a.google.protobuf.BoolValueR\bisActive\".\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\"B\n" +
+	"\x11UpdateUserRequest\x12-\n" +
+	"\x04user\x18\x01 \x01(\v2\x19.apfish.v1.user.UserPatchR\x04user\".\n" +
 	"\x12UpdateUserResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess2\xcf\x02\n" +
 	"\vUserService\x12D\n" +
@@ -524,38 +485,34 @@ func file_apfish_v1_user_user_service_proto_rawDescGZIP() []byte {
 
 var file_apfish_v1_user_user_service_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
 var file_apfish_v1_user_user_service_proto_goTypes = []any{
-	(*UserRequest)(nil),            // 0: apfish.v1.user.UserRequest
-	(*UserResponse)(nil),           // 1: apfish.v1.user.UserResponse
-	(*ListUsersRequest)(nil),       // 2: apfish.v1.user.ListUsersRequest
-	(*ListUsersResponse)(nil),      // 3: apfish.v1.user.ListUsersResponse
-	(*CreateUserRequest)(nil),      // 4: apfish.v1.user.CreateUserRequest
-	(*CreateUserResponse)(nil),     // 5: apfish.v1.user.CreateUserResponse
-	(*UpdateUserRequest)(nil),      // 6: apfish.v1.user.UpdateUserRequest
-	(*UpdateUserResponse)(nil),     // 7: apfish.v1.user.UpdateUserResponse
-	(*User)(nil),                   // 8: apfish.v1.user.User
-	(*wrapperspb.StringValue)(nil), // 9: google.protobuf.StringValue
-	(*wrapperspb.BoolValue)(nil),   // 10: google.protobuf.BoolValue
+	(*UserRequest)(nil),        // 0: apfish.v1.user.UserRequest
+	(*UserResponse)(nil),       // 1: apfish.v1.user.UserResponse
+	(*ListUsersRequest)(nil),   // 2: apfish.v1.user.ListUsersRequest
+	(*ListUsersResponse)(nil),  // 3: apfish.v1.user.ListUsersResponse
+	(*CreateUserRequest)(nil),  // 4: apfish.v1.user.CreateUserRequest
+	(*CreateUserResponse)(nil), // 5: apfish.v1.user.CreateUserResponse
+	(*UpdateUserRequest)(nil),  // 6: apfish.v1.user.UpdateUserRequest
+	(*UpdateUserResponse)(nil), // 7: apfish.v1.user.UpdateUserResponse
+	(*User)(nil),               // 8: apfish.v1.user.User
+	(*UserPatch)(nil),          // 9: apfish.v1.user.UserPatch
 }
 var file_apfish_v1_user_user_service_proto_depIdxs = []int32{
-	8,  // 0: apfish.v1.user.UserResponse.user:type_name -> apfish.v1.user.User
-	8,  // 1: apfish.v1.user.ListUsersResponse.users:type_name -> apfish.v1.user.User
-	9,  // 2: apfish.v1.user.UpdateUserRequest.first_name:type_name -> google.protobuf.StringValue
-	9,  // 3: apfish.v1.user.UpdateUserRequest.last_name:type_name -> google.protobuf.StringValue
-	9,  // 4: apfish.v1.user.UpdateUserRequest.middle_name:type_name -> google.protobuf.StringValue
-	10, // 5: apfish.v1.user.UpdateUserRequest.is_active:type_name -> google.protobuf.BoolValue
-	0,  // 6: apfish.v1.user.UserService.GetUser:input_type -> apfish.v1.user.UserRequest
-	2,  // 7: apfish.v1.user.UserService.ListUsers:input_type -> apfish.v1.user.ListUsersRequest
-	4,  // 8: apfish.v1.user.UserService.CreateUser:input_type -> apfish.v1.user.CreateUserRequest
-	6,  // 9: apfish.v1.user.UserService.UpdateUser:input_type -> apfish.v1.user.UpdateUserRequest
-	1,  // 10: apfish.v1.user.UserService.GetUser:output_type -> apfish.v1.user.UserResponse
-	3,  // 11: apfish.v1.user.UserService.ListUsers:output_type -> apfish.v1.user.ListUsersResponse
-	5,  // 12: apfish.v1.user.UserService.CreateUser:output_type -> apfish.v1.user.CreateUserResponse
-	7,  // 13: apfish.v1.user.UserService.UpdateUser:output_type -> apfish.v1.user.UpdateUserResponse
-	10, // [10:14] is the sub-list for method output_type
-	6,  // [6:10] is the sub-list for method input_type
-	6,  // [6:6] is the sub-list for extension type_name
-	6,  // [6:6] is the sub-list for extension extendee
-	0,  // [0:6] is the sub-list for field type_name
+	8, // 0: apfish.v1.user.UserResponse.user:type_name -> apfish.v1.user.User
+	8, // 1: apfish.v1.user.ListUsersResponse.users:type_name -> apfish.v1.user.User
+	9, // 2: apfish.v1.user.UpdateUserRequest.user:type_name -> apfish.v1.user.UserPatch
+	0, // 3: apfish.v1.user.UserService.GetUser:input_type -> apfish.v1.user.UserRequest
+	2, // 4: apfish.v1.user.UserService.ListUsers:input_type -> apfish.v1.user.ListUsersRequest
+	4, // 5: apfish.v1.user.UserService.CreateUser:input_type -> apfish.v1.user.CreateUserRequest
+	6, // 6: apfish.v1.user.UserService.UpdateUser:input_type -> apfish.v1.user.UpdateUserRequest
+	1, // 7: apfish.v1.user.UserService.GetUser:output_type -> apfish.v1.user.UserResponse
+	3, // 8: apfish.v1.user.UserService.ListUsers:output_type -> apfish.v1.user.ListUsersResponse
+	5, // 9: apfish.v1.user.UserService.CreateUser:output_type -> apfish.v1.user.CreateUserResponse
+	7, // 10: apfish.v1.user.UserService.UpdateUser:output_type -> apfish.v1.user.UpdateUserResponse
+	7, // [7:11] is the sub-list for method output_type
+	3, // [3:7] is the sub-list for method input_type
+	3, // [3:3] is the sub-list for extension type_name
+	3, // [3:3] is the sub-list for extension extendee
+	0, // [0:3] is the sub-list for field type_name
 }
 
 func init() { file_apfish_v1_user_user_service_proto_init() }

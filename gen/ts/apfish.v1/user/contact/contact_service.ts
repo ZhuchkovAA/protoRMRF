@@ -19,7 +19,7 @@ import {
 } from "@grpc/grpc-js";
 import Long from "long";
 import _m0 from "protobufjs/minimal";
-import { Contact } from "./contact";
+import { Contact, ContactPatch } from "./contact";
 import { ContactSummary } from "./summary/contact_summary";
 
 export const protobufPackage = "apfish.v1.user.contact";
@@ -46,6 +46,14 @@ export interface ListContactsRequest {
 export interface ListContactsResponse {
   listContacts: ContactSummary[];
   total: number;
+}
+
+export interface UpdateContactRequest {
+  contact: ContactPatch | undefined;
+}
+
+export interface UpdateContactResponse {
+  success: boolean;
 }
 
 function createBaseContactRequest(): ContactRequest {
@@ -373,6 +381,122 @@ export const ListContactsResponse = {
   },
 };
 
+function createBaseUpdateContactRequest(): UpdateContactRequest {
+  return { contact: undefined };
+}
+
+export const UpdateContactRequest = {
+  encode(message: UpdateContactRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.contact !== undefined) {
+      ContactPatch.encode(message.contact, writer.uint32(10).fork()).ldelim();
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): UpdateContactRequest {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseUpdateContactRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag !== 10) {
+            break;
+          }
+
+          message.contact = ContactPatch.decode(reader, reader.uint32());
+          continue;
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): UpdateContactRequest {
+    return { contact: isSet(object.contact) ? ContactPatch.fromJSON(object.contact) : undefined };
+  },
+
+  toJSON(message: UpdateContactRequest): unknown {
+    const obj: any = {};
+    if (message.contact !== undefined) {
+      obj.contact = ContactPatch.toJSON(message.contact);
+    }
+    return obj;
+  },
+
+  create<I extends Exact<DeepPartial<UpdateContactRequest>, I>>(base?: I): UpdateContactRequest {
+    return UpdateContactRequest.fromPartial(base ?? ({} as any));
+  },
+  fromPartial<I extends Exact<DeepPartial<UpdateContactRequest>, I>>(object: I): UpdateContactRequest {
+    const message = createBaseUpdateContactRequest();
+    message.contact = (object.contact !== undefined && object.contact !== null)
+      ? ContactPatch.fromPartial(object.contact)
+      : undefined;
+    return message;
+  },
+};
+
+function createBaseUpdateContactResponse(): UpdateContactResponse {
+  return { success: false };
+}
+
+export const UpdateContactResponse = {
+  encode(message: UpdateContactResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.success !== false) {
+      writer.uint32(8).bool(message.success);
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): UpdateContactResponse {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseUpdateContactResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag !== 8) {
+            break;
+          }
+
+          message.success = reader.bool();
+          continue;
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): UpdateContactResponse {
+    return { success: isSet(object.success) ? globalThis.Boolean(object.success) : false };
+  },
+
+  toJSON(message: UpdateContactResponse): unknown {
+    const obj: any = {};
+    if (message.success !== false) {
+      obj.success = message.success;
+    }
+    return obj;
+  },
+
+  create<I extends Exact<DeepPartial<UpdateContactResponse>, I>>(base?: I): UpdateContactResponse {
+    return UpdateContactResponse.fromPartial(base ?? ({} as any));
+  },
+  fromPartial<I extends Exact<DeepPartial<UpdateContactResponse>, I>>(object: I): UpdateContactResponse {
+    const message = createBaseUpdateContactResponse();
+    message.success = object.success ?? false;
+    return message;
+  },
+};
+
 export type ContactServiceService = typeof ContactServiceService;
 export const ContactServiceService = {
   getContact: {
@@ -402,12 +526,22 @@ export const ContactServiceService = {
     responseSerialize: (value: ListContactsResponse) => Buffer.from(ListContactsResponse.encode(value).finish()),
     responseDeserialize: (value: Buffer) => ListContactsResponse.decode(value),
   },
+  updateContact: {
+    path: "/apfish.v1.user.contact.ContactService/UpdateContact",
+    requestStream: false,
+    responseStream: false,
+    requestSerialize: (value: UpdateContactRequest) => Buffer.from(UpdateContactRequest.encode(value).finish()),
+    requestDeserialize: (value: Buffer) => UpdateContactRequest.decode(value),
+    responseSerialize: (value: UpdateContactResponse) => Buffer.from(UpdateContactResponse.encode(value).finish()),
+    responseDeserialize: (value: Buffer) => UpdateContactResponse.decode(value),
+  },
 } as const;
 
 export interface ContactServiceServer extends UntypedServiceImplementation {
   getContact: handleUnaryCall<ContactRequest, ContactResponse>;
   getContactSummary: handleUnaryCall<ContactRequest, ContactSummaryResponse>;
   listContacts: handleUnaryCall<ListContactsRequest, ListContactsResponse>;
+  updateContact: handleUnaryCall<UpdateContactRequest, UpdateContactResponse>;
 }
 
 export interface ContactServiceClient extends Client {
@@ -455,6 +589,21 @@ export interface ContactServiceClient extends Client {
     metadata: Metadata,
     options: Partial<CallOptions>,
     callback: (error: ServiceError | null, response: ListContactsResponse) => void,
+  ): ClientUnaryCall;
+  updateContact(
+    request: UpdateContactRequest,
+    callback: (error: ServiceError | null, response: UpdateContactResponse) => void,
+  ): ClientUnaryCall;
+  updateContact(
+    request: UpdateContactRequest,
+    metadata: Metadata,
+    callback: (error: ServiceError | null, response: UpdateContactResponse) => void,
+  ): ClientUnaryCall;
+  updateContact(
+    request: UpdateContactRequest,
+    metadata: Metadata,
+    options: Partial<CallOptions>,
+    callback: (error: ServiceError | null, response: UpdateContactResponse) => void,
   ): ClientUnaryCall;
 }
 

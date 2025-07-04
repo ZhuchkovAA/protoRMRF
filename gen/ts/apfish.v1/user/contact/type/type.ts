@@ -8,6 +8,7 @@
 import Long from "long";
 import _m0 from "protobufjs/minimal";
 import { Timestamp } from "../../../../google/protobuf/timestamp";
+import { StringValue } from "../../../../google/protobuf/wrappers";
 import { ContactSummary } from "../summary/contact_summary";
 
 export const protobufPackage = "apfish.v1.user.contact.type";
@@ -23,6 +24,12 @@ export interface Type {
   /** When the type was defined. */
   createdAt: Date | undefined;
   contacts: ContactSummary[];
+}
+
+export interface TypePatch {
+  id: number;
+  name: string | undefined;
+  code: string | undefined;
 }
 
 function createBaseType(): Type {
@@ -142,6 +149,95 @@ export const Type = {
     message.code = object.code ?? "";
     message.createdAt = object.createdAt ?? undefined;
     message.contacts = object.contacts?.map((e) => ContactSummary.fromPartial(e)) || [];
+    return message;
+  },
+};
+
+function createBaseTypePatch(): TypePatch {
+  return { id: 0, name: undefined, code: undefined };
+}
+
+export const TypePatch = {
+  encode(message: TypePatch, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.id !== 0) {
+      writer.uint32(8).int32(message.id);
+    }
+    if (message.name !== undefined) {
+      StringValue.encode({ value: message.name! }, writer.uint32(18).fork()).ldelim();
+    }
+    if (message.code !== undefined) {
+      StringValue.encode({ value: message.code! }, writer.uint32(26).fork()).ldelim();
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): TypePatch {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseTypePatch();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag !== 8) {
+            break;
+          }
+
+          message.id = reader.int32();
+          continue;
+        case 2:
+          if (tag !== 18) {
+            break;
+          }
+
+          message.name = StringValue.decode(reader, reader.uint32()).value;
+          continue;
+        case 3:
+          if (tag !== 26) {
+            break;
+          }
+
+          message.code = StringValue.decode(reader, reader.uint32()).value;
+          continue;
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): TypePatch {
+    return {
+      id: isSet(object.id) ? globalThis.Number(object.id) : 0,
+      name: isSet(object.name) ? String(object.name) : undefined,
+      code: isSet(object.code) ? String(object.code) : undefined,
+    };
+  },
+
+  toJSON(message: TypePatch): unknown {
+    const obj: any = {};
+    if (message.id !== 0) {
+      obj.id = Math.round(message.id);
+    }
+    if (message.name !== undefined) {
+      obj.name = message.name;
+    }
+    if (message.code !== undefined) {
+      obj.code = message.code;
+    }
+    return obj;
+  },
+
+  create<I extends Exact<DeepPartial<TypePatch>, I>>(base?: I): TypePatch {
+    return TypePatch.fromPartial(base ?? ({} as any));
+  },
+  fromPartial<I extends Exact<DeepPartial<TypePatch>, I>>(object: I): TypePatch {
+    const message = createBaseTypePatch();
+    message.id = object.id ?? 0;
+    message.name = object.name ?? undefined;
+    message.code = object.code ?? undefined;
     return message;
   },
 };

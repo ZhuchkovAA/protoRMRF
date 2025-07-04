@@ -8,6 +8,7 @@
 import Long from "long";
 import _m0 from "protobufjs/minimal";
 import { Timestamp } from "../../../google/protobuf/timestamp";
+import { Int32Value, StringValue } from "../../../google/protobuf/wrappers";
 import { UserSummary } from "../summary/user_summary";
 import { TypeSummary } from "./type/summary/type_summary";
 
@@ -28,6 +29,13 @@ export interface Contact {
   value: string;
   /** When the contact was added. */
   createdAt: Date | undefined;
+}
+
+export interface ContactPatch {
+  id: number;
+  userId: number | undefined;
+  typeId: number | undefined;
+  value: string | undefined;
 }
 
 function createBaseContact(): Contact {
@@ -149,6 +157,110 @@ export const Contact = {
       : undefined;
     message.value = object.value ?? "";
     message.createdAt = object.createdAt ?? undefined;
+    return message;
+  },
+};
+
+function createBaseContactPatch(): ContactPatch {
+  return { id: 0, userId: undefined, typeId: undefined, value: undefined };
+}
+
+export const ContactPatch = {
+  encode(message: ContactPatch, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.id !== 0) {
+      writer.uint32(8).int32(message.id);
+    }
+    if (message.userId !== undefined) {
+      Int32Value.encode({ value: message.userId! }, writer.uint32(18).fork()).ldelim();
+    }
+    if (message.typeId !== undefined) {
+      Int32Value.encode({ value: message.typeId! }, writer.uint32(26).fork()).ldelim();
+    }
+    if (message.value !== undefined) {
+      StringValue.encode({ value: message.value! }, writer.uint32(34).fork()).ldelim();
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): ContactPatch {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseContactPatch();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag !== 8) {
+            break;
+          }
+
+          message.id = reader.int32();
+          continue;
+        case 2:
+          if (tag !== 18) {
+            break;
+          }
+
+          message.userId = Int32Value.decode(reader, reader.uint32()).value;
+          continue;
+        case 3:
+          if (tag !== 26) {
+            break;
+          }
+
+          message.typeId = Int32Value.decode(reader, reader.uint32()).value;
+          continue;
+        case 4:
+          if (tag !== 34) {
+            break;
+          }
+
+          message.value = StringValue.decode(reader, reader.uint32()).value;
+          continue;
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): ContactPatch {
+    return {
+      id: isSet(object.id) ? globalThis.Number(object.id) : 0,
+      userId: isSet(object.userId) ? Number(object.userId) : undefined,
+      typeId: isSet(object.typeId) ? Number(object.typeId) : undefined,
+      value: isSet(object.value) ? String(object.value) : undefined,
+    };
+  },
+
+  toJSON(message: ContactPatch): unknown {
+    const obj: any = {};
+    if (message.id !== 0) {
+      obj.id = Math.round(message.id);
+    }
+    if (message.userId !== undefined) {
+      obj.userId = message.userId;
+    }
+    if (message.typeId !== undefined) {
+      obj.typeId = message.typeId;
+    }
+    if (message.value !== undefined) {
+      obj.value = message.value;
+    }
+    return obj;
+  },
+
+  create<I extends Exact<DeepPartial<ContactPatch>, I>>(base?: I): ContactPatch {
+    return ContactPatch.fromPartial(base ?? ({} as any));
+  },
+  fromPartial<I extends Exact<DeepPartial<ContactPatch>, I>>(object: I): ContactPatch {
+    const message = createBaseContactPatch();
+    message.id = object.id ?? 0;
+    message.userId = object.userId ?? undefined;
+    message.typeId = object.typeId ?? undefined;
+    message.value = object.value ?? undefined;
     return message;
   },
 };

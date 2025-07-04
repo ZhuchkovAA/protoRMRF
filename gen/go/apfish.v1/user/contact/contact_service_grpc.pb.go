@@ -22,6 +22,7 @@ const (
 	ContactService_GetContact_FullMethodName        = "/apfish.v1.user.contact.ContactService/GetContact"
 	ContactService_GetContactSummary_FullMethodName = "/apfish.v1.user.contact.ContactService/GetContactSummary"
 	ContactService_ListContacts_FullMethodName      = "/apfish.v1.user.contact.ContactService/ListContacts"
+	ContactService_UpdateContact_FullMethodName     = "/apfish.v1.user.contact.ContactService/UpdateContact"
 )
 
 // ContactServiceClient is the client API for ContactService service.
@@ -31,6 +32,7 @@ type ContactServiceClient interface {
 	GetContact(ctx context.Context, in *ContactRequest, opts ...grpc.CallOption) (*ContactResponse, error)
 	GetContactSummary(ctx context.Context, in *ContactRequest, opts ...grpc.CallOption) (*ContactSummaryResponse, error)
 	ListContacts(ctx context.Context, in *ListContactsRequest, opts ...grpc.CallOption) (*ListContactsResponse, error)
+	UpdateContact(ctx context.Context, in *UpdateContactRequest, opts ...grpc.CallOption) (*UpdateContactResponse, error)
 }
 
 type contactServiceClient struct {
@@ -71,6 +73,16 @@ func (c *contactServiceClient) ListContacts(ctx context.Context, in *ListContact
 	return out, nil
 }
 
+func (c *contactServiceClient) UpdateContact(ctx context.Context, in *UpdateContactRequest, opts ...grpc.CallOption) (*UpdateContactResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateContactResponse)
+	err := c.cc.Invoke(ctx, ContactService_UpdateContact_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ContactServiceServer is the server API for ContactService service.
 // All implementations must embed UnimplementedContactServiceServer
 // for forward compatibility.
@@ -78,6 +90,7 @@ type ContactServiceServer interface {
 	GetContact(context.Context, *ContactRequest) (*ContactResponse, error)
 	GetContactSummary(context.Context, *ContactRequest) (*ContactSummaryResponse, error)
 	ListContacts(context.Context, *ListContactsRequest) (*ListContactsResponse, error)
+	UpdateContact(context.Context, *UpdateContactRequest) (*UpdateContactResponse, error)
 	mustEmbedUnimplementedContactServiceServer()
 }
 
@@ -96,6 +109,9 @@ func (UnimplementedContactServiceServer) GetContactSummary(context.Context, *Con
 }
 func (UnimplementedContactServiceServer) ListContacts(context.Context, *ListContactsRequest) (*ListContactsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListContacts not implemented")
+}
+func (UnimplementedContactServiceServer) UpdateContact(context.Context, *UpdateContactRequest) (*UpdateContactResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateContact not implemented")
 }
 func (UnimplementedContactServiceServer) mustEmbedUnimplementedContactServiceServer() {}
 func (UnimplementedContactServiceServer) testEmbeddedByValue()                        {}
@@ -172,6 +188,24 @@ func _ContactService_ListContacts_Handler(srv interface{}, ctx context.Context, 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ContactService_UpdateContact_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateContactRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ContactServiceServer).UpdateContact(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ContactService_UpdateContact_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ContactServiceServer).UpdateContact(ctx, req.(*UpdateContactRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // ContactService_ServiceDesc is the grpc.ServiceDesc for ContactService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -190,6 +224,10 @@ var ContactService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ListContacts",
 			Handler:    _ContactService_ListContacts_Handler,
+		},
+		{
+			MethodName: "UpdateContact",
+			Handler:    _ContactService_UpdateContact_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

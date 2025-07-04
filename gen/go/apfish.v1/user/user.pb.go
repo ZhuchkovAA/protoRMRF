@@ -14,6 +14,7 @@ import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
@@ -151,11 +152,95 @@ func (x *User) GetPermissions() []*summary3.PermissionSummary {
 	return nil
 }
 
+type UserPatch struct {
+	state         protoimpl.MessageState  `protogen:"open.v1"`
+	Login         string                  `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"`
+	FirstName     *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=first_name,json=firstName,proto3" json:"first_name,omitempty"`
+	LastName      *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=last_name,json=lastName,proto3" json:"last_name,omitempty"`
+	MiddleName    *wrapperspb.StringValue `protobuf:"bytes,4,opt,name=middle_name,json=middleName,proto3" json:"middle_name,omitempty"`
+	RoleId        *wrapperspb.Int32Value  `protobuf:"bytes,5,opt,name=role_id,json=roleId,proto3" json:"role_id,omitempty"`
+	IsActive      *wrapperspb.BoolValue   `protobuf:"bytes,6,opt,name=is_active,json=isActive,proto3" json:"is_active,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UserPatch) Reset() {
+	*x = UserPatch{}
+	mi := &file_apfish_v1_user_user_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UserPatch) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UserPatch) ProtoMessage() {}
+
+func (x *UserPatch) ProtoReflect() protoreflect.Message {
+	mi := &file_apfish_v1_user_user_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UserPatch.ProtoReflect.Descriptor instead.
+func (*UserPatch) Descriptor() ([]byte, []int) {
+	return file_apfish_v1_user_user_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *UserPatch) GetLogin() string {
+	if x != nil {
+		return x.Login
+	}
+	return ""
+}
+
+func (x *UserPatch) GetFirstName() *wrapperspb.StringValue {
+	if x != nil {
+		return x.FirstName
+	}
+	return nil
+}
+
+func (x *UserPatch) GetLastName() *wrapperspb.StringValue {
+	if x != nil {
+		return x.LastName
+	}
+	return nil
+}
+
+func (x *UserPatch) GetMiddleName() *wrapperspb.StringValue {
+	if x != nil {
+		return x.MiddleName
+	}
+	return nil
+}
+
+func (x *UserPatch) GetRoleId() *wrapperspb.Int32Value {
+	if x != nil {
+		return x.RoleId
+	}
+	return nil
+}
+
+func (x *UserPatch) GetIsActive() *wrapperspb.BoolValue {
+	if x != nil {
+		return x.IsActive
+	}
+	return nil
+}
+
 var File_apfish_v1_user_user_proto protoreflect.FileDescriptor
 
 const file_apfish_v1_user_user_proto_rawDesc = "" +
 	"\n" +
-	"\x19apfish.v1/user/user.proto\x12\x0eapfish.v1.user\x1a\x1fgoogle/protobuf/timestamp.proto\x1a.apfish.v1/user/role/summary/role_summary.proto\x1a)apfish.v1/user/summary/user_summary.proto\x1a4apfish.v1/user/contact/summary/contact_summary.proto\x1a5apfish.v1/permission/summary/permission_summary.proto\"\x82\x04\n" +
+	"\x19apfish.v1/user/user.proto\x12\x0eapfish.v1.user\x1a\x1egoogle/protobuf/wrappers.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a.apfish.v1/user/role/summary/role_summary.proto\x1a)apfish.v1/user/summary/user_summary.proto\x1a4apfish.v1/user/contact/summary/contact_summary.proto\x1a5apfish.v1/permission/summary/permission_summary.proto\"\x82\x04\n" +
 	"\x04User\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x14\n" +
 	"\x05login\x18\x02 \x01(\tR\x05login\x12\x1d\n" +
@@ -172,7 +257,16 @@ const file_apfish_v1_user_user_proto_rawDesc = "" +
 	"created_by\x18\t \x01(\v2#.apfish.v1.user.summary.UserSummaryR\tcreatedBy\x12J\n" +
 	"\bcontacts\x18\n" +
 	" \x03(\v2..apfish.v1.user.contact.summary.ContactSummaryR\bcontacts\x12Q\n" +
-	"\vpermissions\x18\v \x03(\v2/.apfish.v1.permission.summary.PermissionSummaryR\vpermissionsB<Z:github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user;userb\x06proto3"
+	"\vpermissions\x18\v \x03(\v2/.apfish.v1.permission.summary.PermissionSummaryR\vpermissions\"\xc7\x02\n" +
+	"\tUserPatch\x12\x14\n" +
+	"\x05login\x18\x01 \x01(\tR\x05login\x12;\n" +
+	"\n" +
+	"first_name\x18\x02 \x01(\v2\x1c.google.protobuf.StringValueR\tfirstName\x129\n" +
+	"\tlast_name\x18\x03 \x01(\v2\x1c.google.protobuf.StringValueR\blastName\x12=\n" +
+	"\vmiddle_name\x18\x04 \x01(\v2\x1c.google.protobuf.StringValueR\n" +
+	"middleName\x124\n" +
+	"\arole_id\x18\x05 \x01(\v2\x1b.google.protobuf.Int32ValueR\x06roleId\x127\n" +
+	"\tis_active\x18\x06 \x01(\v2\x1a.google.protobuf.BoolValueR\bisActiveB<Z:github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user;userb\x06proto3"
 
 var (
 	file_apfish_v1_user_user_proto_rawDescOnce sync.Once
@@ -186,26 +280,35 @@ func file_apfish_v1_user_user_proto_rawDescGZIP() []byte {
 	return file_apfish_v1_user_user_proto_rawDescData
 }
 
-var file_apfish_v1_user_user_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
+var file_apfish_v1_user_user_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_apfish_v1_user_user_proto_goTypes = []any{
 	(*User)(nil),                       // 0: apfish.v1.user.User
-	(*summary.RoleSummary)(nil),        // 1: apfish.v1.user.role.summary.RoleSummary
-	(*timestamppb.Timestamp)(nil),      // 2: google.protobuf.Timestamp
-	(*summary1.UserSummary)(nil),       // 3: apfish.v1.user.summary.UserSummary
-	(*summary2.ContactSummary)(nil),    // 4: apfish.v1.user.contact.summary.ContactSummary
-	(*summary3.PermissionSummary)(nil), // 5: apfish.v1.permission.summary.PermissionSummary
+	(*UserPatch)(nil),                  // 1: apfish.v1.user.UserPatch
+	(*summary.RoleSummary)(nil),        // 2: apfish.v1.user.role.summary.RoleSummary
+	(*timestamppb.Timestamp)(nil),      // 3: google.protobuf.Timestamp
+	(*summary1.UserSummary)(nil),       // 4: apfish.v1.user.summary.UserSummary
+	(*summary2.ContactSummary)(nil),    // 5: apfish.v1.user.contact.summary.ContactSummary
+	(*summary3.PermissionSummary)(nil), // 6: apfish.v1.permission.summary.PermissionSummary
+	(*wrapperspb.StringValue)(nil),     // 7: google.protobuf.StringValue
+	(*wrapperspb.Int32Value)(nil),      // 8: google.protobuf.Int32Value
+	(*wrapperspb.BoolValue)(nil),       // 9: google.protobuf.BoolValue
 }
 var file_apfish_v1_user_user_proto_depIdxs = []int32{
-	1, // 0: apfish.v1.user.User.role:type_name -> apfish.v1.user.role.summary.RoleSummary
-	2, // 1: apfish.v1.user.User.created_at:type_name -> google.protobuf.Timestamp
-	3, // 2: apfish.v1.user.User.created_by:type_name -> apfish.v1.user.summary.UserSummary
-	4, // 3: apfish.v1.user.User.contacts:type_name -> apfish.v1.user.contact.summary.ContactSummary
-	5, // 4: apfish.v1.user.User.permissions:type_name -> apfish.v1.permission.summary.PermissionSummary
-	5, // [5:5] is the sub-list for method output_type
-	5, // [5:5] is the sub-list for method input_type
-	5, // [5:5] is the sub-list for extension type_name
-	5, // [5:5] is the sub-list for extension extendee
-	0, // [0:5] is the sub-list for field type_name
+	2,  // 0: apfish.v1.user.User.role:type_name -> apfish.v1.user.role.summary.RoleSummary
+	3,  // 1: apfish.v1.user.User.created_at:type_name -> google.protobuf.Timestamp
+	4,  // 2: apfish.v1.user.User.created_by:type_name -> apfish.v1.user.summary.UserSummary
+	5,  // 3: apfish.v1.user.User.contacts:type_name -> apfish.v1.user.contact.summary.ContactSummary
+	6,  // 4: apfish.v1.user.User.permissions:type_name -> apfish.v1.permission.summary.PermissionSummary
+	7,  // 5: apfish.v1.user.UserPatch.first_name:type_name -> google.protobuf.StringValue
+	7,  // 6: apfish.v1.user.UserPatch.last_name:type_name -> google.protobuf.StringValue
+	7,  // 7: apfish.v1.user.UserPatch.middle_name:type_name -> google.protobuf.StringValue
+	8,  // 8: apfish.v1.user.UserPatch.role_id:type_name -> google.protobuf.Int32Value
+	9,  // 9: apfish.v1.user.UserPatch.is_active:type_name -> google.protobuf.BoolValue
+	10, // [10:10] is the sub-list for method output_type
+	10, // [10:10] is the sub-list for method input_type
+	10, // [10:10] is the sub-list for extension type_name
+	10, // [10:10] is the sub-list for extension extendee
+	0,  // [0:10] is the sub-list for field type_name
 }
 
 func init() { file_apfish_v1_user_user_proto_init() }
@@ -219,7 +322,7 @@ func file_apfish_v1_user_user_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_apfish_v1_user_user_proto_rawDesc), len(file_apfish_v1_user_user_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   1,
+			NumMessages:   2,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

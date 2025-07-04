@@ -19,8 +19,7 @@ import {
 } from "@grpc/grpc-js";
 import Long from "long";
 import _m0 from "protobufjs/minimal";
-import { BoolValue, StringValue } from "../../google/protobuf/wrappers";
-import { User } from "./user";
+import { User, UserPatch } from "./user";
 
 export const protobufPackage = "apfish.v1.user";
 
@@ -66,11 +65,7 @@ export interface CreateUserResponse {
 }
 
 export interface UpdateUserRequest {
-  login: string;
-  firstName: string | undefined;
-  lastName: string | undefined;
-  middleName: string | undefined;
-  isActive: boolean | undefined;
+  user: UserPatch | undefined;
 }
 
 export interface UpdateUserResponse {
@@ -531,25 +526,13 @@ export const CreateUserResponse = {
 };
 
 function createBaseUpdateUserRequest(): UpdateUserRequest {
-  return { login: "", firstName: undefined, lastName: undefined, middleName: undefined, isActive: undefined };
+  return { user: undefined };
 }
 
 export const UpdateUserRequest = {
   encode(message: UpdateUserRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.login !== "") {
-      writer.uint32(10).string(message.login);
-    }
-    if (message.firstName !== undefined) {
-      StringValue.encode({ value: message.firstName! }, writer.uint32(18).fork()).ldelim();
-    }
-    if (message.lastName !== undefined) {
-      StringValue.encode({ value: message.lastName! }, writer.uint32(26).fork()).ldelim();
-    }
-    if (message.middleName !== undefined) {
-      StringValue.encode({ value: message.middleName! }, writer.uint32(34).fork()).ldelim();
-    }
-    if (message.isActive !== undefined) {
-      BoolValue.encode({ value: message.isActive! }, writer.uint32(42).fork()).ldelim();
+    if (message.user !== undefined) {
+      UserPatch.encode(message.user, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
@@ -566,35 +549,7 @@ export const UpdateUserRequest = {
             break;
           }
 
-          message.login = reader.string();
-          continue;
-        case 2:
-          if (tag !== 18) {
-            break;
-          }
-
-          message.firstName = StringValue.decode(reader, reader.uint32()).value;
-          continue;
-        case 3:
-          if (tag !== 26) {
-            break;
-          }
-
-          message.lastName = StringValue.decode(reader, reader.uint32()).value;
-          continue;
-        case 4:
-          if (tag !== 34) {
-            break;
-          }
-
-          message.middleName = StringValue.decode(reader, reader.uint32()).value;
-          continue;
-        case 5:
-          if (tag !== 42) {
-            break;
-          }
-
-          message.isActive = BoolValue.decode(reader, reader.uint32()).value;
+          message.user = UserPatch.decode(reader, reader.uint32());
           continue;
       }
       if ((tag & 7) === 4 || tag === 0) {
@@ -606,31 +561,13 @@ export const UpdateUserRequest = {
   },
 
   fromJSON(object: any): UpdateUserRequest {
-    return {
-      login: isSet(object.login) ? globalThis.String(object.login) : "",
-      firstName: isSet(object.firstName) ? String(object.firstName) : undefined,
-      lastName: isSet(object.lastName) ? String(object.lastName) : undefined,
-      middleName: isSet(object.middleName) ? String(object.middleName) : undefined,
-      isActive: isSet(object.isActive) ? Boolean(object.isActive) : undefined,
-    };
+    return { user: isSet(object.user) ? UserPatch.fromJSON(object.user) : undefined };
   },
 
   toJSON(message: UpdateUserRequest): unknown {
     const obj: any = {};
-    if (message.login !== "") {
-      obj.login = message.login;
-    }
-    if (message.firstName !== undefined) {
-      obj.firstName = message.firstName;
-    }
-    if (message.lastName !== undefined) {
-      obj.lastName = message.lastName;
-    }
-    if (message.middleName !== undefined) {
-      obj.middleName = message.middleName;
-    }
-    if (message.isActive !== undefined) {
-      obj.isActive = message.isActive;
+    if (message.user !== undefined) {
+      obj.user = UserPatch.toJSON(message.user);
     }
     return obj;
   },
@@ -640,11 +577,7 @@ export const UpdateUserRequest = {
   },
   fromPartial<I extends Exact<DeepPartial<UpdateUserRequest>, I>>(object: I): UpdateUserRequest {
     const message = createBaseUpdateUserRequest();
-    message.login = object.login ?? "";
-    message.firstName = object.firstName ?? undefined;
-    message.lastName = object.lastName ?? undefined;
-    message.middleName = object.middleName ?? undefined;
-    message.isActive = object.isActive ?? undefined;
+    message.user = (object.user !== undefined && object.user !== null) ? UserPatch.fromPartial(object.user) : undefined;
     return message;
   },
 };

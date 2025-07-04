@@ -2,8 +2,6 @@ syntax = "proto3";
 
 package apfish.v1.user;
 
-import "google/protobuf/wrappers.proto";
-
 option go_package = "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user;user";
 
 import "apfish.v1/user/user.proto";
@@ -59,11 +57,7 @@ message CreateUserResponse {
 }
 
 message UpdateUserRequest {
-  string login = 1;
-  google.protobuf.StringValue first_name = 2;
-  google.protobuf.StringValue last_name = 3;
-  google.protobuf.StringValue middle_name = 4;
-  google.protobuf.BoolValue is_active = 5;
+  UserPatch user = 1;
 }
 
 message UpdateUserResponse {

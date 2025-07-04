@@ -12,6 +12,8 @@ service TypeService {
   rpc GetTypeSummary (TypeRequest) returns (TypeSummaryResponse);
 
   rpc ListTypes (ListTypesRequest) returns (ListTypesResponse);
+
+  rpc UpdateType(UpdateTypeRequest) returns (UpdateTypeResponse);
 }
 
 message TypeRequest {
@@ -36,3 +38,10 @@ message ListTypesResponse {
   int32 total = 2;
 }
 
+message UpdateTypeRequest {
+  TypePatch type = 1;
+}
+
+message UpdateTypeResponse {
+  bool success = 1;
+}

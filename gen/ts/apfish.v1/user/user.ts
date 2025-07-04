@@ -8,6 +8,7 @@
 import Long from "long";
 import _m0 from "protobufjs/minimal";
 import { Timestamp } from "../../google/protobuf/timestamp";
+import { BoolValue, Int32Value, StringValue } from "../../google/protobuf/wrappers";
 import { PermissionSummary } from "../permission/summary/permission_summary";
 import { ContactSummary } from "./contact/summary/contact_summary";
 import { RoleSummary } from "./role/summary/role_summary";
@@ -39,6 +40,15 @@ export interface User {
   contacts: ContactSummary[];
   /** Direct permissions (overrides role). */
   permissions: PermissionSummary[];
+}
+
+export interface UserPatch {
+  login: string;
+  firstName: string | undefined;
+  lastName: string | undefined;
+  middleName: string | undefined;
+  roleId: number | undefined;
+  isActive: boolean | undefined;
 }
 
 function createBaseUser(): User {
@@ -266,6 +276,147 @@ export const User = {
       : undefined;
     message.contacts = object.contacts?.map((e) => ContactSummary.fromPartial(e)) || [];
     message.permissions = object.permissions?.map((e) => PermissionSummary.fromPartial(e)) || [];
+    return message;
+  },
+};
+
+function createBaseUserPatch(): UserPatch {
+  return {
+    login: "",
+    firstName: undefined,
+    lastName: undefined,
+    middleName: undefined,
+    roleId: undefined,
+    isActive: undefined,
+  };
+}
+
+export const UserPatch = {
+  encode(message: UserPatch, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.login !== "") {
+      writer.uint32(10).string(message.login);
+    }
+    if (message.firstName !== undefined) {
+      StringValue.encode({ value: message.firstName! }, writer.uint32(18).fork()).ldelim();
+    }
+    if (message.lastName !== undefined) {
+      StringValue.encode({ value: message.lastName! }, writer.uint32(26).fork()).ldelim();
+    }
+    if (message.middleName !== undefined) {
+      StringValue.encode({ value: message.middleName! }, writer.uint32(34).fork()).ldelim();
+    }
+    if (message.roleId !== undefined) {
+      Int32Value.encode({ value: message.roleId! }, writer.uint32(42).fork()).ldelim();
+    }
+    if (message.isActive !== undefined) {
+      BoolValue.encode({ value: message.isActive! }, writer.uint32(50).fork()).ldelim();
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): UserPatch {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseUserPatch();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag !== 10) {
+            break;
+          }
+
+          message.login = reader.string();
+          continue;
+        case 2:
+          if (tag !== 18) {
+            break;
+          }
+
+          message.firstName = StringValue.decode(reader, reader.uint32()).value;
+          continue;
+        case 3:
+          if (tag !== 26) {
+            break;
+          }
+
+          message.lastName = StringValue.decode(reader, reader.uint32()).value;
+          continue;
+        case 4:
+          if (tag !== 34) {
+            break;
+          }
+
+          message.middleName = StringValue.decode(reader, reader.uint32()).value;
+          continue;
+        case 5:
+          if (tag !== 42) {
+            break;
+          }
+
+          message.roleId = Int32Value.decode(reader, reader.uint32()).value;
+          continue;
+        case 6:
+          if (tag !== 50) {
+            break;
+          }
+
+          message.isActive = BoolValue.decode(reader, reader.uint32()).value;
+          continue;
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): UserPatch {
+    return {
+      login: isSet(object.login) ? globalThis.String(object.login) : "",
+      firstName: isSet(object.firstName) ? String(object.firstName) : undefined,
+      lastName: isSet(object.lastName) ? String(object.lastName) : undefined,
+      middleName: isSet(object.middleName) ? String(object.middleName) : undefined,
+      roleId: isSet(object.roleId) ? Number(object.roleId) : undefined,
+      isActive: isSet(object.isActive) ? Boolean(object.isActive) : undefined,
+    };
+  },
+
+  toJSON(message: UserPatch): unknown {
+    const obj: any = {};
+    if (message.login !== "") {
+      obj.login = message.login;
+    }
+    if (message.firstName !== undefined) {
+      obj.firstName = message.firstName;
+    }
+    if (message.lastName !== undefined) {
+      obj.lastName = message.lastName;
+    }
+    if (message.middleName !== undefined) {
+      obj.middleName = message.middleName;
+    }
+    if (message.roleId !== undefined) {
+      obj.roleId = message.roleId;
+    }
+    if (message.isActive !== undefined) {
+      obj.isActive = message.isActive;
+    }
+    return obj;
+  },
+
+  create<I extends Exact<DeepPartial<UserPatch>, I>>(base?: I): UserPatch {
+    return UserPatch.fromPartial(base ?? ({} as any));
+  },
+  fromPartial<I extends Exact<DeepPartial<UserPatch>, I>>(object: I): UserPatch {
+    const message = createBaseUserPatch();
+    message.login = object.login ?? "";
+    message.firstName = object.firstName ?? undefined;
+    message.lastName = object.lastName ?? undefined;
+    message.middleName = object.middleName ?? undefined;
+    message.roleId = object.roleId ?? undefined;
+    message.isActive = object.isActive ?? undefined;
     return message;
   },
 };
