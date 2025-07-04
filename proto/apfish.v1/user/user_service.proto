@@ -5,6 +5,7 @@ package apfish.v1.user;
 option go_package = "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user;user";
 
 import "apfish.v1/user/user.proto";
+import "apfish.v1/user/summary/user_summary.proto";
 
 // User defines RPC methods for user management.
 service UserService {
@@ -40,7 +41,7 @@ message ListUsersRequest {
 
 // Paginated user list response.
 message ListUsersResponse {
-  repeated User users = 1;  // Users matching the query (max `per_page` entries).
+  repeated user.summary.UserSummary users = 1;  // Users matching the query (max `per_page` entries).
   int32 total = 2;         // Total matching users (ignoring pagination).
 }
 

@@ -7,6 +7,7 @@
 package user
 
 import (
+	summary "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/summary"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -175,7 +176,7 @@ func (x *ListUsersRequest) GetPerPage() int32 {
 // Paginated user list response.
 type ListUsersResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Users         []*User                `protobuf:"bytes,1,rep,name=users,proto3" json:"users,omitempty"`  // Users matching the query (max `per_page` entries).
+	Users         []*summary.UserSummary `protobuf:"bytes,1,rep,name=users,proto3" json:"users,omitempty"`  // Users matching the query (max `per_page` entries).
 	Total         int32                  `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"` // Total matching users (ignoring pagination).
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -211,7 +212,7 @@ func (*ListUsersResponse) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_user_user_service_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *ListUsersResponse) GetUsers() []*User {
+func (x *ListUsersResponse) GetUsers() []*summary.UserSummary {
 	if x != nil {
 		return x.Users
 	}
@@ -437,7 +438,7 @@ var File_apfish_v1_user_user_service_proto protoreflect.FileDescriptor
 
 const file_apfish_v1_user_user_service_proto_rawDesc = "" +
 	"\n" +
-	"!apfish.v1/user/user_service.proto\x12\x0eapfish.v1.user\x1a\x19apfish.v1/user/user.proto\"#\n" +
+	"!apfish.v1/user/user_service.proto\x12\x0eapfish.v1.user\x1a\x19apfish.v1/user/user.proto\x1a)apfish.v1/user/summary/user_summary.proto\"#\n" +
 	"\vUserRequest\x12\x14\n" +
 	"\x05login\x18\x01 \x01(\tR\x05login\"8\n" +
 	"\fUserResponse\x12(\n" +
@@ -445,9 +446,9 @@ const file_apfish_v1_user_user_service_proto_rawDesc = "" +
 	"\x10ListUsersRequest\x12\x14\n" +
 	"\x05login\x18\x01 \x01(\tR\x05login\x12\x12\n" +
 	"\x04page\x18\x02 \x01(\x05R\x04page\x12\x19\n" +
-	"\bper_page\x18\x03 \x01(\x05R\aperPage\"U\n" +
-	"\x11ListUsersResponse\x12*\n" +
-	"\x05users\x18\x01 \x03(\v2\x14.apfish.v1.user.UserR\x05users\x12\x14\n" +
+	"\bper_page\x18\x03 \x01(\x05R\aperPage\"d\n" +
+	"\x11ListUsersResponse\x129\n" +
+	"\x05users\x18\x01 \x03(\v2#.apfish.v1.user.summary.UserSummaryR\x05users\x12\x14\n" +
 	"\x05total\x18\x02 \x01(\x05R\x05total\"\xa2\x01\n" +
 	"\x11CreateUserRequest\x12\x14\n" +
 	"\x05login\x18\x01 \x01(\tR\x05login\x12\x1a\n" +
@@ -485,34 +486,35 @@ func file_apfish_v1_user_user_service_proto_rawDescGZIP() []byte {
 
 var file_apfish_v1_user_user_service_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
 var file_apfish_v1_user_user_service_proto_goTypes = []any{
-	(*UserRequest)(nil),        // 0: apfish.v1.user.UserRequest
-	(*UserResponse)(nil),       // 1: apfish.v1.user.UserResponse
-	(*ListUsersRequest)(nil),   // 2: apfish.v1.user.ListUsersRequest
-	(*ListUsersResponse)(nil),  // 3: apfish.v1.user.ListUsersResponse
-	(*CreateUserRequest)(nil),  // 4: apfish.v1.user.CreateUserRequest
-	(*CreateUserResponse)(nil), // 5: apfish.v1.user.CreateUserResponse
-	(*UpdateUserRequest)(nil),  // 6: apfish.v1.user.UpdateUserRequest
-	(*UpdateUserResponse)(nil), // 7: apfish.v1.user.UpdateUserResponse
-	(*User)(nil),               // 8: apfish.v1.user.User
-	(*UserPatch)(nil),          // 9: apfish.v1.user.UserPatch
+	(*UserRequest)(nil),         // 0: apfish.v1.user.UserRequest
+	(*UserResponse)(nil),        // 1: apfish.v1.user.UserResponse
+	(*ListUsersRequest)(nil),    // 2: apfish.v1.user.ListUsersRequest
+	(*ListUsersResponse)(nil),   // 3: apfish.v1.user.ListUsersResponse
+	(*CreateUserRequest)(nil),   // 4: apfish.v1.user.CreateUserRequest
+	(*CreateUserResponse)(nil),  // 5: apfish.v1.user.CreateUserResponse
+	(*UpdateUserRequest)(nil),   // 6: apfish.v1.user.UpdateUserRequest
+	(*UpdateUserResponse)(nil),  // 7: apfish.v1.user.UpdateUserResponse
+	(*User)(nil),                // 8: apfish.v1.user.User
+	(*summary.UserSummary)(nil), // 9: apfish.v1.user.summary.UserSummary
+	(*UserPatch)(nil),           // 10: apfish.v1.user.UserPatch
 }
 var file_apfish_v1_user_user_service_proto_depIdxs = []int32{
-	8, // 0: apfish.v1.user.UserResponse.user:type_name -> apfish.v1.user.User
-	8, // 1: apfish.v1.user.ListUsersResponse.users:type_name -> apfish.v1.user.User
-	9, // 2: apfish.v1.user.UpdateUserRequest.user:type_name -> apfish.v1.user.UserPatch
-	0, // 3: apfish.v1.user.UserService.GetUser:input_type -> apfish.v1.user.UserRequest
-	2, // 4: apfish.v1.user.UserService.ListUsers:input_type -> apfish.v1.user.ListUsersRequest
-	4, // 5: apfish.v1.user.UserService.CreateUser:input_type -> apfish.v1.user.CreateUserRequest
-	6, // 6: apfish.v1.user.UserService.UpdateUser:input_type -> apfish.v1.user.UpdateUserRequest
-	1, // 7: apfish.v1.user.UserService.GetUser:output_type -> apfish.v1.user.UserResponse
-	3, // 8: apfish.v1.user.UserService.ListUsers:output_type -> apfish.v1.user.ListUsersResponse
-	5, // 9: apfish.v1.user.UserService.CreateUser:output_type -> apfish.v1.user.CreateUserResponse
-	7, // 10: apfish.v1.user.UserService.UpdateUser:output_type -> apfish.v1.user.UpdateUserResponse
-	7, // [7:11] is the sub-list for method output_type
-	3, // [3:7] is the sub-list for method input_type
-	3, // [3:3] is the sub-list for extension type_name
-	3, // [3:3] is the sub-list for extension extendee
-	0, // [0:3] is the sub-list for field type_name
+	8,  // 0: apfish.v1.user.UserResponse.user:type_name -> apfish.v1.user.User
+	9,  // 1: apfish.v1.user.ListUsersResponse.users:type_name -> apfish.v1.user.summary.UserSummary
+	10, // 2: apfish.v1.user.UpdateUserRequest.user:type_name -> apfish.v1.user.UserPatch
+	0,  // 3: apfish.v1.user.UserService.GetUser:input_type -> apfish.v1.user.UserRequest
+	2,  // 4: apfish.v1.user.UserService.ListUsers:input_type -> apfish.v1.user.ListUsersRequest
+	4,  // 5: apfish.v1.user.UserService.CreateUser:input_type -> apfish.v1.user.CreateUserRequest
+	6,  // 6: apfish.v1.user.UserService.UpdateUser:input_type -> apfish.v1.user.UpdateUserRequest
+	1,  // 7: apfish.v1.user.UserService.GetUser:output_type -> apfish.v1.user.UserResponse
+	3,  // 8: apfish.v1.user.UserService.ListUsers:output_type -> apfish.v1.user.ListUsersResponse
+	5,  // 9: apfish.v1.user.UserService.CreateUser:output_type -> apfish.v1.user.CreateUserResponse
+	7,  // 10: apfish.v1.user.UserService.UpdateUser:output_type -> apfish.v1.user.UpdateUserResponse
+	7,  // [7:11] is the sub-list for method output_type
+	3,  // [3:7] is the sub-list for method input_type
+	3,  // [3:3] is the sub-list for extension type_name
+	3,  // [3:3] is the sub-list for extension extendee
+	0,  // [0:3] is the sub-list for field type_name
 }
 
 func init() { file_apfish_v1_user_user_service_proto_init() }

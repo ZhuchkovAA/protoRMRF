@@ -19,6 +19,7 @@ import {
 } from "@grpc/grpc-js";
 import Long from "long";
 import _m0 from "protobufjs/minimal";
+import { UserSummary } from "./summary/user_summary";
 import { User, UserPatch } from "./user";
 
 export const protobufPackage = "apfish.v1.user";
@@ -47,7 +48,7 @@ export interface ListUsersRequest {
 /** Paginated user list response. */
 export interface ListUsersResponse {
   /** Users matching the query (max `per_page` entries). */
-  users: User[];
+  users: UserSummary[];
   /** Total matching users (ignoring pagination). */
   total: number;
 }
@@ -282,7 +283,7 @@ function createBaseListUsersResponse(): ListUsersResponse {
 export const ListUsersResponse = {
   encode(message: ListUsersResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.users) {
-      User.encode(v!, writer.uint32(10).fork()).ldelim();
+      UserSummary.encode(v!, writer.uint32(10).fork()).ldelim();
     }
     if (message.total !== 0) {
       writer.uint32(16).int32(message.total);
@@ -302,7 +303,7 @@ export const ListUsersResponse = {
             break;
           }
 
-          message.users.push(User.decode(reader, reader.uint32()));
+          message.users.push(UserSummary.decode(reader, reader.uint32()));
           continue;
         case 2:
           if (tag !== 16) {
@@ -322,7 +323,7 @@ export const ListUsersResponse = {
 
   fromJSON(object: any): ListUsersResponse {
     return {
-      users: globalThis.Array.isArray(object?.users) ? object.users.map((e: any) => User.fromJSON(e)) : [],
+      users: globalThis.Array.isArray(object?.users) ? object.users.map((e: any) => UserSummary.fromJSON(e)) : [],
       total: isSet(object.total) ? globalThis.Number(object.total) : 0,
     };
   },
@@ -330,7 +331,7 @@ export const ListUsersResponse = {
   toJSON(message: ListUsersResponse): unknown {
     const obj: any = {};
     if (message.users?.length) {
-      obj.users = message.users.map((e) => User.toJSON(e));
+      obj.users = message.users.map((e) => UserSummary.toJSON(e));
     }
     if (message.total !== 0) {
       obj.total = Math.round(message.total);
@@ -343,7 +344,7 @@ export const ListUsersResponse = {
   },
   fromPartial<I extends Exact<DeepPartial<ListUsersResponse>, I>>(object: I): ListUsersResponse {
     const message = createBaseListUsersResponse();
-    message.users = object.users?.map((e) => User.fromPartial(e)) || [];
+    message.users = object.users?.map((e) => UserSummary.fromPartial(e)) || [];
     message.total = object.total ?? 0;
     return message;
   },
