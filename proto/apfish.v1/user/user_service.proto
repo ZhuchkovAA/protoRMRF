@@ -25,7 +25,7 @@ service UserService {
 
 // Request to fetch a specific user.
 message UserRequest {
-  int32 id = 1;
+  string login = 1;
 }
 
 // Response containing the requested user.
@@ -55,17 +55,15 @@ message CreateUserRequest {
 }
 
 message CreateUserResponse {
-  int32 user_id = 1;
+  bool success = 1;
 }
 
 message UpdateUserRequest {
-  int32 user_id = 1;
-
-  google.protobuf.StringValue login = 2;
-  google.protobuf.StringValue first_name = 3;
-  google.protobuf.StringValue last_name = 4;
-  google.protobuf.StringValue middle_name = 5;
-  google.protobuf.BoolValue is_active = 6;
+  string login = 1;
+  google.protobuf.StringValue first_name = 2;
+  google.protobuf.StringValue last_name = 3;
+  google.protobuf.StringValue middle_name = 4;
+  google.protobuf.BoolValue is_active = 5;
 }
 
 message UpdateUserResponse {

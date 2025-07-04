@@ -26,7 +26,7 @@ export const protobufPackage = "apfish.v1.user";
 
 /** Request to fetch a specific user. */
 export interface UserRequest {
-  id: number;
+  login: string;
 }
 
 /** Response containing the requested user. */
@@ -62,12 +62,11 @@ export interface CreateUserRequest {
 }
 
 export interface CreateUserResponse {
-  userId: number;
+  success: boolean;
 }
 
 export interface UpdateUserRequest {
-  userId: number;
-  login: string | undefined;
+  login: string;
   firstName: string | undefined;
   lastName: string | undefined;
   middleName: string | undefined;
@@ -79,13 +78,13 @@ export interface UpdateUserResponse {
 }
 
 function createBaseUserRequest(): UserRequest {
-  return { id: 0 };
+  return { login: "" };
 }
 
 export const UserRequest = {
   encode(message: UserRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.id !== 0) {
-      writer.uint32(8).int32(message.id);
+    if (message.login !== "") {
+      writer.uint32(10).string(message.login);
     }
     return writer;
   },
@@ -98,11 +97,11 @@ export const UserRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag !== 8) {
+          if (tag !== 10) {
             break;
           }
 
-          message.id = reader.int32();
+          message.login = reader.string();
           continue;
       }
       if ((tag & 7) === 4 || tag === 0) {
@@ -114,13 +113,13 @@ export const UserRequest = {
   },
 
   fromJSON(object: any): UserRequest {
-    return { id: isSet(object.id) ? globalThis.Number(object.id) : 0 };
+    return { login: isSet(object.login) ? globalThis.String(object.login) : "" };
   },
 
   toJSON(message: UserRequest): unknown {
     const obj: any = {};
-    if (message.id !== 0) {
-      obj.id = Math.round(message.id);
+    if (message.login !== "") {
+      obj.login = message.login;
     }
     return obj;
   },
@@ -130,7 +129,7 @@ export const UserRequest = {
   },
   fromPartial<I extends Exact<DeepPartial<UserRequest>, I>>(object: I): UserRequest {
     const message = createBaseUserRequest();
-    message.id = object.id ?? 0;
+    message.login = object.login ?? "";
     return message;
   },
 };
@@ -475,13 +474,13 @@ export const CreateUserRequest = {
 };
 
 function createBaseCreateUserResponse(): CreateUserResponse {
-  return { userId: 0 };
+  return { success: false };
 }
 
 export const CreateUserResponse = {
   encode(message: CreateUserResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.userId !== 0) {
-      writer.uint32(8).int32(message.userId);
+    if (message.success !== false) {
+      writer.uint32(8).bool(message.success);
     }
     return writer;
   },
@@ -498,7 +497,7 @@ export const CreateUserResponse = {
             break;
           }
 
-          message.userId = reader.int32();
+          message.success = reader.bool();
           continue;
       }
       if ((tag & 7) === 4 || tag === 0) {
@@ -510,13 +509,13 @@ export const CreateUserResponse = {
   },
 
   fromJSON(object: any): CreateUserResponse {
-    return { userId: isSet(object.userId) ? globalThis.Number(object.userId) : 0 };
+    return { success: isSet(object.success) ? globalThis.Boolean(object.success) : false };
   },
 
   toJSON(message: CreateUserResponse): unknown {
     const obj: any = {};
-    if (message.userId !== 0) {
-      obj.userId = Math.round(message.userId);
+    if (message.success !== false) {
+      obj.success = message.success;
     }
     return obj;
   },
@@ -526,41 +525,31 @@ export const CreateUserResponse = {
   },
   fromPartial<I extends Exact<DeepPartial<CreateUserResponse>, I>>(object: I): CreateUserResponse {
     const message = createBaseCreateUserResponse();
-    message.userId = object.userId ?? 0;
+    message.success = object.success ?? false;
     return message;
   },
 };
 
 function createBaseUpdateUserRequest(): UpdateUserRequest {
-  return {
-    userId: 0,
-    login: undefined,
-    firstName: undefined,
-    lastName: undefined,
-    middleName: undefined,
-    isActive: undefined,
-  };
+  return { login: "", firstName: undefined, lastName: undefined, middleName: undefined, isActive: undefined };
 }
 
 export const UpdateUserRequest = {
   encode(message: UpdateUserRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.userId !== 0) {
-      writer.uint32(8).int32(message.userId);
-    }
-    if (message.login !== undefined) {
-      StringValue.encode({ value: message.login! }, writer.uint32(18).fork()).ldelim();
+    if (message.login !== "") {
+      writer.uint32(10).string(message.login);
     }
     if (message.firstName !== undefined) {
-      StringValue.encode({ value: message.firstName! }, writer.uint32(26).fork()).ldelim();
+      StringValue.encode({ value: message.firstName! }, writer.uint32(18).fork()).ldelim();
     }
     if (message.lastName !== undefined) {
-      StringValue.encode({ value: message.lastName! }, writer.uint32(34).fork()).ldelim();
+      StringValue.encode({ value: message.lastName! }, writer.uint32(26).fork()).ldelim();
     }
     if (message.middleName !== undefined) {
-      StringValue.encode({ value: message.middleName! }, writer.uint32(42).fork()).ldelim();
+      StringValue.encode({ value: message.middleName! }, writer.uint32(34).fork()).ldelim();
     }
     if (message.isActive !== undefined) {
-      BoolValue.encode({ value: message.isActive! }, writer.uint32(50).fork()).ldelim();
+      BoolValue.encode({ value: message.isActive! }, writer.uint32(42).fork()).ldelim();
     }
     return writer;
   },
@@ -573,42 +562,35 @@ export const UpdateUserRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag !== 8) {
+          if (tag !== 10) {
             break;
           }
 
-          message.userId = reader.int32();
+          message.login = reader.string();
           continue;
         case 2:
           if (tag !== 18) {
             break;
           }
 
-          message.login = StringValue.decode(reader, reader.uint32()).value;
+          message.firstName = StringValue.decode(reader, reader.uint32()).value;
           continue;
         case 3:
           if (tag !== 26) {
             break;
           }
 
-          message.firstName = StringValue.decode(reader, reader.uint32()).value;
+          message.lastName = StringValue.decode(reader, reader.uint32()).value;
           continue;
         case 4:
           if (tag !== 34) {
             break;
           }
 
-          message.lastName = StringValue.decode(reader, reader.uint32()).value;
+          message.middleName = StringValue.decode(reader, reader.uint32()).value;
           continue;
         case 5:
           if (tag !== 42) {
-            break;
-          }
-
-          message.middleName = StringValue.decode(reader, reader.uint32()).value;
-          continue;
-        case 6:
-          if (tag !== 50) {
             break;
           }
 
@@ -625,8 +607,7 @@ export const UpdateUserRequest = {
 
   fromJSON(object: any): UpdateUserRequest {
     return {
-      userId: isSet(object.userId) ? globalThis.Number(object.userId) : 0,
-      login: isSet(object.login) ? String(object.login) : undefined,
+      login: isSet(object.login) ? globalThis.String(object.login) : "",
       firstName: isSet(object.firstName) ? String(object.firstName) : undefined,
       lastName: isSet(object.lastName) ? String(object.lastName) : undefined,
       middleName: isSet(object.middleName) ? String(object.middleName) : undefined,
@@ -636,10 +617,7 @@ export const UpdateUserRequest = {
 
   toJSON(message: UpdateUserRequest): unknown {
     const obj: any = {};
-    if (message.userId !== 0) {
-      obj.userId = Math.round(message.userId);
-    }
-    if (message.login !== undefined) {
+    if (message.login !== "") {
       obj.login = message.login;
     }
     if (message.firstName !== undefined) {
@@ -662,8 +640,7 @@ export const UpdateUserRequest = {
   },
   fromPartial<I extends Exact<DeepPartial<UpdateUserRequest>, I>>(object: I): UpdateUserRequest {
     const message = createBaseUpdateUserRequest();
-    message.userId = object.userId ?? 0;
-    message.login = object.login ?? undefined;
+    message.login = object.login ?? "";
     message.firstName = object.firstName ?? undefined;
     message.lastName = object.lastName ?? undefined;
     message.middleName = object.middleName ?? undefined;
