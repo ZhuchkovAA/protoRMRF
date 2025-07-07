@@ -15,5 +15,5 @@ message UserSummary {
   int32 role_id = 6;                      // Assigned role.
   google.protobuf.Timestamp created_at = 7;  // When the user was created.
   bool is_active = 8;
-  int32 created_by_id = 9;        // Login of the creator (e.g., "admin").
+  string created_by_login = 9;        // Login of the creator (e.g., "admin").
 }
