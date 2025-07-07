@@ -12,7 +12,7 @@ service ContactService {
   rpc GetContact (ContactRequest) returns (ContactResponse);
   rpc GetContactSummary (ContactRequest) returns (ContactSummaryResponse);
 
-  rpc ListContacts (ListContactsRequest) returns (ListContactsResponse);
+  rpc ListUserContacts (ListUserContactsRequest) returns (ListContactsResponse);
 
   rpc UpdateContact (UpdateContactRequest) returns (SuccessResponse);
 
@@ -33,14 +33,12 @@ message ContactSummaryResponse {
   user.contact.summary.ContactSummary contact = 1;
 }
 
-message ListContactsRequest {
-  int32 page = 1;      // Page number (1-based). Default: 1.
-  int32 per_page = 2;  // Items per page (default: 20, max: 100).
+message ListUserContactsRequest {
+  int32 user_id = 1;
 }
 
 message ListContactsResponse {
   repeated user.contact.summary.ContactSummary list_contacts = 1;
-  int32 total = 2;
 }
 
 message UpdateContactRequest {

@@ -37,16 +37,12 @@ export interface ContactSummaryResponse {
   contact: ContactSummary | undefined;
 }
 
-export interface ListContactsRequest {
-  /** Page number (1-based). Default: 1. */
-  page: number;
-  /** Items per page (default: 20, max: 100). */
-  perPage: number;
+export interface ListUserContactsRequest {
+  userId: number;
 }
 
 export interface ListContactsResponse {
   listContacts: ContactSummary[];
-  total: number;
 }
 
 export interface UpdateContactRequest {
@@ -238,25 +234,22 @@ export const ContactSummaryResponse = {
   },
 };
 
-function createBaseListContactsRequest(): ListContactsRequest {
-  return { page: 0, perPage: 0 };
+function createBaseListUserContactsRequest(): ListUserContactsRequest {
+  return { userId: 0 };
 }
 
-export const ListContactsRequest = {
-  encode(message: ListContactsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.page !== 0) {
-      writer.uint32(8).int32(message.page);
-    }
-    if (message.perPage !== 0) {
-      writer.uint32(16).int32(message.perPage);
+export const ListUserContactsRequest = {
+  encode(message: ListUserContactsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.userId !== 0) {
+      writer.uint32(8).int32(message.userId);
     }
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): ListContactsRequest {
+  decode(input: _m0.Reader | Uint8Array, length?: number): ListUserContactsRequest {
     const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseListContactsRequest();
+    const message = createBaseListUserContactsRequest();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -265,14 +258,7 @@ export const ListContactsRequest = {
             break;
           }
 
-          message.page = reader.int32();
-          continue;
-        case 2:
-          if (tag !== 16) {
-            break;
-          }
-
-          message.perPage = reader.int32();
+          message.userId = reader.int32();
           continue;
       }
       if ((tag & 7) === 4 || tag === 0) {
@@ -283,46 +269,36 @@ export const ListContactsRequest = {
     return message;
   },
 
-  fromJSON(object: any): ListContactsRequest {
-    return {
-      page: isSet(object.page) ? globalThis.Number(object.page) : 0,
-      perPage: isSet(object.perPage) ? globalThis.Number(object.perPage) : 0,
-    };
+  fromJSON(object: any): ListUserContactsRequest {
+    return { userId: isSet(object.userId) ? globalThis.Number(object.userId) : 0 };
   },
 
-  toJSON(message: ListContactsRequest): unknown {
+  toJSON(message: ListUserContactsRequest): unknown {
     const obj: any = {};
-    if (message.page !== 0) {
-      obj.page = Math.round(message.page);
-    }
-    if (message.perPage !== 0) {
-      obj.perPage = Math.round(message.perPage);
+    if (message.userId !== 0) {
+      obj.userId = Math.round(message.userId);
     }
     return obj;
   },
 
-  create<I extends Exact<DeepPartial<ListContactsRequest>, I>>(base?: I): ListContactsRequest {
-    return ListContactsRequest.fromPartial(base ?? ({} as any));
+  create<I extends Exact<DeepPartial<ListUserContactsRequest>, I>>(base?: I): ListUserContactsRequest {
+    return ListUserContactsRequest.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<ListContactsRequest>, I>>(object: I): ListContactsRequest {
-    const message = createBaseListContactsRequest();
-    message.page = object.page ?? 0;
-    message.perPage = object.perPage ?? 0;
+  fromPartial<I extends Exact<DeepPartial<ListUserContactsRequest>, I>>(object: I): ListUserContactsRequest {
+    const message = createBaseListUserContactsRequest();
+    message.userId = object.userId ?? 0;
     return message;
   },
 };
 
 function createBaseListContactsResponse(): ListContactsResponse {
-  return { listContacts: [], total: 0 };
+  return { listContacts: [] };
 }
 
 export const ListContactsResponse = {
   encode(message: ListContactsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.listContacts) {
       ContactSummary.encode(v!, writer.uint32(10).fork()).ldelim();
-    }
-    if (message.total !== 0) {
-      writer.uint32(16).int32(message.total);
     }
     return writer;
   },
@@ -341,13 +317,6 @@ export const ListContactsResponse = {
 
           message.listContacts.push(ContactSummary.decode(reader, reader.uint32()));
           continue;
-        case 2:
-          if (tag !== 16) {
-            break;
-          }
-
-          message.total = reader.int32();
-          continue;
       }
       if ((tag & 7) === 4 || tag === 0) {
         break;
@@ -362,7 +331,6 @@ export const ListContactsResponse = {
       listContacts: globalThis.Array.isArray(object?.listContacts)
         ? object.listContacts.map((e: any) => ContactSummary.fromJSON(e))
         : [],
-      total: isSet(object.total) ? globalThis.Number(object.total) : 0,
     };
   },
 
@@ -370,9 +338,6 @@ export const ListContactsResponse = {
     const obj: any = {};
     if (message.listContacts?.length) {
       obj.listContacts = message.listContacts.map((e) => ContactSummary.toJSON(e));
-    }
-    if (message.total !== 0) {
-      obj.total = Math.round(message.total);
     }
     return obj;
   },
@@ -383,7 +348,6 @@ export const ListContactsResponse = {
   fromPartial<I extends Exact<DeepPartial<ListContactsResponse>, I>>(object: I): ListContactsResponse {
     const message = createBaseListContactsResponse();
     message.listContacts = object.listContacts?.map((e) => ContactSummary.fromPartial(e)) || [];
-    message.total = object.total ?? 0;
     return message;
   },
 };
@@ -613,12 +577,12 @@ export const ContactServiceService = {
     responseSerialize: (value: ContactSummaryResponse) => Buffer.from(ContactSummaryResponse.encode(value).finish()),
     responseDeserialize: (value: Buffer) => ContactSummaryResponse.decode(value),
   },
-  listContacts: {
-    path: "/apfish.v1.user.contact.ContactService/ListContacts",
+  listUserContacts: {
+    path: "/apfish.v1.user.contact.ContactService/ListUserContacts",
     requestStream: false,
     responseStream: false,
-    requestSerialize: (value: ListContactsRequest) => Buffer.from(ListContactsRequest.encode(value).finish()),
-    requestDeserialize: (value: Buffer) => ListContactsRequest.decode(value),
+    requestSerialize: (value: ListUserContactsRequest) => Buffer.from(ListUserContactsRequest.encode(value).finish()),
+    requestDeserialize: (value: Buffer) => ListUserContactsRequest.decode(value),
     responseSerialize: (value: ListContactsResponse) => Buffer.from(ListContactsResponse.encode(value).finish()),
     responseDeserialize: (value: Buffer) => ListContactsResponse.decode(value),
   },
@@ -654,7 +618,7 @@ export const ContactServiceService = {
 export interface ContactServiceServer extends UntypedServiceImplementation {
   getContact: handleUnaryCall<ContactRequest, ContactResponse>;
   getContactSummary: handleUnaryCall<ContactRequest, ContactSummaryResponse>;
-  listContacts: handleUnaryCall<ListContactsRequest, ListContactsResponse>;
+  listUserContacts: handleUnaryCall<ListUserContactsRequest, ListContactsResponse>;
   updateContact: handleUnaryCall<UpdateContactRequest, SuccessResponse>;
   createContact: handleUnaryCall<CreateContactRequest, SuccessResponse>;
   deleteContact: handleUnaryCall<DeleteContactRequest, SuccessResponse>;
@@ -691,17 +655,17 @@ export interface ContactServiceClient extends Client {
     options: Partial<CallOptions>,
     callback: (error: ServiceError | null, response: ContactSummaryResponse) => void,
   ): ClientUnaryCall;
-  listContacts(
-    request: ListContactsRequest,
+  listUserContacts(
+    request: ListUserContactsRequest,
     callback: (error: ServiceError | null, response: ListContactsResponse) => void,
   ): ClientUnaryCall;
-  listContacts(
-    request: ListContactsRequest,
+  listUserContacts(
+    request: ListUserContactsRequest,
     metadata: Metadata,
     callback: (error: ServiceError | null, response: ListContactsResponse) => void,
   ): ClientUnaryCall;
-  listContacts(
-    request: ListContactsRequest,
+  listUserContacts(
+    request: ListUserContactsRequest,
     metadata: Metadata,
     options: Partial<CallOptions>,
     callback: (error: ServiceError | null, response: ListContactsResponse) => void,

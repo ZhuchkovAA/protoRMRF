@@ -22,7 +22,7 @@ const _ = grpc.SupportPackageIsVersion9
 const (
 	ContactService_GetContact_FullMethodName        = "/apfish.v1.user.contact.ContactService/GetContact"
 	ContactService_GetContactSummary_FullMethodName = "/apfish.v1.user.contact.ContactService/GetContactSummary"
-	ContactService_ListContacts_FullMethodName      = "/apfish.v1.user.contact.ContactService/ListContacts"
+	ContactService_ListUserContacts_FullMethodName  = "/apfish.v1.user.contact.ContactService/ListUserContacts"
 	ContactService_UpdateContact_FullMethodName     = "/apfish.v1.user.contact.ContactService/UpdateContact"
 	ContactService_CreateContact_FullMethodName     = "/apfish.v1.user.contact.ContactService/CreateContact"
 	ContactService_DeleteContact_FullMethodName     = "/apfish.v1.user.contact.ContactService/DeleteContact"
@@ -34,7 +34,7 @@ const (
 type ContactServiceClient interface {
 	GetContact(ctx context.Context, in *ContactRequest, opts ...grpc.CallOption) (*ContactResponse, error)
 	GetContactSummary(ctx context.Context, in *ContactRequest, opts ...grpc.CallOption) (*ContactSummaryResponse, error)
-	ListContacts(ctx context.Context, in *ListContactsRequest, opts ...grpc.CallOption) (*ListContactsResponse, error)
+	ListUserContacts(ctx context.Context, in *ListUserContactsRequest, opts ...grpc.CallOption) (*ListContactsResponse, error)
 	UpdateContact(ctx context.Context, in *UpdateContactRequest, opts ...grpc.CallOption) (*apfish_v1.SuccessResponse, error)
 	CreateContact(ctx context.Context, in *CreateContactRequest, opts ...grpc.CallOption) (*apfish_v1.SuccessResponse, error)
 	DeleteContact(ctx context.Context, in *DeleteContactRequest, opts ...grpc.CallOption) (*apfish_v1.SuccessResponse, error)
@@ -68,10 +68,10 @@ func (c *contactServiceClient) GetContactSummary(ctx context.Context, in *Contac
 	return out, nil
 }
 
-func (c *contactServiceClient) ListContacts(ctx context.Context, in *ListContactsRequest, opts ...grpc.CallOption) (*ListContactsResponse, error) {
+func (c *contactServiceClient) ListUserContacts(ctx context.Context, in *ListUserContactsRequest, opts ...grpc.CallOption) (*ListContactsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ListContactsResponse)
-	err := c.cc.Invoke(ctx, ContactService_ListContacts_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, ContactService_ListUserContacts_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -114,7 +114,7 @@ func (c *contactServiceClient) DeleteContact(ctx context.Context, in *DeleteCont
 type ContactServiceServer interface {
 	GetContact(context.Context, *ContactRequest) (*ContactResponse, error)
 	GetContactSummary(context.Context, *ContactRequest) (*ContactSummaryResponse, error)
-	ListContacts(context.Context, *ListContactsRequest) (*ListContactsResponse, error)
+	ListUserContacts(context.Context, *ListUserContactsRequest) (*ListContactsResponse, error)
 	UpdateContact(context.Context, *UpdateContactRequest) (*apfish_v1.SuccessResponse, error)
 	CreateContact(context.Context, *CreateContactRequest) (*apfish_v1.SuccessResponse, error)
 	DeleteContact(context.Context, *DeleteContactRequest) (*apfish_v1.SuccessResponse, error)
@@ -134,8 +134,8 @@ func (UnimplementedContactServiceServer) GetContact(context.Context, *ContactReq
 func (UnimplementedContactServiceServer) GetContactSummary(context.Context, *ContactRequest) (*ContactSummaryResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetContactSummary not implemented")
 }
-func (UnimplementedContactServiceServer) ListContacts(context.Context, *ListContactsRequest) (*ListContactsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListContacts not implemented")
+func (UnimplementedContactServiceServer) ListUserContacts(context.Context, *ListUserContactsRequest) (*ListContactsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListUserContacts not implemented")
 }
 func (UnimplementedContactServiceServer) UpdateContact(context.Context, *UpdateContactRequest) (*apfish_v1.SuccessResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateContact not implemented")
@@ -203,20 +203,20 @@ func _ContactService_GetContactSummary_Handler(srv interface{}, ctx context.Cont
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ContactService_ListContacts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListContactsRequest)
+func _ContactService_ListUserContacts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListUserContactsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ContactServiceServer).ListContacts(ctx, in)
+		return srv.(ContactServiceServer).ListUserContacts(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ContactService_ListContacts_FullMethodName,
+		FullMethod: ContactService_ListUserContacts_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ContactServiceServer).ListContacts(ctx, req.(*ListContactsRequest))
+		return srv.(ContactServiceServer).ListUserContacts(ctx, req.(*ListUserContactsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -291,8 +291,8 @@ var ContactService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _ContactService_GetContactSummary_Handler,
 		},
 		{
-			MethodName: "ListContacts",
-			Handler:    _ContactService_ListContacts_Handler,
+			MethodName: "ListUserContacts",
+			Handler:    _ContactService_ListUserContacts_Handler,
 		},
 		{
 			MethodName: "UpdateContact",

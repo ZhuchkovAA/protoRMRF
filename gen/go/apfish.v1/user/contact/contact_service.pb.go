@@ -155,28 +155,27 @@ func (x *ContactSummaryResponse) GetContact() *summary.ContactSummary {
 	return nil
 }
 
-type ListContactsRequest struct {
+type ListUserContactsRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Page          int32                  `protobuf:"varint,1,opt,name=page,proto3" json:"page,omitempty"`                      // Page number (1-based). Default: 1.
-	PerPage       int32                  `protobuf:"varint,2,opt,name=per_page,json=perPage,proto3" json:"per_page,omitempty"` // Items per page (default: 20, max: 100).
+	UserId        int32                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ListContactsRequest) Reset() {
-	*x = ListContactsRequest{}
+func (x *ListUserContactsRequest) Reset() {
+	*x = ListUserContactsRequest{}
 	mi := &file_apfish_v1_user_contact_contact_service_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ListContactsRequest) String() string {
+func (x *ListUserContactsRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ListContactsRequest) ProtoMessage() {}
+func (*ListUserContactsRequest) ProtoMessage() {}
 
-func (x *ListContactsRequest) ProtoReflect() protoreflect.Message {
+func (x *ListUserContactsRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_apfish_v1_user_contact_contact_service_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -188,21 +187,14 @@ func (x *ListContactsRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ListContactsRequest.ProtoReflect.Descriptor instead.
-func (*ListContactsRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use ListUserContactsRequest.ProtoReflect.Descriptor instead.
+func (*ListUserContactsRequest) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_user_contact_contact_service_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *ListContactsRequest) GetPage() int32 {
+func (x *ListUserContactsRequest) GetUserId() int32 {
 	if x != nil {
-		return x.Page
-	}
-	return 0
-}
-
-func (x *ListContactsRequest) GetPerPage() int32 {
-	if x != nil {
-		return x.PerPage
+		return x.UserId
 	}
 	return 0
 }
@@ -210,7 +202,6 @@ func (x *ListContactsRequest) GetPerPage() int32 {
 type ListContactsResponse struct {
 	state         protoimpl.MessageState    `protogen:"open.v1"`
 	ListContacts  []*summary.ContactSummary `protobuf:"bytes,1,rep,name=list_contacts,json=listContacts,proto3" json:"list_contacts,omitempty"`
-	Total         int32                     `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -250,13 +241,6 @@ func (x *ListContactsResponse) GetListContacts() []*summary.ContactSummary {
 		return x.ListContacts
 	}
 	return nil
-}
-
-func (x *ListContactsResponse) GetTotal() int32 {
-	if x != nil {
-		return x.Total
-	}
-	return 0
 }
 
 type UpdateContactRequest struct {
@@ -417,13 +401,11 @@ const file_apfish_v1_user_contact_contact_service_proto_rawDesc = "" +
 	"\x0fContactResponse\x129\n" +
 	"\acontact\x18\x01 \x01(\v2\x1f.apfish.v1.user.contact.ContactR\acontact\"b\n" +
 	"\x16ContactSummaryResponse\x12H\n" +
-	"\acontact\x18\x01 \x01(\v2..apfish.v1.user.contact.summary.ContactSummaryR\acontact\"D\n" +
-	"\x13ListContactsRequest\x12\x12\n" +
-	"\x04page\x18\x01 \x01(\x05R\x04page\x12\x19\n" +
-	"\bper_page\x18\x02 \x01(\x05R\aperPage\"\x81\x01\n" +
+	"\acontact\x18\x01 \x01(\v2..apfish.v1.user.contact.summary.ContactSummaryR\acontact\"2\n" +
+	"\x17ListUserContactsRequest\x12\x17\n" +
+	"\auser_id\x18\x01 \x01(\x05R\x06userId\"k\n" +
 	"\x14ListContactsResponse\x12S\n" +
-	"\rlist_contacts\x18\x01 \x03(\v2..apfish.v1.user.contact.summary.ContactSummaryR\flistContacts\x12\x14\n" +
-	"\x05total\x18\x02 \x01(\x05R\x05total\"V\n" +
+	"\rlist_contacts\x18\x01 \x03(\v2..apfish.v1.user.contact.summary.ContactSummaryR\flistContacts\"V\n" +
 	"\x14UpdateContactRequest\x12>\n" +
 	"\acontact\x18\x01 \x01(\v2$.apfish.v1.user.contact.ContactPatchR\acontact\"^\n" +
 	"\x14CreateContactRequest\x12\x17\n" +
@@ -432,12 +414,12 @@ const file_apfish_v1_user_contact_contact_service_proto_rawDesc = "" +
 	"\x05value\x18\x03 \x01(\tR\x05value\"5\n" +
 	"\x14DeleteContactRequest\x12\x1d\n" +
 	"\n" +
-	"contact_id\x18\x01 \x01(\x05R\tcontactId2\xd8\x04\n" +
+	"contact_id\x18\x01 \x01(\x05R\tcontactId2\xe0\x04\n" +
 	"\x0eContactService\x12]\n" +
 	"\n" +
 	"GetContact\x12&.apfish.v1.user.contact.ContactRequest\x1a'.apfish.v1.user.contact.ContactResponse\x12k\n" +
-	"\x11GetContactSummary\x12&.apfish.v1.user.contact.ContactRequest\x1a..apfish.v1.user.contact.ContactSummaryResponse\x12i\n" +
-	"\fListContacts\x12+.apfish.v1.user.contact.ListContactsRequest\x1a,.apfish.v1.user.contact.ListContactsResponse\x12Y\n" +
+	"\x11GetContactSummary\x12&.apfish.v1.user.contact.ContactRequest\x1a..apfish.v1.user.contact.ContactSummaryResponse\x12q\n" +
+	"\x10ListUserContacts\x12/.apfish.v1.user.contact.ListUserContactsRequest\x1a,.apfish.v1.user.contact.ListContactsResponse\x12Y\n" +
 	"\rUpdateContact\x12,.apfish.v1.user.contact.UpdateContactRequest\x1a\x1a.apfish.v1.SuccessResponse\x12Y\n" +
 	"\rCreateContact\x12,.apfish.v1.user.contact.CreateContactRequest\x1a\x1a.apfish.v1.SuccessResponse\x12Y\n" +
 	"\rDeleteContact\x12,.apfish.v1.user.contact.DeleteContactRequest\x1a\x1a.apfish.v1.SuccessResponseBTZRgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/contact/contact;user_contactb\x06proto3"
@@ -459,7 +441,7 @@ var file_apfish_v1_user_contact_contact_service_proto_goTypes = []any{
 	(*ContactRequest)(nil),            // 0: apfish.v1.user.contact.ContactRequest
 	(*ContactResponse)(nil),           // 1: apfish.v1.user.contact.ContactResponse
 	(*ContactSummaryResponse)(nil),    // 2: apfish.v1.user.contact.ContactSummaryResponse
-	(*ListContactsRequest)(nil),       // 3: apfish.v1.user.contact.ListContactsRequest
+	(*ListUserContactsRequest)(nil),   // 3: apfish.v1.user.contact.ListUserContactsRequest
 	(*ListContactsResponse)(nil),      // 4: apfish.v1.user.contact.ListContactsResponse
 	(*UpdateContactRequest)(nil),      // 5: apfish.v1.user.contact.UpdateContactRequest
 	(*CreateContactRequest)(nil),      // 6: apfish.v1.user.contact.CreateContactRequest
@@ -476,13 +458,13 @@ var file_apfish_v1_user_contact_contact_service_proto_depIdxs = []int32{
 	10, // 3: apfish.v1.user.contact.UpdateContactRequest.contact:type_name -> apfish.v1.user.contact.ContactPatch
 	0,  // 4: apfish.v1.user.contact.ContactService.GetContact:input_type -> apfish.v1.user.contact.ContactRequest
 	0,  // 5: apfish.v1.user.contact.ContactService.GetContactSummary:input_type -> apfish.v1.user.contact.ContactRequest
-	3,  // 6: apfish.v1.user.contact.ContactService.ListContacts:input_type -> apfish.v1.user.contact.ListContactsRequest
+	3,  // 6: apfish.v1.user.contact.ContactService.ListUserContacts:input_type -> apfish.v1.user.contact.ListUserContactsRequest
 	5,  // 7: apfish.v1.user.contact.ContactService.UpdateContact:input_type -> apfish.v1.user.contact.UpdateContactRequest
 	6,  // 8: apfish.v1.user.contact.ContactService.CreateContact:input_type -> apfish.v1.user.contact.CreateContactRequest
 	7,  // 9: apfish.v1.user.contact.ContactService.DeleteContact:input_type -> apfish.v1.user.contact.DeleteContactRequest
 	1,  // 10: apfish.v1.user.contact.ContactService.GetContact:output_type -> apfish.v1.user.contact.ContactResponse
 	2,  // 11: apfish.v1.user.contact.ContactService.GetContactSummary:output_type -> apfish.v1.user.contact.ContactSummaryResponse
-	4,  // 12: apfish.v1.user.contact.ContactService.ListContacts:output_type -> apfish.v1.user.contact.ListContactsResponse
+	4,  // 12: apfish.v1.user.contact.ContactService.ListUserContacts:output_type -> apfish.v1.user.contact.ListContactsResponse
 	11, // 13: apfish.v1.user.contact.ContactService.UpdateContact:output_type -> apfish.v1.SuccessResponse
 	11, // 14: apfish.v1.user.contact.ContactService.CreateContact:output_type -> apfish.v1.SuccessResponse
 	11, // 15: apfish.v1.user.contact.ContactService.DeleteContact:output_type -> apfish.v1.SuccessResponse
