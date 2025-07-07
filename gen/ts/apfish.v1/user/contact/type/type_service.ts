@@ -19,6 +19,7 @@ import {
 } from "@grpc/grpc-js";
 import Long from "long";
 import _m0 from "protobufjs/minimal";
+import { SuccessResponse } from "../../../helper";
 import { TypeSummary } from "./summary/type_summary";
 import { Type, TypePatch } from "./type";
 
@@ -50,10 +51,6 @@ export interface ListTypesResponse {
 
 export interface UpdateTypeRequest {
   type: TypePatch | undefined;
-}
-
-export interface UpdateTypeResponse {
-  success: boolean;
 }
 
 function createBaseTypeRequest(): TypeRequest {
@@ -436,63 +433,6 @@ export const UpdateTypeRequest = {
   },
 };
 
-function createBaseUpdateTypeResponse(): UpdateTypeResponse {
-  return { success: false };
-}
-
-export const UpdateTypeResponse = {
-  encode(message: UpdateTypeResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.success !== false) {
-      writer.uint32(8).bool(message.success);
-    }
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): UpdateTypeResponse {
-    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseUpdateTypeResponse();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          if (tag !== 8) {
-            break;
-          }
-
-          message.success = reader.bool();
-          continue;
-      }
-      if ((tag & 7) === 4 || tag === 0) {
-        break;
-      }
-      reader.skipType(tag & 7);
-    }
-    return message;
-  },
-
-  fromJSON(object: any): UpdateTypeResponse {
-    return { success: isSet(object.success) ? globalThis.Boolean(object.success) : false };
-  },
-
-  toJSON(message: UpdateTypeResponse): unknown {
-    const obj: any = {};
-    if (message.success !== false) {
-      obj.success = message.success;
-    }
-    return obj;
-  },
-
-  create<I extends Exact<DeepPartial<UpdateTypeResponse>, I>>(base?: I): UpdateTypeResponse {
-    return UpdateTypeResponse.fromPartial(base ?? ({} as any));
-  },
-  fromPartial<I extends Exact<DeepPartial<UpdateTypeResponse>, I>>(object: I): UpdateTypeResponse {
-    const message = createBaseUpdateTypeResponse();
-    message.success = object.success ?? false;
-    return message;
-  },
-};
-
 export type TypeServiceService = typeof TypeServiceService;
 export const TypeServiceService = {
   getType: {
@@ -528,8 +468,8 @@ export const TypeServiceService = {
     responseStream: false,
     requestSerialize: (value: UpdateTypeRequest) => Buffer.from(UpdateTypeRequest.encode(value).finish()),
     requestDeserialize: (value: Buffer) => UpdateTypeRequest.decode(value),
-    responseSerialize: (value: UpdateTypeResponse) => Buffer.from(UpdateTypeResponse.encode(value).finish()),
-    responseDeserialize: (value: Buffer) => UpdateTypeResponse.decode(value),
+    responseSerialize: (value: SuccessResponse) => Buffer.from(SuccessResponse.encode(value).finish()),
+    responseDeserialize: (value: Buffer) => SuccessResponse.decode(value),
   },
 } as const;
 
@@ -537,7 +477,7 @@ export interface TypeServiceServer extends UntypedServiceImplementation {
   getType: handleUnaryCall<TypeRequest, TypeResponse>;
   getTypeSummary: handleUnaryCall<TypeRequest, TypeSummaryResponse>;
   listTypes: handleUnaryCall<ListTypesRequest, ListTypesResponse>;
-  updateType: handleUnaryCall<UpdateTypeRequest, UpdateTypeResponse>;
+  updateType: handleUnaryCall<UpdateTypeRequest, SuccessResponse>;
 }
 
 export interface TypeServiceClient extends Client {
@@ -588,18 +528,18 @@ export interface TypeServiceClient extends Client {
   ): ClientUnaryCall;
   updateType(
     request: UpdateTypeRequest,
-    callback: (error: ServiceError | null, response: UpdateTypeResponse) => void,
+    callback: (error: ServiceError | null, response: SuccessResponse) => void,
   ): ClientUnaryCall;
   updateType(
     request: UpdateTypeRequest,
     metadata: Metadata,
-    callback: (error: ServiceError | null, response: UpdateTypeResponse) => void,
+    callback: (error: ServiceError | null, response: SuccessResponse) => void,
   ): ClientUnaryCall;
   updateType(
     request: UpdateTypeRequest,
     metadata: Metadata,
     options: Partial<CallOptions>,
-    callback: (error: ServiceError | null, response: UpdateTypeResponse) => void,
+    callback: (error: ServiceError | null, response: SuccessResponse) => void,
   ): ClientUnaryCall;
 }
 

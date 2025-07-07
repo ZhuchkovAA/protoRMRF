@@ -19,6 +19,7 @@ import {
 } from "@grpc/grpc-js";
 import Long from "long";
 import _m0 from "protobufjs/minimal";
+import { SuccessResponse } from "../helper";
 import { UserSummary } from "./summary/user_summary";
 import { User, UserPatch } from "./user";
 
@@ -61,16 +62,8 @@ export interface CreateUserRequest {
   middleName: string;
 }
 
-export interface CreateUserResponse {
-  success: boolean;
-}
-
 export interface UpdateUserRequest {
   user: UserPatch | undefined;
-}
-
-export interface UpdateUserResponse {
-  success: boolean;
 }
 
 function createBaseUserRequest(): UserRequest {
@@ -469,63 +462,6 @@ export const CreateUserRequest = {
   },
 };
 
-function createBaseCreateUserResponse(): CreateUserResponse {
-  return { success: false };
-}
-
-export const CreateUserResponse = {
-  encode(message: CreateUserResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.success !== false) {
-      writer.uint32(8).bool(message.success);
-    }
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): CreateUserResponse {
-    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseCreateUserResponse();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          if (tag !== 8) {
-            break;
-          }
-
-          message.success = reader.bool();
-          continue;
-      }
-      if ((tag & 7) === 4 || tag === 0) {
-        break;
-      }
-      reader.skipType(tag & 7);
-    }
-    return message;
-  },
-
-  fromJSON(object: any): CreateUserResponse {
-    return { success: isSet(object.success) ? globalThis.Boolean(object.success) : false };
-  },
-
-  toJSON(message: CreateUserResponse): unknown {
-    const obj: any = {};
-    if (message.success !== false) {
-      obj.success = message.success;
-    }
-    return obj;
-  },
-
-  create<I extends Exact<DeepPartial<CreateUserResponse>, I>>(base?: I): CreateUserResponse {
-    return CreateUserResponse.fromPartial(base ?? ({} as any));
-  },
-  fromPartial<I extends Exact<DeepPartial<CreateUserResponse>, I>>(object: I): CreateUserResponse {
-    const message = createBaseCreateUserResponse();
-    message.success = object.success ?? false;
-    return message;
-  },
-};
-
 function createBaseUpdateUserRequest(): UpdateUserRequest {
   return { user: undefined };
 }
@@ -583,63 +519,6 @@ export const UpdateUserRequest = {
   },
 };
 
-function createBaseUpdateUserResponse(): UpdateUserResponse {
-  return { success: false };
-}
-
-export const UpdateUserResponse = {
-  encode(message: UpdateUserResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.success !== false) {
-      writer.uint32(8).bool(message.success);
-    }
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): UpdateUserResponse {
-    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseUpdateUserResponse();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          if (tag !== 8) {
-            break;
-          }
-
-          message.success = reader.bool();
-          continue;
-      }
-      if ((tag & 7) === 4 || tag === 0) {
-        break;
-      }
-      reader.skipType(tag & 7);
-    }
-    return message;
-  },
-
-  fromJSON(object: any): UpdateUserResponse {
-    return { success: isSet(object.success) ? globalThis.Boolean(object.success) : false };
-  },
-
-  toJSON(message: UpdateUserResponse): unknown {
-    const obj: any = {};
-    if (message.success !== false) {
-      obj.success = message.success;
-    }
-    return obj;
-  },
-
-  create<I extends Exact<DeepPartial<UpdateUserResponse>, I>>(base?: I): UpdateUserResponse {
-    return UpdateUserResponse.fromPartial(base ?? ({} as any));
-  },
-  fromPartial<I extends Exact<DeepPartial<UpdateUserResponse>, I>>(object: I): UpdateUserResponse {
-    const message = createBaseUpdateUserResponse();
-    message.success = object.success ?? false;
-    return message;
-  },
-};
-
 /** User defines RPC methods for user management. */
 export type UserServiceService = typeof UserServiceService;
 export const UserServiceService = {
@@ -675,8 +554,8 @@ export const UserServiceService = {
     responseStream: false,
     requestSerialize: (value: CreateUserRequest) => Buffer.from(CreateUserRequest.encode(value).finish()),
     requestDeserialize: (value: Buffer) => CreateUserRequest.decode(value),
-    responseSerialize: (value: CreateUserResponse) => Buffer.from(CreateUserResponse.encode(value).finish()),
-    responseDeserialize: (value: Buffer) => CreateUserResponse.decode(value),
+    responseSerialize: (value: SuccessResponse) => Buffer.from(SuccessResponse.encode(value).finish()),
+    responseDeserialize: (value: Buffer) => SuccessResponse.decode(value),
   },
   updateUser: {
     path: "/apfish.v1.user.UserService/UpdateUser",
@@ -684,8 +563,8 @@ export const UserServiceService = {
     responseStream: false,
     requestSerialize: (value: UpdateUserRequest) => Buffer.from(UpdateUserRequest.encode(value).finish()),
     requestDeserialize: (value: Buffer) => UpdateUserRequest.decode(value),
-    responseSerialize: (value: UpdateUserResponse) => Buffer.from(UpdateUserResponse.encode(value).finish()),
-    responseDeserialize: (value: Buffer) => UpdateUserResponse.decode(value),
+    responseSerialize: (value: SuccessResponse) => Buffer.from(SuccessResponse.encode(value).finish()),
+    responseDeserialize: (value: Buffer) => SuccessResponse.decode(value),
   },
 } as const;
 
@@ -700,8 +579,8 @@ export interface UserServiceServer extends UntypedServiceImplementation {
    * and returns paginated results.
    */
   listUsers: handleUnaryCall<ListUsersRequest, ListUsersResponse>;
-  createUser: handleUnaryCall<CreateUserRequest, CreateUserResponse>;
-  updateUser: handleUnaryCall<UpdateUserRequest, UpdateUserResponse>;
+  createUser: handleUnaryCall<CreateUserRequest, SuccessResponse>;
+  updateUser: handleUnaryCall<UpdateUserRequest, SuccessResponse>;
 }
 
 export interface UserServiceClient extends Client {
@@ -745,33 +624,33 @@ export interface UserServiceClient extends Client {
   ): ClientUnaryCall;
   createUser(
     request: CreateUserRequest,
-    callback: (error: ServiceError | null, response: CreateUserResponse) => void,
+    callback: (error: ServiceError | null, response: SuccessResponse) => void,
   ): ClientUnaryCall;
   createUser(
     request: CreateUserRequest,
     metadata: Metadata,
-    callback: (error: ServiceError | null, response: CreateUserResponse) => void,
+    callback: (error: ServiceError | null, response: SuccessResponse) => void,
   ): ClientUnaryCall;
   createUser(
     request: CreateUserRequest,
     metadata: Metadata,
     options: Partial<CallOptions>,
-    callback: (error: ServiceError | null, response: CreateUserResponse) => void,
+    callback: (error: ServiceError | null, response: SuccessResponse) => void,
   ): ClientUnaryCall;
   updateUser(
     request: UpdateUserRequest,
-    callback: (error: ServiceError | null, response: UpdateUserResponse) => void,
+    callback: (error: ServiceError | null, response: SuccessResponse) => void,
   ): ClientUnaryCall;
   updateUser(
     request: UpdateUserRequest,
     metadata: Metadata,
-    callback: (error: ServiceError | null, response: UpdateUserResponse) => void,
+    callback: (error: ServiceError | null, response: SuccessResponse) => void,
   ): ClientUnaryCall;
   updateUser(
     request: UpdateUserRequest,
     metadata: Metadata,
     options: Partial<CallOptions>,
-    callback: (error: ServiceError | null, response: UpdateUserResponse) => void,
+    callback: (error: ServiceError | null, response: SuccessResponse) => void,
   ): ClientUnaryCall;
 }
 

@@ -4,6 +4,7 @@ package apfish.v1.user;
 
 option go_package = "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user;user";
 
+import "apfish.v1/helper.proto";
 import "apfish.v1/user/user.proto";
 import "apfish.v1/user/summary/user_summary.proto";
 
@@ -17,9 +18,10 @@ service UserService {
   // and returns paginated results.
   rpc ListUsers (ListUsersRequest) returns (ListUsersResponse);
 
-  rpc CreateUser (CreateUserRequest) returns (CreateUserResponse);
 
-  rpc UpdateUser(UpdateUserRequest) returns (UpdateUserResponse);
+  rpc CreateUser (CreateUserRequest) returns (SuccessResponse);
+
+  rpc UpdateUser(UpdateUserRequest) returns (SuccessResponse);
 }
 
 // Request to fetch a specific user.
@@ -53,14 +55,8 @@ message CreateUserRequest {
   string middle_name = 5;
 }
 
-message CreateUserResponse {
-  bool success = 1;
-}
-
 message UpdateUserRequest {
   UserPatch user = 1;
 }
 
-message UpdateUserResponse {
-  bool success = 1;
-}
+

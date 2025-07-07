@@ -8,6 +8,7 @@ package user_contact_type
 
 import (
 	context "context"
+	apfish_v1 "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -32,7 +33,7 @@ type TypeServiceClient interface {
 	GetType(ctx context.Context, in *TypeRequest, opts ...grpc.CallOption) (*TypeResponse, error)
 	GetTypeSummary(ctx context.Context, in *TypeRequest, opts ...grpc.CallOption) (*TypeSummaryResponse, error)
 	ListTypes(ctx context.Context, in *ListTypesRequest, opts ...grpc.CallOption) (*ListTypesResponse, error)
-	UpdateType(ctx context.Context, in *UpdateTypeRequest, opts ...grpc.CallOption) (*UpdateTypeResponse, error)
+	UpdateType(ctx context.Context, in *UpdateTypeRequest, opts ...grpc.CallOption) (*apfish_v1.SuccessResponse, error)
 }
 
 type typeServiceClient struct {
@@ -73,9 +74,9 @@ func (c *typeServiceClient) ListTypes(ctx context.Context, in *ListTypesRequest,
 	return out, nil
 }
 
-func (c *typeServiceClient) UpdateType(ctx context.Context, in *UpdateTypeRequest, opts ...grpc.CallOption) (*UpdateTypeResponse, error) {
+func (c *typeServiceClient) UpdateType(ctx context.Context, in *UpdateTypeRequest, opts ...grpc.CallOption) (*apfish_v1.SuccessResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateTypeResponse)
+	out := new(apfish_v1.SuccessResponse)
 	err := c.cc.Invoke(ctx, TypeService_UpdateType_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -90,7 +91,7 @@ type TypeServiceServer interface {
 	GetType(context.Context, *TypeRequest) (*TypeResponse, error)
 	GetTypeSummary(context.Context, *TypeRequest) (*TypeSummaryResponse, error)
 	ListTypes(context.Context, *ListTypesRequest) (*ListTypesResponse, error)
-	UpdateType(context.Context, *UpdateTypeRequest) (*UpdateTypeResponse, error)
+	UpdateType(context.Context, *UpdateTypeRequest) (*apfish_v1.SuccessResponse, error)
 	mustEmbedUnimplementedTypeServiceServer()
 }
 
@@ -110,7 +111,7 @@ func (UnimplementedTypeServiceServer) GetTypeSummary(context.Context, *TypeReque
 func (UnimplementedTypeServiceServer) ListTypes(context.Context, *ListTypesRequest) (*ListTypesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListTypes not implemented")
 }
-func (UnimplementedTypeServiceServer) UpdateType(context.Context, *UpdateTypeRequest) (*UpdateTypeResponse, error) {
+func (UnimplementedTypeServiceServer) UpdateType(context.Context, *UpdateTypeRequest) (*apfish_v1.SuccessResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateType not implemented")
 }
 func (UnimplementedTypeServiceServer) mustEmbedUnimplementedTypeServiceServer() {}
