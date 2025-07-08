@@ -14,7 +14,7 @@ service TypeService {
 
   rpc ListTypes (ListTypesRequest) returns (ListTypesResponse);
 
-  rpc UpdateType(UpdateTypeRequest) returns (apfish.v1._helper.SuccessResponse);
+  rpc UpdateType(UpdateTypeRequest) returns (_helper.SuccessResponse);
 }
 
 message TypeRequest {

@@ -186,7 +186,7 @@ const file_apfish_v1_user_contact_contact_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x124\n" +
 	"\auser_id\x18\x02 \x01(\v2\x1b.google.protobuf.Int32ValueR\x06userId\x124\n" +
 	"\atype_id\x18\x03 \x01(\v2\x1b.google.protobuf.Int32ValueR\x06typeId\x122\n" +
-	"\x05value\x18\x04 \x01(\v2\x1c.google.protobuf.StringValueR\x05valueBTZRgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/contact/contact;user_contactb\x06proto3"
+	"\x05value\x18\x04 \x01(\v2\x1c.google.protobuf.StringValueR\x05valueBLZJgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/contact;user_contactb\x06proto3"
 
 var (
 	file_apfish_v1_user_contact_contact_proto_rawDescOnce sync.Once

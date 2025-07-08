@@ -422,7 +422,7 @@ const file_apfish_v1_user_contact_contact_service_proto_rawDesc = "" +
 	"\x10ListUserContacts\x12/.apfish.v1.user.contact.ListUserContactsRequest\x1a,.apfish.v1.user.contact.ListContactsResponse\x12a\n" +
 	"\rUpdateContact\x12,.apfish.v1.user.contact.UpdateContactRequest\x1a\".apfish.v1._helper.SuccessResponse\x12a\n" +
 	"\rCreateContact\x12,.apfish.v1.user.contact.CreateContactRequest\x1a\".apfish.v1._helper.SuccessResponse\x12a\n" +
-	"\rDeleteContact\x12,.apfish.v1.user.contact.DeleteContactRequest\x1a\".apfish.v1._helper.SuccessResponseBTZRgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/contact/contact;user_contactb\x06proto3"
+	"\rDeleteContact\x12,.apfish.v1.user.contact.DeleteContactRequest\x1a\".apfish.v1._helper.SuccessResponseBLZJgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/contact;user_contactb\x06proto3"
 
 var (
 	file_apfish_v1_user_contact_contact_service_proto_rawDescOnce sync.Once

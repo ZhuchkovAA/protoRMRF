@@ -19,9 +19,9 @@ service UserService {
   rpc ListUsers (ListUsersRequest) returns (ListUsersResponse);
 
 
-  rpc CreateUser (CreateUserRequest) returns (apfish.v1._helper.SuccessResponse);
+  rpc CreateUser (CreateUserRequest) returns (_helper.SuccessResponse);
 
-  rpc UpdateUser(UpdateUserRequest) returns (apfish.v1._helper.SuccessResponse);
+  rpc UpdateUser(UpdateUserRequest) returns (_helper.SuccessResponse);
 }
 
 // Request to fetch a specific user.
