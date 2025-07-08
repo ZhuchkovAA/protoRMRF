@@ -7,7 +7,7 @@
 package user_contact_type
 
 import (
-	__helper "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/_helper"
+	helper "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/helper"
 	summary "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/contact/type/summary"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
@@ -307,7 +307,7 @@ var File_apfish_v1_user_contact_type_type_service_proto protoreflect.FileDescrip
 
 const file_apfish_v1_user_contact_type_type_service_proto_rawDesc = "" +
 	"\n" +
-	".apfish.v1/user/contact/type/type_service.proto\x12\x1bapfish.v1.user.contact.type\x1a\x1fapfish.v1/_helper/_helper.proto\x1a&apfish.v1/user/contact/type/type.proto\x1a6apfish.v1/user/contact/type/summary/type_summary.proto\"\x1d\n" +
+	".apfish.v1/user/contact/type/type_service.proto\x12\x1bapfish.v1.user.contact.type\x1a\x1dapfish.v1/helper/helper.proto\x1a&apfish.v1/user/contact/type/type.proto\x1a6apfish.v1/user/contact/type/summary/type_summary.proto\"\x1d\n" +
 	"\vTypeRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\"E\n" +
 	"\fTypeResponse\x125\n" +
@@ -322,13 +322,13 @@ const file_apfish_v1_user_contact_type_type_service_proto_rawDesc = "" +
 	"list_types\x18\x01 \x03(\v20.apfish.v1.user.contact.type.summary.TypeSummaryR\tlistTypes\x12\x14\n" +
 	"\x05total\x18\x02 \x01(\x05R\x05total\"O\n" +
 	"\x11UpdateTypeRequest\x12:\n" +
-	"\x04type\x18\x01 \x01(\v2&.apfish.v1.user.contact.type.TypePatchR\x04type2\xa9\x03\n" +
+	"\x04type\x18\x01 \x01(\v2&.apfish.v1.user.contact.type.TypePatchR\x04type2\xa8\x03\n" +
 	"\vTypeService\x12^\n" +
 	"\aGetType\x12(.apfish.v1.user.contact.type.TypeRequest\x1a).apfish.v1.user.contact.type.TypeResponse\x12l\n" +
 	"\x0eGetTypeSummary\x12(.apfish.v1.user.contact.type.TypeRequest\x1a0.apfish.v1.user.contact.type.TypeSummaryResponse\x12j\n" +
-	"\tListTypes\x12-.apfish.v1.user.contact.type.ListTypesRequest\x1a..apfish.v1.user.contact.type.ListTypesResponse\x12`\n" +
+	"\tListTypes\x12-.apfish.v1.user.contact.type.ListTypesRequest\x1a..apfish.v1.user.contact.type.ListTypesResponse\x12_\n" +
 	"\n" +
-	"UpdateType\x12..apfish.v1.user.contact.type.UpdateTypeRequest\x1a\".apfish.v1._helper.SuccessResponseBVZTgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/contact/type;user_contact_typeb\x06proto3"
+	"UpdateType\x12..apfish.v1.user.contact.type.UpdateTypeRequest\x1a!.apfish.v1.helper.SuccessResponseBVZTgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/contact/type;user_contact_typeb\x06proto3"
 
 var (
 	file_apfish_v1_user_contact_type_type_service_proto_rawDescOnce sync.Once
@@ -344,16 +344,16 @@ func file_apfish_v1_user_contact_type_type_service_proto_rawDescGZIP() []byte {
 
 var file_apfish_v1_user_contact_type_type_service_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_apfish_v1_user_contact_type_type_service_proto_goTypes = []any{
-	(*TypeRequest)(nil),              // 0: apfish.v1.user.contact.type.TypeRequest
-	(*TypeResponse)(nil),             // 1: apfish.v1.user.contact.type.TypeResponse
-	(*TypeSummaryResponse)(nil),      // 2: apfish.v1.user.contact.type.TypeSummaryResponse
-	(*ListTypesRequest)(nil),         // 3: apfish.v1.user.contact.type.ListTypesRequest
-	(*ListTypesResponse)(nil),        // 4: apfish.v1.user.contact.type.ListTypesResponse
-	(*UpdateTypeRequest)(nil),        // 5: apfish.v1.user.contact.type.UpdateTypeRequest
-	(*Type)(nil),                     // 6: apfish.v1.user.contact.type.Type
-	(*summary.TypeSummary)(nil),      // 7: apfish.v1.user.contact.type.summary.TypeSummary
-	(*TypePatch)(nil),                // 8: apfish.v1.user.contact.type.TypePatch
-	(*__helper.SuccessResponse)(nil), // 9: apfish.v1._helper.SuccessResponse
+	(*TypeRequest)(nil),            // 0: apfish.v1.user.contact.type.TypeRequest
+	(*TypeResponse)(nil),           // 1: apfish.v1.user.contact.type.TypeResponse
+	(*TypeSummaryResponse)(nil),    // 2: apfish.v1.user.contact.type.TypeSummaryResponse
+	(*ListTypesRequest)(nil),       // 3: apfish.v1.user.contact.type.ListTypesRequest
+	(*ListTypesResponse)(nil),      // 4: apfish.v1.user.contact.type.ListTypesResponse
+	(*UpdateTypeRequest)(nil),      // 5: apfish.v1.user.contact.type.UpdateTypeRequest
+	(*Type)(nil),                   // 6: apfish.v1.user.contact.type.Type
+	(*summary.TypeSummary)(nil),    // 7: apfish.v1.user.contact.type.summary.TypeSummary
+	(*TypePatch)(nil),              // 8: apfish.v1.user.contact.type.TypePatch
+	(*helper.SuccessResponse)(nil), // 9: apfish.v1.helper.SuccessResponse
 }
 var file_apfish_v1_user_contact_type_type_service_proto_depIdxs = []int32{
 	6, // 0: apfish.v1.user.contact.type.TypeResponse.type:type_name -> apfish.v1.user.contact.type.Type
@@ -367,7 +367,7 @@ var file_apfish_v1_user_contact_type_type_service_proto_depIdxs = []int32{
 	1, // 8: apfish.v1.user.contact.type.TypeService.GetType:output_type -> apfish.v1.user.contact.type.TypeResponse
 	2, // 9: apfish.v1.user.contact.type.TypeService.GetTypeSummary:output_type -> apfish.v1.user.contact.type.TypeSummaryResponse
 	4, // 10: apfish.v1.user.contact.type.TypeService.ListTypes:output_type -> apfish.v1.user.contact.type.ListTypesResponse
-	9, // 11: apfish.v1.user.contact.type.TypeService.UpdateType:output_type -> apfish.v1._helper.SuccessResponse
+	9, // 11: apfish.v1.user.contact.type.TypeService.UpdateType:output_type -> apfish.v1.helper.SuccessResponse
 	8, // [8:12] is the sub-list for method output_type
 	4, // [4:8] is the sub-list for method input_type
 	4, // [4:4] is the sub-list for extension type_name

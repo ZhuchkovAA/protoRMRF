@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package apfish.v1.helper;
+
+option go_package = "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/helper;helper";
+
+message SuccessResponse {
+  bool success = 1;
+}

@@ -8,7 +8,7 @@ package user_contact
 
 import (
 	context "context"
-	__helper "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/_helper"
+	helper "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/helper"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -35,9 +35,9 @@ type ContactServiceClient interface {
 	GetContact(ctx context.Context, in *ContactRequest, opts ...grpc.CallOption) (*ContactResponse, error)
 	GetContactSummary(ctx context.Context, in *ContactRequest, opts ...grpc.CallOption) (*ContactSummaryResponse, error)
 	ListUserContacts(ctx context.Context, in *ListUserContactsRequest, opts ...grpc.CallOption) (*ListContactsResponse, error)
-	UpdateContact(ctx context.Context, in *UpdateContactRequest, opts ...grpc.CallOption) (*__helper.SuccessResponse, error)
-	CreateContact(ctx context.Context, in *CreateContactRequest, opts ...grpc.CallOption) (*__helper.SuccessResponse, error)
-	DeleteContact(ctx context.Context, in *DeleteContactRequest, opts ...grpc.CallOption) (*__helper.SuccessResponse, error)
+	UpdateContact(ctx context.Context, in *UpdateContactRequest, opts ...grpc.CallOption) (*helper.SuccessResponse, error)
+	CreateContact(ctx context.Context, in *CreateContactRequest, opts ...grpc.CallOption) (*helper.SuccessResponse, error)
+	DeleteContact(ctx context.Context, in *DeleteContactRequest, opts ...grpc.CallOption) (*helper.SuccessResponse, error)
 }
 
 type contactServiceClient struct {
@@ -78,9 +78,9 @@ func (c *contactServiceClient) ListUserContacts(ctx context.Context, in *ListUse
 	return out, nil
 }
 
-func (c *contactServiceClient) UpdateContact(ctx context.Context, in *UpdateContactRequest, opts ...grpc.CallOption) (*__helper.SuccessResponse, error) {
+func (c *contactServiceClient) UpdateContact(ctx context.Context, in *UpdateContactRequest, opts ...grpc.CallOption) (*helper.SuccessResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(__helper.SuccessResponse)
+	out := new(helper.SuccessResponse)
 	err := c.cc.Invoke(ctx, ContactService_UpdateContact_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -88,9 +88,9 @@ func (c *contactServiceClient) UpdateContact(ctx context.Context, in *UpdateCont
 	return out, nil
 }
 
-func (c *contactServiceClient) CreateContact(ctx context.Context, in *CreateContactRequest, opts ...grpc.CallOption) (*__helper.SuccessResponse, error) {
+func (c *contactServiceClient) CreateContact(ctx context.Context, in *CreateContactRequest, opts ...grpc.CallOption) (*helper.SuccessResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(__helper.SuccessResponse)
+	out := new(helper.SuccessResponse)
 	err := c.cc.Invoke(ctx, ContactService_CreateContact_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -98,9 +98,9 @@ func (c *contactServiceClient) CreateContact(ctx context.Context, in *CreateCont
 	return out, nil
 }
 
-func (c *contactServiceClient) DeleteContact(ctx context.Context, in *DeleteContactRequest, opts ...grpc.CallOption) (*__helper.SuccessResponse, error) {
+func (c *contactServiceClient) DeleteContact(ctx context.Context, in *DeleteContactRequest, opts ...grpc.CallOption) (*helper.SuccessResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(__helper.SuccessResponse)
+	out := new(helper.SuccessResponse)
 	err := c.cc.Invoke(ctx, ContactService_DeleteContact_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -115,9 +115,9 @@ type ContactServiceServer interface {
 	GetContact(context.Context, *ContactRequest) (*ContactResponse, error)
 	GetContactSummary(context.Context, *ContactRequest) (*ContactSummaryResponse, error)
 	ListUserContacts(context.Context, *ListUserContactsRequest) (*ListContactsResponse, error)
-	UpdateContact(context.Context, *UpdateContactRequest) (*__helper.SuccessResponse, error)
-	CreateContact(context.Context, *CreateContactRequest) (*__helper.SuccessResponse, error)
-	DeleteContact(context.Context, *DeleteContactRequest) (*__helper.SuccessResponse, error)
+	UpdateContact(context.Context, *UpdateContactRequest) (*helper.SuccessResponse, error)
+	CreateContact(context.Context, *CreateContactRequest) (*helper.SuccessResponse, error)
+	DeleteContact(context.Context, *DeleteContactRequest) (*helper.SuccessResponse, error)
 	mustEmbedUnimplementedContactServiceServer()
 }
 
@@ -137,13 +137,13 @@ func (UnimplementedContactServiceServer) GetContactSummary(context.Context, *Con
 func (UnimplementedContactServiceServer) ListUserContacts(context.Context, *ListUserContactsRequest) (*ListContactsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListUserContacts not implemented")
 }
-func (UnimplementedContactServiceServer) UpdateContact(context.Context, *UpdateContactRequest) (*__helper.SuccessResponse, error) {
+func (UnimplementedContactServiceServer) UpdateContact(context.Context, *UpdateContactRequest) (*helper.SuccessResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateContact not implemented")
 }
-func (UnimplementedContactServiceServer) CreateContact(context.Context, *CreateContactRequest) (*__helper.SuccessResponse, error) {
+func (UnimplementedContactServiceServer) CreateContact(context.Context, *CreateContactRequest) (*helper.SuccessResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateContact not implemented")
 }
-func (UnimplementedContactServiceServer) DeleteContact(context.Context, *DeleteContactRequest) (*__helper.SuccessResponse, error) {
+func (UnimplementedContactServiceServer) DeleteContact(context.Context, *DeleteContactRequest) (*helper.SuccessResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteContact not implemented")
 }
 func (UnimplementedContactServiceServer) mustEmbedUnimplementedContactServiceServer() {}

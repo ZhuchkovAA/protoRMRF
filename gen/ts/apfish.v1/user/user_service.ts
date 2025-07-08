@@ -19,7 +19,7 @@ import {
 } from "@grpc/grpc-js";
 import Long from "long";
 import _m0 from "protobufjs/minimal";
-import { SuccessResponse } from "../_helper/_helper";
+import { SuccessResponse } from "../helper/helper";
 import { UserSummary } from "./summary/user_summary";
 import { User, UserPatch } from "./user";
 

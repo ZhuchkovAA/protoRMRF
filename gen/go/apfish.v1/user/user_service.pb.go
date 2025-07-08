@@ -7,7 +7,7 @@
 package user
 
 import (
-	__helper "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/_helper"
+	helper "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/helper"
 	summary "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/summary"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
@@ -351,7 +351,7 @@ var File_apfish_v1_user_user_service_proto protoreflect.FileDescriptor
 
 const file_apfish_v1_user_user_service_proto_rawDesc = "" +
 	"\n" +
-	"!apfish.v1/user/user_service.proto\x12\x0eapfish.v1.user\x1a\x1fapfish.v1/_helper/_helper.proto\x1a\x19apfish.v1/user/user.proto\x1a)apfish.v1/user/summary/user_summary.proto\"#\n" +
+	"!apfish.v1/user/user_service.proto\x12\x0eapfish.v1.user\x1a\x1dapfish.v1/helper/helper.proto\x1a\x19apfish.v1/user/user.proto\x1a)apfish.v1/user/summary/user_summary.proto\"#\n" +
 	"\vUserRequest\x12\x14\n" +
 	"\x05login\x18\x01 \x01(\tR\x05login\"8\n" +
 	"\fUserResponse\x12(\n" +
@@ -372,14 +372,14 @@ const file_apfish_v1_user_user_service_proto_rawDesc = "" +
 	"\vmiddle_name\x18\x05 \x01(\tR\n" +
 	"middleName\"B\n" +
 	"\x11UpdateUserRequest\x12-\n" +
-	"\x04user\x18\x01 \x01(\v2\x19.apfish.v1.user.UserPatchR\x04user2\xcf\x02\n" +
+	"\x04user\x18\x01 \x01(\v2\x19.apfish.v1.user.UserPatchR\x04user2\xcd\x02\n" +
 	"\vUserService\x12D\n" +
 	"\aGetUser\x12\x1b.apfish.v1.user.UserRequest\x1a\x1c.apfish.v1.user.UserResponse\x12P\n" +
-	"\tListUsers\x12 .apfish.v1.user.ListUsersRequest\x1a!.apfish.v1.user.ListUsersResponse\x12S\n" +
+	"\tListUsers\x12 .apfish.v1.user.ListUsersRequest\x1a!.apfish.v1.user.ListUsersResponse\x12R\n" +
 	"\n" +
-	"CreateUser\x12!.apfish.v1.user.CreateUserRequest\x1a\".apfish.v1._helper.SuccessResponse\x12S\n" +
+	"CreateUser\x12!.apfish.v1.user.CreateUserRequest\x1a!.apfish.v1.helper.SuccessResponse\x12R\n" +
 	"\n" +
-	"UpdateUser\x12!.apfish.v1.user.UpdateUserRequest\x1a\".apfish.v1._helper.SuccessResponseB<Z:github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user;userb\x06proto3"
+	"UpdateUser\x12!.apfish.v1.user.UpdateUserRequest\x1a!.apfish.v1.helper.SuccessResponseB<Z:github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user;userb\x06proto3"
 
 var (
 	file_apfish_v1_user_user_service_proto_rawDescOnce sync.Once
@@ -395,16 +395,16 @@ func file_apfish_v1_user_user_service_proto_rawDescGZIP() []byte {
 
 var file_apfish_v1_user_user_service_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_apfish_v1_user_user_service_proto_goTypes = []any{
-	(*UserRequest)(nil),              // 0: apfish.v1.user.UserRequest
-	(*UserResponse)(nil),             // 1: apfish.v1.user.UserResponse
-	(*ListUsersRequest)(nil),         // 2: apfish.v1.user.ListUsersRequest
-	(*ListUsersResponse)(nil),        // 3: apfish.v1.user.ListUsersResponse
-	(*CreateUserRequest)(nil),        // 4: apfish.v1.user.CreateUserRequest
-	(*UpdateUserRequest)(nil),        // 5: apfish.v1.user.UpdateUserRequest
-	(*User)(nil),                     // 6: apfish.v1.user.User
-	(*summary.UserSummary)(nil),      // 7: apfish.v1.user.summary.UserSummary
-	(*UserPatch)(nil),                // 8: apfish.v1.user.UserPatch
-	(*__helper.SuccessResponse)(nil), // 9: apfish.v1._helper.SuccessResponse
+	(*UserRequest)(nil),            // 0: apfish.v1.user.UserRequest
+	(*UserResponse)(nil),           // 1: apfish.v1.user.UserResponse
+	(*ListUsersRequest)(nil),       // 2: apfish.v1.user.ListUsersRequest
+	(*ListUsersResponse)(nil),      // 3: apfish.v1.user.ListUsersResponse
+	(*CreateUserRequest)(nil),      // 4: apfish.v1.user.CreateUserRequest
+	(*UpdateUserRequest)(nil),      // 5: apfish.v1.user.UpdateUserRequest
+	(*User)(nil),                   // 6: apfish.v1.user.User
+	(*summary.UserSummary)(nil),    // 7: apfish.v1.user.summary.UserSummary
+	(*UserPatch)(nil),              // 8: apfish.v1.user.UserPatch
+	(*helper.SuccessResponse)(nil), // 9: apfish.v1.helper.SuccessResponse
 }
 var file_apfish_v1_user_user_service_proto_depIdxs = []int32{
 	6, // 0: apfish.v1.user.UserResponse.user:type_name -> apfish.v1.user.User
@@ -416,8 +416,8 @@ var file_apfish_v1_user_user_service_proto_depIdxs = []int32{
 	5, // 6: apfish.v1.user.UserService.UpdateUser:input_type -> apfish.v1.user.UpdateUserRequest
 	1, // 7: apfish.v1.user.UserService.GetUser:output_type -> apfish.v1.user.UserResponse
 	3, // 8: apfish.v1.user.UserService.ListUsers:output_type -> apfish.v1.user.ListUsersResponse
-	9, // 9: apfish.v1.user.UserService.CreateUser:output_type -> apfish.v1._helper.SuccessResponse
-	9, // 10: apfish.v1.user.UserService.UpdateUser:output_type -> apfish.v1._helper.SuccessResponse
+	9, // 9: apfish.v1.user.UserService.CreateUser:output_type -> apfish.v1.helper.SuccessResponse
+	9, // 10: apfish.v1.user.UserService.UpdateUser:output_type -> apfish.v1.helper.SuccessResponse
 	7, // [7:11] is the sub-list for method output_type
 	3, // [3:7] is the sub-list for method input_type
 	3, // [3:3] is the sub-list for extension type_name

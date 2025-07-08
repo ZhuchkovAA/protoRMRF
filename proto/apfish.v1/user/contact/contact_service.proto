@@ -4,7 +4,7 @@ package apfish.v1.user.contact;
 
 option go_package = "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/contact;user_contact";
 
-import "apfish.v1/_helper/_helper.proto";
+import "apfish.v1/helper/helper.proto";
 import "apfish.v1/user/contact/contact.proto";
 import "apfish.v1/user/contact/summary/contact_summary.proto";
 
@@ -14,11 +14,11 @@ service ContactService {
 
   rpc ListUserContacts (ListUserContactsRequest) returns (ListContactsResponse);
 
-  rpc UpdateContact (UpdateContactRequest) returns (_helper.SuccessResponse);
+  rpc UpdateContact (UpdateContactRequest) returns (helper.SuccessResponse);
 
-  rpc CreateContact (CreateContactRequest) returns (_helper.SuccessResponse);
+  rpc CreateContact (CreateContactRequest) returns (helper.SuccessResponse);
 
-  rpc DeleteContact (DeleteContactRequest) returns (_helper.SuccessResponse);
+  rpc DeleteContact (DeleteContactRequest) returns (helper.SuccessResponse);
 }
 
 message ContactRequest {
