@@ -36,7 +36,7 @@ type ContactServiceClient interface {
 	GetContactSummary(ctx context.Context, in *ContactRequest, opts ...grpc.CallOption) (*ContactSummaryResponse, error)
 	ListUserContacts(ctx context.Context, in *ListUserContactsRequest, opts ...grpc.CallOption) (*ListContactsResponse, error)
 	UpdateContact(ctx context.Context, in *UpdateContactRequest, opts ...grpc.CallOption) (*helper.SuccessResponse, error)
-	CreateContact(ctx context.Context, in *CreateContactRequest, opts ...grpc.CallOption) (*helper.SuccessResponse, error)
+	CreateContact(ctx context.Context, in *CreateContactRequest, opts ...grpc.CallOption) (*CreateContactResponse, error)
 	DeleteContact(ctx context.Context, in *DeleteContactRequest, opts ...grpc.CallOption) (*helper.SuccessResponse, error)
 }
 
@@ -88,9 +88,9 @@ func (c *contactServiceClient) UpdateContact(ctx context.Context, in *UpdateCont
 	return out, nil
 }
 
-func (c *contactServiceClient) CreateContact(ctx context.Context, in *CreateContactRequest, opts ...grpc.CallOption) (*helper.SuccessResponse, error) {
+func (c *contactServiceClient) CreateContact(ctx context.Context, in *CreateContactRequest, opts ...grpc.CallOption) (*CreateContactResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(helper.SuccessResponse)
+	out := new(CreateContactResponse)
 	err := c.cc.Invoke(ctx, ContactService_CreateContact_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -116,7 +116,7 @@ type ContactServiceServer interface {
 	GetContactSummary(context.Context, *ContactRequest) (*ContactSummaryResponse, error)
 	ListUserContacts(context.Context, *ListUserContactsRequest) (*ListContactsResponse, error)
 	UpdateContact(context.Context, *UpdateContactRequest) (*helper.SuccessResponse, error)
-	CreateContact(context.Context, *CreateContactRequest) (*helper.SuccessResponse, error)
+	CreateContact(context.Context, *CreateContactRequest) (*CreateContactResponse, error)
 	DeleteContact(context.Context, *DeleteContactRequest) (*helper.SuccessResponse, error)
 	mustEmbedUnimplementedContactServiceServer()
 }
@@ -140,7 +140,7 @@ func (UnimplementedContactServiceServer) ListUserContacts(context.Context, *List
 func (UnimplementedContactServiceServer) UpdateContact(context.Context, *UpdateContactRequest) (*helper.SuccessResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateContact not implemented")
 }
-func (UnimplementedContactServiceServer) CreateContact(context.Context, *CreateContactRequest) (*helper.SuccessResponse, error) {
+func (UnimplementedContactServiceServer) CreateContact(context.Context, *CreateContactRequest) (*CreateContactResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateContact not implemented")
 }
 func (UnimplementedContactServiceServer) DeleteContact(context.Context, *DeleteContactRequest) (*helper.SuccessResponse, error) {

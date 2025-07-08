@@ -303,6 +303,50 @@ func (x *CreateUserRequest) GetMiddleName() string {
 	return ""
 }
 
+type CreateUserResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	UserId        int32                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateUserResponse) Reset() {
+	*x = CreateUserResponse{}
+	mi := &file_apfish_v1_user_user_service_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateUserResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateUserResponse) ProtoMessage() {}
+
+func (x *CreateUserResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_apfish_v1_user_user_service_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateUserResponse.ProtoReflect.Descriptor instead.
+func (*CreateUserResponse) Descriptor() ([]byte, []int) {
+	return file_apfish_v1_user_user_service_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *CreateUserResponse) GetUserId() int32 {
+	if x != nil {
+		return x.UserId
+	}
+	return 0
+}
+
 type UpdateUserRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	User          *UserPatch             `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
@@ -312,7 +356,7 @@ type UpdateUserRequest struct {
 
 func (x *UpdateUserRequest) Reset() {
 	*x = UpdateUserRequest{}
-	mi := &file_apfish_v1_user_user_service_proto_msgTypes[5]
+	mi := &file_apfish_v1_user_user_service_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -324,7 +368,7 @@ func (x *UpdateUserRequest) String() string {
 func (*UpdateUserRequest) ProtoMessage() {}
 
 func (x *UpdateUserRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_v1_user_user_service_proto_msgTypes[5]
+	mi := &file_apfish_v1_user_user_service_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -337,7 +381,7 @@ func (x *UpdateUserRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateUserRequest.ProtoReflect.Descriptor instead.
 func (*UpdateUserRequest) Descriptor() ([]byte, []int) {
-	return file_apfish_v1_user_user_service_proto_rawDescGZIP(), []int{5}
+	return file_apfish_v1_user_user_service_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *UpdateUserRequest) GetUser() *UserPatch {
@@ -370,14 +414,16 @@ const file_apfish_v1_user_user_service_proto_rawDesc = "" +
 	"first_name\x18\x03 \x01(\tR\tfirstName\x12\x1b\n" +
 	"\tlast_name\x18\x04 \x01(\tR\blastName\x12\x1f\n" +
 	"\vmiddle_name\x18\x05 \x01(\tR\n" +
-	"middleName\"B\n" +
+	"middleName\"-\n" +
+	"\x12CreateUserResponse\x12\x17\n" +
+	"\auser_id\x18\x01 \x01(\x05R\x06userId\"B\n" +
 	"\x11UpdateUserRequest\x12-\n" +
-	"\x04user\x18\x01 \x01(\v2\x19.apfish.v1.user.UserPatchR\x04user2\xcd\x02\n" +
+	"\x04user\x18\x01 \x01(\v2\x19.apfish.v1.user.UserPatchR\x04user2\xce\x02\n" +
 	"\vUserService\x12D\n" +
 	"\aGetUser\x12\x1b.apfish.v1.user.UserRequest\x1a\x1c.apfish.v1.user.UserResponse\x12P\n" +
-	"\tListUsers\x12 .apfish.v1.user.ListUsersRequest\x1a!.apfish.v1.user.ListUsersResponse\x12R\n" +
+	"\tListUsers\x12 .apfish.v1.user.ListUsersRequest\x1a!.apfish.v1.user.ListUsersResponse\x12S\n" +
 	"\n" +
-	"CreateUser\x12!.apfish.v1.user.CreateUserRequest\x1a!.apfish.v1.helper.SuccessResponse\x12R\n" +
+	"CreateUser\x12!.apfish.v1.user.CreateUserRequest\x1a\".apfish.v1.user.CreateUserResponse\x12R\n" +
 	"\n" +
 	"UpdateUser\x12!.apfish.v1.user.UpdateUserRequest\x1a!.apfish.v1.helper.SuccessResponseB<Z:github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user;userb\x06proto3"
 
@@ -393,36 +439,37 @@ func file_apfish_v1_user_user_service_proto_rawDescGZIP() []byte {
 	return file_apfish_v1_user_user_service_proto_rawDescData
 }
 
-var file_apfish_v1_user_user_service_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
+var file_apfish_v1_user_user_service_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
 var file_apfish_v1_user_user_service_proto_goTypes = []any{
 	(*UserRequest)(nil),            // 0: apfish.v1.user.UserRequest
 	(*UserResponse)(nil),           // 1: apfish.v1.user.UserResponse
 	(*ListUsersRequest)(nil),       // 2: apfish.v1.user.ListUsersRequest
 	(*ListUsersResponse)(nil),      // 3: apfish.v1.user.ListUsersResponse
 	(*CreateUserRequest)(nil),      // 4: apfish.v1.user.CreateUserRequest
-	(*UpdateUserRequest)(nil),      // 5: apfish.v1.user.UpdateUserRequest
-	(*User)(nil),                   // 6: apfish.v1.user.User
-	(*summary.UserSummary)(nil),    // 7: apfish.v1.user.summary.UserSummary
-	(*UserPatch)(nil),              // 8: apfish.v1.user.UserPatch
-	(*helper.SuccessResponse)(nil), // 9: apfish.v1.helper.SuccessResponse
+	(*CreateUserResponse)(nil),     // 5: apfish.v1.user.CreateUserResponse
+	(*UpdateUserRequest)(nil),      // 6: apfish.v1.user.UpdateUserRequest
+	(*User)(nil),                   // 7: apfish.v1.user.User
+	(*summary.UserSummary)(nil),    // 8: apfish.v1.user.summary.UserSummary
+	(*UserPatch)(nil),              // 9: apfish.v1.user.UserPatch
+	(*helper.SuccessResponse)(nil), // 10: apfish.v1.helper.SuccessResponse
 }
 var file_apfish_v1_user_user_service_proto_depIdxs = []int32{
-	6, // 0: apfish.v1.user.UserResponse.user:type_name -> apfish.v1.user.User
-	7, // 1: apfish.v1.user.ListUsersResponse.users:type_name -> apfish.v1.user.summary.UserSummary
-	8, // 2: apfish.v1.user.UpdateUserRequest.user:type_name -> apfish.v1.user.UserPatch
-	0, // 3: apfish.v1.user.UserService.GetUser:input_type -> apfish.v1.user.UserRequest
-	2, // 4: apfish.v1.user.UserService.ListUsers:input_type -> apfish.v1.user.ListUsersRequest
-	4, // 5: apfish.v1.user.UserService.CreateUser:input_type -> apfish.v1.user.CreateUserRequest
-	5, // 6: apfish.v1.user.UserService.UpdateUser:input_type -> apfish.v1.user.UpdateUserRequest
-	1, // 7: apfish.v1.user.UserService.GetUser:output_type -> apfish.v1.user.UserResponse
-	3, // 8: apfish.v1.user.UserService.ListUsers:output_type -> apfish.v1.user.ListUsersResponse
-	9, // 9: apfish.v1.user.UserService.CreateUser:output_type -> apfish.v1.helper.SuccessResponse
-	9, // 10: apfish.v1.user.UserService.UpdateUser:output_type -> apfish.v1.helper.SuccessResponse
-	7, // [7:11] is the sub-list for method output_type
-	3, // [3:7] is the sub-list for method input_type
-	3, // [3:3] is the sub-list for extension type_name
-	3, // [3:3] is the sub-list for extension extendee
-	0, // [0:3] is the sub-list for field type_name
+	7,  // 0: apfish.v1.user.UserResponse.user:type_name -> apfish.v1.user.User
+	8,  // 1: apfish.v1.user.ListUsersResponse.users:type_name -> apfish.v1.user.summary.UserSummary
+	9,  // 2: apfish.v1.user.UpdateUserRequest.user:type_name -> apfish.v1.user.UserPatch
+	0,  // 3: apfish.v1.user.UserService.GetUser:input_type -> apfish.v1.user.UserRequest
+	2,  // 4: apfish.v1.user.UserService.ListUsers:input_type -> apfish.v1.user.ListUsersRequest
+	4,  // 5: apfish.v1.user.UserService.CreateUser:input_type -> apfish.v1.user.CreateUserRequest
+	6,  // 6: apfish.v1.user.UserService.UpdateUser:input_type -> apfish.v1.user.UpdateUserRequest
+	1,  // 7: apfish.v1.user.UserService.GetUser:output_type -> apfish.v1.user.UserResponse
+	3,  // 8: apfish.v1.user.UserService.ListUsers:output_type -> apfish.v1.user.ListUsersResponse
+	5,  // 9: apfish.v1.user.UserService.CreateUser:output_type -> apfish.v1.user.CreateUserResponse
+	10, // 10: apfish.v1.user.UserService.UpdateUser:output_type -> apfish.v1.helper.SuccessResponse
+	7,  // [7:11] is the sub-list for method output_type
+	3,  // [3:7] is the sub-list for method input_type
+	3,  // [3:3] is the sub-list for extension type_name
+	3,  // [3:3] is the sub-list for extension extendee
+	0,  // [0:3] is the sub-list for field type_name
 }
 
 func init() { file_apfish_v1_user_user_service_proto_init() }
@@ -437,7 +484,7 @@ func file_apfish_v1_user_user_service_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_apfish_v1_user_user_service_proto_rawDesc), len(file_apfish_v1_user_user_service_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   6,
+			NumMessages:   7,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

@@ -55,6 +55,10 @@ export interface CreateContactRequest {
   value: string;
 }
 
+export interface CreateContactResponse {
+  contactId: number;
+}
+
 export interface DeleteContactRequest {
   contactId: number;
 }
@@ -500,6 +504,63 @@ export const CreateContactRequest = {
   },
 };
 
+function createBaseCreateContactResponse(): CreateContactResponse {
+  return { contactId: 0 };
+}
+
+export const CreateContactResponse = {
+  encode(message: CreateContactResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.contactId !== 0) {
+      writer.uint32(8).int32(message.contactId);
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): CreateContactResponse {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCreateContactResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag !== 8) {
+            break;
+          }
+
+          message.contactId = reader.int32();
+          continue;
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CreateContactResponse {
+    return { contactId: isSet(object.contactId) ? globalThis.Number(object.contactId) : 0 };
+  },
+
+  toJSON(message: CreateContactResponse): unknown {
+    const obj: any = {};
+    if (message.contactId !== 0) {
+      obj.contactId = Math.round(message.contactId);
+    }
+    return obj;
+  },
+
+  create<I extends Exact<DeepPartial<CreateContactResponse>, I>>(base?: I): CreateContactResponse {
+    return CreateContactResponse.fromPartial(base ?? ({} as any));
+  },
+  fromPartial<I extends Exact<DeepPartial<CreateContactResponse>, I>>(object: I): CreateContactResponse {
+    const message = createBaseCreateContactResponse();
+    message.contactId = object.contactId ?? 0;
+    return message;
+  },
+};
+
 function createBaseDeleteContactRequest(): DeleteContactRequest {
   return { contactId: 0 };
 }
@@ -601,8 +662,8 @@ export const ContactServiceService = {
     responseStream: false,
     requestSerialize: (value: CreateContactRequest) => Buffer.from(CreateContactRequest.encode(value).finish()),
     requestDeserialize: (value: Buffer) => CreateContactRequest.decode(value),
-    responseSerialize: (value: SuccessResponse) => Buffer.from(SuccessResponse.encode(value).finish()),
-    responseDeserialize: (value: Buffer) => SuccessResponse.decode(value),
+    responseSerialize: (value: CreateContactResponse) => Buffer.from(CreateContactResponse.encode(value).finish()),
+    responseDeserialize: (value: Buffer) => CreateContactResponse.decode(value),
   },
   deleteContact: {
     path: "/apfish.v1.user.contact.ContactService/DeleteContact",
@@ -620,7 +681,7 @@ export interface ContactServiceServer extends UntypedServiceImplementation {
   getContactSummary: handleUnaryCall<ContactRequest, ContactSummaryResponse>;
   listUserContacts: handleUnaryCall<ListUserContactsRequest, ListContactsResponse>;
   updateContact: handleUnaryCall<UpdateContactRequest, SuccessResponse>;
-  createContact: handleUnaryCall<CreateContactRequest, SuccessResponse>;
+  createContact: handleUnaryCall<CreateContactRequest, CreateContactResponse>;
   deleteContact: handleUnaryCall<DeleteContactRequest, SuccessResponse>;
 }
 
@@ -687,18 +748,18 @@ export interface ContactServiceClient extends Client {
   ): ClientUnaryCall;
   createContact(
     request: CreateContactRequest,
-    callback: (error: ServiceError | null, response: SuccessResponse) => void,
+    callback: (error: ServiceError | null, response: CreateContactResponse) => void,
   ): ClientUnaryCall;
   createContact(
     request: CreateContactRequest,
     metadata: Metadata,
-    callback: (error: ServiceError | null, response: SuccessResponse) => void,
+    callback: (error: ServiceError | null, response: CreateContactResponse) => void,
   ): ClientUnaryCall;
   createContact(
     request: CreateContactRequest,
     metadata: Metadata,
     options: Partial<CallOptions>,
-    callback: (error: ServiceError | null, response: SuccessResponse) => void,
+    callback: (error: ServiceError | null, response: CreateContactResponse) => void,
   ): ClientUnaryCall;
   deleteContact(
     request: DeleteContactRequest,

@@ -16,7 +16,7 @@ service ContactService {
 
   rpc UpdateContact (UpdateContactRequest) returns (helper.SuccessResponse);
 
-  rpc CreateContact (CreateContactRequest) returns (helper.SuccessResponse);
+  rpc CreateContact (CreateContactRequest) returns (CreateContactResponse);
 
   rpc DeleteContact (DeleteContactRequest) returns (helper.SuccessResponse);
 }
@@ -49,6 +49,10 @@ message CreateContactRequest {
   int32 user_id = 1;
   int32 type_id = 2;
   string value = 3;
+}
+
+message CreateContactResponse {
+  int32 contact_id = 1;
 }
 
 message DeleteContactRequest {

@@ -62,6 +62,10 @@ export interface CreateUserRequest {
   middleName: string;
 }
 
+export interface CreateUserResponse {
+  userId: number;
+}
+
 export interface UpdateUserRequest {
   user: UserPatch | undefined;
 }
@@ -462,6 +466,63 @@ export const CreateUserRequest = {
   },
 };
 
+function createBaseCreateUserResponse(): CreateUserResponse {
+  return { userId: 0 };
+}
+
+export const CreateUserResponse = {
+  encode(message: CreateUserResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.userId !== 0) {
+      writer.uint32(8).int32(message.userId);
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): CreateUserResponse {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCreateUserResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag !== 8) {
+            break;
+          }
+
+          message.userId = reader.int32();
+          continue;
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CreateUserResponse {
+    return { userId: isSet(object.userId) ? globalThis.Number(object.userId) : 0 };
+  },
+
+  toJSON(message: CreateUserResponse): unknown {
+    const obj: any = {};
+    if (message.userId !== 0) {
+      obj.userId = Math.round(message.userId);
+    }
+    return obj;
+  },
+
+  create<I extends Exact<DeepPartial<CreateUserResponse>, I>>(base?: I): CreateUserResponse {
+    return CreateUserResponse.fromPartial(base ?? ({} as any));
+  },
+  fromPartial<I extends Exact<DeepPartial<CreateUserResponse>, I>>(object: I): CreateUserResponse {
+    const message = createBaseCreateUserResponse();
+    message.userId = object.userId ?? 0;
+    return message;
+  },
+};
+
 function createBaseUpdateUserRequest(): UpdateUserRequest {
   return { user: undefined };
 }
@@ -554,8 +615,8 @@ export const UserServiceService = {
     responseStream: false,
     requestSerialize: (value: CreateUserRequest) => Buffer.from(CreateUserRequest.encode(value).finish()),
     requestDeserialize: (value: Buffer) => CreateUserRequest.decode(value),
-    responseSerialize: (value: SuccessResponse) => Buffer.from(SuccessResponse.encode(value).finish()),
-    responseDeserialize: (value: Buffer) => SuccessResponse.decode(value),
+    responseSerialize: (value: CreateUserResponse) => Buffer.from(CreateUserResponse.encode(value).finish()),
+    responseDeserialize: (value: Buffer) => CreateUserResponse.decode(value),
   },
   updateUser: {
     path: "/apfish.v1.user.UserService/UpdateUser",
@@ -579,7 +640,7 @@ export interface UserServiceServer extends UntypedServiceImplementation {
    * and returns paginated results.
    */
   listUsers: handleUnaryCall<ListUsersRequest, ListUsersResponse>;
-  createUser: handleUnaryCall<CreateUserRequest, SuccessResponse>;
+  createUser: handleUnaryCall<CreateUserRequest, CreateUserResponse>;
   updateUser: handleUnaryCall<UpdateUserRequest, SuccessResponse>;
 }
 
@@ -624,18 +685,18 @@ export interface UserServiceClient extends Client {
   ): ClientUnaryCall;
   createUser(
     request: CreateUserRequest,
-    callback: (error: ServiceError | null, response: SuccessResponse) => void,
+    callback: (error: ServiceError | null, response: CreateUserResponse) => void,
   ): ClientUnaryCall;
   createUser(
     request: CreateUserRequest,
     metadata: Metadata,
-    callback: (error: ServiceError | null, response: SuccessResponse) => void,
+    callback: (error: ServiceError | null, response: CreateUserResponse) => void,
   ): ClientUnaryCall;
   createUser(
     request: CreateUserRequest,
     metadata: Metadata,
     options: Partial<CallOptions>,
-    callback: (error: ServiceError | null, response: SuccessResponse) => void,
+    callback: (error: ServiceError | null, response: CreateUserResponse) => void,
   ): ClientUnaryCall;
   updateUser(
     request: UpdateUserRequest,

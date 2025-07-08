@@ -19,7 +19,7 @@ service UserService {
   rpc ListUsers (ListUsersRequest) returns (ListUsersResponse);
 
 
-  rpc CreateUser (CreateUserRequest) returns (helper.SuccessResponse);
+  rpc CreateUser (CreateUserRequest) returns (CreateUserResponse);
 
   rpc UpdateUser(UpdateUserRequest) returns (helper.SuccessResponse);
 }
@@ -53,6 +53,10 @@ message CreateUserRequest {
   string first_name = 3;
   string last_name = 4;
   string middle_name = 5;
+}
+
+message CreateUserResponse {
+  int32 user_id = 1;
 }
 
 message UpdateUserRequest {
