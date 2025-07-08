@@ -15,3 +15,9 @@ tasks:
     desc: "Generate code from proto files with docker"
     cmds:
       - docker run --rm -v ${PWD}:/app -w /app protoc-gen ./protoc-gen.sh
+  build-docker:
+    aliases:
+      - build-d
+    desc: "build docker container"
+    cmds:
+      - docker build -t protoc-gen .
