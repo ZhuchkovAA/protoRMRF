@@ -8,7 +8,7 @@ package user
 
 import (
 	summary3 "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/summary"
-	summary2 "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/contact/contact/summary"
+	summary2 "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/contact/summary"
 	summary "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/role/summary"
 	summary1 "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/summary"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"

@@ -8,7 +8,7 @@ package user_contact
 
 import (
 	__helper "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/_helper"
-	summary "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/contact/contact/summary"
+	summary "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/contact/summary"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
