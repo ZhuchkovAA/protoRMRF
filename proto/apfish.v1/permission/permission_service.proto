@@ -4,6 +4,9 @@ package apfish.v1.permission;
 
 option go_package = "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission;permission";
 
+import "google/protobuf/wrappers.proto";
+
+import "apfish.v1/helper/helper.proto";
 import "apfish.v1/permission/permission.proto";
 import "apfish.v1/permission/summary/permission_summary.proto";
 
@@ -12,6 +15,9 @@ service PermissionService {
   rpc GetPermissionSummary (PermissionRequest) returns (PermissionSummaryResponse);
 
   rpc ListPermissions (ListPermissionsRequest) returns (ListPermissionsResponse);
+
+  rpc CreatePermission (CreatePermissionRequest) returns (CreatePermissionResponse);
+  rpc DeletePermission (DeletePermissionRequest) returns (helper.SuccessResponse);
 }
 
 message PermissionRequest {
@@ -34,4 +40,25 @@ message ListPermissionsRequest {
 message ListPermissionsResponse {
   repeated permission.summary.PermissionSummary list_permissions = 1;
   int32 total = 2;
+}
+
+message CreatePermissionRequest {
+   int32 action_id = 1;
+   int32 object_id = 2;
+   google.protobuf.StringValue description = 3;
+   google.protobuf.StringValue name = 4;
+   google.protobuf.StringValue code = 5;
+
+   repeated int32 countries_ids = 6;
+   repeated int32 districts_ids = 7;
+   repeated int32 ports_ids = 8;
+   repeated int32 ships_ids = 9;
+}
+
+message CreatePermissionResponse {
+  int32 permission_id = 1;
+}
+
+message DeletePermissionRequest {
+  int32 permission_id = 1;
 }

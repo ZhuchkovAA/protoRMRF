@@ -19,6 +19,8 @@ import {
 } from "@grpc/grpc-js";
 import Long from "long";
 import _m0 from "protobufjs/minimal";
+import { StringValue } from "../../google/protobuf/wrappers";
+import { SuccessResponse } from "../helper/helper";
 import { Permission } from "./permission";
 import { PermissionSummary } from "./summary/permission_summary";
 
@@ -46,6 +48,26 @@ export interface ListPermissionsRequest {
 export interface ListPermissionsResponse {
   listPermissions: PermissionSummary[];
   total: number;
+}
+
+export interface CreatePermissionRequest {
+  actionId: number;
+  objectId: number;
+  description: string | undefined;
+  name: string | undefined;
+  code: string | undefined;
+  countriesIds: number[];
+  districtsIds: number[];
+  portsIds: number[];
+  shipsIds: number[];
+}
+
+export interface CreatePermissionResponse {
+  permissionId: number;
+}
+
+export interface DeletePermissionRequest {
+  permissionId: number;
 }
 
 function createBasePermissionRequest(): PermissionRequest {
@@ -373,6 +395,361 @@ export const ListPermissionsResponse = {
   },
 };
 
+function createBaseCreatePermissionRequest(): CreatePermissionRequest {
+  return {
+    actionId: 0,
+    objectId: 0,
+    description: undefined,
+    name: undefined,
+    code: undefined,
+    countriesIds: [],
+    districtsIds: [],
+    portsIds: [],
+    shipsIds: [],
+  };
+}
+
+export const CreatePermissionRequest = {
+  encode(message: CreatePermissionRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.actionId !== 0) {
+      writer.uint32(8).int32(message.actionId);
+    }
+    if (message.objectId !== 0) {
+      writer.uint32(16).int32(message.objectId);
+    }
+    if (message.description !== undefined) {
+      StringValue.encode({ value: message.description! }, writer.uint32(26).fork()).ldelim();
+    }
+    if (message.name !== undefined) {
+      StringValue.encode({ value: message.name! }, writer.uint32(34).fork()).ldelim();
+    }
+    if (message.code !== undefined) {
+      StringValue.encode({ value: message.code! }, writer.uint32(42).fork()).ldelim();
+    }
+    writer.uint32(50).fork();
+    for (const v of message.countriesIds) {
+      writer.int32(v);
+    }
+    writer.ldelim();
+    writer.uint32(58).fork();
+    for (const v of message.districtsIds) {
+      writer.int32(v);
+    }
+    writer.ldelim();
+    writer.uint32(66).fork();
+    for (const v of message.portsIds) {
+      writer.int32(v);
+    }
+    writer.ldelim();
+    writer.uint32(74).fork();
+    for (const v of message.shipsIds) {
+      writer.int32(v);
+    }
+    writer.ldelim();
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): CreatePermissionRequest {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCreatePermissionRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag !== 8) {
+            break;
+          }
+
+          message.actionId = reader.int32();
+          continue;
+        case 2:
+          if (tag !== 16) {
+            break;
+          }
+
+          message.objectId = reader.int32();
+          continue;
+        case 3:
+          if (tag !== 26) {
+            break;
+          }
+
+          message.description = StringValue.decode(reader, reader.uint32()).value;
+          continue;
+        case 4:
+          if (tag !== 34) {
+            break;
+          }
+
+          message.name = StringValue.decode(reader, reader.uint32()).value;
+          continue;
+        case 5:
+          if (tag !== 42) {
+            break;
+          }
+
+          message.code = StringValue.decode(reader, reader.uint32()).value;
+          continue;
+        case 6:
+          if (tag === 48) {
+            message.countriesIds.push(reader.int32());
+
+            continue;
+          }
+
+          if (tag === 50) {
+            const end2 = reader.uint32() + reader.pos;
+            while (reader.pos < end2) {
+              message.countriesIds.push(reader.int32());
+            }
+
+            continue;
+          }
+
+          break;
+        case 7:
+          if (tag === 56) {
+            message.districtsIds.push(reader.int32());
+
+            continue;
+          }
+
+          if (tag === 58) {
+            const end2 = reader.uint32() + reader.pos;
+            while (reader.pos < end2) {
+              message.districtsIds.push(reader.int32());
+            }
+
+            continue;
+          }
+
+          break;
+        case 8:
+          if (tag === 64) {
+            message.portsIds.push(reader.int32());
+
+            continue;
+          }
+
+          if (tag === 66) {
+            const end2 = reader.uint32() + reader.pos;
+            while (reader.pos < end2) {
+              message.portsIds.push(reader.int32());
+            }
+
+            continue;
+          }
+
+          break;
+        case 9:
+          if (tag === 72) {
+            message.shipsIds.push(reader.int32());
+
+            continue;
+          }
+
+          if (tag === 74) {
+            const end2 = reader.uint32() + reader.pos;
+            while (reader.pos < end2) {
+              message.shipsIds.push(reader.int32());
+            }
+
+            continue;
+          }
+
+          break;
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CreatePermissionRequest {
+    return {
+      actionId: isSet(object.actionId) ? globalThis.Number(object.actionId) : 0,
+      objectId: isSet(object.objectId) ? globalThis.Number(object.objectId) : 0,
+      description: isSet(object.description) ? String(object.description) : undefined,
+      name: isSet(object.name) ? String(object.name) : undefined,
+      code: isSet(object.code) ? String(object.code) : undefined,
+      countriesIds: globalThis.Array.isArray(object?.countriesIds)
+        ? object.countriesIds.map((e: any) => globalThis.Number(e))
+        : [],
+      districtsIds: globalThis.Array.isArray(object?.districtsIds)
+        ? object.districtsIds.map((e: any) => globalThis.Number(e))
+        : [],
+      portsIds: globalThis.Array.isArray(object?.portsIds) ? object.portsIds.map((e: any) => globalThis.Number(e)) : [],
+      shipsIds: globalThis.Array.isArray(object?.shipsIds) ? object.shipsIds.map((e: any) => globalThis.Number(e)) : [],
+    };
+  },
+
+  toJSON(message: CreatePermissionRequest): unknown {
+    const obj: any = {};
+    if (message.actionId !== 0) {
+      obj.actionId = Math.round(message.actionId);
+    }
+    if (message.objectId !== 0) {
+      obj.objectId = Math.round(message.objectId);
+    }
+    if (message.description !== undefined) {
+      obj.description = message.description;
+    }
+    if (message.name !== undefined) {
+      obj.name = message.name;
+    }
+    if (message.code !== undefined) {
+      obj.code = message.code;
+    }
+    if (message.countriesIds?.length) {
+      obj.countriesIds = message.countriesIds.map((e) => Math.round(e));
+    }
+    if (message.districtsIds?.length) {
+      obj.districtsIds = message.districtsIds.map((e) => Math.round(e));
+    }
+    if (message.portsIds?.length) {
+      obj.portsIds = message.portsIds.map((e) => Math.round(e));
+    }
+    if (message.shipsIds?.length) {
+      obj.shipsIds = message.shipsIds.map((e) => Math.round(e));
+    }
+    return obj;
+  },
+
+  create<I extends Exact<DeepPartial<CreatePermissionRequest>, I>>(base?: I): CreatePermissionRequest {
+    return CreatePermissionRequest.fromPartial(base ?? ({} as any));
+  },
+  fromPartial<I extends Exact<DeepPartial<CreatePermissionRequest>, I>>(object: I): CreatePermissionRequest {
+    const message = createBaseCreatePermissionRequest();
+    message.actionId = object.actionId ?? 0;
+    message.objectId = object.objectId ?? 0;
+    message.description = object.description ?? undefined;
+    message.name = object.name ?? undefined;
+    message.code = object.code ?? undefined;
+    message.countriesIds = object.countriesIds?.map((e) => e) || [];
+    message.districtsIds = object.districtsIds?.map((e) => e) || [];
+    message.portsIds = object.portsIds?.map((e) => e) || [];
+    message.shipsIds = object.shipsIds?.map((e) => e) || [];
+    return message;
+  },
+};
+
+function createBaseCreatePermissionResponse(): CreatePermissionResponse {
+  return { permissionId: 0 };
+}
+
+export const CreatePermissionResponse = {
+  encode(message: CreatePermissionResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.permissionId !== 0) {
+      writer.uint32(8).int32(message.permissionId);
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): CreatePermissionResponse {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCreatePermissionResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag !== 8) {
+            break;
+          }
+
+          message.permissionId = reader.int32();
+          continue;
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CreatePermissionResponse {
+    return { permissionId: isSet(object.permissionId) ? globalThis.Number(object.permissionId) : 0 };
+  },
+
+  toJSON(message: CreatePermissionResponse): unknown {
+    const obj: any = {};
+    if (message.permissionId !== 0) {
+      obj.permissionId = Math.round(message.permissionId);
+    }
+    return obj;
+  },
+
+  create<I extends Exact<DeepPartial<CreatePermissionResponse>, I>>(base?: I): CreatePermissionResponse {
+    return CreatePermissionResponse.fromPartial(base ?? ({} as any));
+  },
+  fromPartial<I extends Exact<DeepPartial<CreatePermissionResponse>, I>>(object: I): CreatePermissionResponse {
+    const message = createBaseCreatePermissionResponse();
+    message.permissionId = object.permissionId ?? 0;
+    return message;
+  },
+};
+
+function createBaseDeletePermissionRequest(): DeletePermissionRequest {
+  return { permissionId: 0 };
+}
+
+export const DeletePermissionRequest = {
+  encode(message: DeletePermissionRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.permissionId !== 0) {
+      writer.uint32(8).int32(message.permissionId);
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): DeletePermissionRequest {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseDeletePermissionRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag !== 8) {
+            break;
+          }
+
+          message.permissionId = reader.int32();
+          continue;
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): DeletePermissionRequest {
+    return { permissionId: isSet(object.permissionId) ? globalThis.Number(object.permissionId) : 0 };
+  },
+
+  toJSON(message: DeletePermissionRequest): unknown {
+    const obj: any = {};
+    if (message.permissionId !== 0) {
+      obj.permissionId = Math.round(message.permissionId);
+    }
+    return obj;
+  },
+
+  create<I extends Exact<DeepPartial<DeletePermissionRequest>, I>>(base?: I): DeletePermissionRequest {
+    return DeletePermissionRequest.fromPartial(base ?? ({} as any));
+  },
+  fromPartial<I extends Exact<DeepPartial<DeletePermissionRequest>, I>>(object: I): DeletePermissionRequest {
+    const message = createBaseDeletePermissionRequest();
+    message.permissionId = object.permissionId ?? 0;
+    return message;
+  },
+};
+
 export type PermissionServiceService = typeof PermissionServiceService;
 export const PermissionServiceService = {
   getPermission: {
@@ -403,12 +780,33 @@ export const PermissionServiceService = {
     responseSerialize: (value: ListPermissionsResponse) => Buffer.from(ListPermissionsResponse.encode(value).finish()),
     responseDeserialize: (value: Buffer) => ListPermissionsResponse.decode(value),
   },
+  createPermission: {
+    path: "/apfish.v1.permission.PermissionService/CreatePermission",
+    requestStream: false,
+    responseStream: false,
+    requestSerialize: (value: CreatePermissionRequest) => Buffer.from(CreatePermissionRequest.encode(value).finish()),
+    requestDeserialize: (value: Buffer) => CreatePermissionRequest.decode(value),
+    responseSerialize: (value: CreatePermissionResponse) =>
+      Buffer.from(CreatePermissionResponse.encode(value).finish()),
+    responseDeserialize: (value: Buffer) => CreatePermissionResponse.decode(value),
+  },
+  deletePermission: {
+    path: "/apfish.v1.permission.PermissionService/DeletePermission",
+    requestStream: false,
+    responseStream: false,
+    requestSerialize: (value: DeletePermissionRequest) => Buffer.from(DeletePermissionRequest.encode(value).finish()),
+    requestDeserialize: (value: Buffer) => DeletePermissionRequest.decode(value),
+    responseSerialize: (value: SuccessResponse) => Buffer.from(SuccessResponse.encode(value).finish()),
+    responseDeserialize: (value: Buffer) => SuccessResponse.decode(value),
+  },
 } as const;
 
 export interface PermissionServiceServer extends UntypedServiceImplementation {
   getPermission: handleUnaryCall<PermissionRequest, PermissionResponse>;
   getPermissionSummary: handleUnaryCall<PermissionRequest, PermissionSummaryResponse>;
   listPermissions: handleUnaryCall<ListPermissionsRequest, ListPermissionsResponse>;
+  createPermission: handleUnaryCall<CreatePermissionRequest, CreatePermissionResponse>;
+  deletePermission: handleUnaryCall<DeletePermissionRequest, SuccessResponse>;
 }
 
 export interface PermissionServiceClient extends Client {
@@ -456,6 +854,36 @@ export interface PermissionServiceClient extends Client {
     metadata: Metadata,
     options: Partial<CallOptions>,
     callback: (error: ServiceError | null, response: ListPermissionsResponse) => void,
+  ): ClientUnaryCall;
+  createPermission(
+    request: CreatePermissionRequest,
+    callback: (error: ServiceError | null, response: CreatePermissionResponse) => void,
+  ): ClientUnaryCall;
+  createPermission(
+    request: CreatePermissionRequest,
+    metadata: Metadata,
+    callback: (error: ServiceError | null, response: CreatePermissionResponse) => void,
+  ): ClientUnaryCall;
+  createPermission(
+    request: CreatePermissionRequest,
+    metadata: Metadata,
+    options: Partial<CallOptions>,
+    callback: (error: ServiceError | null, response: CreatePermissionResponse) => void,
+  ): ClientUnaryCall;
+  deletePermission(
+    request: DeletePermissionRequest,
+    callback: (error: ServiceError | null, response: SuccessResponse) => void,
+  ): ClientUnaryCall;
+  deletePermission(
+    request: DeletePermissionRequest,
+    metadata: Metadata,
+    callback: (error: ServiceError | null, response: SuccessResponse) => void,
+  ): ClientUnaryCall;
+  deletePermission(
+    request: DeletePermissionRequest,
+    metadata: Metadata,
+    options: Partial<CallOptions>,
+    callback: (error: ServiceError | null, response: SuccessResponse) => void,
   ): ClientUnaryCall;
 }
 

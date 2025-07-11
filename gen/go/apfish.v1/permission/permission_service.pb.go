@@ -7,9 +7,11 @@
 package permission
 
 import (
+	helper "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/helper"
 	summary "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/summary"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
@@ -258,11 +260,207 @@ func (x *ListPermissionsResponse) GetTotal() int32 {
 	return 0
 }
 
+type CreatePermissionRequest struct {
+	state         protoimpl.MessageState  `protogen:"open.v1"`
+	ActionId      int32                   `protobuf:"varint,1,opt,name=action_id,json=actionId,proto3" json:"action_id,omitempty"`
+	ObjectId      int32                   `protobuf:"varint,2,opt,name=object_id,json=objectId,proto3" json:"object_id,omitempty"`
+	Description   *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
+	Name          *wrapperspb.StringValue `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
+	Code          *wrapperspb.StringValue `protobuf:"bytes,5,opt,name=code,proto3" json:"code,omitempty"`
+	CountriesIds  []int32                 `protobuf:"varint,6,rep,packed,name=countries_ids,json=countriesIds,proto3" json:"countries_ids,omitempty"`
+	DistrictsIds  []int32                 `protobuf:"varint,7,rep,packed,name=districts_ids,json=districtsIds,proto3" json:"districts_ids,omitempty"`
+	PortsIds      []int32                 `protobuf:"varint,8,rep,packed,name=ports_ids,json=portsIds,proto3" json:"ports_ids,omitempty"`
+	ShipsIds      []int32                 `protobuf:"varint,9,rep,packed,name=ships_ids,json=shipsIds,proto3" json:"ships_ids,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreatePermissionRequest) Reset() {
+	*x = CreatePermissionRequest{}
+	mi := &file_apfish_v1_permission_permission_service_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreatePermissionRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreatePermissionRequest) ProtoMessage() {}
+
+func (x *CreatePermissionRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_apfish_v1_permission_permission_service_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreatePermissionRequest.ProtoReflect.Descriptor instead.
+func (*CreatePermissionRequest) Descriptor() ([]byte, []int) {
+	return file_apfish_v1_permission_permission_service_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *CreatePermissionRequest) GetActionId() int32 {
+	if x != nil {
+		return x.ActionId
+	}
+	return 0
+}
+
+func (x *CreatePermissionRequest) GetObjectId() int32 {
+	if x != nil {
+		return x.ObjectId
+	}
+	return 0
+}
+
+func (x *CreatePermissionRequest) GetDescription() *wrapperspb.StringValue {
+	if x != nil {
+		return x.Description
+	}
+	return nil
+}
+
+func (x *CreatePermissionRequest) GetName() *wrapperspb.StringValue {
+	if x != nil {
+		return x.Name
+	}
+	return nil
+}
+
+func (x *CreatePermissionRequest) GetCode() *wrapperspb.StringValue {
+	if x != nil {
+		return x.Code
+	}
+	return nil
+}
+
+func (x *CreatePermissionRequest) GetCountriesIds() []int32 {
+	if x != nil {
+		return x.CountriesIds
+	}
+	return nil
+}
+
+func (x *CreatePermissionRequest) GetDistrictsIds() []int32 {
+	if x != nil {
+		return x.DistrictsIds
+	}
+	return nil
+}
+
+func (x *CreatePermissionRequest) GetPortsIds() []int32 {
+	if x != nil {
+		return x.PortsIds
+	}
+	return nil
+}
+
+func (x *CreatePermissionRequest) GetShipsIds() []int32 {
+	if x != nil {
+		return x.ShipsIds
+	}
+	return nil
+}
+
+type CreatePermissionResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	PermissionId  int32                  `protobuf:"varint,1,opt,name=permission_id,json=permissionId,proto3" json:"permission_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreatePermissionResponse) Reset() {
+	*x = CreatePermissionResponse{}
+	mi := &file_apfish_v1_permission_permission_service_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreatePermissionResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreatePermissionResponse) ProtoMessage() {}
+
+func (x *CreatePermissionResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_apfish_v1_permission_permission_service_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreatePermissionResponse.ProtoReflect.Descriptor instead.
+func (*CreatePermissionResponse) Descriptor() ([]byte, []int) {
+	return file_apfish_v1_permission_permission_service_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *CreatePermissionResponse) GetPermissionId() int32 {
+	if x != nil {
+		return x.PermissionId
+	}
+	return 0
+}
+
+type DeletePermissionRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	PermissionId  int32                  `protobuf:"varint,1,opt,name=permission_id,json=permissionId,proto3" json:"permission_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeletePermissionRequest) Reset() {
+	*x = DeletePermissionRequest{}
+	mi := &file_apfish_v1_permission_permission_service_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeletePermissionRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeletePermissionRequest) ProtoMessage() {}
+
+func (x *DeletePermissionRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_apfish_v1_permission_permission_service_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeletePermissionRequest.ProtoReflect.Descriptor instead.
+func (*DeletePermissionRequest) Descriptor() ([]byte, []int) {
+	return file_apfish_v1_permission_permission_service_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *DeletePermissionRequest) GetPermissionId() int32 {
+	if x != nil {
+		return x.PermissionId
+	}
+	return 0
+}
+
 var File_apfish_v1_permission_permission_service_proto protoreflect.FileDescriptor
 
 const file_apfish_v1_permission_permission_service_proto_rawDesc = "" +
 	"\n" +
-	"-apfish.v1/permission/permission_service.proto\x12\x14apfish.v1.permission\x1a%apfish.v1/permission/permission.proto\x1a5apfish.v1/permission/summary/permission_summary.proto\"#\n" +
+	"-apfish.v1/permission/permission_service.proto\x12\x14apfish.v1.permission\x1a\x1egoogle/protobuf/wrappers.proto\x1a\x1dapfish.v1/helper/helper.proto\x1a%apfish.v1/permission/permission.proto\x1a5apfish.v1/permission/summary/permission_summary.proto\"#\n" +
 	"\x11PermissionRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\"V\n" +
 	"\x12PermissionResponse\x12@\n" +
@@ -278,11 +476,27 @@ const file_apfish_v1_permission_permission_service_proto_rawDesc = "" +
 	"\bper_page\x18\x02 \x01(\x05R\aperPage\"\x8b\x01\n" +
 	"\x17ListPermissionsResponse\x12Z\n" +
 	"\x10list_permissions\x18\x01 \x03(\v2/.apfish.v1.permission.summary.PermissionSummaryR\x0flistPermissions\x12\x14\n" +
-	"\x05total\x18\x02 \x01(\x05R\x05total2\xd9\x02\n" +
+	"\x05total\x18\x02 \x01(\x05R\x05total\"\xfb\x02\n" +
+	"\x17CreatePermissionRequest\x12\x1b\n" +
+	"\taction_id\x18\x01 \x01(\x05R\bactionId\x12\x1b\n" +
+	"\tobject_id\x18\x02 \x01(\x05R\bobjectId\x12>\n" +
+	"\vdescription\x18\x03 \x01(\v2\x1c.google.protobuf.StringValueR\vdescription\x120\n" +
+	"\x04name\x18\x04 \x01(\v2\x1c.google.protobuf.StringValueR\x04name\x120\n" +
+	"\x04code\x18\x05 \x01(\v2\x1c.google.protobuf.StringValueR\x04code\x12#\n" +
+	"\rcountries_ids\x18\x06 \x03(\x05R\fcountriesIds\x12#\n" +
+	"\rdistricts_ids\x18\a \x03(\x05R\fdistrictsIds\x12\x1b\n" +
+	"\tports_ids\x18\b \x03(\x05R\bportsIds\x12\x1b\n" +
+	"\tships_ids\x18\t \x03(\x05R\bshipsIds\"?\n" +
+	"\x18CreatePermissionResponse\x12#\n" +
+	"\rpermission_id\x18\x01 \x01(\x05R\fpermissionId\">\n" +
+	"\x17DeletePermissionRequest\x12#\n" +
+	"\rpermission_id\x18\x01 \x01(\x05R\fpermissionId2\xb2\x04\n" +
 	"\x11PermissionService\x12b\n" +
 	"\rGetPermission\x12'.apfish.v1.permission.PermissionRequest\x1a(.apfish.v1.permission.PermissionResponse\x12p\n" +
 	"\x14GetPermissionSummary\x12'.apfish.v1.permission.PermissionRequest\x1a/.apfish.v1.permission.PermissionSummaryResponse\x12n\n" +
-	"\x0fListPermissions\x12,.apfish.v1.permission.ListPermissionsRequest\x1a-.apfish.v1.permission.ListPermissionsResponseBHZFgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission;permissionb\x06proto3"
+	"\x0fListPermissions\x12,.apfish.v1.permission.ListPermissionsRequest\x1a-.apfish.v1.permission.ListPermissionsResponse\x12q\n" +
+	"\x10CreatePermission\x12-.apfish.v1.permission.CreatePermissionRequest\x1a..apfish.v1.permission.CreatePermissionResponse\x12d\n" +
+	"\x10DeletePermission\x12-.apfish.v1.permission.DeletePermissionRequest\x1a!.apfish.v1.helper.SuccessResponseBHZFgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission;permissionb\x06proto3"
 
 var (
 	file_apfish_v1_permission_permission_service_proto_rawDescOnce sync.Once
@@ -296,31 +510,43 @@ func file_apfish_v1_permission_permission_service_proto_rawDescGZIP() []byte {
 	return file_apfish_v1_permission_permission_service_proto_rawDescData
 }
 
-var file_apfish_v1_permission_permission_service_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
+var file_apfish_v1_permission_permission_service_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
 var file_apfish_v1_permission_permission_service_proto_goTypes = []any{
 	(*PermissionRequest)(nil),         // 0: apfish.v1.permission.PermissionRequest
 	(*PermissionResponse)(nil),        // 1: apfish.v1.permission.PermissionResponse
 	(*PermissionSummaryResponse)(nil), // 2: apfish.v1.permission.PermissionSummaryResponse
 	(*ListPermissionsRequest)(nil),    // 3: apfish.v1.permission.ListPermissionsRequest
 	(*ListPermissionsResponse)(nil),   // 4: apfish.v1.permission.ListPermissionsResponse
-	(*Permission)(nil),                // 5: apfish.v1.permission.Permission
-	(*summary.PermissionSummary)(nil), // 6: apfish.v1.permission.summary.PermissionSummary
+	(*CreatePermissionRequest)(nil),   // 5: apfish.v1.permission.CreatePermissionRequest
+	(*CreatePermissionResponse)(nil),  // 6: apfish.v1.permission.CreatePermissionResponse
+	(*DeletePermissionRequest)(nil),   // 7: apfish.v1.permission.DeletePermissionRequest
+	(*Permission)(nil),                // 8: apfish.v1.permission.Permission
+	(*summary.PermissionSummary)(nil), // 9: apfish.v1.permission.summary.PermissionSummary
+	(*wrapperspb.StringValue)(nil),    // 10: google.protobuf.StringValue
+	(*helper.SuccessResponse)(nil),    // 11: apfish.v1.helper.SuccessResponse
 }
 var file_apfish_v1_permission_permission_service_proto_depIdxs = []int32{
-	5, // 0: apfish.v1.permission.PermissionResponse.permission:type_name -> apfish.v1.permission.Permission
-	6, // 1: apfish.v1.permission.PermissionSummaryResponse.permission:type_name -> apfish.v1.permission.summary.PermissionSummary
-	6, // 2: apfish.v1.permission.ListPermissionsResponse.list_permissions:type_name -> apfish.v1.permission.summary.PermissionSummary
-	0, // 3: apfish.v1.permission.PermissionService.GetPermission:input_type -> apfish.v1.permission.PermissionRequest
-	0, // 4: apfish.v1.permission.PermissionService.GetPermissionSummary:input_type -> apfish.v1.permission.PermissionRequest
-	3, // 5: apfish.v1.permission.PermissionService.ListPermissions:input_type -> apfish.v1.permission.ListPermissionsRequest
-	1, // 6: apfish.v1.permission.PermissionService.GetPermission:output_type -> apfish.v1.permission.PermissionResponse
-	2, // 7: apfish.v1.permission.PermissionService.GetPermissionSummary:output_type -> apfish.v1.permission.PermissionSummaryResponse
-	4, // 8: apfish.v1.permission.PermissionService.ListPermissions:output_type -> apfish.v1.permission.ListPermissionsResponse
-	6, // [6:9] is the sub-list for method output_type
-	3, // [3:6] is the sub-list for method input_type
-	3, // [3:3] is the sub-list for extension type_name
-	3, // [3:3] is the sub-list for extension extendee
-	0, // [0:3] is the sub-list for field type_name
+	8,  // 0: apfish.v1.permission.PermissionResponse.permission:type_name -> apfish.v1.permission.Permission
+	9,  // 1: apfish.v1.permission.PermissionSummaryResponse.permission:type_name -> apfish.v1.permission.summary.PermissionSummary
+	9,  // 2: apfish.v1.permission.ListPermissionsResponse.list_permissions:type_name -> apfish.v1.permission.summary.PermissionSummary
+	10, // 3: apfish.v1.permission.CreatePermissionRequest.description:type_name -> google.protobuf.StringValue
+	10, // 4: apfish.v1.permission.CreatePermissionRequest.name:type_name -> google.protobuf.StringValue
+	10, // 5: apfish.v1.permission.CreatePermissionRequest.code:type_name -> google.protobuf.StringValue
+	0,  // 6: apfish.v1.permission.PermissionService.GetPermission:input_type -> apfish.v1.permission.PermissionRequest
+	0,  // 7: apfish.v1.permission.PermissionService.GetPermissionSummary:input_type -> apfish.v1.permission.PermissionRequest
+	3,  // 8: apfish.v1.permission.PermissionService.ListPermissions:input_type -> apfish.v1.permission.ListPermissionsRequest
+	5,  // 9: apfish.v1.permission.PermissionService.CreatePermission:input_type -> apfish.v1.permission.CreatePermissionRequest
+	7,  // 10: apfish.v1.permission.PermissionService.DeletePermission:input_type -> apfish.v1.permission.DeletePermissionRequest
+	1,  // 11: apfish.v1.permission.PermissionService.GetPermission:output_type -> apfish.v1.permission.PermissionResponse
+	2,  // 12: apfish.v1.permission.PermissionService.GetPermissionSummary:output_type -> apfish.v1.permission.PermissionSummaryResponse
+	4,  // 13: apfish.v1.permission.PermissionService.ListPermissions:output_type -> apfish.v1.permission.ListPermissionsResponse
+	6,  // 14: apfish.v1.permission.PermissionService.CreatePermission:output_type -> apfish.v1.permission.CreatePermissionResponse
+	11, // 15: apfish.v1.permission.PermissionService.DeletePermission:output_type -> apfish.v1.helper.SuccessResponse
+	11, // [11:16] is the sub-list for method output_type
+	6,  // [6:11] is the sub-list for method input_type
+	6,  // [6:6] is the sub-list for extension type_name
+	6,  // [6:6] is the sub-list for extension extendee
+	0,  // [0:6] is the sub-list for field type_name
 }
 
 func init() { file_apfish_v1_permission_permission_service_proto_init() }
@@ -335,7 +561,7 @@ func file_apfish_v1_permission_permission_service_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_apfish_v1_permission_permission_service_proto_rawDesc), len(file_apfish_v1_permission_permission_service_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   5,
+			NumMessages:   8,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
