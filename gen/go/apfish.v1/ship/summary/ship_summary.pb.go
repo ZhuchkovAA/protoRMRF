@@ -28,7 +28,7 @@ type ShipSummary struct {
 	Imo           int32                  `protobuf:"varint,2,opt,name=imo,proto3" json:"imo,omitempty"`
 	TypeId        int32                  `protobuf:"varint,3,opt,name=type_id,json=typeId,proto3" json:"type_id,omitempty"`
 	ClassId       int32                  `protobuf:"varint,4,opt,name=class_id,json=classId,proto3" json:"class_id,omitempty"`
-	CountryId     int32                  `protobuf:"varint,5,opt,name=country_id,json=countryId,proto3" json:"country_id,omitempty"`
+	AuthorityId   int32                  `protobuf:"varint,5,opt,name=authority_id,json=authorityId,proto3" json:"authority_id,omitempty"`
 	Name          string                 `protobuf:"bytes,6,opt,name=name,proto3" json:"name,omitempty"`
 	Mmsi          int32                  `protobuf:"varint,7,opt,name=mmsi,proto3" json:"mmsi,omitempty"`
 	CallSignId    int32                  `protobuf:"varint,8,opt,name=call_sign_id,json=callSignId,proto3" json:"call_sign_id,omitempty"`
@@ -99,9 +99,9 @@ func (x *ShipSummary) GetClassId() int32 {
 	return 0
 }
 
-func (x *ShipSummary) GetCountryId() int32 {
+func (x *ShipSummary) GetAuthorityId() int32 {
 	if x != nil {
-		return x.CountryId
+		return x.AuthorityId
 	}
 	return 0
 }
@@ -166,14 +166,13 @@ var File_apfish_v1_ship_summary_ship_summary_proto protoreflect.FileDescriptor
 
 const file_apfish_v1_ship_summary_ship_summary_proto_rawDesc = "" +
 	"\n" +
-	")apfish.v1/ship/summary/ship_summary.proto\x12\x16apfish.v1.ship.summary\x1a\x1fgoogle/protobuf/timestamp.proto\"\xa5\x03\n" +
+	")apfish.v1/ship/summary/ship_summary.proto\x12\x16apfish.v1.ship.summary\x1a\x1fgoogle/protobuf/timestamp.proto\"\xa9\x03\n" +
 	"\vShipSummary\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x10\n" +
 	"\x03imo\x18\x02 \x01(\x05R\x03imo\x12\x17\n" +
 	"\atype_id\x18\x03 \x01(\x05R\x06typeId\x12\x19\n" +
-	"\bclass_id\x18\x04 \x01(\x05R\aclassId\x12\x1d\n" +
-	"\n" +
-	"country_id\x18\x05 \x01(\x05R\tcountryId\x12\x12\n" +
+	"\bclass_id\x18\x04 \x01(\x05R\aclassId\x12!\n" +
+	"\fauthority_id\x18\x05 \x01(\x05R\vauthorityId\x12\x12\n" +
 	"\x04name\x18\x06 \x01(\tR\x04name\x12\x12\n" +
 	"\x04mmsi\x18\a \x01(\x05R\x04mmsi\x12 \n" +
 	"\fcall_sign_id\x18\b \x01(\x05R\n" +

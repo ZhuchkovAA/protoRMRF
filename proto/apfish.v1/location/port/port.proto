@@ -6,7 +6,7 @@ option go_package = "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/p
 
 import "google/protobuf/timestamp.proto";  // Standard Protocol Buffers timestamp
 
-import "apfish.v1/location/country/summary/country_summary.proto";
+import "apfish.v1/location/authority/summary/authority_summary.proto";
 import "apfish.v1/location/district/summary/district_summary.proto";
 
 import "apfish.v1/permission/summary/permission_summary.proto";
@@ -14,7 +14,7 @@ import "apfish.v1/permission/summary/permission_summary.proto";
 message Port {
   int32 id = 1;
   string name = 2;
-  location.country.summary.CountrySummary country = 3;
+  location.authority.summary.AuthoritySummary authority = 3;
   location.district.summary.DistrictSummary district = 4;
   string code = 5;
   google.protobuf.Timestamp created_at = 6;

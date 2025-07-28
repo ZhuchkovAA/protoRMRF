@@ -7,7 +7,7 @@
 package call_sign
 
 import (
-	summary "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/country/summary"
+	summary "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/authority/summary"
 	summary1 "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/ship/summary"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
@@ -25,14 +25,14 @@ const (
 )
 
 type CallSign struct {
-	state         protoimpl.MessageState    `protogen:"open.v1"`
-	Id            int32                     `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Series        string                    `protobuf:"bytes,2,opt,name=series,proto3" json:"series,omitempty"`
-	LimitLower    string                    `protobuf:"bytes,3,opt,name=limit_lower,json=limitLower,proto3" json:"limit_lower,omitempty"`
-	LimitUpper    string                    `protobuf:"bytes,4,opt,name=limit_upper,json=limitUpper,proto3" json:"limit_upper,omitempty"`
-	CreatedAt     *timestamppb.Timestamp    `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	Countries     []*summary.CountrySummary `protobuf:"bytes,6,rep,name=countries,proto3" json:"countries,omitempty"`
-	Ships         []*summary1.ShipSummary   `protobuf:"bytes,7,rep,name=ships,proto3" json:"ships,omitempty"`
+	state         protoimpl.MessageState      `protogen:"open.v1"`
+	Id            int32                       `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Series        string                      `protobuf:"bytes,2,opt,name=series,proto3" json:"series,omitempty"`
+	LimitLower    string                      `protobuf:"bytes,3,opt,name=limit_lower,json=limitLower,proto3" json:"limit_lower,omitempty"`
+	LimitUpper    string                      `protobuf:"bytes,4,opt,name=limit_upper,json=limitUpper,proto3" json:"limit_upper,omitempty"`
+	CreatedAt     *timestamppb.Timestamp      `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	Authorities   []*summary.AuthoritySummary `protobuf:"bytes,6,rep,name=authorities,proto3" json:"authorities,omitempty"`
+	Ships         []*summary1.ShipSummary     `protobuf:"bytes,7,rep,name=ships,proto3" json:"ships,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -102,9 +102,9 @@ func (x *CallSign) GetCreatedAt() *timestamppb.Timestamp {
 	return nil
 }
 
-func (x *CallSign) GetCountries() []*summary.CountrySummary {
+func (x *CallSign) GetAuthorities() []*summary.AuthoritySummary {
 	if x != nil {
-		return x.Countries
+		return x.Authorities
 	}
 	return nil
 }
@@ -120,7 +120,7 @@ var File_apfish_v1_call_sign_call_sign_proto protoreflect.FileDescriptor
 
 const file_apfish_v1_call_sign_call_sign_proto_rawDesc = "" +
 	"\n" +
-	"#apfish.v1/call_sign/call_sign.proto\x12\x13apfish.v1.call_sign\x1a\x1fgoogle/protobuf/timestamp.proto\x1a8apfish.v1/location/country/summary/country_summary.proto\x1a)apfish.v1/ship/summary/ship_summary.proto\"\xbc\x02\n" +
+	"#apfish.v1/call_sign/call_sign.proto\x12\x13apfish.v1.call_sign\x1a\x1fgoogle/protobuf/timestamp.proto\x1a<apfish.v1/location/authority/summary/authority_summary.proto\x1a)apfish.v1/ship/summary/ship_summary.proto\"\xc4\x02\n" +
 	"\bCallSign\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x16\n" +
 	"\x06series\x18\x02 \x01(\tR\x06series\x12\x1f\n" +
@@ -129,8 +129,8 @@ const file_apfish_v1_call_sign_call_sign_proto_rawDesc = "" +
 	"\vlimit_upper\x18\x04 \x01(\tR\n" +
 	"limitUpper\x129\n" +
 	"\n" +
-	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x12P\n" +
-	"\tcountries\x18\x06 \x03(\v22.apfish.v1.location.country.summary.CountrySummaryR\tcountries\x129\n" +
+	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x12X\n" +
+	"\vauthorities\x18\x06 \x03(\v26.apfish.v1.location.authority.summary.AuthoritySummaryR\vauthorities\x129\n" +
 	"\x05ships\x18\a \x03(\v2#.apfish.v1.ship.summary.ShipSummaryR\x05shipsBFZDgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/call_sign;call_signb\x06proto3"
 
 var (
@@ -147,14 +147,14 @@ func file_apfish_v1_call_sign_call_sign_proto_rawDescGZIP() []byte {
 
 var file_apfish_v1_call_sign_call_sign_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_apfish_v1_call_sign_call_sign_proto_goTypes = []any{
-	(*CallSign)(nil),               // 0: apfish.v1.call_sign.CallSign
-	(*timestamppb.Timestamp)(nil),  // 1: google.protobuf.Timestamp
-	(*summary.CountrySummary)(nil), // 2: apfish.v1.location.country.summary.CountrySummary
-	(*summary1.ShipSummary)(nil),   // 3: apfish.v1.ship.summary.ShipSummary
+	(*CallSign)(nil),                 // 0: apfish.v1.call_sign.CallSign
+	(*timestamppb.Timestamp)(nil),    // 1: google.protobuf.Timestamp
+	(*summary.AuthoritySummary)(nil), // 2: apfish.v1.location.authority.summary.AuthoritySummary
+	(*summary1.ShipSummary)(nil),     // 3: apfish.v1.ship.summary.ShipSummary
 }
 var file_apfish_v1_call_sign_call_sign_proto_depIdxs = []int32{
 	1, // 0: apfish.v1.call_sign.CallSign.created_at:type_name -> google.protobuf.Timestamp
-	2, // 1: apfish.v1.call_sign.CallSign.countries:type_name -> apfish.v1.location.country.summary.CountrySummary
+	2, // 1: apfish.v1.call_sign.CallSign.authorities:type_name -> apfish.v1.location.authority.summary.AuthoritySummary
 	3, // 2: apfish.v1.call_sign.CallSign.ships:type_name -> apfish.v1.ship.summary.ShipSummary
 	3, // [3:3] is the sub-list for method output_type
 	3, // [3:3] is the sub-list for method input_type

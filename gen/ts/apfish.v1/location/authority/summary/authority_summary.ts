@@ -2,55 +2,59 @@
 // versions:
 //   protoc-gen-ts_proto  v1.181.2
 //   protoc               v4.25.1
-// source: apfish.v1/location/port/summary/port_summary.proto
+// source: apfish.v1/location/authority/summary/authority_summary.proto
 
 /* eslint-disable */
 import Long from "long";
 import _m0 from "protobufjs/minimal";
 import { Timestamp } from "../../../../google/protobuf/timestamp";
 
-export const protobufPackage = "apfish.v1.location.port.summary";
+export const protobufPackage = "apfish.v1.location.authority.summary";
 
-export interface PortSummary {
+export interface AuthoritySummary {
   id: number;
   name: string;
-  authorityId: number;
-  districtId: number;
+  nameRus: string;
   code: string;
+  isIlo: boolean;
+  isBallastWater: boolean;
   createdAt: Date | undefined;
 }
 
-function createBasePortSummary(): PortSummary {
-  return { id: 0, name: "", authorityId: 0, districtId: 0, code: "", createdAt: undefined };
+function createBaseAuthoritySummary(): AuthoritySummary {
+  return { id: 0, name: "", nameRus: "", code: "", isIlo: false, isBallastWater: false, createdAt: undefined };
 }
 
-export const PortSummary = {
-  encode(message: PortSummary, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+export const AuthoritySummary = {
+  encode(message: AuthoritySummary, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.id !== 0) {
       writer.uint32(8).int32(message.id);
     }
     if (message.name !== "") {
       writer.uint32(18).string(message.name);
     }
-    if (message.authorityId !== 0) {
-      writer.uint32(24).int32(message.authorityId);
-    }
-    if (message.districtId !== 0) {
-      writer.uint32(32).int32(message.districtId);
+    if (message.nameRus !== "") {
+      writer.uint32(26).string(message.nameRus);
     }
     if (message.code !== "") {
-      writer.uint32(42).string(message.code);
+      writer.uint32(34).string(message.code);
+    }
+    if (message.isIlo !== false) {
+      writer.uint32(40).bool(message.isIlo);
+    }
+    if (message.isBallastWater !== false) {
+      writer.uint32(48).bool(message.isBallastWater);
     }
     if (message.createdAt !== undefined) {
-      Timestamp.encode(toTimestamp(message.createdAt), writer.uint32(50).fork()).ldelim();
+      Timestamp.encode(toTimestamp(message.createdAt), writer.uint32(58).fork()).ldelim();
     }
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): PortSummary {
+  decode(input: _m0.Reader | Uint8Array, length?: number): AuthoritySummary {
     const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBasePortSummary();
+    const message = createBaseAuthoritySummary();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -69,28 +73,35 @@ export const PortSummary = {
           message.name = reader.string();
           continue;
         case 3:
-          if (tag !== 24) {
+          if (tag !== 26) {
             break;
           }
 
-          message.authorityId = reader.int32();
+          message.nameRus = reader.string();
           continue;
         case 4:
-          if (tag !== 32) {
-            break;
-          }
-
-          message.districtId = reader.int32();
-          continue;
-        case 5:
-          if (tag !== 42) {
+          if (tag !== 34) {
             break;
           }
 
           message.code = reader.string();
           continue;
+        case 5:
+          if (tag !== 40) {
+            break;
+          }
+
+          message.isIlo = reader.bool();
+          continue;
         case 6:
-          if (tag !== 50) {
+          if (tag !== 48) {
+            break;
+          }
+
+          message.isBallastWater = reader.bool();
+          continue;
+        case 7:
+          if (tag !== 58) {
             break;
           }
 
@@ -105,18 +116,19 @@ export const PortSummary = {
     return message;
   },
 
-  fromJSON(object: any): PortSummary {
+  fromJSON(object: any): AuthoritySummary {
     return {
       id: isSet(object.id) ? globalThis.Number(object.id) : 0,
       name: isSet(object.name) ? globalThis.String(object.name) : "",
-      authorityId: isSet(object.authorityId) ? globalThis.Number(object.authorityId) : 0,
-      districtId: isSet(object.districtId) ? globalThis.Number(object.districtId) : 0,
+      nameRus: isSet(object.nameRus) ? globalThis.String(object.nameRus) : "",
       code: isSet(object.code) ? globalThis.String(object.code) : "",
+      isIlo: isSet(object.isIlo) ? globalThis.Boolean(object.isIlo) : false,
+      isBallastWater: isSet(object.isBallastWater) ? globalThis.Boolean(object.isBallastWater) : false,
       createdAt: isSet(object.createdAt) ? fromJsonTimestamp(object.createdAt) : undefined,
     };
   },
 
-  toJSON(message: PortSummary): unknown {
+  toJSON(message: AuthoritySummary): unknown {
     const obj: any = {};
     if (message.id !== 0) {
       obj.id = Math.round(message.id);
@@ -124,14 +136,17 @@ export const PortSummary = {
     if (message.name !== "") {
       obj.name = message.name;
     }
-    if (message.authorityId !== 0) {
-      obj.authorityId = Math.round(message.authorityId);
-    }
-    if (message.districtId !== 0) {
-      obj.districtId = Math.round(message.districtId);
+    if (message.nameRus !== "") {
+      obj.nameRus = message.nameRus;
     }
     if (message.code !== "") {
       obj.code = message.code;
+    }
+    if (message.isIlo !== false) {
+      obj.isIlo = message.isIlo;
+    }
+    if (message.isBallastWater !== false) {
+      obj.isBallastWater = message.isBallastWater;
     }
     if (message.createdAt !== undefined) {
       obj.createdAt = message.createdAt.toISOString();
@@ -139,16 +154,17 @@ export const PortSummary = {
     return obj;
   },
 
-  create<I extends Exact<DeepPartial<PortSummary>, I>>(base?: I): PortSummary {
-    return PortSummary.fromPartial(base ?? ({} as any));
+  create<I extends Exact<DeepPartial<AuthoritySummary>, I>>(base?: I): AuthoritySummary {
+    return AuthoritySummary.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<PortSummary>, I>>(object: I): PortSummary {
-    const message = createBasePortSummary();
+  fromPartial<I extends Exact<DeepPartial<AuthoritySummary>, I>>(object: I): AuthoritySummary {
+    const message = createBaseAuthoritySummary();
     message.id = object.id ?? 0;
     message.name = object.name ?? "";
-    message.authorityId = object.authorityId ?? 0;
-    message.districtId = object.districtId ?? 0;
+    message.nameRus = object.nameRus ?? "";
     message.code = object.code ?? "";
+    message.isIlo = object.isIlo ?? false;
+    message.isBallastWater = object.isBallastWater ?? false;
     message.createdAt = object.createdAt ?? undefined;
     return message;
   },

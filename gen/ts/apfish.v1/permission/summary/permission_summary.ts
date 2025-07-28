@@ -27,7 +27,7 @@ export interface PermissionSummary {
 export interface PermissionJwt {
   actionId: number;
   objectId: number;
-  countriesId: number[];
+  authoritiesId: number[];
   districtsId: number[];
   portsId: number[];
   shipsId: number[];
@@ -183,7 +183,7 @@ export const PermissionSummary = {
 };
 
 function createBasePermissionJwt(): PermissionJwt {
-  return { actionId: 0, objectId: 0, countriesId: [], districtsId: [], portsId: [], shipsId: [] };
+  return { actionId: 0, objectId: 0, authoritiesId: [], districtsId: [], portsId: [], shipsId: [] };
 }
 
 export const PermissionJwt = {
@@ -195,7 +195,7 @@ export const PermissionJwt = {
       writer.uint32(16).int32(message.objectId);
     }
     writer.uint32(26).fork();
-    for (const v of message.countriesId) {
+    for (const v of message.authoritiesId) {
       writer.int32(v);
     }
     writer.ldelim();
@@ -240,7 +240,7 @@ export const PermissionJwt = {
           continue;
         case 3:
           if (tag === 24) {
-            message.countriesId.push(reader.int32());
+            message.authoritiesId.push(reader.int32());
 
             continue;
           }
@@ -248,7 +248,7 @@ export const PermissionJwt = {
           if (tag === 26) {
             const end2 = reader.uint32() + reader.pos;
             while (reader.pos < end2) {
-              message.countriesId.push(reader.int32());
+              message.authoritiesId.push(reader.int32());
             }
 
             continue;
@@ -319,8 +319,8 @@ export const PermissionJwt = {
     return {
       actionId: isSet(object.actionId) ? globalThis.Number(object.actionId) : 0,
       objectId: isSet(object.objectId) ? globalThis.Number(object.objectId) : 0,
-      countriesId: globalThis.Array.isArray(object?.countriesId)
-        ? object.countriesId.map((e: any) => globalThis.Number(e))
+      authoritiesId: globalThis.Array.isArray(object?.authoritiesId)
+        ? object.authoritiesId.map((e: any) => globalThis.Number(e))
         : [],
       districtsId: globalThis.Array.isArray(object?.districtsId)
         ? object.districtsId.map((e: any) => globalThis.Number(e))
@@ -338,8 +338,8 @@ export const PermissionJwt = {
     if (message.objectId !== 0) {
       obj.objectId = Math.round(message.objectId);
     }
-    if (message.countriesId?.length) {
-      obj.countriesId = message.countriesId.map((e) => Math.round(e));
+    if (message.authoritiesId?.length) {
+      obj.authoritiesId = message.authoritiesId.map((e) => Math.round(e));
     }
     if (message.districtsId?.length) {
       obj.districtsId = message.districtsId.map((e) => Math.round(e));
@@ -360,7 +360,7 @@ export const PermissionJwt = {
     const message = createBasePermissionJwt();
     message.actionId = object.actionId ?? 0;
     message.objectId = object.objectId ?? 0;
-    message.countriesId = object.countriesId?.map((e) => e) || [];
+    message.authoritiesId = object.authoritiesId?.map((e) => e) || [];
     message.districtsId = object.districtsId?.map((e) => e) || [];
     message.portsId = object.portsId?.map((e) => e) || [];
     message.shipsId = object.shipsId?.map((e) => e) || [];

@@ -8,7 +8,7 @@
 import Long from "long";
 import _m0 from "protobufjs/minimal";
 import { Timestamp } from "../../google/protobuf/timestamp";
-import { CountrySummary } from "../location/country/summary/country_summary";
+import { AuthoritySummary } from "../location/authority/summary/authority_summary";
 import { DistrictSummary } from "../location/district/summary/district_summary";
 import { PortSummary } from "../location/port/summary/port_summary";
 import { ShipSummary } from "../ship/summary/ship_summary";
@@ -41,7 +41,7 @@ export interface Permission {
   /** Machine-readable identifier (e.g., "inspection:read") */
   code: string;
   createdAt: Date | undefined;
-  countries: CountrySummary[];
+  authorities: AuthoritySummary[];
   districts: DistrictSummary[];
   ports: PortSummary[];
   ships: ShipSummary[];
@@ -58,7 +58,7 @@ function createBasePermission(): Permission {
     name: "",
     code: "",
     createdAt: undefined,
-    countries: [],
+    authorities: [],
     districts: [],
     ports: [],
     ships: [],
@@ -90,8 +90,8 @@ export const Permission = {
     if (message.createdAt !== undefined) {
       Timestamp.encode(toTimestamp(message.createdAt), writer.uint32(58).fork()).ldelim();
     }
-    for (const v of message.countries) {
-      CountrySummary.encode(v!, writer.uint32(66).fork()).ldelim();
+    for (const v of message.authorities) {
+      AuthoritySummary.encode(v!, writer.uint32(66).fork()).ldelim();
     }
     for (const v of message.districts) {
       DistrictSummary.encode(v!, writer.uint32(74).fork()).ldelim();
@@ -172,7 +172,7 @@ export const Permission = {
             break;
           }
 
-          message.countries.push(CountrySummary.decode(reader, reader.uint32()));
+          message.authorities.push(AuthoritySummary.decode(reader, reader.uint32()));
           continue;
         case 9:
           if (tag !== 74) {
@@ -227,8 +227,8 @@ export const Permission = {
       name: isSet(object.name) ? globalThis.String(object.name) : "",
       code: isSet(object.code) ? globalThis.String(object.code) : "",
       createdAt: isSet(object.createdAt) ? fromJsonTimestamp(object.createdAt) : undefined,
-      countries: globalThis.Array.isArray(object?.countries)
-        ? object.countries.map((e: any) => CountrySummary.fromJSON(e))
+      authorities: globalThis.Array.isArray(object?.authorities)
+        ? object.authorities.map((e: any) => AuthoritySummary.fromJSON(e))
         : [],
       districts: globalThis.Array.isArray(object?.districts)
         ? object.districts.map((e: any) => DistrictSummary.fromJSON(e))
@@ -263,8 +263,8 @@ export const Permission = {
     if (message.createdAt !== undefined) {
       obj.createdAt = message.createdAt.toISOString();
     }
-    if (message.countries?.length) {
-      obj.countries = message.countries.map((e) => CountrySummary.toJSON(e));
+    if (message.authorities?.length) {
+      obj.authorities = message.authorities.map((e) => AuthoritySummary.toJSON(e));
     }
     if (message.districts?.length) {
       obj.districts = message.districts.map((e) => DistrictSummary.toJSON(e));
@@ -300,7 +300,7 @@ export const Permission = {
     message.name = object.name ?? "";
     message.code = object.code ?? "";
     message.createdAt = object.createdAt ?? undefined;
-    message.countries = object.countries?.map((e) => CountrySummary.fromPartial(e)) || [];
+    message.authorities = object.authorities?.map((e) => AuthoritySummary.fromPartial(e)) || [];
     message.districts = object.districts?.map((e) => DistrictSummary.fromPartial(e)) || [];
     message.ports = object.ports?.map((e) => PortSummary.fromPartial(e)) || [];
     message.ships = object.ships?.map((e) => ShipSummary.fromPartial(e)) || [];

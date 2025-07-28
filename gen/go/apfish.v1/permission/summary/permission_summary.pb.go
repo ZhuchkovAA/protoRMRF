@@ -118,7 +118,7 @@ type PermissionJwt struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ActionId      int32                  `protobuf:"varint,1,opt,name=action_id,json=actionId,proto3" json:"action_id,omitempty"`
 	ObjectId      int32                  `protobuf:"varint,2,opt,name=object_id,json=objectId,proto3" json:"object_id,omitempty"`
-	CountriesId   []int32                `protobuf:"varint,3,rep,packed,name=countries_id,json=countriesId,proto3" json:"countries_id,omitempty"`
+	AuthoritiesId []int32                `protobuf:"varint,3,rep,packed,name=authorities_id,json=authoritiesId,proto3" json:"authorities_id,omitempty"`
 	DistrictsId   []int32                `protobuf:"varint,4,rep,packed,name=districts_id,json=districtsId,proto3" json:"districts_id,omitempty"`
 	PortsId       []int32                `protobuf:"varint,5,rep,packed,name=ports_id,json=portsId,proto3" json:"ports_id,omitempty"`
 	ShipsId       []int32                `protobuf:"varint,6,rep,packed,name=ships_id,json=shipsId,proto3" json:"ships_id,omitempty"`
@@ -170,9 +170,9 @@ func (x *PermissionJwt) GetObjectId() int32 {
 	return 0
 }
 
-func (x *PermissionJwt) GetCountriesId() []int32 {
+func (x *PermissionJwt) GetAuthoritiesId() []int32 {
 	if x != nil {
-		return x.CountriesId
+		return x.AuthoritiesId
 	}
 	return nil
 }
@@ -211,11 +211,11 @@ const file_apfish_v1_permission_summary_permission_summary_proto_rawDesc = "" +
 	"\x04name\x18\x05 \x01(\tR\x04name\x12\x12\n" +
 	"\x04code\x18\x06 \x01(\tR\x04code\x129\n" +
 	"\n" +
-	"created_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"\xc5\x01\n" +
+	"created_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"\xc9\x01\n" +
 	"\rPermissionJwt\x12\x1b\n" +
 	"\taction_id\x18\x01 \x01(\x05R\bactionId\x12\x1b\n" +
-	"\tobject_id\x18\x02 \x01(\x05R\bobjectId\x12!\n" +
-	"\fcountries_id\x18\x03 \x03(\x05R\vcountriesId\x12!\n" +
+	"\tobject_id\x18\x02 \x01(\x05R\bobjectId\x12%\n" +
+	"\x0eauthorities_id\x18\x03 \x03(\x05R\rauthoritiesId\x12!\n" +
 	"\fdistricts_id\x18\x04 \x03(\x05R\vdistrictsId\x12\x19\n" +
 	"\bports_id\x18\x05 \x03(\x05R\aportsId\x12\x19\n" +
 	"\bships_id\x18\x06 \x03(\x05R\ashipsIdBXZVgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/summary;permission_summaryb\x06proto3"

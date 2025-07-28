@@ -7,7 +7,7 @@
 package permission
 
 import (
-	summary2 "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/country/summary"
+	summary2 "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/authority/summary"
 	summary3 "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/district/summary"
 	summary4 "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/port/summary"
 	summary "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/action/summary"
@@ -33,20 +33,20 @@ const (
 // Defines an access permission in the system.
 // Permissions combine an Action and Object to create granular access controls (e.g., "read:inspection").
 type Permission struct {
-	state         protoimpl.MessageState      `protogen:"open.v1"`
-	Id            int32                       `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`                  // Unique identifier for the permission
-	Action        *summary.ActionSummary      `protobuf:"bytes,2,opt,name=action,proto3" json:"action,omitempty"`           // The operation this permission allows (e.g., "read", "create")
-	Object        *summary1.ObjectSummary     `protobuf:"bytes,3,opt,name=object,proto3" json:"object,omitempty"`           // The resource this permission applies to (e.g., "inspection", "user")
-	Description   string                      `protobuf:"bytes,4,opt,name=description,proto3" json:"description,omitempty"` // Human-readable explanation of the permission
-	Name          string                      `protobuf:"bytes,5,opt,name=name,proto3" json:"name,omitempty"`               // Display name (e.g., "Read Inspections")
-	Code          string                      `protobuf:"bytes,6,opt,name=code,proto3" json:"code,omitempty"`               // Machine-readable identifier (e.g., "inspection:read")
-	CreatedAt     *timestamppb.Timestamp      `protobuf:"bytes,7,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	Countries     []*summary2.CountrySummary  `protobuf:"bytes,8,rep,name=countries,proto3" json:"countries,omitempty"`
-	Districts     []*summary3.DistrictSummary `protobuf:"bytes,9,rep,name=districts,proto3" json:"districts,omitempty"`
-	Ports         []*summary4.PortSummary     `protobuf:"bytes,10,rep,name=ports,proto3" json:"ports,omitempty"`
-	Ships         []*summary5.ShipSummary     `protobuf:"bytes,11,rep,name=ships,proto3" json:"ships,omitempty"`
-	Users         []*summary6.UserSummary     `protobuf:"bytes,12,rep,name=users,proto3" json:"users,omitempty"`
-	Roles         []*summary7.RoleSummary     `protobuf:"bytes,13,rep,name=roles,proto3" json:"roles,omitempty"`
+	state         protoimpl.MessageState       `protogen:"open.v1"`
+	Id            int32                        `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`                  // Unique identifier for the permission
+	Action        *summary.ActionSummary       `protobuf:"bytes,2,opt,name=action,proto3" json:"action,omitempty"`           // The operation this permission allows (e.g., "read", "create")
+	Object        *summary1.ObjectSummary      `protobuf:"bytes,3,opt,name=object,proto3" json:"object,omitempty"`           // The resource this permission applies to (e.g., "inspection", "user")
+	Description   string                       `protobuf:"bytes,4,opt,name=description,proto3" json:"description,omitempty"` // Human-readable explanation of the permission
+	Name          string                       `protobuf:"bytes,5,opt,name=name,proto3" json:"name,omitempty"`               // Display name (e.g., "Read Inspections")
+	Code          string                       `protobuf:"bytes,6,opt,name=code,proto3" json:"code,omitempty"`               // Machine-readable identifier (e.g., "inspection:read")
+	CreatedAt     *timestamppb.Timestamp       `protobuf:"bytes,7,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	Authorities   []*summary2.AuthoritySummary `protobuf:"bytes,8,rep,name=authorities,proto3" json:"authorities,omitempty"`
+	Districts     []*summary3.DistrictSummary  `protobuf:"bytes,9,rep,name=districts,proto3" json:"districts,omitempty"`
+	Ports         []*summary4.PortSummary      `protobuf:"bytes,10,rep,name=ports,proto3" json:"ports,omitempty"`
+	Ships         []*summary5.ShipSummary      `protobuf:"bytes,11,rep,name=ships,proto3" json:"ships,omitempty"`
+	Users         []*summary6.UserSummary      `protobuf:"bytes,12,rep,name=users,proto3" json:"users,omitempty"`
+	Roles         []*summary7.RoleSummary      `protobuf:"bytes,13,rep,name=roles,proto3" json:"roles,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -130,9 +130,9 @@ func (x *Permission) GetCreatedAt() *timestamppb.Timestamp {
 	return nil
 }
 
-func (x *Permission) GetCountries() []*summary2.CountrySummary {
+func (x *Permission) GetAuthorities() []*summary2.AuthoritySummary {
 	if x != nil {
-		return x.Countries
+		return x.Authorities
 	}
 	return nil
 }
@@ -176,7 +176,7 @@ var File_apfish_v1_permission_permission_proto protoreflect.FileDescriptor
 
 const file_apfish_v1_permission_permission_proto_rawDesc = "" +
 	"\n" +
-	"%apfish.v1/permission/permission.proto\x12\x14apfish.v1.permission\x1a\x1fgoogle/protobuf/timestamp.proto\x1a8apfish.v1/permission/action/summary/action_summary.proto\x1a8apfish.v1/permission/object/summary/object_summary.proto\x1a8apfish.v1/location/country/summary/country_summary.proto\x1a:apfish.v1/location/district/summary/district_summary.proto\x1a2apfish.v1/location/port/summary/port_summary.proto\x1a)apfish.v1/ship/summary/ship_summary.proto\x1a)apfish.v1/user/summary/user_summary.proto\x1a.apfish.v1/user/role/summary/role_summary.proto\"\xd9\x05\n" +
+	"%apfish.v1/permission/permission.proto\x12\x14apfish.v1.permission\x1a\x1fgoogle/protobuf/timestamp.proto\x1a8apfish.v1/permission/action/summary/action_summary.proto\x1a8apfish.v1/permission/object/summary/object_summary.proto\x1a<apfish.v1/location/authority/summary/authority_summary.proto\x1a:apfish.v1/location/district/summary/district_summary.proto\x1a2apfish.v1/location/port/summary/port_summary.proto\x1a)apfish.v1/ship/summary/ship_summary.proto\x1a)apfish.v1/user/summary/user_summary.proto\x1a.apfish.v1/user/role/summary/role_summary.proto\"\xe1\x05\n" +
 	"\n" +
 	"Permission\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12J\n" +
@@ -186,8 +186,8 @@ const file_apfish_v1_permission_permission_proto_rawDesc = "" +
 	"\x04name\x18\x05 \x01(\tR\x04name\x12\x12\n" +
 	"\x04code\x18\x06 \x01(\tR\x04code\x129\n" +
 	"\n" +
-	"created_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x12P\n" +
-	"\tcountries\x18\b \x03(\v22.apfish.v1.location.country.summary.CountrySummaryR\tcountries\x12R\n" +
+	"created_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x12X\n" +
+	"\vauthorities\x18\b \x03(\v26.apfish.v1.location.authority.summary.AuthoritySummaryR\vauthorities\x12R\n" +
 	"\tdistricts\x18\t \x03(\v24.apfish.v1.location.district.summary.DistrictSummaryR\tdistricts\x12B\n" +
 	"\x05ports\x18\n" +
 	" \x03(\v2,.apfish.v1.location.port.summary.PortSummaryR\x05ports\x129\n" +
@@ -209,22 +209,22 @@ func file_apfish_v1_permission_permission_proto_rawDescGZIP() []byte {
 
 var file_apfish_v1_permission_permission_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_apfish_v1_permission_permission_proto_goTypes = []any{
-	(*Permission)(nil),               // 0: apfish.v1.permission.Permission
-	(*summary.ActionSummary)(nil),    // 1: apfish.v1.permission.action.summary.ActionSummary
-	(*summary1.ObjectSummary)(nil),   // 2: apfish.v1.permission.object.summary.ObjectSummary
-	(*timestamppb.Timestamp)(nil),    // 3: google.protobuf.Timestamp
-	(*summary2.CountrySummary)(nil),  // 4: apfish.v1.location.country.summary.CountrySummary
-	(*summary3.DistrictSummary)(nil), // 5: apfish.v1.location.district.summary.DistrictSummary
-	(*summary4.PortSummary)(nil),     // 6: apfish.v1.location.port.summary.PortSummary
-	(*summary5.ShipSummary)(nil),     // 7: apfish.v1.ship.summary.ShipSummary
-	(*summary6.UserSummary)(nil),     // 8: apfish.v1.user.summary.UserSummary
-	(*summary7.RoleSummary)(nil),     // 9: apfish.v1.user.role.summary.RoleSummary
+	(*Permission)(nil),                // 0: apfish.v1.permission.Permission
+	(*summary.ActionSummary)(nil),     // 1: apfish.v1.permission.action.summary.ActionSummary
+	(*summary1.ObjectSummary)(nil),    // 2: apfish.v1.permission.object.summary.ObjectSummary
+	(*timestamppb.Timestamp)(nil),     // 3: google.protobuf.Timestamp
+	(*summary2.AuthoritySummary)(nil), // 4: apfish.v1.location.authority.summary.AuthoritySummary
+	(*summary3.DistrictSummary)(nil),  // 5: apfish.v1.location.district.summary.DistrictSummary
+	(*summary4.PortSummary)(nil),      // 6: apfish.v1.location.port.summary.PortSummary
+	(*summary5.ShipSummary)(nil),      // 7: apfish.v1.ship.summary.ShipSummary
+	(*summary6.UserSummary)(nil),      // 8: apfish.v1.user.summary.UserSummary
+	(*summary7.RoleSummary)(nil),      // 9: apfish.v1.user.role.summary.RoleSummary
 }
 var file_apfish_v1_permission_permission_proto_depIdxs = []int32{
 	1, // 0: apfish.v1.permission.Permission.action:type_name -> apfish.v1.permission.action.summary.ActionSummary
 	2, // 1: apfish.v1.permission.Permission.object:type_name -> apfish.v1.permission.object.summary.ObjectSummary
 	3, // 2: apfish.v1.permission.Permission.created_at:type_name -> google.protobuf.Timestamp
-	4, // 3: apfish.v1.permission.Permission.countries:type_name -> apfish.v1.location.country.summary.CountrySummary
+	4, // 3: apfish.v1.permission.Permission.authorities:type_name -> apfish.v1.location.authority.summary.AuthoritySummary
 	5, // 4: apfish.v1.permission.Permission.districts:type_name -> apfish.v1.location.district.summary.DistrictSummary
 	6, // 5: apfish.v1.permission.Permission.ports:type_name -> apfish.v1.location.port.summary.PortSummary
 	7, // 6: apfish.v1.permission.Permission.ships:type_name -> apfish.v1.ship.summary.ShipSummary

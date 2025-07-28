@@ -11,7 +11,7 @@ message ShipSummary {
   int32 imo = 2;
   int32 type_id = 3;
   int32 class_id = 4;
-  int32 country_id = 5;
+  int32 authority_id = 5;
   string name = 6;
   int32 mmsi = 7;
   int32 call_sign_id = 8;

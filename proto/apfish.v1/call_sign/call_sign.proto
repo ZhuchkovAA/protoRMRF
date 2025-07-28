@@ -6,7 +6,7 @@ option go_package = "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/call_sign;
 
 import "google/protobuf/timestamp.proto";  // Standard Protocol Buffers timestamp
 
-import "apfish.v1/location/country/summary/country_summary.proto";
+import "apfish.v1/location/authority/summary/authority_summary.proto";
 import "apfish.v1/ship/summary/ship_summary.proto";
 
 message CallSign {
@@ -16,6 +16,6 @@ message CallSign {
   string limit_upper = 4;
   google.protobuf.Timestamp created_at = 5;
 
-  repeated apfish.v1.location.country.summary.CountrySummary countries = 6;
+  repeated apfish.v1.location.authority.summary.AuthoritySummary authorities = 6;
   repeated apfish.v1.ship.summary.ShipSummary ships = 7;
 }

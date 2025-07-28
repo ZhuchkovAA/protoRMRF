@@ -56,7 +56,7 @@ export interface CreatePermissionRequest {
   description: string | undefined;
   name: string | undefined;
   code: string | undefined;
-  countriesIds: number[];
+  authoritiesIds: number[];
   districtsIds: number[];
   portsIds: number[];
   shipsIds: number[];
@@ -402,7 +402,7 @@ function createBaseCreatePermissionRequest(): CreatePermissionRequest {
     description: undefined,
     name: undefined,
     code: undefined,
-    countriesIds: [],
+    authoritiesIds: [],
     districtsIds: [],
     portsIds: [],
     shipsIds: [],
@@ -427,7 +427,7 @@ export const CreatePermissionRequest = {
       StringValue.encode({ value: message.code! }, writer.uint32(42).fork()).ldelim();
     }
     writer.uint32(50).fork();
-    for (const v of message.countriesIds) {
+    for (const v of message.authoritiesIds) {
       writer.int32(v);
     }
     writer.ldelim();
@@ -493,7 +493,7 @@ export const CreatePermissionRequest = {
           continue;
         case 6:
           if (tag === 48) {
-            message.countriesIds.push(reader.int32());
+            message.authoritiesIds.push(reader.int32());
 
             continue;
           }
@@ -501,7 +501,7 @@ export const CreatePermissionRequest = {
           if (tag === 50) {
             const end2 = reader.uint32() + reader.pos;
             while (reader.pos < end2) {
-              message.countriesIds.push(reader.int32());
+              message.authoritiesIds.push(reader.int32());
             }
 
             continue;
@@ -575,8 +575,8 @@ export const CreatePermissionRequest = {
       description: isSet(object.description) ? String(object.description) : undefined,
       name: isSet(object.name) ? String(object.name) : undefined,
       code: isSet(object.code) ? String(object.code) : undefined,
-      countriesIds: globalThis.Array.isArray(object?.countriesIds)
-        ? object.countriesIds.map((e: any) => globalThis.Number(e))
+      authoritiesIds: globalThis.Array.isArray(object?.authoritiesIds)
+        ? object.authoritiesIds.map((e: any) => globalThis.Number(e))
         : [],
       districtsIds: globalThis.Array.isArray(object?.districtsIds)
         ? object.districtsIds.map((e: any) => globalThis.Number(e))
@@ -603,8 +603,8 @@ export const CreatePermissionRequest = {
     if (message.code !== undefined) {
       obj.code = message.code;
     }
-    if (message.countriesIds?.length) {
-      obj.countriesIds = message.countriesIds.map((e) => Math.round(e));
+    if (message.authoritiesIds?.length) {
+      obj.authoritiesIds = message.authoritiesIds.map((e) => Math.round(e));
     }
     if (message.districtsIds?.length) {
       obj.districtsIds = message.districtsIds.map((e) => Math.round(e));
@@ -628,7 +628,7 @@ export const CreatePermissionRequest = {
     message.description = object.description ?? undefined;
     message.name = object.name ?? undefined;
     message.code = object.code ?? undefined;
-    message.countriesIds = object.countriesIds?.map((e) => e) || [];
+    message.authoritiesIds = object.authoritiesIds?.map((e) => e) || [];
     message.districtsIds = object.districtsIds?.map((e) => e) || [];
     message.portsIds = object.portsIds?.map((e) => e) || [];
     message.shipsIds = object.shipsIds?.map((e) => e) || [];

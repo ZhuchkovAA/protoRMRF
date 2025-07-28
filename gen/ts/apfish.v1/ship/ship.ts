@@ -9,7 +9,7 @@ import Long from "long";
 import _m0 from "protobufjs/minimal";
 import { Timestamp } from "../../google/protobuf/timestamp";
 import { CallSignSummary } from "../call_sign/summary/call_sign_summary";
-import { CountrySummary } from "../location/country/summary/country_summary";
+import { AuthoritySummary } from "../location/authority/summary/authority_summary";
 import { PermissionSummary } from "../permission/summary/permission_summary";
 import { CaptainSummary } from "./captain/summary/captain_summary";
 import { ClassSummary } from "./class/summary/class_summary";
@@ -22,7 +22,7 @@ export interface Ship {
   imo: number;
   type: TypeSummary | undefined;
   class: ClassSummary | undefined;
-  country: CountrySummary | undefined;
+  authority: AuthoritySummary | undefined;
   name: string;
   mmsi: number;
   callSign: CallSignSummary | undefined;
@@ -41,7 +41,7 @@ function createBaseShip(): Ship {
     imo: 0,
     type: undefined,
     class: undefined,
-    country: undefined,
+    authority: undefined,
     name: "",
     mmsi: 0,
     callSign: undefined,
@@ -69,8 +69,8 @@ export const Ship = {
     if (message.class !== undefined) {
       ClassSummary.encode(message.class, writer.uint32(34).fork()).ldelim();
     }
-    if (message.country !== undefined) {
-      CountrySummary.encode(message.country, writer.uint32(42).fork()).ldelim();
+    if (message.authority !== undefined) {
+      AuthoritySummary.encode(message.authority, writer.uint32(42).fork()).ldelim();
     }
     if (message.name !== "") {
       writer.uint32(50).string(message.name);
@@ -145,7 +145,7 @@ export const Ship = {
             break;
           }
 
-          message.country = CountrySummary.decode(reader, reader.uint32());
+          message.authority = AuthoritySummary.decode(reader, reader.uint32());
           continue;
         case 6:
           if (tag !== 50) {
@@ -232,7 +232,7 @@ export const Ship = {
       imo: isSet(object.imo) ? globalThis.Number(object.imo) : 0,
       type: isSet(object.type) ? TypeSummary.fromJSON(object.type) : undefined,
       class: isSet(object.class) ? ClassSummary.fromJSON(object.class) : undefined,
-      country: isSet(object.country) ? CountrySummary.fromJSON(object.country) : undefined,
+      authority: isSet(object.authority) ? AuthoritySummary.fromJSON(object.authority) : undefined,
       name: isSet(object.name) ? globalThis.String(object.name) : "",
       mmsi: isSet(object.mmsi) ? globalThis.Number(object.mmsi) : 0,
       callSign: isSet(object.callSign) ? CallSignSummary.fromJSON(object.callSign) : undefined,
@@ -264,8 +264,8 @@ export const Ship = {
     if (message.class !== undefined) {
       obj.class = ClassSummary.toJSON(message.class);
     }
-    if (message.country !== undefined) {
-      obj.country = CountrySummary.toJSON(message.country);
+    if (message.authority !== undefined) {
+      obj.authority = AuthoritySummary.toJSON(message.authority);
     }
     if (message.name !== "") {
       obj.name = message.name;
@@ -313,8 +313,8 @@ export const Ship = {
     message.class = (object.class !== undefined && object.class !== null)
       ? ClassSummary.fromPartial(object.class)
       : undefined;
-    message.country = (object.country !== undefined && object.country !== null)
-      ? CountrySummary.fromPartial(object.country)
+    message.authority = (object.authority !== undefined && object.authority !== null)
+      ? AuthoritySummary.fromPartial(object.authority)
       : undefined;
     message.name = object.name ?? "";
     message.mmsi = object.mmsi ?? 0;

@@ -9,7 +9,7 @@ import "google/protobuf/timestamp.proto";  // Standard Protocol Buffers timestam
 import "apfish.v1/permission/action/summary/action_summary.proto";
 import "apfish.v1/permission/object/summary/object_summary.proto";
 
-import "apfish.v1/location/country/summary/country_summary.proto";
+import "apfish.v1/location/authority/summary/authority_summary.proto";
 import "apfish.v1/location/district/summary/district_summary.proto";
 import "apfish.v1/location/port/summary/port_summary.proto";
 import "apfish.v1/ship/summary/ship_summary.proto";
@@ -28,7 +28,7 @@ message Permission {
   string code = 6;                // Machine-readable identifier (e.g., "inspection:read")
   google.protobuf.Timestamp created_at = 7;
 
-  repeated apfish.v1.location.country.summary.CountrySummary countries= 8;
+  repeated apfish.v1.location.authority.summary.AuthoritySummary authorities = 8;
   repeated apfish.v1.location.district.summary.DistrictSummary districts = 9;
   repeated apfish.v1.location.port.summary.PortSummary ports = 10;
   repeated apfish.v1.ship.summary.ShipSummary ships = 11;

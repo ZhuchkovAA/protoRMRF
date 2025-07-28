@@ -16,7 +16,7 @@ export interface ShipSummary {
   imo: number;
   typeId: number;
   classId: number;
-  countryId: number;
+  authorityId: number;
   name: string;
   mmsi: number;
   callSignId: number;
@@ -33,7 +33,7 @@ function createBaseShipSummary(): ShipSummary {
     imo: 0,
     typeId: 0,
     classId: 0,
-    countryId: 0,
+    authorityId: 0,
     name: "",
     mmsi: 0,
     callSignId: 0,
@@ -59,8 +59,8 @@ export const ShipSummary = {
     if (message.classId !== 0) {
       writer.uint32(32).int32(message.classId);
     }
-    if (message.countryId !== 0) {
-      writer.uint32(40).int32(message.countryId);
+    if (message.authorityId !== 0) {
+      writer.uint32(40).int32(message.authorityId);
     }
     if (message.name !== "") {
       writer.uint32(50).string(message.name);
@@ -129,7 +129,7 @@ export const ShipSummary = {
             break;
           }
 
-          message.countryId = reader.int32();
+          message.authorityId = reader.int32();
           continue;
         case 6:
           if (tag !== 50) {
@@ -202,7 +202,7 @@ export const ShipSummary = {
       imo: isSet(object.imo) ? globalThis.Number(object.imo) : 0,
       typeId: isSet(object.typeId) ? globalThis.Number(object.typeId) : 0,
       classId: isSet(object.classId) ? globalThis.Number(object.classId) : 0,
-      countryId: isSet(object.countryId) ? globalThis.Number(object.countryId) : 0,
+      authorityId: isSet(object.authorityId) ? globalThis.Number(object.authorityId) : 0,
       name: isSet(object.name) ? globalThis.String(object.name) : "",
       mmsi: isSet(object.mmsi) ? globalThis.Number(object.mmsi) : 0,
       callSignId: isSet(object.callSignId) ? globalThis.Number(object.callSignId) : 0,
@@ -228,8 +228,8 @@ export const ShipSummary = {
     if (message.classId !== 0) {
       obj.classId = Math.round(message.classId);
     }
-    if (message.countryId !== 0) {
-      obj.countryId = Math.round(message.countryId);
+    if (message.authorityId !== 0) {
+      obj.authorityId = Math.round(message.authorityId);
     }
     if (message.name !== "") {
       obj.name = message.name;
@@ -267,7 +267,7 @@ export const ShipSummary = {
     message.imo = object.imo ?? 0;
     message.typeId = object.typeId ?? 0;
     message.classId = object.classId ?? 0;
-    message.countryId = object.countryId ?? 0;
+    message.authorityId = object.authorityId ?? 0;
     message.name = object.name ?? "";
     message.mmsi = object.mmsi ?? 0;
     message.callSignId = object.callSignId ?? 0;

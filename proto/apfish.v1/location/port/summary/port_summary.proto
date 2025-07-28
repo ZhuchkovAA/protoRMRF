@@ -9,7 +9,7 @@ import "google/protobuf/timestamp.proto";  // Standard Protocol Buffers timestam
 message PortSummary {
   int32 id = 1;
   string name = 2;
-  int32 country_id = 3;
+  int32 authority_id = 3;
   int32 district_id = 4;
   string code = 5;
   google.protobuf.Timestamp created_at = 6;

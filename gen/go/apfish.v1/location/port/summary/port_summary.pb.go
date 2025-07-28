@@ -26,7 +26,7 @@ type PortSummary struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	CountryId     int32                  `protobuf:"varint,3,opt,name=country_id,json=countryId,proto3" json:"country_id,omitempty"`
+	AuthorityId   int32                  `protobuf:"varint,3,opt,name=authority_id,json=authorityId,proto3" json:"authority_id,omitempty"`
 	DistrictId    int32                  `protobuf:"varint,4,opt,name=district_id,json=districtId,proto3" json:"district_id,omitempty"`
 	Code          string                 `protobuf:"bytes,5,opt,name=code,proto3" json:"code,omitempty"`
 	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
@@ -78,9 +78,9 @@ func (x *PortSummary) GetName() string {
 	return ""
 }
 
-func (x *PortSummary) GetCountryId() int32 {
+func (x *PortSummary) GetAuthorityId() int32 {
 	if x != nil {
-		return x.CountryId
+		return x.AuthorityId
 	}
 	return 0
 }
@@ -110,12 +110,11 @@ var File_apfish_v1_location_port_summary_port_summary_proto protoreflect.FileDes
 
 const file_apfish_v1_location_port_summary_port_summary_proto_rawDesc = "" +
 	"\n" +
-	"2apfish.v1/location/port/summary/port_summary.proto\x12\x1fapfish.v1.location.port.summary\x1a\x1fgoogle/protobuf/timestamp.proto\"\xc0\x01\n" +
+	"2apfish.v1/location/port/summary/port_summary.proto\x12\x1fapfish.v1.location.port.summary\x1a\x1fgoogle/protobuf/timestamp.proto\"\xc4\x01\n" +
 	"\vPortSummary\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12\x1d\n" +
-	"\n" +
-	"country_id\x18\x03 \x01(\x05R\tcountryId\x12\x1f\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
+	"\fauthority_id\x18\x03 \x01(\x05R\vauthorityId\x12\x1f\n" +
 	"\vdistrict_id\x18\x04 \x01(\x05R\n" +
 	"districtId\x12\x12\n" +
 	"\x04code\x18\x05 \x01(\tR\x04code\x129\n" +

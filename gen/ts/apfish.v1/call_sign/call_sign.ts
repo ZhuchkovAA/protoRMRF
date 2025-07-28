@@ -8,7 +8,7 @@
 import Long from "long";
 import _m0 from "protobufjs/minimal";
 import { Timestamp } from "../../google/protobuf/timestamp";
-import { CountrySummary } from "../location/country/summary/country_summary";
+import { AuthoritySummary } from "../location/authority/summary/authority_summary";
 import { ShipSummary } from "../ship/summary/ship_summary";
 
 export const protobufPackage = "apfish.v1.call_sign";
@@ -19,12 +19,12 @@ export interface CallSign {
   limitLower: string;
   limitUpper: string;
   createdAt: Date | undefined;
-  countries: CountrySummary[];
+  authorities: AuthoritySummary[];
   ships: ShipSummary[];
 }
 
 function createBaseCallSign(): CallSign {
-  return { id: 0, series: "", limitLower: "", limitUpper: "", createdAt: undefined, countries: [], ships: [] };
+  return { id: 0, series: "", limitLower: "", limitUpper: "", createdAt: undefined, authorities: [], ships: [] };
 }
 
 export const CallSign = {
@@ -44,8 +44,8 @@ export const CallSign = {
     if (message.createdAt !== undefined) {
       Timestamp.encode(toTimestamp(message.createdAt), writer.uint32(42).fork()).ldelim();
     }
-    for (const v of message.countries) {
-      CountrySummary.encode(v!, writer.uint32(50).fork()).ldelim();
+    for (const v of message.authorities) {
+      AuthoritySummary.encode(v!, writer.uint32(50).fork()).ldelim();
     }
     for (const v of message.ships) {
       ShipSummary.encode(v!, writer.uint32(58).fork()).ldelim();
@@ -100,7 +100,7 @@ export const CallSign = {
             break;
           }
 
-          message.countries.push(CountrySummary.decode(reader, reader.uint32()));
+          message.authorities.push(AuthoritySummary.decode(reader, reader.uint32()));
           continue;
         case 7:
           if (tag !== 58) {
@@ -125,8 +125,8 @@ export const CallSign = {
       limitLower: isSet(object.limitLower) ? globalThis.String(object.limitLower) : "",
       limitUpper: isSet(object.limitUpper) ? globalThis.String(object.limitUpper) : "",
       createdAt: isSet(object.createdAt) ? fromJsonTimestamp(object.createdAt) : undefined,
-      countries: globalThis.Array.isArray(object?.countries)
-        ? object.countries.map((e: any) => CountrySummary.fromJSON(e))
+      authorities: globalThis.Array.isArray(object?.authorities)
+        ? object.authorities.map((e: any) => AuthoritySummary.fromJSON(e))
         : [],
       ships: globalThis.Array.isArray(object?.ships) ? object.ships.map((e: any) => ShipSummary.fromJSON(e)) : [],
     };
@@ -149,8 +149,8 @@ export const CallSign = {
     if (message.createdAt !== undefined) {
       obj.createdAt = message.createdAt.toISOString();
     }
-    if (message.countries?.length) {
-      obj.countries = message.countries.map((e) => CountrySummary.toJSON(e));
+    if (message.authorities?.length) {
+      obj.authorities = message.authorities.map((e) => AuthoritySummary.toJSON(e));
     }
     if (message.ships?.length) {
       obj.ships = message.ships.map((e) => ShipSummary.toJSON(e));
@@ -168,7 +168,7 @@ export const CallSign = {
     message.limitLower = object.limitLower ?? "";
     message.limitUpper = object.limitUpper ?? "";
     message.createdAt = object.createdAt ?? undefined;
-    message.countries = object.countries?.map((e) => CountrySummary.fromPartial(e)) || [];
+    message.authorities = object.authorities?.map((e) => AuthoritySummary.fromPartial(e)) || [];
     message.ships = object.ships?.map((e) => ShipSummary.fromPartial(e)) || [];
     return message;
   },

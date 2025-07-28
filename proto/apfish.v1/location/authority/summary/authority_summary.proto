@@ -1,12 +1,12 @@
 syntax = "proto3";
 
-package apfish.v1.location.country.summary;
+package apfish.v1.location.authority.summary;
 
-option go_package = "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/country/summary;location_country_summary";
+option go_package = "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/authority/summary;location_authority_summary";
 
 import "google/protobuf/timestamp.proto";  // Standard Protocol Buffers timestamp
 
-message CountrySummary {
+message AuthoritySummary {
   int32 id = 1;
   string name = 2;
   string name_rus = 3;

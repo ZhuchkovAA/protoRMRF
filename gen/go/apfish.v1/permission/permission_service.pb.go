@@ -261,18 +261,18 @@ func (x *ListPermissionsResponse) GetTotal() int32 {
 }
 
 type CreatePermissionRequest struct {
-	state         protoimpl.MessageState  `protogen:"open.v1"`
-	ActionId      int32                   `protobuf:"varint,1,opt,name=action_id,json=actionId,proto3" json:"action_id,omitempty"`
-	ObjectId      int32                   `protobuf:"varint,2,opt,name=object_id,json=objectId,proto3" json:"object_id,omitempty"`
-	Description   *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
-	Name          *wrapperspb.StringValue `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
-	Code          *wrapperspb.StringValue `protobuf:"bytes,5,opt,name=code,proto3" json:"code,omitempty"`
-	CountriesIds  []int32                 `protobuf:"varint,6,rep,packed,name=countries_ids,json=countriesIds,proto3" json:"countries_ids,omitempty"`
-	DistrictsIds  []int32                 `protobuf:"varint,7,rep,packed,name=districts_ids,json=districtsIds,proto3" json:"districts_ids,omitempty"`
-	PortsIds      []int32                 `protobuf:"varint,8,rep,packed,name=ports_ids,json=portsIds,proto3" json:"ports_ids,omitempty"`
-	ShipsIds      []int32                 `protobuf:"varint,9,rep,packed,name=ships_ids,json=shipsIds,proto3" json:"ships_ids,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state          protoimpl.MessageState  `protogen:"open.v1"`
+	ActionId       int32                   `protobuf:"varint,1,opt,name=action_id,json=actionId,proto3" json:"action_id,omitempty"`
+	ObjectId       int32                   `protobuf:"varint,2,opt,name=object_id,json=objectId,proto3" json:"object_id,omitempty"`
+	Description    *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
+	Name           *wrapperspb.StringValue `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
+	Code           *wrapperspb.StringValue `protobuf:"bytes,5,opt,name=code,proto3" json:"code,omitempty"`
+	AuthoritiesIds []int32                 `protobuf:"varint,6,rep,packed,name=authorities_ids,json=authoritiesIds,proto3" json:"authorities_ids,omitempty"`
+	DistrictsIds   []int32                 `protobuf:"varint,7,rep,packed,name=districts_ids,json=districtsIds,proto3" json:"districts_ids,omitempty"`
+	PortsIds       []int32                 `protobuf:"varint,8,rep,packed,name=ports_ids,json=portsIds,proto3" json:"ports_ids,omitempty"`
+	ShipsIds       []int32                 `protobuf:"varint,9,rep,packed,name=ships_ids,json=shipsIds,proto3" json:"ships_ids,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
 }
 
 func (x *CreatePermissionRequest) Reset() {
@@ -340,9 +340,9 @@ func (x *CreatePermissionRequest) GetCode() *wrapperspb.StringValue {
 	return nil
 }
 
-func (x *CreatePermissionRequest) GetCountriesIds() []int32 {
+func (x *CreatePermissionRequest) GetAuthoritiesIds() []int32 {
 	if x != nil {
-		return x.CountriesIds
+		return x.AuthoritiesIds
 	}
 	return nil
 }
@@ -476,14 +476,14 @@ const file_apfish_v1_permission_permission_service_proto_rawDesc = "" +
 	"\bper_page\x18\x02 \x01(\x05R\aperPage\"\x8b\x01\n" +
 	"\x17ListPermissionsResponse\x12Z\n" +
 	"\x10list_permissions\x18\x01 \x03(\v2/.apfish.v1.permission.summary.PermissionSummaryR\x0flistPermissions\x12\x14\n" +
-	"\x05total\x18\x02 \x01(\x05R\x05total\"\xfb\x02\n" +
+	"\x05total\x18\x02 \x01(\x05R\x05total\"\xff\x02\n" +
 	"\x17CreatePermissionRequest\x12\x1b\n" +
 	"\taction_id\x18\x01 \x01(\x05R\bactionId\x12\x1b\n" +
 	"\tobject_id\x18\x02 \x01(\x05R\bobjectId\x12>\n" +
 	"\vdescription\x18\x03 \x01(\v2\x1c.google.protobuf.StringValueR\vdescription\x120\n" +
 	"\x04name\x18\x04 \x01(\v2\x1c.google.protobuf.StringValueR\x04name\x120\n" +
-	"\x04code\x18\x05 \x01(\v2\x1c.google.protobuf.StringValueR\x04code\x12#\n" +
-	"\rcountries_ids\x18\x06 \x03(\x05R\fcountriesIds\x12#\n" +
+	"\x04code\x18\x05 \x01(\v2\x1c.google.protobuf.StringValueR\x04code\x12'\n" +
+	"\x0fauthorities_ids\x18\x06 \x03(\x05R\x0eauthoritiesIds\x12#\n" +
 	"\rdistricts_ids\x18\a \x03(\x05R\fdistrictsIds\x12\x1b\n" +
 	"\tports_ids\x18\b \x03(\x05R\bportsIds\x12\x1b\n" +
 	"\tships_ids\x18\t \x03(\x05R\bshipsIds\"?\n" +

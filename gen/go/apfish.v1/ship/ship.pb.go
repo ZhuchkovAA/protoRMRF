@@ -8,7 +8,7 @@ package ship
 
 import (
 	summary3 "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/call_sign/summary"
-	summary2 "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/country/summary"
+	summary2 "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/authority/summary"
 	summary5 "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/summary"
 	summary4 "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/ship/captain/summary"
 	summary1 "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/ship/class/summary"
@@ -34,7 +34,7 @@ type Ship struct {
 	Imo           int32                         `protobuf:"varint,2,opt,name=imo,proto3" json:"imo,omitempty"`
 	Type          *summary.TypeSummary          `protobuf:"bytes,3,opt,name=type,proto3" json:"type,omitempty"`
 	Class         *summary1.ClassSummary        `protobuf:"bytes,4,opt,name=class,proto3" json:"class,omitempty"`
-	Country       *summary2.CountrySummary      `protobuf:"bytes,5,opt,name=country,proto3" json:"country,omitempty"`
+	Authority     *summary2.AuthoritySummary    `protobuf:"bytes,5,opt,name=authority,proto3" json:"authority,omitempty"`
 	Name          string                        `protobuf:"bytes,6,opt,name=name,proto3" json:"name,omitempty"`
 	Mmsi          int32                         `protobuf:"varint,7,opt,name=mmsi,proto3" json:"mmsi,omitempty"`
 	CallSign      *summary3.CallSignSummary     `protobuf:"bytes,8,opt,name=call_sign,json=callSign,proto3" json:"call_sign,omitempty"`
@@ -107,9 +107,9 @@ func (x *Ship) GetClass() *summary1.ClassSummary {
 	return nil
 }
 
-func (x *Ship) GetCountry() *summary2.CountrySummary {
+func (x *Ship) GetAuthority() *summary2.AuthoritySummary {
 	if x != nil {
-		return x.Country
+		return x.Authority
 	}
 	return nil
 }
@@ -188,13 +188,13 @@ var File_apfish_v1_ship_ship_proto protoreflect.FileDescriptor
 
 const file_apfish_v1_ship_ship_proto_rawDesc = "" +
 	"\n" +
-	"\x19apfish.v1/ship/ship.proto\x12\x0eapfish.v1.ship\x1a\x1fgoogle/protobuf/timestamp.proto\x1a.apfish.v1/ship/type/summary/type_summary.proto\x1a0apfish.v1/ship/class/summary/class_summary.proto\x1a8apfish.v1/location/country/summary/country_summary.proto\x1a3apfish.v1/call_sign/summary/call_sign_summary.proto\x1a4apfish.v1/ship/captain/summary/captain_summary.proto\x1a5apfish.v1/permission/summary/permission_summary.proto\"\xe1\x05\n" +
+	"\x19apfish.v1/ship/ship.proto\x12\x0eapfish.v1.ship\x1a\x1fgoogle/protobuf/timestamp.proto\x1a.apfish.v1/ship/type/summary/type_summary.proto\x1a0apfish.v1/ship/class/summary/class_summary.proto\x1a<apfish.v1/location/authority/summary/authority_summary.proto\x1a3apfish.v1/call_sign/summary/call_sign_summary.proto\x1a4apfish.v1/ship/captain/summary/captain_summary.proto\x1a5apfish.v1/permission/summary/permission_summary.proto\"\xe9\x05\n" +
 	"\x04Ship\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x10\n" +
 	"\x03imo\x18\x02 \x01(\x05R\x03imo\x12<\n" +
 	"\x04type\x18\x03 \x01(\v2(.apfish.v1.ship.type.summary.TypeSummaryR\x04type\x12@\n" +
-	"\x05class\x18\x04 \x01(\v2*.apfish.v1.ship.class.summary.ClassSummaryR\x05class\x12L\n" +
-	"\acountry\x18\x05 \x01(\v22.apfish.v1.location.country.summary.CountrySummaryR\acountry\x12\x12\n" +
+	"\x05class\x18\x04 \x01(\v2*.apfish.v1.ship.class.summary.ClassSummaryR\x05class\x12T\n" +
+	"\tauthority\x18\x05 \x01(\v26.apfish.v1.location.authority.summary.AuthoritySummaryR\tauthority\x12\x12\n" +
 	"\x04name\x18\x06 \x01(\tR\x04name\x12\x12\n" +
 	"\x04mmsi\x18\a \x01(\x05R\x04mmsi\x12I\n" +
 	"\tcall_sign\x18\b \x01(\v2,.apfish.v1.call_sign.summary.CallSignSummaryR\bcallSign\x12&\n" +
@@ -227,7 +227,7 @@ var file_apfish_v1_ship_ship_proto_goTypes = []any{
 	(*Ship)(nil),                       // 0: apfish.v1.ship.Ship
 	(*summary.TypeSummary)(nil),        // 1: apfish.v1.ship.type.summary.TypeSummary
 	(*summary1.ClassSummary)(nil),      // 2: apfish.v1.ship.class.summary.ClassSummary
-	(*summary2.CountrySummary)(nil),    // 3: apfish.v1.location.country.summary.CountrySummary
+	(*summary2.AuthoritySummary)(nil),  // 3: apfish.v1.location.authority.summary.AuthoritySummary
 	(*summary3.CallSignSummary)(nil),   // 4: apfish.v1.call_sign.summary.CallSignSummary
 	(*timestamppb.Timestamp)(nil),      // 5: google.protobuf.Timestamp
 	(*summary4.CaptainSummary)(nil),    // 6: apfish.v1.ship.captain.summary.CaptainSummary
@@ -236,7 +236,7 @@ var file_apfish_v1_ship_ship_proto_goTypes = []any{
 var file_apfish_v1_ship_ship_proto_depIdxs = []int32{
 	1, // 0: apfish.v1.ship.Ship.type:type_name -> apfish.v1.ship.type.summary.TypeSummary
 	2, // 1: apfish.v1.ship.Ship.class:type_name -> apfish.v1.ship.class.summary.ClassSummary
-	3, // 2: apfish.v1.ship.Ship.country:type_name -> apfish.v1.location.country.summary.CountrySummary
+	3, // 2: apfish.v1.ship.Ship.authority:type_name -> apfish.v1.location.authority.summary.AuthoritySummary
 	4, // 3: apfish.v1.ship.Ship.call_sign:type_name -> apfish.v1.call_sign.summary.CallSignSummary
 	5, // 4: apfish.v1.ship.Ship.date_build:type_name -> google.protobuf.Timestamp
 	5, // 5: apfish.v1.ship.Ship.created_at:type_name -> google.protobuf.Timestamp

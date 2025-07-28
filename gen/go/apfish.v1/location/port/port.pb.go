@@ -7,7 +7,7 @@
 package location_port
 
 import (
-	summary "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/country/summary"
+	summary "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/authority/summary"
 	summary1 "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/district/summary"
 	summary2 "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/summary"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -29,7 +29,7 @@ type Port struct {
 	state         protoimpl.MessageState        `protogen:"open.v1"`
 	Id            int32                         `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	Name          string                        `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	Country       *summary.CountrySummary       `protobuf:"bytes,3,opt,name=country,proto3" json:"country,omitempty"`
+	Authority     *summary.AuthoritySummary     `protobuf:"bytes,3,opt,name=authority,proto3" json:"authority,omitempty"`
 	District      *summary1.DistrictSummary     `protobuf:"bytes,4,opt,name=district,proto3" json:"district,omitempty"`
 	Code          string                        `protobuf:"bytes,5,opt,name=code,proto3" json:"code,omitempty"`
 	CreatedAt     *timestamppb.Timestamp        `protobuf:"bytes,6,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
@@ -82,9 +82,9 @@ func (x *Port) GetName() string {
 	return ""
 }
 
-func (x *Port) GetCountry() *summary.CountrySummary {
+func (x *Port) GetAuthority() *summary.AuthoritySummary {
 	if x != nil {
-		return x.Country
+		return x.Authority
 	}
 	return nil
 }
@@ -121,11 +121,11 @@ var File_apfish_v1_location_port_port_proto protoreflect.FileDescriptor
 
 const file_apfish_v1_location_port_port_proto_rawDesc = "" +
 	"\n" +
-	"\"apfish.v1/location/port/port.proto\x12\x17apfish.v1.location.port\x1a\x1fgoogle/protobuf/timestamp.proto\x1a8apfish.v1/location/country/summary/country_summary.proto\x1a:apfish.v1/location/district/summary/district_summary.proto\x1a5apfish.v1/permission/summary/permission_summary.proto\"\xec\x02\n" +
+	"\"apfish.v1/location/port/port.proto\x12\x17apfish.v1.location.port\x1a\x1fgoogle/protobuf/timestamp.proto\x1a<apfish.v1/location/authority/summary/authority_summary.proto\x1a:apfish.v1/location/district/summary/district_summary.proto\x1a5apfish.v1/permission/summary/permission_summary.proto\"\xf4\x02\n" +
 	"\x04Port\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12L\n" +
-	"\acountry\x18\x03 \x01(\v22.apfish.v1.location.country.summary.CountrySummaryR\acountry\x12P\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12T\n" +
+	"\tauthority\x18\x03 \x01(\v26.apfish.v1.location.authority.summary.AuthoritySummaryR\tauthority\x12P\n" +
 	"\bdistrict\x18\x04 \x01(\v24.apfish.v1.location.district.summary.DistrictSummaryR\bdistrict\x12\x12\n" +
 	"\x04code\x18\x05 \x01(\tR\x04code\x129\n" +
 	"\n" +
@@ -147,13 +147,13 @@ func file_apfish_v1_location_port_port_proto_rawDescGZIP() []byte {
 var file_apfish_v1_location_port_port_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_apfish_v1_location_port_port_proto_goTypes = []any{
 	(*Port)(nil),                       // 0: apfish.v1.location.port.Port
-	(*summary.CountrySummary)(nil),     // 1: apfish.v1.location.country.summary.CountrySummary
+	(*summary.AuthoritySummary)(nil),   // 1: apfish.v1.location.authority.summary.AuthoritySummary
 	(*summary1.DistrictSummary)(nil),   // 2: apfish.v1.location.district.summary.DistrictSummary
 	(*timestamppb.Timestamp)(nil),      // 3: google.protobuf.Timestamp
 	(*summary2.PermissionSummary)(nil), // 4: apfish.v1.permission.summary.PermissionSummary
 }
 var file_apfish_v1_location_port_port_proto_depIdxs = []int32{
-	1, // 0: apfish.v1.location.port.Port.country:type_name -> apfish.v1.location.country.summary.CountrySummary
+	1, // 0: apfish.v1.location.port.Port.authority:type_name -> apfish.v1.location.authority.summary.AuthoritySummary
 	2, // 1: apfish.v1.location.port.Port.district:type_name -> apfish.v1.location.district.summary.DistrictSummary
 	3, // 2: apfish.v1.location.port.Port.created_at:type_name -> google.protobuf.Timestamp
 	4, // 3: apfish.v1.location.port.Port.permissions:type_name -> apfish.v1.permission.summary.PermissionSummary
