@@ -70,6 +70,11 @@ export interface UpdateUserRequest {
   user: UserPatch | undefined;
 }
 
+export interface AssignPermissionsRequest {
+  login: string;
+  permissionsIds: string[];
+}
+
 function createBaseUserRequest(): UserRequest {
   return { login: "" };
 }
@@ -580,6 +585,82 @@ export const UpdateUserRequest = {
   },
 };
 
+function createBaseAssignPermissionsRequest(): AssignPermissionsRequest {
+  return { login: "", permissionsIds: [] };
+}
+
+export const AssignPermissionsRequest = {
+  encode(message: AssignPermissionsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.login !== "") {
+      writer.uint32(10).string(message.login);
+    }
+    for (const v of message.permissionsIds) {
+      writer.uint32(18).string(v!);
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): AssignPermissionsRequest {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseAssignPermissionsRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag !== 10) {
+            break;
+          }
+
+          message.login = reader.string();
+          continue;
+        case 2:
+          if (tag !== 18) {
+            break;
+          }
+
+          message.permissionsIds.push(reader.string());
+          continue;
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): AssignPermissionsRequest {
+    return {
+      login: isSet(object.login) ? globalThis.String(object.login) : "",
+      permissionsIds: globalThis.Array.isArray(object?.permissionsIds)
+        ? object.permissionsIds.map((e: any) => globalThis.String(e))
+        : [],
+    };
+  },
+
+  toJSON(message: AssignPermissionsRequest): unknown {
+    const obj: any = {};
+    if (message.login !== "") {
+      obj.login = message.login;
+    }
+    if (message.permissionsIds?.length) {
+      obj.permissionsIds = message.permissionsIds;
+    }
+    return obj;
+  },
+
+  create<I extends Exact<DeepPartial<AssignPermissionsRequest>, I>>(base?: I): AssignPermissionsRequest {
+    return AssignPermissionsRequest.fromPartial(base ?? ({} as any));
+  },
+  fromPartial<I extends Exact<DeepPartial<AssignPermissionsRequest>, I>>(object: I): AssignPermissionsRequest {
+    const message = createBaseAssignPermissionsRequest();
+    message.login = object.login ?? "";
+    message.permissionsIds = object.permissionsIds?.map((e) => e) || [];
+    return message;
+  },
+};
+
 /** User defines RPC methods for user management. */
 export type UserServiceService = typeof UserServiceService;
 export const UserServiceService = {
@@ -627,6 +708,15 @@ export const UserServiceService = {
     responseSerialize: (value: SuccessResponse) => Buffer.from(SuccessResponse.encode(value).finish()),
     responseDeserialize: (value: Buffer) => SuccessResponse.decode(value),
   },
+  assignPermissions: {
+    path: "/apfish.v1.user.UserService/AssignPermissions",
+    requestStream: false,
+    responseStream: false,
+    requestSerialize: (value: AssignPermissionsRequest) => Buffer.from(AssignPermissionsRequest.encode(value).finish()),
+    requestDeserialize: (value: Buffer) => AssignPermissionsRequest.decode(value),
+    responseSerialize: (value: SuccessResponse) => Buffer.from(SuccessResponse.encode(value).finish()),
+    responseDeserialize: (value: Buffer) => SuccessResponse.decode(value),
+  },
 } as const;
 
 export interface UserServiceServer extends UntypedServiceImplementation {
@@ -642,6 +732,7 @@ export interface UserServiceServer extends UntypedServiceImplementation {
   listUsers: handleUnaryCall<ListUsersRequest, ListUsersResponse>;
   createUser: handleUnaryCall<CreateUserRequest, CreateUserResponse>;
   updateUser: handleUnaryCall<UpdateUserRequest, SuccessResponse>;
+  assignPermissions: handleUnaryCall<AssignPermissionsRequest, SuccessResponse>;
 }
 
 export interface UserServiceClient extends Client {
@@ -709,6 +800,21 @@ export interface UserServiceClient extends Client {
   ): ClientUnaryCall;
   updateUser(
     request: UpdateUserRequest,
+    metadata: Metadata,
+    options: Partial<CallOptions>,
+    callback: (error: ServiceError | null, response: SuccessResponse) => void,
+  ): ClientUnaryCall;
+  assignPermissions(
+    request: AssignPermissionsRequest,
+    callback: (error: ServiceError | null, response: SuccessResponse) => void,
+  ): ClientUnaryCall;
+  assignPermissions(
+    request: AssignPermissionsRequest,
+    metadata: Metadata,
+    callback: (error: ServiceError | null, response: SuccessResponse) => void,
+  ): ClientUnaryCall;
+  assignPermissions(
+    request: AssignPermissionsRequest,
     metadata: Metadata,
     options: Partial<CallOptions>,
     callback: (error: ServiceError | null, response: SuccessResponse) => void,

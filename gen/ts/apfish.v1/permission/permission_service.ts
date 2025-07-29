@@ -66,6 +66,14 @@ export interface CreatePermissionResponse {
   permissionId: string;
 }
 
+export interface CreatePermissionsRequest {
+  permissions: CreatePermissionRequest[];
+}
+
+export interface CreatePermissionsResponse {
+  permissionsIds: string[];
+}
+
 export interface DeletePermissionRequest {
   permissionId: string;
 }
@@ -645,6 +653,128 @@ export const CreatePermissionResponse = {
   },
 };
 
+function createBaseCreatePermissionsRequest(): CreatePermissionsRequest {
+  return { permissions: [] };
+}
+
+export const CreatePermissionsRequest = {
+  encode(message: CreatePermissionsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    for (const v of message.permissions) {
+      CreatePermissionRequest.encode(v!, writer.uint32(10).fork()).ldelim();
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): CreatePermissionsRequest {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCreatePermissionsRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag !== 10) {
+            break;
+          }
+
+          message.permissions.push(CreatePermissionRequest.decode(reader, reader.uint32()));
+          continue;
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CreatePermissionsRequest {
+    return {
+      permissions: globalThis.Array.isArray(object?.permissions)
+        ? object.permissions.map((e: any) => CreatePermissionRequest.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CreatePermissionsRequest): unknown {
+    const obj: any = {};
+    if (message.permissions?.length) {
+      obj.permissions = message.permissions.map((e) => CreatePermissionRequest.toJSON(e));
+    }
+    return obj;
+  },
+
+  create<I extends Exact<DeepPartial<CreatePermissionsRequest>, I>>(base?: I): CreatePermissionsRequest {
+    return CreatePermissionsRequest.fromPartial(base ?? ({} as any));
+  },
+  fromPartial<I extends Exact<DeepPartial<CreatePermissionsRequest>, I>>(object: I): CreatePermissionsRequest {
+    const message = createBaseCreatePermissionsRequest();
+    message.permissions = object.permissions?.map((e) => CreatePermissionRequest.fromPartial(e)) || [];
+    return message;
+  },
+};
+
+function createBaseCreatePermissionsResponse(): CreatePermissionsResponse {
+  return { permissionsIds: [] };
+}
+
+export const CreatePermissionsResponse = {
+  encode(message: CreatePermissionsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    for (const v of message.permissionsIds) {
+      writer.uint32(10).string(v!);
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): CreatePermissionsResponse {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCreatePermissionsResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag !== 10) {
+            break;
+          }
+
+          message.permissionsIds.push(reader.string());
+          continue;
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CreatePermissionsResponse {
+    return {
+      permissionsIds: globalThis.Array.isArray(object?.permissionsIds)
+        ? object.permissionsIds.map((e: any) => globalThis.String(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CreatePermissionsResponse): unknown {
+    const obj: any = {};
+    if (message.permissionsIds?.length) {
+      obj.permissionsIds = message.permissionsIds;
+    }
+    return obj;
+  },
+
+  create<I extends Exact<DeepPartial<CreatePermissionsResponse>, I>>(base?: I): CreatePermissionsResponse {
+    return CreatePermissionsResponse.fromPartial(base ?? ({} as any));
+  },
+  fromPartial<I extends Exact<DeepPartial<CreatePermissionsResponse>, I>>(object: I): CreatePermissionsResponse {
+    const message = createBaseCreatePermissionsResponse();
+    message.permissionsIds = object.permissionsIds?.map((e) => e) || [];
+    return message;
+  },
+};
+
 function createBaseDeletePermissionRequest(): DeletePermissionRequest {
   return { permissionId: "" };
 }
@@ -742,6 +872,16 @@ export const PermissionServiceService = {
       Buffer.from(CreatePermissionResponse.encode(value).finish()),
     responseDeserialize: (value: Buffer) => CreatePermissionResponse.decode(value),
   },
+  createPermissions: {
+    path: "/apfish.v1.permission.PermissionService/CreatePermissions",
+    requestStream: false,
+    responseStream: false,
+    requestSerialize: (value: CreatePermissionsRequest) => Buffer.from(CreatePermissionsRequest.encode(value).finish()),
+    requestDeserialize: (value: Buffer) => CreatePermissionsRequest.decode(value),
+    responseSerialize: (value: CreatePermissionsResponse) =>
+      Buffer.from(CreatePermissionsResponse.encode(value).finish()),
+    responseDeserialize: (value: Buffer) => CreatePermissionsResponse.decode(value),
+  },
   deletePermission: {
     path: "/apfish.v1.permission.PermissionService/DeletePermission",
     requestStream: false,
@@ -758,6 +898,7 @@ export interface PermissionServiceServer extends UntypedServiceImplementation {
   getPermissionSummary: handleUnaryCall<PermissionRequest, PermissionSummaryResponse>;
   listPermissions: handleUnaryCall<ListPermissionsRequest, ListPermissionsResponse>;
   createPermission: handleUnaryCall<CreatePermissionRequest, CreatePermissionResponse>;
+  createPermissions: handleUnaryCall<CreatePermissionsRequest, CreatePermissionsResponse>;
   deletePermission: handleUnaryCall<DeletePermissionRequest, SuccessResponse>;
 }
 
@@ -821,6 +962,21 @@ export interface PermissionServiceClient extends Client {
     metadata: Metadata,
     options: Partial<CallOptions>,
     callback: (error: ServiceError | null, response: CreatePermissionResponse) => void,
+  ): ClientUnaryCall;
+  createPermissions(
+    request: CreatePermissionsRequest,
+    callback: (error: ServiceError | null, response: CreatePermissionsResponse) => void,
+  ): ClientUnaryCall;
+  createPermissions(
+    request: CreatePermissionsRequest,
+    metadata: Metadata,
+    callback: (error: ServiceError | null, response: CreatePermissionsResponse) => void,
+  ): ClientUnaryCall;
+  createPermissions(
+    request: CreatePermissionsRequest,
+    metadata: Metadata,
+    options: Partial<CallOptions>,
+    callback: (error: ServiceError | null, response: CreatePermissionsResponse) => void,
   ): ClientUnaryCall;
   deletePermission(
     request: DeletePermissionRequest,

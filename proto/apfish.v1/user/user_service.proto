@@ -18,10 +18,11 @@ service UserService {
   // and returns paginated results.
   rpc ListUsers (ListUsersRequest) returns (ListUsersResponse);
 
-
   rpc CreateUser (CreateUserRequest) returns (CreateUserResponse);
 
   rpc UpdateUser(UpdateUserRequest) returns (helper.SuccessResponse);
+
+  rpc AssignPermissions(AssignPermissionsRequest) returns (helper.SuccessResponse);
 }
 
 // Request to fetch a specific user.
@@ -63,4 +64,7 @@ message UpdateUserRequest {
   UserPatch user = 1;
 }
 
-
+message AssignPermissionsRequest {
+  string login = 1;
+  repeated string permissions_ids = 2;
+}

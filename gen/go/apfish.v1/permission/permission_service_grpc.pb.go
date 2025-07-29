@@ -24,6 +24,7 @@ const (
 	PermissionService_GetPermissionSummary_FullMethodName = "/apfish.v1.permission.PermissionService/GetPermissionSummary"
 	PermissionService_ListPermissions_FullMethodName      = "/apfish.v1.permission.PermissionService/ListPermissions"
 	PermissionService_CreatePermission_FullMethodName     = "/apfish.v1.permission.PermissionService/CreatePermission"
+	PermissionService_CreatePermissions_FullMethodName    = "/apfish.v1.permission.PermissionService/CreatePermissions"
 	PermissionService_DeletePermission_FullMethodName     = "/apfish.v1.permission.PermissionService/DeletePermission"
 )
 
@@ -35,6 +36,7 @@ type PermissionServiceClient interface {
 	GetPermissionSummary(ctx context.Context, in *PermissionRequest, opts ...grpc.CallOption) (*PermissionSummaryResponse, error)
 	ListPermissions(ctx context.Context, in *ListPermissionsRequest, opts ...grpc.CallOption) (*ListPermissionsResponse, error)
 	CreatePermission(ctx context.Context, in *CreatePermissionRequest, opts ...grpc.CallOption) (*CreatePermissionResponse, error)
+	CreatePermissions(ctx context.Context, in *CreatePermissionsRequest, opts ...grpc.CallOption) (*CreatePermissionsResponse, error)
 	DeletePermission(ctx context.Context, in *DeletePermissionRequest, opts ...grpc.CallOption) (*helper.SuccessResponse, error)
 }
 
@@ -86,6 +88,16 @@ func (c *permissionServiceClient) CreatePermission(ctx context.Context, in *Crea
 	return out, nil
 }
 
+func (c *permissionServiceClient) CreatePermissions(ctx context.Context, in *CreatePermissionsRequest, opts ...grpc.CallOption) (*CreatePermissionsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CreatePermissionsResponse)
+	err := c.cc.Invoke(ctx, PermissionService_CreatePermissions_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *permissionServiceClient) DeletePermission(ctx context.Context, in *DeletePermissionRequest, opts ...grpc.CallOption) (*helper.SuccessResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(helper.SuccessResponse)
@@ -104,6 +116,7 @@ type PermissionServiceServer interface {
 	GetPermissionSummary(context.Context, *PermissionRequest) (*PermissionSummaryResponse, error)
 	ListPermissions(context.Context, *ListPermissionsRequest) (*ListPermissionsResponse, error)
 	CreatePermission(context.Context, *CreatePermissionRequest) (*CreatePermissionResponse, error)
+	CreatePermissions(context.Context, *CreatePermissionsRequest) (*CreatePermissionsResponse, error)
 	DeletePermission(context.Context, *DeletePermissionRequest) (*helper.SuccessResponse, error)
 	mustEmbedUnimplementedPermissionServiceServer()
 }
@@ -126,6 +139,9 @@ func (UnimplementedPermissionServiceServer) ListPermissions(context.Context, *Li
 }
 func (UnimplementedPermissionServiceServer) CreatePermission(context.Context, *CreatePermissionRequest) (*CreatePermissionResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreatePermission not implemented")
+}
+func (UnimplementedPermissionServiceServer) CreatePermissions(context.Context, *CreatePermissionsRequest) (*CreatePermissionsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreatePermissions not implemented")
 }
 func (UnimplementedPermissionServiceServer) DeletePermission(context.Context, *DeletePermissionRequest) (*helper.SuccessResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeletePermission not implemented")
@@ -223,6 +239,24 @@ func _PermissionService_CreatePermission_Handler(srv interface{}, ctx context.Co
 	return interceptor(ctx, in, info, handler)
 }
 
+func _PermissionService_CreatePermissions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreatePermissionsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PermissionServiceServer).CreatePermissions(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: PermissionService_CreatePermissions_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PermissionServiceServer).CreatePermissions(ctx, req.(*CreatePermissionsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _PermissionService_DeletePermission_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DeletePermissionRequest)
 	if err := dec(in); err != nil {
@@ -263,6 +297,10 @@ var PermissionService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "CreatePermission",
 			Handler:    _PermissionService_CreatePermission_Handler,
+		},
+		{
+			MethodName: "CreatePermissions",
+			Handler:    _PermissionService_CreatePermissions_Handler,
 		},
 		{
 			MethodName: "DeletePermission",
