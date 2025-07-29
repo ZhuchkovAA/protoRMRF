@@ -25,7 +25,7 @@ const (
 
 type ContactRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -60,11 +60,11 @@ func (*ContactRequest) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_user_contact_contact_service_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *ContactRequest) GetId() int32 {
+func (x *ContactRequest) GetId() string {
 	if x != nil {
 		return x.Id
 	}
-	return 0
+	return ""
 }
 
 type ContactResponse struct {
@@ -157,7 +157,7 @@ func (x *ContactSummaryResponse) GetContact() *summary.ContactSummary {
 
 type ListUserContactsRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	UserId        int32                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	UserId        string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -192,11 +192,11 @@ func (*ListUserContactsRequest) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_user_contact_contact_service_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *ListUserContactsRequest) GetUserId() int32 {
+func (x *ListUserContactsRequest) GetUserId() string {
 	if x != nil {
 		return x.UserId
 	}
-	return 0
+	return ""
 }
 
 type ListContactsResponse struct {
@@ -289,8 +289,8 @@ func (x *UpdateContactRequest) GetContact() *ContactPatch {
 
 type CreateContactRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	UserId        int32                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
-	TypeId        int32                  `protobuf:"varint,2,opt,name=type_id,json=typeId,proto3" json:"type_id,omitempty"`
+	UserId        string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	TypeId        string                 `protobuf:"bytes,2,opt,name=type_id,json=typeId,proto3" json:"type_id,omitempty"`
 	Value         string                 `protobuf:"bytes,3,opt,name=value,proto3" json:"value,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -326,18 +326,18 @@ func (*CreateContactRequest) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_user_contact_contact_service_proto_rawDescGZIP(), []int{6}
 }
 
-func (x *CreateContactRequest) GetUserId() int32 {
+func (x *CreateContactRequest) GetUserId() string {
 	if x != nil {
 		return x.UserId
 	}
-	return 0
+	return ""
 }
 
-func (x *CreateContactRequest) GetTypeId() int32 {
+func (x *CreateContactRequest) GetTypeId() string {
 	if x != nil {
 		return x.TypeId
 	}
-	return 0
+	return ""
 }
 
 func (x *CreateContactRequest) GetValue() string {
@@ -349,7 +349,7 @@ func (x *CreateContactRequest) GetValue() string {
 
 type CreateContactResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	ContactId     int32                  `protobuf:"varint,1,opt,name=contact_id,json=contactId,proto3" json:"contact_id,omitempty"`
+	ContactId     string                 `protobuf:"bytes,1,opt,name=contact_id,json=contactId,proto3" json:"contact_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -384,16 +384,16 @@ func (*CreateContactResponse) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_user_contact_contact_service_proto_rawDescGZIP(), []int{7}
 }
 
-func (x *CreateContactResponse) GetContactId() int32 {
+func (x *CreateContactResponse) GetContactId() string {
 	if x != nil {
 		return x.ContactId
 	}
-	return 0
+	return ""
 }
 
 type DeleteContactRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	ContactId     int32                  `protobuf:"varint,1,opt,name=contact_id,json=contactId,proto3" json:"contact_id,omitempty"`
+	ContactId     string                 `protobuf:"bytes,1,opt,name=contact_id,json=contactId,proto3" json:"contact_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -428,11 +428,11 @@ func (*DeleteContactRequest) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_user_contact_contact_service_proto_rawDescGZIP(), []int{8}
 }
 
-func (x *DeleteContactRequest) GetContactId() int32 {
+func (x *DeleteContactRequest) GetContactId() string {
 	if x != nil {
 		return x.ContactId
 	}
-	return 0
+	return ""
 }
 
 var File_apfish_v1_user_contact_contact_service_proto protoreflect.FileDescriptor
@@ -441,27 +441,27 @@ const file_apfish_v1_user_contact_contact_service_proto_rawDesc = "" +
 	"\n" +
 	",apfish.v1/user/contact/contact_service.proto\x12\x16apfish.v1.user.contact\x1a\x1dapfish.v1/helper/helper.proto\x1a$apfish.v1/user/contact/contact.proto\x1a4apfish.v1/user/contact/summary/contact_summary.proto\" \n" +
 	"\x0eContactRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\"L\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\"L\n" +
 	"\x0fContactResponse\x129\n" +
 	"\acontact\x18\x01 \x01(\v2\x1f.apfish.v1.user.contact.ContactR\acontact\"b\n" +
 	"\x16ContactSummaryResponse\x12H\n" +
 	"\acontact\x18\x01 \x01(\v2..apfish.v1.user.contact.summary.ContactSummaryR\acontact\"2\n" +
 	"\x17ListUserContactsRequest\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\x05R\x06userId\"k\n" +
+	"\auser_id\x18\x01 \x01(\tR\x06userId\"k\n" +
 	"\x14ListContactsResponse\x12S\n" +
 	"\rlist_contacts\x18\x01 \x03(\v2..apfish.v1.user.contact.summary.ContactSummaryR\flistContacts\"V\n" +
 	"\x14UpdateContactRequest\x12>\n" +
 	"\acontact\x18\x01 \x01(\v2$.apfish.v1.user.contact.ContactPatchR\acontact\"^\n" +
 	"\x14CreateContactRequest\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\x05R\x06userId\x12\x17\n" +
-	"\atype_id\x18\x02 \x01(\x05R\x06typeId\x12\x14\n" +
+	"\auser_id\x18\x01 \x01(\tR\x06userId\x12\x17\n" +
+	"\atype_id\x18\x02 \x01(\tR\x06typeId\x12\x14\n" +
 	"\x05value\x18\x03 \x01(\tR\x05value\"6\n" +
 	"\x15CreateContactResponse\x12\x1d\n" +
 	"\n" +
-	"contact_id\x18\x01 \x01(\x05R\tcontactId\"5\n" +
+	"contact_id\x18\x01 \x01(\tR\tcontactId\"5\n" +
 	"\x14DeleteContactRequest\x12\x1d\n" +
 	"\n" +
-	"contact_id\x18\x01 \x01(\x05R\tcontactId2\x81\x05\n" +
+	"contact_id\x18\x01 \x01(\tR\tcontactId2\x81\x05\n" +
 	"\x0eContactService\x12]\n" +
 	"\n" +
 	"GetContact\x12&.apfish.v1.user.contact.ContactRequest\x1a'.apfish.v1.user.contact.ContactResponse\x12k\n" +

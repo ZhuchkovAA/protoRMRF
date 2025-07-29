@@ -24,7 +24,7 @@ const (
 
 type ActionRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -59,11 +59,11 @@ func (*ActionRequest) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_permission_action_action_service_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *ActionRequest) GetId() int32 {
+func (x *ActionRequest) GetId() string {
 	if x != nil {
 		return x.Id
 	}
-	return 0
+	return ""
 }
 
 type ActionResponse struct {
@@ -264,7 +264,7 @@ const file_apfish_v1_permission_action_action_service_proto_rawDesc = "" +
 	"\n" +
 	"0apfish.v1/permission/action/action_service.proto\x12\x1bapfish.v1.permission.action\x1a(apfish.v1/permission/action/action.proto\x1a8apfish.v1/permission/action/summary/action_summary.proto\"\x1f\n" +
 	"\rActionRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\"M\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\"M\n" +
 	"\x0eActionResponse\x12;\n" +
 	"\x06action\x18\x01 \x01(\v2#.apfish.v1.permission.action.ActionR\x06action\"c\n" +
 	"\x15ActionSummaryResponse\x12J\n" +

@@ -24,7 +24,7 @@ const (
 
 type RoleSummary struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`    // Unique role ID.
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`     // Unique role ID.
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"` // Human-readable name (e.g., "Admin").
 	Code          string                 `protobuf:"bytes,3,opt,name=code,proto3" json:"code,omitempty"`
 	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"` // When the role was created.
@@ -62,11 +62,11 @@ func (*RoleSummary) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_user_role_summary_role_summary_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *RoleSummary) GetId() int32 {
+func (x *RoleSummary) GetId() string {
 	if x != nil {
 		return x.Id
 	}
-	return 0
+	return ""
 }
 
 func (x *RoleSummary) GetName() string {
@@ -96,7 +96,7 @@ const file_apfish_v1_user_role_summary_role_summary_proto_rawDesc = "" +
 	"\n" +
 	".apfish.v1/user/role/summary/role_summary.proto\x12\x1bapfish.v1.user.role.summary\x1a\x1fgoogle/protobuf/timestamp.proto\"\x80\x01\n" +
 	"\vRoleSummary\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x12\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x12\n" +
 	"\x04code\x18\x03 \x01(\tR\x04code\x129\n" +
 	"\n" +

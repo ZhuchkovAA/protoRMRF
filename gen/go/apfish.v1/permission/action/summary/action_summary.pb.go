@@ -24,7 +24,7 @@ const (
 
 type ActionSummary struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`                  // Unique identifier for the action
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`                   // Unique identifier for the action
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`               // Human-readable name (e.g., "Read")
 	Description   string                 `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"` // Detailed explanation of the action
 	Code          string                 `protobuf:"bytes,4,opt,name=code,proto3" json:"code,omitempty"`               // Machine-friendly code (e.g., "read")
@@ -63,11 +63,11 @@ func (*ActionSummary) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_permission_action_summary_action_summary_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *ActionSummary) GetId() int32 {
+func (x *ActionSummary) GetId() string {
 	if x != nil {
 		return x.Id
 	}
-	return 0
+	return ""
 }
 
 func (x *ActionSummary) GetName() string {
@@ -104,7 +104,7 @@ const file_apfish_v1_permission_action_summary_action_summary_proto_rawDesc = ""
 	"\n" +
 	"8apfish.v1/permission/action/summary/action_summary.proto\x12#apfish.v1.permission.action.summary\x1a\x1fgoogle/protobuf/timestamp.proto\"\xa4\x01\n" +
 	"\rActionSummary\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x12\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12 \n" +
 	"\vdescription\x18\x03 \x01(\tR\vdescription\x12\x12\n" +
 	"\x04code\x18\x04 \x01(\tR\x04code\x129\n" +

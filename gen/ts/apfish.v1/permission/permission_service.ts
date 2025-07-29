@@ -27,7 +27,7 @@ import { PermissionSummary } from "./summary/permission_summary";
 export const protobufPackage = "apfish.v1.permission";
 
 export interface PermissionRequest {
-  id: number;
+  id: string;
 }
 
 export interface PermissionResponse {
@@ -51,8 +51,8 @@ export interface ListPermissionsResponse {
 }
 
 export interface CreatePermissionRequest {
-  actionId: number;
-  objectId: number;
+  actionId: string;
+  objectId: string;
   description: string | undefined;
   name: string | undefined;
   code: string | undefined;
@@ -63,21 +63,21 @@ export interface CreatePermissionRequest {
 }
 
 export interface CreatePermissionResponse {
-  permissionId: number;
+  permissionId: string;
 }
 
 export interface DeletePermissionRequest {
-  permissionId: number;
+  permissionId: string;
 }
 
 function createBasePermissionRequest(): PermissionRequest {
-  return { id: 0 };
+  return { id: "" };
 }
 
 export const PermissionRequest = {
   encode(message: PermissionRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.id !== 0) {
-      writer.uint32(8).int32(message.id);
+    if (message.id !== "") {
+      writer.uint32(10).string(message.id);
     }
     return writer;
   },
@@ -90,11 +90,11 @@ export const PermissionRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag !== 8) {
+          if (tag !== 10) {
             break;
           }
 
-          message.id = reader.int32();
+          message.id = reader.string();
           continue;
       }
       if ((tag & 7) === 4 || tag === 0) {
@@ -106,13 +106,13 @@ export const PermissionRequest = {
   },
 
   fromJSON(object: any): PermissionRequest {
-    return { id: isSet(object.id) ? globalThis.Number(object.id) : 0 };
+    return { id: isSet(object.id) ? globalThis.String(object.id) : "" };
   },
 
   toJSON(message: PermissionRequest): unknown {
     const obj: any = {};
-    if (message.id !== 0) {
-      obj.id = Math.round(message.id);
+    if (message.id !== "") {
+      obj.id = message.id;
     }
     return obj;
   },
@@ -122,7 +122,7 @@ export const PermissionRequest = {
   },
   fromPartial<I extends Exact<DeepPartial<PermissionRequest>, I>>(object: I): PermissionRequest {
     const message = createBasePermissionRequest();
-    message.id = object.id ?? 0;
+    message.id = object.id ?? "";
     return message;
   },
 };
@@ -397,8 +397,8 @@ export const ListPermissionsResponse = {
 
 function createBaseCreatePermissionRequest(): CreatePermissionRequest {
   return {
-    actionId: 0,
-    objectId: 0,
+    actionId: "",
+    objectId: "",
     description: undefined,
     name: undefined,
     code: undefined,
@@ -411,11 +411,11 @@ function createBaseCreatePermissionRequest(): CreatePermissionRequest {
 
 export const CreatePermissionRequest = {
   encode(message: CreatePermissionRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.actionId !== 0) {
-      writer.uint32(8).int32(message.actionId);
+    if (message.actionId !== "") {
+      writer.uint32(10).string(message.actionId);
     }
-    if (message.objectId !== 0) {
-      writer.uint32(16).int32(message.objectId);
+    if (message.objectId !== "") {
+      writer.uint32(18).string(message.objectId);
     }
     if (message.description !== undefined) {
       StringValue.encode({ value: message.description! }, writer.uint32(26).fork()).ldelim();
@@ -457,18 +457,18 @@ export const CreatePermissionRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag !== 8) {
+          if (tag !== 10) {
             break;
           }
 
-          message.actionId = reader.int32();
+          message.actionId = reader.string();
           continue;
         case 2:
-          if (tag !== 16) {
+          if (tag !== 18) {
             break;
           }
 
-          message.objectId = reader.int32();
+          message.objectId = reader.string();
           continue;
         case 3:
           if (tag !== 26) {
@@ -570,8 +570,8 @@ export const CreatePermissionRequest = {
 
   fromJSON(object: any): CreatePermissionRequest {
     return {
-      actionId: isSet(object.actionId) ? globalThis.Number(object.actionId) : 0,
-      objectId: isSet(object.objectId) ? globalThis.Number(object.objectId) : 0,
+      actionId: isSet(object.actionId) ? globalThis.String(object.actionId) : "",
+      objectId: isSet(object.objectId) ? globalThis.String(object.objectId) : "",
       description: isSet(object.description) ? String(object.description) : undefined,
       name: isSet(object.name) ? String(object.name) : undefined,
       code: isSet(object.code) ? String(object.code) : undefined,
@@ -588,11 +588,11 @@ export const CreatePermissionRequest = {
 
   toJSON(message: CreatePermissionRequest): unknown {
     const obj: any = {};
-    if (message.actionId !== 0) {
-      obj.actionId = Math.round(message.actionId);
+    if (message.actionId !== "") {
+      obj.actionId = message.actionId;
     }
-    if (message.objectId !== 0) {
-      obj.objectId = Math.round(message.objectId);
+    if (message.objectId !== "") {
+      obj.objectId = message.objectId;
     }
     if (message.description !== undefined) {
       obj.description = message.description;
@@ -623,8 +623,8 @@ export const CreatePermissionRequest = {
   },
   fromPartial<I extends Exact<DeepPartial<CreatePermissionRequest>, I>>(object: I): CreatePermissionRequest {
     const message = createBaseCreatePermissionRequest();
-    message.actionId = object.actionId ?? 0;
-    message.objectId = object.objectId ?? 0;
+    message.actionId = object.actionId ?? "";
+    message.objectId = object.objectId ?? "";
     message.description = object.description ?? undefined;
     message.name = object.name ?? undefined;
     message.code = object.code ?? undefined;
@@ -637,13 +637,13 @@ export const CreatePermissionRequest = {
 };
 
 function createBaseCreatePermissionResponse(): CreatePermissionResponse {
-  return { permissionId: 0 };
+  return { permissionId: "" };
 }
 
 export const CreatePermissionResponse = {
   encode(message: CreatePermissionResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.permissionId !== 0) {
-      writer.uint32(8).int32(message.permissionId);
+    if (message.permissionId !== "") {
+      writer.uint32(10).string(message.permissionId);
     }
     return writer;
   },
@@ -656,11 +656,11 @@ export const CreatePermissionResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag !== 8) {
+          if (tag !== 10) {
             break;
           }
 
-          message.permissionId = reader.int32();
+          message.permissionId = reader.string();
           continue;
       }
       if ((tag & 7) === 4 || tag === 0) {
@@ -672,13 +672,13 @@ export const CreatePermissionResponse = {
   },
 
   fromJSON(object: any): CreatePermissionResponse {
-    return { permissionId: isSet(object.permissionId) ? globalThis.Number(object.permissionId) : 0 };
+    return { permissionId: isSet(object.permissionId) ? globalThis.String(object.permissionId) : "" };
   },
 
   toJSON(message: CreatePermissionResponse): unknown {
     const obj: any = {};
-    if (message.permissionId !== 0) {
-      obj.permissionId = Math.round(message.permissionId);
+    if (message.permissionId !== "") {
+      obj.permissionId = message.permissionId;
     }
     return obj;
   },
@@ -688,19 +688,19 @@ export const CreatePermissionResponse = {
   },
   fromPartial<I extends Exact<DeepPartial<CreatePermissionResponse>, I>>(object: I): CreatePermissionResponse {
     const message = createBaseCreatePermissionResponse();
-    message.permissionId = object.permissionId ?? 0;
+    message.permissionId = object.permissionId ?? "";
     return message;
   },
 };
 
 function createBaseDeletePermissionRequest(): DeletePermissionRequest {
-  return { permissionId: 0 };
+  return { permissionId: "" };
 }
 
 export const DeletePermissionRequest = {
   encode(message: DeletePermissionRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.permissionId !== 0) {
-      writer.uint32(8).int32(message.permissionId);
+    if (message.permissionId !== "") {
+      writer.uint32(10).string(message.permissionId);
     }
     return writer;
   },
@@ -713,11 +713,11 @@ export const DeletePermissionRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag !== 8) {
+          if (tag !== 10) {
             break;
           }
 
-          message.permissionId = reader.int32();
+          message.permissionId = reader.string();
           continue;
       }
       if ((tag & 7) === 4 || tag === 0) {
@@ -729,13 +729,13 @@ export const DeletePermissionRequest = {
   },
 
   fromJSON(object: any): DeletePermissionRequest {
-    return { permissionId: isSet(object.permissionId) ? globalThis.Number(object.permissionId) : 0 };
+    return { permissionId: isSet(object.permissionId) ? globalThis.String(object.permissionId) : "" };
   },
 
   toJSON(message: DeletePermissionRequest): unknown {
     const obj: any = {};
-    if (message.permissionId !== 0) {
-      obj.permissionId = Math.round(message.permissionId);
+    if (message.permissionId !== "") {
+      obj.permissionId = message.permissionId;
     }
     return obj;
   },
@@ -745,7 +745,7 @@ export const DeletePermissionRequest = {
   },
   fromPartial<I extends Exact<DeepPartial<DeletePermissionRequest>, I>>(object: I): DeletePermissionRequest {
     const message = createBaseDeletePermissionRequest();
-    message.permissionId = object.permissionId ?? 0;
+    message.permissionId = object.permissionId ?? "";
     return message;
   },
 };

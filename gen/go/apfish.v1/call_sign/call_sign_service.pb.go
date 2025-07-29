@@ -24,7 +24,7 @@ const (
 
 type CallSignRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -59,11 +59,11 @@ func (*CallSignRequest) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_call_sign_call_sign_service_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *CallSignRequest) GetId() int32 {
+func (x *CallSignRequest) GetId() string {
 	if x != nil {
 		return x.Id
 	}
-	return 0
+	return ""
 }
 
 type CallSignResponse struct {
@@ -264,7 +264,7 @@ const file_apfish_v1_call_sign_call_sign_service_proto_rawDesc = "" +
 	"\n" +
 	"+apfish.v1/call_sign/call_sign_service.proto\x12\x13apfish.v1.call_sign\x1a#apfish.v1/call_sign/call_sign.proto\x1a3apfish.v1/call_sign/summary/call_sign_summary.proto\"!\n" +
 	"\x0fCallSignRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\"N\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\"N\n" +
 	"\x10CallSignResponse\x12:\n" +
 	"\tcall_sign\x18\x01 \x01(\v2\x1d.apfish.v1.call_sign.CallSignR\bcallSign\"d\n" +
 	"\x17CallSignSummaryResponse\x12I\n" +

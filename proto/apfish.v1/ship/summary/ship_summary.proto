@@ -7,14 +7,14 @@ option go_package = "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/ship/summa
 import "google/protobuf/timestamp.proto";  // Standard Protocol Buffers timestamp
 
 message ShipSummary {
-  int32 id = 1;
+  string id = 1;
   int32 imo = 2;
-  int32 type_id = 3;
-  int32 class_id = 4;
-  int32 authority_id = 5;
+  string type_id = 3;
+  string class_id = 4;
+  string authority_id = 5;
   string name = 6;
   int32 mmsi = 7;
-  int32 call_sign_id = 8;
+  string call_sign_id = 8;
   string call_sign_value = 9;
   google.protobuf.Timestamp date_build = 10;
   int32 dead_weight = 11;

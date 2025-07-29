@@ -21,7 +21,7 @@ service PermissionService {
 }
 
 message PermissionRequest {
-  int32 id = 1;
+  string id = 1;
 }
 
 message PermissionResponse {
@@ -43,22 +43,22 @@ message ListPermissionsResponse {
 }
 
 message CreatePermissionRequest {
-   int32 action_id = 1;
-   int32 object_id = 2;
-   google.protobuf.StringValue description = 3;
-   google.protobuf.StringValue name = 4;
-   google.protobuf.StringValue code = 5;
+  string action_id = 1;
+  string object_id = 2;
+  google.protobuf.StringValue description = 3;
+  google.protobuf.StringValue name = 4;
+  google.protobuf.StringValue code = 5;
 
-   repeated int32 authorities_ids = 6;
-   repeated int32 districts_ids = 7;
-   repeated int32 ports_ids = 8;
-   repeated int32 ships_ids = 9;
+  repeated int32 authorities_ids = 6;
+  repeated int32 districts_ids = 7;
+  repeated int32 ports_ids = 8;
+  repeated int32 ships_ids = 9;
 }
 
 message CreatePermissionResponse {
-  int32 permission_id = 1;
+  string permission_id = 1;
 }
 
 message DeletePermissionRequest {
-  int32 permission_id = 1;
+  string permission_id = 1;
 }

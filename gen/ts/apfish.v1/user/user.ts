@@ -8,7 +8,7 @@
 import Long from "long";
 import _m0 from "protobufjs/minimal";
 import { Timestamp } from "../../google/protobuf/timestamp";
-import { BoolValue, Int32Value, StringValue } from "../../google/protobuf/wrappers";
+import { BoolValue, StringValue } from "../../google/protobuf/wrappers";
 import { PermissionSummary } from "../permission/summary/permission_summary";
 import { ContactSummary } from "./contact/summary/contact_summary";
 import { RoleSummary } from "./role/summary/role_summary";
@@ -19,7 +19,7 @@ export const protobufPackage = "apfish.v1.user";
 /** Represents a user account in the system. */
 export interface User {
   /** Unique system-generated ID. */
-  id: number;
+  id: string;
   /** Unique login identifier. */
   login: string;
   firstName: string;
@@ -47,13 +47,13 @@ export interface UserPatch {
   firstName: string | undefined;
   lastName: string | undefined;
   middleName: string | undefined;
-  roleId: number | undefined;
+  roleId: string | undefined;
   isActive: boolean | undefined;
 }
 
 function createBaseUser(): User {
   return {
-    id: 0,
+    id: "",
     login: "",
     firstName: "",
     lastName: "",
@@ -69,8 +69,8 @@ function createBaseUser(): User {
 
 export const User = {
   encode(message: User, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.id !== 0) {
-      writer.uint32(8).int32(message.id);
+    if (message.id !== "") {
+      writer.uint32(10).string(message.id);
     }
     if (message.login !== "") {
       writer.uint32(18).string(message.login);
@@ -113,11 +113,11 @@ export const User = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag !== 8) {
+          if (tag !== 10) {
             break;
           }
 
-          message.id = reader.int32();
+          message.id = reader.string();
           continue;
         case 2:
           if (tag !== 18) {
@@ -200,7 +200,7 @@ export const User = {
 
   fromJSON(object: any): User {
     return {
-      id: isSet(object.id) ? globalThis.Number(object.id) : 0,
+      id: isSet(object.id) ? globalThis.String(object.id) : "",
       login: isSet(object.login) ? globalThis.String(object.login) : "",
       firstName: isSet(object.firstName) ? globalThis.String(object.firstName) : "",
       lastName: isSet(object.lastName) ? globalThis.String(object.lastName) : "",
@@ -220,8 +220,8 @@ export const User = {
 
   toJSON(message: User): unknown {
     const obj: any = {};
-    if (message.id !== 0) {
-      obj.id = Math.round(message.id);
+    if (message.id !== "") {
+      obj.id = message.id;
     }
     if (message.login !== "") {
       obj.login = message.login;
@@ -261,7 +261,7 @@ export const User = {
   },
   fromPartial<I extends Exact<DeepPartial<User>, I>>(object: I): User {
     const message = createBaseUser();
-    message.id = object.id ?? 0;
+    message.id = object.id ?? "";
     message.login = object.login ?? "";
     message.firstName = object.firstName ?? "";
     message.lastName = object.lastName ?? "";
@@ -306,7 +306,7 @@ export const UserPatch = {
       StringValue.encode({ value: message.middleName! }, writer.uint32(34).fork()).ldelim();
     }
     if (message.roleId !== undefined) {
-      Int32Value.encode({ value: message.roleId! }, writer.uint32(42).fork()).ldelim();
+      StringValue.encode({ value: message.roleId! }, writer.uint32(42).fork()).ldelim();
     }
     if (message.isActive !== undefined) {
       BoolValue.encode({ value: message.isActive! }, writer.uint32(50).fork()).ldelim();
@@ -354,7 +354,7 @@ export const UserPatch = {
             break;
           }
 
-          message.roleId = Int32Value.decode(reader, reader.uint32()).value;
+          message.roleId = StringValue.decode(reader, reader.uint32()).value;
           continue;
         case 6:
           if (tag !== 50) {
@@ -378,7 +378,7 @@ export const UserPatch = {
       firstName: isSet(object.firstName) ? String(object.firstName) : undefined,
       lastName: isSet(object.lastName) ? String(object.lastName) : undefined,
       middleName: isSet(object.middleName) ? String(object.middleName) : undefined,
-      roleId: isSet(object.roleId) ? Number(object.roleId) : undefined,
+      roleId: isSet(object.roleId) ? String(object.roleId) : undefined,
       isActive: isSet(object.isActive) ? Boolean(object.isActive) : undefined,
     };
   },

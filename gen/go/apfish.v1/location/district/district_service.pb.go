@@ -24,7 +24,7 @@ const (
 
 type DistrictRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -59,11 +59,11 @@ func (*DistrictRequest) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_location_district_district_service_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *DistrictRequest) GetId() int32 {
+func (x *DistrictRequest) GetId() string {
 	if x != nil {
 		return x.Id
 	}
-	return 0
+	return ""
 }
 
 type DistrictResponse struct {
@@ -264,7 +264,7 @@ const file_apfish_v1_location_district_district_service_proto_rawDesc = "" +
 	"\n" +
 	"2apfish.v1/location/district/district_service.proto\x12\x1bapfish.v1.location.district\x1a*apfish.v1/location/district/district.proto\x1a:apfish.v1/location/district/summary/district_summary.proto\"!\n" +
 	"\x0fDistrictRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\"U\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\"U\n" +
 	"\x10DistrictResponse\x12A\n" +
 	"\bdistrict\x18\x01 \x01(\v2%.apfish.v1.location.district.DistrictR\bdistrict\"k\n" +
 	"\x17DistrictSummaryResponse\x12P\n" +

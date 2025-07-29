@@ -25,7 +25,7 @@ import { CallSignSummary } from "./summary/call_sign_summary";
 export const protobufPackage = "apfish.v1.call_sign";
 
 export interface CallSignRequest {
-  id: number;
+  id: string;
 }
 
 export interface CallSignResponse {
@@ -49,13 +49,13 @@ export interface ListCallSignsResponse {
 }
 
 function createBaseCallSignRequest(): CallSignRequest {
-  return { id: 0 };
+  return { id: "" };
 }
 
 export const CallSignRequest = {
   encode(message: CallSignRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.id !== 0) {
-      writer.uint32(8).int32(message.id);
+    if (message.id !== "") {
+      writer.uint32(10).string(message.id);
     }
     return writer;
   },
@@ -68,11 +68,11 @@ export const CallSignRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag !== 8) {
+          if (tag !== 10) {
             break;
           }
 
-          message.id = reader.int32();
+          message.id = reader.string();
           continue;
       }
       if ((tag & 7) === 4 || tag === 0) {
@@ -84,13 +84,13 @@ export const CallSignRequest = {
   },
 
   fromJSON(object: any): CallSignRequest {
-    return { id: isSet(object.id) ? globalThis.Number(object.id) : 0 };
+    return { id: isSet(object.id) ? globalThis.String(object.id) : "" };
   },
 
   toJSON(message: CallSignRequest): unknown {
     const obj: any = {};
-    if (message.id !== 0) {
-      obj.id = Math.round(message.id);
+    if (message.id !== "") {
+      obj.id = message.id;
     }
     return obj;
   },
@@ -100,7 +100,7 @@ export const CallSignRequest = {
   },
   fromPartial<I extends Exact<DeepPartial<CallSignRequest>, I>>(object: I): CallSignRequest {
     const message = createBaseCallSignRequest();
-    message.id = object.id ?? 0;
+    message.id = object.id ?? "";
     return message;
   },
 };

@@ -23,7 +23,7 @@ message RegisterRequest {
 }
 
 message RegisterResponse {
-  int32 user_id = 1; // User ID of the registered user.
+  string user_id = 1; // User ID of the registered user.
 }
 
 message LoginRequest {

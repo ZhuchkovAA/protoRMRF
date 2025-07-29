@@ -11,7 +11,7 @@ import "apfish.v1/permission/summary/permission_summary.proto";
 
 // Defines a user role (e.g., "Admin", "Editor").
 message Role {
-  int32 id = 1;                       // Unique role ID.
+  string id = 1;                       // Unique role ID.
   string name = 2;                    // Human-readable name (e.g., "Admin").
   string code = 3;                    // Machine-friendly code (e.g., "admin").
   google.protobuf.Timestamp created_at = 4;  // When the role was created.

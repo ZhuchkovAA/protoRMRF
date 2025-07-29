@@ -7,7 +7,7 @@ option go_package = "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/call_sign/
 import "google/protobuf/timestamp.proto";  // Standard Protocol Buffers timestamp
 
 message CallSignSummary {
-  int32 id = 1;
+  string id = 1;
   string series = 2;
   string limit_lower = 3;
   string limit_upper = 4;

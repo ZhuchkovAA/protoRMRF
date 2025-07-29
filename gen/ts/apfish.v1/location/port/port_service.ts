@@ -25,7 +25,7 @@ import { PortSummary } from "./summary/port_summary";
 export const protobufPackage = "apfish.v1.location.port";
 
 export interface PortRequest {
-  id: number;
+  id: string;
 }
 
 export interface PortResponse {
@@ -49,13 +49,13 @@ export interface ListPortsResponse {
 }
 
 function createBasePortRequest(): PortRequest {
-  return { id: 0 };
+  return { id: "" };
 }
 
 export const PortRequest = {
   encode(message: PortRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.id !== 0) {
-      writer.uint32(8).int32(message.id);
+    if (message.id !== "") {
+      writer.uint32(10).string(message.id);
     }
     return writer;
   },
@@ -68,11 +68,11 @@ export const PortRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag !== 8) {
+          if (tag !== 10) {
             break;
           }
 
-          message.id = reader.int32();
+          message.id = reader.string();
           continue;
       }
       if ((tag & 7) === 4 || tag === 0) {
@@ -84,13 +84,13 @@ export const PortRequest = {
   },
 
   fromJSON(object: any): PortRequest {
-    return { id: isSet(object.id) ? globalThis.Number(object.id) : 0 };
+    return { id: isSet(object.id) ? globalThis.String(object.id) : "" };
   },
 
   toJSON(message: PortRequest): unknown {
     const obj: any = {};
-    if (message.id !== 0) {
-      obj.id = Math.round(message.id);
+    if (message.id !== "") {
+      obj.id = message.id;
     }
     return obj;
   },
@@ -100,7 +100,7 @@ export const PortRequest = {
   },
   fromPartial<I extends Exact<DeepPartial<PortRequest>, I>>(object: I): PortRequest {
     const message = createBasePortRequest();
-    message.id = object.id ?? 0;
+    message.id = object.id ?? "";
     return message;
   },
 };

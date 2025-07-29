@@ -18,7 +18,7 @@ import { TypeSummary } from "./type/summary/type_summary";
 export const protobufPackage = "apfish.v1.ship";
 
 export interface Ship {
-  id: number;
+  id: string;
   imo: number;
   type: TypeSummary | undefined;
   class: ClassSummary | undefined;
@@ -37,7 +37,7 @@ export interface Ship {
 
 function createBaseShip(): Ship {
   return {
-    id: 0,
+    id: "",
     imo: 0,
     type: undefined,
     class: undefined,
@@ -57,8 +57,8 @@ function createBaseShip(): Ship {
 
 export const Ship = {
   encode(message: Ship, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.id !== 0) {
-      writer.uint32(8).int32(message.id);
+    if (message.id !== "") {
+      writer.uint32(10).string(message.id);
     }
     if (message.imo !== 0) {
       writer.uint32(16).int32(message.imo);
@@ -113,11 +113,11 @@ export const Ship = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag !== 8) {
+          if (tag !== 10) {
             break;
           }
 
-          message.id = reader.int32();
+          message.id = reader.string();
           continue;
         case 2:
           if (tag !== 16) {
@@ -228,7 +228,7 @@ export const Ship = {
 
   fromJSON(object: any): Ship {
     return {
-      id: isSet(object.id) ? globalThis.Number(object.id) : 0,
+      id: isSet(object.id) ? globalThis.String(object.id) : "",
       imo: isSet(object.imo) ? globalThis.Number(object.imo) : 0,
       type: isSet(object.type) ? TypeSummary.fromJSON(object.type) : undefined,
       class: isSet(object.class) ? ClassSummary.fromJSON(object.class) : undefined,
@@ -252,8 +252,8 @@ export const Ship = {
 
   toJSON(message: Ship): unknown {
     const obj: any = {};
-    if (message.id !== 0) {
-      obj.id = Math.round(message.id);
+    if (message.id !== "") {
+      obj.id = message.id;
     }
     if (message.imo !== 0) {
       obj.imo = Math.round(message.imo);
@@ -305,7 +305,7 @@ export const Ship = {
   },
   fromPartial<I extends Exact<DeepPartial<Ship>, I>>(object: I): Ship {
     const message = createBaseShip();
-    message.id = object.id ?? 0;
+    message.id = object.id ?? "";
     message.imo = object.imo ?? 0;
     message.type = (object.type !== undefined && object.type !== null)
       ? TypeSummary.fromPartial(object.type)

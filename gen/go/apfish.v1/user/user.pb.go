@@ -30,7 +30,7 @@ const (
 // Represents a user account in the system.
 type User struct {
 	state         protoimpl.MessageState        `protogen:"open.v1"`
-	Id            int32                         `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`      // Unique system-generated ID.
+	Id            string                        `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`       // Unique system-generated ID.
 	Login         string                        `protobuf:"bytes,2,opt,name=login,proto3" json:"login,omitempty"` // Unique login identifier.
 	FirstName     string                        `protobuf:"bytes,3,opt,name=first_name,json=firstName,proto3" json:"first_name,omitempty"`
 	LastName      string                        `protobuf:"bytes,4,opt,name=last_name,json=lastName,proto3" json:"last_name,omitempty"`
@@ -75,11 +75,11 @@ func (*User) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_user_user_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *User) GetId() int32 {
+func (x *User) GetId() string {
 	if x != nil {
 		return x.Id
 	}
-	return 0
+	return ""
 }
 
 func (x *User) GetLogin() string {
@@ -158,7 +158,7 @@ type UserPatch struct {
 	FirstName     *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=first_name,json=firstName,proto3" json:"first_name,omitempty"`
 	LastName      *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=last_name,json=lastName,proto3" json:"last_name,omitempty"`
 	MiddleName    *wrapperspb.StringValue `protobuf:"bytes,4,opt,name=middle_name,json=middleName,proto3" json:"middle_name,omitempty"`
-	RoleId        *wrapperspb.Int32Value  `protobuf:"bytes,5,opt,name=role_id,json=roleId,proto3" json:"role_id,omitempty"`
+	RoleId        *wrapperspb.StringValue `protobuf:"bytes,5,opt,name=role_id,json=roleId,proto3" json:"role_id,omitempty"`
 	IsActive      *wrapperspb.BoolValue   `protobuf:"bytes,6,opt,name=is_active,json=isActive,proto3" json:"is_active,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -222,7 +222,7 @@ func (x *UserPatch) GetMiddleName() *wrapperspb.StringValue {
 	return nil
 }
 
-func (x *UserPatch) GetRoleId() *wrapperspb.Int32Value {
+func (x *UserPatch) GetRoleId() *wrapperspb.StringValue {
 	if x != nil {
 		return x.RoleId
 	}
@@ -242,7 +242,7 @@ const file_apfish_v1_user_user_proto_rawDesc = "" +
 	"\n" +
 	"\x19apfish.v1/user/user.proto\x12\x0eapfish.v1.user\x1a\x1egoogle/protobuf/wrappers.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a.apfish.v1/user/role/summary/role_summary.proto\x1a)apfish.v1/user/summary/user_summary.proto\x1a4apfish.v1/user/contact/summary/contact_summary.proto\x1a5apfish.v1/permission/summary/permission_summary.proto\"\x82\x04\n" +
 	"\x04User\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x14\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x14\n" +
 	"\x05login\x18\x02 \x01(\tR\x05login\x12\x1d\n" +
 	"\n" +
 	"first_name\x18\x03 \x01(\tR\tfirstName\x12\x1b\n" +
@@ -257,15 +257,15 @@ const file_apfish_v1_user_user_proto_rawDesc = "" +
 	"created_by\x18\t \x01(\v2#.apfish.v1.user.summary.UserSummaryR\tcreatedBy\x12J\n" +
 	"\bcontacts\x18\n" +
 	" \x03(\v2..apfish.v1.user.contact.summary.ContactSummaryR\bcontacts\x12Q\n" +
-	"\vpermissions\x18\v \x03(\v2/.apfish.v1.permission.summary.PermissionSummaryR\vpermissions\"\xc7\x02\n" +
+	"\vpermissions\x18\v \x03(\v2/.apfish.v1.permission.summary.PermissionSummaryR\vpermissions\"\xc8\x02\n" +
 	"\tUserPatch\x12\x14\n" +
 	"\x05login\x18\x01 \x01(\tR\x05login\x12;\n" +
 	"\n" +
 	"first_name\x18\x02 \x01(\v2\x1c.google.protobuf.StringValueR\tfirstName\x129\n" +
 	"\tlast_name\x18\x03 \x01(\v2\x1c.google.protobuf.StringValueR\blastName\x12=\n" +
 	"\vmiddle_name\x18\x04 \x01(\v2\x1c.google.protobuf.StringValueR\n" +
-	"middleName\x124\n" +
-	"\arole_id\x18\x05 \x01(\v2\x1b.google.protobuf.Int32ValueR\x06roleId\x127\n" +
+	"middleName\x125\n" +
+	"\arole_id\x18\x05 \x01(\v2\x1c.google.protobuf.StringValueR\x06roleId\x127\n" +
 	"\tis_active\x18\x06 \x01(\v2\x1a.google.protobuf.BoolValueR\bisActiveB<Z:github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user;userb\x06proto3"
 
 var (
@@ -290,8 +290,7 @@ var file_apfish_v1_user_user_proto_goTypes = []any{
 	(*summary2.ContactSummary)(nil),    // 5: apfish.v1.user.contact.summary.ContactSummary
 	(*summary3.PermissionSummary)(nil), // 6: apfish.v1.permission.summary.PermissionSummary
 	(*wrapperspb.StringValue)(nil),     // 7: google.protobuf.StringValue
-	(*wrapperspb.Int32Value)(nil),      // 8: google.protobuf.Int32Value
-	(*wrapperspb.BoolValue)(nil),       // 9: google.protobuf.BoolValue
+	(*wrapperspb.BoolValue)(nil),       // 8: google.protobuf.BoolValue
 }
 var file_apfish_v1_user_user_proto_depIdxs = []int32{
 	2,  // 0: apfish.v1.user.User.role:type_name -> apfish.v1.user.role.summary.RoleSummary
@@ -302,8 +301,8 @@ var file_apfish_v1_user_user_proto_depIdxs = []int32{
 	7,  // 5: apfish.v1.user.UserPatch.first_name:type_name -> google.protobuf.StringValue
 	7,  // 6: apfish.v1.user.UserPatch.last_name:type_name -> google.protobuf.StringValue
 	7,  // 7: apfish.v1.user.UserPatch.middle_name:type_name -> google.protobuf.StringValue
-	8,  // 8: apfish.v1.user.UserPatch.role_id:type_name -> google.protobuf.Int32Value
-	9,  // 9: apfish.v1.user.UserPatch.is_active:type_name -> google.protobuf.BoolValue
+	7,  // 8: apfish.v1.user.UserPatch.role_id:type_name -> google.protobuf.StringValue
+	8,  // 9: apfish.v1.user.UserPatch.is_active:type_name -> google.protobuf.BoolValue
 	10, // [10:10] is the sub-list for method output_type
 	10, // [10:10] is the sub-list for method input_type
 	10, // [10:10] is the sub-list for extension type_name

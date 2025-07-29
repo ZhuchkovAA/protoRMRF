@@ -24,7 +24,7 @@ const (
 
 type ShipRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -59,11 +59,11 @@ func (*ShipRequest) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_ship_ship_service_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *ShipRequest) GetId() int32 {
+func (x *ShipRequest) GetId() string {
 	if x != nil {
 		return x.Id
 	}
-	return 0
+	return ""
 }
 
 type ShipResponse struct {
@@ -264,7 +264,7 @@ const file_apfish_v1_ship_ship_service_proto_rawDesc = "" +
 	"\n" +
 	"!apfish.v1/ship/ship_service.proto\x12\x0eapfish.v1.ship\x1a\x19apfish.v1/ship/ship.proto\x1a)apfish.v1/ship/summary/ship_summary.proto\"\x1d\n" +
 	"\vShipRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\"8\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\"8\n" +
 	"\fShipResponse\x12(\n" +
 	"\x04ship\x18\x01 \x01(\v2\x14.apfish.v1.ship.ShipR\x04ship\"N\n" +
 	"\x13ShipSummaryResponse\x127\n" +

@@ -24,7 +24,7 @@ const (
 
 type AuthoritySummary struct {
 	state          protoimpl.MessageState `protogen:"open.v1"`
-	Id             int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id             string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	Name           string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	NameRus        string                 `protobuf:"bytes,3,opt,name=name_rus,json=nameRus,proto3" json:"name_rus,omitempty"`
 	Code           string                 `protobuf:"bytes,4,opt,name=code,proto3" json:"code,omitempty"`
@@ -65,11 +65,11 @@ func (*AuthoritySummary) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_location_authority_summary_authority_summary_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *AuthoritySummary) GetId() int32 {
+func (x *AuthoritySummary) GetId() string {
 	if x != nil {
 		return x.Id
 	}
-	return 0
+	return ""
 }
 
 func (x *AuthoritySummary) GetName() string {
@@ -120,7 +120,7 @@ const file_apfish_v1_location_authority_summary_authority_summary_proto_rawDesc 
 	"\n" +
 	"<apfish.v1/location/authority/summary/authority_summary.proto\x12$apfish.v1.location.authority.summary\x1a\x1fgoogle/protobuf/timestamp.proto\"\xe1\x01\n" +
 	"\x10AuthoritySummary\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x12\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x19\n" +
 	"\bname_rus\x18\x03 \x01(\tR\anameRus\x12\x12\n" +
 	"\x04code\x18\x04 \x01(\tR\x04code\x12\x15\n" +

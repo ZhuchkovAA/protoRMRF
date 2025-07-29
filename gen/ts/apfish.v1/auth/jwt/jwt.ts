@@ -12,24 +12,24 @@ import { PermissionJwt } from "../../permission/summary/permission_summary";
 export const protobufPackage = "apfish.v1.auth.jwt";
 
 export interface JwtData {
-  id: number;
-  roleId: number;
+  id: string;
+  roleId: string;
   permissions: PermissionJwt[];
   exp: Long;
   iat: Long;
 }
 
 function createBaseJwtData(): JwtData {
-  return { id: 0, roleId: 0, permissions: [], exp: Long.ZERO, iat: Long.ZERO };
+  return { id: "", roleId: "", permissions: [], exp: Long.ZERO, iat: Long.ZERO };
 }
 
 export const JwtData = {
   encode(message: JwtData, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.id !== 0) {
-      writer.uint32(8).int32(message.id);
+    if (message.id !== "") {
+      writer.uint32(10).string(message.id);
     }
-    if (message.roleId !== 0) {
-      writer.uint32(16).int32(message.roleId);
+    if (message.roleId !== "") {
+      writer.uint32(18).string(message.roleId);
     }
     for (const v of message.permissions) {
       PermissionJwt.encode(v!, writer.uint32(26).fork()).ldelim();
@@ -51,18 +51,18 @@ export const JwtData = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag !== 8) {
+          if (tag !== 10) {
             break;
           }
 
-          message.id = reader.int32();
+          message.id = reader.string();
           continue;
         case 2:
-          if (tag !== 16) {
+          if (tag !== 18) {
             break;
           }
 
-          message.roleId = reader.int32();
+          message.roleId = reader.string();
           continue;
         case 3:
           if (tag !== 26) {
@@ -96,8 +96,8 @@ export const JwtData = {
 
   fromJSON(object: any): JwtData {
     return {
-      id: isSet(object.id) ? globalThis.Number(object.id) : 0,
-      roleId: isSet(object.roleId) ? globalThis.Number(object.roleId) : 0,
+      id: isSet(object.id) ? globalThis.String(object.id) : "",
+      roleId: isSet(object.roleId) ? globalThis.String(object.roleId) : "",
       permissions: globalThis.Array.isArray(object?.permissions)
         ? object.permissions.map((e: any) => PermissionJwt.fromJSON(e))
         : [],
@@ -108,11 +108,11 @@ export const JwtData = {
 
   toJSON(message: JwtData): unknown {
     const obj: any = {};
-    if (message.id !== 0) {
-      obj.id = Math.round(message.id);
+    if (message.id !== "") {
+      obj.id = message.id;
     }
-    if (message.roleId !== 0) {
-      obj.roleId = Math.round(message.roleId);
+    if (message.roleId !== "") {
+      obj.roleId = message.roleId;
     }
     if (message.permissions?.length) {
       obj.permissions = message.permissions.map((e) => PermissionJwt.toJSON(e));
@@ -131,8 +131,8 @@ export const JwtData = {
   },
   fromPartial<I extends Exact<DeepPartial<JwtData>, I>>(object: I): JwtData {
     const message = createBaseJwtData();
-    message.id = object.id ?? 0;
-    message.roleId = object.roleId ?? 0;
+    message.id = object.id ?? "";
+    message.roleId = object.roleId ?? "";
     message.permissions = object.permissions?.map((e) => PermissionJwt.fromPartial(e)) || [];
     message.exp = (object.exp !== undefined && object.exp !== null) ? Long.fromValue(object.exp) : Long.ZERO;
     message.iat = (object.iat !== undefined && object.iat !== null) ? Long.fromValue(object.iat) : Long.ZERO;

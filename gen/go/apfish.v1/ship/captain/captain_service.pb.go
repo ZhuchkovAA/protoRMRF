@@ -24,7 +24,7 @@ const (
 
 type CaptainRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -59,11 +59,11 @@ func (*CaptainRequest) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_ship_captain_captain_service_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *CaptainRequest) GetId() int32 {
+func (x *CaptainRequest) GetId() string {
 	if x != nil {
 		return x.Id
 	}
-	return 0
+	return ""
 }
 
 type CaptainResponse struct {
@@ -264,7 +264,7 @@ const file_apfish_v1_ship_captain_captain_service_proto_rawDesc = "" +
 	"\n" +
 	",apfish.v1/ship/captain/captain_service.proto\x12\x16apfish.v1.ship.captain\x1a$apfish.v1/ship/captain/captain.proto\x1a4apfish.v1/ship/captain/summary/captain_summary.proto\" \n" +
 	"\x0eCaptainRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\"L\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\"L\n" +
 	"\x0fCaptainResponse\x129\n" +
 	"\acaptain\x18\x01 \x01(\v2\x1f.apfish.v1.ship.captain.CaptainR\acaptain\"b\n" +
 	"\x16CaptainSummaryResponse\x12H\n" +

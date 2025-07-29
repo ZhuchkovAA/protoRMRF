@@ -26,7 +26,7 @@ import { ContactSummary } from "./summary/contact_summary";
 export const protobufPackage = "apfish.v1.user.contact";
 
 export interface ContactRequest {
-  id: number;
+  id: string;
 }
 
 export interface ContactResponse {
@@ -38,7 +38,7 @@ export interface ContactSummaryResponse {
 }
 
 export interface ListUserContactsRequest {
-  userId: number;
+  userId: string;
 }
 
 export interface ListContactsResponse {
@@ -50,27 +50,27 @@ export interface UpdateContactRequest {
 }
 
 export interface CreateContactRequest {
-  userId: number;
-  typeId: number;
+  userId: string;
+  typeId: string;
   value: string;
 }
 
 export interface CreateContactResponse {
-  contactId: number;
+  contactId: string;
 }
 
 export interface DeleteContactRequest {
-  contactId: number;
+  contactId: string;
 }
 
 function createBaseContactRequest(): ContactRequest {
-  return { id: 0 };
+  return { id: "" };
 }
 
 export const ContactRequest = {
   encode(message: ContactRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.id !== 0) {
-      writer.uint32(8).int32(message.id);
+    if (message.id !== "") {
+      writer.uint32(10).string(message.id);
     }
     return writer;
   },
@@ -83,11 +83,11 @@ export const ContactRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag !== 8) {
+          if (tag !== 10) {
             break;
           }
 
-          message.id = reader.int32();
+          message.id = reader.string();
           continue;
       }
       if ((tag & 7) === 4 || tag === 0) {
@@ -99,13 +99,13 @@ export const ContactRequest = {
   },
 
   fromJSON(object: any): ContactRequest {
-    return { id: isSet(object.id) ? globalThis.Number(object.id) : 0 };
+    return { id: isSet(object.id) ? globalThis.String(object.id) : "" };
   },
 
   toJSON(message: ContactRequest): unknown {
     const obj: any = {};
-    if (message.id !== 0) {
-      obj.id = Math.round(message.id);
+    if (message.id !== "") {
+      obj.id = message.id;
     }
     return obj;
   },
@@ -115,7 +115,7 @@ export const ContactRequest = {
   },
   fromPartial<I extends Exact<DeepPartial<ContactRequest>, I>>(object: I): ContactRequest {
     const message = createBaseContactRequest();
-    message.id = object.id ?? 0;
+    message.id = object.id ?? "";
     return message;
   },
 };
@@ -239,13 +239,13 @@ export const ContactSummaryResponse = {
 };
 
 function createBaseListUserContactsRequest(): ListUserContactsRequest {
-  return { userId: 0 };
+  return { userId: "" };
 }
 
 export const ListUserContactsRequest = {
   encode(message: ListUserContactsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.userId !== 0) {
-      writer.uint32(8).int32(message.userId);
+    if (message.userId !== "") {
+      writer.uint32(10).string(message.userId);
     }
     return writer;
   },
@@ -258,11 +258,11 @@ export const ListUserContactsRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag !== 8) {
+          if (tag !== 10) {
             break;
           }
 
-          message.userId = reader.int32();
+          message.userId = reader.string();
           continue;
       }
       if ((tag & 7) === 4 || tag === 0) {
@@ -274,13 +274,13 @@ export const ListUserContactsRequest = {
   },
 
   fromJSON(object: any): ListUserContactsRequest {
-    return { userId: isSet(object.userId) ? globalThis.Number(object.userId) : 0 };
+    return { userId: isSet(object.userId) ? globalThis.String(object.userId) : "" };
   },
 
   toJSON(message: ListUserContactsRequest): unknown {
     const obj: any = {};
-    if (message.userId !== 0) {
-      obj.userId = Math.round(message.userId);
+    if (message.userId !== "") {
+      obj.userId = message.userId;
     }
     return obj;
   },
@@ -290,7 +290,7 @@ export const ListUserContactsRequest = {
   },
   fromPartial<I extends Exact<DeepPartial<ListUserContactsRequest>, I>>(object: I): ListUserContactsRequest {
     const message = createBaseListUserContactsRequest();
-    message.userId = object.userId ?? 0;
+    message.userId = object.userId ?? "";
     return message;
   },
 };
@@ -416,16 +416,16 @@ export const UpdateContactRequest = {
 };
 
 function createBaseCreateContactRequest(): CreateContactRequest {
-  return { userId: 0, typeId: 0, value: "" };
+  return { userId: "", typeId: "", value: "" };
 }
 
 export const CreateContactRequest = {
   encode(message: CreateContactRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.userId !== 0) {
-      writer.uint32(8).int32(message.userId);
+    if (message.userId !== "") {
+      writer.uint32(10).string(message.userId);
     }
-    if (message.typeId !== 0) {
-      writer.uint32(16).int32(message.typeId);
+    if (message.typeId !== "") {
+      writer.uint32(18).string(message.typeId);
     }
     if (message.value !== "") {
       writer.uint32(26).string(message.value);
@@ -441,18 +441,18 @@ export const CreateContactRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag !== 8) {
+          if (tag !== 10) {
             break;
           }
 
-          message.userId = reader.int32();
+          message.userId = reader.string();
           continue;
         case 2:
-          if (tag !== 16) {
+          if (tag !== 18) {
             break;
           }
 
-          message.typeId = reader.int32();
+          message.typeId = reader.string();
           continue;
         case 3:
           if (tag !== 26) {
@@ -472,19 +472,19 @@ export const CreateContactRequest = {
 
   fromJSON(object: any): CreateContactRequest {
     return {
-      userId: isSet(object.userId) ? globalThis.Number(object.userId) : 0,
-      typeId: isSet(object.typeId) ? globalThis.Number(object.typeId) : 0,
+      userId: isSet(object.userId) ? globalThis.String(object.userId) : "",
+      typeId: isSet(object.typeId) ? globalThis.String(object.typeId) : "",
       value: isSet(object.value) ? globalThis.String(object.value) : "",
     };
   },
 
   toJSON(message: CreateContactRequest): unknown {
     const obj: any = {};
-    if (message.userId !== 0) {
-      obj.userId = Math.round(message.userId);
+    if (message.userId !== "") {
+      obj.userId = message.userId;
     }
-    if (message.typeId !== 0) {
-      obj.typeId = Math.round(message.typeId);
+    if (message.typeId !== "") {
+      obj.typeId = message.typeId;
     }
     if (message.value !== "") {
       obj.value = message.value;
@@ -497,21 +497,21 @@ export const CreateContactRequest = {
   },
   fromPartial<I extends Exact<DeepPartial<CreateContactRequest>, I>>(object: I): CreateContactRequest {
     const message = createBaseCreateContactRequest();
-    message.userId = object.userId ?? 0;
-    message.typeId = object.typeId ?? 0;
+    message.userId = object.userId ?? "";
+    message.typeId = object.typeId ?? "";
     message.value = object.value ?? "";
     return message;
   },
 };
 
 function createBaseCreateContactResponse(): CreateContactResponse {
-  return { contactId: 0 };
+  return { contactId: "" };
 }
 
 export const CreateContactResponse = {
   encode(message: CreateContactResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.contactId !== 0) {
-      writer.uint32(8).int32(message.contactId);
+    if (message.contactId !== "") {
+      writer.uint32(10).string(message.contactId);
     }
     return writer;
   },
@@ -524,11 +524,11 @@ export const CreateContactResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag !== 8) {
+          if (tag !== 10) {
             break;
           }
 
-          message.contactId = reader.int32();
+          message.contactId = reader.string();
           continue;
       }
       if ((tag & 7) === 4 || tag === 0) {
@@ -540,13 +540,13 @@ export const CreateContactResponse = {
   },
 
   fromJSON(object: any): CreateContactResponse {
-    return { contactId: isSet(object.contactId) ? globalThis.Number(object.contactId) : 0 };
+    return { contactId: isSet(object.contactId) ? globalThis.String(object.contactId) : "" };
   },
 
   toJSON(message: CreateContactResponse): unknown {
     const obj: any = {};
-    if (message.contactId !== 0) {
-      obj.contactId = Math.round(message.contactId);
+    if (message.contactId !== "") {
+      obj.contactId = message.contactId;
     }
     return obj;
   },
@@ -556,19 +556,19 @@ export const CreateContactResponse = {
   },
   fromPartial<I extends Exact<DeepPartial<CreateContactResponse>, I>>(object: I): CreateContactResponse {
     const message = createBaseCreateContactResponse();
-    message.contactId = object.contactId ?? 0;
+    message.contactId = object.contactId ?? "";
     return message;
   },
 };
 
 function createBaseDeleteContactRequest(): DeleteContactRequest {
-  return { contactId: 0 };
+  return { contactId: "" };
 }
 
 export const DeleteContactRequest = {
   encode(message: DeleteContactRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.contactId !== 0) {
-      writer.uint32(8).int32(message.contactId);
+    if (message.contactId !== "") {
+      writer.uint32(10).string(message.contactId);
     }
     return writer;
   },
@@ -581,11 +581,11 @@ export const DeleteContactRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag !== 8) {
+          if (tag !== 10) {
             break;
           }
 
-          message.contactId = reader.int32();
+          message.contactId = reader.string();
           continue;
       }
       if ((tag & 7) === 4 || tag === 0) {
@@ -597,13 +597,13 @@ export const DeleteContactRequest = {
   },
 
   fromJSON(object: any): DeleteContactRequest {
-    return { contactId: isSet(object.contactId) ? globalThis.Number(object.contactId) : 0 };
+    return { contactId: isSet(object.contactId) ? globalThis.String(object.contactId) : "" };
   },
 
   toJSON(message: DeleteContactRequest): unknown {
     const obj: any = {};
-    if (message.contactId !== 0) {
-      obj.contactId = Math.round(message.contactId);
+    if (message.contactId !== "") {
+      obj.contactId = message.contactId;
     }
     return obj;
   },
@@ -613,7 +613,7 @@ export const DeleteContactRequest = {
   },
   fromPartial<I extends Exact<DeepPartial<DeleteContactRequest>, I>>(object: I): DeleteContactRequest {
     const message = createBaseDeleteContactRequest();
-    message.contactId = object.contactId ?? 0;
+    message.contactId = object.contactId ?? "";
     return message;
   },
 };

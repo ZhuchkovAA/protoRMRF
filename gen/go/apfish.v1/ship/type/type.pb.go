@@ -25,7 +25,7 @@ const (
 
 type Type struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	Ships         []*summary.ShipSummary `protobuf:"bytes,4,rep,name=ships,proto3" json:"ships,omitempty"`
@@ -63,11 +63,11 @@ func (*Type) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_ship_type_type_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *Type) GetId() int32 {
+func (x *Type) GetId() string {
 	if x != nil {
 		return x.Id
 	}
-	return 0
+	return ""
 }
 
 func (x *Type) GetName() string {
@@ -97,7 +97,7 @@ const file_apfish_v1_ship_type_type_proto_rawDesc = "" +
 	"\n" +
 	"\x1eapfish.v1/ship/type/type.proto\x12\x13apfish.v1.ship.type\x1a\x1fgoogle/protobuf/timestamp.proto\x1a)apfish.v1/ship/summary/ship_summary.proto\"\xa0\x01\n" +
 	"\x04Type\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x12\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x129\n" +
 	"\n" +
 	"created_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +

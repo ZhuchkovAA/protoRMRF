@@ -10,7 +10,7 @@ import "apfish.v1/location/authority/summary/authority_summary.proto";
 import "apfish.v1/ship/summary/ship_summary.proto";
 
 message CallSign {
-  int32 id = 1;
+  string id = 1;
   string series = 2;
   string limit_lower = 3;
   string limit_upper = 4;

@@ -14,7 +14,7 @@ import "apfish.v1/ship/captain/summary/captain_summary.proto";
 import "apfish.v1/permission/summary/permission_summary.proto";
 
 message Ship {
-  int32 id = 1;
+  string id = 1;
   int32 imo = 2;
   apfish.v1.ship.type.summary.TypeSummary type = 3;
   apfish.v1.ship.class.summary.ClassSummary class = 4;

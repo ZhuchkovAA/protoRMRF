@@ -13,14 +13,14 @@ export const protobufPackage = "apfish.v1.user.summary";
 
 export interface UserSummary {
   /** Unique system-generated ID. */
-  id: number;
+  id: string;
   /** Unique login identifier. */
   login: string;
   firstName: string;
   lastName: string;
   middleName: string;
   /** Assigned role. */
-  roleId: number;
+  roleId: string;
   /** When the user was created. */
   createdAt: Date | undefined;
   isActive: boolean;
@@ -30,12 +30,12 @@ export interface UserSummary {
 
 function createBaseUserSummary(): UserSummary {
   return {
-    id: 0,
+    id: "",
     login: "",
     firstName: "",
     lastName: "",
     middleName: "",
-    roleId: 0,
+    roleId: "",
     createdAt: undefined,
     isActive: false,
     createdByLogin: "",
@@ -44,8 +44,8 @@ function createBaseUserSummary(): UserSummary {
 
 export const UserSummary = {
   encode(message: UserSummary, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.id !== 0) {
-      writer.uint32(8).int32(message.id);
+    if (message.id !== "") {
+      writer.uint32(10).string(message.id);
     }
     if (message.login !== "") {
       writer.uint32(18).string(message.login);
@@ -59,8 +59,8 @@ export const UserSummary = {
     if (message.middleName !== "") {
       writer.uint32(42).string(message.middleName);
     }
-    if (message.roleId !== 0) {
-      writer.uint32(48).int32(message.roleId);
+    if (message.roleId !== "") {
+      writer.uint32(50).string(message.roleId);
     }
     if (message.createdAt !== undefined) {
       Timestamp.encode(toTimestamp(message.createdAt), writer.uint32(58).fork()).ldelim();
@@ -82,11 +82,11 @@ export const UserSummary = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag !== 8) {
+          if (tag !== 10) {
             break;
           }
 
-          message.id = reader.int32();
+          message.id = reader.string();
           continue;
         case 2:
           if (tag !== 18) {
@@ -117,11 +117,11 @@ export const UserSummary = {
           message.middleName = reader.string();
           continue;
         case 6:
-          if (tag !== 48) {
+          if (tag !== 50) {
             break;
           }
 
-          message.roleId = reader.int32();
+          message.roleId = reader.string();
           continue;
         case 7:
           if (tag !== 58) {
@@ -155,12 +155,12 @@ export const UserSummary = {
 
   fromJSON(object: any): UserSummary {
     return {
-      id: isSet(object.id) ? globalThis.Number(object.id) : 0,
+      id: isSet(object.id) ? globalThis.String(object.id) : "",
       login: isSet(object.login) ? globalThis.String(object.login) : "",
       firstName: isSet(object.firstName) ? globalThis.String(object.firstName) : "",
       lastName: isSet(object.lastName) ? globalThis.String(object.lastName) : "",
       middleName: isSet(object.middleName) ? globalThis.String(object.middleName) : "",
-      roleId: isSet(object.roleId) ? globalThis.Number(object.roleId) : 0,
+      roleId: isSet(object.roleId) ? globalThis.String(object.roleId) : "",
       createdAt: isSet(object.createdAt) ? fromJsonTimestamp(object.createdAt) : undefined,
       isActive: isSet(object.isActive) ? globalThis.Boolean(object.isActive) : false,
       createdByLogin: isSet(object.createdByLogin) ? globalThis.String(object.createdByLogin) : "",
@@ -169,8 +169,8 @@ export const UserSummary = {
 
   toJSON(message: UserSummary): unknown {
     const obj: any = {};
-    if (message.id !== 0) {
-      obj.id = Math.round(message.id);
+    if (message.id !== "") {
+      obj.id = message.id;
     }
     if (message.login !== "") {
       obj.login = message.login;
@@ -184,8 +184,8 @@ export const UserSummary = {
     if (message.middleName !== "") {
       obj.middleName = message.middleName;
     }
-    if (message.roleId !== 0) {
-      obj.roleId = Math.round(message.roleId);
+    if (message.roleId !== "") {
+      obj.roleId = message.roleId;
     }
     if (message.createdAt !== undefined) {
       obj.createdAt = message.createdAt.toISOString();
@@ -204,12 +204,12 @@ export const UserSummary = {
   },
   fromPartial<I extends Exact<DeepPartial<UserSummary>, I>>(object: I): UserSummary {
     const message = createBaseUserSummary();
-    message.id = object.id ?? 0;
+    message.id = object.id ?? "";
     message.login = object.login ?? "";
     message.firstName = object.firstName ?? "";
     message.lastName = object.lastName ?? "";
     message.middleName = object.middleName ?? "";
-    message.roleId = object.roleId ?? 0;
+    message.roleId = object.roleId ?? "";
     message.createdAt = object.createdAt ?? undefined;
     message.isActive = object.isActive ?? false;
     message.createdByLogin = object.createdByLogin ?? "";

@@ -8,7 +8,7 @@
 import Long from "long";
 import _m0 from "protobufjs/minimal";
 import { Timestamp } from "../../../google/protobuf/timestamp";
-import { Int32Value, StringValue } from "../../../google/protobuf/wrappers";
+import { StringValue } from "../../../google/protobuf/wrappers";
 import { UserSummary } from "../summary/user_summary";
 import { TypeSummary } from "./type/summary/type_summary";
 
@@ -17,7 +17,7 @@ export const protobufPackage = "apfish.v1.user.contact";
 /** A user's contact method (e.g., email, phone). */
 export interface Contact {
   /** Unique contact ID. */
-  id: number;
+  id: string;
   user:
     | UserSummary
     | undefined;
@@ -32,20 +32,20 @@ export interface Contact {
 }
 
 export interface ContactPatch {
-  id: number;
-  userId: number | undefined;
-  typeId: number | undefined;
+  id: string;
+  userId: string | undefined;
+  typeId: string | undefined;
   value: string | undefined;
 }
 
 function createBaseContact(): Contact {
-  return { id: 0, user: undefined, type: undefined, value: "", createdAt: undefined };
+  return { id: "", user: undefined, type: undefined, value: "", createdAt: undefined };
 }
 
 export const Contact = {
   encode(message: Contact, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.id !== 0) {
-      writer.uint32(8).int32(message.id);
+    if (message.id !== "") {
+      writer.uint32(10).string(message.id);
     }
     if (message.user !== undefined) {
       UserSummary.encode(message.user, writer.uint32(18).fork()).ldelim();
@@ -70,11 +70,11 @@ export const Contact = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag !== 8) {
+          if (tag !== 10) {
             break;
           }
 
-          message.id = reader.int32();
+          message.id = reader.string();
           continue;
         case 2:
           if (tag !== 18) {
@@ -115,7 +115,7 @@ export const Contact = {
 
   fromJSON(object: any): Contact {
     return {
-      id: isSet(object.id) ? globalThis.Number(object.id) : 0,
+      id: isSet(object.id) ? globalThis.String(object.id) : "",
       user: isSet(object.user) ? UserSummary.fromJSON(object.user) : undefined,
       type: isSet(object.type) ? TypeSummary.fromJSON(object.type) : undefined,
       value: isSet(object.value) ? globalThis.String(object.value) : "",
@@ -125,8 +125,8 @@ export const Contact = {
 
   toJSON(message: Contact): unknown {
     const obj: any = {};
-    if (message.id !== 0) {
-      obj.id = Math.round(message.id);
+    if (message.id !== "") {
+      obj.id = message.id;
     }
     if (message.user !== undefined) {
       obj.user = UserSummary.toJSON(message.user);
@@ -148,7 +148,7 @@ export const Contact = {
   },
   fromPartial<I extends Exact<DeepPartial<Contact>, I>>(object: I): Contact {
     const message = createBaseContact();
-    message.id = object.id ?? 0;
+    message.id = object.id ?? "";
     message.user = (object.user !== undefined && object.user !== null)
       ? UserSummary.fromPartial(object.user)
       : undefined;
@@ -162,19 +162,19 @@ export const Contact = {
 };
 
 function createBaseContactPatch(): ContactPatch {
-  return { id: 0, userId: undefined, typeId: undefined, value: undefined };
+  return { id: "", userId: undefined, typeId: undefined, value: undefined };
 }
 
 export const ContactPatch = {
   encode(message: ContactPatch, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.id !== 0) {
-      writer.uint32(8).int32(message.id);
+    if (message.id !== "") {
+      writer.uint32(10).string(message.id);
     }
     if (message.userId !== undefined) {
-      Int32Value.encode({ value: message.userId! }, writer.uint32(18).fork()).ldelim();
+      StringValue.encode({ value: message.userId! }, writer.uint32(18).fork()).ldelim();
     }
     if (message.typeId !== undefined) {
-      Int32Value.encode({ value: message.typeId! }, writer.uint32(26).fork()).ldelim();
+      StringValue.encode({ value: message.typeId! }, writer.uint32(26).fork()).ldelim();
     }
     if (message.value !== undefined) {
       StringValue.encode({ value: message.value! }, writer.uint32(34).fork()).ldelim();
@@ -190,25 +190,25 @@ export const ContactPatch = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag !== 8) {
+          if (tag !== 10) {
             break;
           }
 
-          message.id = reader.int32();
+          message.id = reader.string();
           continue;
         case 2:
           if (tag !== 18) {
             break;
           }
 
-          message.userId = Int32Value.decode(reader, reader.uint32()).value;
+          message.userId = StringValue.decode(reader, reader.uint32()).value;
           continue;
         case 3:
           if (tag !== 26) {
             break;
           }
 
-          message.typeId = Int32Value.decode(reader, reader.uint32()).value;
+          message.typeId = StringValue.decode(reader, reader.uint32()).value;
           continue;
         case 4:
           if (tag !== 34) {
@@ -228,17 +228,17 @@ export const ContactPatch = {
 
   fromJSON(object: any): ContactPatch {
     return {
-      id: isSet(object.id) ? globalThis.Number(object.id) : 0,
-      userId: isSet(object.userId) ? Number(object.userId) : undefined,
-      typeId: isSet(object.typeId) ? Number(object.typeId) : undefined,
+      id: isSet(object.id) ? globalThis.String(object.id) : "",
+      userId: isSet(object.userId) ? String(object.userId) : undefined,
+      typeId: isSet(object.typeId) ? String(object.typeId) : undefined,
       value: isSet(object.value) ? String(object.value) : undefined,
     };
   },
 
   toJSON(message: ContactPatch): unknown {
     const obj: any = {};
-    if (message.id !== 0) {
-      obj.id = Math.round(message.id);
+    if (message.id !== "") {
+      obj.id = message.id;
     }
     if (message.userId !== undefined) {
       obj.userId = message.userId;
@@ -257,7 +257,7 @@ export const ContactPatch = {
   },
   fromPartial<I extends Exact<DeepPartial<ContactPatch>, I>>(object: I): ContactPatch {
     const message = createBaseContactPatch();
-    message.id = object.id ?? 0;
+    message.id = object.id ?? "";
     message.userId = object.userId ?? undefined;
     message.typeId = object.typeId ?? undefined;
     message.value = object.value ?? undefined;

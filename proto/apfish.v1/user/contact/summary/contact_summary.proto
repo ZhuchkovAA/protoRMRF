@@ -7,9 +7,9 @@ option go_package = "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/conta
 import "google/protobuf/timestamp.proto";  // Standard Protocol Buffers timestamp
 
 message ContactSummary {
-  int32 id = 1;                       // Unique contact ID.
-  int32 user_id = 2;
-  int32 type_id = 3;           // Contact type.
+  string id = 1;                       // Unique contact ID.
+  string user_id = 2;
+  string type_id = 3;           // Contact type.
   string value = 4;                   // Contact value (e.g., "user@example.com").
   google.protobuf.Timestamp created_at = 5;  // When the contact was added.
 }

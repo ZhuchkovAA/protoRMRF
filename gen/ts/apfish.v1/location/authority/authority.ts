@@ -15,7 +15,7 @@ import { PortSummary } from "../port/summary/port_summary";
 export const protobufPackage = "apfish.v1.location.authority";
 
 export interface Authority {
-  id: number;
+  id: string;
   name: string;
   nameRus: string;
   code: string;
@@ -29,7 +29,7 @@ export interface Authority {
 
 function createBaseAuthority(): Authority {
   return {
-    id: 0,
+    id: "",
     name: "",
     nameRus: "",
     code: "",
@@ -44,8 +44,8 @@ function createBaseAuthority(): Authority {
 
 export const Authority = {
   encode(message: Authority, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.id !== 0) {
-      writer.uint32(8).int32(message.id);
+    if (message.id !== "") {
+      writer.uint32(10).string(message.id);
     }
     if (message.name !== "") {
       writer.uint32(18).string(message.name);
@@ -85,11 +85,11 @@ export const Authority = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag !== 8) {
+          if (tag !== 10) {
             break;
           }
 
-          message.id = reader.int32();
+          message.id = reader.string();
           continue;
         case 2:
           if (tag !== 18) {
@@ -165,7 +165,7 @@ export const Authority = {
 
   fromJSON(object: any): Authority {
     return {
-      id: isSet(object.id) ? globalThis.Number(object.id) : 0,
+      id: isSet(object.id) ? globalThis.String(object.id) : "",
       name: isSet(object.name) ? globalThis.String(object.name) : "",
       nameRus: isSet(object.nameRus) ? globalThis.String(object.nameRus) : "",
       code: isSet(object.code) ? globalThis.String(object.code) : "",
@@ -184,8 +184,8 @@ export const Authority = {
 
   toJSON(message: Authority): unknown {
     const obj: any = {};
-    if (message.id !== 0) {
-      obj.id = Math.round(message.id);
+    if (message.id !== "") {
+      obj.id = message.id;
     }
     if (message.name !== "") {
       obj.name = message.name;
@@ -222,7 +222,7 @@ export const Authority = {
   },
   fromPartial<I extends Exact<DeepPartial<Authority>, I>>(object: I): Authority {
     const message = createBaseAuthority();
-    message.id = object.id ?? 0;
+    message.id = object.id ?? "";
     message.name = object.name ?? "";
     message.nameRus = object.nameRus ?? "";
     message.code = object.code ?? "";

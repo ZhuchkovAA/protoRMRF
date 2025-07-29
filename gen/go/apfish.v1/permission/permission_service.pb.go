@@ -26,7 +26,7 @@ const (
 
 type PermissionRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -61,11 +61,11 @@ func (*PermissionRequest) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_permission_permission_service_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *PermissionRequest) GetId() int32 {
+func (x *PermissionRequest) GetId() string {
 	if x != nil {
 		return x.Id
 	}
-	return 0
+	return ""
 }
 
 type PermissionResponse struct {
@@ -262,8 +262,8 @@ func (x *ListPermissionsResponse) GetTotal() int32 {
 
 type CreatePermissionRequest struct {
 	state          protoimpl.MessageState  `protogen:"open.v1"`
-	ActionId       int32                   `protobuf:"varint,1,opt,name=action_id,json=actionId,proto3" json:"action_id,omitempty"`
-	ObjectId       int32                   `protobuf:"varint,2,opt,name=object_id,json=objectId,proto3" json:"object_id,omitempty"`
+	ActionId       string                  `protobuf:"bytes,1,opt,name=action_id,json=actionId,proto3" json:"action_id,omitempty"`
+	ObjectId       string                  `protobuf:"bytes,2,opt,name=object_id,json=objectId,proto3" json:"object_id,omitempty"`
 	Description    *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
 	Name           *wrapperspb.StringValue `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
 	Code           *wrapperspb.StringValue `protobuf:"bytes,5,opt,name=code,proto3" json:"code,omitempty"`
@@ -305,18 +305,18 @@ func (*CreatePermissionRequest) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_permission_permission_service_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *CreatePermissionRequest) GetActionId() int32 {
+func (x *CreatePermissionRequest) GetActionId() string {
 	if x != nil {
 		return x.ActionId
 	}
-	return 0
+	return ""
 }
 
-func (x *CreatePermissionRequest) GetObjectId() int32 {
+func (x *CreatePermissionRequest) GetObjectId() string {
 	if x != nil {
 		return x.ObjectId
 	}
-	return 0
+	return ""
 }
 
 func (x *CreatePermissionRequest) GetDescription() *wrapperspb.StringValue {
@@ -370,7 +370,7 @@ func (x *CreatePermissionRequest) GetShipsIds() []int32 {
 
 type CreatePermissionResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	PermissionId  int32                  `protobuf:"varint,1,opt,name=permission_id,json=permissionId,proto3" json:"permission_id,omitempty"`
+	PermissionId  string                 `protobuf:"bytes,1,opt,name=permission_id,json=permissionId,proto3" json:"permission_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -405,16 +405,16 @@ func (*CreatePermissionResponse) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_permission_permission_service_proto_rawDescGZIP(), []int{6}
 }
 
-func (x *CreatePermissionResponse) GetPermissionId() int32 {
+func (x *CreatePermissionResponse) GetPermissionId() string {
 	if x != nil {
 		return x.PermissionId
 	}
-	return 0
+	return ""
 }
 
 type DeletePermissionRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	PermissionId  int32                  `protobuf:"varint,1,opt,name=permission_id,json=permissionId,proto3" json:"permission_id,omitempty"`
+	PermissionId  string                 `protobuf:"bytes,1,opt,name=permission_id,json=permissionId,proto3" json:"permission_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -449,11 +449,11 @@ func (*DeletePermissionRequest) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_permission_permission_service_proto_rawDescGZIP(), []int{7}
 }
 
-func (x *DeletePermissionRequest) GetPermissionId() int32 {
+func (x *DeletePermissionRequest) GetPermissionId() string {
 	if x != nil {
 		return x.PermissionId
 	}
-	return 0
+	return ""
 }
 
 var File_apfish_v1_permission_permission_service_proto protoreflect.FileDescriptor
@@ -462,7 +462,7 @@ const file_apfish_v1_permission_permission_service_proto_rawDesc = "" +
 	"\n" +
 	"-apfish.v1/permission/permission_service.proto\x12\x14apfish.v1.permission\x1a\x1egoogle/protobuf/wrappers.proto\x1a\x1dapfish.v1/helper/helper.proto\x1a%apfish.v1/permission/permission.proto\x1a5apfish.v1/permission/summary/permission_summary.proto\"#\n" +
 	"\x11PermissionRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\"V\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\"V\n" +
 	"\x12PermissionResponse\x12@\n" +
 	"\n" +
 	"permission\x18\x01 \x01(\v2 .apfish.v1.permission.PermissionR\n" +
@@ -478,8 +478,8 @@ const file_apfish_v1_permission_permission_service_proto_rawDesc = "" +
 	"\x10list_permissions\x18\x01 \x03(\v2/.apfish.v1.permission.summary.PermissionSummaryR\x0flistPermissions\x12\x14\n" +
 	"\x05total\x18\x02 \x01(\x05R\x05total\"\xff\x02\n" +
 	"\x17CreatePermissionRequest\x12\x1b\n" +
-	"\taction_id\x18\x01 \x01(\x05R\bactionId\x12\x1b\n" +
-	"\tobject_id\x18\x02 \x01(\x05R\bobjectId\x12>\n" +
+	"\taction_id\x18\x01 \x01(\tR\bactionId\x12\x1b\n" +
+	"\tobject_id\x18\x02 \x01(\tR\bobjectId\x12>\n" +
 	"\vdescription\x18\x03 \x01(\v2\x1c.google.protobuf.StringValueR\vdescription\x120\n" +
 	"\x04name\x18\x04 \x01(\v2\x1c.google.protobuf.StringValueR\x04name\x120\n" +
 	"\x04code\x18\x05 \x01(\v2\x1c.google.protobuf.StringValueR\x04code\x12'\n" +
@@ -488,9 +488,9 @@ const file_apfish_v1_permission_permission_service_proto_rawDesc = "" +
 	"\tports_ids\x18\b \x03(\x05R\bportsIds\x12\x1b\n" +
 	"\tships_ids\x18\t \x03(\x05R\bshipsIds\"?\n" +
 	"\x18CreatePermissionResponse\x12#\n" +
-	"\rpermission_id\x18\x01 \x01(\x05R\fpermissionId\">\n" +
+	"\rpermission_id\x18\x01 \x01(\tR\fpermissionId\">\n" +
 	"\x17DeletePermissionRequest\x12#\n" +
-	"\rpermission_id\x18\x01 \x01(\x05R\fpermissionId2\xb2\x04\n" +
+	"\rpermission_id\x18\x01 \x01(\tR\fpermissionId2\xb2\x04\n" +
 	"\x11PermissionService\x12b\n" +
 	"\rGetPermission\x12'.apfish.v1.permission.PermissionRequest\x1a(.apfish.v1.permission.PermissionResponse\x12p\n" +
 	"\x14GetPermissionSummary\x12'.apfish.v1.permission.PermissionRequest\x1a/.apfish.v1.permission.PermissionSummaryResponse\x12n\n" +

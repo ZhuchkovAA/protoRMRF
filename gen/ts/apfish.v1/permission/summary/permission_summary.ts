@@ -12,9 +12,9 @@ import { Timestamp } from "../../../google/protobuf/timestamp";
 export const protobufPackage = "apfish.v1.permission.summary";
 
 export interface PermissionSummary {
-  id: number;
-  actionId: number;
-  objectId: number;
+  id: string;
+  actionId: string;
+  objectId: string;
   /** Human-readable explanation of the permission */
   description: string;
   /** Display name (e.g., "Read Inspections") */
@@ -25,28 +25,28 @@ export interface PermissionSummary {
 }
 
 export interface PermissionJwt {
-  actionId: number;
-  objectId: number;
-  authoritiesId: number[];
-  districtsId: number[];
-  portsId: number[];
-  shipsId: number[];
+  actionId: string;
+  objectId: string;
+  authoritiesId: string[];
+  districtsId: string[];
+  portsId: string[];
+  shipsId: string[];
 }
 
 function createBasePermissionSummary(): PermissionSummary {
-  return { id: 0, actionId: 0, objectId: 0, description: "", name: "", code: "", createdAt: undefined };
+  return { id: "", actionId: "", objectId: "", description: "", name: "", code: "", createdAt: undefined };
 }
 
 export const PermissionSummary = {
   encode(message: PermissionSummary, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.id !== 0) {
-      writer.uint32(8).int32(message.id);
+    if (message.id !== "") {
+      writer.uint32(10).string(message.id);
     }
-    if (message.actionId !== 0) {
-      writer.uint32(16).int32(message.actionId);
+    if (message.actionId !== "") {
+      writer.uint32(18).string(message.actionId);
     }
-    if (message.objectId !== 0) {
-      writer.uint32(24).int32(message.objectId);
+    if (message.objectId !== "") {
+      writer.uint32(26).string(message.objectId);
     }
     if (message.description !== "") {
       writer.uint32(34).string(message.description);
@@ -71,25 +71,25 @@ export const PermissionSummary = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag !== 8) {
+          if (tag !== 10) {
             break;
           }
 
-          message.id = reader.int32();
+          message.id = reader.string();
           continue;
         case 2:
-          if (tag !== 16) {
+          if (tag !== 18) {
             break;
           }
 
-          message.actionId = reader.int32();
+          message.actionId = reader.string();
           continue;
         case 3:
-          if (tag !== 24) {
+          if (tag !== 26) {
             break;
           }
 
-          message.objectId = reader.int32();
+          message.objectId = reader.string();
           continue;
         case 4:
           if (tag !== 34) {
@@ -130,9 +130,9 @@ export const PermissionSummary = {
 
   fromJSON(object: any): PermissionSummary {
     return {
-      id: isSet(object.id) ? globalThis.Number(object.id) : 0,
-      actionId: isSet(object.actionId) ? globalThis.Number(object.actionId) : 0,
-      objectId: isSet(object.objectId) ? globalThis.Number(object.objectId) : 0,
+      id: isSet(object.id) ? globalThis.String(object.id) : "",
+      actionId: isSet(object.actionId) ? globalThis.String(object.actionId) : "",
+      objectId: isSet(object.objectId) ? globalThis.String(object.objectId) : "",
       description: isSet(object.description) ? globalThis.String(object.description) : "",
       name: isSet(object.name) ? globalThis.String(object.name) : "",
       code: isSet(object.code) ? globalThis.String(object.code) : "",
@@ -142,14 +142,14 @@ export const PermissionSummary = {
 
   toJSON(message: PermissionSummary): unknown {
     const obj: any = {};
-    if (message.id !== 0) {
-      obj.id = Math.round(message.id);
+    if (message.id !== "") {
+      obj.id = message.id;
     }
-    if (message.actionId !== 0) {
-      obj.actionId = Math.round(message.actionId);
+    if (message.actionId !== "") {
+      obj.actionId = message.actionId;
     }
-    if (message.objectId !== 0) {
-      obj.objectId = Math.round(message.objectId);
+    if (message.objectId !== "") {
+      obj.objectId = message.objectId;
     }
     if (message.description !== "") {
       obj.description = message.description;
@@ -171,9 +171,9 @@ export const PermissionSummary = {
   },
   fromPartial<I extends Exact<DeepPartial<PermissionSummary>, I>>(object: I): PermissionSummary {
     const message = createBasePermissionSummary();
-    message.id = object.id ?? 0;
-    message.actionId = object.actionId ?? 0;
-    message.objectId = object.objectId ?? 0;
+    message.id = object.id ?? "";
+    message.actionId = object.actionId ?? "";
+    message.objectId = object.objectId ?? "";
     message.description = object.description ?? "";
     message.name = object.name ?? "";
     message.code = object.code ?? "";
@@ -183,37 +183,29 @@ export const PermissionSummary = {
 };
 
 function createBasePermissionJwt(): PermissionJwt {
-  return { actionId: 0, objectId: 0, authoritiesId: [], districtsId: [], portsId: [], shipsId: [] };
+  return { actionId: "", objectId: "", authoritiesId: [], districtsId: [], portsId: [], shipsId: [] };
 }
 
 export const PermissionJwt = {
   encode(message: PermissionJwt, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.actionId !== 0) {
-      writer.uint32(8).int32(message.actionId);
+    if (message.actionId !== "") {
+      writer.uint32(10).string(message.actionId);
     }
-    if (message.objectId !== 0) {
-      writer.uint32(16).int32(message.objectId);
+    if (message.objectId !== "") {
+      writer.uint32(18).string(message.objectId);
     }
-    writer.uint32(26).fork();
     for (const v of message.authoritiesId) {
-      writer.int32(v);
+      writer.uint32(26).string(v!);
     }
-    writer.ldelim();
-    writer.uint32(34).fork();
     for (const v of message.districtsId) {
-      writer.int32(v);
+      writer.uint32(34).string(v!);
     }
-    writer.ldelim();
-    writer.uint32(42).fork();
     for (const v of message.portsId) {
-      writer.int32(v);
+      writer.uint32(42).string(v!);
     }
-    writer.ldelim();
-    writer.uint32(50).fork();
     for (const v of message.shipsId) {
-      writer.int32(v);
+      writer.uint32(50).string(v!);
     }
-    writer.ldelim();
     return writer;
   },
 
@@ -225,87 +217,47 @@ export const PermissionJwt = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag !== 8) {
+          if (tag !== 10) {
             break;
           }
 
-          message.actionId = reader.int32();
+          message.actionId = reader.string();
           continue;
         case 2:
-          if (tag !== 16) {
+          if (tag !== 18) {
             break;
           }
 
-          message.objectId = reader.int32();
+          message.objectId = reader.string();
           continue;
         case 3:
-          if (tag === 24) {
-            message.authoritiesId.push(reader.int32());
-
-            continue;
+          if (tag !== 26) {
+            break;
           }
 
-          if (tag === 26) {
-            const end2 = reader.uint32() + reader.pos;
-            while (reader.pos < end2) {
-              message.authoritiesId.push(reader.int32());
-            }
-
-            continue;
-          }
-
-          break;
+          message.authoritiesId.push(reader.string());
+          continue;
         case 4:
-          if (tag === 32) {
-            message.districtsId.push(reader.int32());
-
-            continue;
+          if (tag !== 34) {
+            break;
           }
 
-          if (tag === 34) {
-            const end2 = reader.uint32() + reader.pos;
-            while (reader.pos < end2) {
-              message.districtsId.push(reader.int32());
-            }
-
-            continue;
-          }
-
-          break;
+          message.districtsId.push(reader.string());
+          continue;
         case 5:
-          if (tag === 40) {
-            message.portsId.push(reader.int32());
-
-            continue;
+          if (tag !== 42) {
+            break;
           }
 
-          if (tag === 42) {
-            const end2 = reader.uint32() + reader.pos;
-            while (reader.pos < end2) {
-              message.portsId.push(reader.int32());
-            }
-
-            continue;
-          }
-
-          break;
+          message.portsId.push(reader.string());
+          continue;
         case 6:
-          if (tag === 48) {
-            message.shipsId.push(reader.int32());
-
-            continue;
+          if (tag !== 50) {
+            break;
           }
 
-          if (tag === 50) {
-            const end2 = reader.uint32() + reader.pos;
-            while (reader.pos < end2) {
-              message.shipsId.push(reader.int32());
-            }
-
-            continue;
-          }
-
-          break;
+          message.shipsId.push(reader.string());
+          continue;
       }
       if ((tag & 7) === 4 || tag === 0) {
         break;
@@ -317,38 +269,38 @@ export const PermissionJwt = {
 
   fromJSON(object: any): PermissionJwt {
     return {
-      actionId: isSet(object.actionId) ? globalThis.Number(object.actionId) : 0,
-      objectId: isSet(object.objectId) ? globalThis.Number(object.objectId) : 0,
+      actionId: isSet(object.actionId) ? globalThis.String(object.actionId) : "",
+      objectId: isSet(object.objectId) ? globalThis.String(object.objectId) : "",
       authoritiesId: globalThis.Array.isArray(object?.authoritiesId)
-        ? object.authoritiesId.map((e: any) => globalThis.Number(e))
+        ? object.authoritiesId.map((e: any) => globalThis.String(e))
         : [],
       districtsId: globalThis.Array.isArray(object?.districtsId)
-        ? object.districtsId.map((e: any) => globalThis.Number(e))
+        ? object.districtsId.map((e: any) => globalThis.String(e))
         : [],
-      portsId: globalThis.Array.isArray(object?.portsId) ? object.portsId.map((e: any) => globalThis.Number(e)) : [],
-      shipsId: globalThis.Array.isArray(object?.shipsId) ? object.shipsId.map((e: any) => globalThis.Number(e)) : [],
+      portsId: globalThis.Array.isArray(object?.portsId) ? object.portsId.map((e: any) => globalThis.String(e)) : [],
+      shipsId: globalThis.Array.isArray(object?.shipsId) ? object.shipsId.map((e: any) => globalThis.String(e)) : [],
     };
   },
 
   toJSON(message: PermissionJwt): unknown {
     const obj: any = {};
-    if (message.actionId !== 0) {
-      obj.actionId = Math.round(message.actionId);
+    if (message.actionId !== "") {
+      obj.actionId = message.actionId;
     }
-    if (message.objectId !== 0) {
-      obj.objectId = Math.round(message.objectId);
+    if (message.objectId !== "") {
+      obj.objectId = message.objectId;
     }
     if (message.authoritiesId?.length) {
-      obj.authoritiesId = message.authoritiesId.map((e) => Math.round(e));
+      obj.authoritiesId = message.authoritiesId;
     }
     if (message.districtsId?.length) {
-      obj.districtsId = message.districtsId.map((e) => Math.round(e));
+      obj.districtsId = message.districtsId;
     }
     if (message.portsId?.length) {
-      obj.portsId = message.portsId.map((e) => Math.round(e));
+      obj.portsId = message.portsId;
     }
     if (message.shipsId?.length) {
-      obj.shipsId = message.shipsId.map((e) => Math.round(e));
+      obj.shipsId = message.shipsId;
     }
     return obj;
   },
@@ -358,8 +310,8 @@ export const PermissionJwt = {
   },
   fromPartial<I extends Exact<DeepPartial<PermissionJwt>, I>>(object: I): PermissionJwt {
     const message = createBasePermissionJwt();
-    message.actionId = object.actionId ?? 0;
-    message.objectId = object.objectId ?? 0;
+    message.actionId = object.actionId ?? "";
+    message.objectId = object.objectId ?? "";
     message.authoritiesId = object.authoritiesId?.map((e) => e) || [];
     message.districtsId = object.districtsId?.map((e) => e) || [];
     message.portsId = object.portsId?.map((e) => e) || [];

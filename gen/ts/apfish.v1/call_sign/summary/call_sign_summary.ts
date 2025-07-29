@@ -12,7 +12,7 @@ import { Timestamp } from "../../../google/protobuf/timestamp";
 export const protobufPackage = "apfish.v1.call_sign.summary";
 
 export interface CallSignSummary {
-  id: number;
+  id: string;
   series: string;
   limitLower: string;
   limitUpper: string;
@@ -20,13 +20,13 @@ export interface CallSignSummary {
 }
 
 function createBaseCallSignSummary(): CallSignSummary {
-  return { id: 0, series: "", limitLower: "", limitUpper: "", createdAt: undefined };
+  return { id: "", series: "", limitLower: "", limitUpper: "", createdAt: undefined };
 }
 
 export const CallSignSummary = {
   encode(message: CallSignSummary, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.id !== 0) {
-      writer.uint32(8).int32(message.id);
+    if (message.id !== "") {
+      writer.uint32(10).string(message.id);
     }
     if (message.series !== "") {
       writer.uint32(18).string(message.series);
@@ -51,11 +51,11 @@ export const CallSignSummary = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag !== 8) {
+          if (tag !== 10) {
             break;
           }
 
-          message.id = reader.int32();
+          message.id = reader.string();
           continue;
         case 2:
           if (tag !== 18) {
@@ -96,7 +96,7 @@ export const CallSignSummary = {
 
   fromJSON(object: any): CallSignSummary {
     return {
-      id: isSet(object.id) ? globalThis.Number(object.id) : 0,
+      id: isSet(object.id) ? globalThis.String(object.id) : "",
       series: isSet(object.series) ? globalThis.String(object.series) : "",
       limitLower: isSet(object.limitLower) ? globalThis.String(object.limitLower) : "",
       limitUpper: isSet(object.limitUpper) ? globalThis.String(object.limitUpper) : "",
@@ -106,8 +106,8 @@ export const CallSignSummary = {
 
   toJSON(message: CallSignSummary): unknown {
     const obj: any = {};
-    if (message.id !== 0) {
-      obj.id = Math.round(message.id);
+    if (message.id !== "") {
+      obj.id = message.id;
     }
     if (message.series !== "") {
       obj.series = message.series;
@@ -129,7 +129,7 @@ export const CallSignSummary = {
   },
   fromPartial<I extends Exact<DeepPartial<CallSignSummary>, I>>(object: I): CallSignSummary {
     const message = createBaseCallSignSummary();
-    message.id = object.id ?? 0;
+    message.id = object.id ?? "";
     message.series = object.series ?? "";
     message.limitLower = object.limitLower ?? "";
     message.limitUpper = object.limitUpper ?? "";

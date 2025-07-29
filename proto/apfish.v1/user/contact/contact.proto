@@ -12,7 +12,7 @@ import "apfish.v1/user/contact/type/summary/type_summary.proto";
 
 // A user's contact method (e.g., email, phone).
 message Contact {
-  int32 id = 1;                       // Unique contact ID.
+  string id = 1;                       // Unique contact ID.
   user.summary.UserSummary user = 2;
   apfish.v1.user.contact.type.summary.TypeSummary type = 3;           // Contact type.
   string value = 4;                   // Contact value (e.g., "user@example.com").
@@ -20,8 +20,8 @@ message Contact {
 }
 
 message ContactPatch {
-  int32 id = 1;
-  google.protobuf.Int32Value user_id = 2;
-  google.protobuf.Int32Value type_id = 3;
+  string id = 1;
+  google.protobuf.StringValue user_id = 2;
+  google.protobuf.StringValue type_id = 3;
   google.protobuf.StringValue value = 4;
 }

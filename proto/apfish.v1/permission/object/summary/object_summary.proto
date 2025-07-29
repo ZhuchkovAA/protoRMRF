@@ -7,7 +7,7 @@ option go_package = "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission
 import "google/protobuf/timestamp.proto";  // Standard Protocol Buffers timestamp
 
 message ObjectSummary {
-  int32 id = 1;                   // Unique identifier for the object type
+  string id = 1;                   // Unique identifier for the object type
   string name = 2;                // Human-readable name (e.g., "Inspection")
   string description = 3;         // Detailed explanation of the action
   string code = 4;                // Machine-friendly code (e.g., "read")

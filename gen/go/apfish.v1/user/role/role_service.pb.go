@@ -24,7 +24,7 @@ const (
 
 type RoleRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -59,11 +59,11 @@ func (*RoleRequest) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_user_role_role_service_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *RoleRequest) GetId() int32 {
+func (x *RoleRequest) GetId() string {
 	if x != nil {
 		return x.Id
 	}
-	return 0
+	return ""
 }
 
 type RoleResponse struct {
@@ -264,7 +264,7 @@ const file_apfish_v1_user_role_role_service_proto_rawDesc = "" +
 	"\n" +
 	"&apfish.v1/user/role/role_service.proto\x12\x13apfish.v1.user.role\x1a\x1eapfish.v1/user/role/role.proto\x1a.apfish.v1/user/role/summary/role_summary.proto\"\x1d\n" +
 	"\vRoleRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\"=\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\"=\n" +
 	"\fRoleResponse\x12-\n" +
 	"\x04role\x18\x01 \x01(\v2\x19.apfish.v1.user.role.RoleR\x04role\"S\n" +
 	"\x13RoleSummaryResponse\x12<\n" +

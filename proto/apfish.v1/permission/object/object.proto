@@ -10,7 +10,7 @@ import "apfish.v1/permission/summary/permission_summary.proto";
 
 // Defines a type of resource or object that can be accessed in the system.
 message Object {
-  int32 id = 1;                   // Unique identifier for the object type
+  string id = 1;                   // Unique identifier for the object type
   string name = 2;                // Human-readable name (e.g., "Inspection")
   string description = 3;         // Detailed explanation of the object type
   string code = 4;                // Machine-friendly code (e.g., "inspection")

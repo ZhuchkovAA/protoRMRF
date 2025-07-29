@@ -24,7 +24,7 @@ const (
 
 type TypeRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -59,11 +59,11 @@ func (*TypeRequest) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_ship_type_type_service_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *TypeRequest) GetId() int32 {
+func (x *TypeRequest) GetId() string {
 	if x != nil {
 		return x.Id
 	}
-	return 0
+	return ""
 }
 
 type TypeResponse struct {
@@ -264,7 +264,7 @@ const file_apfish_v1_ship_type_type_service_proto_rawDesc = "" +
 	"\n" +
 	"&apfish.v1/ship/type/type_service.proto\x12\x13apfish.v1.ship.type\x1a\x1eapfish.v1/ship/type/type.proto\x1a.apfish.v1/ship/type/summary/type_summary.proto\"\x1d\n" +
 	"\vTypeRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\"=\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\"=\n" +
 	"\fTypeResponse\x12-\n" +
 	"\x04type\x18\x01 \x01(\v2\x19.apfish.v1.ship.type.TypeR\x04type\"S\n" +
 	"\x13TypeSummaryResponse\x12<\n" +

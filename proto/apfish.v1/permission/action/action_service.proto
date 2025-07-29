@@ -15,7 +15,7 @@ service ActionService {
 }
 
 message ActionRequest {
-  int32 id = 1;
+  string id = 1;
 }
 
 message ActionResponse {

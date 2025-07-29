@@ -24,10 +24,10 @@ const (
 
 type PortSummary struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	AuthorityId   int32                  `protobuf:"varint,3,opt,name=authority_id,json=authorityId,proto3" json:"authority_id,omitempty"`
-	DistrictId    int32                  `protobuf:"varint,4,opt,name=district_id,json=districtId,proto3" json:"district_id,omitempty"`
+	AuthorityId   string                 `protobuf:"bytes,3,opt,name=authority_id,json=authorityId,proto3" json:"authority_id,omitempty"`
+	DistrictId    string                 `protobuf:"bytes,4,opt,name=district_id,json=districtId,proto3" json:"district_id,omitempty"`
 	Code          string                 `protobuf:"bytes,5,opt,name=code,proto3" json:"code,omitempty"`
 	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -64,11 +64,11 @@ func (*PortSummary) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_location_port_summary_port_summary_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *PortSummary) GetId() int32 {
+func (x *PortSummary) GetId() string {
 	if x != nil {
 		return x.Id
 	}
-	return 0
+	return ""
 }
 
 func (x *PortSummary) GetName() string {
@@ -78,18 +78,18 @@ func (x *PortSummary) GetName() string {
 	return ""
 }
 
-func (x *PortSummary) GetAuthorityId() int32 {
+func (x *PortSummary) GetAuthorityId() string {
 	if x != nil {
 		return x.AuthorityId
 	}
-	return 0
+	return ""
 }
 
-func (x *PortSummary) GetDistrictId() int32 {
+func (x *PortSummary) GetDistrictId() string {
 	if x != nil {
 		return x.DistrictId
 	}
-	return 0
+	return ""
 }
 
 func (x *PortSummary) GetCode() string {
@@ -112,10 +112,10 @@ const file_apfish_v1_location_port_summary_port_summary_proto_rawDesc = "" +
 	"\n" +
 	"2apfish.v1/location/port/summary/port_summary.proto\x12\x1fapfish.v1.location.port.summary\x1a\x1fgoogle/protobuf/timestamp.proto\"\xc4\x01\n" +
 	"\vPortSummary\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x12\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12!\n" +
-	"\fauthority_id\x18\x03 \x01(\x05R\vauthorityId\x12\x1f\n" +
-	"\vdistrict_id\x18\x04 \x01(\x05R\n" +
+	"\fauthority_id\x18\x03 \x01(\tR\vauthorityId\x12\x1f\n" +
+	"\vdistrict_id\x18\x04 \x01(\tR\n" +
 	"districtId\x12\x12\n" +
 	"\x04code\x18\x05 \x01(\tR\x04code\x129\n" +
 	"\n" +

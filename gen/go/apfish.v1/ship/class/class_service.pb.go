@@ -24,7 +24,7 @@ const (
 
 type ClassRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -59,11 +59,11 @@ func (*ClassRequest) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_ship_class_class_service_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *ClassRequest) GetId() int32 {
+func (x *ClassRequest) GetId() string {
 	if x != nil {
 		return x.Id
 	}
-	return 0
+	return ""
 }
 
 type ClassResponse struct {
@@ -264,7 +264,7 @@ const file_apfish_v1_ship_class_class_service_proto_rawDesc = "" +
 	"\n" +
 	"(apfish.v1/ship/class/class_service.proto\x12\x14apfish.v1.ship.class\x1a apfish.v1/ship/class/class.proto\x1a0apfish.v1/ship/class/summary/class_summary.proto\"\x1e\n" +
 	"\fClassRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\"B\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\"B\n" +
 	"\rClassResponse\x121\n" +
 	"\x05class\x18\x01 \x01(\v2\x1b.apfish.v1.ship.class.ClassR\x05class\"X\n" +
 	"\x14ClassSummaryResponse\x12@\n" +

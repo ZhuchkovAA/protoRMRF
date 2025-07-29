@@ -12,14 +12,14 @@ import { Timestamp } from "../../../google/protobuf/timestamp";
 export const protobufPackage = "apfish.v1.ship.summary";
 
 export interface ShipSummary {
-  id: number;
+  id: string;
   imo: number;
-  typeId: number;
-  classId: number;
-  authorityId: number;
+  typeId: string;
+  classId: string;
+  authorityId: string;
   name: string;
   mmsi: number;
-  callSignId: number;
+  callSignId: string;
   callSignValue: string;
   dateBuild: Date | undefined;
   deadWeight: number;
@@ -29,14 +29,14 @@ export interface ShipSummary {
 
 function createBaseShipSummary(): ShipSummary {
   return {
-    id: 0,
+    id: "",
     imo: 0,
-    typeId: 0,
-    classId: 0,
-    authorityId: 0,
+    typeId: "",
+    classId: "",
+    authorityId: "",
     name: "",
     mmsi: 0,
-    callSignId: 0,
+    callSignId: "",
     callSignValue: "",
     dateBuild: undefined,
     deadWeight: 0,
@@ -47,20 +47,20 @@ function createBaseShipSummary(): ShipSummary {
 
 export const ShipSummary = {
   encode(message: ShipSummary, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.id !== 0) {
-      writer.uint32(8).int32(message.id);
+    if (message.id !== "") {
+      writer.uint32(10).string(message.id);
     }
     if (message.imo !== 0) {
       writer.uint32(16).int32(message.imo);
     }
-    if (message.typeId !== 0) {
-      writer.uint32(24).int32(message.typeId);
+    if (message.typeId !== "") {
+      writer.uint32(26).string(message.typeId);
     }
-    if (message.classId !== 0) {
-      writer.uint32(32).int32(message.classId);
+    if (message.classId !== "") {
+      writer.uint32(34).string(message.classId);
     }
-    if (message.authorityId !== 0) {
-      writer.uint32(40).int32(message.authorityId);
+    if (message.authorityId !== "") {
+      writer.uint32(42).string(message.authorityId);
     }
     if (message.name !== "") {
       writer.uint32(50).string(message.name);
@@ -68,8 +68,8 @@ export const ShipSummary = {
     if (message.mmsi !== 0) {
       writer.uint32(56).int32(message.mmsi);
     }
-    if (message.callSignId !== 0) {
-      writer.uint32(64).int32(message.callSignId);
+    if (message.callSignId !== "") {
+      writer.uint32(66).string(message.callSignId);
     }
     if (message.callSignValue !== "") {
       writer.uint32(74).string(message.callSignValue);
@@ -97,11 +97,11 @@ export const ShipSummary = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag !== 8) {
+          if (tag !== 10) {
             break;
           }
 
-          message.id = reader.int32();
+          message.id = reader.string();
           continue;
         case 2:
           if (tag !== 16) {
@@ -111,25 +111,25 @@ export const ShipSummary = {
           message.imo = reader.int32();
           continue;
         case 3:
-          if (tag !== 24) {
+          if (tag !== 26) {
             break;
           }
 
-          message.typeId = reader.int32();
+          message.typeId = reader.string();
           continue;
         case 4:
-          if (tag !== 32) {
+          if (tag !== 34) {
             break;
           }
 
-          message.classId = reader.int32();
+          message.classId = reader.string();
           continue;
         case 5:
-          if (tag !== 40) {
+          if (tag !== 42) {
             break;
           }
 
-          message.authorityId = reader.int32();
+          message.authorityId = reader.string();
           continue;
         case 6:
           if (tag !== 50) {
@@ -146,11 +146,11 @@ export const ShipSummary = {
           message.mmsi = reader.int32();
           continue;
         case 8:
-          if (tag !== 64) {
+          if (tag !== 66) {
             break;
           }
 
-          message.callSignId = reader.int32();
+          message.callSignId = reader.string();
           continue;
         case 9:
           if (tag !== 74) {
@@ -198,14 +198,14 @@ export const ShipSummary = {
 
   fromJSON(object: any): ShipSummary {
     return {
-      id: isSet(object.id) ? globalThis.Number(object.id) : 0,
+      id: isSet(object.id) ? globalThis.String(object.id) : "",
       imo: isSet(object.imo) ? globalThis.Number(object.imo) : 0,
-      typeId: isSet(object.typeId) ? globalThis.Number(object.typeId) : 0,
-      classId: isSet(object.classId) ? globalThis.Number(object.classId) : 0,
-      authorityId: isSet(object.authorityId) ? globalThis.Number(object.authorityId) : 0,
+      typeId: isSet(object.typeId) ? globalThis.String(object.typeId) : "",
+      classId: isSet(object.classId) ? globalThis.String(object.classId) : "",
+      authorityId: isSet(object.authorityId) ? globalThis.String(object.authorityId) : "",
       name: isSet(object.name) ? globalThis.String(object.name) : "",
       mmsi: isSet(object.mmsi) ? globalThis.Number(object.mmsi) : 0,
-      callSignId: isSet(object.callSignId) ? globalThis.Number(object.callSignId) : 0,
+      callSignId: isSet(object.callSignId) ? globalThis.String(object.callSignId) : "",
       callSignValue: isSet(object.callSignValue) ? globalThis.String(object.callSignValue) : "",
       dateBuild: isSet(object.dateBuild) ? fromJsonTimestamp(object.dateBuild) : undefined,
       deadWeight: isSet(object.deadWeight) ? globalThis.Number(object.deadWeight) : 0,
@@ -216,20 +216,20 @@ export const ShipSummary = {
 
   toJSON(message: ShipSummary): unknown {
     const obj: any = {};
-    if (message.id !== 0) {
-      obj.id = Math.round(message.id);
+    if (message.id !== "") {
+      obj.id = message.id;
     }
     if (message.imo !== 0) {
       obj.imo = Math.round(message.imo);
     }
-    if (message.typeId !== 0) {
-      obj.typeId = Math.round(message.typeId);
+    if (message.typeId !== "") {
+      obj.typeId = message.typeId;
     }
-    if (message.classId !== 0) {
-      obj.classId = Math.round(message.classId);
+    if (message.classId !== "") {
+      obj.classId = message.classId;
     }
-    if (message.authorityId !== 0) {
-      obj.authorityId = Math.round(message.authorityId);
+    if (message.authorityId !== "") {
+      obj.authorityId = message.authorityId;
     }
     if (message.name !== "") {
       obj.name = message.name;
@@ -237,8 +237,8 @@ export const ShipSummary = {
     if (message.mmsi !== 0) {
       obj.mmsi = Math.round(message.mmsi);
     }
-    if (message.callSignId !== 0) {
-      obj.callSignId = Math.round(message.callSignId);
+    if (message.callSignId !== "") {
+      obj.callSignId = message.callSignId;
     }
     if (message.callSignValue !== "") {
       obj.callSignValue = message.callSignValue;
@@ -263,14 +263,14 @@ export const ShipSummary = {
   },
   fromPartial<I extends Exact<DeepPartial<ShipSummary>, I>>(object: I): ShipSummary {
     const message = createBaseShipSummary();
-    message.id = object.id ?? 0;
+    message.id = object.id ?? "";
     message.imo = object.imo ?? 0;
-    message.typeId = object.typeId ?? 0;
-    message.classId = object.classId ?? 0;
-    message.authorityId = object.authorityId ?? 0;
+    message.typeId = object.typeId ?? "";
+    message.classId = object.classId ?? "";
+    message.authorityId = object.authorityId ?? "";
     message.name = object.name ?? "";
     message.mmsi = object.mmsi ?? 0;
-    message.callSignId = object.callSignId ?? 0;
+    message.callSignId = object.callSignId ?? "";
     message.callSignValue = object.callSignValue ?? "";
     message.dateBuild = object.dateBuild ?? undefined;
     message.deadWeight = object.deadWeight ?? 0;

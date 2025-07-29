@@ -7,7 +7,7 @@ option go_package = "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/ship/class
 import "google/protobuf/timestamp.proto";  // Standard Protocol Buffers timestamp
 
 message ClassSummary {
-  int32 id = 1;
+  string id = 1;
   string name = 2;
   google.protobuf.Timestamp created_at = 3;
 }

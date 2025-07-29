@@ -24,8 +24,8 @@ const (
 
 type JwtData struct {
 	state         protoimpl.MessageState   `protogen:"open.v1"`
-	Id            int32                    `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	RoleId        int32                    `protobuf:"varint,2,opt,name=role_id,json=roleId,proto3" json:"role_id,omitempty"`
+	Id            string                   `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	RoleId        string                   `protobuf:"bytes,2,opt,name=role_id,json=roleId,proto3" json:"role_id,omitempty"`
 	Permissions   []*summary.PermissionJwt `protobuf:"bytes,3,rep,name=permissions,proto3" json:"permissions,omitempty"`
 	Exp           int64                    `protobuf:"varint,4,opt,name=exp,proto3" json:"exp,omitempty"`
 	Iat           int64                    `protobuf:"varint,5,opt,name=iat,proto3" json:"iat,omitempty"`
@@ -63,18 +63,18 @@ func (*JwtData) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_auth_jwt_jwt_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *JwtData) GetId() int32 {
+func (x *JwtData) GetId() string {
 	if x != nil {
 		return x.Id
 	}
-	return 0
+	return ""
 }
 
-func (x *JwtData) GetRoleId() int32 {
+func (x *JwtData) GetRoleId() string {
 	if x != nil {
 		return x.RoleId
 	}
-	return 0
+	return ""
 }
 
 func (x *JwtData) GetPermissions() []*summary.PermissionJwt {
@@ -104,8 +104,8 @@ const file_apfish_v1_auth_jwt_jwt_proto_rawDesc = "" +
 	"\n" +
 	"\x1capfish.v1/auth/jwt/jwt.proto\x12\x12apfish.v1.auth.jwt\x1a5apfish.v1/permission/summary/permission_summary.proto\"\xa5\x01\n" +
 	"\aJwtData\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x17\n" +
-	"\arole_id\x18\x02 \x01(\x05R\x06roleId\x12M\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x17\n" +
+	"\arole_id\x18\x02 \x01(\tR\x06roleId\x12M\n" +
 	"\vpermissions\x18\x03 \x03(\v2+.apfish.v1.permission.summary.PermissionJwtR\vpermissions\x12\x10\n" +
 	"\x03exp\x18\x04 \x01(\x03R\x03exp\x12\x10\n" +
 	"\x03iat\x18\x05 \x01(\x03R\x03iatBDZBgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/auth/jwt;auth_jwtb\x06proto3"

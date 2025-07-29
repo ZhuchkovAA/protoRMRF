@@ -16,7 +16,7 @@ export const protobufPackage = "apfish.v1.user.role";
 /** Defines a user role (e.g., "Admin", "Editor"). */
 export interface Role {
   /** Unique role ID. */
-  id: number;
+  id: string;
   /** Human-readable name (e.g., "Admin"). */
   name: string;
   /** Machine-friendly code (e.g., "admin"). */
@@ -29,13 +29,13 @@ export interface Role {
 }
 
 function createBaseRole(): Role {
-  return { id: 0, name: "", code: "", createdAt: undefined, users: [], permissions: [] };
+  return { id: "", name: "", code: "", createdAt: undefined, users: [], permissions: [] };
 }
 
 export const Role = {
   encode(message: Role, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.id !== 0) {
-      writer.uint32(8).int32(message.id);
+    if (message.id !== "") {
+      writer.uint32(10).string(message.id);
     }
     if (message.name !== "") {
       writer.uint32(18).string(message.name);
@@ -63,11 +63,11 @@ export const Role = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag !== 8) {
+          if (tag !== 10) {
             break;
           }
 
-          message.id = reader.int32();
+          message.id = reader.string();
           continue;
         case 2:
           if (tag !== 18) {
@@ -115,7 +115,7 @@ export const Role = {
 
   fromJSON(object: any): Role {
     return {
-      id: isSet(object.id) ? globalThis.Number(object.id) : 0,
+      id: isSet(object.id) ? globalThis.String(object.id) : "",
       name: isSet(object.name) ? globalThis.String(object.name) : "",
       code: isSet(object.code) ? globalThis.String(object.code) : "",
       createdAt: isSet(object.createdAt) ? fromJsonTimestamp(object.createdAt) : undefined,
@@ -128,8 +128,8 @@ export const Role = {
 
   toJSON(message: Role): unknown {
     const obj: any = {};
-    if (message.id !== 0) {
-      obj.id = Math.round(message.id);
+    if (message.id !== "") {
+      obj.id = message.id;
     }
     if (message.name !== "") {
       obj.name = message.name;
@@ -154,7 +154,7 @@ export const Role = {
   },
   fromPartial<I extends Exact<DeepPartial<Role>, I>>(object: I): Role {
     const message = createBaseRole();
-    message.id = object.id ?? 0;
+    message.id = object.id ?? "";
     message.name = object.name ?? "";
     message.code = object.code ?? "";
     message.createdAt = object.createdAt ?? undefined;

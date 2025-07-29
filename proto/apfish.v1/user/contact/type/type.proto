@@ -11,7 +11,7 @@ import "apfish.v1/user/contact/summary/contact_summary.proto";
 
 // Type of contact method (e.g., "Email", "Phone").
 message Type {
-  int32 id = 1;                       // Unique type ID.
+  string id = 1;                       // Unique type ID.
   string name = 2;                    // Human-readable name (e.g., "Email").
   string code = 3;                    // Machine-friendly code (e.g., "email").
   google.protobuf.Timestamp created_at = 4;  // When the type was defined.
@@ -20,7 +20,7 @@ message Type {
 }
 
 message TypePatch {
-  int32 id = 1;
+  string id = 1;
   google.protobuf.StringValue name = 2;
   google.protobuf.StringValue code = 3;
 }

@@ -13,20 +13,20 @@ import { ShipSummary } from "../summary/ship_summary";
 export const protobufPackage = "apfish.v1.ship.type";
 
 export interface Type {
-  id: number;
+  id: string;
   name: string;
   createdAt: Date | undefined;
   ships: ShipSummary[];
 }
 
 function createBaseType(): Type {
-  return { id: 0, name: "", createdAt: undefined, ships: [] };
+  return { id: "", name: "", createdAt: undefined, ships: [] };
 }
 
 export const Type = {
   encode(message: Type, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.id !== 0) {
-      writer.uint32(8).int32(message.id);
+    if (message.id !== "") {
+      writer.uint32(10).string(message.id);
     }
     if (message.name !== "") {
       writer.uint32(18).string(message.name);
@@ -48,11 +48,11 @@ export const Type = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag !== 8) {
+          if (tag !== 10) {
             break;
           }
 
-          message.id = reader.int32();
+          message.id = reader.string();
           continue;
         case 2:
           if (tag !== 18) {
@@ -86,7 +86,7 @@ export const Type = {
 
   fromJSON(object: any): Type {
     return {
-      id: isSet(object.id) ? globalThis.Number(object.id) : 0,
+      id: isSet(object.id) ? globalThis.String(object.id) : "",
       name: isSet(object.name) ? globalThis.String(object.name) : "",
       createdAt: isSet(object.createdAt) ? fromJsonTimestamp(object.createdAt) : undefined,
       ships: globalThis.Array.isArray(object?.ships) ? object.ships.map((e: any) => ShipSummary.fromJSON(e)) : [],
@@ -95,8 +95,8 @@ export const Type = {
 
   toJSON(message: Type): unknown {
     const obj: any = {};
-    if (message.id !== 0) {
-      obj.id = Math.round(message.id);
+    if (message.id !== "") {
+      obj.id = message.id;
     }
     if (message.name !== "") {
       obj.name = message.name;
@@ -115,7 +115,7 @@ export const Type = {
   },
   fromPartial<I extends Exact<DeepPartial<Type>, I>>(object: I): Type {
     const message = createBaseType();
-    message.id = object.id ?? 0;
+    message.id = object.id ?? "";
     message.name = object.name ?? "";
     message.createdAt = object.createdAt ?? undefined;
     message.ships = object.ships?.map((e) => ShipSummary.fromPartial(e)) || [];

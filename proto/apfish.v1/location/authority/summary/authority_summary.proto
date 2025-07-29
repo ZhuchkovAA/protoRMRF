@@ -7,7 +7,7 @@ option go_package = "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/a
 import "google/protobuf/timestamp.proto";  // Standard Protocol Buffers timestamp
 
 message AuthoritySummary {
-  int32 id = 1;
+  string id = 1;
   string name = 2;
   string name_rus = 3;
   string code = 4;

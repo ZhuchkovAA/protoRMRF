@@ -27,7 +27,7 @@ const (
 // Type of contact method (e.g., "Email", "Phone").
 type Type struct {
 	state         protoimpl.MessageState    `protogen:"open.v1"`
-	Id            int32                     `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`                               // Unique type ID.
+	Id            string                    `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`                                // Unique type ID.
 	Name          string                    `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`                            // Human-readable name (e.g., "Email").
 	Code          string                    `protobuf:"bytes,3,opt,name=code,proto3" json:"code,omitempty"`                            // Machine-friendly code (e.g., "email").
 	CreatedAt     *timestamppb.Timestamp    `protobuf:"bytes,4,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"` // When the type was defined.
@@ -66,11 +66,11 @@ func (*Type) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_user_contact_type_type_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *Type) GetId() int32 {
+func (x *Type) GetId() string {
 	if x != nil {
 		return x.Id
 	}
-	return 0
+	return ""
 }
 
 func (x *Type) GetName() string {
@@ -103,7 +103,7 @@ func (x *Type) GetContacts() []*summary.ContactSummary {
 
 type TypePatch struct {
 	state         protoimpl.MessageState  `protogen:"open.v1"`
-	Id            int32                   `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id            string                  `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	Name          *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	Code          *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=code,proto3" json:"code,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -140,11 +140,11 @@ func (*TypePatch) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_user_contact_type_type_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *TypePatch) GetId() int32 {
+func (x *TypePatch) GetId() string {
 	if x != nil {
 		return x.Id
 	}
-	return 0
+	return ""
 }
 
 func (x *TypePatch) GetName() *wrapperspb.StringValue {
@@ -167,14 +167,14 @@ const file_apfish_v1_user_contact_type_type_proto_rawDesc = "" +
 	"\n" +
 	"&apfish.v1/user/contact/type/type.proto\x12\x1bapfish.v1.user.contact.type\x1a\x1egoogle/protobuf/wrappers.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a4apfish.v1/user/contact/summary/contact_summary.proto\"\xc5\x01\n" +
 	"\x04Type\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x12\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x12\n" +
 	"\x04code\x18\x03 \x01(\tR\x04code\x129\n" +
 	"\n" +
 	"created_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x12J\n" +
 	"\bcontacts\x18\x05 \x03(\v2..apfish.v1.user.contact.summary.ContactSummaryR\bcontacts\"\x7f\n" +
 	"\tTypePatch\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\x120\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x120\n" +
 	"\x04name\x18\x02 \x01(\v2\x1c.google.protobuf.StringValueR\x04name\x120\n" +
 	"\x04code\x18\x03 \x01(\v2\x1c.google.protobuf.StringValueR\x04codeBVZTgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/contact/type;user_contact_typeb\x06proto3"
 

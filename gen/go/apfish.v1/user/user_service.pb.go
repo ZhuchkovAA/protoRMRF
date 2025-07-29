@@ -305,7 +305,7 @@ func (x *CreateUserRequest) GetMiddleName() string {
 
 type CreateUserResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	UserId        int32                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	UserId        string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -340,11 +340,11 @@ func (*CreateUserResponse) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_user_user_service_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *CreateUserResponse) GetUserId() int32 {
+func (x *CreateUserResponse) GetUserId() string {
 	if x != nil {
 		return x.UserId
 	}
-	return 0
+	return ""
 }
 
 type UpdateUserRequest struct {
@@ -416,7 +416,7 @@ const file_apfish_v1_user_user_service_proto_rawDesc = "" +
 	"\vmiddle_name\x18\x05 \x01(\tR\n" +
 	"middleName\"-\n" +
 	"\x12CreateUserResponse\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\x05R\x06userId\"B\n" +
+	"\auser_id\x18\x01 \x01(\tR\x06userId\"B\n" +
 	"\x11UpdateUserRequest\x12-\n" +
 	"\x04user\x18\x01 \x01(\v2\x19.apfish.v1.user.UserPatchR\x04user2\xce\x02\n" +
 	"\vUserService\x12D\n" +

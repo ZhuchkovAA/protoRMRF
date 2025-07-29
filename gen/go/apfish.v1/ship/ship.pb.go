@@ -30,7 +30,7 @@ const (
 
 type Ship struct {
 	state         protoimpl.MessageState        `protogen:"open.v1"`
-	Id            int32                         `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id            string                        `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	Imo           int32                         `protobuf:"varint,2,opt,name=imo,proto3" json:"imo,omitempty"`
 	Type          *summary.TypeSummary          `protobuf:"bytes,3,opt,name=type,proto3" json:"type,omitempty"`
 	Class         *summary1.ClassSummary        `protobuf:"bytes,4,opt,name=class,proto3" json:"class,omitempty"`
@@ -79,11 +79,11 @@ func (*Ship) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_ship_ship_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *Ship) GetId() int32 {
+func (x *Ship) GetId() string {
 	if x != nil {
 		return x.Id
 	}
-	return 0
+	return ""
 }
 
 func (x *Ship) GetImo() int32 {
@@ -190,7 +190,7 @@ const file_apfish_v1_ship_ship_proto_rawDesc = "" +
 	"\n" +
 	"\x19apfish.v1/ship/ship.proto\x12\x0eapfish.v1.ship\x1a\x1fgoogle/protobuf/timestamp.proto\x1a.apfish.v1/ship/type/summary/type_summary.proto\x1a0apfish.v1/ship/class/summary/class_summary.proto\x1a<apfish.v1/location/authority/summary/authority_summary.proto\x1a3apfish.v1/call_sign/summary/call_sign_summary.proto\x1a4apfish.v1/ship/captain/summary/captain_summary.proto\x1a5apfish.v1/permission/summary/permission_summary.proto\"\xe9\x05\n" +
 	"\x04Ship\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x10\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x10\n" +
 	"\x03imo\x18\x02 \x01(\x05R\x03imo\x12<\n" +
 	"\x04type\x18\x03 \x01(\v2(.apfish.v1.ship.type.summary.TypeSummaryR\x04type\x12@\n" +
 	"\x05class\x18\x04 \x01(\v2*.apfish.v1.ship.class.summary.ClassSummaryR\x05class\x12T\n" +

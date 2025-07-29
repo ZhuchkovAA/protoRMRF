@@ -16,7 +16,7 @@ export const protobufPackage = "apfish.v1.user.contact.type";
 /** Type of contact method (e.g., "Email", "Phone"). */
 export interface Type {
   /** Unique type ID. */
-  id: number;
+  id: string;
   /** Human-readable name (e.g., "Email"). */
   name: string;
   /** Machine-friendly code (e.g., "email"). */
@@ -27,19 +27,19 @@ export interface Type {
 }
 
 export interface TypePatch {
-  id: number;
+  id: string;
   name: string | undefined;
   code: string | undefined;
 }
 
 function createBaseType(): Type {
-  return { id: 0, name: "", code: "", createdAt: undefined, contacts: [] };
+  return { id: "", name: "", code: "", createdAt: undefined, contacts: [] };
 }
 
 export const Type = {
   encode(message: Type, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.id !== 0) {
-      writer.uint32(8).int32(message.id);
+    if (message.id !== "") {
+      writer.uint32(10).string(message.id);
     }
     if (message.name !== "") {
       writer.uint32(18).string(message.name);
@@ -64,11 +64,11 @@ export const Type = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag !== 8) {
+          if (tag !== 10) {
             break;
           }
 
-          message.id = reader.int32();
+          message.id = reader.string();
           continue;
         case 2:
           if (tag !== 18) {
@@ -109,7 +109,7 @@ export const Type = {
 
   fromJSON(object: any): Type {
     return {
-      id: isSet(object.id) ? globalThis.Number(object.id) : 0,
+      id: isSet(object.id) ? globalThis.String(object.id) : "",
       name: isSet(object.name) ? globalThis.String(object.name) : "",
       code: isSet(object.code) ? globalThis.String(object.code) : "",
       createdAt: isSet(object.createdAt) ? fromJsonTimestamp(object.createdAt) : undefined,
@@ -121,8 +121,8 @@ export const Type = {
 
   toJSON(message: Type): unknown {
     const obj: any = {};
-    if (message.id !== 0) {
-      obj.id = Math.round(message.id);
+    if (message.id !== "") {
+      obj.id = message.id;
     }
     if (message.name !== "") {
       obj.name = message.name;
@@ -144,7 +144,7 @@ export const Type = {
   },
   fromPartial<I extends Exact<DeepPartial<Type>, I>>(object: I): Type {
     const message = createBaseType();
-    message.id = object.id ?? 0;
+    message.id = object.id ?? "";
     message.name = object.name ?? "";
     message.code = object.code ?? "";
     message.createdAt = object.createdAt ?? undefined;
@@ -154,13 +154,13 @@ export const Type = {
 };
 
 function createBaseTypePatch(): TypePatch {
-  return { id: 0, name: undefined, code: undefined };
+  return { id: "", name: undefined, code: undefined };
 }
 
 export const TypePatch = {
   encode(message: TypePatch, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.id !== 0) {
-      writer.uint32(8).int32(message.id);
+    if (message.id !== "") {
+      writer.uint32(10).string(message.id);
     }
     if (message.name !== undefined) {
       StringValue.encode({ value: message.name! }, writer.uint32(18).fork()).ldelim();
@@ -179,11 +179,11 @@ export const TypePatch = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag !== 8) {
+          if (tag !== 10) {
             break;
           }
 
-          message.id = reader.int32();
+          message.id = reader.string();
           continue;
         case 2:
           if (tag !== 18) {
@@ -210,7 +210,7 @@ export const TypePatch = {
 
   fromJSON(object: any): TypePatch {
     return {
-      id: isSet(object.id) ? globalThis.Number(object.id) : 0,
+      id: isSet(object.id) ? globalThis.String(object.id) : "",
       name: isSet(object.name) ? String(object.name) : undefined,
       code: isSet(object.code) ? String(object.code) : undefined,
     };
@@ -218,8 +218,8 @@ export const TypePatch = {
 
   toJSON(message: TypePatch): unknown {
     const obj: any = {};
-    if (message.id !== 0) {
-      obj.id = Math.round(message.id);
+    if (message.id !== "") {
+      obj.id = message.id;
     }
     if (message.name !== undefined) {
       obj.name = message.name;
@@ -235,7 +235,7 @@ export const TypePatch = {
   },
   fromPartial<I extends Exact<DeepPartial<TypePatch>, I>>(object: I): TypePatch {
     const message = createBaseTypePatch();
-    message.id = object.id ?? 0;
+    message.id = object.id ?? "";
     message.name = object.name ?? undefined;
     message.code = object.code ?? undefined;
     return message;

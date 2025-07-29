@@ -12,19 +12,19 @@ import { Timestamp } from "../../../../google/protobuf/timestamp";
 export const protobufPackage = "apfish.v1.ship.type.summary";
 
 export interface TypeSummary {
-  id: number;
+  id: string;
   name: string;
   createdAt: Date | undefined;
 }
 
 function createBaseTypeSummary(): TypeSummary {
-  return { id: 0, name: "", createdAt: undefined };
+  return { id: "", name: "", createdAt: undefined };
 }
 
 export const TypeSummary = {
   encode(message: TypeSummary, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.id !== 0) {
-      writer.uint32(8).int32(message.id);
+    if (message.id !== "") {
+      writer.uint32(10).string(message.id);
     }
     if (message.name !== "") {
       writer.uint32(18).string(message.name);
@@ -43,11 +43,11 @@ export const TypeSummary = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag !== 8) {
+          if (tag !== 10) {
             break;
           }
 
-          message.id = reader.int32();
+          message.id = reader.string();
           continue;
         case 2:
           if (tag !== 18) {
@@ -74,7 +74,7 @@ export const TypeSummary = {
 
   fromJSON(object: any): TypeSummary {
     return {
-      id: isSet(object.id) ? globalThis.Number(object.id) : 0,
+      id: isSet(object.id) ? globalThis.String(object.id) : "",
       name: isSet(object.name) ? globalThis.String(object.name) : "",
       createdAt: isSet(object.createdAt) ? fromJsonTimestamp(object.createdAt) : undefined,
     };
@@ -82,8 +82,8 @@ export const TypeSummary = {
 
   toJSON(message: TypeSummary): unknown {
     const obj: any = {};
-    if (message.id !== 0) {
-      obj.id = Math.round(message.id);
+    if (message.id !== "") {
+      obj.id = message.id;
     }
     if (message.name !== "") {
       obj.name = message.name;
@@ -99,7 +99,7 @@ export const TypeSummary = {
   },
   fromPartial<I extends Exact<DeepPartial<TypeSummary>, I>>(object: I): TypeSummary {
     const message = createBaseTypeSummary();
-    message.id = object.id ?? 0;
+    message.id = object.id ?? "";
     message.name = object.name ?? "";
     message.createdAt = object.createdAt ?? undefined;
     return message;

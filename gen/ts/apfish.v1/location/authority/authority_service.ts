@@ -25,7 +25,7 @@ import { AuthoritySummary } from "./summary/authority_summary";
 export const protobufPackage = "apfish.v1.location.authority";
 
 export interface AuthorityRequest {
-  id: number;
+  id: string;
 }
 
 export interface AuthorityResponse {
@@ -49,13 +49,13 @@ export interface ListAuthoritiesResponse {
 }
 
 function createBaseAuthorityRequest(): AuthorityRequest {
-  return { id: 0 };
+  return { id: "" };
 }
 
 export const AuthorityRequest = {
   encode(message: AuthorityRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.id !== 0) {
-      writer.uint32(8).int32(message.id);
+    if (message.id !== "") {
+      writer.uint32(10).string(message.id);
     }
     return writer;
   },
@@ -68,11 +68,11 @@ export const AuthorityRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag !== 8) {
+          if (tag !== 10) {
             break;
           }
 
-          message.id = reader.int32();
+          message.id = reader.string();
           continue;
       }
       if ((tag & 7) === 4 || tag === 0) {
@@ -84,13 +84,13 @@ export const AuthorityRequest = {
   },
 
   fromJSON(object: any): AuthorityRequest {
-    return { id: isSet(object.id) ? globalThis.Number(object.id) : 0 };
+    return { id: isSet(object.id) ? globalThis.String(object.id) : "" };
   },
 
   toJSON(message: AuthorityRequest): unknown {
     const obj: any = {};
-    if (message.id !== 0) {
-      obj.id = Math.round(message.id);
+    if (message.id !== "") {
+      obj.id = message.id;
     }
     return obj;
   },
@@ -100,7 +100,7 @@ export const AuthorityRequest = {
   },
   fromPartial<I extends Exact<DeepPartial<AuthorityRequest>, I>>(object: I): AuthorityRequest {
     const message = createBaseAuthorityRequest();
-    message.id = object.id ?? 0;
+    message.id = object.id ?? "";
     return message;
   },
 };

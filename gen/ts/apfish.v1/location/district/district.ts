@@ -14,7 +14,7 @@ import { PortSummary } from "../port/summary/port_summary";
 export const protobufPackage = "apfish.v1.location.district";
 
 export interface District {
-  id: number;
+  id: string;
   name: string;
   createdAt: Date | undefined;
   ports: PortSummary[];
@@ -22,13 +22,13 @@ export interface District {
 }
 
 function createBaseDistrict(): District {
-  return { id: 0, name: "", createdAt: undefined, ports: [], permissions: [] };
+  return { id: "", name: "", createdAt: undefined, ports: [], permissions: [] };
 }
 
 export const District = {
   encode(message: District, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.id !== 0) {
-      writer.uint32(8).int32(message.id);
+    if (message.id !== "") {
+      writer.uint32(10).string(message.id);
     }
     if (message.name !== "") {
       writer.uint32(18).string(message.name);
@@ -53,11 +53,11 @@ export const District = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag !== 8) {
+          if (tag !== 10) {
             break;
           }
 
-          message.id = reader.int32();
+          message.id = reader.string();
           continue;
         case 2:
           if (tag !== 18) {
@@ -98,7 +98,7 @@ export const District = {
 
   fromJSON(object: any): District {
     return {
-      id: isSet(object.id) ? globalThis.Number(object.id) : 0,
+      id: isSet(object.id) ? globalThis.String(object.id) : "",
       name: isSet(object.name) ? globalThis.String(object.name) : "",
       createdAt: isSet(object.createdAt) ? fromJsonTimestamp(object.createdAt) : undefined,
       ports: globalThis.Array.isArray(object?.ports) ? object.ports.map((e: any) => PortSummary.fromJSON(e)) : [],
@@ -110,8 +110,8 @@ export const District = {
 
   toJSON(message: District): unknown {
     const obj: any = {};
-    if (message.id !== 0) {
-      obj.id = Math.round(message.id);
+    if (message.id !== "") {
+      obj.id = message.id;
     }
     if (message.name !== "") {
       obj.name = message.name;
@@ -133,7 +133,7 @@ export const District = {
   },
   fromPartial<I extends Exact<DeepPartial<District>, I>>(object: I): District {
     const message = createBaseDistrict();
-    message.id = object.id ?? 0;
+    message.id = object.id ?? "";
     message.name = object.name ?? "";
     message.createdAt = object.createdAt ?? undefined;
     message.ports = object.ports?.map((e) => PortSummary.fromPartial(e)) || [];

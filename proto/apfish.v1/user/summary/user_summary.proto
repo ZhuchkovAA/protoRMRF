@@ -7,12 +7,12 @@ option go_package = "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/summa
 import "google/protobuf/timestamp.proto";  // Standard Protocol Buffers timestamp
 
 message UserSummary {
-  int32 id = 1;                       // Unique system-generated ID.
+  string id = 1;                       // Unique system-generated ID.
   string login = 2;                   // Unique login identifier.
   string first_name = 3;
   string last_name = 4;
   string middle_name = 5;
-  int32 role_id = 6;                      // Assigned role.
+  string role_id = 6;                      // Assigned role.
   google.protobuf.Timestamp created_at = 7;  // When the user was created.
   bool is_active = 8;
   string created_by_login = 9;        // Login of the creator (e.g., "admin").

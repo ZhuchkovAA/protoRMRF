@@ -24,7 +24,7 @@ const (
 
 type PortRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -59,11 +59,11 @@ func (*PortRequest) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_location_port_port_service_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *PortRequest) GetId() int32 {
+func (x *PortRequest) GetId() string {
 	if x != nil {
 		return x.Id
 	}
-	return 0
+	return ""
 }
 
 type PortResponse struct {
@@ -264,7 +264,7 @@ const file_apfish_v1_location_port_port_service_proto_rawDesc = "" +
 	"\n" +
 	"*apfish.v1/location/port/port_service.proto\x12\x17apfish.v1.location.port\x1a\"apfish.v1/location/port/port.proto\x1a2apfish.v1/location/port/summary/port_summary.proto\"\x1d\n" +
 	"\vPortRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\"A\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\"A\n" +
 	"\fPortResponse\x121\n" +
 	"\x04port\x18\x01 \x01(\v2\x1d.apfish.v1.location.port.PortR\x04port\"W\n" +
 	"\x13PortSummaryResponse\x12@\n" +

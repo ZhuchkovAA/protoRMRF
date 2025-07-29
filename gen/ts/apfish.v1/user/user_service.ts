@@ -63,7 +63,7 @@ export interface CreateUserRequest {
 }
 
 export interface CreateUserResponse {
-  userId: number;
+  userId: string;
 }
 
 export interface UpdateUserRequest {
@@ -467,13 +467,13 @@ export const CreateUserRequest = {
 };
 
 function createBaseCreateUserResponse(): CreateUserResponse {
-  return { userId: 0 };
+  return { userId: "" };
 }
 
 export const CreateUserResponse = {
   encode(message: CreateUserResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.userId !== 0) {
-      writer.uint32(8).int32(message.userId);
+    if (message.userId !== "") {
+      writer.uint32(10).string(message.userId);
     }
     return writer;
   },
@@ -486,11 +486,11 @@ export const CreateUserResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag !== 8) {
+          if (tag !== 10) {
             break;
           }
 
-          message.userId = reader.int32();
+          message.userId = reader.string();
           continue;
       }
       if ((tag & 7) === 4 || tag === 0) {
@@ -502,13 +502,13 @@ export const CreateUserResponse = {
   },
 
   fromJSON(object: any): CreateUserResponse {
-    return { userId: isSet(object.userId) ? globalThis.Number(object.userId) : 0 };
+    return { userId: isSet(object.userId) ? globalThis.String(object.userId) : "" };
   },
 
   toJSON(message: CreateUserResponse): unknown {
     const obj: any = {};
-    if (message.userId !== 0) {
-      obj.userId = Math.round(message.userId);
+    if (message.userId !== "") {
+      obj.userId = message.userId;
     }
     return obj;
   },
@@ -518,7 +518,7 @@ export const CreateUserResponse = {
   },
   fromPartial<I extends Exact<DeepPartial<CreateUserResponse>, I>>(object: I): CreateUserResponse {
     const message = createBaseCreateUserResponse();
-    message.userId = object.userId ?? 0;
+    message.userId = object.userId ?? "";
     return message;
   },
 };

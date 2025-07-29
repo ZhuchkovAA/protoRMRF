@@ -15,7 +15,7 @@ import "apfish.v1/permission/summary/permission_summary.proto";
 
 // Represents a user account in the system.
 message User {
-  int32 id = 1;                       // Unique system-generated ID.
+  string id = 1;                       // Unique system-generated ID.
   string login = 2;                   // Unique login identifier.
   string first_name = 3;
   string last_name = 4;
@@ -34,6 +34,6 @@ message UserPatch {
   google.protobuf.StringValue first_name = 2;
   google.protobuf.StringValue last_name = 3;
   google.protobuf.StringValue middle_name = 4;
-  google.protobuf.Int32Value role_id = 5;
+  google.protobuf.StringValue role_id = 5;
   google.protobuf.BoolValue is_active = 6;
 }

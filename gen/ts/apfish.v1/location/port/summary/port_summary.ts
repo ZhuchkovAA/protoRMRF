@@ -12,31 +12,31 @@ import { Timestamp } from "../../../../google/protobuf/timestamp";
 export const protobufPackage = "apfish.v1.location.port.summary";
 
 export interface PortSummary {
-  id: number;
+  id: string;
   name: string;
-  authorityId: number;
-  districtId: number;
+  authorityId: string;
+  districtId: string;
   code: string;
   createdAt: Date | undefined;
 }
 
 function createBasePortSummary(): PortSummary {
-  return { id: 0, name: "", authorityId: 0, districtId: 0, code: "", createdAt: undefined };
+  return { id: "", name: "", authorityId: "", districtId: "", code: "", createdAt: undefined };
 }
 
 export const PortSummary = {
   encode(message: PortSummary, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.id !== 0) {
-      writer.uint32(8).int32(message.id);
+    if (message.id !== "") {
+      writer.uint32(10).string(message.id);
     }
     if (message.name !== "") {
       writer.uint32(18).string(message.name);
     }
-    if (message.authorityId !== 0) {
-      writer.uint32(24).int32(message.authorityId);
+    if (message.authorityId !== "") {
+      writer.uint32(26).string(message.authorityId);
     }
-    if (message.districtId !== 0) {
-      writer.uint32(32).int32(message.districtId);
+    if (message.districtId !== "") {
+      writer.uint32(34).string(message.districtId);
     }
     if (message.code !== "") {
       writer.uint32(42).string(message.code);
@@ -55,11 +55,11 @@ export const PortSummary = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag !== 8) {
+          if (tag !== 10) {
             break;
           }
 
-          message.id = reader.int32();
+          message.id = reader.string();
           continue;
         case 2:
           if (tag !== 18) {
@@ -69,18 +69,18 @@ export const PortSummary = {
           message.name = reader.string();
           continue;
         case 3:
-          if (tag !== 24) {
+          if (tag !== 26) {
             break;
           }
 
-          message.authorityId = reader.int32();
+          message.authorityId = reader.string();
           continue;
         case 4:
-          if (tag !== 32) {
+          if (tag !== 34) {
             break;
           }
 
-          message.districtId = reader.int32();
+          message.districtId = reader.string();
           continue;
         case 5:
           if (tag !== 42) {
@@ -107,10 +107,10 @@ export const PortSummary = {
 
   fromJSON(object: any): PortSummary {
     return {
-      id: isSet(object.id) ? globalThis.Number(object.id) : 0,
+      id: isSet(object.id) ? globalThis.String(object.id) : "",
       name: isSet(object.name) ? globalThis.String(object.name) : "",
-      authorityId: isSet(object.authorityId) ? globalThis.Number(object.authorityId) : 0,
-      districtId: isSet(object.districtId) ? globalThis.Number(object.districtId) : 0,
+      authorityId: isSet(object.authorityId) ? globalThis.String(object.authorityId) : "",
+      districtId: isSet(object.districtId) ? globalThis.String(object.districtId) : "",
       code: isSet(object.code) ? globalThis.String(object.code) : "",
       createdAt: isSet(object.createdAt) ? fromJsonTimestamp(object.createdAt) : undefined,
     };
@@ -118,17 +118,17 @@ export const PortSummary = {
 
   toJSON(message: PortSummary): unknown {
     const obj: any = {};
-    if (message.id !== 0) {
-      obj.id = Math.round(message.id);
+    if (message.id !== "") {
+      obj.id = message.id;
     }
     if (message.name !== "") {
       obj.name = message.name;
     }
-    if (message.authorityId !== 0) {
-      obj.authorityId = Math.round(message.authorityId);
+    if (message.authorityId !== "") {
+      obj.authorityId = message.authorityId;
     }
-    if (message.districtId !== 0) {
-      obj.districtId = Math.round(message.districtId);
+    if (message.districtId !== "") {
+      obj.districtId = message.districtId;
     }
     if (message.code !== "") {
       obj.code = message.code;
@@ -144,10 +144,10 @@ export const PortSummary = {
   },
   fromPartial<I extends Exact<DeepPartial<PortSummary>, I>>(object: I): PortSummary {
     const message = createBasePortSummary();
-    message.id = object.id ?? 0;
+    message.id = object.id ?? "";
     message.name = object.name ?? "";
-    message.authorityId = object.authorityId ?? 0;
-    message.districtId = object.districtId ?? 0;
+    message.authorityId = object.authorityId ?? "";
+    message.districtId = object.districtId ?? "";
     message.code = object.code ?? "";
     message.createdAt = object.createdAt ?? undefined;
     return message;
