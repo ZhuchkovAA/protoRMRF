@@ -56,10 +56,10 @@ export interface CreatePermissionRequest {
   description: string | undefined;
   name: string | undefined;
   code: string | undefined;
-  authoritiesIds: number[];
-  districtsIds: number[];
-  portsIds: number[];
-  shipsIds: number[];
+  authoritiesIds: string[];
+  districtsIds: string[];
+  portsIds: string[];
+  shipsIds: string[];
 }
 
 export interface CreatePermissionResponse {
@@ -426,26 +426,18 @@ export const CreatePermissionRequest = {
     if (message.code !== undefined) {
       StringValue.encode({ value: message.code! }, writer.uint32(42).fork()).ldelim();
     }
-    writer.uint32(50).fork();
     for (const v of message.authoritiesIds) {
-      writer.int32(v);
+      writer.uint32(50).string(v!);
     }
-    writer.ldelim();
-    writer.uint32(58).fork();
     for (const v of message.districtsIds) {
-      writer.int32(v);
+      writer.uint32(58).string(v!);
     }
-    writer.ldelim();
-    writer.uint32(66).fork();
     for (const v of message.portsIds) {
-      writer.int32(v);
+      writer.uint32(66).string(v!);
     }
-    writer.ldelim();
-    writer.uint32(74).fork();
     for (const v of message.shipsIds) {
-      writer.int32(v);
+      writer.uint32(74).string(v!);
     }
-    writer.ldelim();
     return writer;
   },
 
@@ -492,73 +484,33 @@ export const CreatePermissionRequest = {
           message.code = StringValue.decode(reader, reader.uint32()).value;
           continue;
         case 6:
-          if (tag === 48) {
-            message.authoritiesIds.push(reader.int32());
-
-            continue;
+          if (tag !== 50) {
+            break;
           }
 
-          if (tag === 50) {
-            const end2 = reader.uint32() + reader.pos;
-            while (reader.pos < end2) {
-              message.authoritiesIds.push(reader.int32());
-            }
-
-            continue;
-          }
-
-          break;
+          message.authoritiesIds.push(reader.string());
+          continue;
         case 7:
-          if (tag === 56) {
-            message.districtsIds.push(reader.int32());
-
-            continue;
+          if (tag !== 58) {
+            break;
           }
 
-          if (tag === 58) {
-            const end2 = reader.uint32() + reader.pos;
-            while (reader.pos < end2) {
-              message.districtsIds.push(reader.int32());
-            }
-
-            continue;
-          }
-
-          break;
+          message.districtsIds.push(reader.string());
+          continue;
         case 8:
-          if (tag === 64) {
-            message.portsIds.push(reader.int32());
-
-            continue;
+          if (tag !== 66) {
+            break;
           }
 
-          if (tag === 66) {
-            const end2 = reader.uint32() + reader.pos;
-            while (reader.pos < end2) {
-              message.portsIds.push(reader.int32());
-            }
-
-            continue;
-          }
-
-          break;
+          message.portsIds.push(reader.string());
+          continue;
         case 9:
-          if (tag === 72) {
-            message.shipsIds.push(reader.int32());
-
-            continue;
+          if (tag !== 74) {
+            break;
           }
 
-          if (tag === 74) {
-            const end2 = reader.uint32() + reader.pos;
-            while (reader.pos < end2) {
-              message.shipsIds.push(reader.int32());
-            }
-
-            continue;
-          }
-
-          break;
+          message.shipsIds.push(reader.string());
+          continue;
       }
       if ((tag & 7) === 4 || tag === 0) {
         break;
@@ -576,13 +528,13 @@ export const CreatePermissionRequest = {
       name: isSet(object.name) ? String(object.name) : undefined,
       code: isSet(object.code) ? String(object.code) : undefined,
       authoritiesIds: globalThis.Array.isArray(object?.authoritiesIds)
-        ? object.authoritiesIds.map((e: any) => globalThis.Number(e))
+        ? object.authoritiesIds.map((e: any) => globalThis.String(e))
         : [],
       districtsIds: globalThis.Array.isArray(object?.districtsIds)
-        ? object.districtsIds.map((e: any) => globalThis.Number(e))
+        ? object.districtsIds.map((e: any) => globalThis.String(e))
         : [],
-      portsIds: globalThis.Array.isArray(object?.portsIds) ? object.portsIds.map((e: any) => globalThis.Number(e)) : [],
-      shipsIds: globalThis.Array.isArray(object?.shipsIds) ? object.shipsIds.map((e: any) => globalThis.Number(e)) : [],
+      portsIds: globalThis.Array.isArray(object?.portsIds) ? object.portsIds.map((e: any) => globalThis.String(e)) : [],
+      shipsIds: globalThis.Array.isArray(object?.shipsIds) ? object.shipsIds.map((e: any) => globalThis.String(e)) : [],
     };
   },
 
@@ -604,16 +556,16 @@ export const CreatePermissionRequest = {
       obj.code = message.code;
     }
     if (message.authoritiesIds?.length) {
-      obj.authoritiesIds = message.authoritiesIds.map((e) => Math.round(e));
+      obj.authoritiesIds = message.authoritiesIds;
     }
     if (message.districtsIds?.length) {
-      obj.districtsIds = message.districtsIds.map((e) => Math.round(e));
+      obj.districtsIds = message.districtsIds;
     }
     if (message.portsIds?.length) {
-      obj.portsIds = message.portsIds.map((e) => Math.round(e));
+      obj.portsIds = message.portsIds;
     }
     if (message.shipsIds?.length) {
-      obj.shipsIds = message.shipsIds.map((e) => Math.round(e));
+      obj.shipsIds = message.shipsIds;
     }
     return obj;
   },
