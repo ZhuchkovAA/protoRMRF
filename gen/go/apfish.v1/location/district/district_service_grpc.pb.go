@@ -28,7 +28,7 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type DistrictServiceClient interface {
-	GetDistrict(ctx context.Context, in *DistrictRequest, opts ...grpc.CallOption) (*DistrictResponse, error)
+	GetDistrict(ctx context.Context, in *DistrictRequest, opts ...grpc.CallOption) (*District, error)
 	GetDistrictSummary(ctx context.Context, in *DistrictRequest, opts ...grpc.CallOption) (*DistrictSummaryResponse, error)
 	ListDistricts(ctx context.Context, in *ListDistrictsRequest, opts ...grpc.CallOption) (*ListDistrictsResponse, error)
 }
@@ -41,9 +41,9 @@ func NewDistrictServiceClient(cc grpc.ClientConnInterface) DistrictServiceClient
 	return &districtServiceClient{cc}
 }
 
-func (c *districtServiceClient) GetDistrict(ctx context.Context, in *DistrictRequest, opts ...grpc.CallOption) (*DistrictResponse, error) {
+func (c *districtServiceClient) GetDistrict(ctx context.Context, in *DistrictRequest, opts ...grpc.CallOption) (*District, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DistrictResponse)
+	out := new(District)
 	err := c.cc.Invoke(ctx, DistrictService_GetDistrict_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -75,7 +75,7 @@ func (c *districtServiceClient) ListDistricts(ctx context.Context, in *ListDistr
 // All implementations must embed UnimplementedDistrictServiceServer
 // for forward compatibility.
 type DistrictServiceServer interface {
-	GetDistrict(context.Context, *DistrictRequest) (*DistrictResponse, error)
+	GetDistrict(context.Context, *DistrictRequest) (*District, error)
 	GetDistrictSummary(context.Context, *DistrictRequest) (*DistrictSummaryResponse, error)
 	ListDistricts(context.Context, *ListDistrictsRequest) (*ListDistrictsResponse, error)
 	mustEmbedUnimplementedDistrictServiceServer()
@@ -88,7 +88,7 @@ type DistrictServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedDistrictServiceServer struct{}
 
-func (UnimplementedDistrictServiceServer) GetDistrict(context.Context, *DistrictRequest) (*DistrictResponse, error) {
+func (UnimplementedDistrictServiceServer) GetDistrict(context.Context, *DistrictRequest) (*District, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetDistrict not implemented")
 }
 func (UnimplementedDistrictServiceServer) GetDistrictSummary(context.Context, *DistrictRequest) (*DistrictSummaryResponse, error) {

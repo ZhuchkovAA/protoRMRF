@@ -11,7 +11,7 @@ import "apfish.v1/permission/permission.proto";
 import "apfish.v1/permission/summary/permission_summary.proto";
 
 service PermissionService {
-  rpc GetPermission (PermissionRequest) returns (PermissionResponse);
+  rpc GetPermission (PermissionRequest) returns (Permission);
   rpc GetPermissionSummary (PermissionRequest) returns (PermissionSummaryResponse);
 
   rpc ListPermissions (ListPermissionsRequest) returns (ListPermissionsResponse);
@@ -24,10 +24,6 @@ service PermissionService {
 
 message PermissionRequest {
   string id = 1;
-}
-
-message PermissionResponse {
-  Permission permission = 1;
 }
 
 message PermissionSummaryResponse {

@@ -28,7 +28,7 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type AuthorityServiceClient interface {
-	GetAuthority(ctx context.Context, in *AuthorityRequest, opts ...grpc.CallOption) (*AuthorityResponse, error)
+	GetAuthority(ctx context.Context, in *AuthorityRequest, opts ...grpc.CallOption) (*Authority, error)
 	GetAuthoritySummary(ctx context.Context, in *AuthorityRequest, opts ...grpc.CallOption) (*AuthoritySummaryResponse, error)
 	ListAuthorities(ctx context.Context, in *ListAuthoritiesRequest, opts ...grpc.CallOption) (*ListAuthoritiesResponse, error)
 }
@@ -41,9 +41,9 @@ func NewAuthorityServiceClient(cc grpc.ClientConnInterface) AuthorityServiceClie
 	return &authorityServiceClient{cc}
 }
 
-func (c *authorityServiceClient) GetAuthority(ctx context.Context, in *AuthorityRequest, opts ...grpc.CallOption) (*AuthorityResponse, error) {
+func (c *authorityServiceClient) GetAuthority(ctx context.Context, in *AuthorityRequest, opts ...grpc.CallOption) (*Authority, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(AuthorityResponse)
+	out := new(Authority)
 	err := c.cc.Invoke(ctx, AuthorityService_GetAuthority_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -75,7 +75,7 @@ func (c *authorityServiceClient) ListAuthorities(ctx context.Context, in *ListAu
 // All implementations must embed UnimplementedAuthorityServiceServer
 // for forward compatibility.
 type AuthorityServiceServer interface {
-	GetAuthority(context.Context, *AuthorityRequest) (*AuthorityResponse, error)
+	GetAuthority(context.Context, *AuthorityRequest) (*Authority, error)
 	GetAuthoritySummary(context.Context, *AuthorityRequest) (*AuthoritySummaryResponse, error)
 	ListAuthorities(context.Context, *ListAuthoritiesRequest) (*ListAuthoritiesResponse, error)
 	mustEmbedUnimplementedAuthorityServiceServer()
@@ -88,7 +88,7 @@ type AuthorityServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedAuthorityServiceServer struct{}
 
-func (UnimplementedAuthorityServiceServer) GetAuthority(context.Context, *AuthorityRequest) (*AuthorityResponse, error) {
+func (UnimplementedAuthorityServiceServer) GetAuthority(context.Context, *AuthorityRequest) (*Authority, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAuthority not implemented")
 }
 func (UnimplementedAuthorityServiceServer) GetAuthoritySummary(context.Context, *AuthorityRequest) (*AuthoritySummaryResponse, error) {

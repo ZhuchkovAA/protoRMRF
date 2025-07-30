@@ -8,7 +8,7 @@ import "apfish.v1/ship/class/class.proto";
 import "apfish.v1/ship/class/summary/class_summary.proto";
 
 service ClassService {
-  rpc GetClass (ClassRequest) returns (ClassResponse);
+  rpc GetClass (ClassRequest) returns (Class);
   rpc GetClassSummary (ClassRequest) returns (ClassSummaryResponse);
 
   rpc ListClasses (ListClassesRequest) returns (ListClassesResponse);
@@ -16,10 +16,6 @@ service ClassService {
 
 message ClassRequest {
   string id = 1;
-}
-
-message ClassResponse {
-  Class class = 1;
 }
 
 message ClassSummaryResponse {

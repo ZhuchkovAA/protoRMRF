@@ -28,10 +28,6 @@ export interface ObjectRequest {
   id: string;
 }
 
-export interface ObjectResponse {
-  object: Object | undefined;
-}
-
 export interface ObjectSummaryResponse {
   object: ObjectSummary | undefined;
 }
@@ -101,65 +97,6 @@ export const ObjectRequest = {
   fromPartial<I extends Exact<DeepPartial<ObjectRequest>, I>>(object: I): ObjectRequest {
     const message = createBaseObjectRequest();
     message.id = object.id ?? "";
-    return message;
-  },
-};
-
-function createBaseObjectResponse(): ObjectResponse {
-  return { object: undefined };
-}
-
-export const ObjectResponse = {
-  encode(message: ObjectResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.object !== undefined) {
-      Object.encode(message.object, writer.uint32(10).fork()).ldelim();
-    }
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): ObjectResponse {
-    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseObjectResponse();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          if (tag !== 10) {
-            break;
-          }
-
-          message.object = Object.decode(reader, reader.uint32());
-          continue;
-      }
-      if ((tag & 7) === 4 || tag === 0) {
-        break;
-      }
-      reader.skipType(tag & 7);
-    }
-    return message;
-  },
-
-  fromJSON(object: any): ObjectResponse {
-    return { object: isSet(object.object) ? Object.fromJSON(object.object) : undefined };
-  },
-
-  toJSON(message: ObjectResponse): unknown {
-    const obj: any = {};
-    if (message.object !== undefined) {
-      obj.object = Object.toJSON(message.object);
-    }
-    return obj;
-  },
-
-  create<I extends Exact<DeepPartial<ObjectResponse>, I>>(base?: I): ObjectResponse {
-    return ObjectResponse.fromPartial(base ?? ({} as any));
-  },
-  fromPartial<I extends Exact<DeepPartial<ObjectResponse>, I>>(object: I): ObjectResponse {
-    const message = createBaseObjectResponse();
-    message.object = (object.object !== undefined && object.object !== null)
-      ? Object.fromPartial(object.object)
-      : undefined;
     return message;
   },
 };
@@ -381,8 +318,8 @@ export const ObjectServiceService = {
     responseStream: false,
     requestSerialize: (value: ObjectRequest) => Buffer.from(ObjectRequest.encode(value).finish()),
     requestDeserialize: (value: Buffer) => ObjectRequest.decode(value),
-    responseSerialize: (value: ObjectResponse) => Buffer.from(ObjectResponse.encode(value).finish()),
-    responseDeserialize: (value: Buffer) => ObjectResponse.decode(value),
+    responseSerialize: (value: Object) => Buffer.from(Object.encode(value).finish()),
+    responseDeserialize: (value: Buffer) => Object.decode(value),
   },
   getObjectSummary: {
     path: "/apfish.v1.permission.object.ObjectService/GetObjectSummary",
@@ -405,26 +342,23 @@ export const ObjectServiceService = {
 } as const;
 
 export interface ObjectServiceServer extends UntypedServiceImplementation {
-  getObject: handleUnaryCall<ObjectRequest, ObjectResponse>;
+  getObject: handleUnaryCall<ObjectRequest, Object>;
   getObjectSummary: handleUnaryCall<ObjectRequest, ObjectSummaryResponse>;
   listObjects: handleUnaryCall<ListObjectsRequest, ListObjectsResponse>;
 }
 
 export interface ObjectServiceClient extends Client {
-  getObject(
-    request: ObjectRequest,
-    callback: (error: ServiceError | null, response: ObjectResponse) => void,
-  ): ClientUnaryCall;
+  getObject(request: ObjectRequest, callback: (error: ServiceError | null, response: Object) => void): ClientUnaryCall;
   getObject(
     request: ObjectRequest,
     metadata: Metadata,
-    callback: (error: ServiceError | null, response: ObjectResponse) => void,
+    callback: (error: ServiceError | null, response: Object) => void,
   ): ClientUnaryCall;
   getObject(
     request: ObjectRequest,
     metadata: Metadata,
     options: Partial<CallOptions>,
-    callback: (error: ServiceError | null, response: ObjectResponse) => void,
+    callback: (error: ServiceError | null, response: Object) => void,
   ): ClientUnaryCall;
   getObjectSummary(
     request: ObjectRequest,

@@ -35,7 +35,7 @@ const (
 type UserServiceClient interface {
 	// GetUser retrieves a single user by their unique login.
 	// Returns NOT_FOUND if the user does not exist.
-	GetUser(ctx context.Context, in *UserRequest, opts ...grpc.CallOption) (*UserResponse, error)
+	GetUser(ctx context.Context, in *UserRequest, opts ...grpc.CallOption) (*User, error)
 	// ListUsers searches for users by login prefix (case-insensitive)
 	// and returns paginated results.
 	ListUsers(ctx context.Context, in *ListUsersRequest, opts ...grpc.CallOption) (*ListUsersResponse, error)
@@ -52,9 +52,9 @@ func NewUserServiceClient(cc grpc.ClientConnInterface) UserServiceClient {
 	return &userServiceClient{cc}
 }
 
-func (c *userServiceClient) GetUser(ctx context.Context, in *UserRequest, opts ...grpc.CallOption) (*UserResponse, error) {
+func (c *userServiceClient) GetUser(ctx context.Context, in *UserRequest, opts ...grpc.CallOption) (*User, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UserResponse)
+	out := new(User)
 	err := c.cc.Invoke(ctx, UserService_GetUser_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -110,7 +110,7 @@ func (c *userServiceClient) AssignPermissions(ctx context.Context, in *AssignPer
 type UserServiceServer interface {
 	// GetUser retrieves a single user by their unique login.
 	// Returns NOT_FOUND if the user does not exist.
-	GetUser(context.Context, *UserRequest) (*UserResponse, error)
+	GetUser(context.Context, *UserRequest) (*User, error)
 	// ListUsers searches for users by login prefix (case-insensitive)
 	// and returns paginated results.
 	ListUsers(context.Context, *ListUsersRequest) (*ListUsersResponse, error)
@@ -127,7 +127,7 @@ type UserServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedUserServiceServer struct{}
 
-func (UnimplementedUserServiceServer) GetUser(context.Context, *UserRequest) (*UserResponse, error) {
+func (UnimplementedUserServiceServer) GetUser(context.Context, *UserRequest) (*User, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetUser not implemented")
 }
 func (UnimplementedUserServiceServer) ListUsers(context.Context, *ListUsersRequest) (*ListUsersResponse, error) {

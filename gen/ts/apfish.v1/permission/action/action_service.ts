@@ -28,10 +28,6 @@ export interface ActionRequest {
   id: string;
 }
 
-export interface ActionResponse {
-  action: Action | undefined;
-}
-
 export interface ActionSummaryResponse {
   action: ActionSummary | undefined;
 }
@@ -101,65 +97,6 @@ export const ActionRequest = {
   fromPartial<I extends Exact<DeepPartial<ActionRequest>, I>>(object: I): ActionRequest {
     const message = createBaseActionRequest();
     message.id = object.id ?? "";
-    return message;
-  },
-};
-
-function createBaseActionResponse(): ActionResponse {
-  return { action: undefined };
-}
-
-export const ActionResponse = {
-  encode(message: ActionResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.action !== undefined) {
-      Action.encode(message.action, writer.uint32(10).fork()).ldelim();
-    }
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): ActionResponse {
-    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseActionResponse();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          if (tag !== 10) {
-            break;
-          }
-
-          message.action = Action.decode(reader, reader.uint32());
-          continue;
-      }
-      if ((tag & 7) === 4 || tag === 0) {
-        break;
-      }
-      reader.skipType(tag & 7);
-    }
-    return message;
-  },
-
-  fromJSON(object: any): ActionResponse {
-    return { action: isSet(object.action) ? Action.fromJSON(object.action) : undefined };
-  },
-
-  toJSON(message: ActionResponse): unknown {
-    const obj: any = {};
-    if (message.action !== undefined) {
-      obj.action = Action.toJSON(message.action);
-    }
-    return obj;
-  },
-
-  create<I extends Exact<DeepPartial<ActionResponse>, I>>(base?: I): ActionResponse {
-    return ActionResponse.fromPartial(base ?? ({} as any));
-  },
-  fromPartial<I extends Exact<DeepPartial<ActionResponse>, I>>(object: I): ActionResponse {
-    const message = createBaseActionResponse();
-    message.action = (object.action !== undefined && object.action !== null)
-      ? Action.fromPartial(object.action)
-      : undefined;
     return message;
   },
 };
@@ -381,8 +318,8 @@ export const ActionServiceService = {
     responseStream: false,
     requestSerialize: (value: ActionRequest) => Buffer.from(ActionRequest.encode(value).finish()),
     requestDeserialize: (value: Buffer) => ActionRequest.decode(value),
-    responseSerialize: (value: ActionResponse) => Buffer.from(ActionResponse.encode(value).finish()),
-    responseDeserialize: (value: Buffer) => ActionResponse.decode(value),
+    responseSerialize: (value: Action) => Buffer.from(Action.encode(value).finish()),
+    responseDeserialize: (value: Buffer) => Action.decode(value),
   },
   getActionSummary: {
     path: "/apfish.v1.permission.action.ActionService/GetActionSummary",
@@ -405,26 +342,23 @@ export const ActionServiceService = {
 } as const;
 
 export interface ActionServiceServer extends UntypedServiceImplementation {
-  getAction: handleUnaryCall<ActionRequest, ActionResponse>;
+  getAction: handleUnaryCall<ActionRequest, Action>;
   getActionSummary: handleUnaryCall<ActionRequest, ActionSummaryResponse>;
   listActions: handleUnaryCall<ListActionsRequest, ListActionsResponse>;
 }
 
 export interface ActionServiceClient extends Client {
-  getAction(
-    request: ActionRequest,
-    callback: (error: ServiceError | null, response: ActionResponse) => void,
-  ): ClientUnaryCall;
+  getAction(request: ActionRequest, callback: (error: ServiceError | null, response: Action) => void): ClientUnaryCall;
   getAction(
     request: ActionRequest,
     metadata: Metadata,
-    callback: (error: ServiceError | null, response: ActionResponse) => void,
+    callback: (error: ServiceError | null, response: Action) => void,
   ): ClientUnaryCall;
   getAction(
     request: ActionRequest,
     metadata: Metadata,
     options: Partial<CallOptions>,
-    callback: (error: ServiceError | null, response: ActionResponse) => void,
+    callback: (error: ServiceError | null, response: Action) => void,
   ): ClientUnaryCall;
   getActionSummary(
     request: ActionRequest,

@@ -28,7 +28,7 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type ClassServiceClient interface {
-	GetClass(ctx context.Context, in *ClassRequest, opts ...grpc.CallOption) (*ClassResponse, error)
+	GetClass(ctx context.Context, in *ClassRequest, opts ...grpc.CallOption) (*Class, error)
 	GetClassSummary(ctx context.Context, in *ClassRequest, opts ...grpc.CallOption) (*ClassSummaryResponse, error)
 	ListClasses(ctx context.Context, in *ListClassesRequest, opts ...grpc.CallOption) (*ListClassesResponse, error)
 }
@@ -41,9 +41,9 @@ func NewClassServiceClient(cc grpc.ClientConnInterface) ClassServiceClient {
 	return &classServiceClient{cc}
 }
 
-func (c *classServiceClient) GetClass(ctx context.Context, in *ClassRequest, opts ...grpc.CallOption) (*ClassResponse, error) {
+func (c *classServiceClient) GetClass(ctx context.Context, in *ClassRequest, opts ...grpc.CallOption) (*Class, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ClassResponse)
+	out := new(Class)
 	err := c.cc.Invoke(ctx, ClassService_GetClass_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -75,7 +75,7 @@ func (c *classServiceClient) ListClasses(ctx context.Context, in *ListClassesReq
 // All implementations must embed UnimplementedClassServiceServer
 // for forward compatibility.
 type ClassServiceServer interface {
-	GetClass(context.Context, *ClassRequest) (*ClassResponse, error)
+	GetClass(context.Context, *ClassRequest) (*Class, error)
 	GetClassSummary(context.Context, *ClassRequest) (*ClassSummaryResponse, error)
 	ListClasses(context.Context, *ListClassesRequest) (*ListClassesResponse, error)
 	mustEmbedUnimplementedClassServiceServer()
@@ -88,7 +88,7 @@ type ClassServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedClassServiceServer struct{}
 
-func (UnimplementedClassServiceServer) GetClass(context.Context, *ClassRequest) (*ClassResponse, error) {
+func (UnimplementedClassServiceServer) GetClass(context.Context, *ClassRequest) (*Class, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetClass not implemented")
 }
 func (UnimplementedClassServiceServer) GetClassSummary(context.Context, *ClassRequest) (*ClassSummaryResponse, error) {

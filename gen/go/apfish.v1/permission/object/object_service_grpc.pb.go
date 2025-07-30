@@ -28,7 +28,7 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type ObjectServiceClient interface {
-	GetObject(ctx context.Context, in *ObjectRequest, opts ...grpc.CallOption) (*ObjectResponse, error)
+	GetObject(ctx context.Context, in *ObjectRequest, opts ...grpc.CallOption) (*Object, error)
 	GetObjectSummary(ctx context.Context, in *ObjectRequest, opts ...grpc.CallOption) (*ObjectSummaryResponse, error)
 	ListObjects(ctx context.Context, in *ListObjectsRequest, opts ...grpc.CallOption) (*ListObjectsResponse, error)
 }
@@ -41,9 +41,9 @@ func NewObjectServiceClient(cc grpc.ClientConnInterface) ObjectServiceClient {
 	return &objectServiceClient{cc}
 }
 
-func (c *objectServiceClient) GetObject(ctx context.Context, in *ObjectRequest, opts ...grpc.CallOption) (*ObjectResponse, error) {
+func (c *objectServiceClient) GetObject(ctx context.Context, in *ObjectRequest, opts ...grpc.CallOption) (*Object, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ObjectResponse)
+	out := new(Object)
 	err := c.cc.Invoke(ctx, ObjectService_GetObject_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -75,7 +75,7 @@ func (c *objectServiceClient) ListObjects(ctx context.Context, in *ListObjectsRe
 // All implementations must embed UnimplementedObjectServiceServer
 // for forward compatibility.
 type ObjectServiceServer interface {
-	GetObject(context.Context, *ObjectRequest) (*ObjectResponse, error)
+	GetObject(context.Context, *ObjectRequest) (*Object, error)
 	GetObjectSummary(context.Context, *ObjectRequest) (*ObjectSummaryResponse, error)
 	ListObjects(context.Context, *ListObjectsRequest) (*ListObjectsResponse, error)
 	mustEmbedUnimplementedObjectServiceServer()
@@ -88,7 +88,7 @@ type ObjectServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedObjectServiceServer struct{}
 
-func (UnimplementedObjectServiceServer) GetObject(context.Context, *ObjectRequest) (*ObjectResponse, error) {
+func (UnimplementedObjectServiceServer) GetObject(context.Context, *ObjectRequest) (*Object, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetObject not implemented")
 }
 func (UnimplementedObjectServiceServer) GetObjectSummary(context.Context, *ObjectRequest) (*ObjectSummaryResponse, error) {

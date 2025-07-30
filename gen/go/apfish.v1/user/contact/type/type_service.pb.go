@@ -67,50 +67,6 @@ func (x *TypeRequest) GetId() string {
 	return ""
 }
 
-type TypeResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Type          *Type                  `protobuf:"bytes,1,opt,name=type,proto3" json:"type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *TypeResponse) Reset() {
-	*x = TypeResponse{}
-	mi := &file_apfish_v1_user_contact_type_type_service_proto_msgTypes[1]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *TypeResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*TypeResponse) ProtoMessage() {}
-
-func (x *TypeResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_v1_user_contact_type_type_service_proto_msgTypes[1]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use TypeResponse.ProtoReflect.Descriptor instead.
-func (*TypeResponse) Descriptor() ([]byte, []int) {
-	return file_apfish_v1_user_contact_type_type_service_proto_rawDescGZIP(), []int{1}
-}
-
-func (x *TypeResponse) GetType() *Type {
-	if x != nil {
-		return x.Type
-	}
-	return nil
-}
-
 type TypeSummaryResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Type          *summary.TypeSummary   `protobuf:"bytes,1,opt,name=type,proto3" json:"type,omitempty"`
@@ -120,7 +76,7 @@ type TypeSummaryResponse struct {
 
 func (x *TypeSummaryResponse) Reset() {
 	*x = TypeSummaryResponse{}
-	mi := &file_apfish_v1_user_contact_type_type_service_proto_msgTypes[2]
+	mi := &file_apfish_v1_user_contact_type_type_service_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -132,7 +88,7 @@ func (x *TypeSummaryResponse) String() string {
 func (*TypeSummaryResponse) ProtoMessage() {}
 
 func (x *TypeSummaryResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_v1_user_contact_type_type_service_proto_msgTypes[2]
+	mi := &file_apfish_v1_user_contact_type_type_service_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -145,7 +101,7 @@ func (x *TypeSummaryResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TypeSummaryResponse.ProtoReflect.Descriptor instead.
 func (*TypeSummaryResponse) Descriptor() ([]byte, []int) {
-	return file_apfish_v1_user_contact_type_type_service_proto_rawDescGZIP(), []int{2}
+	return file_apfish_v1_user_contact_type_type_service_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *TypeSummaryResponse) GetType() *summary.TypeSummary {
@@ -165,7 +121,7 @@ type ListTypesRequest struct {
 
 func (x *ListTypesRequest) Reset() {
 	*x = ListTypesRequest{}
-	mi := &file_apfish_v1_user_contact_type_type_service_proto_msgTypes[3]
+	mi := &file_apfish_v1_user_contact_type_type_service_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -177,7 +133,7 @@ func (x *ListTypesRequest) String() string {
 func (*ListTypesRequest) ProtoMessage() {}
 
 func (x *ListTypesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_v1_user_contact_type_type_service_proto_msgTypes[3]
+	mi := &file_apfish_v1_user_contact_type_type_service_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -190,7 +146,7 @@ func (x *ListTypesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListTypesRequest.ProtoReflect.Descriptor instead.
 func (*ListTypesRequest) Descriptor() ([]byte, []int) {
-	return file_apfish_v1_user_contact_type_type_service_proto_rawDescGZIP(), []int{3}
+	return file_apfish_v1_user_contact_type_type_service_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *ListTypesRequest) GetPage() int32 {
@@ -217,7 +173,7 @@ type ListTypesResponse struct {
 
 func (x *ListTypesResponse) Reset() {
 	*x = ListTypesResponse{}
-	mi := &file_apfish_v1_user_contact_type_type_service_proto_msgTypes[4]
+	mi := &file_apfish_v1_user_contact_type_type_service_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -229,7 +185,7 @@ func (x *ListTypesResponse) String() string {
 func (*ListTypesResponse) ProtoMessage() {}
 
 func (x *ListTypesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_v1_user_contact_type_type_service_proto_msgTypes[4]
+	mi := &file_apfish_v1_user_contact_type_type_service_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -242,7 +198,7 @@ func (x *ListTypesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListTypesResponse.ProtoReflect.Descriptor instead.
 func (*ListTypesResponse) Descriptor() ([]byte, []int) {
-	return file_apfish_v1_user_contact_type_type_service_proto_rawDescGZIP(), []int{4}
+	return file_apfish_v1_user_contact_type_type_service_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *ListTypesResponse) GetListTypes() []*summary.TypeSummary {
@@ -268,7 +224,7 @@ type UpdateTypeRequest struct {
 
 func (x *UpdateTypeRequest) Reset() {
 	*x = UpdateTypeRequest{}
-	mi := &file_apfish_v1_user_contact_type_type_service_proto_msgTypes[5]
+	mi := &file_apfish_v1_user_contact_type_type_service_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -280,7 +236,7 @@ func (x *UpdateTypeRequest) String() string {
 func (*UpdateTypeRequest) ProtoMessage() {}
 
 func (x *UpdateTypeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_v1_user_contact_type_type_service_proto_msgTypes[5]
+	mi := &file_apfish_v1_user_contact_type_type_service_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -293,7 +249,7 @@ func (x *UpdateTypeRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateTypeRequest.ProtoReflect.Descriptor instead.
 func (*UpdateTypeRequest) Descriptor() ([]byte, []int) {
-	return file_apfish_v1_user_contact_type_type_service_proto_rawDescGZIP(), []int{5}
+	return file_apfish_v1_user_contact_type_type_service_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *UpdateTypeRequest) GetType() *TypePatch {
@@ -309,9 +265,7 @@ const file_apfish_v1_user_contact_type_type_service_proto_rawDesc = "" +
 	"\n" +
 	".apfish.v1/user/contact/type/type_service.proto\x12\x1bapfish.v1.user.contact.type\x1a\x1dapfish.v1/helper/helper.proto\x1a&apfish.v1/user/contact/type/type.proto\x1a6apfish.v1/user/contact/type/summary/type_summary.proto\"\x1d\n" +
 	"\vTypeRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\"E\n" +
-	"\fTypeResponse\x125\n" +
-	"\x04type\x18\x01 \x01(\v2!.apfish.v1.user.contact.type.TypeR\x04type\"[\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\"[\n" +
 	"\x13TypeSummaryResponse\x12D\n" +
 	"\x04type\x18\x01 \x01(\v20.apfish.v1.user.contact.type.summary.TypeSummaryR\x04type\"A\n" +
 	"\x10ListTypesRequest\x12\x12\n" +
@@ -322,9 +276,9 @@ const file_apfish_v1_user_contact_type_type_service_proto_rawDesc = "" +
 	"list_types\x18\x01 \x03(\v20.apfish.v1.user.contact.type.summary.TypeSummaryR\tlistTypes\x12\x14\n" +
 	"\x05total\x18\x02 \x01(\x05R\x05total\"O\n" +
 	"\x11UpdateTypeRequest\x12:\n" +
-	"\x04type\x18\x01 \x01(\v2&.apfish.v1.user.contact.type.TypePatchR\x04type2\xa8\x03\n" +
-	"\vTypeService\x12^\n" +
-	"\aGetType\x12(.apfish.v1.user.contact.type.TypeRequest\x1a).apfish.v1.user.contact.type.TypeResponse\x12l\n" +
+	"\x04type\x18\x01 \x01(\v2&.apfish.v1.user.contact.type.TypePatchR\x04type2\xa0\x03\n" +
+	"\vTypeService\x12V\n" +
+	"\aGetType\x12(.apfish.v1.user.contact.type.TypeRequest\x1a!.apfish.v1.user.contact.type.Type\x12l\n" +
 	"\x0eGetTypeSummary\x12(.apfish.v1.user.contact.type.TypeRequest\x1a0.apfish.v1.user.contact.type.TypeSummaryResponse\x12j\n" +
 	"\tListTypes\x12-.apfish.v1.user.contact.type.ListTypesRequest\x1a..apfish.v1.user.contact.type.ListTypesResponse\x12_\n" +
 	"\n" +
@@ -342,37 +296,35 @@ func file_apfish_v1_user_contact_type_type_service_proto_rawDescGZIP() []byte {
 	return file_apfish_v1_user_contact_type_type_service_proto_rawDescData
 }
 
-var file_apfish_v1_user_contact_type_type_service_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
+var file_apfish_v1_user_contact_type_type_service_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
 var file_apfish_v1_user_contact_type_type_service_proto_goTypes = []any{
 	(*TypeRequest)(nil),            // 0: apfish.v1.user.contact.type.TypeRequest
-	(*TypeResponse)(nil),           // 1: apfish.v1.user.contact.type.TypeResponse
-	(*TypeSummaryResponse)(nil),    // 2: apfish.v1.user.contact.type.TypeSummaryResponse
-	(*ListTypesRequest)(nil),       // 3: apfish.v1.user.contact.type.ListTypesRequest
-	(*ListTypesResponse)(nil),      // 4: apfish.v1.user.contact.type.ListTypesResponse
-	(*UpdateTypeRequest)(nil),      // 5: apfish.v1.user.contact.type.UpdateTypeRequest
-	(*Type)(nil),                   // 6: apfish.v1.user.contact.type.Type
-	(*summary.TypeSummary)(nil),    // 7: apfish.v1.user.contact.type.summary.TypeSummary
-	(*TypePatch)(nil),              // 8: apfish.v1.user.contact.type.TypePatch
-	(*helper.SuccessResponse)(nil), // 9: apfish.v1.helper.SuccessResponse
+	(*TypeSummaryResponse)(nil),    // 1: apfish.v1.user.contact.type.TypeSummaryResponse
+	(*ListTypesRequest)(nil),       // 2: apfish.v1.user.contact.type.ListTypesRequest
+	(*ListTypesResponse)(nil),      // 3: apfish.v1.user.contact.type.ListTypesResponse
+	(*UpdateTypeRequest)(nil),      // 4: apfish.v1.user.contact.type.UpdateTypeRequest
+	(*summary.TypeSummary)(nil),    // 5: apfish.v1.user.contact.type.summary.TypeSummary
+	(*TypePatch)(nil),              // 6: apfish.v1.user.contact.type.TypePatch
+	(*Type)(nil),                   // 7: apfish.v1.user.contact.type.Type
+	(*helper.SuccessResponse)(nil), // 8: apfish.v1.helper.SuccessResponse
 }
 var file_apfish_v1_user_contact_type_type_service_proto_depIdxs = []int32{
-	6, // 0: apfish.v1.user.contact.type.TypeResponse.type:type_name -> apfish.v1.user.contact.type.Type
-	7, // 1: apfish.v1.user.contact.type.TypeSummaryResponse.type:type_name -> apfish.v1.user.contact.type.summary.TypeSummary
-	7, // 2: apfish.v1.user.contact.type.ListTypesResponse.list_types:type_name -> apfish.v1.user.contact.type.summary.TypeSummary
-	8, // 3: apfish.v1.user.contact.type.UpdateTypeRequest.type:type_name -> apfish.v1.user.contact.type.TypePatch
-	0, // 4: apfish.v1.user.contact.type.TypeService.GetType:input_type -> apfish.v1.user.contact.type.TypeRequest
-	0, // 5: apfish.v1.user.contact.type.TypeService.GetTypeSummary:input_type -> apfish.v1.user.contact.type.TypeRequest
-	3, // 6: apfish.v1.user.contact.type.TypeService.ListTypes:input_type -> apfish.v1.user.contact.type.ListTypesRequest
-	5, // 7: apfish.v1.user.contact.type.TypeService.UpdateType:input_type -> apfish.v1.user.contact.type.UpdateTypeRequest
-	1, // 8: apfish.v1.user.contact.type.TypeService.GetType:output_type -> apfish.v1.user.contact.type.TypeResponse
-	2, // 9: apfish.v1.user.contact.type.TypeService.GetTypeSummary:output_type -> apfish.v1.user.contact.type.TypeSummaryResponse
-	4, // 10: apfish.v1.user.contact.type.TypeService.ListTypes:output_type -> apfish.v1.user.contact.type.ListTypesResponse
-	9, // 11: apfish.v1.user.contact.type.TypeService.UpdateType:output_type -> apfish.v1.helper.SuccessResponse
-	8, // [8:12] is the sub-list for method output_type
-	4, // [4:8] is the sub-list for method input_type
-	4, // [4:4] is the sub-list for extension type_name
-	4, // [4:4] is the sub-list for extension extendee
-	0, // [0:4] is the sub-list for field type_name
+	5, // 0: apfish.v1.user.contact.type.TypeSummaryResponse.type:type_name -> apfish.v1.user.contact.type.summary.TypeSummary
+	5, // 1: apfish.v1.user.contact.type.ListTypesResponse.list_types:type_name -> apfish.v1.user.contact.type.summary.TypeSummary
+	6, // 2: apfish.v1.user.contact.type.UpdateTypeRequest.type:type_name -> apfish.v1.user.contact.type.TypePatch
+	0, // 3: apfish.v1.user.contact.type.TypeService.GetType:input_type -> apfish.v1.user.contact.type.TypeRequest
+	0, // 4: apfish.v1.user.contact.type.TypeService.GetTypeSummary:input_type -> apfish.v1.user.contact.type.TypeRequest
+	2, // 5: apfish.v1.user.contact.type.TypeService.ListTypes:input_type -> apfish.v1.user.contact.type.ListTypesRequest
+	4, // 6: apfish.v1.user.contact.type.TypeService.UpdateType:input_type -> apfish.v1.user.contact.type.UpdateTypeRequest
+	7, // 7: apfish.v1.user.contact.type.TypeService.GetType:output_type -> apfish.v1.user.contact.type.Type
+	1, // 8: apfish.v1.user.contact.type.TypeService.GetTypeSummary:output_type -> apfish.v1.user.contact.type.TypeSummaryResponse
+	3, // 9: apfish.v1.user.contact.type.TypeService.ListTypes:output_type -> apfish.v1.user.contact.type.ListTypesResponse
+	8, // 10: apfish.v1.user.contact.type.TypeService.UpdateType:output_type -> apfish.v1.helper.SuccessResponse
+	7, // [7:11] is the sub-list for method output_type
+	3, // [3:7] is the sub-list for method input_type
+	3, // [3:3] is the sub-list for extension type_name
+	3, // [3:3] is the sub-list for extension extendee
+	0, // [0:3] is the sub-list for field type_name
 }
 
 func init() { file_apfish_v1_user_contact_type_type_service_proto_init() }
@@ -387,7 +339,7 @@ func file_apfish_v1_user_contact_type_type_service_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_apfish_v1_user_contact_type_type_service_proto_rawDesc), len(file_apfish_v1_user_contact_type_type_service_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   6,
+			NumMessages:   5,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

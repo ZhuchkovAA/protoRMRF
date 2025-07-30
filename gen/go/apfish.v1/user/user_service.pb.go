@@ -68,51 +68,6 @@ func (x *UserRequest) GetLogin() string {
 	return ""
 }
 
-// Response containing the requested user.
-type UserResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	User          *User                  `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"` // Full user profile data.
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UserResponse) Reset() {
-	*x = UserResponse{}
-	mi := &file_apfish_v1_user_user_service_proto_msgTypes[1]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UserResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UserResponse) ProtoMessage() {}
-
-func (x *UserResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_v1_user_user_service_proto_msgTypes[1]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UserResponse.ProtoReflect.Descriptor instead.
-func (*UserResponse) Descriptor() ([]byte, []int) {
-	return file_apfish_v1_user_user_service_proto_rawDescGZIP(), []int{1}
-}
-
-func (x *UserResponse) GetUser() *User {
-	if x != nil {
-		return x.User
-	}
-	return nil
-}
-
 // Paginated request for user search.
 type ListUsersRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -125,7 +80,7 @@ type ListUsersRequest struct {
 
 func (x *ListUsersRequest) Reset() {
 	*x = ListUsersRequest{}
-	mi := &file_apfish_v1_user_user_service_proto_msgTypes[2]
+	mi := &file_apfish_v1_user_user_service_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -137,7 +92,7 @@ func (x *ListUsersRequest) String() string {
 func (*ListUsersRequest) ProtoMessage() {}
 
 func (x *ListUsersRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_v1_user_user_service_proto_msgTypes[2]
+	mi := &file_apfish_v1_user_user_service_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -150,7 +105,7 @@ func (x *ListUsersRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListUsersRequest.ProtoReflect.Descriptor instead.
 func (*ListUsersRequest) Descriptor() ([]byte, []int) {
-	return file_apfish_v1_user_user_service_proto_rawDescGZIP(), []int{2}
+	return file_apfish_v1_user_user_service_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *ListUsersRequest) GetLogin() string {
@@ -185,7 +140,7 @@ type ListUsersResponse struct {
 
 func (x *ListUsersResponse) Reset() {
 	*x = ListUsersResponse{}
-	mi := &file_apfish_v1_user_user_service_proto_msgTypes[3]
+	mi := &file_apfish_v1_user_user_service_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -197,7 +152,7 @@ func (x *ListUsersResponse) String() string {
 func (*ListUsersResponse) ProtoMessage() {}
 
 func (x *ListUsersResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_v1_user_user_service_proto_msgTypes[3]
+	mi := &file_apfish_v1_user_user_service_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -210,7 +165,7 @@ func (x *ListUsersResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListUsersResponse.ProtoReflect.Descriptor instead.
 func (*ListUsersResponse) Descriptor() ([]byte, []int) {
-	return file_apfish_v1_user_user_service_proto_rawDescGZIP(), []int{3}
+	return file_apfish_v1_user_user_service_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *ListUsersResponse) GetUsers() []*summary.UserSummary {
@@ -240,7 +195,7 @@ type CreateUserRequest struct {
 
 func (x *CreateUserRequest) Reset() {
 	*x = CreateUserRequest{}
-	mi := &file_apfish_v1_user_user_service_proto_msgTypes[4]
+	mi := &file_apfish_v1_user_user_service_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -252,7 +207,7 @@ func (x *CreateUserRequest) String() string {
 func (*CreateUserRequest) ProtoMessage() {}
 
 func (x *CreateUserRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_v1_user_user_service_proto_msgTypes[4]
+	mi := &file_apfish_v1_user_user_service_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -265,7 +220,7 @@ func (x *CreateUserRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateUserRequest.ProtoReflect.Descriptor instead.
 func (*CreateUserRequest) Descriptor() ([]byte, []int) {
-	return file_apfish_v1_user_user_service_proto_rawDescGZIP(), []int{4}
+	return file_apfish_v1_user_user_service_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *CreateUserRequest) GetLogin() string {
@@ -312,7 +267,7 @@ type CreateUserResponse struct {
 
 func (x *CreateUserResponse) Reset() {
 	*x = CreateUserResponse{}
-	mi := &file_apfish_v1_user_user_service_proto_msgTypes[5]
+	mi := &file_apfish_v1_user_user_service_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -324,7 +279,7 @@ func (x *CreateUserResponse) String() string {
 func (*CreateUserResponse) ProtoMessage() {}
 
 func (x *CreateUserResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_v1_user_user_service_proto_msgTypes[5]
+	mi := &file_apfish_v1_user_user_service_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -337,7 +292,7 @@ func (x *CreateUserResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateUserResponse.ProtoReflect.Descriptor instead.
 func (*CreateUserResponse) Descriptor() ([]byte, []int) {
-	return file_apfish_v1_user_user_service_proto_rawDescGZIP(), []int{5}
+	return file_apfish_v1_user_user_service_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *CreateUserResponse) GetUserId() string {
@@ -356,7 +311,7 @@ type UpdateUserRequest struct {
 
 func (x *UpdateUserRequest) Reset() {
 	*x = UpdateUserRequest{}
-	mi := &file_apfish_v1_user_user_service_proto_msgTypes[6]
+	mi := &file_apfish_v1_user_user_service_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -368,7 +323,7 @@ func (x *UpdateUserRequest) String() string {
 func (*UpdateUserRequest) ProtoMessage() {}
 
 func (x *UpdateUserRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_v1_user_user_service_proto_msgTypes[6]
+	mi := &file_apfish_v1_user_user_service_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -381,7 +336,7 @@ func (x *UpdateUserRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateUserRequest.ProtoReflect.Descriptor instead.
 func (*UpdateUserRequest) Descriptor() ([]byte, []int) {
-	return file_apfish_v1_user_user_service_proto_rawDescGZIP(), []int{6}
+	return file_apfish_v1_user_user_service_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *UpdateUserRequest) GetUser() *UserPatch {
@@ -401,7 +356,7 @@ type AssignPermissionsRequest struct {
 
 func (x *AssignPermissionsRequest) Reset() {
 	*x = AssignPermissionsRequest{}
-	mi := &file_apfish_v1_user_user_service_proto_msgTypes[7]
+	mi := &file_apfish_v1_user_user_service_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -413,7 +368,7 @@ func (x *AssignPermissionsRequest) String() string {
 func (*AssignPermissionsRequest) ProtoMessage() {}
 
 func (x *AssignPermissionsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_v1_user_user_service_proto_msgTypes[7]
+	mi := &file_apfish_v1_user_user_service_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -426,7 +381,7 @@ func (x *AssignPermissionsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AssignPermissionsRequest.ProtoReflect.Descriptor instead.
 func (*AssignPermissionsRequest) Descriptor() ([]byte, []int) {
-	return file_apfish_v1_user_user_service_proto_rawDescGZIP(), []int{7}
+	return file_apfish_v1_user_user_service_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *AssignPermissionsRequest) GetLogin() string {
@@ -449,9 +404,7 @@ const file_apfish_v1_user_user_service_proto_rawDesc = "" +
 	"\n" +
 	"!apfish.v1/user/user_service.proto\x12\x0eapfish.v1.user\x1a\x1dapfish.v1/helper/helper.proto\x1a\x19apfish.v1/user/user.proto\x1a)apfish.v1/user/summary/user_summary.proto\"#\n" +
 	"\vUserRequest\x12\x14\n" +
-	"\x05login\x18\x01 \x01(\tR\x05login\"8\n" +
-	"\fUserResponse\x12(\n" +
-	"\x04user\x18\x01 \x01(\v2\x14.apfish.v1.user.UserR\x04user\"W\n" +
+	"\x05login\x18\x01 \x01(\tR\x05login\"W\n" +
 	"\x10ListUsersRequest\x12\x14\n" +
 	"\x05login\x18\x01 \x01(\tR\x05login\x12\x12\n" +
 	"\x04page\x18\x02 \x01(\x05R\x04page\x12\x19\n" +
@@ -473,9 +426,9 @@ const file_apfish_v1_user_user_service_proto_rawDesc = "" +
 	"\x04user\x18\x01 \x01(\v2\x19.apfish.v1.user.UserPatchR\x04user\"Y\n" +
 	"\x18AssignPermissionsRequest\x12\x14\n" +
 	"\x05login\x18\x01 \x01(\tR\x05login\x12'\n" +
-	"\x0fpermissions_ids\x18\x02 \x03(\tR\x0epermissionsIds2\xb0\x03\n" +
-	"\vUserService\x12D\n" +
-	"\aGetUser\x12\x1b.apfish.v1.user.UserRequest\x1a\x1c.apfish.v1.user.UserResponse\x12P\n" +
+	"\x0fpermissions_ids\x18\x02 \x03(\tR\x0epermissionsIds2\xa8\x03\n" +
+	"\vUserService\x12<\n" +
+	"\aGetUser\x12\x1b.apfish.v1.user.UserRequest\x1a\x14.apfish.v1.user.User\x12P\n" +
 	"\tListUsers\x12 .apfish.v1.user.ListUsersRequest\x1a!.apfish.v1.user.ListUsersResponse\x12S\n" +
 	"\n" +
 	"CreateUser\x12!.apfish.v1.user.CreateUserRequest\x1a\".apfish.v1.user.CreateUserResponse\x12R\n" +
@@ -495,40 +448,38 @@ func file_apfish_v1_user_user_service_proto_rawDescGZIP() []byte {
 	return file_apfish_v1_user_user_service_proto_rawDescData
 }
 
-var file_apfish_v1_user_user_service_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
+var file_apfish_v1_user_user_service_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
 var file_apfish_v1_user_user_service_proto_goTypes = []any{
 	(*UserRequest)(nil),              // 0: apfish.v1.user.UserRequest
-	(*UserResponse)(nil),             // 1: apfish.v1.user.UserResponse
-	(*ListUsersRequest)(nil),         // 2: apfish.v1.user.ListUsersRequest
-	(*ListUsersResponse)(nil),        // 3: apfish.v1.user.ListUsersResponse
-	(*CreateUserRequest)(nil),        // 4: apfish.v1.user.CreateUserRequest
-	(*CreateUserResponse)(nil),       // 5: apfish.v1.user.CreateUserResponse
-	(*UpdateUserRequest)(nil),        // 6: apfish.v1.user.UpdateUserRequest
-	(*AssignPermissionsRequest)(nil), // 7: apfish.v1.user.AssignPermissionsRequest
-	(*User)(nil),                     // 8: apfish.v1.user.User
-	(*summary.UserSummary)(nil),      // 9: apfish.v1.user.summary.UserSummary
-	(*UserPatch)(nil),                // 10: apfish.v1.user.UserPatch
-	(*helper.SuccessResponse)(nil),   // 11: apfish.v1.helper.SuccessResponse
+	(*ListUsersRequest)(nil),         // 1: apfish.v1.user.ListUsersRequest
+	(*ListUsersResponse)(nil),        // 2: apfish.v1.user.ListUsersResponse
+	(*CreateUserRequest)(nil),        // 3: apfish.v1.user.CreateUserRequest
+	(*CreateUserResponse)(nil),       // 4: apfish.v1.user.CreateUserResponse
+	(*UpdateUserRequest)(nil),        // 5: apfish.v1.user.UpdateUserRequest
+	(*AssignPermissionsRequest)(nil), // 6: apfish.v1.user.AssignPermissionsRequest
+	(*summary.UserSummary)(nil),      // 7: apfish.v1.user.summary.UserSummary
+	(*UserPatch)(nil),                // 8: apfish.v1.user.UserPatch
+	(*User)(nil),                     // 9: apfish.v1.user.User
+	(*helper.SuccessResponse)(nil),   // 10: apfish.v1.helper.SuccessResponse
 }
 var file_apfish_v1_user_user_service_proto_depIdxs = []int32{
-	8,  // 0: apfish.v1.user.UserResponse.user:type_name -> apfish.v1.user.User
-	9,  // 1: apfish.v1.user.ListUsersResponse.users:type_name -> apfish.v1.user.summary.UserSummary
-	10, // 2: apfish.v1.user.UpdateUserRequest.user:type_name -> apfish.v1.user.UserPatch
-	0,  // 3: apfish.v1.user.UserService.GetUser:input_type -> apfish.v1.user.UserRequest
-	2,  // 4: apfish.v1.user.UserService.ListUsers:input_type -> apfish.v1.user.ListUsersRequest
-	4,  // 5: apfish.v1.user.UserService.CreateUser:input_type -> apfish.v1.user.CreateUserRequest
-	6,  // 6: apfish.v1.user.UserService.UpdateUser:input_type -> apfish.v1.user.UpdateUserRequest
-	7,  // 7: apfish.v1.user.UserService.AssignPermissions:input_type -> apfish.v1.user.AssignPermissionsRequest
-	1,  // 8: apfish.v1.user.UserService.GetUser:output_type -> apfish.v1.user.UserResponse
-	3,  // 9: apfish.v1.user.UserService.ListUsers:output_type -> apfish.v1.user.ListUsersResponse
-	5,  // 10: apfish.v1.user.UserService.CreateUser:output_type -> apfish.v1.user.CreateUserResponse
-	11, // 11: apfish.v1.user.UserService.UpdateUser:output_type -> apfish.v1.helper.SuccessResponse
-	11, // 12: apfish.v1.user.UserService.AssignPermissions:output_type -> apfish.v1.helper.SuccessResponse
-	8,  // [8:13] is the sub-list for method output_type
-	3,  // [3:8] is the sub-list for method input_type
-	3,  // [3:3] is the sub-list for extension type_name
-	3,  // [3:3] is the sub-list for extension extendee
-	0,  // [0:3] is the sub-list for field type_name
+	7,  // 0: apfish.v1.user.ListUsersResponse.users:type_name -> apfish.v1.user.summary.UserSummary
+	8,  // 1: apfish.v1.user.UpdateUserRequest.user:type_name -> apfish.v1.user.UserPatch
+	0,  // 2: apfish.v1.user.UserService.GetUser:input_type -> apfish.v1.user.UserRequest
+	1,  // 3: apfish.v1.user.UserService.ListUsers:input_type -> apfish.v1.user.ListUsersRequest
+	3,  // 4: apfish.v1.user.UserService.CreateUser:input_type -> apfish.v1.user.CreateUserRequest
+	5,  // 5: apfish.v1.user.UserService.UpdateUser:input_type -> apfish.v1.user.UpdateUserRequest
+	6,  // 6: apfish.v1.user.UserService.AssignPermissions:input_type -> apfish.v1.user.AssignPermissionsRequest
+	9,  // 7: apfish.v1.user.UserService.GetUser:output_type -> apfish.v1.user.User
+	2,  // 8: apfish.v1.user.UserService.ListUsers:output_type -> apfish.v1.user.ListUsersResponse
+	4,  // 9: apfish.v1.user.UserService.CreateUser:output_type -> apfish.v1.user.CreateUserResponse
+	10, // 10: apfish.v1.user.UserService.UpdateUser:output_type -> apfish.v1.helper.SuccessResponse
+	10, // 11: apfish.v1.user.UserService.AssignPermissions:output_type -> apfish.v1.helper.SuccessResponse
+	7,  // [7:12] is the sub-list for method output_type
+	2,  // [2:7] is the sub-list for method input_type
+	2,  // [2:2] is the sub-list for extension type_name
+	2,  // [2:2] is the sub-list for extension extendee
+	0,  // [0:2] is the sub-list for field type_name
 }
 
 func init() { file_apfish_v1_user_user_service_proto_init() }
@@ -543,7 +494,7 @@ func file_apfish_v1_user_user_service_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_apfish_v1_user_user_service_proto_rawDesc), len(file_apfish_v1_user_user_service_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   8,
+			NumMessages:   7,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

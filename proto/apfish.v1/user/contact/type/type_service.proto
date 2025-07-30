@@ -9,7 +9,7 @@ import "apfish.v1/user/contact/type/type.proto";
 import "apfish.v1/user/contact/type/summary/type_summary.proto";
 
 service TypeService {
-  rpc GetType (TypeRequest) returns (TypeResponse);
+  rpc GetType (TypeRequest) returns (Type);
   rpc GetTypeSummary (TypeRequest) returns (TypeSummaryResponse);
 
   rpc ListTypes (ListTypesRequest) returns (ListTypesResponse);
@@ -19,10 +19,6 @@ service TypeService {
 
 message TypeRequest {
   string id = 1;
-}
-
-message TypeResponse {
-  Type type = 1;
 }
 
 message TypeSummaryResponse {

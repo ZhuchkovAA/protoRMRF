@@ -28,7 +28,7 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type TypeServiceClient interface {
-	GetType(ctx context.Context, in *TypeRequest, opts ...grpc.CallOption) (*TypeResponse, error)
+	GetType(ctx context.Context, in *TypeRequest, opts ...grpc.CallOption) (*Type, error)
 	GetTypeSummary(ctx context.Context, in *TypeRequest, opts ...grpc.CallOption) (*TypeSummaryResponse, error)
 	ListTypes(ctx context.Context, in *ListTypesRequest, opts ...grpc.CallOption) (*ListTypesResponse, error)
 }
@@ -41,9 +41,9 @@ func NewTypeServiceClient(cc grpc.ClientConnInterface) TypeServiceClient {
 	return &typeServiceClient{cc}
 }
 
-func (c *typeServiceClient) GetType(ctx context.Context, in *TypeRequest, opts ...grpc.CallOption) (*TypeResponse, error) {
+func (c *typeServiceClient) GetType(ctx context.Context, in *TypeRequest, opts ...grpc.CallOption) (*Type, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(TypeResponse)
+	out := new(Type)
 	err := c.cc.Invoke(ctx, TypeService_GetType_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -75,7 +75,7 @@ func (c *typeServiceClient) ListTypes(ctx context.Context, in *ListTypesRequest,
 // All implementations must embed UnimplementedTypeServiceServer
 // for forward compatibility.
 type TypeServiceServer interface {
-	GetType(context.Context, *TypeRequest) (*TypeResponse, error)
+	GetType(context.Context, *TypeRequest) (*Type, error)
 	GetTypeSummary(context.Context, *TypeRequest) (*TypeSummaryResponse, error)
 	ListTypes(context.Context, *ListTypesRequest) (*ListTypesResponse, error)
 	mustEmbedUnimplementedTypeServiceServer()
@@ -88,7 +88,7 @@ type TypeServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedTypeServiceServer struct{}
 
-func (UnimplementedTypeServiceServer) GetType(context.Context, *TypeRequest) (*TypeResponse, error) {
+func (UnimplementedTypeServiceServer) GetType(context.Context, *TypeRequest) (*Type, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetType not implemented")
 }
 func (UnimplementedTypeServiceServer) GetTypeSummary(context.Context, *TypeRequest) (*TypeSummaryResponse, error) {

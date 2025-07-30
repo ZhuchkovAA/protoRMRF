@@ -32,7 +32,7 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type ContactServiceClient interface {
-	GetContact(ctx context.Context, in *ContactRequest, opts ...grpc.CallOption) (*ContactResponse, error)
+	GetContact(ctx context.Context, in *ContactRequest, opts ...grpc.CallOption) (*Contact, error)
 	GetContactSummary(ctx context.Context, in *ContactRequest, opts ...grpc.CallOption) (*ContactSummaryResponse, error)
 	ListUserContacts(ctx context.Context, in *ListUserContactsRequest, opts ...grpc.CallOption) (*ListContactsResponse, error)
 	UpdateContact(ctx context.Context, in *UpdateContactRequest, opts ...grpc.CallOption) (*helper.SuccessResponse, error)
@@ -48,9 +48,9 @@ func NewContactServiceClient(cc grpc.ClientConnInterface) ContactServiceClient {
 	return &contactServiceClient{cc}
 }
 
-func (c *contactServiceClient) GetContact(ctx context.Context, in *ContactRequest, opts ...grpc.CallOption) (*ContactResponse, error) {
+func (c *contactServiceClient) GetContact(ctx context.Context, in *ContactRequest, opts ...grpc.CallOption) (*Contact, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ContactResponse)
+	out := new(Contact)
 	err := c.cc.Invoke(ctx, ContactService_GetContact_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -112,7 +112,7 @@ func (c *contactServiceClient) DeleteContact(ctx context.Context, in *DeleteCont
 // All implementations must embed UnimplementedContactServiceServer
 // for forward compatibility.
 type ContactServiceServer interface {
-	GetContact(context.Context, *ContactRequest) (*ContactResponse, error)
+	GetContact(context.Context, *ContactRequest) (*Contact, error)
 	GetContactSummary(context.Context, *ContactRequest) (*ContactSummaryResponse, error)
 	ListUserContacts(context.Context, *ListUserContactsRequest) (*ListContactsResponse, error)
 	UpdateContact(context.Context, *UpdateContactRequest) (*helper.SuccessResponse, error)
@@ -128,7 +128,7 @@ type ContactServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedContactServiceServer struct{}
 
-func (UnimplementedContactServiceServer) GetContact(context.Context, *ContactRequest) (*ContactResponse, error) {
+func (UnimplementedContactServiceServer) GetContact(context.Context, *ContactRequest) (*Contact, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetContact not implemented")
 }
 func (UnimplementedContactServiceServer) GetContactSummary(context.Context, *ContactRequest) (*ContactSummaryResponse, error) {

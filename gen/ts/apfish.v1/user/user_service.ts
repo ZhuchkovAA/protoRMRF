@@ -30,12 +30,6 @@ export interface UserRequest {
   login: string;
 }
 
-/** Response containing the requested user. */
-export interface UserResponse {
-  /** Full user profile data. */
-  user: User | undefined;
-}
-
 /** Paginated request for user search. */
 export interface ListUsersRequest {
   /** Optional login prefix filter (e.g., "joh"). */
@@ -128,63 +122,6 @@ export const UserRequest = {
   fromPartial<I extends Exact<DeepPartial<UserRequest>, I>>(object: I): UserRequest {
     const message = createBaseUserRequest();
     message.login = object.login ?? "";
-    return message;
-  },
-};
-
-function createBaseUserResponse(): UserResponse {
-  return { user: undefined };
-}
-
-export const UserResponse = {
-  encode(message: UserResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.user !== undefined) {
-      User.encode(message.user, writer.uint32(10).fork()).ldelim();
-    }
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): UserResponse {
-    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseUserResponse();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          if (tag !== 10) {
-            break;
-          }
-
-          message.user = User.decode(reader, reader.uint32());
-          continue;
-      }
-      if ((tag & 7) === 4 || tag === 0) {
-        break;
-      }
-      reader.skipType(tag & 7);
-    }
-    return message;
-  },
-
-  fromJSON(object: any): UserResponse {
-    return { user: isSet(object.user) ? User.fromJSON(object.user) : undefined };
-  },
-
-  toJSON(message: UserResponse): unknown {
-    const obj: any = {};
-    if (message.user !== undefined) {
-      obj.user = User.toJSON(message.user);
-    }
-    return obj;
-  },
-
-  create<I extends Exact<DeepPartial<UserResponse>, I>>(base?: I): UserResponse {
-    return UserResponse.fromPartial(base ?? ({} as any));
-  },
-  fromPartial<I extends Exact<DeepPartial<UserResponse>, I>>(object: I): UserResponse {
-    const message = createBaseUserResponse();
-    message.user = (object.user !== undefined && object.user !== null) ? User.fromPartial(object.user) : undefined;
     return message;
   },
 };
@@ -674,8 +611,8 @@ export const UserServiceService = {
     responseStream: false,
     requestSerialize: (value: UserRequest) => Buffer.from(UserRequest.encode(value).finish()),
     requestDeserialize: (value: Buffer) => UserRequest.decode(value),
-    responseSerialize: (value: UserResponse) => Buffer.from(UserResponse.encode(value).finish()),
-    responseDeserialize: (value: Buffer) => UserResponse.decode(value),
+    responseSerialize: (value: User) => Buffer.from(User.encode(value).finish()),
+    responseDeserialize: (value: Buffer) => User.decode(value),
   },
   /**
    * ListUsers searches for users by login prefix (case-insensitive)
@@ -724,7 +661,7 @@ export interface UserServiceServer extends UntypedServiceImplementation {
    * GetUser retrieves a single user by their unique login.
    * Returns NOT_FOUND if the user does not exist.
    */
-  getUser: handleUnaryCall<UserRequest, UserResponse>;
+  getUser: handleUnaryCall<UserRequest, User>;
   /**
    * ListUsers searches for users by login prefix (case-insensitive)
    * and returns paginated results.
@@ -740,20 +677,17 @@ export interface UserServiceClient extends Client {
    * GetUser retrieves a single user by their unique login.
    * Returns NOT_FOUND if the user does not exist.
    */
-  getUser(
-    request: UserRequest,
-    callback: (error: ServiceError | null, response: UserResponse) => void,
-  ): ClientUnaryCall;
+  getUser(request: UserRequest, callback: (error: ServiceError | null, response: User) => void): ClientUnaryCall;
   getUser(
     request: UserRequest,
     metadata: Metadata,
-    callback: (error: ServiceError | null, response: UserResponse) => void,
+    callback: (error: ServiceError | null, response: User) => void,
   ): ClientUnaryCall;
   getUser(
     request: UserRequest,
     metadata: Metadata,
     options: Partial<CallOptions>,
-    callback: (error: ServiceError | null, response: UserResponse) => void,
+    callback: (error: ServiceError | null, response: User) => void,
   ): ClientUnaryCall;
   /**
    * ListUsers searches for users by login prefix (case-insensitive)

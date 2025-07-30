@@ -28,7 +28,7 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type ShipServiceClient interface {
-	GetShip(ctx context.Context, in *ShipRequest, opts ...grpc.CallOption) (*ShipResponse, error)
+	GetShip(ctx context.Context, in *ShipRequest, opts ...grpc.CallOption) (*Ship, error)
 	GetShipSummary(ctx context.Context, in *ShipRequest, opts ...grpc.CallOption) (*ShipSummaryResponse, error)
 	ListShips(ctx context.Context, in *ListShipsRequest, opts ...grpc.CallOption) (*ListShipsResponse, error)
 }
@@ -41,9 +41,9 @@ func NewShipServiceClient(cc grpc.ClientConnInterface) ShipServiceClient {
 	return &shipServiceClient{cc}
 }
 
-func (c *shipServiceClient) GetShip(ctx context.Context, in *ShipRequest, opts ...grpc.CallOption) (*ShipResponse, error) {
+func (c *shipServiceClient) GetShip(ctx context.Context, in *ShipRequest, opts ...grpc.CallOption) (*Ship, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ShipResponse)
+	out := new(Ship)
 	err := c.cc.Invoke(ctx, ShipService_GetShip_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -75,7 +75,7 @@ func (c *shipServiceClient) ListShips(ctx context.Context, in *ListShipsRequest,
 // All implementations must embed UnimplementedShipServiceServer
 // for forward compatibility.
 type ShipServiceServer interface {
-	GetShip(context.Context, *ShipRequest) (*ShipResponse, error)
+	GetShip(context.Context, *ShipRequest) (*Ship, error)
 	GetShipSummary(context.Context, *ShipRequest) (*ShipSummaryResponse, error)
 	ListShips(context.Context, *ListShipsRequest) (*ListShipsResponse, error)
 	mustEmbedUnimplementedShipServiceServer()
@@ -88,7 +88,7 @@ type ShipServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedShipServiceServer struct{}
 
-func (UnimplementedShipServiceServer) GetShip(context.Context, *ShipRequest) (*ShipResponse, error) {
+func (UnimplementedShipServiceServer) GetShip(context.Context, *ShipRequest) (*Ship, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetShip not implemented")
 }
 func (UnimplementedShipServiceServer) GetShipSummary(context.Context, *ShipRequest) (*ShipSummaryResponse, error) {

@@ -29,10 +29,6 @@ export interface ContactRequest {
   id: string;
 }
 
-export interface ContactResponse {
-  contact: Contact | undefined;
-}
-
 export interface ContactSummaryResponse {
   contact: ContactSummary | undefined;
 }
@@ -116,65 +112,6 @@ export const ContactRequest = {
   fromPartial<I extends Exact<DeepPartial<ContactRequest>, I>>(object: I): ContactRequest {
     const message = createBaseContactRequest();
     message.id = object.id ?? "";
-    return message;
-  },
-};
-
-function createBaseContactResponse(): ContactResponse {
-  return { contact: undefined };
-}
-
-export const ContactResponse = {
-  encode(message: ContactResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.contact !== undefined) {
-      Contact.encode(message.contact, writer.uint32(10).fork()).ldelim();
-    }
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): ContactResponse {
-    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseContactResponse();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          if (tag !== 10) {
-            break;
-          }
-
-          message.contact = Contact.decode(reader, reader.uint32());
-          continue;
-      }
-      if ((tag & 7) === 4 || tag === 0) {
-        break;
-      }
-      reader.skipType(tag & 7);
-    }
-    return message;
-  },
-
-  fromJSON(object: any): ContactResponse {
-    return { contact: isSet(object.contact) ? Contact.fromJSON(object.contact) : undefined };
-  },
-
-  toJSON(message: ContactResponse): unknown {
-    const obj: any = {};
-    if (message.contact !== undefined) {
-      obj.contact = Contact.toJSON(message.contact);
-    }
-    return obj;
-  },
-
-  create<I extends Exact<DeepPartial<ContactResponse>, I>>(base?: I): ContactResponse {
-    return ContactResponse.fromPartial(base ?? ({} as any));
-  },
-  fromPartial<I extends Exact<DeepPartial<ContactResponse>, I>>(object: I): ContactResponse {
-    const message = createBaseContactResponse();
-    message.contact = (object.contact !== undefined && object.contact !== null)
-      ? Contact.fromPartial(object.contact)
-      : undefined;
     return message;
   },
 };
@@ -626,8 +563,8 @@ export const ContactServiceService = {
     responseStream: false,
     requestSerialize: (value: ContactRequest) => Buffer.from(ContactRequest.encode(value).finish()),
     requestDeserialize: (value: Buffer) => ContactRequest.decode(value),
-    responseSerialize: (value: ContactResponse) => Buffer.from(ContactResponse.encode(value).finish()),
-    responseDeserialize: (value: Buffer) => ContactResponse.decode(value),
+    responseSerialize: (value: Contact) => Buffer.from(Contact.encode(value).finish()),
+    responseDeserialize: (value: Buffer) => Contact.decode(value),
   },
   getContactSummary: {
     path: "/apfish.v1.user.contact.ContactService/GetContactSummary",
@@ -677,7 +614,7 @@ export const ContactServiceService = {
 } as const;
 
 export interface ContactServiceServer extends UntypedServiceImplementation {
-  getContact: handleUnaryCall<ContactRequest, ContactResponse>;
+  getContact: handleUnaryCall<ContactRequest, Contact>;
   getContactSummary: handleUnaryCall<ContactRequest, ContactSummaryResponse>;
   listUserContacts: handleUnaryCall<ListUserContactsRequest, ListContactsResponse>;
   updateContact: handleUnaryCall<UpdateContactRequest, SuccessResponse>;
@@ -688,18 +625,18 @@ export interface ContactServiceServer extends UntypedServiceImplementation {
 export interface ContactServiceClient extends Client {
   getContact(
     request: ContactRequest,
-    callback: (error: ServiceError | null, response: ContactResponse) => void,
+    callback: (error: ServiceError | null, response: Contact) => void,
   ): ClientUnaryCall;
   getContact(
     request: ContactRequest,
     metadata: Metadata,
-    callback: (error: ServiceError | null, response: ContactResponse) => void,
+    callback: (error: ServiceError | null, response: Contact) => void,
   ): ClientUnaryCall;
   getContact(
     request: ContactRequest,
     metadata: Metadata,
     options: Partial<CallOptions>,
-    callback: (error: ServiceError | null, response: ContactResponse) => void,
+    callback: (error: ServiceError | null, response: Contact) => void,
   ): ClientUnaryCall;
   getContactSummary(
     request: ContactRequest,

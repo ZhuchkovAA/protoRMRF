@@ -2,13 +2,12 @@
 // versions:
 // - protoc-gen-go-grpc v1.5.1
 // - protoc             v4.25.1
-// source: apfish.v1/user/contact/type/type_service.proto
+// source: apfish.v1/location/authority/type/type_service.proto
 
-package user_contact_type
+package location_authority_type
 
 import (
 	context "context"
-	helper "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/helper"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -20,10 +19,9 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	TypeService_GetType_FullMethodName        = "/apfish.v1.user.contact.type.TypeService/GetType"
-	TypeService_GetTypeSummary_FullMethodName = "/apfish.v1.user.contact.type.TypeService/GetTypeSummary"
-	TypeService_ListTypes_FullMethodName      = "/apfish.v1.user.contact.type.TypeService/ListTypes"
-	TypeService_UpdateType_FullMethodName     = "/apfish.v1.user.contact.type.TypeService/UpdateType"
+	TypeService_GetType_FullMethodName        = "/apfish.v1.location.authority.type.TypeService/GetType"
+	TypeService_GetTypeSummary_FullMethodName = "/apfish.v1.location.authority.type.TypeService/GetTypeSummary"
+	TypeService_ListTypes_FullMethodName      = "/apfish.v1.location.authority.type.TypeService/ListTypes"
 )
 
 // TypeServiceClient is the client API for TypeService service.
@@ -33,7 +31,6 @@ type TypeServiceClient interface {
 	GetType(ctx context.Context, in *TypeRequest, opts ...grpc.CallOption) (*Type, error)
 	GetTypeSummary(ctx context.Context, in *TypeRequest, opts ...grpc.CallOption) (*TypeSummaryResponse, error)
 	ListTypes(ctx context.Context, in *ListTypesRequest, opts ...grpc.CallOption) (*ListTypesResponse, error)
-	UpdateType(ctx context.Context, in *UpdateTypeRequest, opts ...grpc.CallOption) (*helper.SuccessResponse, error)
 }
 
 type typeServiceClient struct {
@@ -74,16 +71,6 @@ func (c *typeServiceClient) ListTypes(ctx context.Context, in *ListTypesRequest,
 	return out, nil
 }
 
-func (c *typeServiceClient) UpdateType(ctx context.Context, in *UpdateTypeRequest, opts ...grpc.CallOption) (*helper.SuccessResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(helper.SuccessResponse)
-	err := c.cc.Invoke(ctx, TypeService_UpdateType_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 // TypeServiceServer is the server API for TypeService service.
 // All implementations must embed UnimplementedTypeServiceServer
 // for forward compatibility.
@@ -91,7 +78,6 @@ type TypeServiceServer interface {
 	GetType(context.Context, *TypeRequest) (*Type, error)
 	GetTypeSummary(context.Context, *TypeRequest) (*TypeSummaryResponse, error)
 	ListTypes(context.Context, *ListTypesRequest) (*ListTypesResponse, error)
-	UpdateType(context.Context, *UpdateTypeRequest) (*helper.SuccessResponse, error)
 	mustEmbedUnimplementedTypeServiceServer()
 }
 
@@ -110,9 +96,6 @@ func (UnimplementedTypeServiceServer) GetTypeSummary(context.Context, *TypeReque
 }
 func (UnimplementedTypeServiceServer) ListTypes(context.Context, *ListTypesRequest) (*ListTypesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListTypes not implemented")
-}
-func (UnimplementedTypeServiceServer) UpdateType(context.Context, *UpdateTypeRequest) (*helper.SuccessResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateType not implemented")
 }
 func (UnimplementedTypeServiceServer) mustEmbedUnimplementedTypeServiceServer() {}
 func (UnimplementedTypeServiceServer) testEmbeddedByValue()                     {}
@@ -189,29 +172,11 @@ func _TypeService_ListTypes_Handler(srv interface{}, ctx context.Context, dec fu
 	return interceptor(ctx, in, info, handler)
 }
 
-func _TypeService_UpdateType_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateTypeRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(TypeServiceServer).UpdateType(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: TypeService_UpdateType_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TypeServiceServer).UpdateType(ctx, req.(*UpdateTypeRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 // TypeService_ServiceDesc is the grpc.ServiceDesc for TypeService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var TypeService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "apfish.v1.user.contact.type.TypeService",
+	ServiceName: "apfish.v1.location.authority.type.TypeService",
 	HandlerType: (*TypeServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
@@ -226,11 +191,7 @@ var TypeService_ServiceDesc = grpc.ServiceDesc{
 			MethodName: "ListTypes",
 			Handler:    _TypeService_ListTypes_Handler,
 		},
-		{
-			MethodName: "UpdateType",
-			Handler:    _TypeService_UpdateType_Handler,
-		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "apfish.v1/user/contact/type/type_service.proto",
+	Metadata: "apfish.v1/location/authority/type/type_service.proto",
 }

@@ -28,10 +28,6 @@ export interface AuthorityRequest {
   id: string;
 }
 
-export interface AuthorityResponse {
-  Authority: Authority | undefined;
-}
-
 export interface AuthoritySummaryResponse {
   Authority: AuthoritySummary | undefined;
 }
@@ -101,65 +97,6 @@ export const AuthorityRequest = {
   fromPartial<I extends Exact<DeepPartial<AuthorityRequest>, I>>(object: I): AuthorityRequest {
     const message = createBaseAuthorityRequest();
     message.id = object.id ?? "";
-    return message;
-  },
-};
-
-function createBaseAuthorityResponse(): AuthorityResponse {
-  return { Authority: undefined };
-}
-
-export const AuthorityResponse = {
-  encode(message: AuthorityResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.Authority !== undefined) {
-      Authority.encode(message.Authority, writer.uint32(10).fork()).ldelim();
-    }
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): AuthorityResponse {
-    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseAuthorityResponse();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          if (tag !== 10) {
-            break;
-          }
-
-          message.Authority = Authority.decode(reader, reader.uint32());
-          continue;
-      }
-      if ((tag & 7) === 4 || tag === 0) {
-        break;
-      }
-      reader.skipType(tag & 7);
-    }
-    return message;
-  },
-
-  fromJSON(object: any): AuthorityResponse {
-    return { Authority: isSet(object.Authority) ? Authority.fromJSON(object.Authority) : undefined };
-  },
-
-  toJSON(message: AuthorityResponse): unknown {
-    const obj: any = {};
-    if (message.Authority !== undefined) {
-      obj.Authority = Authority.toJSON(message.Authority);
-    }
-    return obj;
-  },
-
-  create<I extends Exact<DeepPartial<AuthorityResponse>, I>>(base?: I): AuthorityResponse {
-    return AuthorityResponse.fromPartial(base ?? ({} as any));
-  },
-  fromPartial<I extends Exact<DeepPartial<AuthorityResponse>, I>>(object: I): AuthorityResponse {
-    const message = createBaseAuthorityResponse();
-    message.Authority = (object.Authority !== undefined && object.Authority !== null)
-      ? Authority.fromPartial(object.Authority)
-      : undefined;
     return message;
   },
 };
@@ -381,8 +318,8 @@ export const AuthorityServiceService = {
     responseStream: false,
     requestSerialize: (value: AuthorityRequest) => Buffer.from(AuthorityRequest.encode(value).finish()),
     requestDeserialize: (value: Buffer) => AuthorityRequest.decode(value),
-    responseSerialize: (value: AuthorityResponse) => Buffer.from(AuthorityResponse.encode(value).finish()),
-    responseDeserialize: (value: Buffer) => AuthorityResponse.decode(value),
+    responseSerialize: (value: Authority) => Buffer.from(Authority.encode(value).finish()),
+    responseDeserialize: (value: Buffer) => Authority.decode(value),
   },
   getAuthoritySummary: {
     path: "/apfish.v1.location.authority.AuthorityService/GetAuthoritySummary",
@@ -406,7 +343,7 @@ export const AuthorityServiceService = {
 } as const;
 
 export interface AuthorityServiceServer extends UntypedServiceImplementation {
-  getAuthority: handleUnaryCall<AuthorityRequest, AuthorityResponse>;
+  getAuthority: handleUnaryCall<AuthorityRequest, Authority>;
   getAuthoritySummary: handleUnaryCall<AuthorityRequest, AuthoritySummaryResponse>;
   listAuthorities: handleUnaryCall<ListAuthoritiesRequest, ListAuthoritiesResponse>;
 }
@@ -414,18 +351,18 @@ export interface AuthorityServiceServer extends UntypedServiceImplementation {
 export interface AuthorityServiceClient extends Client {
   getAuthority(
     request: AuthorityRequest,
-    callback: (error: ServiceError | null, response: AuthorityResponse) => void,
+    callback: (error: ServiceError | null, response: Authority) => void,
   ): ClientUnaryCall;
   getAuthority(
     request: AuthorityRequest,
     metadata: Metadata,
-    callback: (error: ServiceError | null, response: AuthorityResponse) => void,
+    callback: (error: ServiceError | null, response: Authority) => void,
   ): ClientUnaryCall;
   getAuthority(
     request: AuthorityRequest,
     metadata: Metadata,
     options: Partial<CallOptions>,
-    callback: (error: ServiceError | null, response: AuthorityResponse) => void,
+    callback: (error: ServiceError | null, response: Authority) => void,
   ): ClientUnaryCall;
   getAuthoritySummary(
     request: AuthorityRequest,

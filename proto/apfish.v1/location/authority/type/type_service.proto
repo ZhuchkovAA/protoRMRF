@@ -1,11 +1,11 @@
 syntax = "proto3";
 
-package apfish.v1.ship.type;
+package apfish.v1.location.authority.type;
 
-option go_package = "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/ship/type;ship_type";
+option go_package = "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/authority/type;location_authority_type";
 
-import "apfish.v1/ship/type/type.proto";
-import "apfish.v1/ship/type/summary/type_summary.proto";
+import "apfish.v1/location/authority/type/type.proto";
+import "apfish.v1/location/authority/type/summary/type_summary.proto";
 
 service TypeService {
   rpc GetType (TypeRequest) returns (Type);
@@ -19,7 +19,7 @@ message TypeRequest {
 }
 
 message TypeSummaryResponse {
-  ship.type.summary.TypeSummary type = 1;
+  location.authority.type.summary.TypeSummary type = 1;
 }
 
 message ListTypesRequest {
@@ -28,6 +28,7 @@ message ListTypesRequest {
 }
 
 message ListTypesResponse {
-  repeated ship.type.summary.TypeSummary list_types = 1;
+  repeated location.authority.type.summary.TypeSummary list_types = 1;
   int32 total = 2;
 }
+

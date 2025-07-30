@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package apfish.v1.location.authority.type;
+
+option go_package = "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/authority/type;location_authority_type";
+
+import "google/protobuf/timestamp.proto";  // Standard Protocol Buffers timestamp
+
+import "apfish.v1/location/authority/summary/authority_summary.proto";
+
+// Type of contact method (e.g., "Email", "Phone").
+message Type {
+  string id = 1;                       // Unique type ID.
+  string name = 2;                    // Human-readable name (e.g., "Email").
+  string name_rus = 3;
+  google.protobuf.Timestamp created_at = 4;  // When the type was defined.
+
+  repeated location.authority.summary.AuthoritySummary authorities = 5;
+}

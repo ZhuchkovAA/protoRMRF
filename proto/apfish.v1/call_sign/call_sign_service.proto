@@ -8,7 +8,7 @@ import "apfish.v1/call_sign/call_sign.proto";
 import "apfish.v1/call_sign/summary/call_sign_summary.proto";
 
 service CallSignService {
-  rpc GetCallSign (CallSignRequest) returns (CallSignResponse);
+  rpc GetCallSign (CallSignRequest) returns (CallSign);
   rpc GetCallSignSummary (CallSignRequest) returns (CallSignSummaryResponse);
 
   rpc ListCallSigns (ListCallSignsRequest) returns (ListCallSignsResponse);
@@ -16,10 +16,6 @@ service CallSignService {
 
 message CallSignRequest {
   string id = 1;
-}
-
-message CallSignResponse {
-  CallSign call_sign = 1;
 }
 
 message CallSignSummaryResponse {

@@ -66,50 +66,6 @@ func (x *ShipRequest) GetId() string {
 	return ""
 }
 
-type ShipResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Ship          *Ship                  `protobuf:"bytes,1,opt,name=ship,proto3" json:"ship,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ShipResponse) Reset() {
-	*x = ShipResponse{}
-	mi := &file_apfish_v1_ship_ship_service_proto_msgTypes[1]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ShipResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ShipResponse) ProtoMessage() {}
-
-func (x *ShipResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_v1_ship_ship_service_proto_msgTypes[1]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ShipResponse.ProtoReflect.Descriptor instead.
-func (*ShipResponse) Descriptor() ([]byte, []int) {
-	return file_apfish_v1_ship_ship_service_proto_rawDescGZIP(), []int{1}
-}
-
-func (x *ShipResponse) GetShip() *Ship {
-	if x != nil {
-		return x.Ship
-	}
-	return nil
-}
-
 type ShipSummaryResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Ship          *summary.ShipSummary   `protobuf:"bytes,1,opt,name=ship,proto3" json:"ship,omitempty"`
@@ -119,7 +75,7 @@ type ShipSummaryResponse struct {
 
 func (x *ShipSummaryResponse) Reset() {
 	*x = ShipSummaryResponse{}
-	mi := &file_apfish_v1_ship_ship_service_proto_msgTypes[2]
+	mi := &file_apfish_v1_ship_ship_service_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -131,7 +87,7 @@ func (x *ShipSummaryResponse) String() string {
 func (*ShipSummaryResponse) ProtoMessage() {}
 
 func (x *ShipSummaryResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_v1_ship_ship_service_proto_msgTypes[2]
+	mi := &file_apfish_v1_ship_ship_service_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -144,7 +100,7 @@ func (x *ShipSummaryResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ShipSummaryResponse.ProtoReflect.Descriptor instead.
 func (*ShipSummaryResponse) Descriptor() ([]byte, []int) {
-	return file_apfish_v1_ship_ship_service_proto_rawDescGZIP(), []int{2}
+	return file_apfish_v1_ship_ship_service_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *ShipSummaryResponse) GetShip() *summary.ShipSummary {
@@ -164,7 +120,7 @@ type ListShipsRequest struct {
 
 func (x *ListShipsRequest) Reset() {
 	*x = ListShipsRequest{}
-	mi := &file_apfish_v1_ship_ship_service_proto_msgTypes[3]
+	mi := &file_apfish_v1_ship_ship_service_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -176,7 +132,7 @@ func (x *ListShipsRequest) String() string {
 func (*ListShipsRequest) ProtoMessage() {}
 
 func (x *ListShipsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_v1_ship_ship_service_proto_msgTypes[3]
+	mi := &file_apfish_v1_ship_ship_service_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -189,7 +145,7 @@ func (x *ListShipsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListShipsRequest.ProtoReflect.Descriptor instead.
 func (*ListShipsRequest) Descriptor() ([]byte, []int) {
-	return file_apfish_v1_ship_ship_service_proto_rawDescGZIP(), []int{3}
+	return file_apfish_v1_ship_ship_service_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *ListShipsRequest) GetPage() int32 {
@@ -216,7 +172,7 @@ type ListShipsResponse struct {
 
 func (x *ListShipsResponse) Reset() {
 	*x = ListShipsResponse{}
-	mi := &file_apfish_v1_ship_ship_service_proto_msgTypes[4]
+	mi := &file_apfish_v1_ship_ship_service_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -228,7 +184,7 @@ func (x *ListShipsResponse) String() string {
 func (*ListShipsResponse) ProtoMessage() {}
 
 func (x *ListShipsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_v1_ship_ship_service_proto_msgTypes[4]
+	mi := &file_apfish_v1_ship_ship_service_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -241,7 +197,7 @@ func (x *ListShipsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListShipsResponse.ProtoReflect.Descriptor instead.
 func (*ListShipsResponse) Descriptor() ([]byte, []int) {
-	return file_apfish_v1_ship_ship_service_proto_rawDescGZIP(), []int{4}
+	return file_apfish_v1_ship_ship_service_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *ListShipsResponse) GetListShips() []*summary.ShipSummary {
@@ -264,9 +220,7 @@ const file_apfish_v1_ship_ship_service_proto_rawDesc = "" +
 	"\n" +
 	"!apfish.v1/ship/ship_service.proto\x12\x0eapfish.v1.ship\x1a\x19apfish.v1/ship/ship.proto\x1a)apfish.v1/ship/summary/ship_summary.proto\"\x1d\n" +
 	"\vShipRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\"8\n" +
-	"\fShipResponse\x12(\n" +
-	"\x04ship\x18\x01 \x01(\v2\x14.apfish.v1.ship.ShipR\x04ship\"N\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\"N\n" +
 	"\x13ShipSummaryResponse\x127\n" +
 	"\x04ship\x18\x01 \x01(\v2#.apfish.v1.ship.summary.ShipSummaryR\x04ship\"A\n" +
 	"\x10ListShipsRequest\x12\x12\n" +
@@ -275,9 +229,9 @@ const file_apfish_v1_ship_ship_service_proto_rawDesc = "" +
 	"\x11ListShipsResponse\x12B\n" +
 	"\n" +
 	"list_ships\x18\x01 \x03(\v2#.apfish.v1.ship.summary.ShipSummaryR\tlistShips\x12\x14\n" +
-	"\x05total\x18\x02 \x01(\x05R\x05total2\xf9\x01\n" +
-	"\vShipService\x12D\n" +
-	"\aGetShip\x12\x1b.apfish.v1.ship.ShipRequest\x1a\x1c.apfish.v1.ship.ShipResponse\x12R\n" +
+	"\x05total\x18\x02 \x01(\x05R\x05total2\xf1\x01\n" +
+	"\vShipService\x12<\n" +
+	"\aGetShip\x12\x1b.apfish.v1.ship.ShipRequest\x1a\x14.apfish.v1.ship.Ship\x12R\n" +
 	"\x0eGetShipSummary\x12\x1b.apfish.v1.ship.ShipRequest\x1a#.apfish.v1.ship.ShipSummaryResponse\x12P\n" +
 	"\tListShips\x12 .apfish.v1.ship.ListShipsRequest\x1a!.apfish.v1.ship.ListShipsResponseB<Z:github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/ship;shipb\x06proto3"
 
@@ -293,31 +247,29 @@ func file_apfish_v1_ship_ship_service_proto_rawDescGZIP() []byte {
 	return file_apfish_v1_ship_ship_service_proto_rawDescData
 }
 
-var file_apfish_v1_ship_ship_service_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
+var file_apfish_v1_ship_ship_service_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_apfish_v1_ship_ship_service_proto_goTypes = []any{
 	(*ShipRequest)(nil),         // 0: apfish.v1.ship.ShipRequest
-	(*ShipResponse)(nil),        // 1: apfish.v1.ship.ShipResponse
-	(*ShipSummaryResponse)(nil), // 2: apfish.v1.ship.ShipSummaryResponse
-	(*ListShipsRequest)(nil),    // 3: apfish.v1.ship.ListShipsRequest
-	(*ListShipsResponse)(nil),   // 4: apfish.v1.ship.ListShipsResponse
+	(*ShipSummaryResponse)(nil), // 1: apfish.v1.ship.ShipSummaryResponse
+	(*ListShipsRequest)(nil),    // 2: apfish.v1.ship.ListShipsRequest
+	(*ListShipsResponse)(nil),   // 3: apfish.v1.ship.ListShipsResponse
+	(*summary.ShipSummary)(nil), // 4: apfish.v1.ship.summary.ShipSummary
 	(*Ship)(nil),                // 5: apfish.v1.ship.Ship
-	(*summary.ShipSummary)(nil), // 6: apfish.v1.ship.summary.ShipSummary
 }
 var file_apfish_v1_ship_ship_service_proto_depIdxs = []int32{
-	5, // 0: apfish.v1.ship.ShipResponse.ship:type_name -> apfish.v1.ship.Ship
-	6, // 1: apfish.v1.ship.ShipSummaryResponse.ship:type_name -> apfish.v1.ship.summary.ShipSummary
-	6, // 2: apfish.v1.ship.ListShipsResponse.list_ships:type_name -> apfish.v1.ship.summary.ShipSummary
-	0, // 3: apfish.v1.ship.ShipService.GetShip:input_type -> apfish.v1.ship.ShipRequest
-	0, // 4: apfish.v1.ship.ShipService.GetShipSummary:input_type -> apfish.v1.ship.ShipRequest
-	3, // 5: apfish.v1.ship.ShipService.ListShips:input_type -> apfish.v1.ship.ListShipsRequest
-	1, // 6: apfish.v1.ship.ShipService.GetShip:output_type -> apfish.v1.ship.ShipResponse
-	2, // 7: apfish.v1.ship.ShipService.GetShipSummary:output_type -> apfish.v1.ship.ShipSummaryResponse
-	4, // 8: apfish.v1.ship.ShipService.ListShips:output_type -> apfish.v1.ship.ListShipsResponse
-	6, // [6:9] is the sub-list for method output_type
-	3, // [3:6] is the sub-list for method input_type
-	3, // [3:3] is the sub-list for extension type_name
-	3, // [3:3] is the sub-list for extension extendee
-	0, // [0:3] is the sub-list for field type_name
+	4, // 0: apfish.v1.ship.ShipSummaryResponse.ship:type_name -> apfish.v1.ship.summary.ShipSummary
+	4, // 1: apfish.v1.ship.ListShipsResponse.list_ships:type_name -> apfish.v1.ship.summary.ShipSummary
+	0, // 2: apfish.v1.ship.ShipService.GetShip:input_type -> apfish.v1.ship.ShipRequest
+	0, // 3: apfish.v1.ship.ShipService.GetShipSummary:input_type -> apfish.v1.ship.ShipRequest
+	2, // 4: apfish.v1.ship.ShipService.ListShips:input_type -> apfish.v1.ship.ListShipsRequest
+	5, // 5: apfish.v1.ship.ShipService.GetShip:output_type -> apfish.v1.ship.Ship
+	1, // 6: apfish.v1.ship.ShipService.GetShipSummary:output_type -> apfish.v1.ship.ShipSummaryResponse
+	3, // 7: apfish.v1.ship.ShipService.ListShips:output_type -> apfish.v1.ship.ListShipsResponse
+	5, // [5:8] is the sub-list for method output_type
+	2, // [2:5] is the sub-list for method input_type
+	2, // [2:2] is the sub-list for extension type_name
+	2, // [2:2] is the sub-list for extension extendee
+	0, // [0:2] is the sub-list for field type_name
 }
 
 func init() { file_apfish_v1_ship_ship_service_proto_init() }
@@ -332,7 +284,7 @@ func file_apfish_v1_ship_ship_service_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_apfish_v1_ship_ship_service_proto_rawDesc), len(file_apfish_v1_ship_ship_service_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   5,
+			NumMessages:   4,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

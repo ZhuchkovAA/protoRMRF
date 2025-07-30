@@ -28,7 +28,7 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type CallSignServiceClient interface {
-	GetCallSign(ctx context.Context, in *CallSignRequest, opts ...grpc.CallOption) (*CallSignResponse, error)
+	GetCallSign(ctx context.Context, in *CallSignRequest, opts ...grpc.CallOption) (*CallSign, error)
 	GetCallSignSummary(ctx context.Context, in *CallSignRequest, opts ...grpc.CallOption) (*CallSignSummaryResponse, error)
 	ListCallSigns(ctx context.Context, in *ListCallSignsRequest, opts ...grpc.CallOption) (*ListCallSignsResponse, error)
 }
@@ -41,9 +41,9 @@ func NewCallSignServiceClient(cc grpc.ClientConnInterface) CallSignServiceClient
 	return &callSignServiceClient{cc}
 }
 
-func (c *callSignServiceClient) GetCallSign(ctx context.Context, in *CallSignRequest, opts ...grpc.CallOption) (*CallSignResponse, error) {
+func (c *callSignServiceClient) GetCallSign(ctx context.Context, in *CallSignRequest, opts ...grpc.CallOption) (*CallSign, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CallSignResponse)
+	out := new(CallSign)
 	err := c.cc.Invoke(ctx, CallSignService_GetCallSign_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -75,7 +75,7 @@ func (c *callSignServiceClient) ListCallSigns(ctx context.Context, in *ListCallS
 // All implementations must embed UnimplementedCallSignServiceServer
 // for forward compatibility.
 type CallSignServiceServer interface {
-	GetCallSign(context.Context, *CallSignRequest) (*CallSignResponse, error)
+	GetCallSign(context.Context, *CallSignRequest) (*CallSign, error)
 	GetCallSignSummary(context.Context, *CallSignRequest) (*CallSignSummaryResponse, error)
 	ListCallSigns(context.Context, *ListCallSignsRequest) (*ListCallSignsResponse, error)
 	mustEmbedUnimplementedCallSignServiceServer()
@@ -88,7 +88,7 @@ type CallSignServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedCallSignServiceServer struct{}
 
-func (UnimplementedCallSignServiceServer) GetCallSign(context.Context, *CallSignRequest) (*CallSignResponse, error) {
+func (UnimplementedCallSignServiceServer) GetCallSign(context.Context, *CallSignRequest) (*CallSign, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetCallSign not implemented")
 }
 func (UnimplementedCallSignServiceServer) GetCallSignSummary(context.Context, *CallSignRequest) (*CallSignSummaryResponse, error) {

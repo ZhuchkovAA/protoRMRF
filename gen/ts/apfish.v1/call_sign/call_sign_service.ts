@@ -28,10 +28,6 @@ export interface CallSignRequest {
   id: string;
 }
 
-export interface CallSignResponse {
-  callSign: CallSign | undefined;
-}
-
 export interface CallSignSummaryResponse {
   callSign: CallSignSummary | undefined;
 }
@@ -101,65 +97,6 @@ export const CallSignRequest = {
   fromPartial<I extends Exact<DeepPartial<CallSignRequest>, I>>(object: I): CallSignRequest {
     const message = createBaseCallSignRequest();
     message.id = object.id ?? "";
-    return message;
-  },
-};
-
-function createBaseCallSignResponse(): CallSignResponse {
-  return { callSign: undefined };
-}
-
-export const CallSignResponse = {
-  encode(message: CallSignResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.callSign !== undefined) {
-      CallSign.encode(message.callSign, writer.uint32(10).fork()).ldelim();
-    }
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): CallSignResponse {
-    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseCallSignResponse();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          if (tag !== 10) {
-            break;
-          }
-
-          message.callSign = CallSign.decode(reader, reader.uint32());
-          continue;
-      }
-      if ((tag & 7) === 4 || tag === 0) {
-        break;
-      }
-      reader.skipType(tag & 7);
-    }
-    return message;
-  },
-
-  fromJSON(object: any): CallSignResponse {
-    return { callSign: isSet(object.callSign) ? CallSign.fromJSON(object.callSign) : undefined };
-  },
-
-  toJSON(message: CallSignResponse): unknown {
-    const obj: any = {};
-    if (message.callSign !== undefined) {
-      obj.callSign = CallSign.toJSON(message.callSign);
-    }
-    return obj;
-  },
-
-  create<I extends Exact<DeepPartial<CallSignResponse>, I>>(base?: I): CallSignResponse {
-    return CallSignResponse.fromPartial(base ?? ({} as any));
-  },
-  fromPartial<I extends Exact<DeepPartial<CallSignResponse>, I>>(object: I): CallSignResponse {
-    const message = createBaseCallSignResponse();
-    message.callSign = (object.callSign !== undefined && object.callSign !== null)
-      ? CallSign.fromPartial(object.callSign)
-      : undefined;
     return message;
   },
 };
@@ -381,8 +318,8 @@ export const CallSignServiceService = {
     responseStream: false,
     requestSerialize: (value: CallSignRequest) => Buffer.from(CallSignRequest.encode(value).finish()),
     requestDeserialize: (value: Buffer) => CallSignRequest.decode(value),
-    responseSerialize: (value: CallSignResponse) => Buffer.from(CallSignResponse.encode(value).finish()),
-    responseDeserialize: (value: Buffer) => CallSignResponse.decode(value),
+    responseSerialize: (value: CallSign) => Buffer.from(CallSign.encode(value).finish()),
+    responseDeserialize: (value: Buffer) => CallSign.decode(value),
   },
   getCallSignSummary: {
     path: "/apfish.v1.call_sign.CallSignService/GetCallSignSummary",
@@ -405,7 +342,7 @@ export const CallSignServiceService = {
 } as const;
 
 export interface CallSignServiceServer extends UntypedServiceImplementation {
-  getCallSign: handleUnaryCall<CallSignRequest, CallSignResponse>;
+  getCallSign: handleUnaryCall<CallSignRequest, CallSign>;
   getCallSignSummary: handleUnaryCall<CallSignRequest, CallSignSummaryResponse>;
   listCallSigns: handleUnaryCall<ListCallSignsRequest, ListCallSignsResponse>;
 }
@@ -413,18 +350,18 @@ export interface CallSignServiceServer extends UntypedServiceImplementation {
 export interface CallSignServiceClient extends Client {
   getCallSign(
     request: CallSignRequest,
-    callback: (error: ServiceError | null, response: CallSignResponse) => void,
+    callback: (error: ServiceError | null, response: CallSign) => void,
   ): ClientUnaryCall;
   getCallSign(
     request: CallSignRequest,
     metadata: Metadata,
-    callback: (error: ServiceError | null, response: CallSignResponse) => void,
+    callback: (error: ServiceError | null, response: CallSign) => void,
   ): ClientUnaryCall;
   getCallSign(
     request: CallSignRequest,
     metadata: Metadata,
     options: Partial<CallOptions>,
-    callback: (error: ServiceError | null, response: CallSignResponse) => void,
+    callback: (error: ServiceError | null, response: CallSign) => void,
   ): ClientUnaryCall;
   getCallSignSummary(
     request: CallSignRequest,

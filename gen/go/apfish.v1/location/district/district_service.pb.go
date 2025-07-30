@@ -66,50 +66,6 @@ func (x *DistrictRequest) GetId() string {
 	return ""
 }
 
-type DistrictResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	District      *District              `protobuf:"bytes,1,opt,name=district,proto3" json:"district,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DistrictResponse) Reset() {
-	*x = DistrictResponse{}
-	mi := &file_apfish_v1_location_district_district_service_proto_msgTypes[1]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DistrictResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DistrictResponse) ProtoMessage() {}
-
-func (x *DistrictResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_v1_location_district_district_service_proto_msgTypes[1]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DistrictResponse.ProtoReflect.Descriptor instead.
-func (*DistrictResponse) Descriptor() ([]byte, []int) {
-	return file_apfish_v1_location_district_district_service_proto_rawDescGZIP(), []int{1}
-}
-
-func (x *DistrictResponse) GetDistrict() *District {
-	if x != nil {
-		return x.District
-	}
-	return nil
-}
-
 type DistrictSummaryResponse struct {
 	state         protoimpl.MessageState   `protogen:"open.v1"`
 	District      *summary.DistrictSummary `protobuf:"bytes,1,opt,name=district,proto3" json:"district,omitempty"`
@@ -119,7 +75,7 @@ type DistrictSummaryResponse struct {
 
 func (x *DistrictSummaryResponse) Reset() {
 	*x = DistrictSummaryResponse{}
-	mi := &file_apfish_v1_location_district_district_service_proto_msgTypes[2]
+	mi := &file_apfish_v1_location_district_district_service_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -131,7 +87,7 @@ func (x *DistrictSummaryResponse) String() string {
 func (*DistrictSummaryResponse) ProtoMessage() {}
 
 func (x *DistrictSummaryResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_v1_location_district_district_service_proto_msgTypes[2]
+	mi := &file_apfish_v1_location_district_district_service_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -144,7 +100,7 @@ func (x *DistrictSummaryResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DistrictSummaryResponse.ProtoReflect.Descriptor instead.
 func (*DistrictSummaryResponse) Descriptor() ([]byte, []int) {
-	return file_apfish_v1_location_district_district_service_proto_rawDescGZIP(), []int{2}
+	return file_apfish_v1_location_district_district_service_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *DistrictSummaryResponse) GetDistrict() *summary.DistrictSummary {
@@ -164,7 +120,7 @@ type ListDistrictsRequest struct {
 
 func (x *ListDistrictsRequest) Reset() {
 	*x = ListDistrictsRequest{}
-	mi := &file_apfish_v1_location_district_district_service_proto_msgTypes[3]
+	mi := &file_apfish_v1_location_district_district_service_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -176,7 +132,7 @@ func (x *ListDistrictsRequest) String() string {
 func (*ListDistrictsRequest) ProtoMessage() {}
 
 func (x *ListDistrictsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_v1_location_district_district_service_proto_msgTypes[3]
+	mi := &file_apfish_v1_location_district_district_service_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -189,7 +145,7 @@ func (x *ListDistrictsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListDistrictsRequest.ProtoReflect.Descriptor instead.
 func (*ListDistrictsRequest) Descriptor() ([]byte, []int) {
-	return file_apfish_v1_location_district_district_service_proto_rawDescGZIP(), []int{3}
+	return file_apfish_v1_location_district_district_service_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *ListDistrictsRequest) GetPage() int32 {
@@ -216,7 +172,7 @@ type ListDistrictsResponse struct {
 
 func (x *ListDistrictsResponse) Reset() {
 	*x = ListDistrictsResponse{}
-	mi := &file_apfish_v1_location_district_district_service_proto_msgTypes[4]
+	mi := &file_apfish_v1_location_district_district_service_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -228,7 +184,7 @@ func (x *ListDistrictsResponse) String() string {
 func (*ListDistrictsResponse) ProtoMessage() {}
 
 func (x *ListDistrictsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_v1_location_district_district_service_proto_msgTypes[4]
+	mi := &file_apfish_v1_location_district_district_service_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -241,7 +197,7 @@ func (x *ListDistrictsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListDistrictsResponse.ProtoReflect.Descriptor instead.
 func (*ListDistrictsResponse) Descriptor() ([]byte, []int) {
-	return file_apfish_v1_location_district_district_service_proto_rawDescGZIP(), []int{4}
+	return file_apfish_v1_location_district_district_service_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *ListDistrictsResponse) GetListDistricts() []*summary.DistrictSummary {
@@ -264,9 +220,7 @@ const file_apfish_v1_location_district_district_service_proto_rawDesc = "" +
 	"\n" +
 	"2apfish.v1/location/district/district_service.proto\x12\x1bapfish.v1.location.district\x1a*apfish.v1/location/district/district.proto\x1a:apfish.v1/location/district/summary/district_summary.proto\"!\n" +
 	"\x0fDistrictRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\"U\n" +
-	"\x10DistrictResponse\x12A\n" +
-	"\bdistrict\x18\x01 \x01(\v2%.apfish.v1.location.district.DistrictR\bdistrict\"k\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\"k\n" +
 	"\x17DistrictSummaryResponse\x12P\n" +
 	"\bdistrict\x18\x01 \x01(\v24.apfish.v1.location.district.summary.DistrictSummaryR\bdistrict\"E\n" +
 	"\x14ListDistrictsRequest\x12\x12\n" +
@@ -274,9 +228,9 @@ const file_apfish_v1_location_district_district_service_proto_rawDesc = "" +
 	"\bper_page\x18\x02 \x01(\x05R\aperPage\"\x8a\x01\n" +
 	"\x15ListDistrictsResponse\x12[\n" +
 	"\x0elist_districts\x18\x01 \x03(\v24.apfish.v1.location.district.summary.DistrictSummaryR\rlistDistricts\x12\x14\n" +
-	"\x05total\x18\x02 \x01(\x05R\x05total2\xef\x02\n" +
-	"\x0fDistrictService\x12j\n" +
-	"\vGetDistrict\x12,.apfish.v1.location.district.DistrictRequest\x1a-.apfish.v1.location.district.DistrictResponse\x12x\n" +
+	"\x05total\x18\x02 \x01(\x05R\x05total2\xe7\x02\n" +
+	"\x0fDistrictService\x12b\n" +
+	"\vGetDistrict\x12,.apfish.v1.location.district.DistrictRequest\x1a%.apfish.v1.location.district.District\x12x\n" +
 	"\x12GetDistrictSummary\x12,.apfish.v1.location.district.DistrictRequest\x1a4.apfish.v1.location.district.DistrictSummaryResponse\x12v\n" +
 	"\rListDistricts\x121.apfish.v1.location.district.ListDistrictsRequest\x1a2.apfish.v1.location.district.ListDistrictsResponseBVZTgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/district;location_districtb\x06proto3"
 
@@ -292,31 +246,29 @@ func file_apfish_v1_location_district_district_service_proto_rawDescGZIP() []byt
 	return file_apfish_v1_location_district_district_service_proto_rawDescData
 }
 
-var file_apfish_v1_location_district_district_service_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
+var file_apfish_v1_location_district_district_service_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_apfish_v1_location_district_district_service_proto_goTypes = []any{
 	(*DistrictRequest)(nil),         // 0: apfish.v1.location.district.DistrictRequest
-	(*DistrictResponse)(nil),        // 1: apfish.v1.location.district.DistrictResponse
-	(*DistrictSummaryResponse)(nil), // 2: apfish.v1.location.district.DistrictSummaryResponse
-	(*ListDistrictsRequest)(nil),    // 3: apfish.v1.location.district.ListDistrictsRequest
-	(*ListDistrictsResponse)(nil),   // 4: apfish.v1.location.district.ListDistrictsResponse
+	(*DistrictSummaryResponse)(nil), // 1: apfish.v1.location.district.DistrictSummaryResponse
+	(*ListDistrictsRequest)(nil),    // 2: apfish.v1.location.district.ListDistrictsRequest
+	(*ListDistrictsResponse)(nil),   // 3: apfish.v1.location.district.ListDistrictsResponse
+	(*summary.DistrictSummary)(nil), // 4: apfish.v1.location.district.summary.DistrictSummary
 	(*District)(nil),                // 5: apfish.v1.location.district.District
-	(*summary.DistrictSummary)(nil), // 6: apfish.v1.location.district.summary.DistrictSummary
 }
 var file_apfish_v1_location_district_district_service_proto_depIdxs = []int32{
-	5, // 0: apfish.v1.location.district.DistrictResponse.district:type_name -> apfish.v1.location.district.District
-	6, // 1: apfish.v1.location.district.DistrictSummaryResponse.district:type_name -> apfish.v1.location.district.summary.DistrictSummary
-	6, // 2: apfish.v1.location.district.ListDistrictsResponse.list_districts:type_name -> apfish.v1.location.district.summary.DistrictSummary
-	0, // 3: apfish.v1.location.district.DistrictService.GetDistrict:input_type -> apfish.v1.location.district.DistrictRequest
-	0, // 4: apfish.v1.location.district.DistrictService.GetDistrictSummary:input_type -> apfish.v1.location.district.DistrictRequest
-	3, // 5: apfish.v1.location.district.DistrictService.ListDistricts:input_type -> apfish.v1.location.district.ListDistrictsRequest
-	1, // 6: apfish.v1.location.district.DistrictService.GetDistrict:output_type -> apfish.v1.location.district.DistrictResponse
-	2, // 7: apfish.v1.location.district.DistrictService.GetDistrictSummary:output_type -> apfish.v1.location.district.DistrictSummaryResponse
-	4, // 8: apfish.v1.location.district.DistrictService.ListDistricts:output_type -> apfish.v1.location.district.ListDistrictsResponse
-	6, // [6:9] is the sub-list for method output_type
-	3, // [3:6] is the sub-list for method input_type
-	3, // [3:3] is the sub-list for extension type_name
-	3, // [3:3] is the sub-list for extension extendee
-	0, // [0:3] is the sub-list for field type_name
+	4, // 0: apfish.v1.location.district.DistrictSummaryResponse.district:type_name -> apfish.v1.location.district.summary.DistrictSummary
+	4, // 1: apfish.v1.location.district.ListDistrictsResponse.list_districts:type_name -> apfish.v1.location.district.summary.DistrictSummary
+	0, // 2: apfish.v1.location.district.DistrictService.GetDistrict:input_type -> apfish.v1.location.district.DistrictRequest
+	0, // 3: apfish.v1.location.district.DistrictService.GetDistrictSummary:input_type -> apfish.v1.location.district.DistrictRequest
+	2, // 4: apfish.v1.location.district.DistrictService.ListDistricts:input_type -> apfish.v1.location.district.ListDistrictsRequest
+	5, // 5: apfish.v1.location.district.DistrictService.GetDistrict:output_type -> apfish.v1.location.district.District
+	1, // 6: apfish.v1.location.district.DistrictService.GetDistrictSummary:output_type -> apfish.v1.location.district.DistrictSummaryResponse
+	3, // 7: apfish.v1.location.district.DistrictService.ListDistricts:output_type -> apfish.v1.location.district.ListDistrictsResponse
+	5, // [5:8] is the sub-list for method output_type
+	2, // [2:5] is the sub-list for method input_type
+	2, // [2:2] is the sub-list for extension type_name
+	2, // [2:2] is the sub-list for extension extendee
+	0, // [0:2] is the sub-list for field type_name
 }
 
 func init() { file_apfish_v1_location_district_district_service_proto_init() }
@@ -331,7 +283,7 @@ func file_apfish_v1_location_district_district_service_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_apfish_v1_location_district_district_service_proto_rawDesc), len(file_apfish_v1_location_district_district_service_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   5,
+			NumMessages:   4,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

@@ -28,7 +28,7 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type RoleServiceClient interface {
-	GetRole(ctx context.Context, in *RoleRequest, opts ...grpc.CallOption) (*RoleResponse, error)
+	GetRole(ctx context.Context, in *RoleRequest, opts ...grpc.CallOption) (*Role, error)
 	GetRoleSummary(ctx context.Context, in *RoleRequest, opts ...grpc.CallOption) (*RoleSummaryResponse, error)
 	ListRoles(ctx context.Context, in *ListRolesRequest, opts ...grpc.CallOption) (*ListRolesResponse, error)
 }
@@ -41,9 +41,9 @@ func NewRoleServiceClient(cc grpc.ClientConnInterface) RoleServiceClient {
 	return &roleServiceClient{cc}
 }
 
-func (c *roleServiceClient) GetRole(ctx context.Context, in *RoleRequest, opts ...grpc.CallOption) (*RoleResponse, error) {
+func (c *roleServiceClient) GetRole(ctx context.Context, in *RoleRequest, opts ...grpc.CallOption) (*Role, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(RoleResponse)
+	out := new(Role)
 	err := c.cc.Invoke(ctx, RoleService_GetRole_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -75,7 +75,7 @@ func (c *roleServiceClient) ListRoles(ctx context.Context, in *ListRolesRequest,
 // All implementations must embed UnimplementedRoleServiceServer
 // for forward compatibility.
 type RoleServiceServer interface {
-	GetRole(context.Context, *RoleRequest) (*RoleResponse, error)
+	GetRole(context.Context, *RoleRequest) (*Role, error)
 	GetRoleSummary(context.Context, *RoleRequest) (*RoleSummaryResponse, error)
 	ListRoles(context.Context, *ListRolesRequest) (*ListRolesResponse, error)
 	mustEmbedUnimplementedRoleServiceServer()
@@ -88,7 +88,7 @@ type RoleServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedRoleServiceServer struct{}
 
-func (UnimplementedRoleServiceServer) GetRole(context.Context, *RoleRequest) (*RoleResponse, error) {
+func (UnimplementedRoleServiceServer) GetRole(context.Context, *RoleRequest) (*Role, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetRole not implemented")
 }
 func (UnimplementedRoleServiceServer) GetRoleSummary(context.Context, *RoleRequest) (*RoleSummaryResponse, error) {

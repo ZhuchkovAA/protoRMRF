@@ -66,50 +66,6 @@ func (x *CallSignRequest) GetId() string {
 	return ""
 }
 
-type CallSignResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	CallSign      *CallSign              `protobuf:"bytes,1,opt,name=call_sign,json=callSign,proto3" json:"call_sign,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CallSignResponse) Reset() {
-	*x = CallSignResponse{}
-	mi := &file_apfish_v1_call_sign_call_sign_service_proto_msgTypes[1]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CallSignResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CallSignResponse) ProtoMessage() {}
-
-func (x *CallSignResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_v1_call_sign_call_sign_service_proto_msgTypes[1]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CallSignResponse.ProtoReflect.Descriptor instead.
-func (*CallSignResponse) Descriptor() ([]byte, []int) {
-	return file_apfish_v1_call_sign_call_sign_service_proto_rawDescGZIP(), []int{1}
-}
-
-func (x *CallSignResponse) GetCallSign() *CallSign {
-	if x != nil {
-		return x.CallSign
-	}
-	return nil
-}
-
 type CallSignSummaryResponse struct {
 	state         protoimpl.MessageState   `protogen:"open.v1"`
 	CallSign      *summary.CallSignSummary `protobuf:"bytes,1,opt,name=call_sign,json=callSign,proto3" json:"call_sign,omitempty"`
@@ -119,7 +75,7 @@ type CallSignSummaryResponse struct {
 
 func (x *CallSignSummaryResponse) Reset() {
 	*x = CallSignSummaryResponse{}
-	mi := &file_apfish_v1_call_sign_call_sign_service_proto_msgTypes[2]
+	mi := &file_apfish_v1_call_sign_call_sign_service_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -131,7 +87,7 @@ func (x *CallSignSummaryResponse) String() string {
 func (*CallSignSummaryResponse) ProtoMessage() {}
 
 func (x *CallSignSummaryResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_v1_call_sign_call_sign_service_proto_msgTypes[2]
+	mi := &file_apfish_v1_call_sign_call_sign_service_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -144,7 +100,7 @@ func (x *CallSignSummaryResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CallSignSummaryResponse.ProtoReflect.Descriptor instead.
 func (*CallSignSummaryResponse) Descriptor() ([]byte, []int) {
-	return file_apfish_v1_call_sign_call_sign_service_proto_rawDescGZIP(), []int{2}
+	return file_apfish_v1_call_sign_call_sign_service_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *CallSignSummaryResponse) GetCallSign() *summary.CallSignSummary {
@@ -164,7 +120,7 @@ type ListCallSignsRequest struct {
 
 func (x *ListCallSignsRequest) Reset() {
 	*x = ListCallSignsRequest{}
-	mi := &file_apfish_v1_call_sign_call_sign_service_proto_msgTypes[3]
+	mi := &file_apfish_v1_call_sign_call_sign_service_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -176,7 +132,7 @@ func (x *ListCallSignsRequest) String() string {
 func (*ListCallSignsRequest) ProtoMessage() {}
 
 func (x *ListCallSignsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_v1_call_sign_call_sign_service_proto_msgTypes[3]
+	mi := &file_apfish_v1_call_sign_call_sign_service_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -189,7 +145,7 @@ func (x *ListCallSignsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListCallSignsRequest.ProtoReflect.Descriptor instead.
 func (*ListCallSignsRequest) Descriptor() ([]byte, []int) {
-	return file_apfish_v1_call_sign_call_sign_service_proto_rawDescGZIP(), []int{3}
+	return file_apfish_v1_call_sign_call_sign_service_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *ListCallSignsRequest) GetPage() int32 {
@@ -216,7 +172,7 @@ type ListCallSignsResponse struct {
 
 func (x *ListCallSignsResponse) Reset() {
 	*x = ListCallSignsResponse{}
-	mi := &file_apfish_v1_call_sign_call_sign_service_proto_msgTypes[4]
+	mi := &file_apfish_v1_call_sign_call_sign_service_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -228,7 +184,7 @@ func (x *ListCallSignsResponse) String() string {
 func (*ListCallSignsResponse) ProtoMessage() {}
 
 func (x *ListCallSignsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_v1_call_sign_call_sign_service_proto_msgTypes[4]
+	mi := &file_apfish_v1_call_sign_call_sign_service_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -241,7 +197,7 @@ func (x *ListCallSignsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListCallSignsResponse.ProtoReflect.Descriptor instead.
 func (*ListCallSignsResponse) Descriptor() ([]byte, []int) {
-	return file_apfish_v1_call_sign_call_sign_service_proto_rawDescGZIP(), []int{4}
+	return file_apfish_v1_call_sign_call_sign_service_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *ListCallSignsResponse) GetListCallSigns() []*summary.CallSignSummary {
@@ -264,9 +220,7 @@ const file_apfish_v1_call_sign_call_sign_service_proto_rawDesc = "" +
 	"\n" +
 	"+apfish.v1/call_sign/call_sign_service.proto\x12\x13apfish.v1.call_sign\x1a#apfish.v1/call_sign/call_sign.proto\x1a3apfish.v1/call_sign/summary/call_sign_summary.proto\"!\n" +
 	"\x0fCallSignRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\"N\n" +
-	"\x10CallSignResponse\x12:\n" +
-	"\tcall_sign\x18\x01 \x01(\v2\x1d.apfish.v1.call_sign.CallSignR\bcallSign\"d\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\"d\n" +
 	"\x17CallSignSummaryResponse\x12I\n" +
 	"\tcall_sign\x18\x01 \x01(\v2,.apfish.v1.call_sign.summary.CallSignSummaryR\bcallSign\"E\n" +
 	"\x14ListCallSignsRequest\x12\x12\n" +
@@ -274,9 +228,9 @@ const file_apfish_v1_call_sign_call_sign_service_proto_rawDesc = "" +
 	"\bper_page\x18\x02 \x01(\x05R\aperPage\"\x83\x01\n" +
 	"\x15ListCallSignsResponse\x12T\n" +
 	"\x0flist_call_signs\x18\x01 \x03(\v2,.apfish.v1.call_sign.summary.CallSignSummaryR\rlistCallSigns\x12\x14\n" +
-	"\x05total\x18\x02 \x01(\x05R\x05total2\xbf\x02\n" +
-	"\x0fCallSignService\x12Z\n" +
-	"\vGetCallSign\x12$.apfish.v1.call_sign.CallSignRequest\x1a%.apfish.v1.call_sign.CallSignResponse\x12h\n" +
+	"\x05total\x18\x02 \x01(\x05R\x05total2\xb7\x02\n" +
+	"\x0fCallSignService\x12R\n" +
+	"\vGetCallSign\x12$.apfish.v1.call_sign.CallSignRequest\x1a\x1d.apfish.v1.call_sign.CallSign\x12h\n" +
 	"\x12GetCallSignSummary\x12$.apfish.v1.call_sign.CallSignRequest\x1a,.apfish.v1.call_sign.CallSignSummaryResponse\x12f\n" +
 	"\rListCallSigns\x12).apfish.v1.call_sign.ListCallSignsRequest\x1a*.apfish.v1.call_sign.ListCallSignsResponseBFZDgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/call_sign;call_signb\x06proto3"
 
@@ -292,31 +246,29 @@ func file_apfish_v1_call_sign_call_sign_service_proto_rawDescGZIP() []byte {
 	return file_apfish_v1_call_sign_call_sign_service_proto_rawDescData
 }
 
-var file_apfish_v1_call_sign_call_sign_service_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
+var file_apfish_v1_call_sign_call_sign_service_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_apfish_v1_call_sign_call_sign_service_proto_goTypes = []any{
 	(*CallSignRequest)(nil),         // 0: apfish.v1.call_sign.CallSignRequest
-	(*CallSignResponse)(nil),        // 1: apfish.v1.call_sign.CallSignResponse
-	(*CallSignSummaryResponse)(nil), // 2: apfish.v1.call_sign.CallSignSummaryResponse
-	(*ListCallSignsRequest)(nil),    // 3: apfish.v1.call_sign.ListCallSignsRequest
-	(*ListCallSignsResponse)(nil),   // 4: apfish.v1.call_sign.ListCallSignsResponse
+	(*CallSignSummaryResponse)(nil), // 1: apfish.v1.call_sign.CallSignSummaryResponse
+	(*ListCallSignsRequest)(nil),    // 2: apfish.v1.call_sign.ListCallSignsRequest
+	(*ListCallSignsResponse)(nil),   // 3: apfish.v1.call_sign.ListCallSignsResponse
+	(*summary.CallSignSummary)(nil), // 4: apfish.v1.call_sign.summary.CallSignSummary
 	(*CallSign)(nil),                // 5: apfish.v1.call_sign.CallSign
-	(*summary.CallSignSummary)(nil), // 6: apfish.v1.call_sign.summary.CallSignSummary
 }
 var file_apfish_v1_call_sign_call_sign_service_proto_depIdxs = []int32{
-	5, // 0: apfish.v1.call_sign.CallSignResponse.call_sign:type_name -> apfish.v1.call_sign.CallSign
-	6, // 1: apfish.v1.call_sign.CallSignSummaryResponse.call_sign:type_name -> apfish.v1.call_sign.summary.CallSignSummary
-	6, // 2: apfish.v1.call_sign.ListCallSignsResponse.list_call_signs:type_name -> apfish.v1.call_sign.summary.CallSignSummary
-	0, // 3: apfish.v1.call_sign.CallSignService.GetCallSign:input_type -> apfish.v1.call_sign.CallSignRequest
-	0, // 4: apfish.v1.call_sign.CallSignService.GetCallSignSummary:input_type -> apfish.v1.call_sign.CallSignRequest
-	3, // 5: apfish.v1.call_sign.CallSignService.ListCallSigns:input_type -> apfish.v1.call_sign.ListCallSignsRequest
-	1, // 6: apfish.v1.call_sign.CallSignService.GetCallSign:output_type -> apfish.v1.call_sign.CallSignResponse
-	2, // 7: apfish.v1.call_sign.CallSignService.GetCallSignSummary:output_type -> apfish.v1.call_sign.CallSignSummaryResponse
-	4, // 8: apfish.v1.call_sign.CallSignService.ListCallSigns:output_type -> apfish.v1.call_sign.ListCallSignsResponse
-	6, // [6:9] is the sub-list for method output_type
-	3, // [3:6] is the sub-list for method input_type
-	3, // [3:3] is the sub-list for extension type_name
-	3, // [3:3] is the sub-list for extension extendee
-	0, // [0:3] is the sub-list for field type_name
+	4, // 0: apfish.v1.call_sign.CallSignSummaryResponse.call_sign:type_name -> apfish.v1.call_sign.summary.CallSignSummary
+	4, // 1: apfish.v1.call_sign.ListCallSignsResponse.list_call_signs:type_name -> apfish.v1.call_sign.summary.CallSignSummary
+	0, // 2: apfish.v1.call_sign.CallSignService.GetCallSign:input_type -> apfish.v1.call_sign.CallSignRequest
+	0, // 3: apfish.v1.call_sign.CallSignService.GetCallSignSummary:input_type -> apfish.v1.call_sign.CallSignRequest
+	2, // 4: apfish.v1.call_sign.CallSignService.ListCallSigns:input_type -> apfish.v1.call_sign.ListCallSignsRequest
+	5, // 5: apfish.v1.call_sign.CallSignService.GetCallSign:output_type -> apfish.v1.call_sign.CallSign
+	1, // 6: apfish.v1.call_sign.CallSignService.GetCallSignSummary:output_type -> apfish.v1.call_sign.CallSignSummaryResponse
+	3, // 7: apfish.v1.call_sign.CallSignService.ListCallSigns:output_type -> apfish.v1.call_sign.ListCallSignsResponse
+	5, // [5:8] is the sub-list for method output_type
+	2, // [2:5] is the sub-list for method input_type
+	2, // [2:2] is the sub-list for extension type_name
+	2, // [2:2] is the sub-list for extension extendee
+	0, // [0:2] is the sub-list for field type_name
 }
 
 func init() { file_apfish_v1_call_sign_call_sign_service_proto_init() }
@@ -331,7 +283,7 @@ func file_apfish_v1_call_sign_call_sign_service_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_apfish_v1_call_sign_call_sign_service_proto_rawDesc), len(file_apfish_v1_call_sign_call_sign_service_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   5,
+			NumMessages:   4,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

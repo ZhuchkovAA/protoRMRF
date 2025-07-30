@@ -28,10 +28,6 @@ export interface ClassRequest {
   id: string;
 }
 
-export interface ClassResponse {
-  class: Class | undefined;
-}
-
 export interface ClassSummaryResponse {
   class: ClassSummary | undefined;
 }
@@ -101,63 +97,6 @@ export const ClassRequest = {
   fromPartial<I extends Exact<DeepPartial<ClassRequest>, I>>(object: I): ClassRequest {
     const message = createBaseClassRequest();
     message.id = object.id ?? "";
-    return message;
-  },
-};
-
-function createBaseClassResponse(): ClassResponse {
-  return { class: undefined };
-}
-
-export const ClassResponse = {
-  encode(message: ClassResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.class !== undefined) {
-      Class.encode(message.class, writer.uint32(10).fork()).ldelim();
-    }
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): ClassResponse {
-    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseClassResponse();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          if (tag !== 10) {
-            break;
-          }
-
-          message.class = Class.decode(reader, reader.uint32());
-          continue;
-      }
-      if ((tag & 7) === 4 || tag === 0) {
-        break;
-      }
-      reader.skipType(tag & 7);
-    }
-    return message;
-  },
-
-  fromJSON(object: any): ClassResponse {
-    return { class: isSet(object.class) ? Class.fromJSON(object.class) : undefined };
-  },
-
-  toJSON(message: ClassResponse): unknown {
-    const obj: any = {};
-    if (message.class !== undefined) {
-      obj.class = Class.toJSON(message.class);
-    }
-    return obj;
-  },
-
-  create<I extends Exact<DeepPartial<ClassResponse>, I>>(base?: I): ClassResponse {
-    return ClassResponse.fromPartial(base ?? ({} as any));
-  },
-  fromPartial<I extends Exact<DeepPartial<ClassResponse>, I>>(object: I): ClassResponse {
-    const message = createBaseClassResponse();
-    message.class = (object.class !== undefined && object.class !== null) ? Class.fromPartial(object.class) : undefined;
     return message;
   },
 };
@@ -379,8 +318,8 @@ export const ClassServiceService = {
     responseStream: false,
     requestSerialize: (value: ClassRequest) => Buffer.from(ClassRequest.encode(value).finish()),
     requestDeserialize: (value: Buffer) => ClassRequest.decode(value),
-    responseSerialize: (value: ClassResponse) => Buffer.from(ClassResponse.encode(value).finish()),
-    responseDeserialize: (value: Buffer) => ClassResponse.decode(value),
+    responseSerialize: (value: Class) => Buffer.from(Class.encode(value).finish()),
+    responseDeserialize: (value: Buffer) => Class.decode(value),
   },
   getClassSummary: {
     path: "/apfish.v1.ship.class.ClassService/GetClassSummary",
@@ -403,26 +342,23 @@ export const ClassServiceService = {
 } as const;
 
 export interface ClassServiceServer extends UntypedServiceImplementation {
-  getClass: handleUnaryCall<ClassRequest, ClassResponse>;
+  getClass: handleUnaryCall<ClassRequest, Class>;
   getClassSummary: handleUnaryCall<ClassRequest, ClassSummaryResponse>;
   listClasses: handleUnaryCall<ListClassesRequest, ListClassesResponse>;
 }
 
 export interface ClassServiceClient extends Client {
-  getClass(
-    request: ClassRequest,
-    callback: (error: ServiceError | null, response: ClassResponse) => void,
-  ): ClientUnaryCall;
+  getClass(request: ClassRequest, callback: (error: ServiceError | null, response: Class) => void): ClientUnaryCall;
   getClass(
     request: ClassRequest,
     metadata: Metadata,
-    callback: (error: ServiceError | null, response: ClassResponse) => void,
+    callback: (error: ServiceError | null, response: Class) => void,
   ): ClientUnaryCall;
   getClass(
     request: ClassRequest,
     metadata: Metadata,
     options: Partial<CallOptions>,
-    callback: (error: ServiceError | null, response: ClassResponse) => void,
+    callback: (error: ServiceError | null, response: Class) => void,
   ): ClientUnaryCall;
   getClassSummary(
     request: ClassRequest,

@@ -2,7 +2,7 @@
 // versions:
 //   protoc-gen-ts_proto  v1.181.2
 //   protoc               v4.25.1
-// source: apfish.v1/user/contact/type/type_service.proto
+// source: apfish.v1/location/authority/type/type_service.proto
 
 /* eslint-disable */
 import {
@@ -19,11 +19,10 @@ import {
 } from "@grpc/grpc-js";
 import Long from "long";
 import _m0 from "protobufjs/minimal";
-import { SuccessResponse } from "../../../helper/helper";
 import { TypeSummary } from "./summary/type_summary";
-import { Type, TypePatch } from "./type";
+import { Type } from "./type";
 
-export const protobufPackage = "apfish.v1.user.contact.type";
+export const protobufPackage = "apfish.v1.location.authority.type";
 
 export interface TypeRequest {
   id: string;
@@ -43,10 +42,6 @@ export interface ListTypesRequest {
 export interface ListTypesResponse {
   listTypes: TypeSummary[];
   total: number;
-}
-
-export interface UpdateTypeRequest {
-  type: TypePatch | undefined;
 }
 
 function createBaseTypeRequest(): TypeRequest {
@@ -315,67 +310,10 @@ export const ListTypesResponse = {
   },
 };
 
-function createBaseUpdateTypeRequest(): UpdateTypeRequest {
-  return { type: undefined };
-}
-
-export const UpdateTypeRequest = {
-  encode(message: UpdateTypeRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.type !== undefined) {
-      TypePatch.encode(message.type, writer.uint32(10).fork()).ldelim();
-    }
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): UpdateTypeRequest {
-    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseUpdateTypeRequest();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          if (tag !== 10) {
-            break;
-          }
-
-          message.type = TypePatch.decode(reader, reader.uint32());
-          continue;
-      }
-      if ((tag & 7) === 4 || tag === 0) {
-        break;
-      }
-      reader.skipType(tag & 7);
-    }
-    return message;
-  },
-
-  fromJSON(object: any): UpdateTypeRequest {
-    return { type: isSet(object.type) ? TypePatch.fromJSON(object.type) : undefined };
-  },
-
-  toJSON(message: UpdateTypeRequest): unknown {
-    const obj: any = {};
-    if (message.type !== undefined) {
-      obj.type = TypePatch.toJSON(message.type);
-    }
-    return obj;
-  },
-
-  create<I extends Exact<DeepPartial<UpdateTypeRequest>, I>>(base?: I): UpdateTypeRequest {
-    return UpdateTypeRequest.fromPartial(base ?? ({} as any));
-  },
-  fromPartial<I extends Exact<DeepPartial<UpdateTypeRequest>, I>>(object: I): UpdateTypeRequest {
-    const message = createBaseUpdateTypeRequest();
-    message.type = (object.type !== undefined && object.type !== null) ? TypePatch.fromPartial(object.type) : undefined;
-    return message;
-  },
-};
-
 export type TypeServiceService = typeof TypeServiceService;
 export const TypeServiceService = {
   getType: {
-    path: "/apfish.v1.user.contact.type.TypeService/GetType",
+    path: "/apfish.v1.location.authority.type.TypeService/GetType",
     requestStream: false,
     responseStream: false,
     requestSerialize: (value: TypeRequest) => Buffer.from(TypeRequest.encode(value).finish()),
@@ -384,7 +322,7 @@ export const TypeServiceService = {
     responseDeserialize: (value: Buffer) => Type.decode(value),
   },
   getTypeSummary: {
-    path: "/apfish.v1.user.contact.type.TypeService/GetTypeSummary",
+    path: "/apfish.v1.location.authority.type.TypeService/GetTypeSummary",
     requestStream: false,
     responseStream: false,
     requestSerialize: (value: TypeRequest) => Buffer.from(TypeRequest.encode(value).finish()),
@@ -393,7 +331,7 @@ export const TypeServiceService = {
     responseDeserialize: (value: Buffer) => TypeSummaryResponse.decode(value),
   },
   listTypes: {
-    path: "/apfish.v1.user.contact.type.TypeService/ListTypes",
+    path: "/apfish.v1.location.authority.type.TypeService/ListTypes",
     requestStream: false,
     responseStream: false,
     requestSerialize: (value: ListTypesRequest) => Buffer.from(ListTypesRequest.encode(value).finish()),
@@ -401,22 +339,12 @@ export const TypeServiceService = {
     responseSerialize: (value: ListTypesResponse) => Buffer.from(ListTypesResponse.encode(value).finish()),
     responseDeserialize: (value: Buffer) => ListTypesResponse.decode(value),
   },
-  updateType: {
-    path: "/apfish.v1.user.contact.type.TypeService/UpdateType",
-    requestStream: false,
-    responseStream: false,
-    requestSerialize: (value: UpdateTypeRequest) => Buffer.from(UpdateTypeRequest.encode(value).finish()),
-    requestDeserialize: (value: Buffer) => UpdateTypeRequest.decode(value),
-    responseSerialize: (value: SuccessResponse) => Buffer.from(SuccessResponse.encode(value).finish()),
-    responseDeserialize: (value: Buffer) => SuccessResponse.decode(value),
-  },
 } as const;
 
 export interface TypeServiceServer extends UntypedServiceImplementation {
   getType: handleUnaryCall<TypeRequest, Type>;
   getTypeSummary: handleUnaryCall<TypeRequest, TypeSummaryResponse>;
   listTypes: handleUnaryCall<ListTypesRequest, ListTypesResponse>;
-  updateType: handleUnaryCall<UpdateTypeRequest, SuccessResponse>;
 }
 
 export interface TypeServiceClient extends Client {
@@ -462,26 +390,11 @@ export interface TypeServiceClient extends Client {
     options: Partial<CallOptions>,
     callback: (error: ServiceError | null, response: ListTypesResponse) => void,
   ): ClientUnaryCall;
-  updateType(
-    request: UpdateTypeRequest,
-    callback: (error: ServiceError | null, response: SuccessResponse) => void,
-  ): ClientUnaryCall;
-  updateType(
-    request: UpdateTypeRequest,
-    metadata: Metadata,
-    callback: (error: ServiceError | null, response: SuccessResponse) => void,
-  ): ClientUnaryCall;
-  updateType(
-    request: UpdateTypeRequest,
-    metadata: Metadata,
-    options: Partial<CallOptions>,
-    callback: (error: ServiceError | null, response: SuccessResponse) => void,
-  ): ClientUnaryCall;
 }
 
 export const TypeServiceClient = makeGenericClientConstructor(
   TypeServiceService,
-  "apfish.v1.user.contact.type.TypeService",
+  "apfish.v1.location.authority.type.TypeService",
 ) as unknown as {
   new (address: string, credentials: ChannelCredentials, options?: Partial<ClientOptions>): TypeServiceClient;
   service: typeof TypeServiceService;

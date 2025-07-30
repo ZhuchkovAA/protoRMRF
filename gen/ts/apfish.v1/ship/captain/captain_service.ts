@@ -28,10 +28,6 @@ export interface CaptainRequest {
   id: string;
 }
 
-export interface CaptainResponse {
-  captain: Captain | undefined;
-}
-
 export interface CaptainSummaryResponse {
   captain: CaptainSummary | undefined;
 }
@@ -101,65 +97,6 @@ export const CaptainRequest = {
   fromPartial<I extends Exact<DeepPartial<CaptainRequest>, I>>(object: I): CaptainRequest {
     const message = createBaseCaptainRequest();
     message.id = object.id ?? "";
-    return message;
-  },
-};
-
-function createBaseCaptainResponse(): CaptainResponse {
-  return { captain: undefined };
-}
-
-export const CaptainResponse = {
-  encode(message: CaptainResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.captain !== undefined) {
-      Captain.encode(message.captain, writer.uint32(10).fork()).ldelim();
-    }
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): CaptainResponse {
-    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseCaptainResponse();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          if (tag !== 10) {
-            break;
-          }
-
-          message.captain = Captain.decode(reader, reader.uint32());
-          continue;
-      }
-      if ((tag & 7) === 4 || tag === 0) {
-        break;
-      }
-      reader.skipType(tag & 7);
-    }
-    return message;
-  },
-
-  fromJSON(object: any): CaptainResponse {
-    return { captain: isSet(object.captain) ? Captain.fromJSON(object.captain) : undefined };
-  },
-
-  toJSON(message: CaptainResponse): unknown {
-    const obj: any = {};
-    if (message.captain !== undefined) {
-      obj.captain = Captain.toJSON(message.captain);
-    }
-    return obj;
-  },
-
-  create<I extends Exact<DeepPartial<CaptainResponse>, I>>(base?: I): CaptainResponse {
-    return CaptainResponse.fromPartial(base ?? ({} as any));
-  },
-  fromPartial<I extends Exact<DeepPartial<CaptainResponse>, I>>(object: I): CaptainResponse {
-    const message = createBaseCaptainResponse();
-    message.captain = (object.captain !== undefined && object.captain !== null)
-      ? Captain.fromPartial(object.captain)
-      : undefined;
     return message;
   },
 };
@@ -381,8 +318,8 @@ export const CaptainServiceService = {
     responseStream: false,
     requestSerialize: (value: CaptainRequest) => Buffer.from(CaptainRequest.encode(value).finish()),
     requestDeserialize: (value: Buffer) => CaptainRequest.decode(value),
-    responseSerialize: (value: CaptainResponse) => Buffer.from(CaptainResponse.encode(value).finish()),
-    responseDeserialize: (value: Buffer) => CaptainResponse.decode(value),
+    responseSerialize: (value: Captain) => Buffer.from(Captain.encode(value).finish()),
+    responseDeserialize: (value: Buffer) => Captain.decode(value),
   },
   getCaptainSummary: {
     path: "/apfish.v1.ship.captain.CaptainService/GetCaptainSummary",
@@ -405,7 +342,7 @@ export const CaptainServiceService = {
 } as const;
 
 export interface CaptainServiceServer extends UntypedServiceImplementation {
-  getCaptain: handleUnaryCall<CaptainRequest, CaptainResponse>;
+  getCaptain: handleUnaryCall<CaptainRequest, Captain>;
   getCaptainSummary: handleUnaryCall<CaptainRequest, CaptainSummaryResponse>;
   listCaptains: handleUnaryCall<ListCaptainsRequest, ListCaptainsResponse>;
 }
@@ -413,18 +350,18 @@ export interface CaptainServiceServer extends UntypedServiceImplementation {
 export interface CaptainServiceClient extends Client {
   getCaptain(
     request: CaptainRequest,
-    callback: (error: ServiceError | null, response: CaptainResponse) => void,
+    callback: (error: ServiceError | null, response: Captain) => void,
   ): ClientUnaryCall;
   getCaptain(
     request: CaptainRequest,
     metadata: Metadata,
-    callback: (error: ServiceError | null, response: CaptainResponse) => void,
+    callback: (error: ServiceError | null, response: Captain) => void,
   ): ClientUnaryCall;
   getCaptain(
     request: CaptainRequest,
     metadata: Metadata,
     options: Partial<CallOptions>,
-    callback: (error: ServiceError | null, response: CaptainResponse) => void,
+    callback: (error: ServiceError | null, response: Captain) => void,
   ): ClientUnaryCall;
   getCaptainSummary(
     request: CaptainRequest,

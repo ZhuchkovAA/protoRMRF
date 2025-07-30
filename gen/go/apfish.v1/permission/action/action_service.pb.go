@@ -66,50 +66,6 @@ func (x *ActionRequest) GetId() string {
 	return ""
 }
 
-type ActionResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Action        *Action                `protobuf:"bytes,1,opt,name=action,proto3" json:"action,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ActionResponse) Reset() {
-	*x = ActionResponse{}
-	mi := &file_apfish_v1_permission_action_action_service_proto_msgTypes[1]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ActionResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ActionResponse) ProtoMessage() {}
-
-func (x *ActionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_v1_permission_action_action_service_proto_msgTypes[1]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ActionResponse.ProtoReflect.Descriptor instead.
-func (*ActionResponse) Descriptor() ([]byte, []int) {
-	return file_apfish_v1_permission_action_action_service_proto_rawDescGZIP(), []int{1}
-}
-
-func (x *ActionResponse) GetAction() *Action {
-	if x != nil {
-		return x.Action
-	}
-	return nil
-}
-
 type ActionSummaryResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Action        *summary.ActionSummary `protobuf:"bytes,1,opt,name=action,proto3" json:"action,omitempty"`
@@ -119,7 +75,7 @@ type ActionSummaryResponse struct {
 
 func (x *ActionSummaryResponse) Reset() {
 	*x = ActionSummaryResponse{}
-	mi := &file_apfish_v1_permission_action_action_service_proto_msgTypes[2]
+	mi := &file_apfish_v1_permission_action_action_service_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -131,7 +87,7 @@ func (x *ActionSummaryResponse) String() string {
 func (*ActionSummaryResponse) ProtoMessage() {}
 
 func (x *ActionSummaryResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_v1_permission_action_action_service_proto_msgTypes[2]
+	mi := &file_apfish_v1_permission_action_action_service_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -144,7 +100,7 @@ func (x *ActionSummaryResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ActionSummaryResponse.ProtoReflect.Descriptor instead.
 func (*ActionSummaryResponse) Descriptor() ([]byte, []int) {
-	return file_apfish_v1_permission_action_action_service_proto_rawDescGZIP(), []int{2}
+	return file_apfish_v1_permission_action_action_service_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *ActionSummaryResponse) GetAction() *summary.ActionSummary {
@@ -164,7 +120,7 @@ type ListActionsRequest struct {
 
 func (x *ListActionsRequest) Reset() {
 	*x = ListActionsRequest{}
-	mi := &file_apfish_v1_permission_action_action_service_proto_msgTypes[3]
+	mi := &file_apfish_v1_permission_action_action_service_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -176,7 +132,7 @@ func (x *ListActionsRequest) String() string {
 func (*ListActionsRequest) ProtoMessage() {}
 
 func (x *ListActionsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_v1_permission_action_action_service_proto_msgTypes[3]
+	mi := &file_apfish_v1_permission_action_action_service_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -189,7 +145,7 @@ func (x *ListActionsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListActionsRequest.ProtoReflect.Descriptor instead.
 func (*ListActionsRequest) Descriptor() ([]byte, []int) {
-	return file_apfish_v1_permission_action_action_service_proto_rawDescGZIP(), []int{3}
+	return file_apfish_v1_permission_action_action_service_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *ListActionsRequest) GetPage() int32 {
@@ -216,7 +172,7 @@ type ListActionsResponse struct {
 
 func (x *ListActionsResponse) Reset() {
 	*x = ListActionsResponse{}
-	mi := &file_apfish_v1_permission_action_action_service_proto_msgTypes[4]
+	mi := &file_apfish_v1_permission_action_action_service_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -228,7 +184,7 @@ func (x *ListActionsResponse) String() string {
 func (*ListActionsResponse) ProtoMessage() {}
 
 func (x *ListActionsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_v1_permission_action_action_service_proto_msgTypes[4]
+	mi := &file_apfish_v1_permission_action_action_service_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -241,7 +197,7 @@ func (x *ListActionsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListActionsResponse.ProtoReflect.Descriptor instead.
 func (*ListActionsResponse) Descriptor() ([]byte, []int) {
-	return file_apfish_v1_permission_action_action_service_proto_rawDescGZIP(), []int{4}
+	return file_apfish_v1_permission_action_action_service_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *ListActionsResponse) GetListActions() []*summary.ActionSummary {
@@ -264,9 +220,7 @@ const file_apfish_v1_permission_action_action_service_proto_rawDesc = "" +
 	"\n" +
 	"0apfish.v1/permission/action/action_service.proto\x12\x1bapfish.v1.permission.action\x1a(apfish.v1/permission/action/action.proto\x1a8apfish.v1/permission/action/summary/action_summary.proto\"\x1f\n" +
 	"\rActionRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\"M\n" +
-	"\x0eActionResponse\x12;\n" +
-	"\x06action\x18\x01 \x01(\v2#.apfish.v1.permission.action.ActionR\x06action\"c\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\"c\n" +
 	"\x15ActionSummaryResponse\x12J\n" +
 	"\x06action\x18\x01 \x01(\v22.apfish.v1.permission.action.summary.ActionSummaryR\x06action\"C\n" +
 	"\x12ListActionsRequest\x12\x12\n" +
@@ -274,9 +228,9 @@ const file_apfish_v1_permission_action_action_service_proto_rawDesc = "" +
 	"\bper_page\x18\x02 \x01(\x05R\aperPage\"\x82\x01\n" +
 	"\x13ListActionsResponse\x12U\n" +
 	"\flist_actions\x18\x01 \x03(\v22.apfish.v1.permission.action.summary.ActionSummaryR\vlistActions\x12\x14\n" +
-	"\x05total\x18\x02 \x01(\x05R\x05total2\xdb\x02\n" +
-	"\rActionService\x12d\n" +
-	"\tGetAction\x12*.apfish.v1.permission.action.ActionRequest\x1a+.apfish.v1.permission.action.ActionResponse\x12r\n" +
+	"\x05total\x18\x02 \x01(\x05R\x05total2\xd3\x02\n" +
+	"\rActionService\x12\\\n" +
+	"\tGetAction\x12*.apfish.v1.permission.action.ActionRequest\x1a#.apfish.v1.permission.action.Action\x12r\n" +
 	"\x10GetActionSummary\x12*.apfish.v1.permission.action.ActionRequest\x1a2.apfish.v1.permission.action.ActionSummaryResponse\x12p\n" +
 	"\vListActions\x12/.apfish.v1.permission.action.ListActionsRequest\x1a0.apfish.v1.permission.action.ListActionsResponseBVZTgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/action;permission_actionb\x06proto3"
 
@@ -292,31 +246,29 @@ func file_apfish_v1_permission_action_action_service_proto_rawDescGZIP() []byte 
 	return file_apfish_v1_permission_action_action_service_proto_rawDescData
 }
 
-var file_apfish_v1_permission_action_action_service_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
+var file_apfish_v1_permission_action_action_service_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_apfish_v1_permission_action_action_service_proto_goTypes = []any{
 	(*ActionRequest)(nil),         // 0: apfish.v1.permission.action.ActionRequest
-	(*ActionResponse)(nil),        // 1: apfish.v1.permission.action.ActionResponse
-	(*ActionSummaryResponse)(nil), // 2: apfish.v1.permission.action.ActionSummaryResponse
-	(*ListActionsRequest)(nil),    // 3: apfish.v1.permission.action.ListActionsRequest
-	(*ListActionsResponse)(nil),   // 4: apfish.v1.permission.action.ListActionsResponse
+	(*ActionSummaryResponse)(nil), // 1: apfish.v1.permission.action.ActionSummaryResponse
+	(*ListActionsRequest)(nil),    // 2: apfish.v1.permission.action.ListActionsRequest
+	(*ListActionsResponse)(nil),   // 3: apfish.v1.permission.action.ListActionsResponse
+	(*summary.ActionSummary)(nil), // 4: apfish.v1.permission.action.summary.ActionSummary
 	(*Action)(nil),                // 5: apfish.v1.permission.action.Action
-	(*summary.ActionSummary)(nil), // 6: apfish.v1.permission.action.summary.ActionSummary
 }
 var file_apfish_v1_permission_action_action_service_proto_depIdxs = []int32{
-	5, // 0: apfish.v1.permission.action.ActionResponse.action:type_name -> apfish.v1.permission.action.Action
-	6, // 1: apfish.v1.permission.action.ActionSummaryResponse.action:type_name -> apfish.v1.permission.action.summary.ActionSummary
-	6, // 2: apfish.v1.permission.action.ListActionsResponse.list_actions:type_name -> apfish.v1.permission.action.summary.ActionSummary
-	0, // 3: apfish.v1.permission.action.ActionService.GetAction:input_type -> apfish.v1.permission.action.ActionRequest
-	0, // 4: apfish.v1.permission.action.ActionService.GetActionSummary:input_type -> apfish.v1.permission.action.ActionRequest
-	3, // 5: apfish.v1.permission.action.ActionService.ListActions:input_type -> apfish.v1.permission.action.ListActionsRequest
-	1, // 6: apfish.v1.permission.action.ActionService.GetAction:output_type -> apfish.v1.permission.action.ActionResponse
-	2, // 7: apfish.v1.permission.action.ActionService.GetActionSummary:output_type -> apfish.v1.permission.action.ActionSummaryResponse
-	4, // 8: apfish.v1.permission.action.ActionService.ListActions:output_type -> apfish.v1.permission.action.ListActionsResponse
-	6, // [6:9] is the sub-list for method output_type
-	3, // [3:6] is the sub-list for method input_type
-	3, // [3:3] is the sub-list for extension type_name
-	3, // [3:3] is the sub-list for extension extendee
-	0, // [0:3] is the sub-list for field type_name
+	4, // 0: apfish.v1.permission.action.ActionSummaryResponse.action:type_name -> apfish.v1.permission.action.summary.ActionSummary
+	4, // 1: apfish.v1.permission.action.ListActionsResponse.list_actions:type_name -> apfish.v1.permission.action.summary.ActionSummary
+	0, // 2: apfish.v1.permission.action.ActionService.GetAction:input_type -> apfish.v1.permission.action.ActionRequest
+	0, // 3: apfish.v1.permission.action.ActionService.GetActionSummary:input_type -> apfish.v1.permission.action.ActionRequest
+	2, // 4: apfish.v1.permission.action.ActionService.ListActions:input_type -> apfish.v1.permission.action.ListActionsRequest
+	5, // 5: apfish.v1.permission.action.ActionService.GetAction:output_type -> apfish.v1.permission.action.Action
+	1, // 6: apfish.v1.permission.action.ActionService.GetActionSummary:output_type -> apfish.v1.permission.action.ActionSummaryResponse
+	3, // 7: apfish.v1.permission.action.ActionService.ListActions:output_type -> apfish.v1.permission.action.ListActionsResponse
+	5, // [5:8] is the sub-list for method output_type
+	2, // [2:5] is the sub-list for method input_type
+	2, // [2:2] is the sub-list for extension type_name
+	2, // [2:2] is the sub-list for extension extendee
+	0, // [0:2] is the sub-list for field type_name
 }
 
 func init() { file_apfish_v1_permission_action_action_service_proto_init() }
@@ -331,7 +283,7 @@ func file_apfish_v1_permission_action_action_service_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_apfish_v1_permission_action_action_service_proto_rawDesc), len(file_apfish_v1_permission_action_action_service_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   5,
+			NumMessages:   4,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

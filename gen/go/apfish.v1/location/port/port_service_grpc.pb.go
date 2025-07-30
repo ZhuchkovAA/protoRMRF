@@ -28,7 +28,7 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type PortServiceClient interface {
-	GetPort(ctx context.Context, in *PortRequest, opts ...grpc.CallOption) (*PortResponse, error)
+	GetPort(ctx context.Context, in *PortRequest, opts ...grpc.CallOption) (*Port, error)
 	GetPortSummary(ctx context.Context, in *PortRequest, opts ...grpc.CallOption) (*PortSummaryResponse, error)
 	ListPorts(ctx context.Context, in *ListPortsRequest, opts ...grpc.CallOption) (*ListPortsResponse, error)
 }
@@ -41,9 +41,9 @@ func NewPortServiceClient(cc grpc.ClientConnInterface) PortServiceClient {
 	return &portServiceClient{cc}
 }
 
-func (c *portServiceClient) GetPort(ctx context.Context, in *PortRequest, opts ...grpc.CallOption) (*PortResponse, error) {
+func (c *portServiceClient) GetPort(ctx context.Context, in *PortRequest, opts ...grpc.CallOption) (*Port, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(PortResponse)
+	out := new(Port)
 	err := c.cc.Invoke(ctx, PortService_GetPort_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -75,7 +75,7 @@ func (c *portServiceClient) ListPorts(ctx context.Context, in *ListPortsRequest,
 // All implementations must embed UnimplementedPortServiceServer
 // for forward compatibility.
 type PortServiceServer interface {
-	GetPort(context.Context, *PortRequest) (*PortResponse, error)
+	GetPort(context.Context, *PortRequest) (*Port, error)
 	GetPortSummary(context.Context, *PortRequest) (*PortSummaryResponse, error)
 	ListPorts(context.Context, *ListPortsRequest) (*ListPortsResponse, error)
 	mustEmbedUnimplementedPortServiceServer()
@@ -88,7 +88,7 @@ type PortServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedPortServiceServer struct{}
 
-func (UnimplementedPortServiceServer) GetPort(context.Context, *PortRequest) (*PortResponse, error) {
+func (UnimplementedPortServiceServer) GetPort(context.Context, *PortRequest) (*Port, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetPort not implemented")
 }
 func (UnimplementedPortServiceServer) GetPortSummary(context.Context, *PortRequest) (*PortSummaryResponse, error) {

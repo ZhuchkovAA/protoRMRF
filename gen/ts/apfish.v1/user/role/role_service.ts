@@ -28,10 +28,6 @@ export interface RoleRequest {
   id: string;
 }
 
-export interface RoleResponse {
-  role: Role | undefined;
-}
-
 export interface RoleSummaryResponse {
   role: RoleSummary | undefined;
 }
@@ -101,63 +97,6 @@ export const RoleRequest = {
   fromPartial<I extends Exact<DeepPartial<RoleRequest>, I>>(object: I): RoleRequest {
     const message = createBaseRoleRequest();
     message.id = object.id ?? "";
-    return message;
-  },
-};
-
-function createBaseRoleResponse(): RoleResponse {
-  return { role: undefined };
-}
-
-export const RoleResponse = {
-  encode(message: RoleResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.role !== undefined) {
-      Role.encode(message.role, writer.uint32(10).fork()).ldelim();
-    }
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): RoleResponse {
-    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseRoleResponse();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          if (tag !== 10) {
-            break;
-          }
-
-          message.role = Role.decode(reader, reader.uint32());
-          continue;
-      }
-      if ((tag & 7) === 4 || tag === 0) {
-        break;
-      }
-      reader.skipType(tag & 7);
-    }
-    return message;
-  },
-
-  fromJSON(object: any): RoleResponse {
-    return { role: isSet(object.role) ? Role.fromJSON(object.role) : undefined };
-  },
-
-  toJSON(message: RoleResponse): unknown {
-    const obj: any = {};
-    if (message.role !== undefined) {
-      obj.role = Role.toJSON(message.role);
-    }
-    return obj;
-  },
-
-  create<I extends Exact<DeepPartial<RoleResponse>, I>>(base?: I): RoleResponse {
-    return RoleResponse.fromPartial(base ?? ({} as any));
-  },
-  fromPartial<I extends Exact<DeepPartial<RoleResponse>, I>>(object: I): RoleResponse {
-    const message = createBaseRoleResponse();
-    message.role = (object.role !== undefined && object.role !== null) ? Role.fromPartial(object.role) : undefined;
     return message;
   },
 };
@@ -379,8 +318,8 @@ export const RoleServiceService = {
     responseStream: false,
     requestSerialize: (value: RoleRequest) => Buffer.from(RoleRequest.encode(value).finish()),
     requestDeserialize: (value: Buffer) => RoleRequest.decode(value),
-    responseSerialize: (value: RoleResponse) => Buffer.from(RoleResponse.encode(value).finish()),
-    responseDeserialize: (value: Buffer) => RoleResponse.decode(value),
+    responseSerialize: (value: Role) => Buffer.from(Role.encode(value).finish()),
+    responseDeserialize: (value: Buffer) => Role.decode(value),
   },
   getRoleSummary: {
     path: "/apfish.v1.user.role.RoleService/GetRoleSummary",
@@ -403,26 +342,23 @@ export const RoleServiceService = {
 } as const;
 
 export interface RoleServiceServer extends UntypedServiceImplementation {
-  getRole: handleUnaryCall<RoleRequest, RoleResponse>;
+  getRole: handleUnaryCall<RoleRequest, Role>;
   getRoleSummary: handleUnaryCall<RoleRequest, RoleSummaryResponse>;
   listRoles: handleUnaryCall<ListRolesRequest, ListRolesResponse>;
 }
 
 export interface RoleServiceClient extends Client {
-  getRole(
-    request: RoleRequest,
-    callback: (error: ServiceError | null, response: RoleResponse) => void,
-  ): ClientUnaryCall;
+  getRole(request: RoleRequest, callback: (error: ServiceError | null, response: Role) => void): ClientUnaryCall;
   getRole(
     request: RoleRequest,
     metadata: Metadata,
-    callback: (error: ServiceError | null, response: RoleResponse) => void,
+    callback: (error: ServiceError | null, response: Role) => void,
   ): ClientUnaryCall;
   getRole(
     request: RoleRequest,
     metadata: Metadata,
     options: Partial<CallOptions>,
-    callback: (error: ServiceError | null, response: RoleResponse) => void,
+    callback: (error: ServiceError | null, response: Role) => void,
   ): ClientUnaryCall;
   getRoleSummary(
     request: RoleRequest,

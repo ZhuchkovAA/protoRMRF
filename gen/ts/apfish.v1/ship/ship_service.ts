@@ -28,10 +28,6 @@ export interface ShipRequest {
   id: string;
 }
 
-export interface ShipResponse {
-  ship: Ship | undefined;
-}
-
 export interface ShipSummaryResponse {
   ship: ShipSummary | undefined;
 }
@@ -101,63 +97,6 @@ export const ShipRequest = {
   fromPartial<I extends Exact<DeepPartial<ShipRequest>, I>>(object: I): ShipRequest {
     const message = createBaseShipRequest();
     message.id = object.id ?? "";
-    return message;
-  },
-};
-
-function createBaseShipResponse(): ShipResponse {
-  return { ship: undefined };
-}
-
-export const ShipResponse = {
-  encode(message: ShipResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.ship !== undefined) {
-      Ship.encode(message.ship, writer.uint32(10).fork()).ldelim();
-    }
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): ShipResponse {
-    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseShipResponse();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          if (tag !== 10) {
-            break;
-          }
-
-          message.ship = Ship.decode(reader, reader.uint32());
-          continue;
-      }
-      if ((tag & 7) === 4 || tag === 0) {
-        break;
-      }
-      reader.skipType(tag & 7);
-    }
-    return message;
-  },
-
-  fromJSON(object: any): ShipResponse {
-    return { ship: isSet(object.ship) ? Ship.fromJSON(object.ship) : undefined };
-  },
-
-  toJSON(message: ShipResponse): unknown {
-    const obj: any = {};
-    if (message.ship !== undefined) {
-      obj.ship = Ship.toJSON(message.ship);
-    }
-    return obj;
-  },
-
-  create<I extends Exact<DeepPartial<ShipResponse>, I>>(base?: I): ShipResponse {
-    return ShipResponse.fromPartial(base ?? ({} as any));
-  },
-  fromPartial<I extends Exact<DeepPartial<ShipResponse>, I>>(object: I): ShipResponse {
-    const message = createBaseShipResponse();
-    message.ship = (object.ship !== undefined && object.ship !== null) ? Ship.fromPartial(object.ship) : undefined;
     return message;
   },
 };
@@ -379,8 +318,8 @@ export const ShipServiceService = {
     responseStream: false,
     requestSerialize: (value: ShipRequest) => Buffer.from(ShipRequest.encode(value).finish()),
     requestDeserialize: (value: Buffer) => ShipRequest.decode(value),
-    responseSerialize: (value: ShipResponse) => Buffer.from(ShipResponse.encode(value).finish()),
-    responseDeserialize: (value: Buffer) => ShipResponse.decode(value),
+    responseSerialize: (value: Ship) => Buffer.from(Ship.encode(value).finish()),
+    responseDeserialize: (value: Buffer) => Ship.decode(value),
   },
   getShipSummary: {
     path: "/apfish.v1.ship.ShipService/GetShipSummary",
@@ -403,26 +342,23 @@ export const ShipServiceService = {
 } as const;
 
 export interface ShipServiceServer extends UntypedServiceImplementation {
-  getShip: handleUnaryCall<ShipRequest, ShipResponse>;
+  getShip: handleUnaryCall<ShipRequest, Ship>;
   getShipSummary: handleUnaryCall<ShipRequest, ShipSummaryResponse>;
   listShips: handleUnaryCall<ListShipsRequest, ListShipsResponse>;
 }
 
 export interface ShipServiceClient extends Client {
-  getShip(
-    request: ShipRequest,
-    callback: (error: ServiceError | null, response: ShipResponse) => void,
-  ): ClientUnaryCall;
+  getShip(request: ShipRequest, callback: (error: ServiceError | null, response: Ship) => void): ClientUnaryCall;
   getShip(
     request: ShipRequest,
     metadata: Metadata,
-    callback: (error: ServiceError | null, response: ShipResponse) => void,
+    callback: (error: ServiceError | null, response: Ship) => void,
   ): ClientUnaryCall;
   getShip(
     request: ShipRequest,
     metadata: Metadata,
     options: Partial<CallOptions>,
-    callback: (error: ServiceError | null, response: ShipResponse) => void,
+    callback: (error: ServiceError | null, response: Ship) => void,
   ): ClientUnaryCall;
   getShipSummary(
     request: ShipRequest,

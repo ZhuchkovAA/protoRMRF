@@ -12,7 +12,7 @@ import "apfish.v1/user/summary/user_summary.proto";
 service UserService {
   // GetUser retrieves a single user by their unique login.
   // Returns NOT_FOUND if the user does not exist.
-  rpc GetUser (UserRequest) returns (UserResponse);
+  rpc GetUser (UserRequest) returns (User);
 
   // ListUsers searches for users by login prefix (case-insensitive)
   // and returns paginated results.
@@ -28,11 +28,6 @@ service UserService {
 // Request to fetch a specific user.
 message UserRequest {
   string login = 1;
-}
-
-// Response containing the requested user.
-message UserResponse {
-  User user = 1;  // Full user profile data.
 }
 
 // Paginated request for user search.

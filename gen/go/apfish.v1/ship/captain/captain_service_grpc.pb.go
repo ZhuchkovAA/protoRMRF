@@ -28,7 +28,7 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type CaptainServiceClient interface {
-	GetCaptain(ctx context.Context, in *CaptainRequest, opts ...grpc.CallOption) (*CaptainResponse, error)
+	GetCaptain(ctx context.Context, in *CaptainRequest, opts ...grpc.CallOption) (*Captain, error)
 	GetCaptainSummary(ctx context.Context, in *CaptainRequest, opts ...grpc.CallOption) (*CaptainSummaryResponse, error)
 	ListCaptains(ctx context.Context, in *ListCaptainsRequest, opts ...grpc.CallOption) (*ListCaptainsResponse, error)
 }
@@ -41,9 +41,9 @@ func NewCaptainServiceClient(cc grpc.ClientConnInterface) CaptainServiceClient {
 	return &captainServiceClient{cc}
 }
 
-func (c *captainServiceClient) GetCaptain(ctx context.Context, in *CaptainRequest, opts ...grpc.CallOption) (*CaptainResponse, error) {
+func (c *captainServiceClient) GetCaptain(ctx context.Context, in *CaptainRequest, opts ...grpc.CallOption) (*Captain, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CaptainResponse)
+	out := new(Captain)
 	err := c.cc.Invoke(ctx, CaptainService_GetCaptain_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -75,7 +75,7 @@ func (c *captainServiceClient) ListCaptains(ctx context.Context, in *ListCaptain
 // All implementations must embed UnimplementedCaptainServiceServer
 // for forward compatibility.
 type CaptainServiceServer interface {
-	GetCaptain(context.Context, *CaptainRequest) (*CaptainResponse, error)
+	GetCaptain(context.Context, *CaptainRequest) (*Captain, error)
 	GetCaptainSummary(context.Context, *CaptainRequest) (*CaptainSummaryResponse, error)
 	ListCaptains(context.Context, *ListCaptainsRequest) (*ListCaptainsResponse, error)
 	mustEmbedUnimplementedCaptainServiceServer()
@@ -88,7 +88,7 @@ type CaptainServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedCaptainServiceServer struct{}
 
-func (UnimplementedCaptainServiceServer) GetCaptain(context.Context, *CaptainRequest) (*CaptainResponse, error) {
+func (UnimplementedCaptainServiceServer) GetCaptain(context.Context, *CaptainRequest) (*Captain, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetCaptain not implemented")
 }
 func (UnimplementedCaptainServiceServer) GetCaptainSummary(context.Context, *CaptainRequest) (*CaptainSummaryResponse, error) {

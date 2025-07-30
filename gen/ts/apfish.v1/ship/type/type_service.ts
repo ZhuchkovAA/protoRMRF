@@ -28,10 +28,6 @@ export interface TypeRequest {
   id: string;
 }
 
-export interface TypeResponse {
-  type: Type | undefined;
-}
-
 export interface TypeSummaryResponse {
   type: TypeSummary | undefined;
 }
@@ -101,63 +97,6 @@ export const TypeRequest = {
   fromPartial<I extends Exact<DeepPartial<TypeRequest>, I>>(object: I): TypeRequest {
     const message = createBaseTypeRequest();
     message.id = object.id ?? "";
-    return message;
-  },
-};
-
-function createBaseTypeResponse(): TypeResponse {
-  return { type: undefined };
-}
-
-export const TypeResponse = {
-  encode(message: TypeResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.type !== undefined) {
-      Type.encode(message.type, writer.uint32(10).fork()).ldelim();
-    }
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): TypeResponse {
-    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseTypeResponse();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          if (tag !== 10) {
-            break;
-          }
-
-          message.type = Type.decode(reader, reader.uint32());
-          continue;
-      }
-      if ((tag & 7) === 4 || tag === 0) {
-        break;
-      }
-      reader.skipType(tag & 7);
-    }
-    return message;
-  },
-
-  fromJSON(object: any): TypeResponse {
-    return { type: isSet(object.type) ? Type.fromJSON(object.type) : undefined };
-  },
-
-  toJSON(message: TypeResponse): unknown {
-    const obj: any = {};
-    if (message.type !== undefined) {
-      obj.type = Type.toJSON(message.type);
-    }
-    return obj;
-  },
-
-  create<I extends Exact<DeepPartial<TypeResponse>, I>>(base?: I): TypeResponse {
-    return TypeResponse.fromPartial(base ?? ({} as any));
-  },
-  fromPartial<I extends Exact<DeepPartial<TypeResponse>, I>>(object: I): TypeResponse {
-    const message = createBaseTypeResponse();
-    message.type = (object.type !== undefined && object.type !== null) ? Type.fromPartial(object.type) : undefined;
     return message;
   },
 };
@@ -379,8 +318,8 @@ export const TypeServiceService = {
     responseStream: false,
     requestSerialize: (value: TypeRequest) => Buffer.from(TypeRequest.encode(value).finish()),
     requestDeserialize: (value: Buffer) => TypeRequest.decode(value),
-    responseSerialize: (value: TypeResponse) => Buffer.from(TypeResponse.encode(value).finish()),
-    responseDeserialize: (value: Buffer) => TypeResponse.decode(value),
+    responseSerialize: (value: Type) => Buffer.from(Type.encode(value).finish()),
+    responseDeserialize: (value: Buffer) => Type.decode(value),
   },
   getTypeSummary: {
     path: "/apfish.v1.ship.type.TypeService/GetTypeSummary",
@@ -403,26 +342,23 @@ export const TypeServiceService = {
 } as const;
 
 export interface TypeServiceServer extends UntypedServiceImplementation {
-  getType: handleUnaryCall<TypeRequest, TypeResponse>;
+  getType: handleUnaryCall<TypeRequest, Type>;
   getTypeSummary: handleUnaryCall<TypeRequest, TypeSummaryResponse>;
   listTypes: handleUnaryCall<ListTypesRequest, ListTypesResponse>;
 }
 
 export interface TypeServiceClient extends Client {
-  getType(
-    request: TypeRequest,
-    callback: (error: ServiceError | null, response: TypeResponse) => void,
-  ): ClientUnaryCall;
+  getType(request: TypeRequest, callback: (error: ServiceError | null, response: Type) => void): ClientUnaryCall;
   getType(
     request: TypeRequest,
     metadata: Metadata,
-    callback: (error: ServiceError | null, response: TypeResponse) => void,
+    callback: (error: ServiceError | null, response: Type) => void,
   ): ClientUnaryCall;
   getType(
     request: TypeRequest,
     metadata: Metadata,
     options: Partial<CallOptions>,
-    callback: (error: ServiceError | null, response: TypeResponse) => void,
+    callback: (error: ServiceError | null, response: Type) => void,
   ): ClientUnaryCall;
   getTypeSummary(
     request: TypeRequest,

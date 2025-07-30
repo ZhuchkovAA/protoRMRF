@@ -8,7 +8,7 @@ import "apfish.v1/location/district/district.proto";
 import "apfish.v1/location/district/summary/district_summary.proto";
 
 service DistrictService {
-  rpc GetDistrict (DistrictRequest) returns (DistrictResponse);
+  rpc GetDistrict (DistrictRequest) returns (District);
   rpc GetDistrictSummary (DistrictRequest) returns (DistrictSummaryResponse);
 
   rpc ListDistricts (ListDistrictsRequest) returns (ListDistrictsResponse);
@@ -16,10 +16,6 @@ service DistrictService {
 
 message DistrictRequest {
   string id = 1;
-}
-
-message DistrictResponse {
-  District district = 1;
 }
 
 message DistrictSummaryResponse {

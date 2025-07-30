@@ -8,7 +8,7 @@ import "apfish.v1/ship/ship.proto";
 import "apfish.v1/ship/summary/ship_summary.proto";
 
 service ShipService {
-  rpc GetShip (ShipRequest) returns (ShipResponse);
+  rpc GetShip (ShipRequest) returns (Ship);
   rpc GetShipSummary (ShipRequest) returns (ShipSummaryResponse);
 
   rpc ListShips (ListShipsRequest) returns (ListShipsResponse);
@@ -16,10 +16,6 @@ service ShipService {
 
 message ShipRequest {
   string id = 1;
-}
-
-message ShipResponse {
-  Ship ship = 1;
 }
 
 message ShipSummaryResponse {

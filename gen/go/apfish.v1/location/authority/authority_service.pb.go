@@ -66,50 +66,6 @@ func (x *AuthorityRequest) GetId() string {
 	return ""
 }
 
-type AuthorityResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Authority     *Authority             `protobuf:"bytes,1,opt,name=Authority,proto3" json:"Authority,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *AuthorityResponse) Reset() {
-	*x = AuthorityResponse{}
-	mi := &file_apfish_v1_location_authority_authority_service_proto_msgTypes[1]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *AuthorityResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*AuthorityResponse) ProtoMessage() {}
-
-func (x *AuthorityResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_v1_location_authority_authority_service_proto_msgTypes[1]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use AuthorityResponse.ProtoReflect.Descriptor instead.
-func (*AuthorityResponse) Descriptor() ([]byte, []int) {
-	return file_apfish_v1_location_authority_authority_service_proto_rawDescGZIP(), []int{1}
-}
-
-func (x *AuthorityResponse) GetAuthority() *Authority {
-	if x != nil {
-		return x.Authority
-	}
-	return nil
-}
-
 type AuthoritySummaryResponse struct {
 	state         protoimpl.MessageState    `protogen:"open.v1"`
 	Authority     *summary.AuthoritySummary `protobuf:"bytes,1,opt,name=Authority,proto3" json:"Authority,omitempty"`
@@ -119,7 +75,7 @@ type AuthoritySummaryResponse struct {
 
 func (x *AuthoritySummaryResponse) Reset() {
 	*x = AuthoritySummaryResponse{}
-	mi := &file_apfish_v1_location_authority_authority_service_proto_msgTypes[2]
+	mi := &file_apfish_v1_location_authority_authority_service_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -131,7 +87,7 @@ func (x *AuthoritySummaryResponse) String() string {
 func (*AuthoritySummaryResponse) ProtoMessage() {}
 
 func (x *AuthoritySummaryResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_v1_location_authority_authority_service_proto_msgTypes[2]
+	mi := &file_apfish_v1_location_authority_authority_service_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -144,7 +100,7 @@ func (x *AuthoritySummaryResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AuthoritySummaryResponse.ProtoReflect.Descriptor instead.
 func (*AuthoritySummaryResponse) Descriptor() ([]byte, []int) {
-	return file_apfish_v1_location_authority_authority_service_proto_rawDescGZIP(), []int{2}
+	return file_apfish_v1_location_authority_authority_service_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *AuthoritySummaryResponse) GetAuthority() *summary.AuthoritySummary {
@@ -164,7 +120,7 @@ type ListAuthoritiesRequest struct {
 
 func (x *ListAuthoritiesRequest) Reset() {
 	*x = ListAuthoritiesRequest{}
-	mi := &file_apfish_v1_location_authority_authority_service_proto_msgTypes[3]
+	mi := &file_apfish_v1_location_authority_authority_service_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -176,7 +132,7 @@ func (x *ListAuthoritiesRequest) String() string {
 func (*ListAuthoritiesRequest) ProtoMessage() {}
 
 func (x *ListAuthoritiesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_v1_location_authority_authority_service_proto_msgTypes[3]
+	mi := &file_apfish_v1_location_authority_authority_service_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -189,7 +145,7 @@ func (x *ListAuthoritiesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListAuthoritiesRequest.ProtoReflect.Descriptor instead.
 func (*ListAuthoritiesRequest) Descriptor() ([]byte, []int) {
-	return file_apfish_v1_location_authority_authority_service_proto_rawDescGZIP(), []int{3}
+	return file_apfish_v1_location_authority_authority_service_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *ListAuthoritiesRequest) GetPage() int32 {
@@ -216,7 +172,7 @@ type ListAuthoritiesResponse struct {
 
 func (x *ListAuthoritiesResponse) Reset() {
 	*x = ListAuthoritiesResponse{}
-	mi := &file_apfish_v1_location_authority_authority_service_proto_msgTypes[4]
+	mi := &file_apfish_v1_location_authority_authority_service_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -228,7 +184,7 @@ func (x *ListAuthoritiesResponse) String() string {
 func (*ListAuthoritiesResponse) ProtoMessage() {}
 
 func (x *ListAuthoritiesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_v1_location_authority_authority_service_proto_msgTypes[4]
+	mi := &file_apfish_v1_location_authority_authority_service_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -241,7 +197,7 @@ func (x *ListAuthoritiesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListAuthoritiesResponse.ProtoReflect.Descriptor instead.
 func (*ListAuthoritiesResponse) Descriptor() ([]byte, []int) {
-	return file_apfish_v1_location_authority_authority_service_proto_rawDescGZIP(), []int{4}
+	return file_apfish_v1_location_authority_authority_service_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *ListAuthoritiesResponse) GetList_Authorities() []*summary.AuthoritySummary {
@@ -264,9 +220,7 @@ const file_apfish_v1_location_authority_authority_service_proto_rawDesc = "" +
 	"\n" +
 	"4apfish.v1/location/authority/authority_service.proto\x12\x1capfish.v1.location.authority\x1a,apfish.v1/location/authority/authority.proto\x1a<apfish.v1/location/authority/summary/authority_summary.proto\"\"\n" +
 	"\x10AuthorityRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\"Z\n" +
-	"\x11AuthorityResponse\x12E\n" +
-	"\tAuthority\x18\x01 \x01(\v2'.apfish.v1.location.authority.AuthorityR\tAuthority\"p\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\"p\n" +
 	"\x18AuthoritySummaryResponse\x12T\n" +
 	"\tAuthority\x18\x01 \x01(\v26.apfish.v1.location.authority.summary.AuthoritySummaryR\tAuthority\"G\n" +
 	"\x16ListAuthoritiesRequest\x12\x12\n" +
@@ -274,9 +228,9 @@ const file_apfish_v1_location_authority_authority_service_proto_rawDesc = "" +
 	"\bper_page\x18\x02 \x01(\x05R\aperPage\"\x92\x01\n" +
 	"\x17ListAuthoritiesResponse\x12a\n" +
 	"\x10list_Authorities\x18\x01 \x03(\v26.apfish.v1.location.authority.summary.AuthoritySummaryR\x0flistAuthorities\x12\x14\n" +
-	"\x05total\x18\x02 \x01(\x05R\x05total2\x82\x03\n" +
-	"\x10AuthorityService\x12o\n" +
-	"\fGetAuthority\x12..apfish.v1.location.authority.AuthorityRequest\x1a/.apfish.v1.location.authority.AuthorityResponse\x12}\n" +
+	"\x05total\x18\x02 \x01(\x05R\x05total2\xfa\x02\n" +
+	"\x10AuthorityService\x12g\n" +
+	"\fGetAuthority\x12..apfish.v1.location.authority.AuthorityRequest\x1a'.apfish.v1.location.authority.Authority\x12}\n" +
 	"\x13GetAuthoritySummary\x12..apfish.v1.location.authority.AuthorityRequest\x1a6.apfish.v1.location.authority.AuthoritySummaryResponse\x12~\n" +
 	"\x0fListAuthorities\x124.apfish.v1.location.authority.ListAuthoritiesRequest\x1a5.apfish.v1.location.authority.ListAuthoritiesResponseBXZVgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/authority;location_authorityb\x06proto3"
 
@@ -292,31 +246,29 @@ func file_apfish_v1_location_authority_authority_service_proto_rawDescGZIP() []b
 	return file_apfish_v1_location_authority_authority_service_proto_rawDescData
 }
 
-var file_apfish_v1_location_authority_authority_service_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
+var file_apfish_v1_location_authority_authority_service_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_apfish_v1_location_authority_authority_service_proto_goTypes = []any{
 	(*AuthorityRequest)(nil),         // 0: apfish.v1.location.authority.AuthorityRequest
-	(*AuthorityResponse)(nil),        // 1: apfish.v1.location.authority.AuthorityResponse
-	(*AuthoritySummaryResponse)(nil), // 2: apfish.v1.location.authority.AuthoritySummaryResponse
-	(*ListAuthoritiesRequest)(nil),   // 3: apfish.v1.location.authority.ListAuthoritiesRequest
-	(*ListAuthoritiesResponse)(nil),  // 4: apfish.v1.location.authority.ListAuthoritiesResponse
+	(*AuthoritySummaryResponse)(nil), // 1: apfish.v1.location.authority.AuthoritySummaryResponse
+	(*ListAuthoritiesRequest)(nil),   // 2: apfish.v1.location.authority.ListAuthoritiesRequest
+	(*ListAuthoritiesResponse)(nil),  // 3: apfish.v1.location.authority.ListAuthoritiesResponse
+	(*summary.AuthoritySummary)(nil), // 4: apfish.v1.location.authority.summary.AuthoritySummary
 	(*Authority)(nil),                // 5: apfish.v1.location.authority.Authority
-	(*summary.AuthoritySummary)(nil), // 6: apfish.v1.location.authority.summary.AuthoritySummary
 }
 var file_apfish_v1_location_authority_authority_service_proto_depIdxs = []int32{
-	5, // 0: apfish.v1.location.authority.AuthorityResponse.Authority:type_name -> apfish.v1.location.authority.Authority
-	6, // 1: apfish.v1.location.authority.AuthoritySummaryResponse.Authority:type_name -> apfish.v1.location.authority.summary.AuthoritySummary
-	6, // 2: apfish.v1.location.authority.ListAuthoritiesResponse.list_Authorities:type_name -> apfish.v1.location.authority.summary.AuthoritySummary
-	0, // 3: apfish.v1.location.authority.AuthorityService.GetAuthority:input_type -> apfish.v1.location.authority.AuthorityRequest
-	0, // 4: apfish.v1.location.authority.AuthorityService.GetAuthoritySummary:input_type -> apfish.v1.location.authority.AuthorityRequest
-	3, // 5: apfish.v1.location.authority.AuthorityService.ListAuthorities:input_type -> apfish.v1.location.authority.ListAuthoritiesRequest
-	1, // 6: apfish.v1.location.authority.AuthorityService.GetAuthority:output_type -> apfish.v1.location.authority.AuthorityResponse
-	2, // 7: apfish.v1.location.authority.AuthorityService.GetAuthoritySummary:output_type -> apfish.v1.location.authority.AuthoritySummaryResponse
-	4, // 8: apfish.v1.location.authority.AuthorityService.ListAuthorities:output_type -> apfish.v1.location.authority.ListAuthoritiesResponse
-	6, // [6:9] is the sub-list for method output_type
-	3, // [3:6] is the sub-list for method input_type
-	3, // [3:3] is the sub-list for extension type_name
-	3, // [3:3] is the sub-list for extension extendee
-	0, // [0:3] is the sub-list for field type_name
+	4, // 0: apfish.v1.location.authority.AuthoritySummaryResponse.Authority:type_name -> apfish.v1.location.authority.summary.AuthoritySummary
+	4, // 1: apfish.v1.location.authority.ListAuthoritiesResponse.list_Authorities:type_name -> apfish.v1.location.authority.summary.AuthoritySummary
+	0, // 2: apfish.v1.location.authority.AuthorityService.GetAuthority:input_type -> apfish.v1.location.authority.AuthorityRequest
+	0, // 3: apfish.v1.location.authority.AuthorityService.GetAuthoritySummary:input_type -> apfish.v1.location.authority.AuthorityRequest
+	2, // 4: apfish.v1.location.authority.AuthorityService.ListAuthorities:input_type -> apfish.v1.location.authority.ListAuthoritiesRequest
+	5, // 5: apfish.v1.location.authority.AuthorityService.GetAuthority:output_type -> apfish.v1.location.authority.Authority
+	1, // 6: apfish.v1.location.authority.AuthorityService.GetAuthoritySummary:output_type -> apfish.v1.location.authority.AuthoritySummaryResponse
+	3, // 7: apfish.v1.location.authority.AuthorityService.ListAuthorities:output_type -> apfish.v1.location.authority.ListAuthoritiesResponse
+	5, // [5:8] is the sub-list for method output_type
+	2, // [2:5] is the sub-list for method input_type
+	2, // [2:2] is the sub-list for extension type_name
+	2, // [2:2] is the sub-list for extension extendee
+	0, // [0:2] is the sub-list for field type_name
 }
 
 func init() { file_apfish_v1_location_authority_authority_service_proto_init() }
@@ -331,7 +283,7 @@ func file_apfish_v1_location_authority_authority_service_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_apfish_v1_location_authority_authority_service_proto_rawDesc), len(file_apfish_v1_location_authority_authority_service_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   5,
+			NumMessages:   4,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

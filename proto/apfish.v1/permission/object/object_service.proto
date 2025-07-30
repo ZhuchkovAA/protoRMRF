@@ -8,7 +8,7 @@ import "apfish.v1/permission/object/object.proto";
 import "apfish.v1/permission/object/summary/object_summary.proto";
 
 service ObjectService {
-  rpc GetObject (ObjectRequest) returns (ObjectResponse);
+  rpc GetObject (ObjectRequest) returns (Object);
   rpc GetObjectSummary (ObjectRequest) returns (ObjectSummaryResponse);
 
   rpc ListObjects (ListObjectsRequest) returns (ListObjectsResponse);
@@ -16,10 +16,6 @@ service ObjectService {
 
 message ObjectRequest {
   string id = 1;
-}
-
-message ObjectResponse {
-  Object object = 1;
 }
 
 message ObjectSummaryResponse {

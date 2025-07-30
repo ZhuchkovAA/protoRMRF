@@ -28,7 +28,7 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type ActionServiceClient interface {
-	GetAction(ctx context.Context, in *ActionRequest, opts ...grpc.CallOption) (*ActionResponse, error)
+	GetAction(ctx context.Context, in *ActionRequest, opts ...grpc.CallOption) (*Action, error)
 	GetActionSummary(ctx context.Context, in *ActionRequest, opts ...grpc.CallOption) (*ActionSummaryResponse, error)
 	ListActions(ctx context.Context, in *ListActionsRequest, opts ...grpc.CallOption) (*ListActionsResponse, error)
 }
@@ -41,9 +41,9 @@ func NewActionServiceClient(cc grpc.ClientConnInterface) ActionServiceClient {
 	return &actionServiceClient{cc}
 }
 
-func (c *actionServiceClient) GetAction(ctx context.Context, in *ActionRequest, opts ...grpc.CallOption) (*ActionResponse, error) {
+func (c *actionServiceClient) GetAction(ctx context.Context, in *ActionRequest, opts ...grpc.CallOption) (*Action, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ActionResponse)
+	out := new(Action)
 	err := c.cc.Invoke(ctx, ActionService_GetAction_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -75,7 +75,7 @@ func (c *actionServiceClient) ListActions(ctx context.Context, in *ListActionsRe
 // All implementations must embed UnimplementedActionServiceServer
 // for forward compatibility.
 type ActionServiceServer interface {
-	GetAction(context.Context, *ActionRequest) (*ActionResponse, error)
+	GetAction(context.Context, *ActionRequest) (*Action, error)
 	GetActionSummary(context.Context, *ActionRequest) (*ActionSummaryResponse, error)
 	ListActions(context.Context, *ListActionsRequest) (*ListActionsResponse, error)
 	mustEmbedUnimplementedActionServiceServer()
@@ -88,7 +88,7 @@ type ActionServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedActionServiceServer struct{}
 
-func (UnimplementedActionServiceServer) GetAction(context.Context, *ActionRequest) (*ActionResponse, error) {
+func (UnimplementedActionServiceServer) GetAction(context.Context, *ActionRequest) (*Action, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAction not implemented")
 }
 func (UnimplementedActionServiceServer) GetActionSummary(context.Context, *ActionRequest) (*ActionSummaryResponse, error) {

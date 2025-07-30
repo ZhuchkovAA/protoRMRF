@@ -9,7 +9,7 @@ import "apfish.v1/user/contact/contact.proto";
 import "apfish.v1/user/contact/summary/contact_summary.proto";
 
 service ContactService {
-  rpc GetContact (ContactRequest) returns (ContactResponse);
+  rpc GetContact (ContactRequest) returns (Contact);
   rpc GetContactSummary (ContactRequest) returns (ContactSummaryResponse);
 
   rpc ListUserContacts (ListUserContactsRequest) returns (ListContactsResponse);
@@ -23,10 +23,6 @@ service ContactService {
 
 message ContactRequest {
   string id = 1;
-}
-
-message ContactResponse {
-  Contact contact = 1;
 }
 
 message ContactSummaryResponse {

@@ -32,7 +32,7 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type PermissionServiceClient interface {
-	GetPermission(ctx context.Context, in *PermissionRequest, opts ...grpc.CallOption) (*PermissionResponse, error)
+	GetPermission(ctx context.Context, in *PermissionRequest, opts ...grpc.CallOption) (*Permission, error)
 	GetPermissionSummary(ctx context.Context, in *PermissionRequest, opts ...grpc.CallOption) (*PermissionSummaryResponse, error)
 	ListPermissions(ctx context.Context, in *ListPermissionsRequest, opts ...grpc.CallOption) (*ListPermissionsResponse, error)
 	CreatePermission(ctx context.Context, in *CreatePermissionRequest, opts ...grpc.CallOption) (*CreatePermissionResponse, error)
@@ -48,9 +48,9 @@ func NewPermissionServiceClient(cc grpc.ClientConnInterface) PermissionServiceCl
 	return &permissionServiceClient{cc}
 }
 
-func (c *permissionServiceClient) GetPermission(ctx context.Context, in *PermissionRequest, opts ...grpc.CallOption) (*PermissionResponse, error) {
+func (c *permissionServiceClient) GetPermission(ctx context.Context, in *PermissionRequest, opts ...grpc.CallOption) (*Permission, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(PermissionResponse)
+	out := new(Permission)
 	err := c.cc.Invoke(ctx, PermissionService_GetPermission_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -112,7 +112,7 @@ func (c *permissionServiceClient) DeletePermission(ctx context.Context, in *Dele
 // All implementations must embed UnimplementedPermissionServiceServer
 // for forward compatibility.
 type PermissionServiceServer interface {
-	GetPermission(context.Context, *PermissionRequest) (*PermissionResponse, error)
+	GetPermission(context.Context, *PermissionRequest) (*Permission, error)
 	GetPermissionSummary(context.Context, *PermissionRequest) (*PermissionSummaryResponse, error)
 	ListPermissions(context.Context, *ListPermissionsRequest) (*ListPermissionsResponse, error)
 	CreatePermission(context.Context, *CreatePermissionRequest) (*CreatePermissionResponse, error)
@@ -128,7 +128,7 @@ type PermissionServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedPermissionServiceServer struct{}
 
-func (UnimplementedPermissionServiceServer) GetPermission(context.Context, *PermissionRequest) (*PermissionResponse, error) {
+func (UnimplementedPermissionServiceServer) GetPermission(context.Context, *PermissionRequest) (*Permission, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetPermission not implemented")
 }
 func (UnimplementedPermissionServiceServer) GetPermissionSummary(context.Context, *PermissionRequest) (*PermissionSummaryResponse, error) {

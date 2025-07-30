@@ -8,7 +8,7 @@ import "apfish.v1/location/port/port.proto";
 import "apfish.v1/location/port/summary/port_summary.proto";
 
 service PortService {
-  rpc GetPort (PortRequest) returns (PortResponse);
+  rpc GetPort (PortRequest) returns (Port);
   rpc GetPortSummary (PortRequest) returns (PortSummaryResponse);
 
   rpc ListPorts (ListPortsRequest) returns (ListPortsResponse);
@@ -16,10 +16,6 @@ service PortService {
 
 message PortRequest {
   string id = 1;
-}
-
-message PortResponse {
-  Port port = 1;
 }
 
 message PortSummaryResponse {

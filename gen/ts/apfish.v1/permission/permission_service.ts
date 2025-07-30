@@ -30,10 +30,6 @@ export interface PermissionRequest {
   id: string;
 }
 
-export interface PermissionResponse {
-  permission: Permission | undefined;
-}
-
 export interface PermissionSummaryResponse {
   permission: PermissionSummary | undefined;
 }
@@ -131,65 +127,6 @@ export const PermissionRequest = {
   fromPartial<I extends Exact<DeepPartial<PermissionRequest>, I>>(object: I): PermissionRequest {
     const message = createBasePermissionRequest();
     message.id = object.id ?? "";
-    return message;
-  },
-};
-
-function createBasePermissionResponse(): PermissionResponse {
-  return { permission: undefined };
-}
-
-export const PermissionResponse = {
-  encode(message: PermissionResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.permission !== undefined) {
-      Permission.encode(message.permission, writer.uint32(10).fork()).ldelim();
-    }
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): PermissionResponse {
-    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBasePermissionResponse();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          if (tag !== 10) {
-            break;
-          }
-
-          message.permission = Permission.decode(reader, reader.uint32());
-          continue;
-      }
-      if ((tag & 7) === 4 || tag === 0) {
-        break;
-      }
-      reader.skipType(tag & 7);
-    }
-    return message;
-  },
-
-  fromJSON(object: any): PermissionResponse {
-    return { permission: isSet(object.permission) ? Permission.fromJSON(object.permission) : undefined };
-  },
-
-  toJSON(message: PermissionResponse): unknown {
-    const obj: any = {};
-    if (message.permission !== undefined) {
-      obj.permission = Permission.toJSON(message.permission);
-    }
-    return obj;
-  },
-
-  create<I extends Exact<DeepPartial<PermissionResponse>, I>>(base?: I): PermissionResponse {
-    return PermissionResponse.fromPartial(base ?? ({} as any));
-  },
-  fromPartial<I extends Exact<DeepPartial<PermissionResponse>, I>>(object: I): PermissionResponse {
-    const message = createBasePermissionResponse();
-    message.permission = (object.permission !== undefined && object.permission !== null)
-      ? Permission.fromPartial(object.permission)
-      : undefined;
     return message;
   },
 };
@@ -840,8 +777,8 @@ export const PermissionServiceService = {
     responseStream: false,
     requestSerialize: (value: PermissionRequest) => Buffer.from(PermissionRequest.encode(value).finish()),
     requestDeserialize: (value: Buffer) => PermissionRequest.decode(value),
-    responseSerialize: (value: PermissionResponse) => Buffer.from(PermissionResponse.encode(value).finish()),
-    responseDeserialize: (value: Buffer) => PermissionResponse.decode(value),
+    responseSerialize: (value: Permission) => Buffer.from(Permission.encode(value).finish()),
+    responseDeserialize: (value: Buffer) => Permission.decode(value),
   },
   getPermissionSummary: {
     path: "/apfish.v1.permission.PermissionService/GetPermissionSummary",
@@ -894,7 +831,7 @@ export const PermissionServiceService = {
 } as const;
 
 export interface PermissionServiceServer extends UntypedServiceImplementation {
-  getPermission: handleUnaryCall<PermissionRequest, PermissionResponse>;
+  getPermission: handleUnaryCall<PermissionRequest, Permission>;
   getPermissionSummary: handleUnaryCall<PermissionRequest, PermissionSummaryResponse>;
   listPermissions: handleUnaryCall<ListPermissionsRequest, ListPermissionsResponse>;
   createPermission: handleUnaryCall<CreatePermissionRequest, CreatePermissionResponse>;
@@ -905,18 +842,18 @@ export interface PermissionServiceServer extends UntypedServiceImplementation {
 export interface PermissionServiceClient extends Client {
   getPermission(
     request: PermissionRequest,
-    callback: (error: ServiceError | null, response: PermissionResponse) => void,
+    callback: (error: ServiceError | null, response: Permission) => void,
   ): ClientUnaryCall;
   getPermission(
     request: PermissionRequest,
     metadata: Metadata,
-    callback: (error: ServiceError | null, response: PermissionResponse) => void,
+    callback: (error: ServiceError | null, response: Permission) => void,
   ): ClientUnaryCall;
   getPermission(
     request: PermissionRequest,
     metadata: Metadata,
     options: Partial<CallOptions>,
-    callback: (error: ServiceError | null, response: PermissionResponse) => void,
+    callback: (error: ServiceError | null, response: Permission) => void,
   ): ClientUnaryCall;
   getPermissionSummary(
     request: PermissionRequest,

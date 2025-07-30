@@ -28,10 +28,6 @@ export interface PortRequest {
   id: string;
 }
 
-export interface PortResponse {
-  port: Port | undefined;
-}
-
 export interface PortSummaryResponse {
   port: PortSummary | undefined;
 }
@@ -101,63 +97,6 @@ export const PortRequest = {
   fromPartial<I extends Exact<DeepPartial<PortRequest>, I>>(object: I): PortRequest {
     const message = createBasePortRequest();
     message.id = object.id ?? "";
-    return message;
-  },
-};
-
-function createBasePortResponse(): PortResponse {
-  return { port: undefined };
-}
-
-export const PortResponse = {
-  encode(message: PortResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.port !== undefined) {
-      Port.encode(message.port, writer.uint32(10).fork()).ldelim();
-    }
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): PortResponse {
-    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBasePortResponse();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          if (tag !== 10) {
-            break;
-          }
-
-          message.port = Port.decode(reader, reader.uint32());
-          continue;
-      }
-      if ((tag & 7) === 4 || tag === 0) {
-        break;
-      }
-      reader.skipType(tag & 7);
-    }
-    return message;
-  },
-
-  fromJSON(object: any): PortResponse {
-    return { port: isSet(object.port) ? Port.fromJSON(object.port) : undefined };
-  },
-
-  toJSON(message: PortResponse): unknown {
-    const obj: any = {};
-    if (message.port !== undefined) {
-      obj.port = Port.toJSON(message.port);
-    }
-    return obj;
-  },
-
-  create<I extends Exact<DeepPartial<PortResponse>, I>>(base?: I): PortResponse {
-    return PortResponse.fromPartial(base ?? ({} as any));
-  },
-  fromPartial<I extends Exact<DeepPartial<PortResponse>, I>>(object: I): PortResponse {
-    const message = createBasePortResponse();
-    message.port = (object.port !== undefined && object.port !== null) ? Port.fromPartial(object.port) : undefined;
     return message;
   },
 };
@@ -379,8 +318,8 @@ export const PortServiceService = {
     responseStream: false,
     requestSerialize: (value: PortRequest) => Buffer.from(PortRequest.encode(value).finish()),
     requestDeserialize: (value: Buffer) => PortRequest.decode(value),
-    responseSerialize: (value: PortResponse) => Buffer.from(PortResponse.encode(value).finish()),
-    responseDeserialize: (value: Buffer) => PortResponse.decode(value),
+    responseSerialize: (value: Port) => Buffer.from(Port.encode(value).finish()),
+    responseDeserialize: (value: Buffer) => Port.decode(value),
   },
   getPortSummary: {
     path: "/apfish.v1.location.port.PortService/GetPortSummary",
@@ -403,26 +342,23 @@ export const PortServiceService = {
 } as const;
 
 export interface PortServiceServer extends UntypedServiceImplementation {
-  getPort: handleUnaryCall<PortRequest, PortResponse>;
+  getPort: handleUnaryCall<PortRequest, Port>;
   getPortSummary: handleUnaryCall<PortRequest, PortSummaryResponse>;
   listPorts: handleUnaryCall<ListPortsRequest, ListPortsResponse>;
 }
 
 export interface PortServiceClient extends Client {
-  getPort(
-    request: PortRequest,
-    callback: (error: ServiceError | null, response: PortResponse) => void,
-  ): ClientUnaryCall;
+  getPort(request: PortRequest, callback: (error: ServiceError | null, response: Port) => void): ClientUnaryCall;
   getPort(
     request: PortRequest,
     metadata: Metadata,
-    callback: (error: ServiceError | null, response: PortResponse) => void,
+    callback: (error: ServiceError | null, response: Port) => void,
   ): ClientUnaryCall;
   getPort(
     request: PortRequest,
     metadata: Metadata,
     options: Partial<CallOptions>,
-    callback: (error: ServiceError | null, response: PortResponse) => void,
+    callback: (error: ServiceError | null, response: Port) => void,
   ): ClientUnaryCall;
   getPortSummary(
     request: PortRequest,

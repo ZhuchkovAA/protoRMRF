@@ -28,10 +28,6 @@ export interface DistrictRequest {
   id: string;
 }
 
-export interface DistrictResponse {
-  district: District | undefined;
-}
-
 export interface DistrictSummaryResponse {
   district: DistrictSummary | undefined;
 }
@@ -101,65 +97,6 @@ export const DistrictRequest = {
   fromPartial<I extends Exact<DeepPartial<DistrictRequest>, I>>(object: I): DistrictRequest {
     const message = createBaseDistrictRequest();
     message.id = object.id ?? "";
-    return message;
-  },
-};
-
-function createBaseDistrictResponse(): DistrictResponse {
-  return { district: undefined };
-}
-
-export const DistrictResponse = {
-  encode(message: DistrictResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.district !== undefined) {
-      District.encode(message.district, writer.uint32(10).fork()).ldelim();
-    }
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): DistrictResponse {
-    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseDistrictResponse();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          if (tag !== 10) {
-            break;
-          }
-
-          message.district = District.decode(reader, reader.uint32());
-          continue;
-      }
-      if ((tag & 7) === 4 || tag === 0) {
-        break;
-      }
-      reader.skipType(tag & 7);
-    }
-    return message;
-  },
-
-  fromJSON(object: any): DistrictResponse {
-    return { district: isSet(object.district) ? District.fromJSON(object.district) : undefined };
-  },
-
-  toJSON(message: DistrictResponse): unknown {
-    const obj: any = {};
-    if (message.district !== undefined) {
-      obj.district = District.toJSON(message.district);
-    }
-    return obj;
-  },
-
-  create<I extends Exact<DeepPartial<DistrictResponse>, I>>(base?: I): DistrictResponse {
-    return DistrictResponse.fromPartial(base ?? ({} as any));
-  },
-  fromPartial<I extends Exact<DeepPartial<DistrictResponse>, I>>(object: I): DistrictResponse {
-    const message = createBaseDistrictResponse();
-    message.district = (object.district !== undefined && object.district !== null)
-      ? District.fromPartial(object.district)
-      : undefined;
     return message;
   },
 };
@@ -381,8 +318,8 @@ export const DistrictServiceService = {
     responseStream: false,
     requestSerialize: (value: DistrictRequest) => Buffer.from(DistrictRequest.encode(value).finish()),
     requestDeserialize: (value: Buffer) => DistrictRequest.decode(value),
-    responseSerialize: (value: DistrictResponse) => Buffer.from(DistrictResponse.encode(value).finish()),
-    responseDeserialize: (value: Buffer) => DistrictResponse.decode(value),
+    responseSerialize: (value: District) => Buffer.from(District.encode(value).finish()),
+    responseDeserialize: (value: Buffer) => District.decode(value),
   },
   getDistrictSummary: {
     path: "/apfish.v1.location.district.DistrictService/GetDistrictSummary",
@@ -405,7 +342,7 @@ export const DistrictServiceService = {
 } as const;
 
 export interface DistrictServiceServer extends UntypedServiceImplementation {
-  getDistrict: handleUnaryCall<DistrictRequest, DistrictResponse>;
+  getDistrict: handleUnaryCall<DistrictRequest, District>;
   getDistrictSummary: handleUnaryCall<DistrictRequest, DistrictSummaryResponse>;
   listDistricts: handleUnaryCall<ListDistrictsRequest, ListDistrictsResponse>;
 }
@@ -413,18 +350,18 @@ export interface DistrictServiceServer extends UntypedServiceImplementation {
 export interface DistrictServiceClient extends Client {
   getDistrict(
     request: DistrictRequest,
-    callback: (error: ServiceError | null, response: DistrictResponse) => void,
+    callback: (error: ServiceError | null, response: District) => void,
   ): ClientUnaryCall;
   getDistrict(
     request: DistrictRequest,
     metadata: Metadata,
-    callback: (error: ServiceError | null, response: DistrictResponse) => void,
+    callback: (error: ServiceError | null, response: District) => void,
   ): ClientUnaryCall;
   getDistrict(
     request: DistrictRequest,
     metadata: Metadata,
     options: Partial<CallOptions>,
-    callback: (error: ServiceError | null, response: DistrictResponse) => void,
+    callback: (error: ServiceError | null, response: District) => void,
   ): ClientUnaryCall;
   getDistrictSummary(
     request: DistrictRequest,

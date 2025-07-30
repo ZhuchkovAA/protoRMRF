@@ -8,7 +8,7 @@ import "apfish.v1/location/authority/authority.proto";
 import "apfish.v1/location/authority/summary/authority_summary.proto";
 
 service AuthorityService {
-  rpc GetAuthority (AuthorityRequest) returns (AuthorityResponse);
+  rpc GetAuthority (AuthorityRequest) returns (Authority);
   rpc GetAuthoritySummary (AuthorityRequest) returns (AuthoritySummaryResponse);
 
   rpc ListAuthorities (ListAuthoritiesRequest) returns (ListAuthoritiesResponse);
@@ -16,10 +16,6 @@ service AuthorityService {
 
 message AuthorityRequest {
   string id = 1;
-}
-
-message AuthorityResponse {
-  Authority Authority = 1;
 }
 
 message AuthoritySummaryResponse {

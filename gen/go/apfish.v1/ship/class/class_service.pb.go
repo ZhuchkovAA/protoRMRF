@@ -66,50 +66,6 @@ func (x *ClassRequest) GetId() string {
 	return ""
 }
 
-type ClassResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Class         *Class                 `protobuf:"bytes,1,opt,name=class,proto3" json:"class,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ClassResponse) Reset() {
-	*x = ClassResponse{}
-	mi := &file_apfish_v1_ship_class_class_service_proto_msgTypes[1]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ClassResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ClassResponse) ProtoMessage() {}
-
-func (x *ClassResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_v1_ship_class_class_service_proto_msgTypes[1]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ClassResponse.ProtoReflect.Descriptor instead.
-func (*ClassResponse) Descriptor() ([]byte, []int) {
-	return file_apfish_v1_ship_class_class_service_proto_rawDescGZIP(), []int{1}
-}
-
-func (x *ClassResponse) GetClass() *Class {
-	if x != nil {
-		return x.Class
-	}
-	return nil
-}
-
 type ClassSummaryResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Class         *summary.ClassSummary  `protobuf:"bytes,1,opt,name=class,proto3" json:"class,omitempty"`
@@ -119,7 +75,7 @@ type ClassSummaryResponse struct {
 
 func (x *ClassSummaryResponse) Reset() {
 	*x = ClassSummaryResponse{}
-	mi := &file_apfish_v1_ship_class_class_service_proto_msgTypes[2]
+	mi := &file_apfish_v1_ship_class_class_service_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -131,7 +87,7 @@ func (x *ClassSummaryResponse) String() string {
 func (*ClassSummaryResponse) ProtoMessage() {}
 
 func (x *ClassSummaryResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_v1_ship_class_class_service_proto_msgTypes[2]
+	mi := &file_apfish_v1_ship_class_class_service_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -144,7 +100,7 @@ func (x *ClassSummaryResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ClassSummaryResponse.ProtoReflect.Descriptor instead.
 func (*ClassSummaryResponse) Descriptor() ([]byte, []int) {
-	return file_apfish_v1_ship_class_class_service_proto_rawDescGZIP(), []int{2}
+	return file_apfish_v1_ship_class_class_service_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *ClassSummaryResponse) GetClass() *summary.ClassSummary {
@@ -164,7 +120,7 @@ type ListClassesRequest struct {
 
 func (x *ListClassesRequest) Reset() {
 	*x = ListClassesRequest{}
-	mi := &file_apfish_v1_ship_class_class_service_proto_msgTypes[3]
+	mi := &file_apfish_v1_ship_class_class_service_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -176,7 +132,7 @@ func (x *ListClassesRequest) String() string {
 func (*ListClassesRequest) ProtoMessage() {}
 
 func (x *ListClassesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_v1_ship_class_class_service_proto_msgTypes[3]
+	mi := &file_apfish_v1_ship_class_class_service_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -189,7 +145,7 @@ func (x *ListClassesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListClassesRequest.ProtoReflect.Descriptor instead.
 func (*ListClassesRequest) Descriptor() ([]byte, []int) {
-	return file_apfish_v1_ship_class_class_service_proto_rawDescGZIP(), []int{3}
+	return file_apfish_v1_ship_class_class_service_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *ListClassesRequest) GetPage() int32 {
@@ -216,7 +172,7 @@ type ListClassesResponse struct {
 
 func (x *ListClassesResponse) Reset() {
 	*x = ListClassesResponse{}
-	mi := &file_apfish_v1_ship_class_class_service_proto_msgTypes[4]
+	mi := &file_apfish_v1_ship_class_class_service_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -228,7 +184,7 @@ func (x *ListClassesResponse) String() string {
 func (*ListClassesResponse) ProtoMessage() {}
 
 func (x *ListClassesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_v1_ship_class_class_service_proto_msgTypes[4]
+	mi := &file_apfish_v1_ship_class_class_service_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -241,7 +197,7 @@ func (x *ListClassesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListClassesResponse.ProtoReflect.Descriptor instead.
 func (*ListClassesResponse) Descriptor() ([]byte, []int) {
-	return file_apfish_v1_ship_class_class_service_proto_rawDescGZIP(), []int{4}
+	return file_apfish_v1_ship_class_class_service_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *ListClassesResponse) GetListClasses() []*summary.ClassSummary {
@@ -264,9 +220,7 @@ const file_apfish_v1_ship_class_class_service_proto_rawDesc = "" +
 	"\n" +
 	"(apfish.v1/ship/class/class_service.proto\x12\x14apfish.v1.ship.class\x1a apfish.v1/ship/class/class.proto\x1a0apfish.v1/ship/class/summary/class_summary.proto\"\x1e\n" +
 	"\fClassRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\"B\n" +
-	"\rClassResponse\x121\n" +
-	"\x05class\x18\x01 \x01(\v2\x1b.apfish.v1.ship.class.ClassR\x05class\"X\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\"X\n" +
 	"\x14ClassSummaryResponse\x12@\n" +
 	"\x05class\x18\x01 \x01(\v2*.apfish.v1.ship.class.summary.ClassSummaryR\x05class\"C\n" +
 	"\x12ListClassesRequest\x12\x12\n" +
@@ -274,9 +228,9 @@ const file_apfish_v1_ship_class_class_service_proto_rawDesc = "" +
 	"\bper_page\x18\x02 \x01(\x05R\aperPage\"z\n" +
 	"\x13ListClassesResponse\x12M\n" +
 	"\flist_classes\x18\x01 \x03(\v2*.apfish.v1.ship.class.summary.ClassSummaryR\vlistClasses\x12\x14\n" +
-	"\x05total\x18\x02 \x01(\x05R\x05total2\xaa\x02\n" +
-	"\fClassService\x12S\n" +
-	"\bGetClass\x12\".apfish.v1.ship.class.ClassRequest\x1a#.apfish.v1.ship.class.ClassResponse\x12a\n" +
+	"\x05total\x18\x02 \x01(\x05R\x05total2\xa2\x02\n" +
+	"\fClassService\x12K\n" +
+	"\bGetClass\x12\".apfish.v1.ship.class.ClassRequest\x1a\x1b.apfish.v1.ship.class.Class\x12a\n" +
 	"\x0fGetClassSummary\x12\".apfish.v1.ship.class.ClassRequest\x1a*.apfish.v1.ship.class.ClassSummaryResponse\x12b\n" +
 	"\vListClasses\x12(.apfish.v1.ship.class.ListClassesRequest\x1a).apfish.v1.ship.class.ListClassesResponseBHZFgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/ship/class;ship_classb\x06proto3"
 
@@ -292,31 +246,29 @@ func file_apfish_v1_ship_class_class_service_proto_rawDescGZIP() []byte {
 	return file_apfish_v1_ship_class_class_service_proto_rawDescData
 }
 
-var file_apfish_v1_ship_class_class_service_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
+var file_apfish_v1_ship_class_class_service_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_apfish_v1_ship_class_class_service_proto_goTypes = []any{
 	(*ClassRequest)(nil),         // 0: apfish.v1.ship.class.ClassRequest
-	(*ClassResponse)(nil),        // 1: apfish.v1.ship.class.ClassResponse
-	(*ClassSummaryResponse)(nil), // 2: apfish.v1.ship.class.ClassSummaryResponse
-	(*ListClassesRequest)(nil),   // 3: apfish.v1.ship.class.ListClassesRequest
-	(*ListClassesResponse)(nil),  // 4: apfish.v1.ship.class.ListClassesResponse
+	(*ClassSummaryResponse)(nil), // 1: apfish.v1.ship.class.ClassSummaryResponse
+	(*ListClassesRequest)(nil),   // 2: apfish.v1.ship.class.ListClassesRequest
+	(*ListClassesResponse)(nil),  // 3: apfish.v1.ship.class.ListClassesResponse
+	(*summary.ClassSummary)(nil), // 4: apfish.v1.ship.class.summary.ClassSummary
 	(*Class)(nil),                // 5: apfish.v1.ship.class.Class
-	(*summary.ClassSummary)(nil), // 6: apfish.v1.ship.class.summary.ClassSummary
 }
 var file_apfish_v1_ship_class_class_service_proto_depIdxs = []int32{
-	5, // 0: apfish.v1.ship.class.ClassResponse.class:type_name -> apfish.v1.ship.class.Class
-	6, // 1: apfish.v1.ship.class.ClassSummaryResponse.class:type_name -> apfish.v1.ship.class.summary.ClassSummary
-	6, // 2: apfish.v1.ship.class.ListClassesResponse.list_classes:type_name -> apfish.v1.ship.class.summary.ClassSummary
-	0, // 3: apfish.v1.ship.class.ClassService.GetClass:input_type -> apfish.v1.ship.class.ClassRequest
-	0, // 4: apfish.v1.ship.class.ClassService.GetClassSummary:input_type -> apfish.v1.ship.class.ClassRequest
-	3, // 5: apfish.v1.ship.class.ClassService.ListClasses:input_type -> apfish.v1.ship.class.ListClassesRequest
-	1, // 6: apfish.v1.ship.class.ClassService.GetClass:output_type -> apfish.v1.ship.class.ClassResponse
-	2, // 7: apfish.v1.ship.class.ClassService.GetClassSummary:output_type -> apfish.v1.ship.class.ClassSummaryResponse
-	4, // 8: apfish.v1.ship.class.ClassService.ListClasses:output_type -> apfish.v1.ship.class.ListClassesResponse
-	6, // [6:9] is the sub-list for method output_type
-	3, // [3:6] is the sub-list for method input_type
-	3, // [3:3] is the sub-list for extension type_name
-	3, // [3:3] is the sub-list for extension extendee
-	0, // [0:3] is the sub-list for field type_name
+	4, // 0: apfish.v1.ship.class.ClassSummaryResponse.class:type_name -> apfish.v1.ship.class.summary.ClassSummary
+	4, // 1: apfish.v1.ship.class.ListClassesResponse.list_classes:type_name -> apfish.v1.ship.class.summary.ClassSummary
+	0, // 2: apfish.v1.ship.class.ClassService.GetClass:input_type -> apfish.v1.ship.class.ClassRequest
+	0, // 3: apfish.v1.ship.class.ClassService.GetClassSummary:input_type -> apfish.v1.ship.class.ClassRequest
+	2, // 4: apfish.v1.ship.class.ClassService.ListClasses:input_type -> apfish.v1.ship.class.ListClassesRequest
+	5, // 5: apfish.v1.ship.class.ClassService.GetClass:output_type -> apfish.v1.ship.class.Class
+	1, // 6: apfish.v1.ship.class.ClassService.GetClassSummary:output_type -> apfish.v1.ship.class.ClassSummaryResponse
+	3, // 7: apfish.v1.ship.class.ClassService.ListClasses:output_type -> apfish.v1.ship.class.ListClassesResponse
+	5, // [5:8] is the sub-list for method output_type
+	2, // [2:5] is the sub-list for method input_type
+	2, // [2:2] is the sub-list for extension type_name
+	2, // [2:2] is the sub-list for extension extendee
+	0, // [0:2] is the sub-list for field type_name
 }
 
 func init() { file_apfish_v1_ship_class_class_service_proto_init() }
@@ -331,7 +283,7 @@ func file_apfish_v1_ship_class_class_service_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_apfish_v1_ship_class_class_service_proto_rawDesc), len(file_apfish_v1_ship_class_class_service_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   5,
+			NumMessages:   4,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

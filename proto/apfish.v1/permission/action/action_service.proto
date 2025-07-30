@@ -8,7 +8,7 @@ import "apfish.v1/permission/action/action.proto";
 import "apfish.v1/permission/action/summary/action_summary.proto";
 
 service ActionService {
-  rpc GetAction (ActionRequest) returns (ActionResponse);
+  rpc GetAction (ActionRequest) returns (Action);
   rpc GetActionSummary (ActionRequest) returns (ActionSummaryResponse);
 
   rpc ListActions (ListActionsRequest) returns (ListActionsResponse);
@@ -16,10 +16,6 @@ service ActionService {
 
 message ActionRequest {
   string id = 1;
-}
-
-message ActionResponse {
-  Action action = 1;
 }
 
 message ActionSummaryResponse {
