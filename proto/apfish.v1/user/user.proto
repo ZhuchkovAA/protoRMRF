@@ -21,12 +21,13 @@ message User {
   string last_name = 4;
   string middle_name = 5;
   apfish.v1.user.role.summary.RoleSummary role = 6;                      // Assigned role.
-  google.protobuf.Timestamp created_at = 7;  // When the user was created.
-  bool is_active = 8;
-  apfish.v1.user.summary.UserSummary created_by = 9;        // Login of the creator (e.g., "admin").
+  apfish.v1.user.summary.UserSummary created_by = 7;        // Login of the creator (e.g., "admin").
+  google.protobuf.Timestamp created_at = 8;
+  google.protobuf.Timestamp updated_at = 9;
+  google.protobuf.Timestamp deleted_at = 10;
 
-  repeated apfish.v1.user.contact.summary.ContactSummary contacts = 10;   // User's contact methods.
-  repeated apfish.v1.permission.summary.PermissionSummary permissions = 11;  // Direct permissions (overrides role).
+  repeated apfish.v1.user.contact.summary.ContactSummary contacts = 11;   // User's contact methods.
+  repeated apfish.v1.permission.summary.PermissionSummary permissions = 12;  // Direct permissions (overrides role).
 }
 
 message UserPatch {
@@ -35,5 +36,4 @@ message UserPatch {
   google.protobuf.StringValue last_name = 3;
   google.protobuf.StringValue middle_name = 4;
   google.protobuf.StringValue role_id = 5;
-  google.protobuf.BoolValue is_active = 6;
 }

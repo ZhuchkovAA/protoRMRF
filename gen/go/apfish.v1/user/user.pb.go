@@ -36,11 +36,12 @@ type User struct {
 	LastName      string                        `protobuf:"bytes,4,opt,name=last_name,json=lastName,proto3" json:"last_name,omitempty"`
 	MiddleName    string                        `protobuf:"bytes,5,opt,name=middle_name,json=middleName,proto3" json:"middle_name,omitempty"`
 	Role          *summary.RoleSummary          `protobuf:"bytes,6,opt,name=role,proto3" json:"role,omitempty"`                            // Assigned role.
-	CreatedAt     *timestamppb.Timestamp        `protobuf:"bytes,7,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"` // When the user was created.
-	IsActive      bool                          `protobuf:"varint,8,opt,name=is_active,json=isActive,proto3" json:"is_active,omitempty"`
-	CreatedBy     *summary1.UserSummary         `protobuf:"bytes,9,opt,name=created_by,json=createdBy,proto3" json:"created_by,omitempty"` // Login of the creator (e.g., "admin").
-	Contacts      []*summary2.ContactSummary    `protobuf:"bytes,10,rep,name=contacts,proto3" json:"contacts,omitempty"`                   // User's contact methods.
-	Permissions   []*summary3.PermissionSummary `protobuf:"bytes,11,rep,name=permissions,proto3" json:"permissions,omitempty"`             // Direct permissions (overrides role).
+	CreatedBy     *summary1.UserSummary         `protobuf:"bytes,7,opt,name=created_by,json=createdBy,proto3" json:"created_by,omitempty"` // Login of the creator (e.g., "admin").
+	CreatedAt     *timestamppb.Timestamp        `protobuf:"bytes,8,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	UpdatedAt     *timestamppb.Timestamp        `protobuf:"bytes,9,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	DeletedAt     *timestamppb.Timestamp        `protobuf:"bytes,10,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty"`
+	Contacts      []*summary2.ContactSummary    `protobuf:"bytes,11,rep,name=contacts,proto3" json:"contacts,omitempty"`       // User's contact methods.
+	Permissions   []*summary3.PermissionSummary `protobuf:"bytes,12,rep,name=permissions,proto3" json:"permissions,omitempty"` // Direct permissions (overrides role).
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -117,6 +118,13 @@ func (x *User) GetRole() *summary.RoleSummary {
 	return nil
 }
 
+func (x *User) GetCreatedBy() *summary1.UserSummary {
+	if x != nil {
+		return x.CreatedBy
+	}
+	return nil
+}
+
 func (x *User) GetCreatedAt() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreatedAt
@@ -124,16 +132,16 @@ func (x *User) GetCreatedAt() *timestamppb.Timestamp {
 	return nil
 }
 
-func (x *User) GetIsActive() bool {
+func (x *User) GetUpdatedAt() *timestamppb.Timestamp {
 	if x != nil {
-		return x.IsActive
+		return x.UpdatedAt
 	}
-	return false
+	return nil
 }
 
-func (x *User) GetCreatedBy() *summary1.UserSummary {
+func (x *User) GetDeletedAt() *timestamppb.Timestamp {
 	if x != nil {
-		return x.CreatedBy
+		return x.DeletedAt
 	}
 	return nil
 }
@@ -159,7 +167,6 @@ type UserPatch struct {
 	LastName      *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=last_name,json=lastName,proto3" json:"last_name,omitempty"`
 	MiddleName    *wrapperspb.StringValue `protobuf:"bytes,4,opt,name=middle_name,json=middleName,proto3" json:"middle_name,omitempty"`
 	RoleId        *wrapperspb.StringValue `protobuf:"bytes,5,opt,name=role_id,json=roleId,proto3" json:"role_id,omitempty"`
-	IsActive      *wrapperspb.BoolValue   `protobuf:"bytes,6,opt,name=is_active,json=isActive,proto3" json:"is_active,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -229,18 +236,11 @@ func (x *UserPatch) GetRoleId() *wrapperspb.StringValue {
 	return nil
 }
 
-func (x *UserPatch) GetIsActive() *wrapperspb.BoolValue {
-	if x != nil {
-		return x.IsActive
-	}
-	return nil
-}
-
 var File_apfish_v1_user_user_proto protoreflect.FileDescriptor
 
 const file_apfish_v1_user_user_proto_rawDesc = "" +
 	"\n" +
-	"\x19apfish.v1/user/user.proto\x12\x0eapfish.v1.user\x1a\x1egoogle/protobuf/wrappers.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a.apfish.v1/user/role/summary/role_summary.proto\x1a)apfish.v1/user/summary/user_summary.proto\x1a4apfish.v1/user/contact/summary/contact_summary.proto\x1a5apfish.v1/permission/summary/permission_summary.proto\"\x82\x04\n" +
+	"\x19apfish.v1/user/user.proto\x12\x0eapfish.v1.user\x1a\x1egoogle/protobuf/wrappers.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a.apfish.v1/user/role/summary/role_summary.proto\x1a)apfish.v1/user/summary/user_summary.proto\x1a4apfish.v1/user/contact/summary/contact_summary.proto\x1a5apfish.v1/permission/summary/permission_summary.proto\"\xdb\x04\n" +
 	"\x04User\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x14\n" +
 	"\x05login\x18\x02 \x01(\tR\x05login\x12\x1d\n" +
@@ -249,15 +249,18 @@ const file_apfish_v1_user_user_proto_rawDesc = "" +
 	"\tlast_name\x18\x04 \x01(\tR\blastName\x12\x1f\n" +
 	"\vmiddle_name\x18\x05 \x01(\tR\n" +
 	"middleName\x12<\n" +
-	"\x04role\x18\x06 \x01(\v2(.apfish.v1.user.role.summary.RoleSummaryR\x04role\x129\n" +
+	"\x04role\x18\x06 \x01(\v2(.apfish.v1.user.role.summary.RoleSummaryR\x04role\x12B\n" +
 	"\n" +
-	"created_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x12\x1b\n" +
-	"\tis_active\x18\b \x01(\bR\bisActive\x12B\n" +
+	"created_by\x18\a \x01(\v2#.apfish.v1.user.summary.UserSummaryR\tcreatedBy\x129\n" +
 	"\n" +
-	"created_by\x18\t \x01(\v2#.apfish.v1.user.summary.UserSummaryR\tcreatedBy\x12J\n" +
-	"\bcontacts\x18\n" +
-	" \x03(\v2..apfish.v1.user.contact.summary.ContactSummaryR\bcontacts\x12Q\n" +
-	"\vpermissions\x18\v \x03(\v2/.apfish.v1.permission.summary.PermissionSummaryR\vpermissions\"\xc8\x02\n" +
+	"created_at\x18\b \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
+	"\n" +
+	"updated_at\x18\t \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x129\n" +
+	"\n" +
+	"deleted_at\x18\n" +
+	" \x01(\v2\x1a.google.protobuf.TimestampR\tdeletedAt\x12J\n" +
+	"\bcontacts\x18\v \x03(\v2..apfish.v1.user.contact.summary.ContactSummaryR\bcontacts\x12Q\n" +
+	"\vpermissions\x18\f \x03(\v2/.apfish.v1.permission.summary.PermissionSummaryR\vpermissions\"\x8f\x02\n" +
 	"\tUserPatch\x12\x14\n" +
 	"\x05login\x18\x01 \x01(\tR\x05login\x12;\n" +
 	"\n" +
@@ -265,8 +268,7 @@ const file_apfish_v1_user_user_proto_rawDesc = "" +
 	"\tlast_name\x18\x03 \x01(\v2\x1c.google.protobuf.StringValueR\blastName\x12=\n" +
 	"\vmiddle_name\x18\x04 \x01(\v2\x1c.google.protobuf.StringValueR\n" +
 	"middleName\x125\n" +
-	"\arole_id\x18\x05 \x01(\v2\x1c.google.protobuf.StringValueR\x06roleId\x127\n" +
-	"\tis_active\x18\x06 \x01(\v2\x1a.google.protobuf.BoolValueR\bisActiveB<Z:github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user;userb\x06proto3"
+	"\arole_id\x18\x05 \x01(\v2\x1c.google.protobuf.StringValueR\x06roleIdB<Z:github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user;userb\x06proto3"
 
 var (
 	file_apfish_v1_user_user_proto_rawDescOnce sync.Once
@@ -285,29 +287,29 @@ var file_apfish_v1_user_user_proto_goTypes = []any{
 	(*User)(nil),                       // 0: apfish.v1.user.User
 	(*UserPatch)(nil),                  // 1: apfish.v1.user.UserPatch
 	(*summary.RoleSummary)(nil),        // 2: apfish.v1.user.role.summary.RoleSummary
-	(*timestamppb.Timestamp)(nil),      // 3: google.protobuf.Timestamp
-	(*summary1.UserSummary)(nil),       // 4: apfish.v1.user.summary.UserSummary
+	(*summary1.UserSummary)(nil),       // 3: apfish.v1.user.summary.UserSummary
+	(*timestamppb.Timestamp)(nil),      // 4: google.protobuf.Timestamp
 	(*summary2.ContactSummary)(nil),    // 5: apfish.v1.user.contact.summary.ContactSummary
 	(*summary3.PermissionSummary)(nil), // 6: apfish.v1.permission.summary.PermissionSummary
 	(*wrapperspb.StringValue)(nil),     // 7: google.protobuf.StringValue
-	(*wrapperspb.BoolValue)(nil),       // 8: google.protobuf.BoolValue
 }
 var file_apfish_v1_user_user_proto_depIdxs = []int32{
 	2,  // 0: apfish.v1.user.User.role:type_name -> apfish.v1.user.role.summary.RoleSummary
-	3,  // 1: apfish.v1.user.User.created_at:type_name -> google.protobuf.Timestamp
-	4,  // 2: apfish.v1.user.User.created_by:type_name -> apfish.v1.user.summary.UserSummary
-	5,  // 3: apfish.v1.user.User.contacts:type_name -> apfish.v1.user.contact.summary.ContactSummary
-	6,  // 4: apfish.v1.user.User.permissions:type_name -> apfish.v1.permission.summary.PermissionSummary
-	7,  // 5: apfish.v1.user.UserPatch.first_name:type_name -> google.protobuf.StringValue
-	7,  // 6: apfish.v1.user.UserPatch.last_name:type_name -> google.protobuf.StringValue
-	7,  // 7: apfish.v1.user.UserPatch.middle_name:type_name -> google.protobuf.StringValue
-	7,  // 8: apfish.v1.user.UserPatch.role_id:type_name -> google.protobuf.StringValue
-	8,  // 9: apfish.v1.user.UserPatch.is_active:type_name -> google.protobuf.BoolValue
-	10, // [10:10] is the sub-list for method output_type
-	10, // [10:10] is the sub-list for method input_type
-	10, // [10:10] is the sub-list for extension type_name
-	10, // [10:10] is the sub-list for extension extendee
-	0,  // [0:10] is the sub-list for field type_name
+	3,  // 1: apfish.v1.user.User.created_by:type_name -> apfish.v1.user.summary.UserSummary
+	4,  // 2: apfish.v1.user.User.created_at:type_name -> google.protobuf.Timestamp
+	4,  // 3: apfish.v1.user.User.updated_at:type_name -> google.protobuf.Timestamp
+	4,  // 4: apfish.v1.user.User.deleted_at:type_name -> google.protobuf.Timestamp
+	5,  // 5: apfish.v1.user.User.contacts:type_name -> apfish.v1.user.contact.summary.ContactSummary
+	6,  // 6: apfish.v1.user.User.permissions:type_name -> apfish.v1.permission.summary.PermissionSummary
+	7,  // 7: apfish.v1.user.UserPatch.first_name:type_name -> google.protobuf.StringValue
+	7,  // 8: apfish.v1.user.UserPatch.last_name:type_name -> google.protobuf.StringValue
+	7,  // 9: apfish.v1.user.UserPatch.middle_name:type_name -> google.protobuf.StringValue
+	7,  // 10: apfish.v1.user.UserPatch.role_id:type_name -> google.protobuf.StringValue
+	11, // [11:11] is the sub-list for method output_type
+	11, // [11:11] is the sub-list for method input_type
+	11, // [11:11] is the sub-list for extension type_name
+	11, // [11:11] is the sub-list for extension extendee
+	0,  // [0:11] is the sub-list for field type_name
 }
 
 func init() { file_apfish_v1_user_user_proto_init() }

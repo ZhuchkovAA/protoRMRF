@@ -34,9 +34,11 @@ type Authority struct {
 	IsIlo          bool                          `protobuf:"varint,5,opt,name=is_ilo,json=isIlo,proto3" json:"is_ilo,omitempty"`
 	IsBallastWater bool                          `protobuf:"varint,6,opt,name=is_ballast_water,json=isBallastWater,proto3" json:"is_ballast_water,omitempty"`
 	CreatedAt      *timestamppb.Timestamp        `protobuf:"bytes,7,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	Ports          []*summary.PortSummary        `protobuf:"bytes,8,rep,name=ports,proto3" json:"ports,omitempty"`
-	CallSigns      []*summary1.CallSignSummary   `protobuf:"bytes,9,rep,name=call_signs,json=callSigns,proto3" json:"call_signs,omitempty"`
-	Permissions    []*summary2.PermissionSummary `protobuf:"bytes,10,rep,name=permissions,proto3" json:"permissions,omitempty"`
+	UpdatedAt      *timestamppb.Timestamp        `protobuf:"bytes,8,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	DeletedAt      *timestamppb.Timestamp        `protobuf:"bytes,9,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty"`
+	Ports          []*summary.PortSummary        `protobuf:"bytes,10,rep,name=ports,proto3" json:"ports,omitempty"`
+	CallSigns      []*summary1.CallSignSummary   `protobuf:"bytes,11,rep,name=call_signs,json=callSigns,proto3" json:"call_signs,omitempty"`
+	Permissions    []*summary2.PermissionSummary `protobuf:"bytes,12,rep,name=permissions,proto3" json:"permissions,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
@@ -120,6 +122,20 @@ func (x *Authority) GetCreatedAt() *timestamppb.Timestamp {
 	return nil
 }
 
+func (x *Authority) GetUpdatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.UpdatedAt
+	}
+	return nil
+}
+
+func (x *Authority) GetDeletedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.DeletedAt
+	}
+	return nil
+}
+
 func (x *Authority) GetPorts() []*summary.PortSummary {
 	if x != nil {
 		return x.Ports
@@ -145,7 +161,7 @@ var File_apfish_v1_location_authority_authority_proto protoreflect.FileDescripto
 
 const file_apfish_v1_location_authority_authority_proto_rawDesc = "" +
 	"\n" +
-	",apfish.v1/location/authority/authority.proto\x12\x1capfish.v1.location.authority\x1a\x1fgoogle/protobuf/timestamp.proto\x1a2apfish.v1/location/port/summary/port_summary.proto\x1a3apfish.v1/call_sign/summary/call_sign_summary.proto\x1a5apfish.v1/permission/summary/permission_summary.proto\"\xbe\x03\n" +
+	",apfish.v1/location/authority/authority.proto\x12\x1capfish.v1.location.authority\x1a\x1fgoogle/protobuf/timestamp.proto\x1a2apfish.v1/location/port/summary/port_summary.proto\x1a3apfish.v1/call_sign/summary/call_sign_summary.proto\x1a5apfish.v1/permission/summary/permission_summary.proto\"\xb4\x04\n" +
 	"\tAuthority\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x19\n" +
@@ -154,12 +170,16 @@ const file_apfish_v1_location_authority_authority_proto_rawDesc = "" +
 	"\x06is_ilo\x18\x05 \x01(\bR\x05isIlo\x12(\n" +
 	"\x10is_ballast_water\x18\x06 \x01(\bR\x0eisBallastWater\x129\n" +
 	"\n" +
-	"created_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x12B\n" +
-	"\x05ports\x18\b \x03(\v2,.apfish.v1.location.port.summary.PortSummaryR\x05ports\x12K\n" +
+	"created_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
 	"\n" +
-	"call_signs\x18\t \x03(\v2,.apfish.v1.call_sign.summary.CallSignSummaryR\tcallSigns\x12Q\n" +
-	"\vpermissions\x18\n" +
-	" \x03(\v2/.apfish.v1.permission.summary.PermissionSummaryR\vpermissionsBXZVgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/authority;location_authorityb\x06proto3"
+	"updated_at\x18\b \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x129\n" +
+	"\n" +
+	"deleted_at\x18\t \x01(\v2\x1a.google.protobuf.TimestampR\tdeletedAt\x12B\n" +
+	"\x05ports\x18\n" +
+	" \x03(\v2,.apfish.v1.location.port.summary.PortSummaryR\x05ports\x12K\n" +
+	"\n" +
+	"call_signs\x18\v \x03(\v2,.apfish.v1.call_sign.summary.CallSignSummaryR\tcallSigns\x12Q\n" +
+	"\vpermissions\x18\f \x03(\v2/.apfish.v1.permission.summary.PermissionSummaryR\vpermissionsBXZVgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/authority;location_authorityb\x06proto3"
 
 var (
 	file_apfish_v1_location_authority_authority_proto_rawDescOnce sync.Once
@@ -183,14 +203,16 @@ var file_apfish_v1_location_authority_authority_proto_goTypes = []any{
 }
 var file_apfish_v1_location_authority_authority_proto_depIdxs = []int32{
 	1, // 0: apfish.v1.location.authority.Authority.created_at:type_name -> google.protobuf.Timestamp
-	2, // 1: apfish.v1.location.authority.Authority.ports:type_name -> apfish.v1.location.port.summary.PortSummary
-	3, // 2: apfish.v1.location.authority.Authority.call_signs:type_name -> apfish.v1.call_sign.summary.CallSignSummary
-	4, // 3: apfish.v1.location.authority.Authority.permissions:type_name -> apfish.v1.permission.summary.PermissionSummary
-	4, // [4:4] is the sub-list for method output_type
-	4, // [4:4] is the sub-list for method input_type
-	4, // [4:4] is the sub-list for extension type_name
-	4, // [4:4] is the sub-list for extension extendee
-	0, // [0:4] is the sub-list for field type_name
+	1, // 1: apfish.v1.location.authority.Authority.updated_at:type_name -> google.protobuf.Timestamp
+	1, // 2: apfish.v1.location.authority.Authority.deleted_at:type_name -> google.protobuf.Timestamp
+	2, // 3: apfish.v1.location.authority.Authority.ports:type_name -> apfish.v1.location.port.summary.PortSummary
+	3, // 4: apfish.v1.location.authority.Authority.call_signs:type_name -> apfish.v1.call_sign.summary.CallSignSummary
+	4, // 5: apfish.v1.location.authority.Authority.permissions:type_name -> apfish.v1.permission.summary.PermissionSummary
+	6, // [6:6] is the sub-list for method output_type
+	6, // [6:6] is the sub-list for method input_type
+	6, // [6:6] is the sub-list for extension type_name
+	6, // [6:6] is the sub-list for extension extendee
+	0, // [0:6] is the sub-list for field type_name
 }
 
 func init() { file_apfish_v1_location_authority_authority_proto_init() }

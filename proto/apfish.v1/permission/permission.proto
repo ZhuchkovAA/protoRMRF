@@ -27,12 +27,14 @@ message Permission {
   string name = 5;                // Display name (e.g., "Read Inspections")
   string code = 6;                // Machine-readable identifier (e.g., "inspection:read")
   google.protobuf.Timestamp created_at = 7;
+  google.protobuf.Timestamp updated_at = 8;
+  google.protobuf.Timestamp deleted_at = 9;
 
-  repeated apfish.v1.location.authority.summary.AuthoritySummary authorities = 8;
-  repeated apfish.v1.location.district.summary.DistrictSummary districts = 9;
-  repeated apfish.v1.location.port.summary.PortSummary ports = 10;
-  repeated apfish.v1.ship.summary.ShipSummary ships = 11;
+  repeated apfish.v1.location.authority.summary.AuthoritySummary authorities = 10;
+  repeated apfish.v1.location.district.summary.DistrictSummary districts = 11;
+  repeated apfish.v1.location.port.summary.PortSummary ports = 12;
+  repeated apfish.v1.ship.summary.ShipSummary ships = 13;
 
-  repeated apfish.v1.user.summary.UserSummary users = 12;
-  repeated apfish.v1.user.role.summary.RoleSummary roles = 13;
+  repeated apfish.v1.user.summary.UserSummary users = 14;
+  repeated apfish.v1.user.role.summary.RoleSummary roles = 15;
 }

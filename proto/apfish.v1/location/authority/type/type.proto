@@ -13,7 +13,9 @@ message Type {
   string id = 1;                       // Unique type ID.
   string name = 2;                    // Human-readable name (e.g., "Email").
   string name_rus = 3;
-  google.protobuf.Timestamp created_at = 4;  // When the type was defined.
+  google.protobuf.Timestamp created_at = 4;
+  google.protobuf.Timestamp updated_at = 5;
+  google.protobuf.Timestamp deleted_at = 6;
 
-  repeated location.authority.summary.AuthoritySummary authorities = 5;
+  repeated location.authority.summary.AuthoritySummary authorities = 7;
 }

@@ -14,11 +14,14 @@ export const protobufPackage = "apfish.v1.location.district.summary";
 export interface DistrictSummary {
   id: string;
   name: string;
+  authorityId: string;
   createdAt: Date | undefined;
+  updatedAt: Date | undefined;
+  deletedAt: Date | undefined;
 }
 
 function createBaseDistrictSummary(): DistrictSummary {
-  return { id: "", name: "", createdAt: undefined };
+  return { id: "", name: "", authorityId: "", createdAt: undefined, updatedAt: undefined, deletedAt: undefined };
 }
 
 export const DistrictSummary = {
@@ -29,8 +32,17 @@ export const DistrictSummary = {
     if (message.name !== "") {
       writer.uint32(18).string(message.name);
     }
+    if (message.authorityId !== "") {
+      writer.uint32(26).string(message.authorityId);
+    }
     if (message.createdAt !== undefined) {
-      Timestamp.encode(toTimestamp(message.createdAt), writer.uint32(26).fork()).ldelim();
+      Timestamp.encode(toTimestamp(message.createdAt), writer.uint32(34).fork()).ldelim();
+    }
+    if (message.updatedAt !== undefined) {
+      Timestamp.encode(toTimestamp(message.updatedAt), writer.uint32(42).fork()).ldelim();
+    }
+    if (message.deletedAt !== undefined) {
+      Timestamp.encode(toTimestamp(message.deletedAt), writer.uint32(50).fork()).ldelim();
     }
     return writer;
   },
@@ -61,7 +73,28 @@ export const DistrictSummary = {
             break;
           }
 
+          message.authorityId = reader.string();
+          continue;
+        case 4:
+          if (tag !== 34) {
+            break;
+          }
+
           message.createdAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          continue;
+        case 5:
+          if (tag !== 42) {
+            break;
+          }
+
+          message.updatedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          continue;
+        case 6:
+          if (tag !== 50) {
+            break;
+          }
+
+          message.deletedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           continue;
       }
       if ((tag & 7) === 4 || tag === 0) {
@@ -76,7 +109,10 @@ export const DistrictSummary = {
     return {
       id: isSet(object.id) ? globalThis.String(object.id) : "",
       name: isSet(object.name) ? globalThis.String(object.name) : "",
+      authorityId: isSet(object.authorityId) ? globalThis.String(object.authorityId) : "",
       createdAt: isSet(object.createdAt) ? fromJsonTimestamp(object.createdAt) : undefined,
+      updatedAt: isSet(object.updatedAt) ? fromJsonTimestamp(object.updatedAt) : undefined,
+      deletedAt: isSet(object.deletedAt) ? fromJsonTimestamp(object.deletedAt) : undefined,
     };
   },
 
@@ -88,8 +124,17 @@ export const DistrictSummary = {
     if (message.name !== "") {
       obj.name = message.name;
     }
+    if (message.authorityId !== "") {
+      obj.authorityId = message.authorityId;
+    }
     if (message.createdAt !== undefined) {
       obj.createdAt = message.createdAt.toISOString();
+    }
+    if (message.updatedAt !== undefined) {
+      obj.updatedAt = message.updatedAt.toISOString();
+    }
+    if (message.deletedAt !== undefined) {
+      obj.deletedAt = message.deletedAt.toISOString();
     }
     return obj;
   },
@@ -101,7 +146,10 @@ export const DistrictSummary = {
     const message = createBaseDistrictSummary();
     message.id = object.id ?? "";
     message.name = object.name ?? "";
+    message.authorityId = object.authorityId ?? "";
     message.createdAt = object.createdAt ?? undefined;
+    message.updatedAt = object.updatedAt ?? undefined;
+    message.deletedAt = object.deletedAt ?? undefined;
     return message;
   },
 };

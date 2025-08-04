@@ -22,6 +22,8 @@ service UserService {
 
   rpc UpdateUser(UpdateUserRequest) returns (helper.SuccessResponse);
 
+  rpc DeleteUser(UserRequest) returns (helper.SuccessResponse);
+
   rpc AssignPermissions(AssignPermissionsRequest) returns (helper.SuccessResponse);
 }
 

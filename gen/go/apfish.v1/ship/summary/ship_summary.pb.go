@@ -37,6 +37,8 @@ type ShipSummary struct {
 	DeadWeight    int32                  `protobuf:"varint,11,opt,name=dead_weight,json=deadWeight,proto3" json:"dead_weight,omitempty"`
 	Tonnage       int32                  `protobuf:"varint,12,opt,name=tonnage,proto3" json:"tonnage,omitempty"`
 	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,13,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,14,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	DeletedAt     *timestamppb.Timestamp `protobuf:"bytes,15,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -162,11 +164,25 @@ func (x *ShipSummary) GetCreatedAt() *timestamppb.Timestamp {
 	return nil
 }
 
+func (x *ShipSummary) GetUpdatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.UpdatedAt
+	}
+	return nil
+}
+
+func (x *ShipSummary) GetDeletedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.DeletedAt
+	}
+	return nil
+}
+
 var File_apfish_v1_ship_summary_ship_summary_proto protoreflect.FileDescriptor
 
 const file_apfish_v1_ship_summary_ship_summary_proto_rawDesc = "" +
 	"\n" +
-	")apfish.v1/ship/summary/ship_summary.proto\x12\x16apfish.v1.ship.summary\x1a\x1fgoogle/protobuf/timestamp.proto\"\xa9\x03\n" +
+	")apfish.v1/ship/summary/ship_summary.proto\x12\x16apfish.v1.ship.summary\x1a\x1fgoogle/protobuf/timestamp.proto\"\x9f\x04\n" +
 	"\vShipSummary\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x10\n" +
 	"\x03imo\x18\x02 \x01(\x05R\x03imo\x12\x17\n" +
@@ -185,7 +201,11 @@ const file_apfish_v1_ship_summary_ship_summary_proto_rawDesc = "" +
 	"deadWeight\x12\x18\n" +
 	"\atonnage\x18\f \x01(\x05R\atonnage\x129\n" +
 	"\n" +
-	"created_at\x18\r \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAtBLZJgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/ship/summary;ship_summaryb\x06proto3"
+	"created_at\x18\r \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
+	"\n" +
+	"updated_at\x18\x0e \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x129\n" +
+	"\n" +
+	"deleted_at\x18\x0f \x01(\v2\x1a.google.protobuf.TimestampR\tdeletedAtBLZJgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/ship/summary;ship_summaryb\x06proto3"
 
 var (
 	file_apfish_v1_ship_summary_ship_summary_proto_rawDescOnce sync.Once
@@ -207,11 +227,13 @@ var file_apfish_v1_ship_summary_ship_summary_proto_goTypes = []any{
 var file_apfish_v1_ship_summary_ship_summary_proto_depIdxs = []int32{
 	1, // 0: apfish.v1.ship.summary.ShipSummary.date_build:type_name -> google.protobuf.Timestamp
 	1, // 1: apfish.v1.ship.summary.ShipSummary.created_at:type_name -> google.protobuf.Timestamp
-	2, // [2:2] is the sub-list for method output_type
-	2, // [2:2] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	1, // 2: apfish.v1.ship.summary.ShipSummary.updated_at:type_name -> google.protobuf.Timestamp
+	1, // 3: apfish.v1.ship.summary.ShipSummary.deleted_at:type_name -> google.protobuf.Timestamp
+	4, // [4:4] is the sub-list for method output_type
+	4, // [4:4] is the sub-list for method input_type
+	4, // [4:4] is the sub-list for extension type_name
+	4, // [4:4] is the sub-list for extension extendee
+	0, // [0:4] is the sub-list for field type_name
 }
 
 func init() { file_apfish_v1_ship_summary_ship_summary_proto_init() }

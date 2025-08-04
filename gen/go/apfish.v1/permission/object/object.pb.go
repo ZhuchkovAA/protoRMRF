@@ -31,7 +31,9 @@ type Object struct {
 	Description   string                       `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"` // Detailed explanation of the object type
 	Code          string                       `protobuf:"bytes,4,opt,name=code,proto3" json:"code,omitempty"`               // Machine-friendly code (e.g., "inspection")
 	CreatedAt     *timestamppb.Timestamp       `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	Permissions   []*summary.PermissionSummary `protobuf:"bytes,6,rep,name=permissions,proto3" json:"permissions,omitempty"`
+	UpdatedAt     *timestamppb.Timestamp       `protobuf:"bytes,6,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	DeletedAt     *timestamppb.Timestamp       `protobuf:"bytes,7,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty"`
+	Permissions   []*summary.PermissionSummary `protobuf:"bytes,8,rep,name=permissions,proto3" json:"permissions,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -101,6 +103,20 @@ func (x *Object) GetCreatedAt() *timestamppb.Timestamp {
 	return nil
 }
 
+func (x *Object) GetUpdatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.UpdatedAt
+	}
+	return nil
+}
+
+func (x *Object) GetDeletedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.DeletedAt
+	}
+	return nil
+}
+
 func (x *Object) GetPermissions() []*summary.PermissionSummary {
 	if x != nil {
 		return x.Permissions
@@ -112,15 +128,19 @@ var File_apfish_v1_permission_object_object_proto protoreflect.FileDescriptor
 
 const file_apfish_v1_permission_object_object_proto_rawDesc = "" +
 	"\n" +
-	"(apfish.v1/permission/object/object.proto\x12\x1bapfish.v1.permission.object\x1a\x1fgoogle/protobuf/timestamp.proto\x1a5apfish.v1/permission/summary/permission_summary.proto\"\xf0\x01\n" +
+	"(apfish.v1/permission/object/object.proto\x12\x1bapfish.v1.permission.object\x1a\x1fgoogle/protobuf/timestamp.proto\x1a5apfish.v1/permission/summary/permission_summary.proto\"\xe6\x02\n" +
 	"\x06Object\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12 \n" +
 	"\vdescription\x18\x03 \x01(\tR\vdescription\x12\x12\n" +
 	"\x04code\x18\x04 \x01(\tR\x04code\x129\n" +
 	"\n" +
-	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x12Q\n" +
-	"\vpermissions\x18\x06 \x03(\v2/.apfish.v1.permission.summary.PermissionSummaryR\vpermissionsBVZTgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/object;permission_objectb\x06proto3"
+	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
+	"\n" +
+	"updated_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x129\n" +
+	"\n" +
+	"deleted_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tdeletedAt\x12Q\n" +
+	"\vpermissions\x18\b \x03(\v2/.apfish.v1.permission.summary.PermissionSummaryR\vpermissionsBVZTgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/object;permission_objectb\x06proto3"
 
 var (
 	file_apfish_v1_permission_object_object_proto_rawDescOnce sync.Once
@@ -142,12 +162,14 @@ var file_apfish_v1_permission_object_object_proto_goTypes = []any{
 }
 var file_apfish_v1_permission_object_object_proto_depIdxs = []int32{
 	1, // 0: apfish.v1.permission.object.Object.created_at:type_name -> google.protobuf.Timestamp
-	2, // 1: apfish.v1.permission.object.Object.permissions:type_name -> apfish.v1.permission.summary.PermissionSummary
-	2, // [2:2] is the sub-list for method output_type
-	2, // [2:2] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	1, // 1: apfish.v1.permission.object.Object.updated_at:type_name -> google.protobuf.Timestamp
+	1, // 2: apfish.v1.permission.object.Object.deleted_at:type_name -> google.protobuf.Timestamp
+	2, // 3: apfish.v1.permission.object.Object.permissions:type_name -> apfish.v1.permission.summary.PermissionSummary
+	4, // [4:4] is the sub-list for method output_type
+	4, // [4:4] is the sub-list for method input_type
+	4, // [4:4] is the sub-list for extension type_name
+	4, // [4:4] is the sub-list for extension extendee
+	0, // [0:4] is the sub-list for field type_name
 }
 
 func init() { file_apfish_v1_permission_object_object_proto_init() }

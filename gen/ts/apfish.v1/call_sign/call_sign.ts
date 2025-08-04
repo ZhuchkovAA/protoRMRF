@@ -19,12 +19,24 @@ export interface CallSign {
   limitLower: string;
   limitUpper: string;
   createdAt: Date | undefined;
+  updatedAt: Date | undefined;
+  deletedAt: Date | undefined;
   authorities: AuthoritySummary[];
   ships: ShipSummary[];
 }
 
 function createBaseCallSign(): CallSign {
-  return { id: "", series: "", limitLower: "", limitUpper: "", createdAt: undefined, authorities: [], ships: [] };
+  return {
+    id: "",
+    series: "",
+    limitLower: "",
+    limitUpper: "",
+    createdAt: undefined,
+    updatedAt: undefined,
+    deletedAt: undefined,
+    authorities: [],
+    ships: [],
+  };
 }
 
 export const CallSign = {
@@ -44,11 +56,17 @@ export const CallSign = {
     if (message.createdAt !== undefined) {
       Timestamp.encode(toTimestamp(message.createdAt), writer.uint32(42).fork()).ldelim();
     }
+    if (message.updatedAt !== undefined) {
+      Timestamp.encode(toTimestamp(message.updatedAt), writer.uint32(50).fork()).ldelim();
+    }
+    if (message.deletedAt !== undefined) {
+      Timestamp.encode(toTimestamp(message.deletedAt), writer.uint32(58).fork()).ldelim();
+    }
     for (const v of message.authorities) {
-      AuthoritySummary.encode(v!, writer.uint32(50).fork()).ldelim();
+      AuthoritySummary.encode(v!, writer.uint32(66).fork()).ldelim();
     }
     for (const v of message.ships) {
-      ShipSummary.encode(v!, writer.uint32(58).fork()).ldelim();
+      ShipSummary.encode(v!, writer.uint32(74).fork()).ldelim();
     }
     return writer;
   },
@@ -100,10 +118,24 @@ export const CallSign = {
             break;
           }
 
-          message.authorities.push(AuthoritySummary.decode(reader, reader.uint32()));
+          message.updatedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           continue;
         case 7:
           if (tag !== 58) {
+            break;
+          }
+
+          message.deletedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          continue;
+        case 8:
+          if (tag !== 66) {
+            break;
+          }
+
+          message.authorities.push(AuthoritySummary.decode(reader, reader.uint32()));
+          continue;
+        case 9:
+          if (tag !== 74) {
             break;
           }
 
@@ -125,6 +157,8 @@ export const CallSign = {
       limitLower: isSet(object.limitLower) ? globalThis.String(object.limitLower) : "",
       limitUpper: isSet(object.limitUpper) ? globalThis.String(object.limitUpper) : "",
       createdAt: isSet(object.createdAt) ? fromJsonTimestamp(object.createdAt) : undefined,
+      updatedAt: isSet(object.updatedAt) ? fromJsonTimestamp(object.updatedAt) : undefined,
+      deletedAt: isSet(object.deletedAt) ? fromJsonTimestamp(object.deletedAt) : undefined,
       authorities: globalThis.Array.isArray(object?.authorities)
         ? object.authorities.map((e: any) => AuthoritySummary.fromJSON(e))
         : [],
@@ -149,6 +183,12 @@ export const CallSign = {
     if (message.createdAt !== undefined) {
       obj.createdAt = message.createdAt.toISOString();
     }
+    if (message.updatedAt !== undefined) {
+      obj.updatedAt = message.updatedAt.toISOString();
+    }
+    if (message.deletedAt !== undefined) {
+      obj.deletedAt = message.deletedAt.toISOString();
+    }
     if (message.authorities?.length) {
       obj.authorities = message.authorities.map((e) => AuthoritySummary.toJSON(e));
     }
@@ -168,6 +208,8 @@ export const CallSign = {
     message.limitLower = object.limitLower ?? "";
     message.limitUpper = object.limitUpper ?? "";
     message.createdAt = object.createdAt ?? undefined;
+    message.updatedAt = object.updatedAt ?? undefined;
+    message.deletedAt = object.deletedAt ?? undefined;
     message.authorities = object.authorities?.map((e) => AuthoritySummary.fromPartial(e)) || [];
     message.ships = object.ships?.map((e) => ShipSummary.fromPartial(e)) || [];
     return message;

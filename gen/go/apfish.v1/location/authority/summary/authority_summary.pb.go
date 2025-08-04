@@ -30,7 +30,12 @@ type AuthoritySummary struct {
 	Code           string                 `protobuf:"bytes,4,opt,name=code,proto3" json:"code,omitempty"`
 	IsIlo          bool                   `protobuf:"varint,5,opt,name=is_ilo,json=isIlo,proto3" json:"is_ilo,omitempty"`
 	IsBallastWater bool                   `protobuf:"varint,6,opt,name=is_ballast_water,json=isBallastWater,proto3" json:"is_ballast_water,omitempty"`
-	CreatedAt      *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	TypeId         string                 `protobuf:"bytes,7,opt,name=type_id,json=typeId,proto3" json:"type_id,omitempty"`
+	ParentCode     string                 `protobuf:"bytes,8,opt,name=parent_code,json=parentCode,proto3" json:"parent_code,omitempty"`
+	MouId          string                 `protobuf:"bytes,9,opt,name=mou_id,json=mouId,proto3" json:"mou_id,omitempty"`
+	CreatedAt      *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	UpdatedAt      *timestamppb.Timestamp `protobuf:"bytes,11,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	DeletedAt      *timestamppb.Timestamp `protobuf:"bytes,12,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
@@ -107,9 +112,44 @@ func (x *AuthoritySummary) GetIsBallastWater() bool {
 	return false
 }
 
+func (x *AuthoritySummary) GetTypeId() string {
+	if x != nil {
+		return x.TypeId
+	}
+	return ""
+}
+
+func (x *AuthoritySummary) GetParentCode() string {
+	if x != nil {
+		return x.ParentCode
+	}
+	return ""
+}
+
+func (x *AuthoritySummary) GetMouId() string {
+	if x != nil {
+		return x.MouId
+	}
+	return ""
+}
+
 func (x *AuthoritySummary) GetCreatedAt() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreatedAt
+	}
+	return nil
+}
+
+func (x *AuthoritySummary) GetUpdatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.UpdatedAt
+	}
+	return nil
+}
+
+func (x *AuthoritySummary) GetDeletedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.DeletedAt
 	}
 	return nil
 }
@@ -118,16 +158,25 @@ var File_apfish_v1_location_authority_summary_authority_summary_proto protorefle
 
 const file_apfish_v1_location_authority_summary_authority_summary_proto_rawDesc = "" +
 	"\n" +
-	"<apfish.v1/location/authority/summary/authority_summary.proto\x12$apfish.v1.location.authority.summary\x1a\x1fgoogle/protobuf/timestamp.proto\"\xe1\x01\n" +
+	"<apfish.v1/location/authority/summary/authority_summary.proto\x12$apfish.v1.location.authority.summary\x1a\x1fgoogle/protobuf/timestamp.proto\"\xa8\x03\n" +
 	"\x10AuthoritySummary\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x19\n" +
 	"\bname_rus\x18\x03 \x01(\tR\anameRus\x12\x12\n" +
 	"\x04code\x18\x04 \x01(\tR\x04code\x12\x15\n" +
 	"\x06is_ilo\x18\x05 \x01(\bR\x05isIlo\x12(\n" +
-	"\x10is_ballast_water\x18\x06 \x01(\bR\x0eisBallastWater\x129\n" +
+	"\x10is_ballast_water\x18\x06 \x01(\bR\x0eisBallastWater\x12\x17\n" +
+	"\atype_id\x18\a \x01(\tR\x06typeId\x12\x1f\n" +
+	"\vparent_code\x18\b \x01(\tR\n" +
+	"parentCode\x12\x15\n" +
+	"\x06mou_id\x18\t \x01(\tR\x05mouId\x129\n" +
 	"\n" +
-	"created_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAtBhZfgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/authority/summary;location_authority_summaryb\x06proto3"
+	"created_at\x18\n" +
+	" \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
+	"\n" +
+	"updated_at\x18\v \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x129\n" +
+	"\n" +
+	"deleted_at\x18\f \x01(\v2\x1a.google.protobuf.TimestampR\tdeletedAtBhZfgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/authority/summary;location_authority_summaryb\x06proto3"
 
 var (
 	file_apfish_v1_location_authority_summary_authority_summary_proto_rawDescOnce sync.Once
@@ -148,11 +197,13 @@ var file_apfish_v1_location_authority_summary_authority_summary_proto_goTypes = 
 }
 var file_apfish_v1_location_authority_summary_authority_summary_proto_depIdxs = []int32{
 	1, // 0: apfish.v1.location.authority.summary.AuthoritySummary.created_at:type_name -> google.protobuf.Timestamp
-	1, // [1:1] is the sub-list for method output_type
-	1, // [1:1] is the sub-list for method input_type
-	1, // [1:1] is the sub-list for extension type_name
-	1, // [1:1] is the sub-list for extension extendee
-	0, // [0:1] is the sub-list for field type_name
+	1, // 1: apfish.v1.location.authority.summary.AuthoritySummary.updated_at:type_name -> google.protobuf.Timestamp
+	1, // 2: apfish.v1.location.authority.summary.AuthoritySummary.deleted_at:type_name -> google.protobuf.Timestamp
+	3, // [3:3] is the sub-list for method output_type
+	3, // [3:3] is the sub-list for method input_type
+	3, // [3:3] is the sub-list for extension type_name
+	3, // [3:3] is the sub-list for extension extendee
+	0, // [0:3] is the sub-list for field type_name
 }
 
 func init() { file_apfish_v1_location_authority_summary_authority_summary_proto_init() }

@@ -31,8 +31,10 @@ type CallSign struct {
 	LimitLower    string                      `protobuf:"bytes,3,opt,name=limit_lower,json=limitLower,proto3" json:"limit_lower,omitempty"`
 	LimitUpper    string                      `protobuf:"bytes,4,opt,name=limit_upper,json=limitUpper,proto3" json:"limit_upper,omitempty"`
 	CreatedAt     *timestamppb.Timestamp      `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	Authorities   []*summary.AuthoritySummary `protobuf:"bytes,6,rep,name=authorities,proto3" json:"authorities,omitempty"`
-	Ships         []*summary1.ShipSummary     `protobuf:"bytes,7,rep,name=ships,proto3" json:"ships,omitempty"`
+	UpdatedAt     *timestamppb.Timestamp      `protobuf:"bytes,6,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	DeletedAt     *timestamppb.Timestamp      `protobuf:"bytes,7,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty"`
+	Authorities   []*summary.AuthoritySummary `protobuf:"bytes,8,rep,name=authorities,proto3" json:"authorities,omitempty"`
+	Ships         []*summary1.ShipSummary     `protobuf:"bytes,9,rep,name=ships,proto3" json:"ships,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -102,6 +104,20 @@ func (x *CallSign) GetCreatedAt() *timestamppb.Timestamp {
 	return nil
 }
 
+func (x *CallSign) GetUpdatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.UpdatedAt
+	}
+	return nil
+}
+
+func (x *CallSign) GetDeletedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.DeletedAt
+	}
+	return nil
+}
+
 func (x *CallSign) GetAuthorities() []*summary.AuthoritySummary {
 	if x != nil {
 		return x.Authorities
@@ -120,7 +136,7 @@ var File_apfish_v1_call_sign_call_sign_proto protoreflect.FileDescriptor
 
 const file_apfish_v1_call_sign_call_sign_proto_rawDesc = "" +
 	"\n" +
-	"#apfish.v1/call_sign/call_sign.proto\x12\x13apfish.v1.call_sign\x1a\x1fgoogle/protobuf/timestamp.proto\x1a<apfish.v1/location/authority/summary/authority_summary.proto\x1a)apfish.v1/ship/summary/ship_summary.proto\"\xc4\x02\n" +
+	"#apfish.v1/call_sign/call_sign.proto\x12\x13apfish.v1.call_sign\x1a\x1fgoogle/protobuf/timestamp.proto\x1a<apfish.v1/location/authority/summary/authority_summary.proto\x1a)apfish.v1/ship/summary/ship_summary.proto\"\xba\x03\n" +
 	"\bCallSign\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x16\n" +
 	"\x06series\x18\x02 \x01(\tR\x06series\x12\x1f\n" +
@@ -129,9 +145,13 @@ const file_apfish_v1_call_sign_call_sign_proto_rawDesc = "" +
 	"\vlimit_upper\x18\x04 \x01(\tR\n" +
 	"limitUpper\x129\n" +
 	"\n" +
-	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x12X\n" +
-	"\vauthorities\x18\x06 \x03(\v26.apfish.v1.location.authority.summary.AuthoritySummaryR\vauthorities\x129\n" +
-	"\x05ships\x18\a \x03(\v2#.apfish.v1.ship.summary.ShipSummaryR\x05shipsBFZDgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/call_sign;call_signb\x06proto3"
+	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
+	"\n" +
+	"updated_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x129\n" +
+	"\n" +
+	"deleted_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tdeletedAt\x12X\n" +
+	"\vauthorities\x18\b \x03(\v26.apfish.v1.location.authority.summary.AuthoritySummaryR\vauthorities\x129\n" +
+	"\x05ships\x18\t \x03(\v2#.apfish.v1.ship.summary.ShipSummaryR\x05shipsBFZDgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/call_sign;call_signb\x06proto3"
 
 var (
 	file_apfish_v1_call_sign_call_sign_proto_rawDescOnce sync.Once
@@ -154,13 +174,15 @@ var file_apfish_v1_call_sign_call_sign_proto_goTypes = []any{
 }
 var file_apfish_v1_call_sign_call_sign_proto_depIdxs = []int32{
 	1, // 0: apfish.v1.call_sign.CallSign.created_at:type_name -> google.protobuf.Timestamp
-	2, // 1: apfish.v1.call_sign.CallSign.authorities:type_name -> apfish.v1.location.authority.summary.AuthoritySummary
-	3, // 2: apfish.v1.call_sign.CallSign.ships:type_name -> apfish.v1.ship.summary.ShipSummary
-	3, // [3:3] is the sub-list for method output_type
-	3, // [3:3] is the sub-list for method input_type
-	3, // [3:3] is the sub-list for extension type_name
-	3, // [3:3] is the sub-list for extension extendee
-	0, // [0:3] is the sub-list for field type_name
+	1, // 1: apfish.v1.call_sign.CallSign.updated_at:type_name -> google.protobuf.Timestamp
+	1, // 2: apfish.v1.call_sign.CallSign.deleted_at:type_name -> google.protobuf.Timestamp
+	2, // 3: apfish.v1.call_sign.CallSign.authorities:type_name -> apfish.v1.location.authority.summary.AuthoritySummary
+	3, // 4: apfish.v1.call_sign.CallSign.ships:type_name -> apfish.v1.ship.summary.ShipSummary
+	5, // [5:5] is the sub-list for method output_type
+	5, // [5:5] is the sub-list for method input_type
+	5, // [5:5] is the sub-list for extension type_name
+	5, // [5:5] is the sub-list for extension extendee
+	0, // [0:5] is the sub-list for field type_name
 }
 
 func init() { file_apfish_v1_call_sign_call_sign_proto_init() }

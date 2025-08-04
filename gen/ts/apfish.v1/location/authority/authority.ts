@@ -22,6 +22,8 @@ export interface Authority {
   isIlo: boolean;
   isBallastWater: boolean;
   createdAt: Date | undefined;
+  updatedAt: Date | undefined;
+  deletedAt: Date | undefined;
   ports: PortSummary[];
   callSigns: CallSignSummary[];
   permissions: PermissionSummary[];
@@ -36,6 +38,8 @@ function createBaseAuthority(): Authority {
     isIlo: false,
     isBallastWater: false,
     createdAt: undefined,
+    updatedAt: undefined,
+    deletedAt: undefined,
     ports: [],
     callSigns: [],
     permissions: [],
@@ -65,14 +69,20 @@ export const Authority = {
     if (message.createdAt !== undefined) {
       Timestamp.encode(toTimestamp(message.createdAt), writer.uint32(58).fork()).ldelim();
     }
+    if (message.updatedAt !== undefined) {
+      Timestamp.encode(toTimestamp(message.updatedAt), writer.uint32(66).fork()).ldelim();
+    }
+    if (message.deletedAt !== undefined) {
+      Timestamp.encode(toTimestamp(message.deletedAt), writer.uint32(74).fork()).ldelim();
+    }
     for (const v of message.ports) {
-      PortSummary.encode(v!, writer.uint32(66).fork()).ldelim();
+      PortSummary.encode(v!, writer.uint32(82).fork()).ldelim();
     }
     for (const v of message.callSigns) {
-      CallSignSummary.encode(v!, writer.uint32(74).fork()).ldelim();
+      CallSignSummary.encode(v!, writer.uint32(90).fork()).ldelim();
     }
     for (const v of message.permissions) {
-      PermissionSummary.encode(v!, writer.uint32(82).fork()).ldelim();
+      PermissionSummary.encode(v!, writer.uint32(98).fork()).ldelim();
     }
     return writer;
   },
@@ -138,17 +148,31 @@ export const Authority = {
             break;
           }
 
-          message.ports.push(PortSummary.decode(reader, reader.uint32()));
+          message.updatedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           continue;
         case 9:
           if (tag !== 74) {
             break;
           }
 
-          message.callSigns.push(CallSignSummary.decode(reader, reader.uint32()));
+          message.deletedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           continue;
         case 10:
           if (tag !== 82) {
+            break;
+          }
+
+          message.ports.push(PortSummary.decode(reader, reader.uint32()));
+          continue;
+        case 11:
+          if (tag !== 90) {
+            break;
+          }
+
+          message.callSigns.push(CallSignSummary.decode(reader, reader.uint32()));
+          continue;
+        case 12:
+          if (tag !== 98) {
             break;
           }
 
@@ -172,6 +196,8 @@ export const Authority = {
       isIlo: isSet(object.isIlo) ? globalThis.Boolean(object.isIlo) : false,
       isBallastWater: isSet(object.isBallastWater) ? globalThis.Boolean(object.isBallastWater) : false,
       createdAt: isSet(object.createdAt) ? fromJsonTimestamp(object.createdAt) : undefined,
+      updatedAt: isSet(object.updatedAt) ? fromJsonTimestamp(object.updatedAt) : undefined,
+      deletedAt: isSet(object.deletedAt) ? fromJsonTimestamp(object.deletedAt) : undefined,
       ports: globalThis.Array.isArray(object?.ports) ? object.ports.map((e: any) => PortSummary.fromJSON(e)) : [],
       callSigns: globalThis.Array.isArray(object?.callSigns)
         ? object.callSigns.map((e: any) => CallSignSummary.fromJSON(e))
@@ -205,6 +231,12 @@ export const Authority = {
     if (message.createdAt !== undefined) {
       obj.createdAt = message.createdAt.toISOString();
     }
+    if (message.updatedAt !== undefined) {
+      obj.updatedAt = message.updatedAt.toISOString();
+    }
+    if (message.deletedAt !== undefined) {
+      obj.deletedAt = message.deletedAt.toISOString();
+    }
     if (message.ports?.length) {
       obj.ports = message.ports.map((e) => PortSummary.toJSON(e));
     }
@@ -229,6 +261,8 @@ export const Authority = {
     message.isIlo = object.isIlo ?? false;
     message.isBallastWater = object.isBallastWater ?? false;
     message.createdAt = object.createdAt ?? undefined;
+    message.updatedAt = object.updatedAt ?? undefined;
+    message.deletedAt = object.deletedAt ?? undefined;
     message.ports = object.ports?.map((e) => PortSummary.fromPartial(e)) || [];
     message.callSigns = object.callSigns?.map((e) => CallSignSummary.fromPartial(e)) || [];
     message.permissions = object.permissions?.map((e) => PermissionSummary.fromPartial(e)) || [];

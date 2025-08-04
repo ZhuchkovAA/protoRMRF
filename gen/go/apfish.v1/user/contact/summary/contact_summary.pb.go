@@ -26,9 +26,11 @@ type ContactSummary struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"` // Unique contact ID.
 	UserId        string                 `protobuf:"bytes,2,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
-	TypeId        string                 `protobuf:"bytes,3,opt,name=type_id,json=typeId,proto3" json:"type_id,omitempty"`          // Contact type.
-	Value         string                 `protobuf:"bytes,4,opt,name=value,proto3" json:"value,omitempty"`                          // Contact value (e.g., "user@example.com").
-	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"` // When the contact was added.
+	TypeId        string                 `protobuf:"bytes,3,opt,name=type_id,json=typeId,proto3" json:"type_id,omitempty"` // Contact type.
+	Value         string                 `protobuf:"bytes,4,opt,name=value,proto3" json:"value,omitempty"`                 // Contact value (e.g., "user@example.com").
+	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	DeletedAt     *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -98,18 +100,36 @@ func (x *ContactSummary) GetCreatedAt() *timestamppb.Timestamp {
 	return nil
 }
 
+func (x *ContactSummary) GetUpdatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.UpdatedAt
+	}
+	return nil
+}
+
+func (x *ContactSummary) GetDeletedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.DeletedAt
+	}
+	return nil
+}
+
 var File_apfish_v1_user_contact_summary_contact_summary_proto protoreflect.FileDescriptor
 
 const file_apfish_v1_user_contact_summary_contact_summary_proto_rawDesc = "" +
 	"\n" +
-	"4apfish.v1/user/contact/summary/contact_summary.proto\x12\x1eapfish.v1.user.contact.summary\x1a\x1fgoogle/protobuf/timestamp.proto\"\xa3\x01\n" +
+	"4apfish.v1/user/contact/summary/contact_summary.proto\x12\x1eapfish.v1.user.contact.summary\x1a\x1fgoogle/protobuf/timestamp.proto\"\x99\x02\n" +
 	"\x0eContactSummary\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x17\n" +
 	"\auser_id\x18\x02 \x01(\tR\x06userId\x12\x17\n" +
 	"\atype_id\x18\x03 \x01(\tR\x06typeId\x12\x14\n" +
 	"\x05value\x18\x04 \x01(\tR\x05value\x129\n" +
 	"\n" +
-	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAtB\\ZZgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/contact/summary;user_contact_summaryb\x06proto3"
+	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
+	"\n" +
+	"updated_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x129\n" +
+	"\n" +
+	"deleted_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tdeletedAtB\\ZZgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/contact/summary;user_contact_summaryb\x06proto3"
 
 var (
 	file_apfish_v1_user_contact_summary_contact_summary_proto_rawDescOnce sync.Once
@@ -130,11 +150,13 @@ var file_apfish_v1_user_contact_summary_contact_summary_proto_goTypes = []any{
 }
 var file_apfish_v1_user_contact_summary_contact_summary_proto_depIdxs = []int32{
 	1, // 0: apfish.v1.user.contact.summary.ContactSummary.created_at:type_name -> google.protobuf.Timestamp
-	1, // [1:1] is the sub-list for method output_type
-	1, // [1:1] is the sub-list for method input_type
-	1, // [1:1] is the sub-list for extension type_name
-	1, // [1:1] is the sub-list for extension extendee
-	0, // [0:1] is the sub-list for field type_name
+	1, // 1: apfish.v1.user.contact.summary.ContactSummary.updated_at:type_name -> google.protobuf.Timestamp
+	1, // 2: apfish.v1.user.contact.summary.ContactSummary.deleted_at:type_name -> google.protobuf.Timestamp
+	3, // [3:3] is the sub-list for method output_type
+	3, // [3:3] is the sub-list for method input_type
+	3, // [3:3] is the sub-list for extension type_name
+	3, // [3:3] is the sub-list for extension extendee
+	0, // [0:3] is the sub-list for field type_name
 }
 
 func init() { file_apfish_v1_user_contact_summary_contact_summary_proto_init() }

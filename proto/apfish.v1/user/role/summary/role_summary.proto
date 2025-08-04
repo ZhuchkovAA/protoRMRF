@@ -10,5 +10,7 @@ message RoleSummary {
   string id = 1;                       // Unique role ID.
   string name = 2;                    // Human-readable name (e.g., "Admin").
   string code = 3;
-  google.protobuf.Timestamp created_at = 4;  // When the role was created.
+  google.protobuf.Timestamp created_at = 4;
+  google.protobuf.Timestamp updated_at = 5;
+  google.protobuf.Timestamp deleted_at = 6;
 }

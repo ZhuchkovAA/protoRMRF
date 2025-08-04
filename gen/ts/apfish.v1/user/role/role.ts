@@ -21,15 +21,25 @@ export interface Role {
   name: string;
   /** Machine-friendly code (e.g., "admin"). */
   code: string;
-  /** When the role was created. */
   createdAt: Date | undefined;
+  updatedAt: Date | undefined;
+  deletedAt: Date | undefined;
   users: UserSummary[];
   /** Permissions granted by this role. */
   permissions: PermissionSummary[];
 }
 
 function createBaseRole(): Role {
-  return { id: "", name: "", code: "", createdAt: undefined, users: [], permissions: [] };
+  return {
+    id: "",
+    name: "",
+    code: "",
+    createdAt: undefined,
+    updatedAt: undefined,
+    deletedAt: undefined,
+    users: [],
+    permissions: [],
+  };
 }
 
 export const Role = {
@@ -46,11 +56,17 @@ export const Role = {
     if (message.createdAt !== undefined) {
       Timestamp.encode(toTimestamp(message.createdAt), writer.uint32(34).fork()).ldelim();
     }
+    if (message.updatedAt !== undefined) {
+      Timestamp.encode(toTimestamp(message.updatedAt), writer.uint32(42).fork()).ldelim();
+    }
+    if (message.deletedAt !== undefined) {
+      Timestamp.encode(toTimestamp(message.deletedAt), writer.uint32(50).fork()).ldelim();
+    }
     for (const v of message.users) {
-      UserSummary.encode(v!, writer.uint32(42).fork()).ldelim();
+      UserSummary.encode(v!, writer.uint32(58).fork()).ldelim();
     }
     for (const v of message.permissions) {
-      PermissionSummary.encode(v!, writer.uint32(50).fork()).ldelim();
+      PermissionSummary.encode(v!, writer.uint32(66).fork()).ldelim();
     }
     return writer;
   },
@@ -95,10 +111,24 @@ export const Role = {
             break;
           }
 
-          message.users.push(UserSummary.decode(reader, reader.uint32()));
+          message.updatedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           continue;
         case 6:
           if (tag !== 50) {
+            break;
+          }
+
+          message.deletedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          continue;
+        case 7:
+          if (tag !== 58) {
+            break;
+          }
+
+          message.users.push(UserSummary.decode(reader, reader.uint32()));
+          continue;
+        case 8:
+          if (tag !== 66) {
             break;
           }
 
@@ -119,6 +149,8 @@ export const Role = {
       name: isSet(object.name) ? globalThis.String(object.name) : "",
       code: isSet(object.code) ? globalThis.String(object.code) : "",
       createdAt: isSet(object.createdAt) ? fromJsonTimestamp(object.createdAt) : undefined,
+      updatedAt: isSet(object.updatedAt) ? fromJsonTimestamp(object.updatedAt) : undefined,
+      deletedAt: isSet(object.deletedAt) ? fromJsonTimestamp(object.deletedAt) : undefined,
       users: globalThis.Array.isArray(object?.users) ? object.users.map((e: any) => UserSummary.fromJSON(e)) : [],
       permissions: globalThis.Array.isArray(object?.permissions)
         ? object.permissions.map((e: any) => PermissionSummary.fromJSON(e))
@@ -140,6 +172,12 @@ export const Role = {
     if (message.createdAt !== undefined) {
       obj.createdAt = message.createdAt.toISOString();
     }
+    if (message.updatedAt !== undefined) {
+      obj.updatedAt = message.updatedAt.toISOString();
+    }
+    if (message.deletedAt !== undefined) {
+      obj.deletedAt = message.deletedAt.toISOString();
+    }
     if (message.users?.length) {
       obj.users = message.users.map((e) => UserSummary.toJSON(e));
     }
@@ -158,6 +196,8 @@ export const Role = {
     message.name = object.name ?? "";
     message.code = object.code ?? "";
     message.createdAt = object.createdAt ?? undefined;
+    message.updatedAt = object.updatedAt ?? undefined;
+    message.deletedAt = object.deletedAt ?? undefined;
     message.users = object.users?.map((e) => UserSummary.fromPartial(e)) || [];
     message.permissions = object.permissions?.map((e) => PermissionSummary.fromPartial(e)) || [];
     return message;

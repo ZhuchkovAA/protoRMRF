@@ -27,12 +27,14 @@ const (
 // Defines a user role (e.g., "Admin", "Editor").
 type Role struct {
 	state         protoimpl.MessageState        `protogen:"open.v1"`
-	Id            string                        `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`                                // Unique role ID.
-	Name          string                        `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`                            // Human-readable name (e.g., "Admin").
-	Code          string                        `protobuf:"bytes,3,opt,name=code,proto3" json:"code,omitempty"`                            // Machine-friendly code (e.g., "admin").
-	CreatedAt     *timestamppb.Timestamp        `protobuf:"bytes,4,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"` // When the role was created.
-	Users         []*summary.UserSummary        `protobuf:"bytes,5,rep,name=users,proto3" json:"users,omitempty"`
-	Permissions   []*summary1.PermissionSummary `protobuf:"bytes,6,rep,name=permissions,proto3" json:"permissions,omitempty"` // Permissions granted by this role.
+	Id            string                        `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`     // Unique role ID.
+	Name          string                        `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"` // Human-readable name (e.g., "Admin").
+	Code          string                        `protobuf:"bytes,3,opt,name=code,proto3" json:"code,omitempty"` // Machine-friendly code (e.g., "admin").
+	CreatedAt     *timestamppb.Timestamp        `protobuf:"bytes,4,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	UpdatedAt     *timestamppb.Timestamp        `protobuf:"bytes,5,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	DeletedAt     *timestamppb.Timestamp        `protobuf:"bytes,6,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty"`
+	Users         []*summary.UserSummary        `protobuf:"bytes,7,rep,name=users,proto3" json:"users,omitempty"`
+	Permissions   []*summary1.PermissionSummary `protobuf:"bytes,8,rep,name=permissions,proto3" json:"permissions,omitempty"` // Permissions granted by this role.
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -95,6 +97,20 @@ func (x *Role) GetCreatedAt() *timestamppb.Timestamp {
 	return nil
 }
 
+func (x *Role) GetUpdatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.UpdatedAt
+	}
+	return nil
+}
+
+func (x *Role) GetDeletedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.DeletedAt
+	}
+	return nil
+}
+
 func (x *Role) GetUsers() []*summary.UserSummary {
 	if x != nil {
 		return x.Users
@@ -113,15 +129,19 @@ var File_apfish_v1_user_role_role_proto protoreflect.FileDescriptor
 
 const file_apfish_v1_user_role_role_proto_rawDesc = "" +
 	"\n" +
-	"\x1eapfish.v1/user/role/role.proto\x12\x13apfish.v1.user.role\x1a\x1fgoogle/protobuf/timestamp.proto\x1a)apfish.v1/user/summary/user_summary.proto\x1a5apfish.v1/permission/summary/permission_summary.proto\"\x87\x02\n" +
+	"\x1eapfish.v1/user/role/role.proto\x12\x13apfish.v1.user.role\x1a\x1fgoogle/protobuf/timestamp.proto\x1a)apfish.v1/user/summary/user_summary.proto\x1a5apfish.v1/permission/summary/permission_summary.proto\"\xfd\x02\n" +
 	"\x04Role\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x12\n" +
 	"\x04code\x18\x03 \x01(\tR\x04code\x129\n" +
 	"\n" +
 	"created_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
-	"\x05users\x18\x05 \x03(\v2#.apfish.v1.user.summary.UserSummaryR\x05users\x12Q\n" +
-	"\vpermissions\x18\x06 \x03(\v2/.apfish.v1.permission.summary.PermissionSummaryR\vpermissionsBFZDgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/role;user_roleb\x06proto3"
+	"\n" +
+	"updated_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x129\n" +
+	"\n" +
+	"deleted_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tdeletedAt\x129\n" +
+	"\x05users\x18\a \x03(\v2#.apfish.v1.user.summary.UserSummaryR\x05users\x12Q\n" +
+	"\vpermissions\x18\b \x03(\v2/.apfish.v1.permission.summary.PermissionSummaryR\vpermissionsBFZDgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/role;user_roleb\x06proto3"
 
 var (
 	file_apfish_v1_user_role_role_proto_rawDescOnce sync.Once
@@ -144,13 +164,15 @@ var file_apfish_v1_user_role_role_proto_goTypes = []any{
 }
 var file_apfish_v1_user_role_role_proto_depIdxs = []int32{
 	1, // 0: apfish.v1.user.role.Role.created_at:type_name -> google.protobuf.Timestamp
-	2, // 1: apfish.v1.user.role.Role.users:type_name -> apfish.v1.user.summary.UserSummary
-	3, // 2: apfish.v1.user.role.Role.permissions:type_name -> apfish.v1.permission.summary.PermissionSummary
-	3, // [3:3] is the sub-list for method output_type
-	3, // [3:3] is the sub-list for method input_type
-	3, // [3:3] is the sub-list for extension type_name
-	3, // [3:3] is the sub-list for extension extendee
-	0, // [0:3] is the sub-list for field type_name
+	1, // 1: apfish.v1.user.role.Role.updated_at:type_name -> google.protobuf.Timestamp
+	1, // 2: apfish.v1.user.role.Role.deleted_at:type_name -> google.protobuf.Timestamp
+	2, // 3: apfish.v1.user.role.Role.users:type_name -> apfish.v1.user.summary.UserSummary
+	3, // 4: apfish.v1.user.role.Role.permissions:type_name -> apfish.v1.permission.summary.PermissionSummary
+	5, // [5:5] is the sub-list for method output_type
+	5, // [5:5] is the sub-list for method input_type
+	5, // [5:5] is the sub-list for extension type_name
+	5, // [5:5] is the sub-list for extension extendee
+	0, // [0:5] is the sub-list for field type_name
 }
 
 func init() { file_apfish_v1_user_role_role_proto_init() }

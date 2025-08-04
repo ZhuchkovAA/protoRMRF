@@ -14,6 +14,8 @@ message PermissionSummary {
   string name = 5;                // Display name (e.g., "Read Inspections")
   string code = 6;                // Machine-readable identifier (e.g., "inspection:read")
   google.protobuf.Timestamp created_at = 7;
+  google.protobuf.Timestamp updated_at = 8;
+  google.protobuf.Timestamp deleted_at = 9;
 }
 
 message PermissionJwt {

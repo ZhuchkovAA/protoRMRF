@@ -14,9 +14,11 @@ message Type {
   string id = 1;                       // Unique type ID.
   string name = 2;                    // Human-readable name (e.g., "Email").
   string code = 3;                    // Machine-friendly code (e.g., "email").
-  google.protobuf.Timestamp created_at = 4;  // When the type was defined.
+  google.protobuf.Timestamp created_at = 4;
+  google.protobuf.Timestamp updated_at = 5;
+  google.protobuf.Timestamp deleted_at = 6;
 
-  repeated user.contact.summary.ContactSummary contacts = 5;
+  repeated user.contact.summary.ContactSummary contacts = 7;
 }
 
 message TypePatch {

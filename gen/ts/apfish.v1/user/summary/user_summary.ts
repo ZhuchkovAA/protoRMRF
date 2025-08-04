@@ -21,11 +21,11 @@ export interface UserSummary {
   middleName: string;
   /** Assigned role. */
   roleId: string;
-  /** When the user was created. */
-  createdAt: Date | undefined;
-  isActive: boolean;
   /** Login of the creator (e.g., "admin"). */
   createdByLogin: string;
+  createdAt: Date | undefined;
+  updatedAt: Date | undefined;
+  deletedAt: Date | undefined;
 }
 
 function createBaseUserSummary(): UserSummary {
@@ -36,9 +36,10 @@ function createBaseUserSummary(): UserSummary {
     lastName: "",
     middleName: "",
     roleId: "",
-    createdAt: undefined,
-    isActive: false,
     createdByLogin: "",
+    createdAt: undefined,
+    updatedAt: undefined,
+    deletedAt: undefined,
   };
 }
 
@@ -62,14 +63,17 @@ export const UserSummary = {
     if (message.roleId !== "") {
       writer.uint32(50).string(message.roleId);
     }
-    if (message.createdAt !== undefined) {
-      Timestamp.encode(toTimestamp(message.createdAt), writer.uint32(58).fork()).ldelim();
-    }
-    if (message.isActive !== false) {
-      writer.uint32(64).bool(message.isActive);
-    }
     if (message.createdByLogin !== "") {
-      writer.uint32(74).string(message.createdByLogin);
+      writer.uint32(58).string(message.createdByLogin);
+    }
+    if (message.createdAt !== undefined) {
+      Timestamp.encode(toTimestamp(message.createdAt), writer.uint32(66).fork()).ldelim();
+    }
+    if (message.updatedAt !== undefined) {
+      Timestamp.encode(toTimestamp(message.updatedAt), writer.uint32(74).fork()).ldelim();
+    }
+    if (message.deletedAt !== undefined) {
+      Timestamp.encode(toTimestamp(message.deletedAt), writer.uint32(82).fork()).ldelim();
     }
     return writer;
   },
@@ -128,21 +132,28 @@ export const UserSummary = {
             break;
           }
 
-          message.createdAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          message.createdByLogin = reader.string();
           continue;
         case 8:
-          if (tag !== 64) {
+          if (tag !== 66) {
             break;
           }
 
-          message.isActive = reader.bool();
+          message.createdAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           continue;
         case 9:
           if (tag !== 74) {
             break;
           }
 
-          message.createdByLogin = reader.string();
+          message.updatedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          continue;
+        case 10:
+          if (tag !== 82) {
+            break;
+          }
+
+          message.deletedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           continue;
       }
       if ((tag & 7) === 4 || tag === 0) {
@@ -161,9 +172,10 @@ export const UserSummary = {
       lastName: isSet(object.lastName) ? globalThis.String(object.lastName) : "",
       middleName: isSet(object.middleName) ? globalThis.String(object.middleName) : "",
       roleId: isSet(object.roleId) ? globalThis.String(object.roleId) : "",
-      createdAt: isSet(object.createdAt) ? fromJsonTimestamp(object.createdAt) : undefined,
-      isActive: isSet(object.isActive) ? globalThis.Boolean(object.isActive) : false,
       createdByLogin: isSet(object.createdByLogin) ? globalThis.String(object.createdByLogin) : "",
+      createdAt: isSet(object.createdAt) ? fromJsonTimestamp(object.createdAt) : undefined,
+      updatedAt: isSet(object.updatedAt) ? fromJsonTimestamp(object.updatedAt) : undefined,
+      deletedAt: isSet(object.deletedAt) ? fromJsonTimestamp(object.deletedAt) : undefined,
     };
   },
 
@@ -187,14 +199,17 @@ export const UserSummary = {
     if (message.roleId !== "") {
       obj.roleId = message.roleId;
     }
+    if (message.createdByLogin !== "") {
+      obj.createdByLogin = message.createdByLogin;
+    }
     if (message.createdAt !== undefined) {
       obj.createdAt = message.createdAt.toISOString();
     }
-    if (message.isActive !== false) {
-      obj.isActive = message.isActive;
+    if (message.updatedAt !== undefined) {
+      obj.updatedAt = message.updatedAt.toISOString();
     }
-    if (message.createdByLogin !== "") {
-      obj.createdByLogin = message.createdByLogin;
+    if (message.deletedAt !== undefined) {
+      obj.deletedAt = message.deletedAt.toISOString();
     }
     return obj;
   },
@@ -210,9 +225,10 @@ export const UserSummary = {
     message.lastName = object.lastName ?? "";
     message.middleName = object.middleName ?? "";
     message.roleId = object.roleId ?? "";
-    message.createdAt = object.createdAt ?? undefined;
-    message.isActive = object.isActive ?? false;
     message.createdByLogin = object.createdByLogin ?? "";
+    message.createdAt = object.createdAt ?? undefined;
+    message.updatedAt = object.updatedAt ?? undefined;
+    message.deletedAt = object.deletedAt ?? undefined;
     return message;
   },
 };

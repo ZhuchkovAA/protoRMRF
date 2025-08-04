@@ -19,13 +19,22 @@ export interface Type {
   /** Human-readable name (e.g., "Email"). */
   name: string;
   nameRus: string;
-  /** When the type was defined. */
   createdAt: Date | undefined;
+  updatedAt: Date | undefined;
+  deletedAt: Date | undefined;
   authorities: AuthoritySummary[];
 }
 
 function createBaseType(): Type {
-  return { id: "", name: "", nameRus: "", createdAt: undefined, authorities: [] };
+  return {
+    id: "",
+    name: "",
+    nameRus: "",
+    createdAt: undefined,
+    updatedAt: undefined,
+    deletedAt: undefined,
+    authorities: [],
+  };
 }
 
 export const Type = {
@@ -42,8 +51,14 @@ export const Type = {
     if (message.createdAt !== undefined) {
       Timestamp.encode(toTimestamp(message.createdAt), writer.uint32(34).fork()).ldelim();
     }
+    if (message.updatedAt !== undefined) {
+      Timestamp.encode(toTimestamp(message.updatedAt), writer.uint32(42).fork()).ldelim();
+    }
+    if (message.deletedAt !== undefined) {
+      Timestamp.encode(toTimestamp(message.deletedAt), writer.uint32(50).fork()).ldelim();
+    }
     for (const v of message.authorities) {
-      AuthoritySummary.encode(v!, writer.uint32(42).fork()).ldelim();
+      AuthoritySummary.encode(v!, writer.uint32(58).fork()).ldelim();
     }
     return writer;
   },
@@ -88,6 +103,20 @@ export const Type = {
             break;
           }
 
+          message.updatedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          continue;
+        case 6:
+          if (tag !== 50) {
+            break;
+          }
+
+          message.deletedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          continue;
+        case 7:
+          if (tag !== 58) {
+            break;
+          }
+
           message.authorities.push(AuthoritySummary.decode(reader, reader.uint32()));
           continue;
       }
@@ -105,6 +134,8 @@ export const Type = {
       name: isSet(object.name) ? globalThis.String(object.name) : "",
       nameRus: isSet(object.nameRus) ? globalThis.String(object.nameRus) : "",
       createdAt: isSet(object.createdAt) ? fromJsonTimestamp(object.createdAt) : undefined,
+      updatedAt: isSet(object.updatedAt) ? fromJsonTimestamp(object.updatedAt) : undefined,
+      deletedAt: isSet(object.deletedAt) ? fromJsonTimestamp(object.deletedAt) : undefined,
       authorities: globalThis.Array.isArray(object?.authorities)
         ? object.authorities.map((e: any) => AuthoritySummary.fromJSON(e))
         : [],
@@ -125,6 +156,12 @@ export const Type = {
     if (message.createdAt !== undefined) {
       obj.createdAt = message.createdAt.toISOString();
     }
+    if (message.updatedAt !== undefined) {
+      obj.updatedAt = message.updatedAt.toISOString();
+    }
+    if (message.deletedAt !== undefined) {
+      obj.deletedAt = message.deletedAt.toISOString();
+    }
     if (message.authorities?.length) {
       obj.authorities = message.authorities.map((e) => AuthoritySummary.toJSON(e));
     }
@@ -140,6 +177,8 @@ export const Type = {
     message.name = object.name ?? "";
     message.nameRus = object.nameRus ?? "";
     message.createdAt = object.createdAt ?? undefined;
+    message.updatedAt = object.updatedAt ?? undefined;
+    message.deletedAt = object.deletedAt ?? undefined;
     message.authorities = object.authorities?.map((e) => AuthoritySummary.fromPartial(e)) || [];
     return message;
   },

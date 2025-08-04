@@ -9,12 +9,16 @@ import "google/protobuf/timestamp.proto";  // Standard Protocol Buffers timestam
 import "apfish.v1/location/port/summary/port_summary.proto";
 
 import "apfish.v1/permission/summary/permission_summary.proto";
+import "apfish.v1/location/authority/summary/authority_summary.proto";
 
 message District {
   string id = 1;
   string name = 2;
-  google.protobuf.Timestamp created_at = 3;
+  apfish.v1.location.authority.summary.AuthoritySummary authority = 3;
+  google.protobuf.Timestamp created_at = 4;
+  google.protobuf.Timestamp updated_at = 5;
+  google.protobuf.Timestamp deleted_at = 6;
 
-  repeated apfish.v1.location.port.summary.PortSummary ports = 4;
-  repeated apfish.v1.permission.summary.PermissionSummary permissions = 5;
+  repeated apfish.v1.location.port.summary.PortSummary ports = 7;
+  repeated apfish.v1.permission.summary.PermissionSummary permissions = 8;
 }

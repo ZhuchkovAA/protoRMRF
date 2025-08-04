@@ -27,8 +27,9 @@ export interface Contact {
     | undefined;
   /** Contact value (e.g., "user@example.com"). */
   value: string;
-  /** When the contact was added. */
   createdAt: Date | undefined;
+  updatedAt: Date | undefined;
+  deletedAt: Date | undefined;
 }
 
 export interface ContactPatch {
@@ -39,7 +40,15 @@ export interface ContactPatch {
 }
 
 function createBaseContact(): Contact {
-  return { id: "", user: undefined, type: undefined, value: "", createdAt: undefined };
+  return {
+    id: "",
+    user: undefined,
+    type: undefined,
+    value: "",
+    createdAt: undefined,
+    updatedAt: undefined,
+    deletedAt: undefined,
+  };
 }
 
 export const Contact = {
@@ -58,6 +67,12 @@ export const Contact = {
     }
     if (message.createdAt !== undefined) {
       Timestamp.encode(toTimestamp(message.createdAt), writer.uint32(42).fork()).ldelim();
+    }
+    if (message.updatedAt !== undefined) {
+      Timestamp.encode(toTimestamp(message.updatedAt), writer.uint32(50).fork()).ldelim();
+    }
+    if (message.deletedAt !== undefined) {
+      Timestamp.encode(toTimestamp(message.deletedAt), writer.uint32(58).fork()).ldelim();
     }
     return writer;
   },
@@ -104,6 +119,20 @@ export const Contact = {
 
           message.createdAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           continue;
+        case 6:
+          if (tag !== 50) {
+            break;
+          }
+
+          message.updatedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          continue;
+        case 7:
+          if (tag !== 58) {
+            break;
+          }
+
+          message.deletedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          continue;
       }
       if ((tag & 7) === 4 || tag === 0) {
         break;
@@ -120,6 +149,8 @@ export const Contact = {
       type: isSet(object.type) ? TypeSummary.fromJSON(object.type) : undefined,
       value: isSet(object.value) ? globalThis.String(object.value) : "",
       createdAt: isSet(object.createdAt) ? fromJsonTimestamp(object.createdAt) : undefined,
+      updatedAt: isSet(object.updatedAt) ? fromJsonTimestamp(object.updatedAt) : undefined,
+      deletedAt: isSet(object.deletedAt) ? fromJsonTimestamp(object.deletedAt) : undefined,
     };
   },
 
@@ -140,6 +171,12 @@ export const Contact = {
     if (message.createdAt !== undefined) {
       obj.createdAt = message.createdAt.toISOString();
     }
+    if (message.updatedAt !== undefined) {
+      obj.updatedAt = message.updatedAt.toISOString();
+    }
+    if (message.deletedAt !== undefined) {
+      obj.deletedAt = message.deletedAt.toISOString();
+    }
     return obj;
   },
 
@@ -157,6 +194,8 @@ export const Contact = {
       : undefined;
     message.value = object.value ?? "";
     message.createdAt = object.createdAt ?? undefined;
+    message.updatedAt = object.updatedAt ?? undefined;
+    message.deletedAt = object.deletedAt ?? undefined;
     return message;
   },
 };

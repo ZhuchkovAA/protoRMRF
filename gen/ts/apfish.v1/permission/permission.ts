@@ -41,6 +41,8 @@ export interface Permission {
   /** Machine-readable identifier (e.g., "inspection:read") */
   code: string;
   createdAt: Date | undefined;
+  updatedAt: Date | undefined;
+  deletedAt: Date | undefined;
   authorities: AuthoritySummary[];
   districts: DistrictSummary[];
   ports: PortSummary[];
@@ -58,6 +60,8 @@ function createBasePermission(): Permission {
     name: "",
     code: "",
     createdAt: undefined,
+    updatedAt: undefined,
+    deletedAt: undefined,
     authorities: [],
     districts: [],
     ports: [],
@@ -90,23 +94,29 @@ export const Permission = {
     if (message.createdAt !== undefined) {
       Timestamp.encode(toTimestamp(message.createdAt), writer.uint32(58).fork()).ldelim();
     }
+    if (message.updatedAt !== undefined) {
+      Timestamp.encode(toTimestamp(message.updatedAt), writer.uint32(66).fork()).ldelim();
+    }
+    if (message.deletedAt !== undefined) {
+      Timestamp.encode(toTimestamp(message.deletedAt), writer.uint32(74).fork()).ldelim();
+    }
     for (const v of message.authorities) {
-      AuthoritySummary.encode(v!, writer.uint32(66).fork()).ldelim();
+      AuthoritySummary.encode(v!, writer.uint32(82).fork()).ldelim();
     }
     for (const v of message.districts) {
-      DistrictSummary.encode(v!, writer.uint32(74).fork()).ldelim();
+      DistrictSummary.encode(v!, writer.uint32(90).fork()).ldelim();
     }
     for (const v of message.ports) {
-      PortSummary.encode(v!, writer.uint32(82).fork()).ldelim();
+      PortSummary.encode(v!, writer.uint32(98).fork()).ldelim();
     }
     for (const v of message.ships) {
-      ShipSummary.encode(v!, writer.uint32(90).fork()).ldelim();
+      ShipSummary.encode(v!, writer.uint32(106).fork()).ldelim();
     }
     for (const v of message.users) {
-      UserSummary.encode(v!, writer.uint32(98).fork()).ldelim();
+      UserSummary.encode(v!, writer.uint32(114).fork()).ldelim();
     }
     for (const v of message.roles) {
-      RoleSummary.encode(v!, writer.uint32(106).fork()).ldelim();
+      RoleSummary.encode(v!, writer.uint32(122).fork()).ldelim();
     }
     return writer;
   },
@@ -172,38 +182,52 @@ export const Permission = {
             break;
           }
 
-          message.authorities.push(AuthoritySummary.decode(reader, reader.uint32()));
+          message.updatedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           continue;
         case 9:
           if (tag !== 74) {
             break;
           }
 
-          message.districts.push(DistrictSummary.decode(reader, reader.uint32()));
+          message.deletedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           continue;
         case 10:
           if (tag !== 82) {
             break;
           }
 
-          message.ports.push(PortSummary.decode(reader, reader.uint32()));
+          message.authorities.push(AuthoritySummary.decode(reader, reader.uint32()));
           continue;
         case 11:
           if (tag !== 90) {
             break;
           }
 
-          message.ships.push(ShipSummary.decode(reader, reader.uint32()));
+          message.districts.push(DistrictSummary.decode(reader, reader.uint32()));
           continue;
         case 12:
           if (tag !== 98) {
             break;
           }
 
-          message.users.push(UserSummary.decode(reader, reader.uint32()));
+          message.ports.push(PortSummary.decode(reader, reader.uint32()));
           continue;
         case 13:
           if (tag !== 106) {
+            break;
+          }
+
+          message.ships.push(ShipSummary.decode(reader, reader.uint32()));
+          continue;
+        case 14:
+          if (tag !== 114) {
+            break;
+          }
+
+          message.users.push(UserSummary.decode(reader, reader.uint32()));
+          continue;
+        case 15:
+          if (tag !== 122) {
             break;
           }
 
@@ -227,6 +251,8 @@ export const Permission = {
       name: isSet(object.name) ? globalThis.String(object.name) : "",
       code: isSet(object.code) ? globalThis.String(object.code) : "",
       createdAt: isSet(object.createdAt) ? fromJsonTimestamp(object.createdAt) : undefined,
+      updatedAt: isSet(object.updatedAt) ? fromJsonTimestamp(object.updatedAt) : undefined,
+      deletedAt: isSet(object.deletedAt) ? fromJsonTimestamp(object.deletedAt) : undefined,
       authorities: globalThis.Array.isArray(object?.authorities)
         ? object.authorities.map((e: any) => AuthoritySummary.fromJSON(e))
         : [],
@@ -262,6 +288,12 @@ export const Permission = {
     }
     if (message.createdAt !== undefined) {
       obj.createdAt = message.createdAt.toISOString();
+    }
+    if (message.updatedAt !== undefined) {
+      obj.updatedAt = message.updatedAt.toISOString();
+    }
+    if (message.deletedAt !== undefined) {
+      obj.deletedAt = message.deletedAt.toISOString();
     }
     if (message.authorities?.length) {
       obj.authorities = message.authorities.map((e) => AuthoritySummary.toJSON(e));
@@ -300,6 +332,8 @@ export const Permission = {
     message.name = object.name ?? "";
     message.code = object.code ?? "";
     message.createdAt = object.createdAt ?? undefined;
+    message.updatedAt = object.updatedAt ?? undefined;
+    message.deletedAt = object.deletedAt ?? undefined;
     message.authorities = object.authorities?.map((e) => AuthoritySummary.fromPartial(e)) || [];
     message.districts = object.districts?.map((e) => DistrictSummary.fromPartial(e)) || [];
     message.ports = object.ports?.map((e) => PortSummary.fromPartial(e)) || [];

@@ -15,7 +15,9 @@ message CallSign {
   string limit_lower = 3;
   string limit_upper = 4;
   google.protobuf.Timestamp created_at = 5;
+  google.protobuf.Timestamp updated_at = 6;
+  google.protobuf.Timestamp deleted_at = 7;
 
-  repeated apfish.v1.location.authority.summary.AuthoritySummary authorities = 6;
-  repeated apfish.v1.ship.summary.ShipSummary ships = 7;
+  repeated apfish.v1.location.authority.summary.AuthoritySummary authorities = 8;
+  repeated apfish.v1.ship.summary.ShipSummary ships = 9;
 }

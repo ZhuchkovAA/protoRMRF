@@ -18,11 +18,29 @@ export interface AuthoritySummary {
   code: string;
   isIlo: boolean;
   isBallastWater: boolean;
+  typeId: string;
+  parentCode: string;
+  mouId: string;
   createdAt: Date | undefined;
+  updatedAt: Date | undefined;
+  deletedAt: Date | undefined;
 }
 
 function createBaseAuthoritySummary(): AuthoritySummary {
-  return { id: "", name: "", nameRus: "", code: "", isIlo: false, isBallastWater: false, createdAt: undefined };
+  return {
+    id: "",
+    name: "",
+    nameRus: "",
+    code: "",
+    isIlo: false,
+    isBallastWater: false,
+    typeId: "",
+    parentCode: "",
+    mouId: "",
+    createdAt: undefined,
+    updatedAt: undefined,
+    deletedAt: undefined,
+  };
 }
 
 export const AuthoritySummary = {
@@ -45,8 +63,23 @@ export const AuthoritySummary = {
     if (message.isBallastWater !== false) {
       writer.uint32(48).bool(message.isBallastWater);
     }
+    if (message.typeId !== "") {
+      writer.uint32(58).string(message.typeId);
+    }
+    if (message.parentCode !== "") {
+      writer.uint32(66).string(message.parentCode);
+    }
+    if (message.mouId !== "") {
+      writer.uint32(74).string(message.mouId);
+    }
     if (message.createdAt !== undefined) {
-      Timestamp.encode(toTimestamp(message.createdAt), writer.uint32(58).fork()).ldelim();
+      Timestamp.encode(toTimestamp(message.createdAt), writer.uint32(82).fork()).ldelim();
+    }
+    if (message.updatedAt !== undefined) {
+      Timestamp.encode(toTimestamp(message.updatedAt), writer.uint32(90).fork()).ldelim();
+    }
+    if (message.deletedAt !== undefined) {
+      Timestamp.encode(toTimestamp(message.deletedAt), writer.uint32(98).fork()).ldelim();
     }
     return writer;
   },
@@ -105,7 +138,42 @@ export const AuthoritySummary = {
             break;
           }
 
+          message.typeId = reader.string();
+          continue;
+        case 8:
+          if (tag !== 66) {
+            break;
+          }
+
+          message.parentCode = reader.string();
+          continue;
+        case 9:
+          if (tag !== 74) {
+            break;
+          }
+
+          message.mouId = reader.string();
+          continue;
+        case 10:
+          if (tag !== 82) {
+            break;
+          }
+
           message.createdAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          continue;
+        case 11:
+          if (tag !== 90) {
+            break;
+          }
+
+          message.updatedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          continue;
+        case 12:
+          if (tag !== 98) {
+            break;
+          }
+
+          message.deletedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           continue;
       }
       if ((tag & 7) === 4 || tag === 0) {
@@ -124,7 +192,12 @@ export const AuthoritySummary = {
       code: isSet(object.code) ? globalThis.String(object.code) : "",
       isIlo: isSet(object.isIlo) ? globalThis.Boolean(object.isIlo) : false,
       isBallastWater: isSet(object.isBallastWater) ? globalThis.Boolean(object.isBallastWater) : false,
+      typeId: isSet(object.typeId) ? globalThis.String(object.typeId) : "",
+      parentCode: isSet(object.parentCode) ? globalThis.String(object.parentCode) : "",
+      mouId: isSet(object.mouId) ? globalThis.String(object.mouId) : "",
       createdAt: isSet(object.createdAt) ? fromJsonTimestamp(object.createdAt) : undefined,
+      updatedAt: isSet(object.updatedAt) ? fromJsonTimestamp(object.updatedAt) : undefined,
+      deletedAt: isSet(object.deletedAt) ? fromJsonTimestamp(object.deletedAt) : undefined,
     };
   },
 
@@ -148,8 +221,23 @@ export const AuthoritySummary = {
     if (message.isBallastWater !== false) {
       obj.isBallastWater = message.isBallastWater;
     }
+    if (message.typeId !== "") {
+      obj.typeId = message.typeId;
+    }
+    if (message.parentCode !== "") {
+      obj.parentCode = message.parentCode;
+    }
+    if (message.mouId !== "") {
+      obj.mouId = message.mouId;
+    }
     if (message.createdAt !== undefined) {
       obj.createdAt = message.createdAt.toISOString();
+    }
+    if (message.updatedAt !== undefined) {
+      obj.updatedAt = message.updatedAt.toISOString();
+    }
+    if (message.deletedAt !== undefined) {
+      obj.deletedAt = message.deletedAt.toISOString();
     }
     return obj;
   },
@@ -165,7 +253,12 @@ export const AuthoritySummary = {
     message.code = object.code ?? "";
     message.isIlo = object.isIlo ?? false;
     message.isBallastWater = object.isBallastWater ?? false;
+    message.typeId = object.typeId ?? "";
+    message.parentCode = object.parentCode ?? "";
+    message.mouId = object.mouId ?? "";
     message.createdAt = object.createdAt ?? undefined;
+    message.updatedAt = object.updatedAt ?? undefined;
+    message.deletedAt = object.deletedAt ?? undefined;
     return message;
   },
 };

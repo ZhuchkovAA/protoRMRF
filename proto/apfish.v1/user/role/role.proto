@@ -14,8 +14,10 @@ message Role {
   string id = 1;                       // Unique role ID.
   string name = 2;                    // Human-readable name (e.g., "Admin").
   string code = 3;                    // Machine-friendly code (e.g., "admin").
-  google.protobuf.Timestamp created_at = 4;  // When the role was created.
+  google.protobuf.Timestamp created_at = 4;
+  google.protobuf.Timestamp updated_at = 5;
+  google.protobuf.Timestamp deleted_at = 6;
 
-  repeated apfish.v1.user.summary.UserSummary users = 5;
-  repeated apfish.v1.permission.summary.PermissionSummary permissions = 6;  // Permissions granted by this role.
+  repeated apfish.v1.user.summary.UserSummary users = 7;
+  repeated apfish.v1.permission.summary.PermissionSummary permissions = 8;  // Permissions granted by this role.
 }

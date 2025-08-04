@@ -8,7 +8,7 @@
 import Long from "long";
 import _m0 from "protobufjs/minimal";
 import { Timestamp } from "../../google/protobuf/timestamp";
-import { BoolValue, StringValue } from "../../google/protobuf/wrappers";
+import { StringValue } from "../../google/protobuf/wrappers";
 import { PermissionSummary } from "../permission/summary/permission_summary";
 import { ContactSummary } from "./contact/summary/contact_summary";
 import { RoleSummary } from "./role/summary/role_summary";
@@ -29,12 +29,12 @@ export interface User {
   role:
     | RoleSummary
     | undefined;
-  /** When the user was created. */
-  createdAt: Date | undefined;
-  isActive: boolean;
   /** Login of the creator (e.g., "admin"). */
-  createdBy:
-    | UserSummary
+  createdBy: UserSummary | undefined;
+  createdAt: Date | undefined;
+  updatedAt: Date | undefined;
+  deletedAt:
+    | Date
     | undefined;
   /** User's contact methods. */
   contacts: ContactSummary[];
@@ -48,7 +48,6 @@ export interface UserPatch {
   lastName: string | undefined;
   middleName: string | undefined;
   roleId: string | undefined;
-  isActive: boolean | undefined;
 }
 
 function createBaseUser(): User {
@@ -59,9 +58,10 @@ function createBaseUser(): User {
     lastName: "",
     middleName: "",
     role: undefined,
-    createdAt: undefined,
-    isActive: false,
     createdBy: undefined,
+    createdAt: undefined,
+    updatedAt: undefined,
+    deletedAt: undefined,
     contacts: [],
     permissions: [],
   };
@@ -87,20 +87,23 @@ export const User = {
     if (message.role !== undefined) {
       RoleSummary.encode(message.role, writer.uint32(50).fork()).ldelim();
     }
-    if (message.createdAt !== undefined) {
-      Timestamp.encode(toTimestamp(message.createdAt), writer.uint32(58).fork()).ldelim();
-    }
-    if (message.isActive !== false) {
-      writer.uint32(64).bool(message.isActive);
-    }
     if (message.createdBy !== undefined) {
-      UserSummary.encode(message.createdBy, writer.uint32(74).fork()).ldelim();
+      UserSummary.encode(message.createdBy, writer.uint32(58).fork()).ldelim();
+    }
+    if (message.createdAt !== undefined) {
+      Timestamp.encode(toTimestamp(message.createdAt), writer.uint32(66).fork()).ldelim();
+    }
+    if (message.updatedAt !== undefined) {
+      Timestamp.encode(toTimestamp(message.updatedAt), writer.uint32(74).fork()).ldelim();
+    }
+    if (message.deletedAt !== undefined) {
+      Timestamp.encode(toTimestamp(message.deletedAt), writer.uint32(82).fork()).ldelim();
     }
     for (const v of message.contacts) {
-      ContactSummary.encode(v!, writer.uint32(82).fork()).ldelim();
+      ContactSummary.encode(v!, writer.uint32(90).fork()).ldelim();
     }
     for (const v of message.permissions) {
-      PermissionSummary.encode(v!, writer.uint32(90).fork()).ldelim();
+      PermissionSummary.encode(v!, writer.uint32(98).fork()).ldelim();
     }
     return writer;
   },
@@ -159,31 +162,38 @@ export const User = {
             break;
           }
 
-          message.createdAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          message.createdBy = UserSummary.decode(reader, reader.uint32());
           continue;
         case 8:
-          if (tag !== 64) {
+          if (tag !== 66) {
             break;
           }
 
-          message.isActive = reader.bool();
+          message.createdAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           continue;
         case 9:
           if (tag !== 74) {
             break;
           }
 
-          message.createdBy = UserSummary.decode(reader, reader.uint32());
+          message.updatedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           continue;
         case 10:
           if (tag !== 82) {
             break;
           }
 
-          message.contacts.push(ContactSummary.decode(reader, reader.uint32()));
+          message.deletedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           continue;
         case 11:
           if (tag !== 90) {
+            break;
+          }
+
+          message.contacts.push(ContactSummary.decode(reader, reader.uint32()));
+          continue;
+        case 12:
+          if (tag !== 98) {
             break;
           }
 
@@ -206,9 +216,10 @@ export const User = {
       lastName: isSet(object.lastName) ? globalThis.String(object.lastName) : "",
       middleName: isSet(object.middleName) ? globalThis.String(object.middleName) : "",
       role: isSet(object.role) ? RoleSummary.fromJSON(object.role) : undefined,
-      createdAt: isSet(object.createdAt) ? fromJsonTimestamp(object.createdAt) : undefined,
-      isActive: isSet(object.isActive) ? globalThis.Boolean(object.isActive) : false,
       createdBy: isSet(object.createdBy) ? UserSummary.fromJSON(object.createdBy) : undefined,
+      createdAt: isSet(object.createdAt) ? fromJsonTimestamp(object.createdAt) : undefined,
+      updatedAt: isSet(object.updatedAt) ? fromJsonTimestamp(object.updatedAt) : undefined,
+      deletedAt: isSet(object.deletedAt) ? fromJsonTimestamp(object.deletedAt) : undefined,
       contacts: globalThis.Array.isArray(object?.contacts)
         ? object.contacts.map((e: any) => ContactSummary.fromJSON(e))
         : [],
@@ -238,14 +249,17 @@ export const User = {
     if (message.role !== undefined) {
       obj.role = RoleSummary.toJSON(message.role);
     }
+    if (message.createdBy !== undefined) {
+      obj.createdBy = UserSummary.toJSON(message.createdBy);
+    }
     if (message.createdAt !== undefined) {
       obj.createdAt = message.createdAt.toISOString();
     }
-    if (message.isActive !== false) {
-      obj.isActive = message.isActive;
+    if (message.updatedAt !== undefined) {
+      obj.updatedAt = message.updatedAt.toISOString();
     }
-    if (message.createdBy !== undefined) {
-      obj.createdBy = UserSummary.toJSON(message.createdBy);
+    if (message.deletedAt !== undefined) {
+      obj.deletedAt = message.deletedAt.toISOString();
     }
     if (message.contacts?.length) {
       obj.contacts = message.contacts.map((e) => ContactSummary.toJSON(e));
@@ -269,11 +283,12 @@ export const User = {
     message.role = (object.role !== undefined && object.role !== null)
       ? RoleSummary.fromPartial(object.role)
       : undefined;
-    message.createdAt = object.createdAt ?? undefined;
-    message.isActive = object.isActive ?? false;
     message.createdBy = (object.createdBy !== undefined && object.createdBy !== null)
       ? UserSummary.fromPartial(object.createdBy)
       : undefined;
+    message.createdAt = object.createdAt ?? undefined;
+    message.updatedAt = object.updatedAt ?? undefined;
+    message.deletedAt = object.deletedAt ?? undefined;
     message.contacts = object.contacts?.map((e) => ContactSummary.fromPartial(e)) || [];
     message.permissions = object.permissions?.map((e) => PermissionSummary.fromPartial(e)) || [];
     return message;
@@ -281,14 +296,7 @@ export const User = {
 };
 
 function createBaseUserPatch(): UserPatch {
-  return {
-    login: "",
-    firstName: undefined,
-    lastName: undefined,
-    middleName: undefined,
-    roleId: undefined,
-    isActive: undefined,
-  };
+  return { login: "", firstName: undefined, lastName: undefined, middleName: undefined, roleId: undefined };
 }
 
 export const UserPatch = {
@@ -307,9 +315,6 @@ export const UserPatch = {
     }
     if (message.roleId !== undefined) {
       StringValue.encode({ value: message.roleId! }, writer.uint32(42).fork()).ldelim();
-    }
-    if (message.isActive !== undefined) {
-      BoolValue.encode({ value: message.isActive! }, writer.uint32(50).fork()).ldelim();
     }
     return writer;
   },
@@ -356,13 +361,6 @@ export const UserPatch = {
 
           message.roleId = StringValue.decode(reader, reader.uint32()).value;
           continue;
-        case 6:
-          if (tag !== 50) {
-            break;
-          }
-
-          message.isActive = BoolValue.decode(reader, reader.uint32()).value;
-          continue;
       }
       if ((tag & 7) === 4 || tag === 0) {
         break;
@@ -379,7 +377,6 @@ export const UserPatch = {
       lastName: isSet(object.lastName) ? String(object.lastName) : undefined,
       middleName: isSet(object.middleName) ? String(object.middleName) : undefined,
       roleId: isSet(object.roleId) ? String(object.roleId) : undefined,
-      isActive: isSet(object.isActive) ? Boolean(object.isActive) : undefined,
     };
   },
 
@@ -400,9 +397,6 @@ export const UserPatch = {
     if (message.roleId !== undefined) {
       obj.roleId = message.roleId;
     }
-    if (message.isActive !== undefined) {
-      obj.isActive = message.isActive;
-    }
     return obj;
   },
 
@@ -416,7 +410,6 @@ export const UserPatch = {
     message.lastName = object.lastName ?? undefined;
     message.middleName = object.middleName ?? undefined;
     message.roleId = object.roleId ?? undefined;
-    message.isActive = object.isActive ?? undefined;
     return message;
   },
 };

@@ -29,8 +29,10 @@ type Type struct {
 	Id            string                      `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`     // Unique type ID.
 	Name          string                      `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"` // Human-readable name (e.g., "Email").
 	NameRus       string                      `protobuf:"bytes,3,opt,name=name_rus,json=nameRus,proto3" json:"name_rus,omitempty"`
-	CreatedAt     *timestamppb.Timestamp      `protobuf:"bytes,4,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"` // When the type was defined.
-	Authorities   []*summary.AuthoritySummary `protobuf:"bytes,5,rep,name=authorities,proto3" json:"authorities,omitempty"`
+	CreatedAt     *timestamppb.Timestamp      `protobuf:"bytes,4,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	UpdatedAt     *timestamppb.Timestamp      `protobuf:"bytes,5,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	DeletedAt     *timestamppb.Timestamp      `protobuf:"bytes,6,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty"`
+	Authorities   []*summary.AuthoritySummary `protobuf:"bytes,7,rep,name=authorities,proto3" json:"authorities,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -93,6 +95,20 @@ func (x *Type) GetCreatedAt() *timestamppb.Timestamp {
 	return nil
 }
 
+func (x *Type) GetUpdatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.UpdatedAt
+	}
+	return nil
+}
+
+func (x *Type) GetDeletedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.DeletedAt
+	}
+	return nil
+}
+
 func (x *Type) GetAuthorities() []*summary.AuthoritySummary {
 	if x != nil {
 		return x.Authorities
@@ -104,14 +120,18 @@ var File_apfish_v1_location_authority_type_type_proto protoreflect.FileDescripto
 
 const file_apfish_v1_location_authority_type_type_proto_rawDesc = "" +
 	"\n" +
-	",apfish.v1/location/authority/type/type.proto\x12!apfish.v1.location.authority.type\x1a\x1fgoogle/protobuf/timestamp.proto\x1a<apfish.v1/location/authority/summary/authority_summary.proto\"\xda\x01\n" +
+	",apfish.v1/location/authority/type/type.proto\x12!apfish.v1.location.authority.type\x1a\x1fgoogle/protobuf/timestamp.proto\x1a<apfish.v1/location/authority/summary/authority_summary.proto\"\xd0\x02\n" +
 	"\x04Type\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x19\n" +
 	"\bname_rus\x18\x03 \x01(\tR\anameRus\x129\n" +
 	"\n" +
-	"created_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x12X\n" +
-	"\vauthorities\x18\x05 \x03(\v26.apfish.v1.location.authority.summary.AuthoritySummaryR\vauthoritiesBbZ`github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/authority/type;location_authority_typeb\x06proto3"
+	"created_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
+	"\n" +
+	"updated_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x129\n" +
+	"\n" +
+	"deleted_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tdeletedAt\x12X\n" +
+	"\vauthorities\x18\a \x03(\v26.apfish.v1.location.authority.summary.AuthoritySummaryR\vauthoritiesBbZ`github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/authority/type;location_authority_typeb\x06proto3"
 
 var (
 	file_apfish_v1_location_authority_type_type_proto_rawDescOnce sync.Once
@@ -133,12 +153,14 @@ var file_apfish_v1_location_authority_type_type_proto_goTypes = []any{
 }
 var file_apfish_v1_location_authority_type_type_proto_depIdxs = []int32{
 	1, // 0: apfish.v1.location.authority.type.Type.created_at:type_name -> google.protobuf.Timestamp
-	2, // 1: apfish.v1.location.authority.type.Type.authorities:type_name -> apfish.v1.location.authority.summary.AuthoritySummary
-	2, // [2:2] is the sub-list for method output_type
-	2, // [2:2] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	1, // 1: apfish.v1.location.authority.type.Type.updated_at:type_name -> google.protobuf.Timestamp
+	1, // 2: apfish.v1.location.authority.type.Type.deleted_at:type_name -> google.protobuf.Timestamp
+	2, // 3: apfish.v1.location.authority.type.Type.authorities:type_name -> apfish.v1.location.authority.summary.AuthoritySummary
+	4, // [4:4] is the sub-list for method output_type
+	4, // [4:4] is the sub-list for method input_type
+	4, // [4:4] is the sub-list for extension type_name
+	4, // [4:4] is the sub-list for extension extendee
+	0, // [0:4] is the sub-list for field type_name
 }
 
 func init() { file_apfish_v1_location_authority_type_type_proto_init() }

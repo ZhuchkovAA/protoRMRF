@@ -29,10 +29,11 @@ type UserSummary struct {
 	FirstName      string                 `protobuf:"bytes,3,opt,name=first_name,json=firstName,proto3" json:"first_name,omitempty"`
 	LastName       string                 `protobuf:"bytes,4,opt,name=last_name,json=lastName,proto3" json:"last_name,omitempty"`
 	MiddleName     string                 `protobuf:"bytes,5,opt,name=middle_name,json=middleName,proto3" json:"middle_name,omitempty"`
-	RoleId         string                 `protobuf:"bytes,6,opt,name=role_id,json=roleId,proto3" json:"role_id,omitempty"`          // Assigned role.
-	CreatedAt      *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"` // When the user was created.
-	IsActive       bool                   `protobuf:"varint,8,opt,name=is_active,json=isActive,proto3" json:"is_active,omitempty"`
-	CreatedByLogin string                 `protobuf:"bytes,9,opt,name=created_by_login,json=createdByLogin,proto3" json:"created_by_login,omitempty"` // Login of the creator (e.g., "admin").
+	RoleId         string                 `protobuf:"bytes,6,opt,name=role_id,json=roleId,proto3" json:"role_id,omitempty"`                           // Assigned role.
+	CreatedByLogin string                 `protobuf:"bytes,7,opt,name=created_by_login,json=createdByLogin,proto3" json:"created_by_login,omitempty"` // Login of the creator (e.g., "admin").
+	CreatedAt      *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	UpdatedAt      *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	DeletedAt      *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
@@ -109,20 +110,6 @@ func (x *UserSummary) GetRoleId() string {
 	return ""
 }
 
-func (x *UserSummary) GetCreatedAt() *timestamppb.Timestamp {
-	if x != nil {
-		return x.CreatedAt
-	}
-	return nil
-}
-
-func (x *UserSummary) GetIsActive() bool {
-	if x != nil {
-		return x.IsActive
-	}
-	return false
-}
-
 func (x *UserSummary) GetCreatedByLogin() string {
 	if x != nil {
 		return x.CreatedByLogin
@@ -130,11 +117,32 @@ func (x *UserSummary) GetCreatedByLogin() string {
 	return ""
 }
 
+func (x *UserSummary) GetCreatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.CreatedAt
+	}
+	return nil
+}
+
+func (x *UserSummary) GetUpdatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.UpdatedAt
+	}
+	return nil
+}
+
+func (x *UserSummary) GetDeletedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.DeletedAt
+	}
+	return nil
+}
+
 var File_apfish_v1_user_summary_user_summary_proto protoreflect.FileDescriptor
 
 const file_apfish_v1_user_summary_user_summary_proto_rawDesc = "" +
 	"\n" +
-	")apfish.v1/user/summary/user_summary.proto\x12\x16apfish.v1.user.summary\x1a\x1fgoogle/protobuf/timestamp.proto\"\xab\x02\n" +
+	")apfish.v1/user/summary/user_summary.proto\x12\x16apfish.v1.user.summary\x1a\x1fgoogle/protobuf/timestamp.proto\"\x84\x03\n" +
 	"\vUserSummary\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x14\n" +
 	"\x05login\x18\x02 \x01(\tR\x05login\x12\x1d\n" +
@@ -143,11 +151,15 @@ const file_apfish_v1_user_summary_user_summary_proto_rawDesc = "" +
 	"\tlast_name\x18\x04 \x01(\tR\blastName\x12\x1f\n" +
 	"\vmiddle_name\x18\x05 \x01(\tR\n" +
 	"middleName\x12\x17\n" +
-	"\arole_id\x18\x06 \x01(\tR\x06roleId\x129\n" +
+	"\arole_id\x18\x06 \x01(\tR\x06roleId\x12(\n" +
+	"\x10created_by_login\x18\a \x01(\tR\x0ecreatedByLogin\x129\n" +
 	"\n" +
-	"created_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x12\x1b\n" +
-	"\tis_active\x18\b \x01(\bR\bisActive\x12(\n" +
-	"\x10created_by_login\x18\t \x01(\tR\x0ecreatedByLoginBLZJgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/summary;user_summaryb\x06proto3"
+	"created_at\x18\b \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
+	"\n" +
+	"updated_at\x18\t \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x129\n" +
+	"\n" +
+	"deleted_at\x18\n" +
+	" \x01(\v2\x1a.google.protobuf.TimestampR\tdeletedAtBLZJgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/summary;user_summaryb\x06proto3"
 
 var (
 	file_apfish_v1_user_summary_user_summary_proto_rawDescOnce sync.Once
@@ -168,11 +180,13 @@ var file_apfish_v1_user_summary_user_summary_proto_goTypes = []any{
 }
 var file_apfish_v1_user_summary_user_summary_proto_depIdxs = []int32{
 	1, // 0: apfish.v1.user.summary.UserSummary.created_at:type_name -> google.protobuf.Timestamp
-	1, // [1:1] is the sub-list for method output_type
-	1, // [1:1] is the sub-list for method input_type
-	1, // [1:1] is the sub-list for extension type_name
-	1, // [1:1] is the sub-list for extension extendee
-	0, // [0:1] is the sub-list for field type_name
+	1, // 1: apfish.v1.user.summary.UserSummary.updated_at:type_name -> google.protobuf.Timestamp
+	1, // 2: apfish.v1.user.summary.UserSummary.deleted_at:type_name -> google.protobuf.Timestamp
+	3, // [3:3] is the sub-list for method output_type
+	3, // [3:3] is the sub-list for method input_type
+	3, // [3:3] is the sub-list for extension type_name
+	3, // [3:3] is the sub-list for extension extendee
+	0, // [0:3] is the sub-list for field type_name
 }
 
 func init() { file_apfish_v1_user_summary_user_summary_proto_init() }

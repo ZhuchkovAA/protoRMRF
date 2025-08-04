@@ -426,14 +426,16 @@ const file_apfish_v1_user_user_service_proto_rawDesc = "" +
 	"\x04user\x18\x01 \x01(\v2\x19.apfish.v1.user.UserPatchR\x04user\"Y\n" +
 	"\x18AssignPermissionsRequest\x12\x14\n" +
 	"\x05login\x18\x01 \x01(\tR\x05login\x12'\n" +
-	"\x0fpermissions_ids\x18\x02 \x03(\tR\x0epermissionsIds2\xa8\x03\n" +
+	"\x0fpermissions_ids\x18\x02 \x03(\tR\x0epermissionsIds2\xf6\x03\n" +
 	"\vUserService\x12<\n" +
 	"\aGetUser\x12\x1b.apfish.v1.user.UserRequest\x1a\x14.apfish.v1.user.User\x12P\n" +
 	"\tListUsers\x12 .apfish.v1.user.ListUsersRequest\x1a!.apfish.v1.user.ListUsersResponse\x12S\n" +
 	"\n" +
 	"CreateUser\x12!.apfish.v1.user.CreateUserRequest\x1a\".apfish.v1.user.CreateUserResponse\x12R\n" +
 	"\n" +
-	"UpdateUser\x12!.apfish.v1.user.UpdateUserRequest\x1a!.apfish.v1.helper.SuccessResponse\x12`\n" +
+	"UpdateUser\x12!.apfish.v1.user.UpdateUserRequest\x1a!.apfish.v1.helper.SuccessResponse\x12L\n" +
+	"\n" +
+	"DeleteUser\x12\x1b.apfish.v1.user.UserRequest\x1a!.apfish.v1.helper.SuccessResponse\x12`\n" +
 	"\x11AssignPermissions\x12(.apfish.v1.user.AssignPermissionsRequest\x1a!.apfish.v1.helper.SuccessResponseB<Z:github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user;userb\x06proto3"
 
 var (
@@ -469,14 +471,16 @@ var file_apfish_v1_user_user_service_proto_depIdxs = []int32{
 	1,  // 3: apfish.v1.user.UserService.ListUsers:input_type -> apfish.v1.user.ListUsersRequest
 	3,  // 4: apfish.v1.user.UserService.CreateUser:input_type -> apfish.v1.user.CreateUserRequest
 	5,  // 5: apfish.v1.user.UserService.UpdateUser:input_type -> apfish.v1.user.UpdateUserRequest
-	6,  // 6: apfish.v1.user.UserService.AssignPermissions:input_type -> apfish.v1.user.AssignPermissionsRequest
-	9,  // 7: apfish.v1.user.UserService.GetUser:output_type -> apfish.v1.user.User
-	2,  // 8: apfish.v1.user.UserService.ListUsers:output_type -> apfish.v1.user.ListUsersResponse
-	4,  // 9: apfish.v1.user.UserService.CreateUser:output_type -> apfish.v1.user.CreateUserResponse
-	10, // 10: apfish.v1.user.UserService.UpdateUser:output_type -> apfish.v1.helper.SuccessResponse
-	10, // 11: apfish.v1.user.UserService.AssignPermissions:output_type -> apfish.v1.helper.SuccessResponse
-	7,  // [7:12] is the sub-list for method output_type
-	2,  // [2:7] is the sub-list for method input_type
+	0,  // 6: apfish.v1.user.UserService.DeleteUser:input_type -> apfish.v1.user.UserRequest
+	6,  // 7: apfish.v1.user.UserService.AssignPermissions:input_type -> apfish.v1.user.AssignPermissionsRequest
+	9,  // 8: apfish.v1.user.UserService.GetUser:output_type -> apfish.v1.user.User
+	2,  // 9: apfish.v1.user.UserService.ListUsers:output_type -> apfish.v1.user.ListUsersResponse
+	4,  // 10: apfish.v1.user.UserService.CreateUser:output_type -> apfish.v1.user.CreateUserResponse
+	10, // 11: apfish.v1.user.UserService.UpdateUser:output_type -> apfish.v1.helper.SuccessResponse
+	10, // 12: apfish.v1.user.UserService.DeleteUser:output_type -> apfish.v1.helper.SuccessResponse
+	10, // 13: apfish.v1.user.UserService.AssignPermissions:output_type -> apfish.v1.helper.SuccessResponse
+	8,  // [8:14] is the sub-list for method output_type
+	2,  // [2:8] is the sub-list for method input_type
 	2,  // [2:2] is the sub-list for extension type_name
 	2,  // [2:2] is the sub-list for extension extendee
 	0,  // [0:2] is the sub-list for field type_name

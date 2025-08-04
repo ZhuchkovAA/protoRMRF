@@ -31,6 +31,8 @@ type PermissionSummary struct {
 	Name          string                 `protobuf:"bytes,5,opt,name=name,proto3" json:"name,omitempty"`               // Display name (e.g., "Read Inspections")
 	Code          string                 `protobuf:"bytes,6,opt,name=code,proto3" json:"code,omitempty"`               // Machine-readable identifier (e.g., "inspection:read")
 	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	DeletedAt     *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -110,6 +112,20 @@ func (x *PermissionSummary) GetCode() string {
 func (x *PermissionSummary) GetCreatedAt() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreatedAt
+	}
+	return nil
+}
+
+func (x *PermissionSummary) GetUpdatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.UpdatedAt
+	}
+	return nil
+}
+
+func (x *PermissionSummary) GetDeletedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.DeletedAt
 	}
 	return nil
 }
@@ -202,7 +218,7 @@ var File_apfish_v1_permission_summary_permission_summary_proto protoreflect.File
 
 const file_apfish_v1_permission_summary_permission_summary_proto_rawDesc = "" +
 	"\n" +
-	"5apfish.v1/permission/summary/permission_summary.proto\x12\x1capfish.v1.permission.summary\x1a\x1fgoogle/protobuf/timestamp.proto\"\xe2\x01\n" +
+	"5apfish.v1/permission/summary/permission_summary.proto\x12\x1capfish.v1.permission.summary\x1a\x1fgoogle/protobuf/timestamp.proto\"\xd8\x02\n" +
 	"\x11PermissionSummary\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1b\n" +
 	"\taction_id\x18\x02 \x01(\tR\bactionId\x12\x1b\n" +
@@ -211,7 +227,11 @@ const file_apfish_v1_permission_summary_permission_summary_proto_rawDesc = "" +
 	"\x04name\x18\x05 \x01(\tR\x04name\x12\x12\n" +
 	"\x04code\x18\x06 \x01(\tR\x04code\x129\n" +
 	"\n" +
-	"created_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"\xc9\x01\n" +
+	"created_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
+	"\n" +
+	"updated_at\x18\b \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x129\n" +
+	"\n" +
+	"deleted_at\x18\t \x01(\v2\x1a.google.protobuf.TimestampR\tdeletedAt\"\xc9\x01\n" +
 	"\rPermissionJwt\x12\x1b\n" +
 	"\taction_id\x18\x01 \x01(\tR\bactionId\x12\x1b\n" +
 	"\tobject_id\x18\x02 \x01(\tR\bobjectId\x12%\n" +
@@ -240,11 +260,13 @@ var file_apfish_v1_permission_summary_permission_summary_proto_goTypes = []any{
 }
 var file_apfish_v1_permission_summary_permission_summary_proto_depIdxs = []int32{
 	2, // 0: apfish.v1.permission.summary.PermissionSummary.created_at:type_name -> google.protobuf.Timestamp
-	1, // [1:1] is the sub-list for method output_type
-	1, // [1:1] is the sub-list for method input_type
-	1, // [1:1] is the sub-list for extension type_name
-	1, // [1:1] is the sub-list for extension extendee
-	0, // [0:1] is the sub-list for field type_name
+	2, // 1: apfish.v1.permission.summary.PermissionSummary.updated_at:type_name -> google.protobuf.Timestamp
+	2, // 2: apfish.v1.permission.summary.PermissionSummary.deleted_at:type_name -> google.protobuf.Timestamp
+	3, // [3:3] is the sub-list for method output_type
+	3, // [3:3] is the sub-list for method input_type
+	3, // [3:3] is the sub-list for extension type_name
+	3, // [3:3] is the sub-list for extension extendee
+	0, // [0:3] is the sub-list for field type_name
 }
 
 func init() { file_apfish_v1_permission_summary_permission_summary_proto_init() }

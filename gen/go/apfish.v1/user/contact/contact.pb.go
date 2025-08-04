@@ -30,9 +30,11 @@ type Contact struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"` // Unique contact ID.
 	User          *summary.UserSummary   `protobuf:"bytes,2,opt,name=user,proto3" json:"user,omitempty"`
-	Type          *summary1.TypeSummary  `protobuf:"bytes,3,opt,name=type,proto3" json:"type,omitempty"`                            // Contact type.
-	Value         string                 `protobuf:"bytes,4,opt,name=value,proto3" json:"value,omitempty"`                          // Contact value (e.g., "user@example.com").
-	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"` // When the contact was added.
+	Type          *summary1.TypeSummary  `protobuf:"bytes,3,opt,name=type,proto3" json:"type,omitempty"`   // Contact type.
+	Value         string                 `protobuf:"bytes,4,opt,name=value,proto3" json:"value,omitempty"` // Contact value (e.g., "user@example.com").
+	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	DeletedAt     *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -98,6 +100,20 @@ func (x *Contact) GetValue() string {
 func (x *Contact) GetCreatedAt() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreatedAt
+	}
+	return nil
+}
+
+func (x *Contact) GetUpdatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.UpdatedAt
+	}
+	return nil
+}
+
+func (x *Contact) GetDeletedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.DeletedAt
 	}
 	return nil
 }
@@ -174,14 +190,18 @@ var File_apfish_v1_user_contact_contact_proto protoreflect.FileDescriptor
 
 const file_apfish_v1_user_contact_contact_proto_rawDesc = "" +
 	"\n" +
-	"$apfish.v1/user/contact/contact.proto\x12\x16apfish.v1.user.contact\x1a\x1egoogle/protobuf/wrappers.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a)apfish.v1/user/summary/user_summary.proto\x1a6apfish.v1/user/contact/type/summary/type_summary.proto\"\xe9\x01\n" +
+	"$apfish.v1/user/contact/contact.proto\x12\x16apfish.v1.user.contact\x1a\x1egoogle/protobuf/wrappers.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a)apfish.v1/user/summary/user_summary.proto\x1a6apfish.v1/user/contact/type/summary/type_summary.proto\"\xdf\x02\n" +
 	"\aContact\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x127\n" +
 	"\x04user\x18\x02 \x01(\v2#.apfish.v1.user.summary.UserSummaryR\x04user\x12D\n" +
 	"\x04type\x18\x03 \x01(\v20.apfish.v1.user.contact.type.summary.TypeSummaryR\x04type\x12\x14\n" +
 	"\x05value\x18\x04 \x01(\tR\x05value\x129\n" +
 	"\n" +
-	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"\xc0\x01\n" +
+	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
+	"\n" +
+	"updated_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x129\n" +
+	"\n" +
+	"deleted_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tdeletedAt\"\xc0\x01\n" +
 	"\fContactPatch\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x125\n" +
 	"\auser_id\x18\x02 \x01(\v2\x1c.google.protobuf.StringValueR\x06userId\x125\n" +
@@ -213,14 +233,16 @@ var file_apfish_v1_user_contact_contact_proto_depIdxs = []int32{
 	2, // 0: apfish.v1.user.contact.Contact.user:type_name -> apfish.v1.user.summary.UserSummary
 	3, // 1: apfish.v1.user.contact.Contact.type:type_name -> apfish.v1.user.contact.type.summary.TypeSummary
 	4, // 2: apfish.v1.user.contact.Contact.created_at:type_name -> google.protobuf.Timestamp
-	5, // 3: apfish.v1.user.contact.ContactPatch.user_id:type_name -> google.protobuf.StringValue
-	5, // 4: apfish.v1.user.contact.ContactPatch.type_id:type_name -> google.protobuf.StringValue
-	5, // 5: apfish.v1.user.contact.ContactPatch.value:type_name -> google.protobuf.StringValue
-	6, // [6:6] is the sub-list for method output_type
-	6, // [6:6] is the sub-list for method input_type
-	6, // [6:6] is the sub-list for extension type_name
-	6, // [6:6] is the sub-list for extension extendee
-	0, // [0:6] is the sub-list for field type_name
+	4, // 3: apfish.v1.user.contact.Contact.updated_at:type_name -> google.protobuf.Timestamp
+	4, // 4: apfish.v1.user.contact.Contact.deleted_at:type_name -> google.protobuf.Timestamp
+	5, // 5: apfish.v1.user.contact.ContactPatch.user_id:type_name -> google.protobuf.StringValue
+	5, // 6: apfish.v1.user.contact.ContactPatch.type_id:type_name -> google.protobuf.StringValue
+	5, // 7: apfish.v1.user.contact.ContactPatch.value:type_name -> google.protobuf.StringValue
+	8, // [8:8] is the sub-list for method output_type
+	8, // [8:8] is the sub-list for method input_type
+	8, // [8:8] is the sub-list for extension type_name
+	8, // [8:8] is the sub-list for extension extendee
+	0, // [0:8] is the sub-list for field type_name
 }
 
 func init() { file_apfish_v1_user_contact_contact_proto_init() }

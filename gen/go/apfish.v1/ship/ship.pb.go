@@ -43,8 +43,10 @@ type Ship struct {
 	DeadWeight    int32                         `protobuf:"varint,11,opt,name=dead_weight,json=deadWeight,proto3" json:"dead_weight,omitempty"`
 	Tonnage       int32                         `protobuf:"varint,12,opt,name=tonnage,proto3" json:"tonnage,omitempty"`
 	CreatedAt     *timestamppb.Timestamp        `protobuf:"bytes,13,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	Captains      []*summary4.CaptainSummary    `protobuf:"bytes,14,rep,name=captains,proto3" json:"captains,omitempty"`
-	Permissions   []*summary5.PermissionSummary `protobuf:"bytes,15,rep,name=permissions,proto3" json:"permissions,omitempty"`
+	UpdatedAt     *timestamppb.Timestamp        `protobuf:"bytes,14,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	DeletedAt     *timestamppb.Timestamp        `protobuf:"bytes,15,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty"`
+	Captains      []*summary4.CaptainSummary    `protobuf:"bytes,16,rep,name=captains,proto3" json:"captains,omitempty"`
+	Permissions   []*summary5.PermissionSummary `protobuf:"bytes,17,rep,name=permissions,proto3" json:"permissions,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -170,6 +172,20 @@ func (x *Ship) GetCreatedAt() *timestamppb.Timestamp {
 	return nil
 }
 
+func (x *Ship) GetUpdatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.UpdatedAt
+	}
+	return nil
+}
+
+func (x *Ship) GetDeletedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.DeletedAt
+	}
+	return nil
+}
+
 func (x *Ship) GetCaptains() []*summary4.CaptainSummary {
 	if x != nil {
 		return x.Captains
@@ -188,7 +204,7 @@ var File_apfish_v1_ship_ship_proto protoreflect.FileDescriptor
 
 const file_apfish_v1_ship_ship_proto_rawDesc = "" +
 	"\n" +
-	"\x19apfish.v1/ship/ship.proto\x12\x0eapfish.v1.ship\x1a\x1fgoogle/protobuf/timestamp.proto\x1a.apfish.v1/ship/type/summary/type_summary.proto\x1a0apfish.v1/ship/class/summary/class_summary.proto\x1a<apfish.v1/location/authority/summary/authority_summary.proto\x1a3apfish.v1/call_sign/summary/call_sign_summary.proto\x1a4apfish.v1/ship/captain/summary/captain_summary.proto\x1a5apfish.v1/permission/summary/permission_summary.proto\"\xe9\x05\n" +
+	"\x19apfish.v1/ship/ship.proto\x12\x0eapfish.v1.ship\x1a\x1fgoogle/protobuf/timestamp.proto\x1a.apfish.v1/ship/type/summary/type_summary.proto\x1a0apfish.v1/ship/class/summary/class_summary.proto\x1a<apfish.v1/location/authority/summary/authority_summary.proto\x1a3apfish.v1/call_sign/summary/call_sign_summary.proto\x1a4apfish.v1/ship/captain/summary/captain_summary.proto\x1a5apfish.v1/permission/summary/permission_summary.proto\"\xdf\x06\n" +
 	"\x04Ship\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x10\n" +
 	"\x03imo\x18\x02 \x01(\x05R\x03imo\x12<\n" +
@@ -206,9 +222,13 @@ const file_apfish_v1_ship_ship_proto_rawDesc = "" +
 	"deadWeight\x12\x18\n" +
 	"\atonnage\x18\f \x01(\x05R\atonnage\x129\n" +
 	"\n" +
-	"created_at\x18\r \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x12J\n" +
-	"\bcaptains\x18\x0e \x03(\v2..apfish.v1.ship.captain.summary.CaptainSummaryR\bcaptains\x12Q\n" +
-	"\vpermissions\x18\x0f \x03(\v2/.apfish.v1.permission.summary.PermissionSummaryR\vpermissionsB<Z:github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/ship;shipb\x06proto3"
+	"created_at\x18\r \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
+	"\n" +
+	"updated_at\x18\x0e \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x129\n" +
+	"\n" +
+	"deleted_at\x18\x0f \x01(\v2\x1a.google.protobuf.TimestampR\tdeletedAt\x12J\n" +
+	"\bcaptains\x18\x10 \x03(\v2..apfish.v1.ship.captain.summary.CaptainSummaryR\bcaptains\x12Q\n" +
+	"\vpermissions\x18\x11 \x03(\v2/.apfish.v1.permission.summary.PermissionSummaryR\vpermissionsB<Z:github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/ship;shipb\x06proto3"
 
 var (
 	file_apfish_v1_ship_ship_proto_rawDescOnce sync.Once
@@ -234,19 +254,21 @@ var file_apfish_v1_ship_ship_proto_goTypes = []any{
 	(*summary5.PermissionSummary)(nil), // 7: apfish.v1.permission.summary.PermissionSummary
 }
 var file_apfish_v1_ship_ship_proto_depIdxs = []int32{
-	1, // 0: apfish.v1.ship.Ship.type:type_name -> apfish.v1.ship.type.summary.TypeSummary
-	2, // 1: apfish.v1.ship.Ship.class:type_name -> apfish.v1.ship.class.summary.ClassSummary
-	3, // 2: apfish.v1.ship.Ship.authority:type_name -> apfish.v1.location.authority.summary.AuthoritySummary
-	4, // 3: apfish.v1.ship.Ship.call_sign:type_name -> apfish.v1.call_sign.summary.CallSignSummary
-	5, // 4: apfish.v1.ship.Ship.date_build:type_name -> google.protobuf.Timestamp
-	5, // 5: apfish.v1.ship.Ship.created_at:type_name -> google.protobuf.Timestamp
-	6, // 6: apfish.v1.ship.Ship.captains:type_name -> apfish.v1.ship.captain.summary.CaptainSummary
-	7, // 7: apfish.v1.ship.Ship.permissions:type_name -> apfish.v1.permission.summary.PermissionSummary
-	8, // [8:8] is the sub-list for method output_type
-	8, // [8:8] is the sub-list for method input_type
-	8, // [8:8] is the sub-list for extension type_name
-	8, // [8:8] is the sub-list for extension extendee
-	0, // [0:8] is the sub-list for field type_name
+	1,  // 0: apfish.v1.ship.Ship.type:type_name -> apfish.v1.ship.type.summary.TypeSummary
+	2,  // 1: apfish.v1.ship.Ship.class:type_name -> apfish.v1.ship.class.summary.ClassSummary
+	3,  // 2: apfish.v1.ship.Ship.authority:type_name -> apfish.v1.location.authority.summary.AuthoritySummary
+	4,  // 3: apfish.v1.ship.Ship.call_sign:type_name -> apfish.v1.call_sign.summary.CallSignSummary
+	5,  // 4: apfish.v1.ship.Ship.date_build:type_name -> google.protobuf.Timestamp
+	5,  // 5: apfish.v1.ship.Ship.created_at:type_name -> google.protobuf.Timestamp
+	5,  // 6: apfish.v1.ship.Ship.updated_at:type_name -> google.protobuf.Timestamp
+	5,  // 7: apfish.v1.ship.Ship.deleted_at:type_name -> google.protobuf.Timestamp
+	6,  // 8: apfish.v1.ship.Ship.captains:type_name -> apfish.v1.ship.captain.summary.CaptainSummary
+	7,  // 9: apfish.v1.ship.Ship.permissions:type_name -> apfish.v1.permission.summary.PermissionSummary
+	10, // [10:10] is the sub-list for method output_type
+	10, // [10:10] is the sub-list for method input_type
+	10, // [10:10] is the sub-list for extension type_name
+	10, // [10:10] is the sub-list for extension extendee
+	0,  // [0:10] is the sub-list for field type_name
 }
 
 func init() { file_apfish_v1_ship_ship_proto_init() }

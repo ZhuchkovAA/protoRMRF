@@ -31,6 +31,8 @@ export interface Ship {
   deadWeight: number;
   tonnage: number;
   createdAt: Date | undefined;
+  updatedAt: Date | undefined;
+  deletedAt: Date | undefined;
   captains: CaptainSummary[];
   permissions: PermissionSummary[];
 }
@@ -50,6 +52,8 @@ function createBaseShip(): Ship {
     deadWeight: 0,
     tonnage: 0,
     createdAt: undefined,
+    updatedAt: undefined,
+    deletedAt: undefined,
     captains: [],
     permissions: [],
   };
@@ -96,11 +100,17 @@ export const Ship = {
     if (message.createdAt !== undefined) {
       Timestamp.encode(toTimestamp(message.createdAt), writer.uint32(106).fork()).ldelim();
     }
+    if (message.updatedAt !== undefined) {
+      Timestamp.encode(toTimestamp(message.updatedAt), writer.uint32(114).fork()).ldelim();
+    }
+    if (message.deletedAt !== undefined) {
+      Timestamp.encode(toTimestamp(message.deletedAt), writer.uint32(122).fork()).ldelim();
+    }
     for (const v of message.captains) {
-      CaptainSummary.encode(v!, writer.uint32(114).fork()).ldelim();
+      CaptainSummary.encode(v!, writer.uint32(130).fork()).ldelim();
     }
     for (const v of message.permissions) {
-      PermissionSummary.encode(v!, writer.uint32(122).fork()).ldelim();
+      PermissionSummary.encode(v!, writer.uint32(138).fork()).ldelim();
     }
     return writer;
   },
@@ -208,10 +218,24 @@ export const Ship = {
             break;
           }
 
-          message.captains.push(CaptainSummary.decode(reader, reader.uint32()));
+          message.updatedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           continue;
         case 15:
           if (tag !== 122) {
+            break;
+          }
+
+          message.deletedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          continue;
+        case 16:
+          if (tag !== 130) {
+            break;
+          }
+
+          message.captains.push(CaptainSummary.decode(reader, reader.uint32()));
+          continue;
+        case 17:
+          if (tag !== 138) {
             break;
           }
 
@@ -241,6 +265,8 @@ export const Ship = {
       deadWeight: isSet(object.deadWeight) ? globalThis.Number(object.deadWeight) : 0,
       tonnage: isSet(object.tonnage) ? globalThis.Number(object.tonnage) : 0,
       createdAt: isSet(object.createdAt) ? fromJsonTimestamp(object.createdAt) : undefined,
+      updatedAt: isSet(object.updatedAt) ? fromJsonTimestamp(object.updatedAt) : undefined,
+      deletedAt: isSet(object.deletedAt) ? fromJsonTimestamp(object.deletedAt) : undefined,
       captains: globalThis.Array.isArray(object?.captains)
         ? object.captains.map((e: any) => CaptainSummary.fromJSON(e))
         : [],
@@ -291,6 +317,12 @@ export const Ship = {
     if (message.createdAt !== undefined) {
       obj.createdAt = message.createdAt.toISOString();
     }
+    if (message.updatedAt !== undefined) {
+      obj.updatedAt = message.updatedAt.toISOString();
+    }
+    if (message.deletedAt !== undefined) {
+      obj.deletedAt = message.deletedAt.toISOString();
+    }
     if (message.captains?.length) {
       obj.captains = message.captains.map((e) => CaptainSummary.toJSON(e));
     }
@@ -326,6 +358,8 @@ export const Ship = {
     message.deadWeight = object.deadWeight ?? 0;
     message.tonnage = object.tonnage ?? 0;
     message.createdAt = object.createdAt ?? undefined;
+    message.updatedAt = object.updatedAt ?? undefined;
+    message.deletedAt = object.deletedAt ?? undefined;
     message.captains = object.captains?.map((e) => CaptainSummary.fromPartial(e)) || [];
     message.permissions = object.permissions?.map((e) => PermissionSummary.fromPartial(e)) || [];
     return message;

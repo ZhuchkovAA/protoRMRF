@@ -8,8 +8,9 @@ package location_port
 
 import (
 	summary "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/authority/summary"
-	summary1 "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/district/summary"
-	summary2 "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/summary"
+	summary2 "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/district/summary"
+	summary1 "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/subdivision/summary"
+	summary3 "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/summary"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -29,11 +30,14 @@ type Port struct {
 	state         protoimpl.MessageState        `protogen:"open.v1"`
 	Id            string                        `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	Name          string                        `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	Authority     *summary.AuthoritySummary     `protobuf:"bytes,3,opt,name=authority,proto3" json:"authority,omitempty"`
-	District      *summary1.DistrictSummary     `protobuf:"bytes,4,opt,name=district,proto3" json:"district,omitempty"`
-	Code          string                        `protobuf:"bytes,5,opt,name=code,proto3" json:"code,omitempty"`
-	CreatedAt     *timestamppb.Timestamp        `protobuf:"bytes,6,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	Permissions   []*summary2.PermissionSummary `protobuf:"bytes,7,rep,name=permissions,proto3" json:"permissions,omitempty"`
+	Code          string                        `protobuf:"bytes,3,opt,name=code,proto3" json:"code,omitempty"`
+	Authority     *summary.AuthoritySummary     `protobuf:"bytes,4,opt,name=authority,proto3" json:"authority,omitempty"`
+	Subdivision   *summary1.SubDivisionSummary  `protobuf:"bytes,5,opt,name=subdivision,proto3" json:"subdivision,omitempty"`
+	District      *summary2.DistrictSummary     `protobuf:"bytes,6,opt,name=district,proto3" json:"district,omitempty"`
+	CreatedAt     *timestamppb.Timestamp        `protobuf:"bytes,7,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	UpdatedAt     *timestamppb.Timestamp        `protobuf:"bytes,8,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	DeletedAt     *timestamppb.Timestamp        `protobuf:"bytes,9,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty"`
+	Permissions   []*summary3.PermissionSummary `protobuf:"bytes,10,rep,name=permissions,proto3" json:"permissions,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -82,6 +86,13 @@ func (x *Port) GetName() string {
 	return ""
 }
 
+func (x *Port) GetCode() string {
+	if x != nil {
+		return x.Code
+	}
+	return ""
+}
+
 func (x *Port) GetAuthority() *summary.AuthoritySummary {
 	if x != nil {
 		return x.Authority
@@ -89,18 +100,18 @@ func (x *Port) GetAuthority() *summary.AuthoritySummary {
 	return nil
 }
 
-func (x *Port) GetDistrict() *summary1.DistrictSummary {
+func (x *Port) GetSubdivision() *summary1.SubDivisionSummary {
 	if x != nil {
-		return x.District
+		return x.Subdivision
 	}
 	return nil
 }
 
-func (x *Port) GetCode() string {
+func (x *Port) GetDistrict() *summary2.DistrictSummary {
 	if x != nil {
-		return x.Code
+		return x.District
 	}
-	return ""
+	return nil
 }
 
 func (x *Port) GetCreatedAt() *timestamppb.Timestamp {
@@ -110,7 +121,21 @@ func (x *Port) GetCreatedAt() *timestamppb.Timestamp {
 	return nil
 }
 
-func (x *Port) GetPermissions() []*summary2.PermissionSummary {
+func (x *Port) GetUpdatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.UpdatedAt
+	}
+	return nil
+}
+
+func (x *Port) GetDeletedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.DeletedAt
+	}
+	return nil
+}
+
+func (x *Port) GetPermissions() []*summary3.PermissionSummary {
 	if x != nil {
 		return x.Permissions
 	}
@@ -121,16 +146,22 @@ var File_apfish_v1_location_port_port_proto protoreflect.FileDescriptor
 
 const file_apfish_v1_location_port_port_proto_rawDesc = "" +
 	"\n" +
-	"\"apfish.v1/location/port/port.proto\x12\x17apfish.v1.location.port\x1a\x1fgoogle/protobuf/timestamp.proto\x1a<apfish.v1/location/authority/summary/authority_summary.proto\x1a:apfish.v1/location/district/summary/district_summary.proto\x1a5apfish.v1/permission/summary/permission_summary.proto\"\xf4\x02\n" +
+	"\"apfish.v1/location/port/port.proto\x12\x17apfish.v1.location.port\x1a\x1fgoogle/protobuf/timestamp.proto\x1a<apfish.v1/location/authority/summary/authority_summary.proto\x1a:apfish.v1/location/district/summary/district_summary.proto\x1a@apfish.v1/location/subdivision/summary/subdivision_summary.proto\x1a5apfish.v1/permission/summary/permission_summary.proto\"\xc8\x04\n" +
 	"\x04Port\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12T\n" +
-	"\tauthority\x18\x03 \x01(\v26.apfish.v1.location.authority.summary.AuthoritySummaryR\tauthority\x12P\n" +
-	"\bdistrict\x18\x04 \x01(\v24.apfish.v1.location.district.summary.DistrictSummaryR\bdistrict\x12\x12\n" +
-	"\x04code\x18\x05 \x01(\tR\x04code\x129\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12\x12\n" +
+	"\x04code\x18\x03 \x01(\tR\x04code\x12T\n" +
+	"\tauthority\x18\x04 \x01(\v26.apfish.v1.location.authority.summary.AuthoritySummaryR\tauthority\x12\\\n" +
+	"\vsubdivision\x18\x05 \x01(\v2:.apfish.v1.location.subdivision.summary.SubDivisionSummaryR\vsubdivision\x12P\n" +
+	"\bdistrict\x18\x06 \x01(\v24.apfish.v1.location.district.summary.DistrictSummaryR\bdistrict\x129\n" +
 	"\n" +
-	"created_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x12Q\n" +
-	"\vpermissions\x18\a \x03(\v2/.apfish.v1.permission.summary.PermissionSummaryR\vpermissionsBNZLgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/port;location_portb\x06proto3"
+	"created_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
+	"\n" +
+	"updated_at\x18\b \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x129\n" +
+	"\n" +
+	"deleted_at\x18\t \x01(\v2\x1a.google.protobuf.TimestampR\tdeletedAt\x12Q\n" +
+	"\vpermissions\x18\n" +
+	" \x03(\v2/.apfish.v1.permission.summary.PermissionSummaryR\vpermissionsBNZLgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/port;location_portb\x06proto3"
 
 var (
 	file_apfish_v1_location_port_port_proto_rawDescOnce sync.Once
@@ -146,22 +177,26 @@ func file_apfish_v1_location_port_port_proto_rawDescGZIP() []byte {
 
 var file_apfish_v1_location_port_port_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_apfish_v1_location_port_port_proto_goTypes = []any{
-	(*Port)(nil),                       // 0: apfish.v1.location.port.Port
-	(*summary.AuthoritySummary)(nil),   // 1: apfish.v1.location.authority.summary.AuthoritySummary
-	(*summary1.DistrictSummary)(nil),   // 2: apfish.v1.location.district.summary.DistrictSummary
-	(*timestamppb.Timestamp)(nil),      // 3: google.protobuf.Timestamp
-	(*summary2.PermissionSummary)(nil), // 4: apfish.v1.permission.summary.PermissionSummary
+	(*Port)(nil),                        // 0: apfish.v1.location.port.Port
+	(*summary.AuthoritySummary)(nil),    // 1: apfish.v1.location.authority.summary.AuthoritySummary
+	(*summary1.SubDivisionSummary)(nil), // 2: apfish.v1.location.subdivision.summary.SubDivisionSummary
+	(*summary2.DistrictSummary)(nil),    // 3: apfish.v1.location.district.summary.DistrictSummary
+	(*timestamppb.Timestamp)(nil),       // 4: google.protobuf.Timestamp
+	(*summary3.PermissionSummary)(nil),  // 5: apfish.v1.permission.summary.PermissionSummary
 }
 var file_apfish_v1_location_port_port_proto_depIdxs = []int32{
 	1, // 0: apfish.v1.location.port.Port.authority:type_name -> apfish.v1.location.authority.summary.AuthoritySummary
-	2, // 1: apfish.v1.location.port.Port.district:type_name -> apfish.v1.location.district.summary.DistrictSummary
-	3, // 2: apfish.v1.location.port.Port.created_at:type_name -> google.protobuf.Timestamp
-	4, // 3: apfish.v1.location.port.Port.permissions:type_name -> apfish.v1.permission.summary.PermissionSummary
-	4, // [4:4] is the sub-list for method output_type
-	4, // [4:4] is the sub-list for method input_type
-	4, // [4:4] is the sub-list for extension type_name
-	4, // [4:4] is the sub-list for extension extendee
-	0, // [0:4] is the sub-list for field type_name
+	2, // 1: apfish.v1.location.port.Port.subdivision:type_name -> apfish.v1.location.subdivision.summary.SubDivisionSummary
+	3, // 2: apfish.v1.location.port.Port.district:type_name -> apfish.v1.location.district.summary.DistrictSummary
+	4, // 3: apfish.v1.location.port.Port.created_at:type_name -> google.protobuf.Timestamp
+	4, // 4: apfish.v1.location.port.Port.updated_at:type_name -> google.protobuf.Timestamp
+	4, // 5: apfish.v1.location.port.Port.deleted_at:type_name -> google.protobuf.Timestamp
+	5, // 6: apfish.v1.location.port.Port.permissions:type_name -> apfish.v1.permission.summary.PermissionSummary
+	7, // [7:7] is the sub-list for method output_type
+	7, // [7:7] is the sub-list for method input_type
+	7, // [7:7] is the sub-list for extension type_name
+	7, // [7:7] is the sub-list for extension extendee
+	0, // [0:7] is the sub-list for field type_name
 }
 
 func init() { file_apfish_v1_location_port_port_proto_init() }

@@ -13,7 +13,8 @@ message UserSummary {
   string last_name = 4;
   string middle_name = 5;
   string role_id = 6;                      // Assigned role.
-  google.protobuf.Timestamp created_at = 7;  // When the user was created.
-  bool is_active = 8;
-  string created_by_login = 9;        // Login of the creator (e.g., "admin").
+  string created_by_login = 7;        // Login of the creator (e.g., "admin").
+  google.protobuf.Timestamp created_at = 8;
+  google.protobuf.Timestamp updated_at = 9;
+  google.protobuf.Timestamp deleted_at = 10;
 }

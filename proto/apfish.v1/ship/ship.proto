@@ -27,7 +27,9 @@ message Ship {
   int32 dead_weight = 11;
   int32 tonnage = 12;
   google.protobuf.Timestamp created_at = 13;
+  google.protobuf.Timestamp updated_at = 14;
+  google.protobuf.Timestamp deleted_at = 15;
 
-  repeated apfish.v1.ship.captain.summary.CaptainSummary captains = 14;
-  repeated apfish.v1.permission.summary.PermissionSummary permissions = 15;
+  repeated apfish.v1.ship.captain.summary.CaptainSummary captains = 16;
+  repeated apfish.v1.permission.summary.PermissionSummary permissions = 17;
 }

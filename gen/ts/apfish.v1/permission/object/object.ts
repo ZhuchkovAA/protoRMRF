@@ -23,11 +23,22 @@ export interface Object {
   /** Machine-friendly code (e.g., "inspection") */
   code: string;
   createdAt: Date | undefined;
+  updatedAt: Date | undefined;
+  deletedAt: Date | undefined;
   permissions: PermissionSummary[];
 }
 
 function createBaseObject(): Object {
-  return { id: "", name: "", description: "", code: "", createdAt: undefined, permissions: [] };
+  return {
+    id: "",
+    name: "",
+    description: "",
+    code: "",
+    createdAt: undefined,
+    updatedAt: undefined,
+    deletedAt: undefined,
+    permissions: [],
+  };
 }
 
 export const Object = {
@@ -47,8 +58,14 @@ export const Object = {
     if (message.createdAt !== undefined) {
       Timestamp.encode(toTimestamp(message.createdAt), writer.uint32(42).fork()).ldelim();
     }
+    if (message.updatedAt !== undefined) {
+      Timestamp.encode(toTimestamp(message.updatedAt), writer.uint32(50).fork()).ldelim();
+    }
+    if (message.deletedAt !== undefined) {
+      Timestamp.encode(toTimestamp(message.deletedAt), writer.uint32(58).fork()).ldelim();
+    }
     for (const v of message.permissions) {
-      PermissionSummary.encode(v!, writer.uint32(50).fork()).ldelim();
+      PermissionSummary.encode(v!, writer.uint32(66).fork()).ldelim();
     }
     return writer;
   },
@@ -100,6 +117,20 @@ export const Object = {
             break;
           }
 
+          message.updatedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          continue;
+        case 7:
+          if (tag !== 58) {
+            break;
+          }
+
+          message.deletedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          continue;
+        case 8:
+          if (tag !== 66) {
+            break;
+          }
+
           message.permissions.push(PermissionSummary.decode(reader, reader.uint32()));
           continue;
       }
@@ -118,6 +149,8 @@ export const Object = {
       description: isSet(object.description) ? globalThis.String(object.description) : "",
       code: isSet(object.code) ? globalThis.String(object.code) : "",
       createdAt: isSet(object.createdAt) ? fromJsonTimestamp(object.createdAt) : undefined,
+      updatedAt: isSet(object.updatedAt) ? fromJsonTimestamp(object.updatedAt) : undefined,
+      deletedAt: isSet(object.deletedAt) ? fromJsonTimestamp(object.deletedAt) : undefined,
       permissions: globalThis.Array.isArray(object?.permissions)
         ? object.permissions.map((e: any) => PermissionSummary.fromJSON(e))
         : [],
@@ -141,6 +174,12 @@ export const Object = {
     if (message.createdAt !== undefined) {
       obj.createdAt = message.createdAt.toISOString();
     }
+    if (message.updatedAt !== undefined) {
+      obj.updatedAt = message.updatedAt.toISOString();
+    }
+    if (message.deletedAt !== undefined) {
+      obj.deletedAt = message.deletedAt.toISOString();
+    }
     if (message.permissions?.length) {
       obj.permissions = message.permissions.map((e) => PermissionSummary.toJSON(e));
     }
@@ -157,6 +196,8 @@ export const Object = {
     message.description = object.description ?? "";
     message.code = object.code ?? "";
     message.createdAt = object.createdAt ?? undefined;
+    message.updatedAt = object.updatedAt ?? undefined;
+    message.deletedAt = object.deletedAt ?? undefined;
     message.permissions = object.permissions?.map((e) => PermissionSummary.fromPartial(e)) || [];
     return message;
   },

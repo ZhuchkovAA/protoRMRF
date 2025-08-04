@@ -20,4 +20,6 @@ message ShipSummary {
   int32 dead_weight = 11;
   int32 tonnage = 12;
   google.protobuf.Timestamp created_at = 13;
+  google.protobuf.Timestamp updated_at = 14;
+  google.protobuf.Timestamp deleted_at = 15;
 }

@@ -645,6 +645,15 @@ export const UserServiceService = {
     responseSerialize: (value: SuccessResponse) => Buffer.from(SuccessResponse.encode(value).finish()),
     responseDeserialize: (value: Buffer) => SuccessResponse.decode(value),
   },
+  deleteUser: {
+    path: "/apfish.v1.user.UserService/DeleteUser",
+    requestStream: false,
+    responseStream: false,
+    requestSerialize: (value: UserRequest) => Buffer.from(UserRequest.encode(value).finish()),
+    requestDeserialize: (value: Buffer) => UserRequest.decode(value),
+    responseSerialize: (value: SuccessResponse) => Buffer.from(SuccessResponse.encode(value).finish()),
+    responseDeserialize: (value: Buffer) => SuccessResponse.decode(value),
+  },
   assignPermissions: {
     path: "/apfish.v1.user.UserService/AssignPermissions",
     requestStream: false,
@@ -669,6 +678,7 @@ export interface UserServiceServer extends UntypedServiceImplementation {
   listUsers: handleUnaryCall<ListUsersRequest, ListUsersResponse>;
   createUser: handleUnaryCall<CreateUserRequest, CreateUserResponse>;
   updateUser: handleUnaryCall<UpdateUserRequest, SuccessResponse>;
+  deleteUser: handleUnaryCall<UserRequest, SuccessResponse>;
   assignPermissions: handleUnaryCall<AssignPermissionsRequest, SuccessResponse>;
 }
 
@@ -734,6 +744,21 @@ export interface UserServiceClient extends Client {
   ): ClientUnaryCall;
   updateUser(
     request: UpdateUserRequest,
+    metadata: Metadata,
+    options: Partial<CallOptions>,
+    callback: (error: ServiceError | null, response: SuccessResponse) => void,
+  ): ClientUnaryCall;
+  deleteUser(
+    request: UserRequest,
+    callback: (error: ServiceError | null, response: SuccessResponse) => void,
+  ): ClientUnaryCall;
+  deleteUser(
+    request: UserRequest,
+    metadata: Metadata,
+    callback: (error: ServiceError | null, response: SuccessResponse) => void,
+  ): ClientUnaryCall;
+  deleteUser(
+    request: UserRequest,
     metadata: Metadata,
     options: Partial<CallOptions>,
     callback: (error: ServiceError | null, response: SuccessResponse) => void,

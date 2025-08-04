@@ -13,5 +13,10 @@ message AuthoritySummary {
   string code = 4;
   bool is_ilo = 5;
   bool is_ballast_water = 6;
-  google.protobuf.Timestamp created_at = 7;
+  string type_id = 7;
+  string parent_code = 8;
+  string mou_id = 9;
+  google.protobuf.Timestamp created_at = 10;
+  google.protobuf.Timestamp updated_at = 11;
+  google.protobuf.Timestamp deleted_at = 12;
 }

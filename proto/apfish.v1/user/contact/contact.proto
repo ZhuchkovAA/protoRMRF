@@ -16,7 +16,9 @@ message Contact {
   user.summary.UserSummary user = 2;
   apfish.v1.user.contact.type.summary.TypeSummary type = 3;           // Contact type.
   string value = 4;                   // Contact value (e.g., "user@example.com").
-  google.protobuf.Timestamp created_at = 5;  // When the contact was added.
+  google.protobuf.Timestamp created_at = 5;
+  google.protobuf.Timestamp updated_at = 6;
+  google.protobuf.Timestamp deleted_at = 7;
 }
 
 message ContactPatch {
