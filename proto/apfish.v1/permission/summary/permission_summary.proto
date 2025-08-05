@@ -16,13 +16,21 @@ message PermissionSummary {
   google.protobuf.Timestamp created_at = 7;
   google.protobuf.Timestamp updated_at = 8;
   google.protobuf.Timestamp deleted_at = 9;
+
+  repeated string mous_id = 10;
+  repeated string authorities_id = 11;
+  repeated string districts_id = 12;
+  repeated string ports_id = 13;
+  repeated string ships_id = 14;
 }
 
 message PermissionJwt {
   string action_id = 1;
   string object_id = 2;
-  repeated string authorities_id = 3;
-  repeated string districts_id = 4;
-  repeated string ports_id = 5;
-  repeated string ships_id = 6;
+
+  repeated string mous_id = 3;
+  repeated string authorities_id = 4;
+  repeated string districts_id = 5;
+  repeated string ports_id = 6;
+  repeated string ships_id = 7;
 }

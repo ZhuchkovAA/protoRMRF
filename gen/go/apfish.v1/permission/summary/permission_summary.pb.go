@@ -33,6 +33,11 @@ type PermissionSummary struct {
 	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	DeletedAt     *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty"`
+	MousId        []string               `protobuf:"bytes,10,rep,name=mous_id,json=mousId,proto3" json:"mous_id,omitempty"`
+	AuthoritiesId []string               `protobuf:"bytes,11,rep,name=authorities_id,json=authoritiesId,proto3" json:"authorities_id,omitempty"`
+	DistrictsId   []string               `protobuf:"bytes,12,rep,name=districts_id,json=districtsId,proto3" json:"districts_id,omitempty"`
+	PortsId       []string               `protobuf:"bytes,13,rep,name=ports_id,json=portsId,proto3" json:"ports_id,omitempty"`
+	ShipsId       []string               `protobuf:"bytes,14,rep,name=ships_id,json=shipsId,proto3" json:"ships_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -130,14 +135,50 @@ func (x *PermissionSummary) GetDeletedAt() *timestamppb.Timestamp {
 	return nil
 }
 
+func (x *PermissionSummary) GetMousId() []string {
+	if x != nil {
+		return x.MousId
+	}
+	return nil
+}
+
+func (x *PermissionSummary) GetAuthoritiesId() []string {
+	if x != nil {
+		return x.AuthoritiesId
+	}
+	return nil
+}
+
+func (x *PermissionSummary) GetDistrictsId() []string {
+	if x != nil {
+		return x.DistrictsId
+	}
+	return nil
+}
+
+func (x *PermissionSummary) GetPortsId() []string {
+	if x != nil {
+		return x.PortsId
+	}
+	return nil
+}
+
+func (x *PermissionSummary) GetShipsId() []string {
+	if x != nil {
+		return x.ShipsId
+	}
+	return nil
+}
+
 type PermissionJwt struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ActionId      string                 `protobuf:"bytes,1,opt,name=action_id,json=actionId,proto3" json:"action_id,omitempty"`
 	ObjectId      string                 `protobuf:"bytes,2,opt,name=object_id,json=objectId,proto3" json:"object_id,omitempty"`
-	AuthoritiesId []string               `protobuf:"bytes,3,rep,name=authorities_id,json=authoritiesId,proto3" json:"authorities_id,omitempty"`
-	DistrictsId   []string               `protobuf:"bytes,4,rep,name=districts_id,json=districtsId,proto3" json:"districts_id,omitempty"`
-	PortsId       []string               `protobuf:"bytes,5,rep,name=ports_id,json=portsId,proto3" json:"ports_id,omitempty"`
-	ShipsId       []string               `protobuf:"bytes,6,rep,name=ships_id,json=shipsId,proto3" json:"ships_id,omitempty"`
+	MousId        []string               `protobuf:"bytes,3,rep,name=mous_id,json=mousId,proto3" json:"mous_id,omitempty"`
+	AuthoritiesId []string               `protobuf:"bytes,4,rep,name=authorities_id,json=authoritiesId,proto3" json:"authorities_id,omitempty"`
+	DistrictsId   []string               `protobuf:"bytes,5,rep,name=districts_id,json=districtsId,proto3" json:"districts_id,omitempty"`
+	PortsId       []string               `protobuf:"bytes,6,rep,name=ports_id,json=portsId,proto3" json:"ports_id,omitempty"`
+	ShipsId       []string               `protobuf:"bytes,7,rep,name=ships_id,json=shipsId,proto3" json:"ships_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -186,6 +227,13 @@ func (x *PermissionJwt) GetObjectId() string {
 	return ""
 }
 
+func (x *PermissionJwt) GetMousId() []string {
+	if x != nil {
+		return x.MousId
+	}
+	return nil
+}
+
 func (x *PermissionJwt) GetAuthoritiesId() []string {
 	if x != nil {
 		return x.AuthoritiesId
@@ -218,7 +266,7 @@ var File_apfish_v1_permission_summary_permission_summary_proto protoreflect.File
 
 const file_apfish_v1_permission_summary_permission_summary_proto_rawDesc = "" +
 	"\n" +
-	"5apfish.v1/permission/summary/permission_summary.proto\x12\x1capfish.v1.permission.summary\x1a\x1fgoogle/protobuf/timestamp.proto\"\xd8\x02\n" +
+	"5apfish.v1/permission/summary/permission_summary.proto\x12\x1capfish.v1.permission.summary\x1a\x1fgoogle/protobuf/timestamp.proto\"\xf1\x03\n" +
 	"\x11PermissionSummary\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1b\n" +
 	"\taction_id\x18\x02 \x01(\tR\bactionId\x12\x1b\n" +
@@ -231,14 +279,21 @@ const file_apfish_v1_permission_summary_permission_summary_proto_rawDesc = "" +
 	"\n" +
 	"updated_at\x18\b \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x129\n" +
 	"\n" +
-	"deleted_at\x18\t \x01(\v2\x1a.google.protobuf.TimestampR\tdeletedAt\"\xc9\x01\n" +
+	"deleted_at\x18\t \x01(\v2\x1a.google.protobuf.TimestampR\tdeletedAt\x12\x17\n" +
+	"\amous_id\x18\n" +
+	" \x03(\tR\x06mousId\x12%\n" +
+	"\x0eauthorities_id\x18\v \x03(\tR\rauthoritiesId\x12!\n" +
+	"\fdistricts_id\x18\f \x03(\tR\vdistrictsId\x12\x19\n" +
+	"\bports_id\x18\r \x03(\tR\aportsId\x12\x19\n" +
+	"\bships_id\x18\x0e \x03(\tR\ashipsId\"\xe2\x01\n" +
 	"\rPermissionJwt\x12\x1b\n" +
 	"\taction_id\x18\x01 \x01(\tR\bactionId\x12\x1b\n" +
-	"\tobject_id\x18\x02 \x01(\tR\bobjectId\x12%\n" +
-	"\x0eauthorities_id\x18\x03 \x03(\tR\rauthoritiesId\x12!\n" +
-	"\fdistricts_id\x18\x04 \x03(\tR\vdistrictsId\x12\x19\n" +
-	"\bports_id\x18\x05 \x03(\tR\aportsId\x12\x19\n" +
-	"\bships_id\x18\x06 \x03(\tR\ashipsIdBXZVgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/summary;permission_summaryb\x06proto3"
+	"\tobject_id\x18\x02 \x01(\tR\bobjectId\x12\x17\n" +
+	"\amous_id\x18\x03 \x03(\tR\x06mousId\x12%\n" +
+	"\x0eauthorities_id\x18\x04 \x03(\tR\rauthoritiesId\x12!\n" +
+	"\fdistricts_id\x18\x05 \x03(\tR\vdistrictsId\x12\x19\n" +
+	"\bports_id\x18\x06 \x03(\tR\aportsId\x12\x19\n" +
+	"\bships_id\x18\a \x03(\tR\ashipsIdBXZVgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/summary;permission_summaryb\x06proto3"
 
 var (
 	file_apfish_v1_permission_summary_permission_summary_proto_rawDescOnce sync.Once

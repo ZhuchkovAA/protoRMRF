@@ -24,11 +24,17 @@ export interface PermissionSummary {
   createdAt: Date | undefined;
   updatedAt: Date | undefined;
   deletedAt: Date | undefined;
+  mousId: string[];
+  authoritiesId: string[];
+  districtsId: string[];
+  portsId: string[];
+  shipsId: string[];
 }
 
 export interface PermissionJwt {
   actionId: string;
   objectId: string;
+  mousId: string[];
   authoritiesId: string[];
   districtsId: string[];
   portsId: string[];
@@ -46,6 +52,11 @@ function createBasePermissionSummary(): PermissionSummary {
     createdAt: undefined,
     updatedAt: undefined,
     deletedAt: undefined,
+    mousId: [],
+    authoritiesId: [],
+    districtsId: [],
+    portsId: [],
+    shipsId: [],
   };
 }
 
@@ -77,6 +88,21 @@ export const PermissionSummary = {
     }
     if (message.deletedAt !== undefined) {
       Timestamp.encode(toTimestamp(message.deletedAt), writer.uint32(74).fork()).ldelim();
+    }
+    for (const v of message.mousId) {
+      writer.uint32(82).string(v!);
+    }
+    for (const v of message.authoritiesId) {
+      writer.uint32(90).string(v!);
+    }
+    for (const v of message.districtsId) {
+      writer.uint32(98).string(v!);
+    }
+    for (const v of message.portsId) {
+      writer.uint32(106).string(v!);
+    }
+    for (const v of message.shipsId) {
+      writer.uint32(114).string(v!);
     }
     return writer;
   },
@@ -151,6 +177,41 @@ export const PermissionSummary = {
 
           message.deletedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           continue;
+        case 10:
+          if (tag !== 82) {
+            break;
+          }
+
+          message.mousId.push(reader.string());
+          continue;
+        case 11:
+          if (tag !== 90) {
+            break;
+          }
+
+          message.authoritiesId.push(reader.string());
+          continue;
+        case 12:
+          if (tag !== 98) {
+            break;
+          }
+
+          message.districtsId.push(reader.string());
+          continue;
+        case 13:
+          if (tag !== 106) {
+            break;
+          }
+
+          message.portsId.push(reader.string());
+          continue;
+        case 14:
+          if (tag !== 114) {
+            break;
+          }
+
+          message.shipsId.push(reader.string());
+          continue;
       }
       if ((tag & 7) === 4 || tag === 0) {
         break;
@@ -171,6 +232,15 @@ export const PermissionSummary = {
       createdAt: isSet(object.createdAt) ? fromJsonTimestamp(object.createdAt) : undefined,
       updatedAt: isSet(object.updatedAt) ? fromJsonTimestamp(object.updatedAt) : undefined,
       deletedAt: isSet(object.deletedAt) ? fromJsonTimestamp(object.deletedAt) : undefined,
+      mousId: globalThis.Array.isArray(object?.mousId) ? object.mousId.map((e: any) => globalThis.String(e)) : [],
+      authoritiesId: globalThis.Array.isArray(object?.authoritiesId)
+        ? object.authoritiesId.map((e: any) => globalThis.String(e))
+        : [],
+      districtsId: globalThis.Array.isArray(object?.districtsId)
+        ? object.districtsId.map((e: any) => globalThis.String(e))
+        : [],
+      portsId: globalThis.Array.isArray(object?.portsId) ? object.portsId.map((e: any) => globalThis.String(e)) : [],
+      shipsId: globalThis.Array.isArray(object?.shipsId) ? object.shipsId.map((e: any) => globalThis.String(e)) : [],
     };
   },
 
@@ -203,6 +273,21 @@ export const PermissionSummary = {
     if (message.deletedAt !== undefined) {
       obj.deletedAt = message.deletedAt.toISOString();
     }
+    if (message.mousId?.length) {
+      obj.mousId = message.mousId;
+    }
+    if (message.authoritiesId?.length) {
+      obj.authoritiesId = message.authoritiesId;
+    }
+    if (message.districtsId?.length) {
+      obj.districtsId = message.districtsId;
+    }
+    if (message.portsId?.length) {
+      obj.portsId = message.portsId;
+    }
+    if (message.shipsId?.length) {
+      obj.shipsId = message.shipsId;
+    }
     return obj;
   },
 
@@ -220,12 +305,17 @@ export const PermissionSummary = {
     message.createdAt = object.createdAt ?? undefined;
     message.updatedAt = object.updatedAt ?? undefined;
     message.deletedAt = object.deletedAt ?? undefined;
+    message.mousId = object.mousId?.map((e) => e) || [];
+    message.authoritiesId = object.authoritiesId?.map((e) => e) || [];
+    message.districtsId = object.districtsId?.map((e) => e) || [];
+    message.portsId = object.portsId?.map((e) => e) || [];
+    message.shipsId = object.shipsId?.map((e) => e) || [];
     return message;
   },
 };
 
 function createBasePermissionJwt(): PermissionJwt {
-  return { actionId: "", objectId: "", authoritiesId: [], districtsId: [], portsId: [], shipsId: [] };
+  return { actionId: "", objectId: "", mousId: [], authoritiesId: [], districtsId: [], portsId: [], shipsId: [] };
 }
 
 export const PermissionJwt = {
@@ -236,17 +326,20 @@ export const PermissionJwt = {
     if (message.objectId !== "") {
       writer.uint32(18).string(message.objectId);
     }
-    for (const v of message.authoritiesId) {
+    for (const v of message.mousId) {
       writer.uint32(26).string(v!);
     }
-    for (const v of message.districtsId) {
+    for (const v of message.authoritiesId) {
       writer.uint32(34).string(v!);
     }
-    for (const v of message.portsId) {
+    for (const v of message.districtsId) {
       writer.uint32(42).string(v!);
     }
-    for (const v of message.shipsId) {
+    for (const v of message.portsId) {
       writer.uint32(50).string(v!);
+    }
+    for (const v of message.shipsId) {
+      writer.uint32(58).string(v!);
     }
     return writer;
   },
@@ -277,24 +370,31 @@ export const PermissionJwt = {
             break;
           }
 
-          message.authoritiesId.push(reader.string());
+          message.mousId.push(reader.string());
           continue;
         case 4:
           if (tag !== 34) {
             break;
           }
 
-          message.districtsId.push(reader.string());
+          message.authoritiesId.push(reader.string());
           continue;
         case 5:
           if (tag !== 42) {
             break;
           }
 
-          message.portsId.push(reader.string());
+          message.districtsId.push(reader.string());
           continue;
         case 6:
           if (tag !== 50) {
+            break;
+          }
+
+          message.portsId.push(reader.string());
+          continue;
+        case 7:
+          if (tag !== 58) {
             break;
           }
 
@@ -313,6 +413,7 @@ export const PermissionJwt = {
     return {
       actionId: isSet(object.actionId) ? globalThis.String(object.actionId) : "",
       objectId: isSet(object.objectId) ? globalThis.String(object.objectId) : "",
+      mousId: globalThis.Array.isArray(object?.mousId) ? object.mousId.map((e: any) => globalThis.String(e)) : [],
       authoritiesId: globalThis.Array.isArray(object?.authoritiesId)
         ? object.authoritiesId.map((e: any) => globalThis.String(e))
         : [],
@@ -331,6 +432,9 @@ export const PermissionJwt = {
     }
     if (message.objectId !== "") {
       obj.objectId = message.objectId;
+    }
+    if (message.mousId?.length) {
+      obj.mousId = message.mousId;
     }
     if (message.authoritiesId?.length) {
       obj.authoritiesId = message.authoritiesId;
@@ -354,6 +458,7 @@ export const PermissionJwt = {
     const message = createBasePermissionJwt();
     message.actionId = object.actionId ?? "";
     message.objectId = object.objectId ?? "";
+    message.mousId = object.mousId?.map((e) => e) || [];
     message.authoritiesId = object.authoritiesId?.map((e) => e) || [];
     message.districtsId = object.districtsId?.map((e) => e) || [];
     message.portsId = object.portsId?.map((e) => e) || [];
