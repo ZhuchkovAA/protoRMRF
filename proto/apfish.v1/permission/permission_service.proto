@@ -51,10 +51,11 @@ message CreatePermissionRequest {
   google.protobuf.StringValue name = 4;
   google.protobuf.StringValue code = 5;
 
-  repeated string authorities_ids = 6;
-  repeated string districts_ids = 7;
-  repeated string ports_ids = 8;
-  repeated string ships_ids = 9;
+  repeated string mous_ids = 6;
+  repeated string authorities_ids = 7;
+  repeated string districts_ids = 8;
+  repeated string ports_ids = 9;
+  repeated string ships_ids = 10;
 }
 
 message CreatePermissionResponse {

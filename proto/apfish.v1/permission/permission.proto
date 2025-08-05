@@ -9,6 +9,7 @@ import "google/protobuf/timestamp.proto";  // Standard Protocol Buffers timestam
 import "apfish.v1/permission/action/summary/action_summary.proto";
 import "apfish.v1/permission/object/summary/object_summary.proto";
 
+import "apfish.v1/location/mou/summary/mou_summary.proto";
 import "apfish.v1/location/authority/summary/authority_summary.proto";
 import "apfish.v1/location/district/summary/district_summary.proto";
 import "apfish.v1/location/port/summary/port_summary.proto";
@@ -30,11 +31,12 @@ message Permission {
   google.protobuf.Timestamp updated_at = 8;
   google.protobuf.Timestamp deleted_at = 9;
 
-  repeated apfish.v1.location.authority.summary.AuthoritySummary authorities = 10;
-  repeated apfish.v1.location.district.summary.DistrictSummary districts = 11;
-  repeated apfish.v1.location.port.summary.PortSummary ports = 12;
-  repeated apfish.v1.ship.summary.ShipSummary ships = 13;
+  repeated apfish.v1.location.mou.summary.MouSummary mous = 10;
+  repeated apfish.v1.location.authority.summary.AuthoritySummary authorities = 11;
+  repeated apfish.v1.location.district.summary.DistrictSummary districts = 12;
+  repeated apfish.v1.location.port.summary.PortSummary ports = 13;
+  repeated apfish.v1.ship.summary.ShipSummary ships = 14;
 
-  repeated apfish.v1.user.summary.UserSummary users = 14;
-  repeated apfish.v1.user.role.summary.RoleSummary roles = 15;
+  repeated apfish.v1.user.summary.UserSummary users = 15;
+  repeated apfish.v1.user.role.summary.RoleSummary roles = 16;
 }

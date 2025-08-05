@@ -7,14 +7,15 @@
 package permission
 
 import (
-	summary2 "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/authority/summary"
-	summary3 "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/district/summary"
-	summary4 "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/port/summary"
+	summary3 "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/authority/summary"
+	summary4 "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/district/summary"
+	summary2 "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/mou/summary"
+	summary5 "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/port/summary"
 	summary "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/action/summary"
 	summary1 "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/object/summary"
-	summary5 "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/ship/summary"
-	summary7 "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/role/summary"
-	summary6 "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/summary"
+	summary6 "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/ship/summary"
+	summary8 "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/role/summary"
+	summary7 "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/summary"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -43,12 +44,13 @@ type Permission struct {
 	CreatedAt     *timestamppb.Timestamp       `protobuf:"bytes,7,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	UpdatedAt     *timestamppb.Timestamp       `protobuf:"bytes,8,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	DeletedAt     *timestamppb.Timestamp       `protobuf:"bytes,9,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty"`
-	Authorities   []*summary2.AuthoritySummary `protobuf:"bytes,10,rep,name=authorities,proto3" json:"authorities,omitempty"`
-	Districts     []*summary3.DistrictSummary  `protobuf:"bytes,11,rep,name=districts,proto3" json:"districts,omitempty"`
-	Ports         []*summary4.PortSummary      `protobuf:"bytes,12,rep,name=ports,proto3" json:"ports,omitempty"`
-	Ships         []*summary5.ShipSummary      `protobuf:"bytes,13,rep,name=ships,proto3" json:"ships,omitempty"`
-	Users         []*summary6.UserSummary      `protobuf:"bytes,14,rep,name=users,proto3" json:"users,omitempty"`
-	Roles         []*summary7.RoleSummary      `protobuf:"bytes,15,rep,name=roles,proto3" json:"roles,omitempty"`
+	Mous          []*summary2.MouSummary       `protobuf:"bytes,10,rep,name=mous,proto3" json:"mous,omitempty"`
+	Authorities   []*summary3.AuthoritySummary `protobuf:"bytes,11,rep,name=authorities,proto3" json:"authorities,omitempty"`
+	Districts     []*summary4.DistrictSummary  `protobuf:"bytes,12,rep,name=districts,proto3" json:"districts,omitempty"`
+	Ports         []*summary5.PortSummary      `protobuf:"bytes,13,rep,name=ports,proto3" json:"ports,omitempty"`
+	Ships         []*summary6.ShipSummary      `protobuf:"bytes,14,rep,name=ships,proto3" json:"ships,omitempty"`
+	Users         []*summary7.UserSummary      `protobuf:"bytes,15,rep,name=users,proto3" json:"users,omitempty"`
+	Roles         []*summary8.RoleSummary      `protobuf:"bytes,16,rep,name=roles,proto3" json:"roles,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -146,42 +148,49 @@ func (x *Permission) GetDeletedAt() *timestamppb.Timestamp {
 	return nil
 }
 
-func (x *Permission) GetAuthorities() []*summary2.AuthoritySummary {
+func (x *Permission) GetMous() []*summary2.MouSummary {
+	if x != nil {
+		return x.Mous
+	}
+	return nil
+}
+
+func (x *Permission) GetAuthorities() []*summary3.AuthoritySummary {
 	if x != nil {
 		return x.Authorities
 	}
 	return nil
 }
 
-func (x *Permission) GetDistricts() []*summary3.DistrictSummary {
+func (x *Permission) GetDistricts() []*summary4.DistrictSummary {
 	if x != nil {
 		return x.Districts
 	}
 	return nil
 }
 
-func (x *Permission) GetPorts() []*summary4.PortSummary {
+func (x *Permission) GetPorts() []*summary5.PortSummary {
 	if x != nil {
 		return x.Ports
 	}
 	return nil
 }
 
-func (x *Permission) GetShips() []*summary5.ShipSummary {
+func (x *Permission) GetShips() []*summary6.ShipSummary {
 	if x != nil {
 		return x.Ships
 	}
 	return nil
 }
 
-func (x *Permission) GetUsers() []*summary6.UserSummary {
+func (x *Permission) GetUsers() []*summary7.UserSummary {
 	if x != nil {
 		return x.Users
 	}
 	return nil
 }
 
-func (x *Permission) GetRoles() []*summary7.RoleSummary {
+func (x *Permission) GetRoles() []*summary8.RoleSummary {
 	if x != nil {
 		return x.Roles
 	}
@@ -192,7 +201,7 @@ var File_apfish_v1_permission_permission_proto protoreflect.FileDescriptor
 
 const file_apfish_v1_permission_permission_proto_rawDesc = "" +
 	"\n" +
-	"%apfish.v1/permission/permission.proto\x12\x14apfish.v1.permission\x1a\x1fgoogle/protobuf/timestamp.proto\x1a8apfish.v1/permission/action/summary/action_summary.proto\x1a8apfish.v1/permission/object/summary/object_summary.proto\x1a<apfish.v1/location/authority/summary/authority_summary.proto\x1a:apfish.v1/location/district/summary/district_summary.proto\x1a2apfish.v1/location/port/summary/port_summary.proto\x1a)apfish.v1/ship/summary/ship_summary.proto\x1a)apfish.v1/user/summary/user_summary.proto\x1a.apfish.v1/user/role/summary/role_summary.proto\"\xd7\x06\n" +
+	"%apfish.v1/permission/permission.proto\x12\x14apfish.v1.permission\x1a\x1fgoogle/protobuf/timestamp.proto\x1a8apfish.v1/permission/action/summary/action_summary.proto\x1a8apfish.v1/permission/object/summary/object_summary.proto\x1a0apfish.v1/location/mou/summary/mou_summary.proto\x1a<apfish.v1/location/authority/summary/authority_summary.proto\x1a:apfish.v1/location/district/summary/district_summary.proto\x1a2apfish.v1/location/port/summary/port_summary.proto\x1a)apfish.v1/ship/summary/ship_summary.proto\x1a)apfish.v1/user/summary/user_summary.proto\x1a.apfish.v1/user/role/summary/role_summary.proto\"\x97\a\n" +
 	"\n" +
 	"Permission\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12J\n" +
@@ -206,14 +215,15 @@ const file_apfish_v1_permission_permission_proto_rawDesc = "" +
 	"\n" +
 	"updated_at\x18\b \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x129\n" +
 	"\n" +
-	"deleted_at\x18\t \x01(\v2\x1a.google.protobuf.TimestampR\tdeletedAt\x12X\n" +
-	"\vauthorities\x18\n" +
-	" \x03(\v26.apfish.v1.location.authority.summary.AuthoritySummaryR\vauthorities\x12R\n" +
-	"\tdistricts\x18\v \x03(\v24.apfish.v1.location.district.summary.DistrictSummaryR\tdistricts\x12B\n" +
-	"\x05ports\x18\f \x03(\v2,.apfish.v1.location.port.summary.PortSummaryR\x05ports\x129\n" +
-	"\x05ships\x18\r \x03(\v2#.apfish.v1.ship.summary.ShipSummaryR\x05ships\x129\n" +
-	"\x05users\x18\x0e \x03(\v2#.apfish.v1.user.summary.UserSummaryR\x05users\x12>\n" +
-	"\x05roles\x18\x0f \x03(\v2(.apfish.v1.user.role.summary.RoleSummaryR\x05rolesBHZFgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission;permissionb\x06proto3"
+	"deleted_at\x18\t \x01(\v2\x1a.google.protobuf.TimestampR\tdeletedAt\x12>\n" +
+	"\x04mous\x18\n" +
+	" \x03(\v2*.apfish.v1.location.mou.summary.MouSummaryR\x04mous\x12X\n" +
+	"\vauthorities\x18\v \x03(\v26.apfish.v1.location.authority.summary.AuthoritySummaryR\vauthorities\x12R\n" +
+	"\tdistricts\x18\f \x03(\v24.apfish.v1.location.district.summary.DistrictSummaryR\tdistricts\x12B\n" +
+	"\x05ports\x18\r \x03(\v2,.apfish.v1.location.port.summary.PortSummaryR\x05ports\x129\n" +
+	"\x05ships\x18\x0e \x03(\v2#.apfish.v1.ship.summary.ShipSummaryR\x05ships\x129\n" +
+	"\x05users\x18\x0f \x03(\v2#.apfish.v1.user.summary.UserSummaryR\x05users\x12>\n" +
+	"\x05roles\x18\x10 \x03(\v2(.apfish.v1.user.role.summary.RoleSummaryR\x05rolesBHZFgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission;permissionb\x06proto3"
 
 var (
 	file_apfish_v1_permission_permission_proto_rawDescOnce sync.Once
@@ -233,12 +243,13 @@ var file_apfish_v1_permission_permission_proto_goTypes = []any{
 	(*summary.ActionSummary)(nil),     // 1: apfish.v1.permission.action.summary.ActionSummary
 	(*summary1.ObjectSummary)(nil),    // 2: apfish.v1.permission.object.summary.ObjectSummary
 	(*timestamppb.Timestamp)(nil),     // 3: google.protobuf.Timestamp
-	(*summary2.AuthoritySummary)(nil), // 4: apfish.v1.location.authority.summary.AuthoritySummary
-	(*summary3.DistrictSummary)(nil),  // 5: apfish.v1.location.district.summary.DistrictSummary
-	(*summary4.PortSummary)(nil),      // 6: apfish.v1.location.port.summary.PortSummary
-	(*summary5.ShipSummary)(nil),      // 7: apfish.v1.ship.summary.ShipSummary
-	(*summary6.UserSummary)(nil),      // 8: apfish.v1.user.summary.UserSummary
-	(*summary7.RoleSummary)(nil),      // 9: apfish.v1.user.role.summary.RoleSummary
+	(*summary2.MouSummary)(nil),       // 4: apfish.v1.location.mou.summary.MouSummary
+	(*summary3.AuthoritySummary)(nil), // 5: apfish.v1.location.authority.summary.AuthoritySummary
+	(*summary4.DistrictSummary)(nil),  // 6: apfish.v1.location.district.summary.DistrictSummary
+	(*summary5.PortSummary)(nil),      // 7: apfish.v1.location.port.summary.PortSummary
+	(*summary6.ShipSummary)(nil),      // 8: apfish.v1.ship.summary.ShipSummary
+	(*summary7.UserSummary)(nil),      // 9: apfish.v1.user.summary.UserSummary
+	(*summary8.RoleSummary)(nil),      // 10: apfish.v1.user.role.summary.RoleSummary
 }
 var file_apfish_v1_permission_permission_proto_depIdxs = []int32{
 	1,  // 0: apfish.v1.permission.Permission.action:type_name -> apfish.v1.permission.action.summary.ActionSummary
@@ -246,17 +257,18 @@ var file_apfish_v1_permission_permission_proto_depIdxs = []int32{
 	3,  // 2: apfish.v1.permission.Permission.created_at:type_name -> google.protobuf.Timestamp
 	3,  // 3: apfish.v1.permission.Permission.updated_at:type_name -> google.protobuf.Timestamp
 	3,  // 4: apfish.v1.permission.Permission.deleted_at:type_name -> google.protobuf.Timestamp
-	4,  // 5: apfish.v1.permission.Permission.authorities:type_name -> apfish.v1.location.authority.summary.AuthoritySummary
-	5,  // 6: apfish.v1.permission.Permission.districts:type_name -> apfish.v1.location.district.summary.DistrictSummary
-	6,  // 7: apfish.v1.permission.Permission.ports:type_name -> apfish.v1.location.port.summary.PortSummary
-	7,  // 8: apfish.v1.permission.Permission.ships:type_name -> apfish.v1.ship.summary.ShipSummary
-	8,  // 9: apfish.v1.permission.Permission.users:type_name -> apfish.v1.user.summary.UserSummary
-	9,  // 10: apfish.v1.permission.Permission.roles:type_name -> apfish.v1.user.role.summary.RoleSummary
-	11, // [11:11] is the sub-list for method output_type
-	11, // [11:11] is the sub-list for method input_type
-	11, // [11:11] is the sub-list for extension type_name
-	11, // [11:11] is the sub-list for extension extendee
-	0,  // [0:11] is the sub-list for field type_name
+	4,  // 5: apfish.v1.permission.Permission.mous:type_name -> apfish.v1.location.mou.summary.MouSummary
+	5,  // 6: apfish.v1.permission.Permission.authorities:type_name -> apfish.v1.location.authority.summary.AuthoritySummary
+	6,  // 7: apfish.v1.permission.Permission.districts:type_name -> apfish.v1.location.district.summary.DistrictSummary
+	7,  // 8: apfish.v1.permission.Permission.ports:type_name -> apfish.v1.location.port.summary.PortSummary
+	8,  // 9: apfish.v1.permission.Permission.ships:type_name -> apfish.v1.ship.summary.ShipSummary
+	9,  // 10: apfish.v1.permission.Permission.users:type_name -> apfish.v1.user.summary.UserSummary
+	10, // 11: apfish.v1.permission.Permission.roles:type_name -> apfish.v1.user.role.summary.RoleSummary
+	12, // [12:12] is the sub-list for method output_type
+	12, // [12:12] is the sub-list for method input_type
+	12, // [12:12] is the sub-list for extension type_name
+	12, // [12:12] is the sub-list for extension extendee
+	0,  // [0:12] is the sub-list for field type_name
 }
 
 func init() { file_apfish_v1_permission_permission_proto_init() }

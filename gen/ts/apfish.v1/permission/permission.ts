@@ -10,6 +10,7 @@ import _m0 from "protobufjs/minimal";
 import { Timestamp } from "../../google/protobuf/timestamp";
 import { AuthoritySummary } from "../location/authority/summary/authority_summary";
 import { DistrictSummary } from "../location/district/summary/district_summary";
+import { MouSummary } from "../location/mou/summary/mou_summary";
 import { PortSummary } from "../location/port/summary/port_summary";
 import { ShipSummary } from "../ship/summary/ship_summary";
 import { RoleSummary } from "../user/role/summary/role_summary";
@@ -43,6 +44,7 @@ export interface Permission {
   createdAt: Date | undefined;
   updatedAt: Date | undefined;
   deletedAt: Date | undefined;
+  mous: MouSummary[];
   authorities: AuthoritySummary[];
   districts: DistrictSummary[];
   ports: PortSummary[];
@@ -62,6 +64,7 @@ function createBasePermission(): Permission {
     createdAt: undefined,
     updatedAt: undefined,
     deletedAt: undefined,
+    mous: [],
     authorities: [],
     districts: [],
     ports: [],
@@ -100,23 +103,26 @@ export const Permission = {
     if (message.deletedAt !== undefined) {
       Timestamp.encode(toTimestamp(message.deletedAt), writer.uint32(74).fork()).ldelim();
     }
+    for (const v of message.mous) {
+      MouSummary.encode(v!, writer.uint32(82).fork()).ldelim();
+    }
     for (const v of message.authorities) {
-      AuthoritySummary.encode(v!, writer.uint32(82).fork()).ldelim();
+      AuthoritySummary.encode(v!, writer.uint32(90).fork()).ldelim();
     }
     for (const v of message.districts) {
-      DistrictSummary.encode(v!, writer.uint32(90).fork()).ldelim();
+      DistrictSummary.encode(v!, writer.uint32(98).fork()).ldelim();
     }
     for (const v of message.ports) {
-      PortSummary.encode(v!, writer.uint32(98).fork()).ldelim();
+      PortSummary.encode(v!, writer.uint32(106).fork()).ldelim();
     }
     for (const v of message.ships) {
-      ShipSummary.encode(v!, writer.uint32(106).fork()).ldelim();
+      ShipSummary.encode(v!, writer.uint32(114).fork()).ldelim();
     }
     for (const v of message.users) {
-      UserSummary.encode(v!, writer.uint32(114).fork()).ldelim();
+      UserSummary.encode(v!, writer.uint32(122).fork()).ldelim();
     }
     for (const v of message.roles) {
-      RoleSummary.encode(v!, writer.uint32(122).fork()).ldelim();
+      RoleSummary.encode(v!, writer.uint32(130).fork()).ldelim();
     }
     return writer;
   },
@@ -196,38 +202,45 @@ export const Permission = {
             break;
           }
 
-          message.authorities.push(AuthoritySummary.decode(reader, reader.uint32()));
+          message.mous.push(MouSummary.decode(reader, reader.uint32()));
           continue;
         case 11:
           if (tag !== 90) {
             break;
           }
 
-          message.districts.push(DistrictSummary.decode(reader, reader.uint32()));
+          message.authorities.push(AuthoritySummary.decode(reader, reader.uint32()));
           continue;
         case 12:
           if (tag !== 98) {
             break;
           }
 
-          message.ports.push(PortSummary.decode(reader, reader.uint32()));
+          message.districts.push(DistrictSummary.decode(reader, reader.uint32()));
           continue;
         case 13:
           if (tag !== 106) {
             break;
           }
 
-          message.ships.push(ShipSummary.decode(reader, reader.uint32()));
+          message.ports.push(PortSummary.decode(reader, reader.uint32()));
           continue;
         case 14:
           if (tag !== 114) {
             break;
           }
 
-          message.users.push(UserSummary.decode(reader, reader.uint32()));
+          message.ships.push(ShipSummary.decode(reader, reader.uint32()));
           continue;
         case 15:
           if (tag !== 122) {
+            break;
+          }
+
+          message.users.push(UserSummary.decode(reader, reader.uint32()));
+          continue;
+        case 16:
+          if (tag !== 130) {
             break;
           }
 
@@ -253,6 +266,7 @@ export const Permission = {
       createdAt: isSet(object.createdAt) ? fromJsonTimestamp(object.createdAt) : undefined,
       updatedAt: isSet(object.updatedAt) ? fromJsonTimestamp(object.updatedAt) : undefined,
       deletedAt: isSet(object.deletedAt) ? fromJsonTimestamp(object.deletedAt) : undefined,
+      mous: globalThis.Array.isArray(object?.mous) ? object.mous.map((e: any) => MouSummary.fromJSON(e)) : [],
       authorities: globalThis.Array.isArray(object?.authorities)
         ? object.authorities.map((e: any) => AuthoritySummary.fromJSON(e))
         : [],
@@ -295,6 +309,9 @@ export const Permission = {
     if (message.deletedAt !== undefined) {
       obj.deletedAt = message.deletedAt.toISOString();
     }
+    if (message.mous?.length) {
+      obj.mous = message.mous.map((e) => MouSummary.toJSON(e));
+    }
     if (message.authorities?.length) {
       obj.authorities = message.authorities.map((e) => AuthoritySummary.toJSON(e));
     }
@@ -334,6 +351,7 @@ export const Permission = {
     message.createdAt = object.createdAt ?? undefined;
     message.updatedAt = object.updatedAt ?? undefined;
     message.deletedAt = object.deletedAt ?? undefined;
+    message.mous = object.mous?.map((e) => MouSummary.fromPartial(e)) || [];
     message.authorities = object.authorities?.map((e) => AuthoritySummary.fromPartial(e)) || [];
     message.districts = object.districts?.map((e) => DistrictSummary.fromPartial(e)) || [];
     message.ports = object.ports?.map((e) => PortSummary.fromPartial(e)) || [];

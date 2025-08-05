@@ -223,10 +223,11 @@ type CreatePermissionRequest struct {
 	Description    *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
 	Name           *wrapperspb.StringValue `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
 	Code           *wrapperspb.StringValue `protobuf:"bytes,5,opt,name=code,proto3" json:"code,omitempty"`
-	AuthoritiesIds []string                `protobuf:"bytes,6,rep,name=authorities_ids,json=authoritiesIds,proto3" json:"authorities_ids,omitempty"`
-	DistrictsIds   []string                `protobuf:"bytes,7,rep,name=districts_ids,json=districtsIds,proto3" json:"districts_ids,omitempty"`
-	PortsIds       []string                `protobuf:"bytes,8,rep,name=ports_ids,json=portsIds,proto3" json:"ports_ids,omitempty"`
-	ShipsIds       []string                `protobuf:"bytes,9,rep,name=ships_ids,json=shipsIds,proto3" json:"ships_ids,omitempty"`
+	MousIds        []string                `protobuf:"bytes,6,rep,name=mous_ids,json=mousIds,proto3" json:"mous_ids,omitempty"`
+	AuthoritiesIds []string                `protobuf:"bytes,7,rep,name=authorities_ids,json=authoritiesIds,proto3" json:"authorities_ids,omitempty"`
+	DistrictsIds   []string                `protobuf:"bytes,8,rep,name=districts_ids,json=districtsIds,proto3" json:"districts_ids,omitempty"`
+	PortsIds       []string                `protobuf:"bytes,9,rep,name=ports_ids,json=portsIds,proto3" json:"ports_ids,omitempty"`
+	ShipsIds       []string                `protobuf:"bytes,10,rep,name=ships_ids,json=shipsIds,proto3" json:"ships_ids,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
@@ -292,6 +293,13 @@ func (x *CreatePermissionRequest) GetName() *wrapperspb.StringValue {
 func (x *CreatePermissionRequest) GetCode() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Code
+	}
+	return nil
+}
+
+func (x *CreatePermissionRequest) GetMousIds() []string {
+	if x != nil {
+		return x.MousIds
 	}
 	return nil
 }
@@ -516,17 +524,19 @@ const file_apfish_v1_permission_permission_service_proto_rawDesc = "" +
 	"\bper_page\x18\x02 \x01(\x05R\aperPage\"\x8b\x01\n" +
 	"\x17ListPermissionsResponse\x12Z\n" +
 	"\x10list_permissions\x18\x01 \x03(\v2/.apfish.v1.permission.summary.PermissionSummaryR\x0flistPermissions\x12\x14\n" +
-	"\x05total\x18\x02 \x01(\x05R\x05total\"\xff\x02\n" +
+	"\x05total\x18\x02 \x01(\x05R\x05total\"\x9a\x03\n" +
 	"\x17CreatePermissionRequest\x12\x1b\n" +
 	"\taction_id\x18\x01 \x01(\tR\bactionId\x12\x1b\n" +
 	"\tobject_id\x18\x02 \x01(\tR\bobjectId\x12>\n" +
 	"\vdescription\x18\x03 \x01(\v2\x1c.google.protobuf.StringValueR\vdescription\x120\n" +
 	"\x04name\x18\x04 \x01(\v2\x1c.google.protobuf.StringValueR\x04name\x120\n" +
-	"\x04code\x18\x05 \x01(\v2\x1c.google.protobuf.StringValueR\x04code\x12'\n" +
-	"\x0fauthorities_ids\x18\x06 \x03(\tR\x0eauthoritiesIds\x12#\n" +
-	"\rdistricts_ids\x18\a \x03(\tR\fdistrictsIds\x12\x1b\n" +
-	"\tports_ids\x18\b \x03(\tR\bportsIds\x12\x1b\n" +
-	"\tships_ids\x18\t \x03(\tR\bshipsIds\"?\n" +
+	"\x04code\x18\x05 \x01(\v2\x1c.google.protobuf.StringValueR\x04code\x12\x19\n" +
+	"\bmous_ids\x18\x06 \x03(\tR\amousIds\x12'\n" +
+	"\x0fauthorities_ids\x18\a \x03(\tR\x0eauthoritiesIds\x12#\n" +
+	"\rdistricts_ids\x18\b \x03(\tR\fdistrictsIds\x12\x1b\n" +
+	"\tports_ids\x18\t \x03(\tR\bportsIds\x12\x1b\n" +
+	"\tships_ids\x18\n" +
+	" \x03(\tR\bshipsIds\"?\n" +
 	"\x18CreatePermissionResponse\x12#\n" +
 	"\rpermission_id\x18\x01 \x01(\tR\fpermissionId\"k\n" +
 	"\x18CreatePermissionsRequest\x12O\n" +

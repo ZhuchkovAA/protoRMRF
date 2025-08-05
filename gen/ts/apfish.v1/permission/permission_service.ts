@@ -52,6 +52,7 @@ export interface CreatePermissionRequest {
   description: string | undefined;
   name: string | undefined;
   code: string | undefined;
+  mousIds: string[];
   authoritiesIds: string[];
   districtsIds: string[];
   portsIds: string[];
@@ -347,6 +348,7 @@ function createBaseCreatePermissionRequest(): CreatePermissionRequest {
     description: undefined,
     name: undefined,
     code: undefined,
+    mousIds: [],
     authoritiesIds: [],
     districtsIds: [],
     portsIds: [],
@@ -371,17 +373,20 @@ export const CreatePermissionRequest = {
     if (message.code !== undefined) {
       StringValue.encode({ value: message.code! }, writer.uint32(42).fork()).ldelim();
     }
-    for (const v of message.authoritiesIds) {
+    for (const v of message.mousIds) {
       writer.uint32(50).string(v!);
     }
-    for (const v of message.districtsIds) {
+    for (const v of message.authoritiesIds) {
       writer.uint32(58).string(v!);
     }
-    for (const v of message.portsIds) {
+    for (const v of message.districtsIds) {
       writer.uint32(66).string(v!);
     }
-    for (const v of message.shipsIds) {
+    for (const v of message.portsIds) {
       writer.uint32(74).string(v!);
+    }
+    for (const v of message.shipsIds) {
+      writer.uint32(82).string(v!);
     }
     return writer;
   },
@@ -433,24 +438,31 @@ export const CreatePermissionRequest = {
             break;
           }
 
-          message.authoritiesIds.push(reader.string());
+          message.mousIds.push(reader.string());
           continue;
         case 7:
           if (tag !== 58) {
             break;
           }
 
-          message.districtsIds.push(reader.string());
+          message.authoritiesIds.push(reader.string());
           continue;
         case 8:
           if (tag !== 66) {
             break;
           }
 
-          message.portsIds.push(reader.string());
+          message.districtsIds.push(reader.string());
           continue;
         case 9:
           if (tag !== 74) {
+            break;
+          }
+
+          message.portsIds.push(reader.string());
+          continue;
+        case 10:
+          if (tag !== 82) {
             break;
           }
 
@@ -472,6 +484,7 @@ export const CreatePermissionRequest = {
       description: isSet(object.description) ? String(object.description) : undefined,
       name: isSet(object.name) ? String(object.name) : undefined,
       code: isSet(object.code) ? String(object.code) : undefined,
+      mousIds: globalThis.Array.isArray(object?.mousIds) ? object.mousIds.map((e: any) => globalThis.String(e)) : [],
       authoritiesIds: globalThis.Array.isArray(object?.authoritiesIds)
         ? object.authoritiesIds.map((e: any) => globalThis.String(e))
         : [],
@@ -500,6 +513,9 @@ export const CreatePermissionRequest = {
     if (message.code !== undefined) {
       obj.code = message.code;
     }
+    if (message.mousIds?.length) {
+      obj.mousIds = message.mousIds;
+    }
     if (message.authoritiesIds?.length) {
       obj.authoritiesIds = message.authoritiesIds;
     }
@@ -525,6 +541,7 @@ export const CreatePermissionRequest = {
     message.description = object.description ?? undefined;
     message.name = object.name ?? undefined;
     message.code = object.code ?? undefined;
+    message.mousIds = object.mousIds?.map((e) => e) || [];
     message.authoritiesIds = object.authoritiesIds?.map((e) => e) || [];
     message.districtsIds = object.districtsIds?.map((e) => e) || [];
     message.portsIds = object.portsIds?.map((e) => e) || [];
