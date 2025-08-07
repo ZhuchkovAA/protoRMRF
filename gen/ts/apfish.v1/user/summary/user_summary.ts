@@ -12,17 +12,13 @@ import { Timestamp } from "../../../google/protobuf/timestamp";
 export const protobufPackage = "apfish.v1.user.summary";
 
 export interface UserSummary {
-  /** Unique system-generated ID. */
   id: string;
-  /** Unique login identifier. */
   login: string;
   firstName: string;
   lastName: string;
   middleName: string;
-  /** Assigned role. */
   roleId: string;
-  /** Login of the creator (e.g., "admin"). */
-  createdByLogin: string;
+  createdBy: UserSummary | undefined;
   createdAt: Date | undefined;
   updatedAt: Date | undefined;
   deletedAt: Date | undefined;
@@ -36,7 +32,7 @@ function createBaseUserSummary(): UserSummary {
     lastName: "",
     middleName: "",
     roleId: "",
-    createdByLogin: "",
+    createdBy: undefined,
     createdAt: undefined,
     updatedAt: undefined,
     deletedAt: undefined,
@@ -63,8 +59,8 @@ export const UserSummary = {
     if (message.roleId !== "") {
       writer.uint32(50).string(message.roleId);
     }
-    if (message.createdByLogin !== "") {
-      writer.uint32(58).string(message.createdByLogin);
+    if (message.createdBy !== undefined) {
+      UserSummary.encode(message.createdBy, writer.uint32(58).fork()).ldelim();
     }
     if (message.createdAt !== undefined) {
       Timestamp.encode(toTimestamp(message.createdAt), writer.uint32(66).fork()).ldelim();
@@ -132,7 +128,7 @@ export const UserSummary = {
             break;
           }
 
-          message.createdByLogin = reader.string();
+          message.createdBy = UserSummary.decode(reader, reader.uint32());
           continue;
         case 8:
           if (tag !== 66) {
@@ -172,7 +168,7 @@ export const UserSummary = {
       lastName: isSet(object.lastName) ? globalThis.String(object.lastName) : "",
       middleName: isSet(object.middleName) ? globalThis.String(object.middleName) : "",
       roleId: isSet(object.roleId) ? globalThis.String(object.roleId) : "",
-      createdByLogin: isSet(object.createdByLogin) ? globalThis.String(object.createdByLogin) : "",
+      createdBy: isSet(object.createdBy) ? UserSummary.fromJSON(object.createdBy) : undefined,
       createdAt: isSet(object.createdAt) ? fromJsonTimestamp(object.createdAt) : undefined,
       updatedAt: isSet(object.updatedAt) ? fromJsonTimestamp(object.updatedAt) : undefined,
       deletedAt: isSet(object.deletedAt) ? fromJsonTimestamp(object.deletedAt) : undefined,
@@ -199,8 +195,8 @@ export const UserSummary = {
     if (message.roleId !== "") {
       obj.roleId = message.roleId;
     }
-    if (message.createdByLogin !== "") {
-      obj.createdByLogin = message.createdByLogin;
+    if (message.createdBy !== undefined) {
+      obj.createdBy = UserSummary.toJSON(message.createdBy);
     }
     if (message.createdAt !== undefined) {
       obj.createdAt = message.createdAt.toISOString();
@@ -225,7 +221,9 @@ export const UserSummary = {
     message.lastName = object.lastName ?? "";
     message.middleName = object.middleName ?? "";
     message.roleId = object.roleId ?? "";
-    message.createdByLogin = object.createdByLogin ?? "";
+    message.createdBy = (object.createdBy !== undefined && object.createdBy !== null)
+      ? UserSummary.fromPartial(object.createdBy)
+      : undefined;
     message.createdAt = object.createdAt ?? undefined;
     message.updatedAt = object.updatedAt ?? undefined;
     message.deletedAt = object.deletedAt ?? undefined;
