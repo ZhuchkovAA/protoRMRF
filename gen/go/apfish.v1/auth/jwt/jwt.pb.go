@@ -23,11 +23,12 @@ const (
 
 type Jwt struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	RoleId        string                 `protobuf:"bytes,2,opt,name=role_id,json=roleId,proto3" json:"role_id,omitempty"`
-	Version       string                 `protobuf:"bytes,3,opt,name=version,proto3" json:"version,omitempty"`
-	Exp           int64                  `protobuf:"varint,4,opt,name=exp,proto3" json:"exp,omitempty"`
-	Iat           int64                  `protobuf:"varint,5,opt,name=iat,proto3" json:"iat,omitempty"`
+	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Login         string                 `protobuf:"bytes,2,opt,name=login,proto3" json:"login,omitempty"`
+	RoleId        int64                  `protobuf:"varint,3,opt,name=role_id,json=roleId,proto3" json:"role_id,omitempty"`
+	Version       int64                  `protobuf:"varint,4,opt,name=version,proto3" json:"version,omitempty"`
+	Exp           int64                  `protobuf:"varint,5,opt,name=exp,proto3" json:"exp,omitempty"`
+	Iat           int64                  `protobuf:"varint,6,opt,name=iat,proto3" json:"iat,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -62,25 +63,32 @@ func (*Jwt) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_auth_jwt_jwt_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *Jwt) GetId() string {
+func (x *Jwt) GetId() int64 {
 	if x != nil {
 		return x.Id
 	}
+	return 0
+}
+
+func (x *Jwt) GetLogin() string {
+	if x != nil {
+		return x.Login
+	}
 	return ""
 }
 
-func (x *Jwt) GetRoleId() string {
+func (x *Jwt) GetRoleId() int64 {
 	if x != nil {
 		return x.RoleId
 	}
-	return ""
+	return 0
 }
 
-func (x *Jwt) GetVersion() string {
+func (x *Jwt) GetVersion() int64 {
 	if x != nil {
 		return x.Version
 	}
-	return ""
+	return 0
 }
 
 func (x *Jwt) GetExp() int64 {
@@ -101,13 +109,14 @@ var File_apfish_v1_auth_jwt_jwt_proto protoreflect.FileDescriptor
 
 const file_apfish_v1_auth_jwt_jwt_proto_rawDesc = "" +
 	"\n" +
-	"\x1capfish.v1/auth/jwt/jwt.proto\x12\x12apfish.v1.auth.jwt\"l\n" +
+	"\x1capfish.v1/auth/jwt/jwt.proto\x12\x12apfish.v1.auth.jwt\"\x82\x01\n" +
 	"\x03Jwt\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12\x17\n" +
-	"\arole_id\x18\x02 \x01(\tR\x06roleId\x12\x18\n" +
-	"\aversion\x18\x03 \x01(\tR\aversion\x12\x10\n" +
-	"\x03exp\x18\x04 \x01(\x03R\x03exp\x12\x10\n" +
-	"\x03iat\x18\x05 \x01(\x03R\x03iatBDZBgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/auth/jwt;auth_jwtb\x06proto3"
+	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x14\n" +
+	"\x05login\x18\x02 \x01(\tR\x05login\x12\x17\n" +
+	"\arole_id\x18\x03 \x01(\x03R\x06roleId\x12\x18\n" +
+	"\aversion\x18\x04 \x01(\x03R\aversion\x12\x10\n" +
+	"\x03exp\x18\x05 \x01(\x03R\x03exp\x12\x10\n" +
+	"\x03iat\x18\x06 \x01(\x03R\x03iatBDZBgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/auth/jwt;auth_jwtb\x06proto3"
 
 var (
 	file_apfish_v1_auth_jwt_jwt_proto_rawDescOnce sync.Once

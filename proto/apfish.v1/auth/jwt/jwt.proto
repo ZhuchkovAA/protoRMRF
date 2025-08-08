@@ -5,9 +5,10 @@ package apfish.v1.auth.jwt;
 option go_package = "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/auth/jwt;auth_jwt";
 
 message Jwt {
-  string id = 1;
-  string role_id = 2;
-  string version = 3;
-  int64 exp = 4;
-  int64 iat = 5;
+  int64 id = 1;
+  string login = 2;
+  int64 role_id = 3;
+  int64 version = 4;
+  int64 exp = 5;
+  int64 iat = 6;
 }

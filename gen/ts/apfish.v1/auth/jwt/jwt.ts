@@ -11,33 +11,37 @@ import _m0 from "protobufjs/minimal";
 export const protobufPackage = "apfish.v1.auth.jwt";
 
 export interface Jwt {
-  id: string;
-  roleId: string;
-  version: string;
+  id: Long;
+  login: string;
+  roleId: Long;
+  version: Long;
   exp: Long;
   iat: Long;
 }
 
 function createBaseJwt(): Jwt {
-  return { id: "", roleId: "", version: "", exp: Long.ZERO, iat: Long.ZERO };
+  return { id: Long.ZERO, login: "", roleId: Long.ZERO, version: Long.ZERO, exp: Long.ZERO, iat: Long.ZERO };
 }
 
 export const Jwt = {
   encode(message: Jwt, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.id !== "") {
-      writer.uint32(10).string(message.id);
+    if (!message.id.equals(Long.ZERO)) {
+      writer.uint32(8).int64(message.id);
     }
-    if (message.roleId !== "") {
-      writer.uint32(18).string(message.roleId);
+    if (message.login !== "") {
+      writer.uint32(18).string(message.login);
     }
-    if (message.version !== "") {
-      writer.uint32(26).string(message.version);
+    if (!message.roleId.equals(Long.ZERO)) {
+      writer.uint32(24).int64(message.roleId);
+    }
+    if (!message.version.equals(Long.ZERO)) {
+      writer.uint32(32).int64(message.version);
     }
     if (!message.exp.equals(Long.ZERO)) {
-      writer.uint32(32).int64(message.exp);
+      writer.uint32(40).int64(message.exp);
     }
     if (!message.iat.equals(Long.ZERO)) {
-      writer.uint32(40).int64(message.iat);
+      writer.uint32(48).int64(message.iat);
     }
     return writer;
   },
@@ -50,35 +54,42 @@ export const Jwt = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag !== 10) {
+          if (tag !== 8) {
             break;
           }
 
-          message.id = reader.string();
+          message.id = reader.int64() as Long;
           continue;
         case 2:
           if (tag !== 18) {
             break;
           }
 
-          message.roleId = reader.string();
+          message.login = reader.string();
           continue;
         case 3:
-          if (tag !== 26) {
+          if (tag !== 24) {
             break;
           }
 
-          message.version = reader.string();
+          message.roleId = reader.int64() as Long;
           continue;
         case 4:
           if (tag !== 32) {
             break;
           }
 
-          message.exp = reader.int64() as Long;
+          message.version = reader.int64() as Long;
           continue;
         case 5:
           if (tag !== 40) {
+            break;
+          }
+
+          message.exp = reader.int64() as Long;
+          continue;
+        case 6:
+          if (tag !== 48) {
             break;
           }
 
@@ -95,9 +106,10 @@ export const Jwt = {
 
   fromJSON(object: any): Jwt {
     return {
-      id: isSet(object.id) ? globalThis.String(object.id) : "",
-      roleId: isSet(object.roleId) ? globalThis.String(object.roleId) : "",
-      version: isSet(object.version) ? globalThis.String(object.version) : "",
+      id: isSet(object.id) ? Long.fromValue(object.id) : Long.ZERO,
+      login: isSet(object.login) ? globalThis.String(object.login) : "",
+      roleId: isSet(object.roleId) ? Long.fromValue(object.roleId) : Long.ZERO,
+      version: isSet(object.version) ? Long.fromValue(object.version) : Long.ZERO,
       exp: isSet(object.exp) ? Long.fromValue(object.exp) : Long.ZERO,
       iat: isSet(object.iat) ? Long.fromValue(object.iat) : Long.ZERO,
     };
@@ -105,14 +117,17 @@ export const Jwt = {
 
   toJSON(message: Jwt): unknown {
     const obj: any = {};
-    if (message.id !== "") {
-      obj.id = message.id;
+    if (!message.id.equals(Long.ZERO)) {
+      obj.id = (message.id || Long.ZERO).toString();
     }
-    if (message.roleId !== "") {
-      obj.roleId = message.roleId;
+    if (message.login !== "") {
+      obj.login = message.login;
     }
-    if (message.version !== "") {
-      obj.version = message.version;
+    if (!message.roleId.equals(Long.ZERO)) {
+      obj.roleId = (message.roleId || Long.ZERO).toString();
+    }
+    if (!message.version.equals(Long.ZERO)) {
+      obj.version = (message.version || Long.ZERO).toString();
     }
     if (!message.exp.equals(Long.ZERO)) {
       obj.exp = (message.exp || Long.ZERO).toString();
@@ -128,9 +143,14 @@ export const Jwt = {
   },
   fromPartial<I extends Exact<DeepPartial<Jwt>, I>>(object: I): Jwt {
     const message = createBaseJwt();
-    message.id = object.id ?? "";
-    message.roleId = object.roleId ?? "";
-    message.version = object.version ?? "";
+    message.id = (object.id !== undefined && object.id !== null) ? Long.fromValue(object.id) : Long.ZERO;
+    message.login = object.login ?? "";
+    message.roleId = (object.roleId !== undefined && object.roleId !== null)
+      ? Long.fromValue(object.roleId)
+      : Long.ZERO;
+    message.version = (object.version !== undefined && object.version !== null)
+      ? Long.fromValue(object.version)
+      : Long.ZERO;
     message.exp = (object.exp !== undefined && object.exp !== null) ? Long.fromValue(object.exp) : Long.ZERO;
     message.iat = (object.iat !== undefined && object.iat !== null) ? Long.fromValue(object.iat) : Long.ZERO;
     return message;
