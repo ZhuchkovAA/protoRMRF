@@ -14,15 +14,15 @@ export const protobufPackage = "apfish.v1.ship.type";
 
 export interface Type {
   id: string;
-  name: string;
   createdAt: Date | undefined;
   updatedAt: Date | undefined;
   deletedAt: Date | undefined;
+  name: string;
   ships: ShipSummary[];
 }
 
 function createBaseType(): Type {
-  return { id: "", name: "", createdAt: undefined, updatedAt: undefined, deletedAt: undefined, ships: [] };
+  return { id: "", createdAt: undefined, updatedAt: undefined, deletedAt: undefined, name: "", ships: [] };
 }
 
 export const Type = {
@@ -30,17 +30,17 @@ export const Type = {
     if (message.id !== "") {
       writer.uint32(10).string(message.id);
     }
-    if (message.name !== "") {
-      writer.uint32(18).string(message.name);
-    }
     if (message.createdAt !== undefined) {
-      Timestamp.encode(toTimestamp(message.createdAt), writer.uint32(26).fork()).ldelim();
+      Timestamp.encode(toTimestamp(message.createdAt), writer.uint32(18).fork()).ldelim();
     }
     if (message.updatedAt !== undefined) {
-      Timestamp.encode(toTimestamp(message.updatedAt), writer.uint32(34).fork()).ldelim();
+      Timestamp.encode(toTimestamp(message.updatedAt), writer.uint32(26).fork()).ldelim();
     }
     if (message.deletedAt !== undefined) {
-      Timestamp.encode(toTimestamp(message.deletedAt), writer.uint32(42).fork()).ldelim();
+      Timestamp.encode(toTimestamp(message.deletedAt), writer.uint32(34).fork()).ldelim();
+    }
+    if (message.name !== "") {
+      writer.uint32(42).string(message.name);
     }
     for (const v of message.ships) {
       ShipSummary.encode(v!, writer.uint32(50).fork()).ldelim();
@@ -67,28 +67,28 @@ export const Type = {
             break;
           }
 
-          message.name = reader.string();
+          message.createdAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           continue;
         case 3:
           if (tag !== 26) {
             break;
           }
 
-          message.createdAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          message.updatedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           continue;
         case 4:
           if (tag !== 34) {
             break;
           }
 
-          message.updatedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          message.deletedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           continue;
         case 5:
           if (tag !== 42) {
             break;
           }
 
-          message.deletedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          message.name = reader.string();
           continue;
         case 6:
           if (tag !== 50) {
@@ -109,10 +109,10 @@ export const Type = {
   fromJSON(object: any): Type {
     return {
       id: isSet(object.id) ? globalThis.String(object.id) : "",
-      name: isSet(object.name) ? globalThis.String(object.name) : "",
       createdAt: isSet(object.createdAt) ? fromJsonTimestamp(object.createdAt) : undefined,
       updatedAt: isSet(object.updatedAt) ? fromJsonTimestamp(object.updatedAt) : undefined,
       deletedAt: isSet(object.deletedAt) ? fromJsonTimestamp(object.deletedAt) : undefined,
+      name: isSet(object.name) ? globalThis.String(object.name) : "",
       ships: globalThis.Array.isArray(object?.ships) ? object.ships.map((e: any) => ShipSummary.fromJSON(e)) : [],
     };
   },
@@ -122,9 +122,6 @@ export const Type = {
     if (message.id !== "") {
       obj.id = message.id;
     }
-    if (message.name !== "") {
-      obj.name = message.name;
-    }
     if (message.createdAt !== undefined) {
       obj.createdAt = message.createdAt.toISOString();
     }
@@ -133,6 +130,9 @@ export const Type = {
     }
     if (message.deletedAt !== undefined) {
       obj.deletedAt = message.deletedAt.toISOString();
+    }
+    if (message.name !== "") {
+      obj.name = message.name;
     }
     if (message.ships?.length) {
       obj.ships = message.ships.map((e) => ShipSummary.toJSON(e));
@@ -146,10 +146,10 @@ export const Type = {
   fromPartial<I extends Exact<DeepPartial<Type>, I>>(object: I): Type {
     const message = createBaseType();
     message.id = object.id ?? "";
-    message.name = object.name ?? "";
     message.createdAt = object.createdAt ?? undefined;
     message.updatedAt = object.updatedAt ?? undefined;
     message.deletedAt = object.deletedAt ?? undefined;
+    message.name = object.name ?? "";
     message.ships = object.ships?.map((e) => ShipSummary.fromPartial(e)) || [];
     return message;
   },

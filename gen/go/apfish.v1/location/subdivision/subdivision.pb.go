@@ -27,12 +27,12 @@ const (
 type SubDivision struct {
 	state         protoimpl.MessageState    `protogen:"open.v1"`
 	Id            string                    `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	Name          string                    `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	Code          string                    `protobuf:"bytes,3,opt,name=code,proto3" json:"code,omitempty"`
-	Authority     *summary.AuthoritySummary `protobuf:"bytes,4,opt,name=authority,proto3" json:"authority,omitempty"`
-	CreatedAt     *timestamppb.Timestamp    `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt     *timestamppb.Timestamp    `protobuf:"bytes,6,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	DeletedAt     *timestamppb.Timestamp    `protobuf:"bytes,7,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty"`
+	CreatedAt     *timestamppb.Timestamp    `protobuf:"bytes,2,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	UpdatedAt     *timestamppb.Timestamp    `protobuf:"bytes,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	DeletedAt     *timestamppb.Timestamp    `protobuf:"bytes,4,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty"`
+	Name          string                    `protobuf:"bytes,5,opt,name=name,proto3" json:"name,omitempty"`
+	Code          string                    `protobuf:"bytes,6,opt,name=code,proto3" json:"code,omitempty"`
+	Authority     *summary.AuthoritySummary `protobuf:"bytes,7,opt,name=authority,proto3" json:"authority,omitempty"`
 	Ports         []*summary1.PortSummary   `protobuf:"bytes,8,rep,name=ports,proto3" json:"ports,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -75,27 +75,6 @@ func (x *SubDivision) GetId() string {
 	return ""
 }
 
-func (x *SubDivision) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
-
-func (x *SubDivision) GetCode() string {
-	if x != nil {
-		return x.Code
-	}
-	return ""
-}
-
-func (x *SubDivision) GetAuthority() *summary.AuthoritySummary {
-	if x != nil {
-		return x.Authority
-	}
-	return nil
-}
-
 func (x *SubDivision) GetCreatedAt() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreatedAt
@@ -117,6 +96,27 @@ func (x *SubDivision) GetDeletedAt() *timestamppb.Timestamp {
 	return nil
 }
 
+func (x *SubDivision) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *SubDivision) GetCode() string {
+	if x != nil {
+		return x.Code
+	}
+	return ""
+}
+
+func (x *SubDivision) GetAuthority() *summary.AuthoritySummary {
+	if x != nil {
+		return x.Authority
+	}
+	return nil
+}
+
 func (x *SubDivision) GetPorts() []*summary1.PortSummary {
 	if x != nil {
 		return x.Ports
@@ -130,16 +130,16 @@ const file_apfish_v1_location_subdivision_subdivision_proto_rawDesc = "" +
 	"\n" +
 	"0apfish.v1/location/subdivision/subdivision.proto\x12\x1eapfish.v1.location.subdivision\x1a\x1fgoogle/protobuf/timestamp.proto\x1a<apfish.v1/location/authority/summary/authority_summary.proto\x1a2apfish.v1/location/port/summary/port_summary.proto\"\x90\x03\n" +
 	"\vSubDivision\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12\x12\n" +
-	"\x04code\x18\x03 \x01(\tR\x04code\x12T\n" +
-	"\tauthority\x18\x04 \x01(\v26.apfish.v1.location.authority.summary.AuthoritySummaryR\tauthority\x129\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x129\n" +
 	"\n" +
-	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
+	"created_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
 	"\n" +
-	"updated_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x129\n" +
+	"updated_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x129\n" +
 	"\n" +
-	"deleted_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tdeletedAt\x12B\n" +
+	"deleted_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tdeletedAt\x12\x12\n" +
+	"\x04name\x18\x05 \x01(\tR\x04name\x12\x12\n" +
+	"\x04code\x18\x06 \x01(\tR\x04code\x12T\n" +
+	"\tauthority\x18\a \x01(\v26.apfish.v1.location.authority.summary.AuthoritySummaryR\tauthority\x12B\n" +
 	"\x05ports\x18\b \x03(\v2,.apfish.v1.location.port.summary.PortSummaryR\x05portsB\\ZZgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/subdivision;location_subdivisionb\x06proto3"
 
 var (
@@ -157,15 +157,15 @@ func file_apfish_v1_location_subdivision_subdivision_proto_rawDescGZIP() []byte 
 var file_apfish_v1_location_subdivision_subdivision_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_apfish_v1_location_subdivision_subdivision_proto_goTypes = []any{
 	(*SubDivision)(nil),              // 0: apfish.v1.location.subdivision.SubDivision
-	(*summary.AuthoritySummary)(nil), // 1: apfish.v1.location.authority.summary.AuthoritySummary
-	(*timestamppb.Timestamp)(nil),    // 2: google.protobuf.Timestamp
+	(*timestamppb.Timestamp)(nil),    // 1: google.protobuf.Timestamp
+	(*summary.AuthoritySummary)(nil), // 2: apfish.v1.location.authority.summary.AuthoritySummary
 	(*summary1.PortSummary)(nil),     // 3: apfish.v1.location.port.summary.PortSummary
 }
 var file_apfish_v1_location_subdivision_subdivision_proto_depIdxs = []int32{
-	1, // 0: apfish.v1.location.subdivision.SubDivision.authority:type_name -> apfish.v1.location.authority.summary.AuthoritySummary
-	2, // 1: apfish.v1.location.subdivision.SubDivision.created_at:type_name -> google.protobuf.Timestamp
-	2, // 2: apfish.v1.location.subdivision.SubDivision.updated_at:type_name -> google.protobuf.Timestamp
-	2, // 3: apfish.v1.location.subdivision.SubDivision.deleted_at:type_name -> google.protobuf.Timestamp
+	1, // 0: apfish.v1.location.subdivision.SubDivision.created_at:type_name -> google.protobuf.Timestamp
+	1, // 1: apfish.v1.location.subdivision.SubDivision.updated_at:type_name -> google.protobuf.Timestamp
+	1, // 2: apfish.v1.location.subdivision.SubDivision.deleted_at:type_name -> google.protobuf.Timestamp
+	2, // 3: apfish.v1.location.subdivision.SubDivision.authority:type_name -> apfish.v1.location.authority.summary.AuthoritySummary
 	3, // 4: apfish.v1.location.subdivision.SubDivision.ports:type_name -> apfish.v1.location.port.summary.PortSummary
 	5, // [5:5] is the sub-list for method output_type
 	5, // [5:5] is the sub-list for method input_type

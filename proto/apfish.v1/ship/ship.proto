@@ -15,20 +15,20 @@ import "apfish.v1/permission/summary/permission_summary.proto";
 
 message Ship {
   string id = 1;
-  int32 imo = 2;
-  apfish.v1.ship.type.summary.TypeSummary type = 3;
-  apfish.v1.ship.class.summary.ClassSummary class = 4;
-  apfish.v1.location.authority.summary.AuthoritySummary authority = 5;
-  string name = 6;
-  int32 mmsi = 7;
-  apfish.v1.call_sign.summary.CallSignSummary call_sign = 8;
-  string call_sign_value = 9;
-  google.protobuf.Timestamp date_build = 10;
-  int32 dead_weight = 11;
-  int32 tonnage = 12;
-  google.protobuf.Timestamp created_at = 13;
-  google.protobuf.Timestamp updated_at = 14;
-  google.protobuf.Timestamp deleted_at = 15;
+  google.protobuf.Timestamp created_at = 2;
+  google.protobuf.Timestamp updated_at = 3;
+  google.protobuf.Timestamp deleted_at = 4;
+  int32 imo = 5;
+  apfish.v1.ship.type.summary.TypeSummary type = 6;
+  apfish.v1.ship.class.summary.ClassSummary class = 7;
+  apfish.v1.location.authority.summary.AuthoritySummary authority = 8;
+  string name = 9;
+  int32 mmsi = 10;
+  apfish.v1.call_sign.summary.CallSignSummary call_sign = 11;
+  string call_sign_value = 12;
+  google.protobuf.Timestamp date_build = 13;
+  int32 dead_weight = 14;
+  int32 tonnage = 15;
 
   repeated apfish.v1.ship.captain.summary.CaptainSummary captains = 16;
   repeated apfish.v1.permission.summary.PermissionSummary permissions = 17;

@@ -16,14 +16,14 @@ export const protobufPackage = "apfish.v1.location.authority";
 
 export interface Authority {
   id: string;
+  createdAt: Date | undefined;
+  updatedAt: Date | undefined;
+  deletedAt: Date | undefined;
   name: string;
   nameRus: string;
   code: string;
   isIlo: boolean;
   isBallastWater: boolean;
-  createdAt: Date | undefined;
-  updatedAt: Date | undefined;
-  deletedAt: Date | undefined;
   ports: PortSummary[];
   callSigns: CallSignSummary[];
   permissions: PermissionSummary[];
@@ -32,14 +32,14 @@ export interface Authority {
 function createBaseAuthority(): Authority {
   return {
     id: "",
+    createdAt: undefined,
+    updatedAt: undefined,
+    deletedAt: undefined,
     name: "",
     nameRus: "",
     code: "",
     isIlo: false,
     isBallastWater: false,
-    createdAt: undefined,
-    updatedAt: undefined,
-    deletedAt: undefined,
     ports: [],
     callSigns: [],
     permissions: [],
@@ -51,29 +51,29 @@ export const Authority = {
     if (message.id !== "") {
       writer.uint32(10).string(message.id);
     }
-    if (message.name !== "") {
-      writer.uint32(18).string(message.name);
-    }
-    if (message.nameRus !== "") {
-      writer.uint32(26).string(message.nameRus);
-    }
-    if (message.code !== "") {
-      writer.uint32(34).string(message.code);
-    }
-    if (message.isIlo !== false) {
-      writer.uint32(40).bool(message.isIlo);
-    }
-    if (message.isBallastWater !== false) {
-      writer.uint32(48).bool(message.isBallastWater);
-    }
     if (message.createdAt !== undefined) {
-      Timestamp.encode(toTimestamp(message.createdAt), writer.uint32(58).fork()).ldelim();
+      Timestamp.encode(toTimestamp(message.createdAt), writer.uint32(18).fork()).ldelim();
     }
     if (message.updatedAt !== undefined) {
-      Timestamp.encode(toTimestamp(message.updatedAt), writer.uint32(66).fork()).ldelim();
+      Timestamp.encode(toTimestamp(message.updatedAt), writer.uint32(26).fork()).ldelim();
     }
     if (message.deletedAt !== undefined) {
-      Timestamp.encode(toTimestamp(message.deletedAt), writer.uint32(74).fork()).ldelim();
+      Timestamp.encode(toTimestamp(message.deletedAt), writer.uint32(34).fork()).ldelim();
+    }
+    if (message.name !== "") {
+      writer.uint32(42).string(message.name);
+    }
+    if (message.nameRus !== "") {
+      writer.uint32(50).string(message.nameRus);
+    }
+    if (message.code !== "") {
+      writer.uint32(58).string(message.code);
+    }
+    if (message.isIlo !== false) {
+      writer.uint32(64).bool(message.isIlo);
+    }
+    if (message.isBallastWater !== false) {
+      writer.uint32(72).bool(message.isBallastWater);
     }
     for (const v of message.ports) {
       PortSummary.encode(v!, writer.uint32(82).fork()).ldelim();
@@ -106,56 +106,56 @@ export const Authority = {
             break;
           }
 
-          message.name = reader.string();
+          message.createdAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           continue;
         case 3:
           if (tag !== 26) {
             break;
           }
 
-          message.nameRus = reader.string();
+          message.updatedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           continue;
         case 4:
           if (tag !== 34) {
             break;
           }
 
-          message.code = reader.string();
+          message.deletedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           continue;
         case 5:
-          if (tag !== 40) {
+          if (tag !== 42) {
             break;
           }
 
-          message.isIlo = reader.bool();
+          message.name = reader.string();
           continue;
         case 6:
-          if (tag !== 48) {
+          if (tag !== 50) {
             break;
           }
 
-          message.isBallastWater = reader.bool();
+          message.nameRus = reader.string();
           continue;
         case 7:
           if (tag !== 58) {
             break;
           }
 
-          message.createdAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          message.code = reader.string();
           continue;
         case 8:
-          if (tag !== 66) {
+          if (tag !== 64) {
             break;
           }
 
-          message.updatedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          message.isIlo = reader.bool();
           continue;
         case 9:
-          if (tag !== 74) {
+          if (tag !== 72) {
             break;
           }
 
-          message.deletedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          message.isBallastWater = reader.bool();
           continue;
         case 10:
           if (tag !== 82) {
@@ -190,14 +190,14 @@ export const Authority = {
   fromJSON(object: any): Authority {
     return {
       id: isSet(object.id) ? globalThis.String(object.id) : "",
+      createdAt: isSet(object.createdAt) ? fromJsonTimestamp(object.createdAt) : undefined,
+      updatedAt: isSet(object.updatedAt) ? fromJsonTimestamp(object.updatedAt) : undefined,
+      deletedAt: isSet(object.deletedAt) ? fromJsonTimestamp(object.deletedAt) : undefined,
       name: isSet(object.name) ? globalThis.String(object.name) : "",
       nameRus: isSet(object.nameRus) ? globalThis.String(object.nameRus) : "",
       code: isSet(object.code) ? globalThis.String(object.code) : "",
       isIlo: isSet(object.isIlo) ? globalThis.Boolean(object.isIlo) : false,
       isBallastWater: isSet(object.isBallastWater) ? globalThis.Boolean(object.isBallastWater) : false,
-      createdAt: isSet(object.createdAt) ? fromJsonTimestamp(object.createdAt) : undefined,
-      updatedAt: isSet(object.updatedAt) ? fromJsonTimestamp(object.updatedAt) : undefined,
-      deletedAt: isSet(object.deletedAt) ? fromJsonTimestamp(object.deletedAt) : undefined,
       ports: globalThis.Array.isArray(object?.ports) ? object.ports.map((e: any) => PortSummary.fromJSON(e)) : [],
       callSigns: globalThis.Array.isArray(object?.callSigns)
         ? object.callSigns.map((e: any) => CallSignSummary.fromJSON(e))
@@ -213,6 +213,15 @@ export const Authority = {
     if (message.id !== "") {
       obj.id = message.id;
     }
+    if (message.createdAt !== undefined) {
+      obj.createdAt = message.createdAt.toISOString();
+    }
+    if (message.updatedAt !== undefined) {
+      obj.updatedAt = message.updatedAt.toISOString();
+    }
+    if (message.deletedAt !== undefined) {
+      obj.deletedAt = message.deletedAt.toISOString();
+    }
     if (message.name !== "") {
       obj.name = message.name;
     }
@@ -227,15 +236,6 @@ export const Authority = {
     }
     if (message.isBallastWater !== false) {
       obj.isBallastWater = message.isBallastWater;
-    }
-    if (message.createdAt !== undefined) {
-      obj.createdAt = message.createdAt.toISOString();
-    }
-    if (message.updatedAt !== undefined) {
-      obj.updatedAt = message.updatedAt.toISOString();
-    }
-    if (message.deletedAt !== undefined) {
-      obj.deletedAt = message.deletedAt.toISOString();
     }
     if (message.ports?.length) {
       obj.ports = message.ports.map((e) => PortSummary.toJSON(e));
@@ -255,14 +255,14 @@ export const Authority = {
   fromPartial<I extends Exact<DeepPartial<Authority>, I>>(object: I): Authority {
     const message = createBaseAuthority();
     message.id = object.id ?? "";
+    message.createdAt = object.createdAt ?? undefined;
+    message.updatedAt = object.updatedAt ?? undefined;
+    message.deletedAt = object.deletedAt ?? undefined;
     message.name = object.name ?? "";
     message.nameRus = object.nameRus ?? "";
     message.code = object.code ?? "";
     message.isIlo = object.isIlo ?? false;
     message.isBallastWater = object.isBallastWater ?? false;
-    message.createdAt = object.createdAt ?? undefined;
-    message.updatedAt = object.updatedAt ?? undefined;
-    message.deletedAt = object.deletedAt ?? undefined;
     message.ports = object.ports?.map((e) => PortSummary.fromPartial(e)) || [];
     message.callSigns = object.callSigns?.map((e) => CallSignSummary.fromPartial(e)) || [];
     message.permissions = object.permissions?.map((e) => PermissionSummary.fromPartial(e)) || [];

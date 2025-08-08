@@ -16,20 +16,13 @@ export const protobufPackage = "apfish.v1.user.contact";
 
 /** A user's contact method (e.g., email, phone). */
 export interface Contact {
-  /** Unique contact ID. */
   id: string;
-  user:
-    | UserSummary
-    | undefined;
-  /** Contact type. */
-  type:
-    | TypeSummary
-    | undefined;
-  /** Contact value (e.g., "user@example.com"). */
-  value: string;
   createdAt: Date | undefined;
   updatedAt: Date | undefined;
   deletedAt: Date | undefined;
+  user: UserSummary | undefined;
+  type: TypeSummary | undefined;
+  value: string;
 }
 
 export interface ContactPatch {
@@ -42,12 +35,12 @@ export interface ContactPatch {
 function createBaseContact(): Contact {
   return {
     id: "",
-    user: undefined,
-    type: undefined,
-    value: "",
     createdAt: undefined,
     updatedAt: undefined,
     deletedAt: undefined,
+    user: undefined,
+    type: undefined,
+    value: "",
   };
 }
 
@@ -56,23 +49,23 @@ export const Contact = {
     if (message.id !== "") {
       writer.uint32(10).string(message.id);
     }
-    if (message.user !== undefined) {
-      UserSummary.encode(message.user, writer.uint32(18).fork()).ldelim();
-    }
-    if (message.type !== undefined) {
-      TypeSummary.encode(message.type, writer.uint32(26).fork()).ldelim();
-    }
-    if (message.value !== "") {
-      writer.uint32(34).string(message.value);
-    }
     if (message.createdAt !== undefined) {
-      Timestamp.encode(toTimestamp(message.createdAt), writer.uint32(42).fork()).ldelim();
+      Timestamp.encode(toTimestamp(message.createdAt), writer.uint32(18).fork()).ldelim();
     }
     if (message.updatedAt !== undefined) {
-      Timestamp.encode(toTimestamp(message.updatedAt), writer.uint32(50).fork()).ldelim();
+      Timestamp.encode(toTimestamp(message.updatedAt), writer.uint32(26).fork()).ldelim();
     }
     if (message.deletedAt !== undefined) {
-      Timestamp.encode(toTimestamp(message.deletedAt), writer.uint32(58).fork()).ldelim();
+      Timestamp.encode(toTimestamp(message.deletedAt), writer.uint32(34).fork()).ldelim();
+    }
+    if (message.user !== undefined) {
+      UserSummary.encode(message.user, writer.uint32(42).fork()).ldelim();
+    }
+    if (message.type !== undefined) {
+      TypeSummary.encode(message.type, writer.uint32(50).fork()).ldelim();
+    }
+    if (message.value !== "") {
+      writer.uint32(58).string(message.value);
     }
     return writer;
   },
@@ -96,42 +89,42 @@ export const Contact = {
             break;
           }
 
-          message.user = UserSummary.decode(reader, reader.uint32());
+          message.createdAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           continue;
         case 3:
           if (tag !== 26) {
             break;
           }
 
-          message.type = TypeSummary.decode(reader, reader.uint32());
+          message.updatedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           continue;
         case 4:
           if (tag !== 34) {
             break;
           }
 
-          message.value = reader.string();
+          message.deletedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           continue;
         case 5:
           if (tag !== 42) {
             break;
           }
 
-          message.createdAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          message.user = UserSummary.decode(reader, reader.uint32());
           continue;
         case 6:
           if (tag !== 50) {
             break;
           }
 
-          message.updatedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          message.type = TypeSummary.decode(reader, reader.uint32());
           continue;
         case 7:
           if (tag !== 58) {
             break;
           }
 
-          message.deletedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          message.value = reader.string();
           continue;
       }
       if ((tag & 7) === 4 || tag === 0) {
@@ -145,12 +138,12 @@ export const Contact = {
   fromJSON(object: any): Contact {
     return {
       id: isSet(object.id) ? globalThis.String(object.id) : "",
-      user: isSet(object.user) ? UserSummary.fromJSON(object.user) : undefined,
-      type: isSet(object.type) ? TypeSummary.fromJSON(object.type) : undefined,
-      value: isSet(object.value) ? globalThis.String(object.value) : "",
       createdAt: isSet(object.createdAt) ? fromJsonTimestamp(object.createdAt) : undefined,
       updatedAt: isSet(object.updatedAt) ? fromJsonTimestamp(object.updatedAt) : undefined,
       deletedAt: isSet(object.deletedAt) ? fromJsonTimestamp(object.deletedAt) : undefined,
+      user: isSet(object.user) ? UserSummary.fromJSON(object.user) : undefined,
+      type: isSet(object.type) ? TypeSummary.fromJSON(object.type) : undefined,
+      value: isSet(object.value) ? globalThis.String(object.value) : "",
     };
   },
 
@@ -158,15 +151,6 @@ export const Contact = {
     const obj: any = {};
     if (message.id !== "") {
       obj.id = message.id;
-    }
-    if (message.user !== undefined) {
-      obj.user = UserSummary.toJSON(message.user);
-    }
-    if (message.type !== undefined) {
-      obj.type = TypeSummary.toJSON(message.type);
-    }
-    if (message.value !== "") {
-      obj.value = message.value;
     }
     if (message.createdAt !== undefined) {
       obj.createdAt = message.createdAt.toISOString();
@@ -177,6 +161,15 @@ export const Contact = {
     if (message.deletedAt !== undefined) {
       obj.deletedAt = message.deletedAt.toISOString();
     }
+    if (message.user !== undefined) {
+      obj.user = UserSummary.toJSON(message.user);
+    }
+    if (message.type !== undefined) {
+      obj.type = TypeSummary.toJSON(message.type);
+    }
+    if (message.value !== "") {
+      obj.value = message.value;
+    }
     return obj;
   },
 
@@ -186,6 +179,9 @@ export const Contact = {
   fromPartial<I extends Exact<DeepPartial<Contact>, I>>(object: I): Contact {
     const message = createBaseContact();
     message.id = object.id ?? "";
+    message.createdAt = object.createdAt ?? undefined;
+    message.updatedAt = object.updatedAt ?? undefined;
+    message.deletedAt = object.deletedAt ?? undefined;
     message.user = (object.user !== undefined && object.user !== null)
       ? UserSummary.fromPartial(object.user)
       : undefined;
@@ -193,9 +189,6 @@ export const Contact = {
       ? TypeSummary.fromPartial(object.type)
       : undefined;
     message.value = object.value ?? "";
-    message.createdAt = object.createdAt ?? undefined;
-    message.updatedAt = object.updatedAt ?? undefined;
-    message.deletedAt = object.deletedAt ?? undefined;
     return message;
   },
 };

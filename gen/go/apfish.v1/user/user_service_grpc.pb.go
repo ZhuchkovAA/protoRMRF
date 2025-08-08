@@ -20,12 +20,11 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	UserService_GetUser_FullMethodName           = "/apfish.v1.user.UserService/GetUser"
-	UserService_ListUsers_FullMethodName         = "/apfish.v1.user.UserService/ListUsers"
-	UserService_CreateUser_FullMethodName        = "/apfish.v1.user.UserService/CreateUser"
-	UserService_UpdateUser_FullMethodName        = "/apfish.v1.user.UserService/UpdateUser"
-	UserService_DeleteUser_FullMethodName        = "/apfish.v1.user.UserService/DeleteUser"
-	UserService_AssignPermissions_FullMethodName = "/apfish.v1.user.UserService/AssignPermissions"
+	UserService_GetUser_FullMethodName    = "/apfish.v1.user.UserService/GetUser"
+	UserService_ListUsers_FullMethodName  = "/apfish.v1.user.UserService/ListUsers"
+	UserService_CreateUser_FullMethodName = "/apfish.v1.user.UserService/CreateUser"
+	UserService_UpdateUser_FullMethodName = "/apfish.v1.user.UserService/UpdateUser"
+	UserService_DeleteUser_FullMethodName = "/apfish.v1.user.UserService/DeleteUser"
 )
 
 // UserServiceClient is the client API for UserService service.
@@ -43,7 +42,6 @@ type UserServiceClient interface {
 	CreateUser(ctx context.Context, in *CreateUserRequest, opts ...grpc.CallOption) (*CreateUserResponse, error)
 	UpdateUser(ctx context.Context, in *UpdateUserRequest, opts ...grpc.CallOption) (*helper.SuccessResponse, error)
 	DeleteUser(ctx context.Context, in *UserRequest, opts ...grpc.CallOption) (*helper.SuccessResponse, error)
-	AssignPermissions(ctx context.Context, in *AssignPermissionsRequest, opts ...grpc.CallOption) (*helper.SuccessResponse, error)
 }
 
 type userServiceClient struct {
@@ -104,16 +102,6 @@ func (c *userServiceClient) DeleteUser(ctx context.Context, in *UserRequest, opt
 	return out, nil
 }
 
-func (c *userServiceClient) AssignPermissions(ctx context.Context, in *AssignPermissionsRequest, opts ...grpc.CallOption) (*helper.SuccessResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(helper.SuccessResponse)
-	err := c.cc.Invoke(ctx, UserService_AssignPermissions_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 // UserServiceServer is the server API for UserService service.
 // All implementations must embed UnimplementedUserServiceServer
 // for forward compatibility.
@@ -129,7 +117,6 @@ type UserServiceServer interface {
 	CreateUser(context.Context, *CreateUserRequest) (*CreateUserResponse, error)
 	UpdateUser(context.Context, *UpdateUserRequest) (*helper.SuccessResponse, error)
 	DeleteUser(context.Context, *UserRequest) (*helper.SuccessResponse, error)
-	AssignPermissions(context.Context, *AssignPermissionsRequest) (*helper.SuccessResponse, error)
 	mustEmbedUnimplementedUserServiceServer()
 }
 
@@ -154,9 +141,6 @@ func (UnimplementedUserServiceServer) UpdateUser(context.Context, *UpdateUserReq
 }
 func (UnimplementedUserServiceServer) DeleteUser(context.Context, *UserRequest) (*helper.SuccessResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteUser not implemented")
-}
-func (UnimplementedUserServiceServer) AssignPermissions(context.Context, *AssignPermissionsRequest) (*helper.SuccessResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AssignPermissions not implemented")
 }
 func (UnimplementedUserServiceServer) mustEmbedUnimplementedUserServiceServer() {}
 func (UnimplementedUserServiceServer) testEmbeddedByValue()                     {}
@@ -269,24 +253,6 @@ func _UserService_DeleteUser_Handler(srv interface{}, ctx context.Context, dec f
 	return interceptor(ctx, in, info, handler)
 }
 
-func _UserService_AssignPermissions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(AssignPermissionsRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(UserServiceServer).AssignPermissions(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: UserService_AssignPermissions_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserServiceServer).AssignPermissions(ctx, req.(*AssignPermissionsRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 // UserService_ServiceDesc is the grpc.ServiceDesc for UserService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -313,10 +279,6 @@ var UserService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "DeleteUser",
 			Handler:    _UserService_DeleteUser_Handler,
-		},
-		{
-			MethodName: "AssignPermissions",
-			Handler:    _UserService_AssignPermissions_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

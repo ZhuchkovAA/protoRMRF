@@ -4,33 +4,22 @@ package apfish.v1.permission.summary;
 
 option go_package = "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/summary;permission_summary";
 
-import "google/protobuf/timestamp.proto";  // Standard Protocol Buffers timestamp
+import "google/protobuf/timestamp.proto";
 
 message PermissionSummary {
   string id = 1;
-  string action_id = 2;
-  string object_id = 3;
-  string description = 4;          // Human-readable explanation of the permission
-  string name = 5;                // Display name (e.g., "Read Inspections")
-  string code = 6;                // Machine-readable identifier (e.g., "inspection:read")
-  google.protobuf.Timestamp created_at = 7;
-  google.protobuf.Timestamp updated_at = 8;
-  google.protobuf.Timestamp deleted_at = 9;
+  google.protobuf.Timestamp created_at = 2;
+  google.protobuf.Timestamp updated_at = 3;
+  google.protobuf.Timestamp deleted_at = 4;
+  string action_id = 5;
+  string object_id = 6;
+  string description = 7;
+  string name = 8;
+  string code = 9;
 
   repeated string mous_id = 10;
   repeated string authorities_id = 11;
   repeated string districts_id = 12;
   repeated string ports_id = 13;
   repeated string ships_id = 14;
-}
-
-message PermissionJwt {
-  string action_id = 1;
-  string object_id = 2;
-
-  repeated string mous_id = 3;
-  repeated string authorities_id = 4;
-  repeated string districts_id = 5;
-  repeated string ports_id = 6;
-  repeated string ships_id = 7;
 }

@@ -7,10 +7,10 @@ option go_package = "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/role/
 import "google/protobuf/timestamp.proto";  // Standard Protocol Buffers timestamp
 
 message RoleSummary {
-  string id = 1;                       // Unique role ID.
-  string name = 2;                    // Human-readable name (e.g., "Admin").
-  string code = 3;
-  google.protobuf.Timestamp created_at = 4;
-  google.protobuf.Timestamp updated_at = 5;
-  google.protobuf.Timestamp deleted_at = 6;
+  string id = 1;
+  google.protobuf.Timestamp created_at = 2;
+  google.protobuf.Timestamp updated_at = 3;
+  google.protobuf.Timestamp deleted_at = 4;
+  string name = 5;
+  string code = 6;
 }

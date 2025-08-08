@@ -25,15 +25,16 @@ const (
 type UserSummary struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	Login         string                 `protobuf:"bytes,2,opt,name=login,proto3" json:"login,omitempty"`
-	FirstName     string                 `protobuf:"bytes,3,opt,name=first_name,json=firstName,proto3" json:"first_name,omitempty"`
-	LastName      string                 `protobuf:"bytes,4,opt,name=last_name,json=lastName,proto3" json:"last_name,omitempty"`
-	MiddleName    string                 `protobuf:"bytes,5,opt,name=middle_name,json=middleName,proto3" json:"middle_name,omitempty"`
-	RoleId        string                 `protobuf:"bytes,6,opt,name=role_id,json=roleId,proto3" json:"role_id,omitempty"`
-	CreatedBy     *UserSummary           `protobuf:"bytes,7,opt,name=created_by,json=createdBy,proto3" json:"created_by,omitempty"`
-	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	DeletedAt     *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty"`
+	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	DeletedAt     *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty"`
+	Login         string                 `protobuf:"bytes,5,opt,name=login,proto3" json:"login,omitempty"`
+	FirstName     string                 `protobuf:"bytes,6,opt,name=first_name,json=firstName,proto3" json:"first_name,omitempty"`
+	LastName      string                 `protobuf:"bytes,7,opt,name=last_name,json=lastName,proto3" json:"last_name,omitempty"`
+	MiddleName    string                 `protobuf:"bytes,8,opt,name=middle_name,json=middleName,proto3" json:"middle_name,omitempty"`
+	RoleId        string                 `protobuf:"bytes,9,opt,name=role_id,json=roleId,proto3" json:"role_id,omitempty"`
+	CreatedBy     *UserSummary           `protobuf:"bytes,10,opt,name=created_by,json=createdBy,proto3" json:"created_by,omitempty"`
+	JwtVersion    string                 `protobuf:"bytes,11,opt,name=jwt_version,json=jwtVersion,proto3" json:"jwt_version,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -73,6 +74,27 @@ func (x *UserSummary) GetId() string {
 		return x.Id
 	}
 	return ""
+}
+
+func (x *UserSummary) GetCreatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.CreatedAt
+	}
+	return nil
+}
+
+func (x *UserSummary) GetUpdatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.UpdatedAt
+	}
+	return nil
+}
+
+func (x *UserSummary) GetDeletedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.DeletedAt
+	}
+	return nil
 }
 
 func (x *UserSummary) GetLogin() string {
@@ -117,50 +139,38 @@ func (x *UserSummary) GetCreatedBy() *UserSummary {
 	return nil
 }
 
-func (x *UserSummary) GetCreatedAt() *timestamppb.Timestamp {
+func (x *UserSummary) GetJwtVersion() string {
 	if x != nil {
-		return x.CreatedAt
+		return x.JwtVersion
 	}
-	return nil
-}
-
-func (x *UserSummary) GetUpdatedAt() *timestamppb.Timestamp {
-	if x != nil {
-		return x.UpdatedAt
-	}
-	return nil
-}
-
-func (x *UserSummary) GetDeletedAt() *timestamppb.Timestamp {
-	if x != nil {
-		return x.DeletedAt
-	}
-	return nil
+	return ""
 }
 
 var File_apfish_v1_user_summary_user_summary_proto protoreflect.FileDescriptor
 
 const file_apfish_v1_user_summary_user_summary_proto_rawDesc = "" +
 	"\n" +
-	")apfish.v1/user/summary/user_summary.proto\x12\x16apfish.v1.user.summary\x1a\x1fgoogle/protobuf/timestamp.proto\"\x9e\x03\n" +
+	")apfish.v1/user/summary/user_summary.proto\x12\x16apfish.v1.user.summary\x1a\x1fgoogle/protobuf/timestamp.proto\"\xbf\x03\n" +
 	"\vUserSummary\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12\x14\n" +
-	"\x05login\x18\x02 \x01(\tR\x05login\x12\x1d\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x129\n" +
 	"\n" +
-	"first_name\x18\x03 \x01(\tR\tfirstName\x12\x1b\n" +
-	"\tlast_name\x18\x04 \x01(\tR\blastName\x12\x1f\n" +
-	"\vmiddle_name\x18\x05 \x01(\tR\n" +
+	"created_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
+	"\n" +
+	"updated_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x129\n" +
+	"\n" +
+	"deleted_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tdeletedAt\x12\x14\n" +
+	"\x05login\x18\x05 \x01(\tR\x05login\x12\x1d\n" +
+	"\n" +
+	"first_name\x18\x06 \x01(\tR\tfirstName\x12\x1b\n" +
+	"\tlast_name\x18\a \x01(\tR\blastName\x12\x1f\n" +
+	"\vmiddle_name\x18\b \x01(\tR\n" +
 	"middleName\x12\x17\n" +
-	"\arole_id\x18\x06 \x01(\tR\x06roleId\x12B\n" +
+	"\arole_id\x18\t \x01(\tR\x06roleId\x12B\n" +
 	"\n" +
-	"created_by\x18\a \x01(\v2#.apfish.v1.user.summary.UserSummaryR\tcreatedBy\x129\n" +
-	"\n" +
-	"created_at\x18\b \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
-	"\n" +
-	"updated_at\x18\t \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x129\n" +
-	"\n" +
-	"deleted_at\x18\n" +
-	" \x01(\v2\x1a.google.protobuf.TimestampR\tdeletedAtBLZJgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/summary;user_summaryb\x06proto3"
+	"created_by\x18\n" +
+	" \x01(\v2#.apfish.v1.user.summary.UserSummaryR\tcreatedBy\x12\x1f\n" +
+	"\vjwt_version\x18\v \x01(\tR\n" +
+	"jwtVersionBLZJgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/summary;user_summaryb\x06proto3"
 
 var (
 	file_apfish_v1_user_summary_user_summary_proto_rawDescOnce sync.Once
@@ -180,10 +190,10 @@ var file_apfish_v1_user_summary_user_summary_proto_goTypes = []any{
 	(*timestamppb.Timestamp)(nil), // 1: google.protobuf.Timestamp
 }
 var file_apfish_v1_user_summary_user_summary_proto_depIdxs = []int32{
-	0, // 0: apfish.v1.user.summary.UserSummary.created_by:type_name -> apfish.v1.user.summary.UserSummary
-	1, // 1: apfish.v1.user.summary.UserSummary.created_at:type_name -> google.protobuf.Timestamp
-	1, // 2: apfish.v1.user.summary.UserSummary.updated_at:type_name -> google.protobuf.Timestamp
-	1, // 3: apfish.v1.user.summary.UserSummary.deleted_at:type_name -> google.protobuf.Timestamp
+	1, // 0: apfish.v1.user.summary.UserSummary.created_at:type_name -> google.protobuf.Timestamp
+	1, // 1: apfish.v1.user.summary.UserSummary.updated_at:type_name -> google.protobuf.Timestamp
+	1, // 2: apfish.v1.user.summary.UserSummary.deleted_at:type_name -> google.protobuf.Timestamp
+	0, // 3: apfish.v1.user.summary.UserSummary.created_by:type_name -> apfish.v1.user.summary.UserSummary
 	4, // [4:4] is the sub-list for method output_type
 	4, // [4:4] is the sub-list for method input_type
 	4, // [4:4] is the sub-list for extension type_name

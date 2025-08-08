@@ -30,18 +30,19 @@ const (
 // Represents a user account in the system.
 type User struct {
 	state         protoimpl.MessageState        `protogen:"open.v1"`
-	Id            string                        `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`       // Unique system-generated ID.
-	Login         string                        `protobuf:"bytes,2,opt,name=login,proto3" json:"login,omitempty"` // Unique login identifier.
-	FirstName     string                        `protobuf:"bytes,3,opt,name=first_name,json=firstName,proto3" json:"first_name,omitempty"`
-	LastName      string                        `protobuf:"bytes,4,opt,name=last_name,json=lastName,proto3" json:"last_name,omitempty"`
-	MiddleName    string                        `protobuf:"bytes,5,opt,name=middle_name,json=middleName,proto3" json:"middle_name,omitempty"`
-	Role          *summary.RoleSummary          `protobuf:"bytes,6,opt,name=role,proto3" json:"role,omitempty"`                            // Assigned role.
-	CreatedBy     *summary1.UserSummary         `protobuf:"bytes,7,opt,name=created_by,json=createdBy,proto3" json:"created_by,omitempty"` // Login of the creator (e.g., "admin").
-	CreatedAt     *timestamppb.Timestamp        `protobuf:"bytes,8,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt     *timestamppb.Timestamp        `protobuf:"bytes,9,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	DeletedAt     *timestamppb.Timestamp        `protobuf:"bytes,10,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty"`
-	Contacts      []*summary2.ContactSummary    `protobuf:"bytes,11,rep,name=contacts,proto3" json:"contacts,omitempty"`       // User's contact methods.
-	Permissions   []*summary3.PermissionSummary `protobuf:"bytes,12,rep,name=permissions,proto3" json:"permissions,omitempty"` // Direct permissions (overrides role).
+	Id            string                        `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	CreatedAt     *timestamppb.Timestamp        `protobuf:"bytes,2,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	UpdatedAt     *timestamppb.Timestamp        `protobuf:"bytes,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	DeletedAt     *timestamppb.Timestamp        `protobuf:"bytes,4,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty"`
+	Login         string                        `protobuf:"bytes,5,opt,name=login,proto3" json:"login,omitempty"`
+	FirstName     string                        `protobuf:"bytes,6,opt,name=first_name,json=firstName,proto3" json:"first_name,omitempty"`
+	LastName      string                        `protobuf:"bytes,7,opt,name=last_name,json=lastName,proto3" json:"last_name,omitempty"`
+	MiddleName    string                        `protobuf:"bytes,8,opt,name=middle_name,json=middleName,proto3" json:"middle_name,omitempty"`
+	Role          *summary.RoleSummary          `protobuf:"bytes,9,opt,name=role,proto3" json:"role,omitempty"`
+	CreatedBy     *summary1.UserSummary         `protobuf:"bytes,10,opt,name=created_by,json=createdBy,proto3" json:"created_by,omitempty"`
+	JwtVersion    string                        `protobuf:"bytes,11,opt,name=jwt_version,json=jwtVersion,proto3" json:"jwt_version,omitempty"`
+	Contacts      []*summary2.ContactSummary    `protobuf:"bytes,12,rep,name=contacts,proto3" json:"contacts,omitempty"`
+	Permissions   []*summary3.PermissionSummary `protobuf:"bytes,13,rep,name=permissions,proto3" json:"permissions,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -81,6 +82,27 @@ func (x *User) GetId() string {
 		return x.Id
 	}
 	return ""
+}
+
+func (x *User) GetCreatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.CreatedAt
+	}
+	return nil
+}
+
+func (x *User) GetUpdatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.UpdatedAt
+	}
+	return nil
+}
+
+func (x *User) GetDeletedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.DeletedAt
+	}
+	return nil
 }
 
 func (x *User) GetLogin() string {
@@ -125,25 +147,11 @@ func (x *User) GetCreatedBy() *summary1.UserSummary {
 	return nil
 }
 
-func (x *User) GetCreatedAt() *timestamppb.Timestamp {
+func (x *User) GetJwtVersion() string {
 	if x != nil {
-		return x.CreatedAt
+		return x.JwtVersion
 	}
-	return nil
-}
-
-func (x *User) GetUpdatedAt() *timestamppb.Timestamp {
-	if x != nil {
-		return x.UpdatedAt
-	}
-	return nil
-}
-
-func (x *User) GetDeletedAt() *timestamppb.Timestamp {
-	if x != nil {
-		return x.DeletedAt
-	}
-	return nil
+	return ""
 }
 
 func (x *User) GetContacts() []*summary2.ContactSummary {
@@ -240,27 +248,29 @@ var File_apfish_v1_user_user_proto protoreflect.FileDescriptor
 
 const file_apfish_v1_user_user_proto_rawDesc = "" +
 	"\n" +
-	"\x19apfish.v1/user/user.proto\x12\x0eapfish.v1.user\x1a\x1egoogle/protobuf/wrappers.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a.apfish.v1/user/role/summary/role_summary.proto\x1a)apfish.v1/user/summary/user_summary.proto\x1a4apfish.v1/user/contact/summary/contact_summary.proto\x1a5apfish.v1/permission/summary/permission_summary.proto\"\xdb\x04\n" +
+	"\x19apfish.v1/user/user.proto\x12\x0eapfish.v1.user\x1a\x1egoogle/protobuf/wrappers.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a.apfish.v1/user/role/summary/role_summary.proto\x1a)apfish.v1/user/summary/user_summary.proto\x1a4apfish.v1/user/contact/summary/contact_summary.proto\x1a5apfish.v1/permission/summary/permission_summary.proto\"\xfc\x04\n" +
 	"\x04User\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12\x14\n" +
-	"\x05login\x18\x02 \x01(\tR\x05login\x12\x1d\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x129\n" +
 	"\n" +
-	"first_name\x18\x03 \x01(\tR\tfirstName\x12\x1b\n" +
-	"\tlast_name\x18\x04 \x01(\tR\blastName\x12\x1f\n" +
-	"\vmiddle_name\x18\x05 \x01(\tR\n" +
+	"created_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
+	"\n" +
+	"updated_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x129\n" +
+	"\n" +
+	"deleted_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tdeletedAt\x12\x14\n" +
+	"\x05login\x18\x05 \x01(\tR\x05login\x12\x1d\n" +
+	"\n" +
+	"first_name\x18\x06 \x01(\tR\tfirstName\x12\x1b\n" +
+	"\tlast_name\x18\a \x01(\tR\blastName\x12\x1f\n" +
+	"\vmiddle_name\x18\b \x01(\tR\n" +
 	"middleName\x12<\n" +
-	"\x04role\x18\x06 \x01(\v2(.apfish.v1.user.role.summary.RoleSummaryR\x04role\x12B\n" +
+	"\x04role\x18\t \x01(\v2(.apfish.v1.user.role.summary.RoleSummaryR\x04role\x12B\n" +
 	"\n" +
-	"created_by\x18\a \x01(\v2#.apfish.v1.user.summary.UserSummaryR\tcreatedBy\x129\n" +
-	"\n" +
-	"created_at\x18\b \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
-	"\n" +
-	"updated_at\x18\t \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x129\n" +
-	"\n" +
-	"deleted_at\x18\n" +
-	" \x01(\v2\x1a.google.protobuf.TimestampR\tdeletedAt\x12J\n" +
-	"\bcontacts\x18\v \x03(\v2..apfish.v1.user.contact.summary.ContactSummaryR\bcontacts\x12Q\n" +
-	"\vpermissions\x18\f \x03(\v2/.apfish.v1.permission.summary.PermissionSummaryR\vpermissions\"\x8f\x02\n" +
+	"created_by\x18\n" +
+	" \x01(\v2#.apfish.v1.user.summary.UserSummaryR\tcreatedBy\x12\x1f\n" +
+	"\vjwt_version\x18\v \x01(\tR\n" +
+	"jwtVersion\x12J\n" +
+	"\bcontacts\x18\f \x03(\v2..apfish.v1.user.contact.summary.ContactSummaryR\bcontacts\x12Q\n" +
+	"\vpermissions\x18\r \x03(\v2/.apfish.v1.permission.summary.PermissionSummaryR\vpermissions\"\x8f\x02\n" +
 	"\tUserPatch\x12\x14\n" +
 	"\x05login\x18\x01 \x01(\tR\x05login\x12;\n" +
 	"\n" +
@@ -286,19 +296,19 @@ var file_apfish_v1_user_user_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_apfish_v1_user_user_proto_goTypes = []any{
 	(*User)(nil),                       // 0: apfish.v1.user.User
 	(*UserPatch)(nil),                  // 1: apfish.v1.user.UserPatch
-	(*summary.RoleSummary)(nil),        // 2: apfish.v1.user.role.summary.RoleSummary
-	(*summary1.UserSummary)(nil),       // 3: apfish.v1.user.summary.UserSummary
-	(*timestamppb.Timestamp)(nil),      // 4: google.protobuf.Timestamp
+	(*timestamppb.Timestamp)(nil),      // 2: google.protobuf.Timestamp
+	(*summary.RoleSummary)(nil),        // 3: apfish.v1.user.role.summary.RoleSummary
+	(*summary1.UserSummary)(nil),       // 4: apfish.v1.user.summary.UserSummary
 	(*summary2.ContactSummary)(nil),    // 5: apfish.v1.user.contact.summary.ContactSummary
 	(*summary3.PermissionSummary)(nil), // 6: apfish.v1.permission.summary.PermissionSummary
 	(*wrapperspb.StringValue)(nil),     // 7: google.protobuf.StringValue
 }
 var file_apfish_v1_user_user_proto_depIdxs = []int32{
-	2,  // 0: apfish.v1.user.User.role:type_name -> apfish.v1.user.role.summary.RoleSummary
-	3,  // 1: apfish.v1.user.User.created_by:type_name -> apfish.v1.user.summary.UserSummary
-	4,  // 2: apfish.v1.user.User.created_at:type_name -> google.protobuf.Timestamp
-	4,  // 3: apfish.v1.user.User.updated_at:type_name -> google.protobuf.Timestamp
-	4,  // 4: apfish.v1.user.User.deleted_at:type_name -> google.protobuf.Timestamp
+	2,  // 0: apfish.v1.user.User.created_at:type_name -> google.protobuf.Timestamp
+	2,  // 1: apfish.v1.user.User.updated_at:type_name -> google.protobuf.Timestamp
+	2,  // 2: apfish.v1.user.User.deleted_at:type_name -> google.protobuf.Timestamp
+	3,  // 3: apfish.v1.user.User.role:type_name -> apfish.v1.user.role.summary.RoleSummary
+	4,  // 4: apfish.v1.user.User.created_by:type_name -> apfish.v1.user.summary.UserSummary
 	5,  // 5: apfish.v1.user.User.contacts:type_name -> apfish.v1.user.contact.summary.ContactSummary
 	6,  // 6: apfish.v1.user.User.permissions:type_name -> apfish.v1.permission.summary.PermissionSummary
 	7,  // 7: apfish.v1.user.UserPatch.first_name:type_name -> google.protobuf.StringValue

@@ -21,15 +21,15 @@ import "apfish.v1/user/role/summary/role_summary.proto";
 // Defines an access permission in the system.
 // Permissions combine an Action and Object to create granular access controls (e.g., "read:inspection").
 message Permission {
-  string id = 1;                   // Unique identifier for the permission
-  apfish.v1.permission.action.summary.ActionSummary action = 2;     // The operation this permission allows (e.g., "read", "create")
-  apfish.v1.permission.object.summary.ObjectSummary object = 3;     // The resource this permission applies to (e.g., "inspection", "user")
-  string description = 4;          // Human-readable explanation of the permission
-  string name = 5;                // Display name (e.g., "Read Inspections")
-  string code = 6;                // Machine-readable identifier (e.g., "inspection:read")
-  google.protobuf.Timestamp created_at = 7;
-  google.protobuf.Timestamp updated_at = 8;
-  google.protobuf.Timestamp deleted_at = 9;
+  string id = 1;
+  google.protobuf.Timestamp created_at = 2;
+  google.protobuf.Timestamp updated_at = 3;
+  google.protobuf.Timestamp deleted_at = 4;
+  apfish.v1.permission.action.summary.ActionSummary action = 5;
+  apfish.v1.permission.object.summary.ObjectSummary object = 6;
+  string description = 7;
+  string name = 8;
+  string code = 9;
 
   repeated apfish.v1.location.mou.summary.MouSummary mous = 10;
   repeated apfish.v1.location.authority.summary.AuthoritySummary authorities = 11;

@@ -7,7 +7,6 @@
 package auth_jwt
 
 import (
-	summary "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/summary"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -22,31 +21,31 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-type JwtData struct {
-	state         protoimpl.MessageState   `protogen:"open.v1"`
-	Id            string                   `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	RoleId        string                   `protobuf:"bytes,2,opt,name=role_id,json=roleId,proto3" json:"role_id,omitempty"`
-	Permissions   []*summary.PermissionJwt `protobuf:"bytes,3,rep,name=permissions,proto3" json:"permissions,omitempty"`
-	Exp           int64                    `protobuf:"varint,4,opt,name=exp,proto3" json:"exp,omitempty"`
-	Iat           int64                    `protobuf:"varint,5,opt,name=iat,proto3" json:"iat,omitempty"`
+type Jwt struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	RoleId        string                 `protobuf:"bytes,2,opt,name=role_id,json=roleId,proto3" json:"role_id,omitempty"`
+	Version       string                 `protobuf:"bytes,3,opt,name=version,proto3" json:"version,omitempty"`
+	Exp           int64                  `protobuf:"varint,4,opt,name=exp,proto3" json:"exp,omitempty"`
+	Iat           int64                  `protobuf:"varint,5,opt,name=iat,proto3" json:"iat,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *JwtData) Reset() {
-	*x = JwtData{}
+func (x *Jwt) Reset() {
+	*x = Jwt{}
 	mi := &file_apfish_v1_auth_jwt_jwt_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *JwtData) String() string {
+func (x *Jwt) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*JwtData) ProtoMessage() {}
+func (*Jwt) ProtoMessage() {}
 
-func (x *JwtData) ProtoReflect() protoreflect.Message {
+func (x *Jwt) ProtoReflect() protoreflect.Message {
 	mi := &file_apfish_v1_auth_jwt_jwt_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -58,40 +57,40 @@ func (x *JwtData) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use JwtData.ProtoReflect.Descriptor instead.
-func (*JwtData) Descriptor() ([]byte, []int) {
+// Deprecated: Use Jwt.ProtoReflect.Descriptor instead.
+func (*Jwt) Descriptor() ([]byte, []int) {
 	return file_apfish_v1_auth_jwt_jwt_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *JwtData) GetId() string {
+func (x *Jwt) GetId() string {
 	if x != nil {
 		return x.Id
 	}
 	return ""
 }
 
-func (x *JwtData) GetRoleId() string {
+func (x *Jwt) GetRoleId() string {
 	if x != nil {
 		return x.RoleId
 	}
 	return ""
 }
 
-func (x *JwtData) GetPermissions() []*summary.PermissionJwt {
+func (x *Jwt) GetVersion() string {
 	if x != nil {
-		return x.Permissions
+		return x.Version
 	}
-	return nil
+	return ""
 }
 
-func (x *JwtData) GetExp() int64 {
+func (x *Jwt) GetExp() int64 {
 	if x != nil {
 		return x.Exp
 	}
 	return 0
 }
 
-func (x *JwtData) GetIat() int64 {
+func (x *Jwt) GetIat() int64 {
 	if x != nil {
 		return x.Iat
 	}
@@ -102,11 +101,11 @@ var File_apfish_v1_auth_jwt_jwt_proto protoreflect.FileDescriptor
 
 const file_apfish_v1_auth_jwt_jwt_proto_rawDesc = "" +
 	"\n" +
-	"\x1capfish.v1/auth/jwt/jwt.proto\x12\x12apfish.v1.auth.jwt\x1a5apfish.v1/permission/summary/permission_summary.proto\"\xa5\x01\n" +
-	"\aJwtData\x12\x0e\n" +
+	"\x1capfish.v1/auth/jwt/jwt.proto\x12\x12apfish.v1.auth.jwt\"l\n" +
+	"\x03Jwt\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x17\n" +
-	"\arole_id\x18\x02 \x01(\tR\x06roleId\x12M\n" +
-	"\vpermissions\x18\x03 \x03(\v2+.apfish.v1.permission.summary.PermissionJwtR\vpermissions\x12\x10\n" +
+	"\arole_id\x18\x02 \x01(\tR\x06roleId\x12\x18\n" +
+	"\aversion\x18\x03 \x01(\tR\aversion\x12\x10\n" +
 	"\x03exp\x18\x04 \x01(\x03R\x03exp\x12\x10\n" +
 	"\x03iat\x18\x05 \x01(\x03R\x03iatBDZBgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/auth/jwt;auth_jwtb\x06proto3"
 
@@ -124,16 +123,14 @@ func file_apfish_v1_auth_jwt_jwt_proto_rawDescGZIP() []byte {
 
 var file_apfish_v1_auth_jwt_jwt_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_apfish_v1_auth_jwt_jwt_proto_goTypes = []any{
-	(*JwtData)(nil),               // 0: apfish.v1.auth.jwt.JwtData
-	(*summary.PermissionJwt)(nil), // 1: apfish.v1.permission.summary.PermissionJwt
+	(*Jwt)(nil), // 0: apfish.v1.auth.jwt.Jwt
 }
 var file_apfish_v1_auth_jwt_jwt_proto_depIdxs = []int32{
-	1, // 0: apfish.v1.auth.jwt.JwtData.permissions:type_name -> apfish.v1.permission.summary.PermissionJwt
-	1, // [1:1] is the sub-list for method output_type
-	1, // [1:1] is the sub-list for method input_type
-	1, // [1:1] is the sub-list for extension type_name
-	1, // [1:1] is the sub-list for extension extendee
-	0, // [0:1] is the sub-list for field type_name
+	0, // [0:0] is the sub-list for method output_type
+	0, // [0:0] is the sub-list for method input_type
+	0, // [0:0] is the sub-list for extension type_name
+	0, // [0:0] is the sub-list for extension extendee
+	0, // [0:0] is the sub-list for field type_name
 }
 
 func init() { file_apfish_v1_auth_jwt_jwt_proto_init() }

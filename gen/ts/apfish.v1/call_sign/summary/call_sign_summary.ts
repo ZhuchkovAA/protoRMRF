@@ -13,23 +13,23 @@ export const protobufPackage = "apfish.v1.call_sign.summary";
 
 export interface CallSignSummary {
   id: string;
-  series: string;
-  limitLower: string;
-  limitUpper: string;
   createdAt: Date | undefined;
   updatedAt: Date | undefined;
   deletedAt: Date | undefined;
+  series: string;
+  limitLower: string;
+  limitUpper: string;
 }
 
 function createBaseCallSignSummary(): CallSignSummary {
   return {
     id: "",
-    series: "",
-    limitLower: "",
-    limitUpper: "",
     createdAt: undefined,
     updatedAt: undefined,
     deletedAt: undefined,
+    series: "",
+    limitLower: "",
+    limitUpper: "",
   };
 }
 
@@ -38,23 +38,23 @@ export const CallSignSummary = {
     if (message.id !== "") {
       writer.uint32(10).string(message.id);
     }
-    if (message.series !== "") {
-      writer.uint32(18).string(message.series);
-    }
-    if (message.limitLower !== "") {
-      writer.uint32(26).string(message.limitLower);
-    }
-    if (message.limitUpper !== "") {
-      writer.uint32(34).string(message.limitUpper);
-    }
     if (message.createdAt !== undefined) {
-      Timestamp.encode(toTimestamp(message.createdAt), writer.uint32(42).fork()).ldelim();
+      Timestamp.encode(toTimestamp(message.createdAt), writer.uint32(18).fork()).ldelim();
     }
     if (message.updatedAt !== undefined) {
-      Timestamp.encode(toTimestamp(message.updatedAt), writer.uint32(50).fork()).ldelim();
+      Timestamp.encode(toTimestamp(message.updatedAt), writer.uint32(26).fork()).ldelim();
     }
     if (message.deletedAt !== undefined) {
-      Timestamp.encode(toTimestamp(message.deletedAt), writer.uint32(58).fork()).ldelim();
+      Timestamp.encode(toTimestamp(message.deletedAt), writer.uint32(34).fork()).ldelim();
+    }
+    if (message.series !== "") {
+      writer.uint32(42).string(message.series);
+    }
+    if (message.limitLower !== "") {
+      writer.uint32(50).string(message.limitLower);
+    }
+    if (message.limitUpper !== "") {
+      writer.uint32(58).string(message.limitUpper);
     }
     return writer;
   },
@@ -78,42 +78,42 @@ export const CallSignSummary = {
             break;
           }
 
-          message.series = reader.string();
+          message.createdAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           continue;
         case 3:
           if (tag !== 26) {
             break;
           }
 
-          message.limitLower = reader.string();
+          message.updatedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           continue;
         case 4:
           if (tag !== 34) {
             break;
           }
 
-          message.limitUpper = reader.string();
+          message.deletedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           continue;
         case 5:
           if (tag !== 42) {
             break;
           }
 
-          message.createdAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          message.series = reader.string();
           continue;
         case 6:
           if (tag !== 50) {
             break;
           }
 
-          message.updatedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          message.limitLower = reader.string();
           continue;
         case 7:
           if (tag !== 58) {
             break;
           }
 
-          message.deletedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          message.limitUpper = reader.string();
           continue;
       }
       if ((tag & 7) === 4 || tag === 0) {
@@ -127,12 +127,12 @@ export const CallSignSummary = {
   fromJSON(object: any): CallSignSummary {
     return {
       id: isSet(object.id) ? globalThis.String(object.id) : "",
-      series: isSet(object.series) ? globalThis.String(object.series) : "",
-      limitLower: isSet(object.limitLower) ? globalThis.String(object.limitLower) : "",
-      limitUpper: isSet(object.limitUpper) ? globalThis.String(object.limitUpper) : "",
       createdAt: isSet(object.createdAt) ? fromJsonTimestamp(object.createdAt) : undefined,
       updatedAt: isSet(object.updatedAt) ? fromJsonTimestamp(object.updatedAt) : undefined,
       deletedAt: isSet(object.deletedAt) ? fromJsonTimestamp(object.deletedAt) : undefined,
+      series: isSet(object.series) ? globalThis.String(object.series) : "",
+      limitLower: isSet(object.limitLower) ? globalThis.String(object.limitLower) : "",
+      limitUpper: isSet(object.limitUpper) ? globalThis.String(object.limitUpper) : "",
     };
   },
 
@@ -140,15 +140,6 @@ export const CallSignSummary = {
     const obj: any = {};
     if (message.id !== "") {
       obj.id = message.id;
-    }
-    if (message.series !== "") {
-      obj.series = message.series;
-    }
-    if (message.limitLower !== "") {
-      obj.limitLower = message.limitLower;
-    }
-    if (message.limitUpper !== "") {
-      obj.limitUpper = message.limitUpper;
     }
     if (message.createdAt !== undefined) {
       obj.createdAt = message.createdAt.toISOString();
@@ -159,6 +150,15 @@ export const CallSignSummary = {
     if (message.deletedAt !== undefined) {
       obj.deletedAt = message.deletedAt.toISOString();
     }
+    if (message.series !== "") {
+      obj.series = message.series;
+    }
+    if (message.limitLower !== "") {
+      obj.limitLower = message.limitLower;
+    }
+    if (message.limitUpper !== "") {
+      obj.limitUpper = message.limitUpper;
+    }
     return obj;
   },
 
@@ -168,12 +168,12 @@ export const CallSignSummary = {
   fromPartial<I extends Exact<DeepPartial<CallSignSummary>, I>>(object: I): CallSignSummary {
     const message = createBaseCallSignSummary();
     message.id = object.id ?? "";
-    message.series = object.series ?? "";
-    message.limitLower = object.limitLower ?? "";
-    message.limitUpper = object.limitUpper ?? "";
     message.createdAt = object.createdAt ?? undefined;
     message.updatedAt = object.updatedAt ?? undefined;
     message.deletedAt = object.deletedAt ?? undefined;
+    message.series = object.series ?? "";
+    message.limitLower = object.limitLower ?? "";
+    message.limitUpper = object.limitUpper ?? "";
     return message;
   },
 };

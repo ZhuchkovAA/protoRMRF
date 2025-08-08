@@ -10,13 +10,13 @@ import "apfish.v1/permission/summary/permission_summary.proto";
 
 // Defines an actionable operation that can be performed in the system.
 message Action {
-  string id = 1;                   // Unique identifier for the action
-  string name = 2;                // Human-readable name (e.g., "Read")
-  string description = 3;         // Detailed explanation of the action
-  string code = 4;                // Machine-friendly code (e.g., "read")
-  google.protobuf.Timestamp created_at = 5;
-  google.protobuf.Timestamp updated_at = 6;
-  google.protobuf.Timestamp deleted_at = 7;
+  string id = 1;
+  google.protobuf.Timestamp created_at = 2;
+  google.protobuf.Timestamp updated_at = 3;
+  google.protobuf.Timestamp deleted_at = 4;
+  string name = 5;
+  string description = 6;
+  string code = 7;
 
   repeated apfish.v1.permission.summary.PermissionSummary permissions = 8;
 }

@@ -25,12 +25,12 @@ const (
 type SubDivisionSummary struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	Code          string                 `protobuf:"bytes,3,opt,name=code,proto3" json:"code,omitempty"`
-	AuthorityId   string                 `protobuf:"bytes,4,opt,name=authority_id,json=authorityId,proto3" json:"authority_id,omitempty"`
-	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	DeletedAt     *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty"`
+	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	DeletedAt     *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty"`
+	Name          string                 `protobuf:"bytes,5,opt,name=name,proto3" json:"name,omitempty"`
+	Code          string                 `protobuf:"bytes,6,opt,name=code,proto3" json:"code,omitempty"`
+	AuthorityId   string                 `protobuf:"bytes,7,opt,name=authority_id,json=authorityId,proto3" json:"authority_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -72,27 +72,6 @@ func (x *SubDivisionSummary) GetId() string {
 	return ""
 }
 
-func (x *SubDivisionSummary) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
-
-func (x *SubDivisionSummary) GetCode() string {
-	if x != nil {
-		return x.Code
-	}
-	return ""
-}
-
-func (x *SubDivisionSummary) GetAuthorityId() string {
-	if x != nil {
-		return x.AuthorityId
-	}
-	return ""
-}
-
 func (x *SubDivisionSummary) GetCreatedAt() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreatedAt
@@ -114,22 +93,43 @@ func (x *SubDivisionSummary) GetDeletedAt() *timestamppb.Timestamp {
 	return nil
 }
 
+func (x *SubDivisionSummary) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *SubDivisionSummary) GetCode() string {
+	if x != nil {
+		return x.Code
+	}
+	return ""
+}
+
+func (x *SubDivisionSummary) GetAuthorityId() string {
+	if x != nil {
+		return x.AuthorityId
+	}
+	return ""
+}
+
 var File_apfish_v1_location_subdivision_summary_subdivision_summary_proto protoreflect.FileDescriptor
 
 const file_apfish_v1_location_subdivision_summary_subdivision_summary_proto_rawDesc = "" +
 	"\n" +
 	"@apfish.v1/location/subdivision/summary/subdivision_summary.proto\x12&apfish.v1.location.subdivision.summary\x1a\x1fgoogle/protobuf/timestamp.proto\"\xa0\x02\n" +
 	"\x12SubDivisionSummary\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12\x12\n" +
-	"\x04code\x18\x03 \x01(\tR\x04code\x12!\n" +
-	"\fauthority_id\x18\x04 \x01(\tR\vauthorityId\x129\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x129\n" +
 	"\n" +
-	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
+	"created_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
 	"\n" +
-	"updated_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x129\n" +
+	"updated_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x129\n" +
 	"\n" +
-	"deleted_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tdeletedAtBlZjgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/subdivision/summary;location_subdivision_summaryb\x06proto3"
+	"deleted_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tdeletedAt\x12\x12\n" +
+	"\x04name\x18\x05 \x01(\tR\x04name\x12\x12\n" +
+	"\x04code\x18\x06 \x01(\tR\x04code\x12!\n" +
+	"\fauthority_id\x18\a \x01(\tR\vauthorityIdBlZjgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/subdivision/summary;location_subdivision_summaryb\x06proto3"
 
 var (
 	file_apfish_v1_location_subdivision_summary_subdivision_summary_proto_rawDescOnce sync.Once

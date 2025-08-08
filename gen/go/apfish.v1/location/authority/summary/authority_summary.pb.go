@@ -25,17 +25,17 @@ const (
 type AuthoritySummary struct {
 	state          protoimpl.MessageState `protogen:"open.v1"`
 	Id             string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	Name           string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	NameRus        string                 `protobuf:"bytes,3,opt,name=name_rus,json=nameRus,proto3" json:"name_rus,omitempty"`
-	Code           string                 `protobuf:"bytes,4,opt,name=code,proto3" json:"code,omitempty"`
-	IsIlo          bool                   `protobuf:"varint,5,opt,name=is_ilo,json=isIlo,proto3" json:"is_ilo,omitempty"`
-	IsBallastWater bool                   `protobuf:"varint,6,opt,name=is_ballast_water,json=isBallastWater,proto3" json:"is_ballast_water,omitempty"`
-	TypeId         string                 `protobuf:"bytes,7,opt,name=type_id,json=typeId,proto3" json:"type_id,omitempty"`
-	ParentCode     string                 `protobuf:"bytes,8,opt,name=parent_code,json=parentCode,proto3" json:"parent_code,omitempty"`
-	MouId          string                 `protobuf:"bytes,9,opt,name=mou_id,json=mouId,proto3" json:"mou_id,omitempty"`
-	CreatedAt      *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt      *timestamppb.Timestamp `protobuf:"bytes,11,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	DeletedAt      *timestamppb.Timestamp `protobuf:"bytes,12,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty"`
+	CreatedAt      *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	UpdatedAt      *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	DeletedAt      *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty"`
+	Name           string                 `protobuf:"bytes,5,opt,name=name,proto3" json:"name,omitempty"`
+	NameRus        string                 `protobuf:"bytes,6,opt,name=name_rus,json=nameRus,proto3" json:"name_rus,omitempty"`
+	Code           string                 `protobuf:"bytes,7,opt,name=code,proto3" json:"code,omitempty"`
+	IsIlo          bool                   `protobuf:"varint,8,opt,name=is_ilo,json=isIlo,proto3" json:"is_ilo,omitempty"`
+	IsBallastWater bool                   `protobuf:"varint,9,opt,name=is_ballast_water,json=isBallastWater,proto3" json:"is_ballast_water,omitempty"`
+	TypeId         string                 `protobuf:"bytes,10,opt,name=type_id,json=typeId,proto3" json:"type_id,omitempty"`
+	ParentCode     string                 `protobuf:"bytes,11,opt,name=parent_code,json=parentCode,proto3" json:"parent_code,omitempty"`
+	MouId          string                 `protobuf:"bytes,12,opt,name=mou_id,json=mouId,proto3" json:"mou_id,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
@@ -75,6 +75,27 @@ func (x *AuthoritySummary) GetId() string {
 		return x.Id
 	}
 	return ""
+}
+
+func (x *AuthoritySummary) GetCreatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.CreatedAt
+	}
+	return nil
+}
+
+func (x *AuthoritySummary) GetUpdatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.UpdatedAt
+	}
+	return nil
+}
+
+func (x *AuthoritySummary) GetDeletedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.DeletedAt
+	}
+	return nil
 }
 
 func (x *AuthoritySummary) GetName() string {
@@ -133,50 +154,29 @@ func (x *AuthoritySummary) GetMouId() string {
 	return ""
 }
 
-func (x *AuthoritySummary) GetCreatedAt() *timestamppb.Timestamp {
-	if x != nil {
-		return x.CreatedAt
-	}
-	return nil
-}
-
-func (x *AuthoritySummary) GetUpdatedAt() *timestamppb.Timestamp {
-	if x != nil {
-		return x.UpdatedAt
-	}
-	return nil
-}
-
-func (x *AuthoritySummary) GetDeletedAt() *timestamppb.Timestamp {
-	if x != nil {
-		return x.DeletedAt
-	}
-	return nil
-}
-
 var File_apfish_v1_location_authority_summary_authority_summary_proto protoreflect.FileDescriptor
 
 const file_apfish_v1_location_authority_summary_authority_summary_proto_rawDesc = "" +
 	"\n" +
 	"<apfish.v1/location/authority/summary/authority_summary.proto\x12$apfish.v1.location.authority.summary\x1a\x1fgoogle/protobuf/timestamp.proto\"\xa8\x03\n" +
 	"\x10AuthoritySummary\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12\x19\n" +
-	"\bname_rus\x18\x03 \x01(\tR\anameRus\x12\x12\n" +
-	"\x04code\x18\x04 \x01(\tR\x04code\x12\x15\n" +
-	"\x06is_ilo\x18\x05 \x01(\bR\x05isIlo\x12(\n" +
-	"\x10is_ballast_water\x18\x06 \x01(\bR\x0eisBallastWater\x12\x17\n" +
-	"\atype_id\x18\a \x01(\tR\x06typeId\x12\x1f\n" +
-	"\vparent_code\x18\b \x01(\tR\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x129\n" +
+	"\n" +
+	"created_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
+	"\n" +
+	"updated_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x129\n" +
+	"\n" +
+	"deleted_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tdeletedAt\x12\x12\n" +
+	"\x04name\x18\x05 \x01(\tR\x04name\x12\x19\n" +
+	"\bname_rus\x18\x06 \x01(\tR\anameRus\x12\x12\n" +
+	"\x04code\x18\a \x01(\tR\x04code\x12\x15\n" +
+	"\x06is_ilo\x18\b \x01(\bR\x05isIlo\x12(\n" +
+	"\x10is_ballast_water\x18\t \x01(\bR\x0eisBallastWater\x12\x17\n" +
+	"\atype_id\x18\n" +
+	" \x01(\tR\x06typeId\x12\x1f\n" +
+	"\vparent_code\x18\v \x01(\tR\n" +
 	"parentCode\x12\x15\n" +
-	"\x06mou_id\x18\t \x01(\tR\x05mouId\x129\n" +
-	"\n" +
-	"created_at\x18\n" +
-	" \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
-	"\n" +
-	"updated_at\x18\v \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x129\n" +
-	"\n" +
-	"deleted_at\x18\f \x01(\v2\x1a.google.protobuf.TimestampR\tdeletedAtBhZfgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/authority/summary;location_authority_summaryb\x06proto3"
+	"\x06mou_id\x18\f \x01(\tR\x05mouIdBhZfgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/authority/summary;location_authority_summaryb\x06proto3"
 
 var (
 	file_apfish_v1_location_authority_summary_authority_summary_proto_rawDescOnce sync.Once

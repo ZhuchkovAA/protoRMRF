@@ -13,6 +13,9 @@ export const protobufPackage = "apfish.v1.ship.summary";
 
 export interface ShipSummary {
   id: string;
+  createdAt: Date | undefined;
+  updatedAt: Date | undefined;
+  deletedAt: Date | undefined;
   imo: number;
   typeId: string;
   classId: string;
@@ -24,14 +27,14 @@ export interface ShipSummary {
   dateBuild: Date | undefined;
   deadWeight: number;
   tonnage: number;
-  createdAt: Date | undefined;
-  updatedAt: Date | undefined;
-  deletedAt: Date | undefined;
 }
 
 function createBaseShipSummary(): ShipSummary {
   return {
     id: "",
+    createdAt: undefined,
+    updatedAt: undefined,
+    deletedAt: undefined,
     imo: 0,
     typeId: "",
     classId: "",
@@ -43,9 +46,6 @@ function createBaseShipSummary(): ShipSummary {
     dateBuild: undefined,
     deadWeight: 0,
     tonnage: 0,
-    createdAt: undefined,
-    updatedAt: undefined,
-    deletedAt: undefined,
   };
 }
 
@@ -54,47 +54,47 @@ export const ShipSummary = {
     if (message.id !== "") {
       writer.uint32(10).string(message.id);
     }
-    if (message.imo !== 0) {
-      writer.uint32(16).int32(message.imo);
-    }
-    if (message.typeId !== "") {
-      writer.uint32(26).string(message.typeId);
-    }
-    if (message.classId !== "") {
-      writer.uint32(34).string(message.classId);
-    }
-    if (message.authorityId !== "") {
-      writer.uint32(42).string(message.authorityId);
-    }
-    if (message.name !== "") {
-      writer.uint32(50).string(message.name);
-    }
-    if (message.mmsi !== 0) {
-      writer.uint32(56).int32(message.mmsi);
-    }
-    if (message.callSignId !== "") {
-      writer.uint32(66).string(message.callSignId);
-    }
-    if (message.callSignValue !== "") {
-      writer.uint32(74).string(message.callSignValue);
-    }
-    if (message.dateBuild !== undefined) {
-      Timestamp.encode(toTimestamp(message.dateBuild), writer.uint32(82).fork()).ldelim();
-    }
-    if (message.deadWeight !== 0) {
-      writer.uint32(88).int32(message.deadWeight);
-    }
-    if (message.tonnage !== 0) {
-      writer.uint32(96).int32(message.tonnage);
-    }
     if (message.createdAt !== undefined) {
-      Timestamp.encode(toTimestamp(message.createdAt), writer.uint32(106).fork()).ldelim();
+      Timestamp.encode(toTimestamp(message.createdAt), writer.uint32(18).fork()).ldelim();
     }
     if (message.updatedAt !== undefined) {
-      Timestamp.encode(toTimestamp(message.updatedAt), writer.uint32(114).fork()).ldelim();
+      Timestamp.encode(toTimestamp(message.updatedAt), writer.uint32(26).fork()).ldelim();
     }
     if (message.deletedAt !== undefined) {
-      Timestamp.encode(toTimestamp(message.deletedAt), writer.uint32(122).fork()).ldelim();
+      Timestamp.encode(toTimestamp(message.deletedAt), writer.uint32(34).fork()).ldelim();
+    }
+    if (message.imo !== 0) {
+      writer.uint32(40).int32(message.imo);
+    }
+    if (message.typeId !== "") {
+      writer.uint32(50).string(message.typeId);
+    }
+    if (message.classId !== "") {
+      writer.uint32(58).string(message.classId);
+    }
+    if (message.authorityId !== "") {
+      writer.uint32(66).string(message.authorityId);
+    }
+    if (message.name !== "") {
+      writer.uint32(74).string(message.name);
+    }
+    if (message.mmsi !== 0) {
+      writer.uint32(80).int32(message.mmsi);
+    }
+    if (message.callSignId !== "") {
+      writer.uint32(90).string(message.callSignId);
+    }
+    if (message.callSignValue !== "") {
+      writer.uint32(98).string(message.callSignValue);
+    }
+    if (message.dateBuild !== undefined) {
+      Timestamp.encode(toTimestamp(message.dateBuild), writer.uint32(106).fork()).ldelim();
+    }
+    if (message.deadWeight !== 0) {
+      writer.uint32(112).int32(message.deadWeight);
+    }
+    if (message.tonnage !== 0) {
+      writer.uint32(120).int32(message.tonnage);
     }
     return writer;
   },
@@ -114,102 +114,102 @@ export const ShipSummary = {
           message.id = reader.string();
           continue;
         case 2:
-          if (tag !== 16) {
+          if (tag !== 18) {
             break;
           }
 
-          message.imo = reader.int32();
+          message.createdAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           continue;
         case 3:
           if (tag !== 26) {
             break;
           }
 
-          message.typeId = reader.string();
+          message.updatedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           continue;
         case 4:
           if (tag !== 34) {
             break;
           }
 
-          message.classId = reader.string();
+          message.deletedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           continue;
         case 5:
-          if (tag !== 42) {
+          if (tag !== 40) {
             break;
           }
 
-          message.authorityId = reader.string();
+          message.imo = reader.int32();
           continue;
         case 6:
           if (tag !== 50) {
             break;
           }
 
-          message.name = reader.string();
+          message.typeId = reader.string();
           continue;
         case 7:
-          if (tag !== 56) {
+          if (tag !== 58) {
             break;
           }
 
-          message.mmsi = reader.int32();
+          message.classId = reader.string();
           continue;
         case 8:
           if (tag !== 66) {
             break;
           }
 
-          message.callSignId = reader.string();
+          message.authorityId = reader.string();
           continue;
         case 9:
           if (tag !== 74) {
             break;
           }
 
-          message.callSignValue = reader.string();
+          message.name = reader.string();
           continue;
         case 10:
-          if (tag !== 82) {
+          if (tag !== 80) {
             break;
           }
 
-          message.dateBuild = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          message.mmsi = reader.int32();
           continue;
         case 11:
-          if (tag !== 88) {
+          if (tag !== 90) {
             break;
           }
 
-          message.deadWeight = reader.int32();
+          message.callSignId = reader.string();
           continue;
         case 12:
-          if (tag !== 96) {
+          if (tag !== 98) {
             break;
           }
 
-          message.tonnage = reader.int32();
+          message.callSignValue = reader.string();
           continue;
         case 13:
           if (tag !== 106) {
             break;
           }
 
-          message.createdAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          message.dateBuild = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           continue;
         case 14:
-          if (tag !== 114) {
+          if (tag !== 112) {
             break;
           }
 
-          message.updatedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          message.deadWeight = reader.int32();
           continue;
         case 15:
-          if (tag !== 122) {
+          if (tag !== 120) {
             break;
           }
 
-          message.deletedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          message.tonnage = reader.int32();
           continue;
       }
       if ((tag & 7) === 4 || tag === 0) {
@@ -223,6 +223,9 @@ export const ShipSummary = {
   fromJSON(object: any): ShipSummary {
     return {
       id: isSet(object.id) ? globalThis.String(object.id) : "",
+      createdAt: isSet(object.createdAt) ? fromJsonTimestamp(object.createdAt) : undefined,
+      updatedAt: isSet(object.updatedAt) ? fromJsonTimestamp(object.updatedAt) : undefined,
+      deletedAt: isSet(object.deletedAt) ? fromJsonTimestamp(object.deletedAt) : undefined,
       imo: isSet(object.imo) ? globalThis.Number(object.imo) : 0,
       typeId: isSet(object.typeId) ? globalThis.String(object.typeId) : "",
       classId: isSet(object.classId) ? globalThis.String(object.classId) : "",
@@ -234,9 +237,6 @@ export const ShipSummary = {
       dateBuild: isSet(object.dateBuild) ? fromJsonTimestamp(object.dateBuild) : undefined,
       deadWeight: isSet(object.deadWeight) ? globalThis.Number(object.deadWeight) : 0,
       tonnage: isSet(object.tonnage) ? globalThis.Number(object.tonnage) : 0,
-      createdAt: isSet(object.createdAt) ? fromJsonTimestamp(object.createdAt) : undefined,
-      updatedAt: isSet(object.updatedAt) ? fromJsonTimestamp(object.updatedAt) : undefined,
-      deletedAt: isSet(object.deletedAt) ? fromJsonTimestamp(object.deletedAt) : undefined,
     };
   },
 
@@ -244,6 +244,15 @@ export const ShipSummary = {
     const obj: any = {};
     if (message.id !== "") {
       obj.id = message.id;
+    }
+    if (message.createdAt !== undefined) {
+      obj.createdAt = message.createdAt.toISOString();
+    }
+    if (message.updatedAt !== undefined) {
+      obj.updatedAt = message.updatedAt.toISOString();
+    }
+    if (message.deletedAt !== undefined) {
+      obj.deletedAt = message.deletedAt.toISOString();
     }
     if (message.imo !== 0) {
       obj.imo = Math.round(message.imo);
@@ -278,15 +287,6 @@ export const ShipSummary = {
     if (message.tonnage !== 0) {
       obj.tonnage = Math.round(message.tonnage);
     }
-    if (message.createdAt !== undefined) {
-      obj.createdAt = message.createdAt.toISOString();
-    }
-    if (message.updatedAt !== undefined) {
-      obj.updatedAt = message.updatedAt.toISOString();
-    }
-    if (message.deletedAt !== undefined) {
-      obj.deletedAt = message.deletedAt.toISOString();
-    }
     return obj;
   },
 
@@ -296,6 +296,9 @@ export const ShipSummary = {
   fromPartial<I extends Exact<DeepPartial<ShipSummary>, I>>(object: I): ShipSummary {
     const message = createBaseShipSummary();
     message.id = object.id ?? "";
+    message.createdAt = object.createdAt ?? undefined;
+    message.updatedAt = object.updatedAt ?? undefined;
+    message.deletedAt = object.deletedAt ?? undefined;
     message.imo = object.imo ?? 0;
     message.typeId = object.typeId ?? "";
     message.classId = object.classId ?? "";
@@ -307,9 +310,6 @@ export const ShipSummary = {
     message.dateBuild = object.dateBuild ?? undefined;
     message.deadWeight = object.deadWeight ?? 0;
     message.tonnage = object.tonnage ?? 0;
-    message.createdAt = object.createdAt ?? undefined;
-    message.updatedAt = object.updatedAt ?? undefined;
-    message.deletedAt = object.deletedAt ?? undefined;
     return message;
   },
 };

@@ -4,12 +4,10 @@ package apfish.v1.auth.jwt;
 
 option go_package = "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/auth/jwt;auth_jwt";
 
-import "apfish.v1/permission/summary/permission_summary.proto";
-
-message JwtData {
+message Jwt {
   string id = 1;
   string role_id = 2;
-  repeated apfish.v1.permission.summary.PermissionJwt permissions = 3;
+  string version = 3;
   int64 exp = 4;
   int64 iat = 5;
 }

@@ -28,14 +28,14 @@ const (
 type Authority struct {
 	state          protoimpl.MessageState        `protogen:"open.v1"`
 	Id             string                        `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	Name           string                        `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	NameRus        string                        `protobuf:"bytes,3,opt,name=name_rus,json=nameRus,proto3" json:"name_rus,omitempty"`
-	Code           string                        `protobuf:"bytes,4,opt,name=code,proto3" json:"code,omitempty"`
-	IsIlo          bool                          `protobuf:"varint,5,opt,name=is_ilo,json=isIlo,proto3" json:"is_ilo,omitempty"`
-	IsBallastWater bool                          `protobuf:"varint,6,opt,name=is_ballast_water,json=isBallastWater,proto3" json:"is_ballast_water,omitempty"`
-	CreatedAt      *timestamppb.Timestamp        `protobuf:"bytes,7,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt      *timestamppb.Timestamp        `protobuf:"bytes,8,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	DeletedAt      *timestamppb.Timestamp        `protobuf:"bytes,9,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty"`
+	CreatedAt      *timestamppb.Timestamp        `protobuf:"bytes,2,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	UpdatedAt      *timestamppb.Timestamp        `protobuf:"bytes,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	DeletedAt      *timestamppb.Timestamp        `protobuf:"bytes,4,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty"`
+	Name           string                        `protobuf:"bytes,5,opt,name=name,proto3" json:"name,omitempty"`
+	NameRus        string                        `protobuf:"bytes,6,opt,name=name_rus,json=nameRus,proto3" json:"name_rus,omitempty"`
+	Code           string                        `protobuf:"bytes,7,opt,name=code,proto3" json:"code,omitempty"`
+	IsIlo          bool                          `protobuf:"varint,8,opt,name=is_ilo,json=isIlo,proto3" json:"is_ilo,omitempty"`
+	IsBallastWater bool                          `protobuf:"varint,9,opt,name=is_ballast_water,json=isBallastWater,proto3" json:"is_ballast_water,omitempty"`
 	Ports          []*summary.PortSummary        `protobuf:"bytes,10,rep,name=ports,proto3" json:"ports,omitempty"`
 	CallSigns      []*summary1.CallSignSummary   `protobuf:"bytes,11,rep,name=call_signs,json=callSigns,proto3" json:"call_signs,omitempty"`
 	Permissions    []*summary2.PermissionSummary `protobuf:"bytes,12,rep,name=permissions,proto3" json:"permissions,omitempty"`
@@ -80,6 +80,27 @@ func (x *Authority) GetId() string {
 	return ""
 }
 
+func (x *Authority) GetCreatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.CreatedAt
+	}
+	return nil
+}
+
+func (x *Authority) GetUpdatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.UpdatedAt
+	}
+	return nil
+}
+
+func (x *Authority) GetDeletedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.DeletedAt
+	}
+	return nil
+}
+
 func (x *Authority) GetName() string {
 	if x != nil {
 		return x.Name
@@ -115,27 +136,6 @@ func (x *Authority) GetIsBallastWater() bool {
 	return false
 }
 
-func (x *Authority) GetCreatedAt() *timestamppb.Timestamp {
-	if x != nil {
-		return x.CreatedAt
-	}
-	return nil
-}
-
-func (x *Authority) GetUpdatedAt() *timestamppb.Timestamp {
-	if x != nil {
-		return x.UpdatedAt
-	}
-	return nil
-}
-
-func (x *Authority) GetDeletedAt() *timestamppb.Timestamp {
-	if x != nil {
-		return x.DeletedAt
-	}
-	return nil
-}
-
 func (x *Authority) GetPorts() []*summary.PortSummary {
 	if x != nil {
 		return x.Ports
@@ -163,18 +163,18 @@ const file_apfish_v1_location_authority_authority_proto_rawDesc = "" +
 	"\n" +
 	",apfish.v1/location/authority/authority.proto\x12\x1capfish.v1.location.authority\x1a\x1fgoogle/protobuf/timestamp.proto\x1a2apfish.v1/location/port/summary/port_summary.proto\x1a3apfish.v1/call_sign/summary/call_sign_summary.proto\x1a5apfish.v1/permission/summary/permission_summary.proto\"\xb4\x04\n" +
 	"\tAuthority\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12\x19\n" +
-	"\bname_rus\x18\x03 \x01(\tR\anameRus\x12\x12\n" +
-	"\x04code\x18\x04 \x01(\tR\x04code\x12\x15\n" +
-	"\x06is_ilo\x18\x05 \x01(\bR\x05isIlo\x12(\n" +
-	"\x10is_ballast_water\x18\x06 \x01(\bR\x0eisBallastWater\x129\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x129\n" +
 	"\n" +
-	"created_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
+	"created_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
 	"\n" +
-	"updated_at\x18\b \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x129\n" +
+	"updated_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x129\n" +
 	"\n" +
-	"deleted_at\x18\t \x01(\v2\x1a.google.protobuf.TimestampR\tdeletedAt\x12B\n" +
+	"deleted_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tdeletedAt\x12\x12\n" +
+	"\x04name\x18\x05 \x01(\tR\x04name\x12\x19\n" +
+	"\bname_rus\x18\x06 \x01(\tR\anameRus\x12\x12\n" +
+	"\x04code\x18\a \x01(\tR\x04code\x12\x15\n" +
+	"\x06is_ilo\x18\b \x01(\bR\x05isIlo\x12(\n" +
+	"\x10is_ballast_water\x18\t \x01(\bR\x0eisBallastWater\x12B\n" +
 	"\x05ports\x18\n" +
 	" \x03(\v2,.apfish.v1.location.port.summary.PortSummaryR\x05ports\x12K\n" +
 	"\n" +

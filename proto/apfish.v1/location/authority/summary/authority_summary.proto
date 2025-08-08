@@ -8,15 +8,15 @@ import "google/protobuf/timestamp.proto";  // Standard Protocol Buffers timestam
 
 message AuthoritySummary {
   string id = 1;
-  string name = 2;
-  string name_rus = 3;
-  string code = 4;
-  bool is_ilo = 5;
-  bool is_ballast_water = 6;
-  string type_id = 7;
-  string parent_code = 8;
-  string mou_id = 9;
-  google.protobuf.Timestamp created_at = 10;
-  google.protobuf.Timestamp updated_at = 11;
-  google.protobuf.Timestamp deleted_at = 12;
+  google.protobuf.Timestamp created_at = 2;
+  google.protobuf.Timestamp updated_at = 3;
+  google.protobuf.Timestamp deleted_at = 4;
+  string name = 5;
+  string name_rus = 6;
+  string code = 7;
+  bool is_ilo = 8;
+  bool is_ballast_water = 9;
+  string type_id = 10;
+  string parent_code = 11;
+  string mou_id = 12;
 }

@@ -13,11 +13,11 @@ import "apfish.v1/location/authority/summary/authority_summary.proto";
 
 message District {
   string id = 1;
-  string name = 2;
-  apfish.v1.location.authority.summary.AuthoritySummary authority = 3;
-  google.protobuf.Timestamp created_at = 4;
-  google.protobuf.Timestamp updated_at = 5;
-  google.protobuf.Timestamp deleted_at = 6;
+  google.protobuf.Timestamp created_at = 2;
+  google.protobuf.Timestamp updated_at = 3;
+  google.protobuf.Timestamp deleted_at = 4;
+  string name = 5;
+  apfish.v1.location.authority.summary.AuthoritySummary authority = 6;
 
   repeated apfish.v1.location.port.summary.PortSummary ports = 7;
   repeated apfish.v1.permission.summary.PermissionSummary permissions = 8;

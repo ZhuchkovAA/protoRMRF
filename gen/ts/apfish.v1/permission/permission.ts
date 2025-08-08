@@ -25,25 +25,15 @@ export const protobufPackage = "apfish.v1.permission";
  * Permissions combine an Action and Object to create granular access controls (e.g., "read:inspection").
  */
 export interface Permission {
-  /** Unique identifier for the permission */
   id: string;
-  /** The operation this permission allows (e.g., "read", "create") */
-  action:
-    | ActionSummary
-    | undefined;
-  /** The resource this permission applies to (e.g., "inspection", "user") */
-  object:
-    | ObjectSummary
-    | undefined;
-  /** Human-readable explanation of the permission */
-  description: string;
-  /** Display name (e.g., "Read Inspections") */
-  name: string;
-  /** Machine-readable identifier (e.g., "inspection:read") */
-  code: string;
   createdAt: Date | undefined;
   updatedAt: Date | undefined;
   deletedAt: Date | undefined;
+  action: ActionSummary | undefined;
+  object: ObjectSummary | undefined;
+  description: string;
+  name: string;
+  code: string;
   mous: MouSummary[];
   authorities: AuthoritySummary[];
   districts: DistrictSummary[];
@@ -56,14 +46,14 @@ export interface Permission {
 function createBasePermission(): Permission {
   return {
     id: "",
+    createdAt: undefined,
+    updatedAt: undefined,
+    deletedAt: undefined,
     action: undefined,
     object: undefined,
     description: "",
     name: "",
     code: "",
-    createdAt: undefined,
-    updatedAt: undefined,
-    deletedAt: undefined,
     mous: [],
     authorities: [],
     districts: [],
@@ -79,29 +69,29 @@ export const Permission = {
     if (message.id !== "") {
       writer.uint32(10).string(message.id);
     }
-    if (message.action !== undefined) {
-      ActionSummary.encode(message.action, writer.uint32(18).fork()).ldelim();
-    }
-    if (message.object !== undefined) {
-      ObjectSummary.encode(message.object, writer.uint32(26).fork()).ldelim();
-    }
-    if (message.description !== "") {
-      writer.uint32(34).string(message.description);
-    }
-    if (message.name !== "") {
-      writer.uint32(42).string(message.name);
-    }
-    if (message.code !== "") {
-      writer.uint32(50).string(message.code);
-    }
     if (message.createdAt !== undefined) {
-      Timestamp.encode(toTimestamp(message.createdAt), writer.uint32(58).fork()).ldelim();
+      Timestamp.encode(toTimestamp(message.createdAt), writer.uint32(18).fork()).ldelim();
     }
     if (message.updatedAt !== undefined) {
-      Timestamp.encode(toTimestamp(message.updatedAt), writer.uint32(66).fork()).ldelim();
+      Timestamp.encode(toTimestamp(message.updatedAt), writer.uint32(26).fork()).ldelim();
     }
     if (message.deletedAt !== undefined) {
-      Timestamp.encode(toTimestamp(message.deletedAt), writer.uint32(74).fork()).ldelim();
+      Timestamp.encode(toTimestamp(message.deletedAt), writer.uint32(34).fork()).ldelim();
+    }
+    if (message.action !== undefined) {
+      ActionSummary.encode(message.action, writer.uint32(42).fork()).ldelim();
+    }
+    if (message.object !== undefined) {
+      ObjectSummary.encode(message.object, writer.uint32(50).fork()).ldelim();
+    }
+    if (message.description !== "") {
+      writer.uint32(58).string(message.description);
+    }
+    if (message.name !== "") {
+      writer.uint32(66).string(message.name);
+    }
+    if (message.code !== "") {
+      writer.uint32(74).string(message.code);
     }
     for (const v of message.mous) {
       MouSummary.encode(v!, writer.uint32(82).fork()).ldelim();
@@ -146,56 +136,56 @@ export const Permission = {
             break;
           }
 
-          message.action = ActionSummary.decode(reader, reader.uint32());
+          message.createdAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           continue;
         case 3:
           if (tag !== 26) {
             break;
           }
 
-          message.object = ObjectSummary.decode(reader, reader.uint32());
+          message.updatedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           continue;
         case 4:
           if (tag !== 34) {
             break;
           }
 
-          message.description = reader.string();
+          message.deletedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           continue;
         case 5:
           if (tag !== 42) {
             break;
           }
 
-          message.name = reader.string();
+          message.action = ActionSummary.decode(reader, reader.uint32());
           continue;
         case 6:
           if (tag !== 50) {
             break;
           }
 
-          message.code = reader.string();
+          message.object = ObjectSummary.decode(reader, reader.uint32());
           continue;
         case 7:
           if (tag !== 58) {
             break;
           }
 
-          message.createdAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          message.description = reader.string();
           continue;
         case 8:
           if (tag !== 66) {
             break;
           }
 
-          message.updatedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          message.name = reader.string();
           continue;
         case 9:
           if (tag !== 74) {
             break;
           }
 
-          message.deletedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          message.code = reader.string();
           continue;
         case 10:
           if (tag !== 82) {
@@ -258,14 +248,14 @@ export const Permission = {
   fromJSON(object: any): Permission {
     return {
       id: isSet(object.id) ? globalThis.String(object.id) : "",
+      createdAt: isSet(object.createdAt) ? fromJsonTimestamp(object.createdAt) : undefined,
+      updatedAt: isSet(object.updatedAt) ? fromJsonTimestamp(object.updatedAt) : undefined,
+      deletedAt: isSet(object.deletedAt) ? fromJsonTimestamp(object.deletedAt) : undefined,
       action: isSet(object.action) ? ActionSummary.fromJSON(object.action) : undefined,
       object: isSet(object.object) ? ObjectSummary.fromJSON(object.object) : undefined,
       description: isSet(object.description) ? globalThis.String(object.description) : "",
       name: isSet(object.name) ? globalThis.String(object.name) : "",
       code: isSet(object.code) ? globalThis.String(object.code) : "",
-      createdAt: isSet(object.createdAt) ? fromJsonTimestamp(object.createdAt) : undefined,
-      updatedAt: isSet(object.updatedAt) ? fromJsonTimestamp(object.updatedAt) : undefined,
-      deletedAt: isSet(object.deletedAt) ? fromJsonTimestamp(object.deletedAt) : undefined,
       mous: globalThis.Array.isArray(object?.mous) ? object.mous.map((e: any) => MouSummary.fromJSON(e)) : [],
       authorities: globalThis.Array.isArray(object?.authorities)
         ? object.authorities.map((e: any) => AuthoritySummary.fromJSON(e))
@@ -285,6 +275,15 @@ export const Permission = {
     if (message.id !== "") {
       obj.id = message.id;
     }
+    if (message.createdAt !== undefined) {
+      obj.createdAt = message.createdAt.toISOString();
+    }
+    if (message.updatedAt !== undefined) {
+      obj.updatedAt = message.updatedAt.toISOString();
+    }
+    if (message.deletedAt !== undefined) {
+      obj.deletedAt = message.deletedAt.toISOString();
+    }
     if (message.action !== undefined) {
       obj.action = ActionSummary.toJSON(message.action);
     }
@@ -299,15 +298,6 @@ export const Permission = {
     }
     if (message.code !== "") {
       obj.code = message.code;
-    }
-    if (message.createdAt !== undefined) {
-      obj.createdAt = message.createdAt.toISOString();
-    }
-    if (message.updatedAt !== undefined) {
-      obj.updatedAt = message.updatedAt.toISOString();
-    }
-    if (message.deletedAt !== undefined) {
-      obj.deletedAt = message.deletedAt.toISOString();
     }
     if (message.mous?.length) {
       obj.mous = message.mous.map((e) => MouSummary.toJSON(e));
@@ -339,6 +329,9 @@ export const Permission = {
   fromPartial<I extends Exact<DeepPartial<Permission>, I>>(object: I): Permission {
     const message = createBasePermission();
     message.id = object.id ?? "";
+    message.createdAt = object.createdAt ?? undefined;
+    message.updatedAt = object.updatedAt ?? undefined;
+    message.deletedAt = object.deletedAt ?? undefined;
     message.action = (object.action !== undefined && object.action !== null)
       ? ActionSummary.fromPartial(object.action)
       : undefined;
@@ -348,9 +341,6 @@ export const Permission = {
     message.description = object.description ?? "";
     message.name = object.name ?? "";
     message.code = object.code ?? "";
-    message.createdAt = object.createdAt ?? undefined;
-    message.updatedAt = object.updatedAt ?? undefined;
-    message.deletedAt = object.deletedAt ?? undefined;
     message.mous = object.mous?.map((e) => MouSummary.fromPartial(e)) || [];
     message.authorities = object.authorities?.map((e) => AuthoritySummary.fromPartial(e)) || [];
     message.districts = object.districts?.map((e) => DistrictSummary.fromPartial(e)) || [];

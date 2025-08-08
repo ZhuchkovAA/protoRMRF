@@ -17,28 +17,28 @@ export const protobufPackage = "apfish.v1.location.port";
 
 export interface Port {
   id: string;
+  createdAt: Date | undefined;
+  updatedAt: Date | undefined;
+  deletedAt: Date | undefined;
   name: string;
   code: string;
   authority: AuthoritySummary | undefined;
   subdivision: SubDivisionSummary | undefined;
   district: DistrictSummary | undefined;
-  createdAt: Date | undefined;
-  updatedAt: Date | undefined;
-  deletedAt: Date | undefined;
   permissions: PermissionSummary[];
 }
 
 function createBasePort(): Port {
   return {
     id: "",
+    createdAt: undefined,
+    updatedAt: undefined,
+    deletedAt: undefined,
     name: "",
     code: "",
     authority: undefined,
     subdivision: undefined,
     district: undefined,
-    createdAt: undefined,
-    updatedAt: undefined,
-    deletedAt: undefined,
     permissions: [],
   };
 }
@@ -48,29 +48,29 @@ export const Port = {
     if (message.id !== "") {
       writer.uint32(10).string(message.id);
     }
-    if (message.name !== "") {
-      writer.uint32(18).string(message.name);
-    }
-    if (message.code !== "") {
-      writer.uint32(26).string(message.code);
-    }
-    if (message.authority !== undefined) {
-      AuthoritySummary.encode(message.authority, writer.uint32(34).fork()).ldelim();
-    }
-    if (message.subdivision !== undefined) {
-      SubDivisionSummary.encode(message.subdivision, writer.uint32(42).fork()).ldelim();
-    }
-    if (message.district !== undefined) {
-      DistrictSummary.encode(message.district, writer.uint32(50).fork()).ldelim();
-    }
     if (message.createdAt !== undefined) {
-      Timestamp.encode(toTimestamp(message.createdAt), writer.uint32(58).fork()).ldelim();
+      Timestamp.encode(toTimestamp(message.createdAt), writer.uint32(18).fork()).ldelim();
     }
     if (message.updatedAt !== undefined) {
-      Timestamp.encode(toTimestamp(message.updatedAt), writer.uint32(66).fork()).ldelim();
+      Timestamp.encode(toTimestamp(message.updatedAt), writer.uint32(26).fork()).ldelim();
     }
     if (message.deletedAt !== undefined) {
-      Timestamp.encode(toTimestamp(message.deletedAt), writer.uint32(74).fork()).ldelim();
+      Timestamp.encode(toTimestamp(message.deletedAt), writer.uint32(34).fork()).ldelim();
+    }
+    if (message.name !== "") {
+      writer.uint32(42).string(message.name);
+    }
+    if (message.code !== "") {
+      writer.uint32(50).string(message.code);
+    }
+    if (message.authority !== undefined) {
+      AuthoritySummary.encode(message.authority, writer.uint32(58).fork()).ldelim();
+    }
+    if (message.subdivision !== undefined) {
+      SubDivisionSummary.encode(message.subdivision, writer.uint32(66).fork()).ldelim();
+    }
+    if (message.district !== undefined) {
+      DistrictSummary.encode(message.district, writer.uint32(74).fork()).ldelim();
     }
     for (const v of message.permissions) {
       PermissionSummary.encode(v!, writer.uint32(82).fork()).ldelim();
@@ -97,56 +97,56 @@ export const Port = {
             break;
           }
 
-          message.name = reader.string();
+          message.createdAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           continue;
         case 3:
           if (tag !== 26) {
             break;
           }
 
-          message.code = reader.string();
+          message.updatedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           continue;
         case 4:
           if (tag !== 34) {
             break;
           }
 
-          message.authority = AuthoritySummary.decode(reader, reader.uint32());
+          message.deletedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           continue;
         case 5:
           if (tag !== 42) {
             break;
           }
 
-          message.subdivision = SubDivisionSummary.decode(reader, reader.uint32());
+          message.name = reader.string();
           continue;
         case 6:
           if (tag !== 50) {
             break;
           }
 
-          message.district = DistrictSummary.decode(reader, reader.uint32());
+          message.code = reader.string();
           continue;
         case 7:
           if (tag !== 58) {
             break;
           }
 
-          message.createdAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          message.authority = AuthoritySummary.decode(reader, reader.uint32());
           continue;
         case 8:
           if (tag !== 66) {
             break;
           }
 
-          message.updatedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          message.subdivision = SubDivisionSummary.decode(reader, reader.uint32());
           continue;
         case 9:
           if (tag !== 74) {
             break;
           }
 
-          message.deletedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          message.district = DistrictSummary.decode(reader, reader.uint32());
           continue;
         case 10:
           if (tag !== 82) {
@@ -167,14 +167,14 @@ export const Port = {
   fromJSON(object: any): Port {
     return {
       id: isSet(object.id) ? globalThis.String(object.id) : "",
+      createdAt: isSet(object.createdAt) ? fromJsonTimestamp(object.createdAt) : undefined,
+      updatedAt: isSet(object.updatedAt) ? fromJsonTimestamp(object.updatedAt) : undefined,
+      deletedAt: isSet(object.deletedAt) ? fromJsonTimestamp(object.deletedAt) : undefined,
       name: isSet(object.name) ? globalThis.String(object.name) : "",
       code: isSet(object.code) ? globalThis.String(object.code) : "",
       authority: isSet(object.authority) ? AuthoritySummary.fromJSON(object.authority) : undefined,
       subdivision: isSet(object.subdivision) ? SubDivisionSummary.fromJSON(object.subdivision) : undefined,
       district: isSet(object.district) ? DistrictSummary.fromJSON(object.district) : undefined,
-      createdAt: isSet(object.createdAt) ? fromJsonTimestamp(object.createdAt) : undefined,
-      updatedAt: isSet(object.updatedAt) ? fromJsonTimestamp(object.updatedAt) : undefined,
-      deletedAt: isSet(object.deletedAt) ? fromJsonTimestamp(object.deletedAt) : undefined,
       permissions: globalThis.Array.isArray(object?.permissions)
         ? object.permissions.map((e: any) => PermissionSummary.fromJSON(e))
         : [],
@@ -185,6 +185,15 @@ export const Port = {
     const obj: any = {};
     if (message.id !== "") {
       obj.id = message.id;
+    }
+    if (message.createdAt !== undefined) {
+      obj.createdAt = message.createdAt.toISOString();
+    }
+    if (message.updatedAt !== undefined) {
+      obj.updatedAt = message.updatedAt.toISOString();
+    }
+    if (message.deletedAt !== undefined) {
+      obj.deletedAt = message.deletedAt.toISOString();
     }
     if (message.name !== "") {
       obj.name = message.name;
@@ -201,15 +210,6 @@ export const Port = {
     if (message.district !== undefined) {
       obj.district = DistrictSummary.toJSON(message.district);
     }
-    if (message.createdAt !== undefined) {
-      obj.createdAt = message.createdAt.toISOString();
-    }
-    if (message.updatedAt !== undefined) {
-      obj.updatedAt = message.updatedAt.toISOString();
-    }
-    if (message.deletedAt !== undefined) {
-      obj.deletedAt = message.deletedAt.toISOString();
-    }
     if (message.permissions?.length) {
       obj.permissions = message.permissions.map((e) => PermissionSummary.toJSON(e));
     }
@@ -222,6 +222,9 @@ export const Port = {
   fromPartial<I extends Exact<DeepPartial<Port>, I>>(object: I): Port {
     const message = createBasePort();
     message.id = object.id ?? "";
+    message.createdAt = object.createdAt ?? undefined;
+    message.updatedAt = object.updatedAt ?? undefined;
+    message.deletedAt = object.deletedAt ?? undefined;
     message.name = object.name ?? "";
     message.code = object.code ?? "";
     message.authority = (object.authority !== undefined && object.authority !== null)
@@ -233,9 +236,6 @@ export const Port = {
     message.district = (object.district !== undefined && object.district !== null)
       ? DistrictSummary.fromPartial(object.district)
       : undefined;
-    message.createdAt = object.createdAt ?? undefined;
-    message.updatedAt = object.updatedAt ?? undefined;
-    message.deletedAt = object.deletedAt ?? undefined;
     message.permissions = object.permissions?.map((e) => PermissionSummary.fromPartial(e)) || [];
     return message;
   },

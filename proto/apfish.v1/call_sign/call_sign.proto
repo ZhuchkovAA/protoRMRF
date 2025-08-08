@@ -11,12 +11,12 @@ import "apfish.v1/ship/summary/ship_summary.proto";
 
 message CallSign {
   string id = 1;
-  string series = 2;
-  string limit_lower = 3;
-  string limit_upper = 4;
-  google.protobuf.Timestamp created_at = 5;
-  google.protobuf.Timestamp updated_at = 6;
-  google.protobuf.Timestamp deleted_at = 7;
+  google.protobuf.Timestamp created_at = 2;
+  google.protobuf.Timestamp updated_at = 3;
+  google.protobuf.Timestamp deleted_at = 4;
+  string series = 5;
+  string limit_lower = 6;
+  string limit_upper = 7;
 
   repeated apfish.v1.location.authority.summary.AuthoritySummary authorities = 8;
   repeated apfish.v1.ship.summary.ShipSummary ships = 9;

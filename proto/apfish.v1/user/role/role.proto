@@ -11,12 +11,12 @@ import "apfish.v1/permission/summary/permission_summary.proto";
 
 // Defines a user role (e.g., "Admin", "Editor").
 message Role {
-  string id = 1;                       // Unique role ID.
-  string name = 2;                    // Human-readable name (e.g., "Admin").
-  string code = 3;                    // Machine-friendly code (e.g., "admin").
-  google.protobuf.Timestamp created_at = 4;
-  google.protobuf.Timestamp updated_at = 5;
-  google.protobuf.Timestamp deleted_at = 6;
+  string id = 1;
+  google.protobuf.Timestamp created_at = 2;
+  google.protobuf.Timestamp updated_at = 3;
+  google.protobuf.Timestamp deleted_at = 4;
+  string name = 5;
+  string code = 6;
 
   repeated apfish.v1.user.summary.UserSummary users = 7;
   repeated apfish.v1.permission.summary.PermissionSummary permissions = 8;  // Permissions granted by this role.

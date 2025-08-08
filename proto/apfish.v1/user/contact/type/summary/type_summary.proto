@@ -8,10 +8,10 @@ import "google/protobuf/timestamp.proto";  // Standard Protocol Buffers timestam
 
 // Type of contact method (e.g., "Email", "Phone").
 message TypeSummary {
-  string id = 1;                       // Unique type ID.
-  string name = 2;                    // Human-readable name (e.g., "Email").
-  string code = 3;
-  google.protobuf.Timestamp created_at = 4;
-  google.protobuf.Timestamp updated_at = 5;
-  google.protobuf.Timestamp deleted_at = 6;
+  string id = 1;
+  google.protobuf.Timestamp created_at = 2;
+  google.protobuf.Timestamp updated_at = 3;
+  google.protobuf.Timestamp deleted_at = 4;
+  string name = 5;
+  string code = 6;
 }

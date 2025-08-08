@@ -25,10 +25,10 @@ const (
 type MouSummary struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	DeletedAt     *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty"`
+	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	DeletedAt     *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty"`
+	Name          string                 `protobuf:"bytes,5,opt,name=name,proto3" json:"name,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -70,13 +70,6 @@ func (x *MouSummary) GetId() string {
 	return ""
 }
 
-func (x *MouSummary) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
-
 func (x *MouSummary) GetCreatedAt() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreatedAt
@@ -98,6 +91,13 @@ func (x *MouSummary) GetDeletedAt() *timestamppb.Timestamp {
 	return nil
 }
 
+func (x *MouSummary) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
 var File_apfish_v1_location_mou_summary_mou_summary_proto protoreflect.FileDescriptor
 
 const file_apfish_v1_location_mou_summary_mou_summary_proto_rawDesc = "" +
@@ -105,14 +105,14 @@ const file_apfish_v1_location_mou_summary_mou_summary_proto_rawDesc = "" +
 	"0apfish.v1/location/mou/summary/mou_summary.proto\x12\x1eapfish.v1.location.mou.summary\x1a\x1fgoogle/protobuf/timestamp.proto\"\xe1\x01\n" +
 	"\n" +
 	"MouSummary\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x129\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x129\n" +
 	"\n" +
-	"created_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
+	"created_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
 	"\n" +
-	"updated_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x129\n" +
+	"updated_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x129\n" +
 	"\n" +
-	"deleted_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tdeletedAtB\\ZZgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/mou/summary;location_mou_summaryb\x06proto3"
+	"deleted_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tdeletedAt\x12\x12\n" +
+	"\x04name\x18\x05 \x01(\tR\x04nameB\\ZZgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/location/mou/summary;location_mou_summaryb\x06proto3"
 
 var (
 	file_apfish_v1_location_mou_summary_mou_summary_proto_rawDescOnce sync.Once

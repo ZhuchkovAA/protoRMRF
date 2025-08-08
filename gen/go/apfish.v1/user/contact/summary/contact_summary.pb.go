@@ -24,13 +24,13 @@ const (
 
 type ContactSummary struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"` // Unique contact ID.
-	UserId        string                 `protobuf:"bytes,2,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
-	TypeId        string                 `protobuf:"bytes,3,opt,name=type_id,json=typeId,proto3" json:"type_id,omitempty"` // Contact type.
-	Value         string                 `protobuf:"bytes,4,opt,name=value,proto3" json:"value,omitempty"`                 // Contact value (e.g., "user@example.com").
-	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	DeletedAt     *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	DeletedAt     *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty"`
+	UserId        string                 `protobuf:"bytes,5,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	TypeId        string                 `protobuf:"bytes,6,opt,name=type_id,json=typeId,proto3" json:"type_id,omitempty"`
+	Value         string                 `protobuf:"bytes,7,opt,name=value,proto3" json:"value,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -72,27 +72,6 @@ func (x *ContactSummary) GetId() string {
 	return ""
 }
 
-func (x *ContactSummary) GetUserId() string {
-	if x != nil {
-		return x.UserId
-	}
-	return ""
-}
-
-func (x *ContactSummary) GetTypeId() string {
-	if x != nil {
-		return x.TypeId
-	}
-	return ""
-}
-
-func (x *ContactSummary) GetValue() string {
-	if x != nil {
-		return x.Value
-	}
-	return ""
-}
-
 func (x *ContactSummary) GetCreatedAt() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreatedAt
@@ -114,22 +93,43 @@ func (x *ContactSummary) GetDeletedAt() *timestamppb.Timestamp {
 	return nil
 }
 
+func (x *ContactSummary) GetUserId() string {
+	if x != nil {
+		return x.UserId
+	}
+	return ""
+}
+
+func (x *ContactSummary) GetTypeId() string {
+	if x != nil {
+		return x.TypeId
+	}
+	return ""
+}
+
+func (x *ContactSummary) GetValue() string {
+	if x != nil {
+		return x.Value
+	}
+	return ""
+}
+
 var File_apfish_v1_user_contact_summary_contact_summary_proto protoreflect.FileDescriptor
 
 const file_apfish_v1_user_contact_summary_contact_summary_proto_rawDesc = "" +
 	"\n" +
 	"4apfish.v1/user/contact/summary/contact_summary.proto\x12\x1eapfish.v1.user.contact.summary\x1a\x1fgoogle/protobuf/timestamp.proto\"\x99\x02\n" +
 	"\x0eContactSummary\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12\x17\n" +
-	"\auser_id\x18\x02 \x01(\tR\x06userId\x12\x17\n" +
-	"\atype_id\x18\x03 \x01(\tR\x06typeId\x12\x14\n" +
-	"\x05value\x18\x04 \x01(\tR\x05value\x129\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x129\n" +
 	"\n" +
-	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
+	"created_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
 	"\n" +
-	"updated_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x129\n" +
+	"updated_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x129\n" +
 	"\n" +
-	"deleted_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tdeletedAtB\\ZZgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/contact/summary;user_contact_summaryb\x06proto3"
+	"deleted_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tdeletedAt\x12\x17\n" +
+	"\auser_id\x18\x05 \x01(\tR\x06userId\x12\x17\n" +
+	"\atype_id\x18\x06 \x01(\tR\x06typeId\x12\x14\n" +
+	"\x05value\x18\a \x01(\tR\x05valueB\\ZZgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/contact/summary;user_contact_summaryb\x06proto3"
 
 var (
 	file_apfish_v1_user_contact_summary_contact_summary_proto_rawDescOnce sync.Once

@@ -18,27 +18,18 @@ export const protobufPackage = "apfish.v1.user";
 
 /** Represents a user account in the system. */
 export interface User {
-  /** Unique system-generated ID. */
   id: string;
-  /** Unique login identifier. */
+  createdAt: Date | undefined;
+  updatedAt: Date | undefined;
+  deletedAt: Date | undefined;
   login: string;
   firstName: string;
   lastName: string;
   middleName: string;
-  /** Assigned role. */
-  role:
-    | RoleSummary
-    | undefined;
-  /** Login of the creator (e.g., "admin"). */
+  role: RoleSummary | undefined;
   createdBy: UserSummary | undefined;
-  createdAt: Date | undefined;
-  updatedAt: Date | undefined;
-  deletedAt:
-    | Date
-    | undefined;
-  /** User's contact methods. */
+  jwtVersion: string;
   contacts: ContactSummary[];
-  /** Direct permissions (overrides role). */
   permissions: PermissionSummary[];
 }
 
@@ -53,15 +44,16 @@ export interface UserPatch {
 function createBaseUser(): User {
   return {
     id: "",
+    createdAt: undefined,
+    updatedAt: undefined,
+    deletedAt: undefined,
     login: "",
     firstName: "",
     lastName: "",
     middleName: "",
     role: undefined,
     createdBy: undefined,
-    createdAt: undefined,
-    updatedAt: undefined,
-    deletedAt: undefined,
+    jwtVersion: "",
     contacts: [],
     permissions: [],
   };
@@ -72,38 +64,41 @@ export const User = {
     if (message.id !== "") {
       writer.uint32(10).string(message.id);
     }
-    if (message.login !== "") {
-      writer.uint32(18).string(message.login);
-    }
-    if (message.firstName !== "") {
-      writer.uint32(26).string(message.firstName);
-    }
-    if (message.lastName !== "") {
-      writer.uint32(34).string(message.lastName);
-    }
-    if (message.middleName !== "") {
-      writer.uint32(42).string(message.middleName);
-    }
-    if (message.role !== undefined) {
-      RoleSummary.encode(message.role, writer.uint32(50).fork()).ldelim();
-    }
-    if (message.createdBy !== undefined) {
-      UserSummary.encode(message.createdBy, writer.uint32(58).fork()).ldelim();
-    }
     if (message.createdAt !== undefined) {
-      Timestamp.encode(toTimestamp(message.createdAt), writer.uint32(66).fork()).ldelim();
+      Timestamp.encode(toTimestamp(message.createdAt), writer.uint32(18).fork()).ldelim();
     }
     if (message.updatedAt !== undefined) {
-      Timestamp.encode(toTimestamp(message.updatedAt), writer.uint32(74).fork()).ldelim();
+      Timestamp.encode(toTimestamp(message.updatedAt), writer.uint32(26).fork()).ldelim();
     }
     if (message.deletedAt !== undefined) {
-      Timestamp.encode(toTimestamp(message.deletedAt), writer.uint32(82).fork()).ldelim();
+      Timestamp.encode(toTimestamp(message.deletedAt), writer.uint32(34).fork()).ldelim();
+    }
+    if (message.login !== "") {
+      writer.uint32(42).string(message.login);
+    }
+    if (message.firstName !== "") {
+      writer.uint32(50).string(message.firstName);
+    }
+    if (message.lastName !== "") {
+      writer.uint32(58).string(message.lastName);
+    }
+    if (message.middleName !== "") {
+      writer.uint32(66).string(message.middleName);
+    }
+    if (message.role !== undefined) {
+      RoleSummary.encode(message.role, writer.uint32(74).fork()).ldelim();
+    }
+    if (message.createdBy !== undefined) {
+      UserSummary.encode(message.createdBy, writer.uint32(82).fork()).ldelim();
+    }
+    if (message.jwtVersion !== "") {
+      writer.uint32(90).string(message.jwtVersion);
     }
     for (const v of message.contacts) {
-      ContactSummary.encode(v!, writer.uint32(90).fork()).ldelim();
+      ContactSummary.encode(v!, writer.uint32(98).fork()).ldelim();
     }
     for (const v of message.permissions) {
-      PermissionSummary.encode(v!, writer.uint32(98).fork()).ldelim();
+      PermissionSummary.encode(v!, writer.uint32(106).fork()).ldelim();
     }
     return writer;
   },
@@ -127,73 +122,80 @@ export const User = {
             break;
           }
 
-          message.login = reader.string();
+          message.createdAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           continue;
         case 3:
           if (tag !== 26) {
             break;
           }
 
-          message.firstName = reader.string();
+          message.updatedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           continue;
         case 4:
           if (tag !== 34) {
             break;
           }
 
-          message.lastName = reader.string();
+          message.deletedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           continue;
         case 5:
           if (tag !== 42) {
             break;
           }
 
-          message.middleName = reader.string();
+          message.login = reader.string();
           continue;
         case 6:
           if (tag !== 50) {
             break;
           }
 
-          message.role = RoleSummary.decode(reader, reader.uint32());
+          message.firstName = reader.string();
           continue;
         case 7:
           if (tag !== 58) {
             break;
           }
 
-          message.createdBy = UserSummary.decode(reader, reader.uint32());
+          message.lastName = reader.string();
           continue;
         case 8:
           if (tag !== 66) {
             break;
           }
 
-          message.createdAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          message.middleName = reader.string();
           continue;
         case 9:
           if (tag !== 74) {
             break;
           }
 
-          message.updatedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          message.role = RoleSummary.decode(reader, reader.uint32());
           continue;
         case 10:
           if (tag !== 82) {
             break;
           }
 
-          message.deletedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          message.createdBy = UserSummary.decode(reader, reader.uint32());
           continue;
         case 11:
           if (tag !== 90) {
             break;
           }
 
-          message.contacts.push(ContactSummary.decode(reader, reader.uint32()));
+          message.jwtVersion = reader.string();
           continue;
         case 12:
           if (tag !== 98) {
+            break;
+          }
+
+          message.contacts.push(ContactSummary.decode(reader, reader.uint32()));
+          continue;
+        case 13:
+          if (tag !== 106) {
             break;
           }
 
@@ -211,15 +213,16 @@ export const User = {
   fromJSON(object: any): User {
     return {
       id: isSet(object.id) ? globalThis.String(object.id) : "",
+      createdAt: isSet(object.createdAt) ? fromJsonTimestamp(object.createdAt) : undefined,
+      updatedAt: isSet(object.updatedAt) ? fromJsonTimestamp(object.updatedAt) : undefined,
+      deletedAt: isSet(object.deletedAt) ? fromJsonTimestamp(object.deletedAt) : undefined,
       login: isSet(object.login) ? globalThis.String(object.login) : "",
       firstName: isSet(object.firstName) ? globalThis.String(object.firstName) : "",
       lastName: isSet(object.lastName) ? globalThis.String(object.lastName) : "",
       middleName: isSet(object.middleName) ? globalThis.String(object.middleName) : "",
       role: isSet(object.role) ? RoleSummary.fromJSON(object.role) : undefined,
       createdBy: isSet(object.createdBy) ? UserSummary.fromJSON(object.createdBy) : undefined,
-      createdAt: isSet(object.createdAt) ? fromJsonTimestamp(object.createdAt) : undefined,
-      updatedAt: isSet(object.updatedAt) ? fromJsonTimestamp(object.updatedAt) : undefined,
-      deletedAt: isSet(object.deletedAt) ? fromJsonTimestamp(object.deletedAt) : undefined,
+      jwtVersion: isSet(object.jwtVersion) ? globalThis.String(object.jwtVersion) : "",
       contacts: globalThis.Array.isArray(object?.contacts)
         ? object.contacts.map((e: any) => ContactSummary.fromJSON(e))
         : [],
@@ -233,6 +236,15 @@ export const User = {
     const obj: any = {};
     if (message.id !== "") {
       obj.id = message.id;
+    }
+    if (message.createdAt !== undefined) {
+      obj.createdAt = message.createdAt.toISOString();
+    }
+    if (message.updatedAt !== undefined) {
+      obj.updatedAt = message.updatedAt.toISOString();
+    }
+    if (message.deletedAt !== undefined) {
+      obj.deletedAt = message.deletedAt.toISOString();
     }
     if (message.login !== "") {
       obj.login = message.login;
@@ -252,14 +264,8 @@ export const User = {
     if (message.createdBy !== undefined) {
       obj.createdBy = UserSummary.toJSON(message.createdBy);
     }
-    if (message.createdAt !== undefined) {
-      obj.createdAt = message.createdAt.toISOString();
-    }
-    if (message.updatedAt !== undefined) {
-      obj.updatedAt = message.updatedAt.toISOString();
-    }
-    if (message.deletedAt !== undefined) {
-      obj.deletedAt = message.deletedAt.toISOString();
+    if (message.jwtVersion !== "") {
+      obj.jwtVersion = message.jwtVersion;
     }
     if (message.contacts?.length) {
       obj.contacts = message.contacts.map((e) => ContactSummary.toJSON(e));
@@ -276,6 +282,9 @@ export const User = {
   fromPartial<I extends Exact<DeepPartial<User>, I>>(object: I): User {
     const message = createBaseUser();
     message.id = object.id ?? "";
+    message.createdAt = object.createdAt ?? undefined;
+    message.updatedAt = object.updatedAt ?? undefined;
+    message.deletedAt = object.deletedAt ?? undefined;
     message.login = object.login ?? "";
     message.firstName = object.firstName ?? "";
     message.lastName = object.lastName ?? "";
@@ -286,9 +295,7 @@ export const User = {
     message.createdBy = (object.createdBy !== undefined && object.createdBy !== null)
       ? UserSummary.fromPartial(object.createdBy)
       : undefined;
-    message.createdAt = object.createdAt ?? undefined;
-    message.updatedAt = object.updatedAt ?? undefined;
-    message.deletedAt = object.deletedAt ?? undefined;
+    message.jwtVersion = object.jwtVersion ?? "";
     message.contacts = object.contacts?.map((e) => ContactSummary.fromPartial(e)) || [];
     message.permissions = object.permissions?.map((e) => PermissionSummary.fromPartial(e)) || [];
     return message;

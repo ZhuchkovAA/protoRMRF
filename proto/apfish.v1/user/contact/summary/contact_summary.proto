@@ -7,11 +7,11 @@ option go_package = "github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/user/conta
 import "google/protobuf/timestamp.proto";  // Standard Protocol Buffers timestamp
 
 message ContactSummary {
-  string id = 1;                       // Unique contact ID.
-  string user_id = 2;
-  string type_id = 3;           // Contact type.
-  string value = 4;                   // Contact value (e.g., "user@example.com").
-  google.protobuf.Timestamp created_at = 5;
-  google.protobuf.Timestamp updated_at = 6;
-  google.protobuf.Timestamp deleted_at = 7;
+  string id = 1;
+  google.protobuf.Timestamp created_at = 2;
+  google.protobuf.Timestamp updated_at = 3;
+  google.protobuf.Timestamp deleted_at = 4;
+  string user_id = 5;
+  string type_id = 6;
+  string value = 7;
 }

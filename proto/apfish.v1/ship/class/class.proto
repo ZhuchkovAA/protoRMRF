@@ -10,10 +10,10 @@ import "apfish.v1/ship/summary/ship_summary.proto";
 
 message Class {
   string id = 1;
-  string name = 2;
-  google.protobuf.Timestamp created_at = 3;
-  google.protobuf.Timestamp updated_at = 4;
-  google.protobuf.Timestamp deleted_at = 5;
+  google.protobuf.Timestamp created_at = 2;
+  google.protobuf.Timestamp updated_at = 3;
+  google.protobuf.Timestamp deleted_at = 4;
+  string name = 5;
 
   repeated ship.summary.ShipSummary ships = 6;
 }

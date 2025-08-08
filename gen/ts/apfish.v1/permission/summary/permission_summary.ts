@@ -13,27 +13,14 @@ export const protobufPackage = "apfish.v1.permission.summary";
 
 export interface PermissionSummary {
   id: string;
-  actionId: string;
-  objectId: string;
-  /** Human-readable explanation of the permission */
-  description: string;
-  /** Display name (e.g., "Read Inspections") */
-  name: string;
-  /** Machine-readable identifier (e.g., "inspection:read") */
-  code: string;
   createdAt: Date | undefined;
   updatedAt: Date | undefined;
   deletedAt: Date | undefined;
-  mousId: string[];
-  authoritiesId: string[];
-  districtsId: string[];
-  portsId: string[];
-  shipsId: string[];
-}
-
-export interface PermissionJwt {
   actionId: string;
   objectId: string;
+  description: string;
+  name: string;
+  code: string;
   mousId: string[];
   authoritiesId: string[];
   districtsId: string[];
@@ -44,14 +31,14 @@ export interface PermissionJwt {
 function createBasePermissionSummary(): PermissionSummary {
   return {
     id: "",
+    createdAt: undefined,
+    updatedAt: undefined,
+    deletedAt: undefined,
     actionId: "",
     objectId: "",
     description: "",
     name: "",
     code: "",
-    createdAt: undefined,
-    updatedAt: undefined,
-    deletedAt: undefined,
     mousId: [],
     authoritiesId: [],
     districtsId: [],
@@ -65,29 +52,29 @@ export const PermissionSummary = {
     if (message.id !== "") {
       writer.uint32(10).string(message.id);
     }
-    if (message.actionId !== "") {
-      writer.uint32(18).string(message.actionId);
-    }
-    if (message.objectId !== "") {
-      writer.uint32(26).string(message.objectId);
-    }
-    if (message.description !== "") {
-      writer.uint32(34).string(message.description);
-    }
-    if (message.name !== "") {
-      writer.uint32(42).string(message.name);
-    }
-    if (message.code !== "") {
-      writer.uint32(50).string(message.code);
-    }
     if (message.createdAt !== undefined) {
-      Timestamp.encode(toTimestamp(message.createdAt), writer.uint32(58).fork()).ldelim();
+      Timestamp.encode(toTimestamp(message.createdAt), writer.uint32(18).fork()).ldelim();
     }
     if (message.updatedAt !== undefined) {
-      Timestamp.encode(toTimestamp(message.updatedAt), writer.uint32(66).fork()).ldelim();
+      Timestamp.encode(toTimestamp(message.updatedAt), writer.uint32(26).fork()).ldelim();
     }
     if (message.deletedAt !== undefined) {
-      Timestamp.encode(toTimestamp(message.deletedAt), writer.uint32(74).fork()).ldelim();
+      Timestamp.encode(toTimestamp(message.deletedAt), writer.uint32(34).fork()).ldelim();
+    }
+    if (message.actionId !== "") {
+      writer.uint32(42).string(message.actionId);
+    }
+    if (message.objectId !== "") {
+      writer.uint32(50).string(message.objectId);
+    }
+    if (message.description !== "") {
+      writer.uint32(58).string(message.description);
+    }
+    if (message.name !== "") {
+      writer.uint32(66).string(message.name);
+    }
+    if (message.code !== "") {
+      writer.uint32(74).string(message.code);
     }
     for (const v of message.mousId) {
       writer.uint32(82).string(v!);
@@ -126,56 +113,56 @@ export const PermissionSummary = {
             break;
           }
 
-          message.actionId = reader.string();
+          message.createdAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           continue;
         case 3:
           if (tag !== 26) {
             break;
           }
 
-          message.objectId = reader.string();
+          message.updatedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           continue;
         case 4:
           if (tag !== 34) {
             break;
           }
 
-          message.description = reader.string();
+          message.deletedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           continue;
         case 5:
           if (tag !== 42) {
             break;
           }
 
-          message.name = reader.string();
+          message.actionId = reader.string();
           continue;
         case 6:
           if (tag !== 50) {
             break;
           }
 
-          message.code = reader.string();
+          message.objectId = reader.string();
           continue;
         case 7:
           if (tag !== 58) {
             break;
           }
 
-          message.createdAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          message.description = reader.string();
           continue;
         case 8:
           if (tag !== 66) {
             break;
           }
 
-          message.updatedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          message.name = reader.string();
           continue;
         case 9:
           if (tag !== 74) {
             break;
           }
 
-          message.deletedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          message.code = reader.string();
           continue;
         case 10:
           if (tag !== 82) {
@@ -224,14 +211,14 @@ export const PermissionSummary = {
   fromJSON(object: any): PermissionSummary {
     return {
       id: isSet(object.id) ? globalThis.String(object.id) : "",
+      createdAt: isSet(object.createdAt) ? fromJsonTimestamp(object.createdAt) : undefined,
+      updatedAt: isSet(object.updatedAt) ? fromJsonTimestamp(object.updatedAt) : undefined,
+      deletedAt: isSet(object.deletedAt) ? fromJsonTimestamp(object.deletedAt) : undefined,
       actionId: isSet(object.actionId) ? globalThis.String(object.actionId) : "",
       objectId: isSet(object.objectId) ? globalThis.String(object.objectId) : "",
       description: isSet(object.description) ? globalThis.String(object.description) : "",
       name: isSet(object.name) ? globalThis.String(object.name) : "",
       code: isSet(object.code) ? globalThis.String(object.code) : "",
-      createdAt: isSet(object.createdAt) ? fromJsonTimestamp(object.createdAt) : undefined,
-      updatedAt: isSet(object.updatedAt) ? fromJsonTimestamp(object.updatedAt) : undefined,
-      deletedAt: isSet(object.deletedAt) ? fromJsonTimestamp(object.deletedAt) : undefined,
       mousId: globalThis.Array.isArray(object?.mousId) ? object.mousId.map((e: any) => globalThis.String(e)) : [],
       authoritiesId: globalThis.Array.isArray(object?.authoritiesId)
         ? object.authoritiesId.map((e: any) => globalThis.String(e))
@@ -249,6 +236,15 @@ export const PermissionSummary = {
     if (message.id !== "") {
       obj.id = message.id;
     }
+    if (message.createdAt !== undefined) {
+      obj.createdAt = message.createdAt.toISOString();
+    }
+    if (message.updatedAt !== undefined) {
+      obj.updatedAt = message.updatedAt.toISOString();
+    }
+    if (message.deletedAt !== undefined) {
+      obj.deletedAt = message.deletedAt.toISOString();
+    }
     if (message.actionId !== "") {
       obj.actionId = message.actionId;
     }
@@ -263,15 +259,6 @@ export const PermissionSummary = {
     }
     if (message.code !== "") {
       obj.code = message.code;
-    }
-    if (message.createdAt !== undefined) {
-      obj.createdAt = message.createdAt.toISOString();
-    }
-    if (message.updatedAt !== undefined) {
-      obj.updatedAt = message.updatedAt.toISOString();
-    }
-    if (message.deletedAt !== undefined) {
-      obj.deletedAt = message.deletedAt.toISOString();
     }
     if (message.mousId?.length) {
       obj.mousId = message.mousId;
@@ -297,167 +284,14 @@ export const PermissionSummary = {
   fromPartial<I extends Exact<DeepPartial<PermissionSummary>, I>>(object: I): PermissionSummary {
     const message = createBasePermissionSummary();
     message.id = object.id ?? "";
+    message.createdAt = object.createdAt ?? undefined;
+    message.updatedAt = object.updatedAt ?? undefined;
+    message.deletedAt = object.deletedAt ?? undefined;
     message.actionId = object.actionId ?? "";
     message.objectId = object.objectId ?? "";
     message.description = object.description ?? "";
     message.name = object.name ?? "";
     message.code = object.code ?? "";
-    message.createdAt = object.createdAt ?? undefined;
-    message.updatedAt = object.updatedAt ?? undefined;
-    message.deletedAt = object.deletedAt ?? undefined;
-    message.mousId = object.mousId?.map((e) => e) || [];
-    message.authoritiesId = object.authoritiesId?.map((e) => e) || [];
-    message.districtsId = object.districtsId?.map((e) => e) || [];
-    message.portsId = object.portsId?.map((e) => e) || [];
-    message.shipsId = object.shipsId?.map((e) => e) || [];
-    return message;
-  },
-};
-
-function createBasePermissionJwt(): PermissionJwt {
-  return { actionId: "", objectId: "", mousId: [], authoritiesId: [], districtsId: [], portsId: [], shipsId: [] };
-}
-
-export const PermissionJwt = {
-  encode(message: PermissionJwt, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.actionId !== "") {
-      writer.uint32(10).string(message.actionId);
-    }
-    if (message.objectId !== "") {
-      writer.uint32(18).string(message.objectId);
-    }
-    for (const v of message.mousId) {
-      writer.uint32(26).string(v!);
-    }
-    for (const v of message.authoritiesId) {
-      writer.uint32(34).string(v!);
-    }
-    for (const v of message.districtsId) {
-      writer.uint32(42).string(v!);
-    }
-    for (const v of message.portsId) {
-      writer.uint32(50).string(v!);
-    }
-    for (const v of message.shipsId) {
-      writer.uint32(58).string(v!);
-    }
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): PermissionJwt {
-    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBasePermissionJwt();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          if (tag !== 10) {
-            break;
-          }
-
-          message.actionId = reader.string();
-          continue;
-        case 2:
-          if (tag !== 18) {
-            break;
-          }
-
-          message.objectId = reader.string();
-          continue;
-        case 3:
-          if (tag !== 26) {
-            break;
-          }
-
-          message.mousId.push(reader.string());
-          continue;
-        case 4:
-          if (tag !== 34) {
-            break;
-          }
-
-          message.authoritiesId.push(reader.string());
-          continue;
-        case 5:
-          if (tag !== 42) {
-            break;
-          }
-
-          message.districtsId.push(reader.string());
-          continue;
-        case 6:
-          if (tag !== 50) {
-            break;
-          }
-
-          message.portsId.push(reader.string());
-          continue;
-        case 7:
-          if (tag !== 58) {
-            break;
-          }
-
-          message.shipsId.push(reader.string());
-          continue;
-      }
-      if ((tag & 7) === 4 || tag === 0) {
-        break;
-      }
-      reader.skipType(tag & 7);
-    }
-    return message;
-  },
-
-  fromJSON(object: any): PermissionJwt {
-    return {
-      actionId: isSet(object.actionId) ? globalThis.String(object.actionId) : "",
-      objectId: isSet(object.objectId) ? globalThis.String(object.objectId) : "",
-      mousId: globalThis.Array.isArray(object?.mousId) ? object.mousId.map((e: any) => globalThis.String(e)) : [],
-      authoritiesId: globalThis.Array.isArray(object?.authoritiesId)
-        ? object.authoritiesId.map((e: any) => globalThis.String(e))
-        : [],
-      districtsId: globalThis.Array.isArray(object?.districtsId)
-        ? object.districtsId.map((e: any) => globalThis.String(e))
-        : [],
-      portsId: globalThis.Array.isArray(object?.portsId) ? object.portsId.map((e: any) => globalThis.String(e)) : [],
-      shipsId: globalThis.Array.isArray(object?.shipsId) ? object.shipsId.map((e: any) => globalThis.String(e)) : [],
-    };
-  },
-
-  toJSON(message: PermissionJwt): unknown {
-    const obj: any = {};
-    if (message.actionId !== "") {
-      obj.actionId = message.actionId;
-    }
-    if (message.objectId !== "") {
-      obj.objectId = message.objectId;
-    }
-    if (message.mousId?.length) {
-      obj.mousId = message.mousId;
-    }
-    if (message.authoritiesId?.length) {
-      obj.authoritiesId = message.authoritiesId;
-    }
-    if (message.districtsId?.length) {
-      obj.districtsId = message.districtsId;
-    }
-    if (message.portsId?.length) {
-      obj.portsId = message.portsId;
-    }
-    if (message.shipsId?.length) {
-      obj.shipsId = message.shipsId;
-    }
-    return obj;
-  },
-
-  create<I extends Exact<DeepPartial<PermissionJwt>, I>>(base?: I): PermissionJwt {
-    return PermissionJwt.fromPartial(base ?? ({} as any));
-  },
-  fromPartial<I extends Exact<DeepPartial<PermissionJwt>, I>>(object: I): PermissionJwt {
-    const message = createBasePermissionJwt();
-    message.actionId = object.actionId ?? "";
-    message.objectId = object.objectId ?? "";
     message.mousId = object.mousId?.map((e) => e) || [];
     message.authoritiesId = object.authoritiesId?.map((e) => e) || [];
     message.districtsId = object.districtsId?.map((e) => e) || [];

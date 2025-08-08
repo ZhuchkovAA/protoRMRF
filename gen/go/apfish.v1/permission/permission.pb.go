@@ -35,15 +35,15 @@ const (
 // Permissions combine an Action and Object to create granular access controls (e.g., "read:inspection").
 type Permission struct {
 	state         protoimpl.MessageState       `protogen:"open.v1"`
-	Id            string                       `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`                   // Unique identifier for the permission
-	Action        *summary.ActionSummary       `protobuf:"bytes,2,opt,name=action,proto3" json:"action,omitempty"`           // The operation this permission allows (e.g., "read", "create")
-	Object        *summary1.ObjectSummary      `protobuf:"bytes,3,opt,name=object,proto3" json:"object,omitempty"`           // The resource this permission applies to (e.g., "inspection", "user")
-	Description   string                       `protobuf:"bytes,4,opt,name=description,proto3" json:"description,omitempty"` // Human-readable explanation of the permission
-	Name          string                       `protobuf:"bytes,5,opt,name=name,proto3" json:"name,omitempty"`               // Display name (e.g., "Read Inspections")
-	Code          string                       `protobuf:"bytes,6,opt,name=code,proto3" json:"code,omitempty"`               // Machine-readable identifier (e.g., "inspection:read")
-	CreatedAt     *timestamppb.Timestamp       `protobuf:"bytes,7,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt     *timestamppb.Timestamp       `protobuf:"bytes,8,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	DeletedAt     *timestamppb.Timestamp       `protobuf:"bytes,9,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty"`
+	Id            string                       `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	CreatedAt     *timestamppb.Timestamp       `protobuf:"bytes,2,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	UpdatedAt     *timestamppb.Timestamp       `protobuf:"bytes,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	DeletedAt     *timestamppb.Timestamp       `protobuf:"bytes,4,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty"`
+	Action        *summary.ActionSummary       `protobuf:"bytes,5,opt,name=action,proto3" json:"action,omitempty"`
+	Object        *summary1.ObjectSummary      `protobuf:"bytes,6,opt,name=object,proto3" json:"object,omitempty"`
+	Description   string                       `protobuf:"bytes,7,opt,name=description,proto3" json:"description,omitempty"`
+	Name          string                       `protobuf:"bytes,8,opt,name=name,proto3" json:"name,omitempty"`
+	Code          string                       `protobuf:"bytes,9,opt,name=code,proto3" json:"code,omitempty"`
 	Mous          []*summary2.MouSummary       `protobuf:"bytes,10,rep,name=mous,proto3" json:"mous,omitempty"`
 	Authorities   []*summary3.AuthoritySummary `protobuf:"bytes,11,rep,name=authorities,proto3" json:"authorities,omitempty"`
 	Districts     []*summary4.DistrictSummary  `protobuf:"bytes,12,rep,name=districts,proto3" json:"districts,omitempty"`
@@ -92,6 +92,27 @@ func (x *Permission) GetId() string {
 	return ""
 }
 
+func (x *Permission) GetCreatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.CreatedAt
+	}
+	return nil
+}
+
+func (x *Permission) GetUpdatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.UpdatedAt
+	}
+	return nil
+}
+
+func (x *Permission) GetDeletedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.DeletedAt
+	}
+	return nil
+}
+
 func (x *Permission) GetAction() *summary.ActionSummary {
 	if x != nil {
 		return x.Action
@@ -125,27 +146,6 @@ func (x *Permission) GetCode() string {
 		return x.Code
 	}
 	return ""
-}
-
-func (x *Permission) GetCreatedAt() *timestamppb.Timestamp {
-	if x != nil {
-		return x.CreatedAt
-	}
-	return nil
-}
-
-func (x *Permission) GetUpdatedAt() *timestamppb.Timestamp {
-	if x != nil {
-		return x.UpdatedAt
-	}
-	return nil
-}
-
-func (x *Permission) GetDeletedAt() *timestamppb.Timestamp {
-	if x != nil {
-		return x.DeletedAt
-	}
-	return nil
 }
 
 func (x *Permission) GetMous() []*summary2.MouSummary {
@@ -204,18 +204,18 @@ const file_apfish_v1_permission_permission_proto_rawDesc = "" +
 	"%apfish.v1/permission/permission.proto\x12\x14apfish.v1.permission\x1a\x1fgoogle/protobuf/timestamp.proto\x1a8apfish.v1/permission/action/summary/action_summary.proto\x1a8apfish.v1/permission/object/summary/object_summary.proto\x1a0apfish.v1/location/mou/summary/mou_summary.proto\x1a<apfish.v1/location/authority/summary/authority_summary.proto\x1a:apfish.v1/location/district/summary/district_summary.proto\x1a2apfish.v1/location/port/summary/port_summary.proto\x1a)apfish.v1/ship/summary/ship_summary.proto\x1a)apfish.v1/user/summary/user_summary.proto\x1a.apfish.v1/user/role/summary/role_summary.proto\"\x97\a\n" +
 	"\n" +
 	"Permission\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12J\n" +
-	"\x06action\x18\x02 \x01(\v22.apfish.v1.permission.action.summary.ActionSummaryR\x06action\x12J\n" +
-	"\x06object\x18\x03 \x01(\v22.apfish.v1.permission.object.summary.ObjectSummaryR\x06object\x12 \n" +
-	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x12\n" +
-	"\x04name\x18\x05 \x01(\tR\x04name\x12\x12\n" +
-	"\x04code\x18\x06 \x01(\tR\x04code\x129\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x129\n" +
 	"\n" +
-	"created_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
+	"created_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
 	"\n" +
-	"updated_at\x18\b \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x129\n" +
+	"updated_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x129\n" +
 	"\n" +
-	"deleted_at\x18\t \x01(\v2\x1a.google.protobuf.TimestampR\tdeletedAt\x12>\n" +
+	"deleted_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tdeletedAt\x12J\n" +
+	"\x06action\x18\x05 \x01(\v22.apfish.v1.permission.action.summary.ActionSummaryR\x06action\x12J\n" +
+	"\x06object\x18\x06 \x01(\v22.apfish.v1.permission.object.summary.ObjectSummaryR\x06object\x12 \n" +
+	"\vdescription\x18\a \x01(\tR\vdescription\x12\x12\n" +
+	"\x04name\x18\b \x01(\tR\x04name\x12\x12\n" +
+	"\x04code\x18\t \x01(\tR\x04code\x12>\n" +
 	"\x04mous\x18\n" +
 	" \x03(\v2*.apfish.v1.location.mou.summary.MouSummaryR\x04mous\x12X\n" +
 	"\vauthorities\x18\v \x03(\v26.apfish.v1.location.authority.summary.AuthoritySummaryR\vauthorities\x12R\n" +
@@ -240,9 +240,9 @@ func file_apfish_v1_permission_permission_proto_rawDescGZIP() []byte {
 var file_apfish_v1_permission_permission_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_apfish_v1_permission_permission_proto_goTypes = []any{
 	(*Permission)(nil),                // 0: apfish.v1.permission.Permission
-	(*summary.ActionSummary)(nil),     // 1: apfish.v1.permission.action.summary.ActionSummary
-	(*summary1.ObjectSummary)(nil),    // 2: apfish.v1.permission.object.summary.ObjectSummary
-	(*timestamppb.Timestamp)(nil),     // 3: google.protobuf.Timestamp
+	(*timestamppb.Timestamp)(nil),     // 1: google.protobuf.Timestamp
+	(*summary.ActionSummary)(nil),     // 2: apfish.v1.permission.action.summary.ActionSummary
+	(*summary1.ObjectSummary)(nil),    // 3: apfish.v1.permission.object.summary.ObjectSummary
 	(*summary2.MouSummary)(nil),       // 4: apfish.v1.location.mou.summary.MouSummary
 	(*summary3.AuthoritySummary)(nil), // 5: apfish.v1.location.authority.summary.AuthoritySummary
 	(*summary4.DistrictSummary)(nil),  // 6: apfish.v1.location.district.summary.DistrictSummary
@@ -252,11 +252,11 @@ var file_apfish_v1_permission_permission_proto_goTypes = []any{
 	(*summary8.RoleSummary)(nil),      // 10: apfish.v1.user.role.summary.RoleSummary
 }
 var file_apfish_v1_permission_permission_proto_depIdxs = []int32{
-	1,  // 0: apfish.v1.permission.Permission.action:type_name -> apfish.v1.permission.action.summary.ActionSummary
-	2,  // 1: apfish.v1.permission.Permission.object:type_name -> apfish.v1.permission.object.summary.ObjectSummary
-	3,  // 2: apfish.v1.permission.Permission.created_at:type_name -> google.protobuf.Timestamp
-	3,  // 3: apfish.v1.permission.Permission.updated_at:type_name -> google.protobuf.Timestamp
-	3,  // 4: apfish.v1.permission.Permission.deleted_at:type_name -> google.protobuf.Timestamp
+	1,  // 0: apfish.v1.permission.Permission.created_at:type_name -> google.protobuf.Timestamp
+	1,  // 1: apfish.v1.permission.Permission.updated_at:type_name -> google.protobuf.Timestamp
+	1,  // 2: apfish.v1.permission.Permission.deleted_at:type_name -> google.protobuf.Timestamp
+	2,  // 3: apfish.v1.permission.Permission.action:type_name -> apfish.v1.permission.action.summary.ActionSummary
+	3,  // 4: apfish.v1.permission.Permission.object:type_name -> apfish.v1.permission.object.summary.ObjectSummary
 	4,  // 5: apfish.v1.permission.Permission.mous:type_name -> apfish.v1.location.mou.summary.MouSummary
 	5,  // 6: apfish.v1.permission.Permission.authorities:type_name -> apfish.v1.location.authority.summary.AuthoritySummary
 	6,  // 7: apfish.v1.permission.Permission.districts:type_name -> apfish.v1.location.district.summary.DistrictSummary

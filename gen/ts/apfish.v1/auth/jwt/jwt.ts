@@ -7,32 +7,31 @@
 /* eslint-disable */
 import Long from "long";
 import _m0 from "protobufjs/minimal";
-import { PermissionJwt } from "../../permission/summary/permission_summary";
 
 export const protobufPackage = "apfish.v1.auth.jwt";
 
-export interface JwtData {
+export interface Jwt {
   id: string;
   roleId: string;
-  permissions: PermissionJwt[];
+  version: string;
   exp: Long;
   iat: Long;
 }
 
-function createBaseJwtData(): JwtData {
-  return { id: "", roleId: "", permissions: [], exp: Long.ZERO, iat: Long.ZERO };
+function createBaseJwt(): Jwt {
+  return { id: "", roleId: "", version: "", exp: Long.ZERO, iat: Long.ZERO };
 }
 
-export const JwtData = {
-  encode(message: JwtData, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+export const Jwt = {
+  encode(message: Jwt, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.id !== "") {
       writer.uint32(10).string(message.id);
     }
     if (message.roleId !== "") {
       writer.uint32(18).string(message.roleId);
     }
-    for (const v of message.permissions) {
-      PermissionJwt.encode(v!, writer.uint32(26).fork()).ldelim();
+    if (message.version !== "") {
+      writer.uint32(26).string(message.version);
     }
     if (!message.exp.equals(Long.ZERO)) {
       writer.uint32(32).int64(message.exp);
@@ -43,10 +42,10 @@ export const JwtData = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): JwtData {
+  decode(input: _m0.Reader | Uint8Array, length?: number): Jwt {
     const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseJwtData();
+    const message = createBaseJwt();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -69,7 +68,7 @@ export const JwtData = {
             break;
           }
 
-          message.permissions.push(PermissionJwt.decode(reader, reader.uint32()));
+          message.version = reader.string();
           continue;
         case 4:
           if (tag !== 32) {
@@ -94,19 +93,17 @@ export const JwtData = {
     return message;
   },
 
-  fromJSON(object: any): JwtData {
+  fromJSON(object: any): Jwt {
     return {
       id: isSet(object.id) ? globalThis.String(object.id) : "",
       roleId: isSet(object.roleId) ? globalThis.String(object.roleId) : "",
-      permissions: globalThis.Array.isArray(object?.permissions)
-        ? object.permissions.map((e: any) => PermissionJwt.fromJSON(e))
-        : [],
+      version: isSet(object.version) ? globalThis.String(object.version) : "",
       exp: isSet(object.exp) ? Long.fromValue(object.exp) : Long.ZERO,
       iat: isSet(object.iat) ? Long.fromValue(object.iat) : Long.ZERO,
     };
   },
 
-  toJSON(message: JwtData): unknown {
+  toJSON(message: Jwt): unknown {
     const obj: any = {};
     if (message.id !== "") {
       obj.id = message.id;
@@ -114,8 +111,8 @@ export const JwtData = {
     if (message.roleId !== "") {
       obj.roleId = message.roleId;
     }
-    if (message.permissions?.length) {
-      obj.permissions = message.permissions.map((e) => PermissionJwt.toJSON(e));
+    if (message.version !== "") {
+      obj.version = message.version;
     }
     if (!message.exp.equals(Long.ZERO)) {
       obj.exp = (message.exp || Long.ZERO).toString();
@@ -126,14 +123,14 @@ export const JwtData = {
     return obj;
   },
 
-  create<I extends Exact<DeepPartial<JwtData>, I>>(base?: I): JwtData {
-    return JwtData.fromPartial(base ?? ({} as any));
+  create<I extends Exact<DeepPartial<Jwt>, I>>(base?: I): Jwt {
+    return Jwt.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<JwtData>, I>>(object: I): JwtData {
-    const message = createBaseJwtData();
+  fromPartial<I extends Exact<DeepPartial<Jwt>, I>>(object: I): Jwt {
+    const message = createBaseJwt();
     message.id = object.id ?? "";
     message.roleId = object.roleId ?? "";
-    message.permissions = object.permissions?.map((e) => PermissionJwt.fromPartial(e)) || [];
+    message.version = object.version ?? "";
     message.exp = (object.exp !== undefined && object.exp !== null) ? Long.fromValue(object.exp) : Long.ZERO;
     message.iat = (object.iat !== undefined && object.iat !== null) ? Long.fromValue(object.iat) : Long.ZERO;
     return message;

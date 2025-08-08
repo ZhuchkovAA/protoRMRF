@@ -13,27 +13,27 @@ export const protobufPackage = "apfish.v1.location.port.summary";
 
 export interface PortSummary {
   id: string;
+  createdAt: Date | undefined;
+  updatedAt: Date | undefined;
+  deletedAt: Date | undefined;
   name: string;
   code: string;
   authorityId: string;
   subdivisionId: string;
   districtId: string;
-  createdAt: Date | undefined;
-  updatedAt: Date | undefined;
-  deletedAt: Date | undefined;
 }
 
 function createBasePortSummary(): PortSummary {
   return {
     id: "",
+    createdAt: undefined,
+    updatedAt: undefined,
+    deletedAt: undefined,
     name: "",
     code: "",
     authorityId: "",
     subdivisionId: "",
     districtId: "",
-    createdAt: undefined,
-    updatedAt: undefined,
-    deletedAt: undefined,
   };
 }
 
@@ -42,29 +42,29 @@ export const PortSummary = {
     if (message.id !== "") {
       writer.uint32(10).string(message.id);
     }
-    if (message.name !== "") {
-      writer.uint32(18).string(message.name);
-    }
-    if (message.code !== "") {
-      writer.uint32(26).string(message.code);
-    }
-    if (message.authorityId !== "") {
-      writer.uint32(34).string(message.authorityId);
-    }
-    if (message.subdivisionId !== "") {
-      writer.uint32(42).string(message.subdivisionId);
-    }
-    if (message.districtId !== "") {
-      writer.uint32(50).string(message.districtId);
-    }
     if (message.createdAt !== undefined) {
-      Timestamp.encode(toTimestamp(message.createdAt), writer.uint32(58).fork()).ldelim();
+      Timestamp.encode(toTimestamp(message.createdAt), writer.uint32(18).fork()).ldelim();
     }
     if (message.updatedAt !== undefined) {
-      Timestamp.encode(toTimestamp(message.updatedAt), writer.uint32(66).fork()).ldelim();
+      Timestamp.encode(toTimestamp(message.updatedAt), writer.uint32(26).fork()).ldelim();
     }
     if (message.deletedAt !== undefined) {
-      Timestamp.encode(toTimestamp(message.deletedAt), writer.uint32(74).fork()).ldelim();
+      Timestamp.encode(toTimestamp(message.deletedAt), writer.uint32(34).fork()).ldelim();
+    }
+    if (message.name !== "") {
+      writer.uint32(42).string(message.name);
+    }
+    if (message.code !== "") {
+      writer.uint32(50).string(message.code);
+    }
+    if (message.authorityId !== "") {
+      writer.uint32(58).string(message.authorityId);
+    }
+    if (message.subdivisionId !== "") {
+      writer.uint32(66).string(message.subdivisionId);
+    }
+    if (message.districtId !== "") {
+      writer.uint32(74).string(message.districtId);
     }
     return writer;
   },
@@ -88,56 +88,56 @@ export const PortSummary = {
             break;
           }
 
-          message.name = reader.string();
+          message.createdAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           continue;
         case 3:
           if (tag !== 26) {
             break;
           }
 
-          message.code = reader.string();
+          message.updatedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           continue;
         case 4:
           if (tag !== 34) {
             break;
           }
 
-          message.authorityId = reader.string();
+          message.deletedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           continue;
         case 5:
           if (tag !== 42) {
             break;
           }
 
-          message.subdivisionId = reader.string();
+          message.name = reader.string();
           continue;
         case 6:
           if (tag !== 50) {
             break;
           }
 
-          message.districtId = reader.string();
+          message.code = reader.string();
           continue;
         case 7:
           if (tag !== 58) {
             break;
           }
 
-          message.createdAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          message.authorityId = reader.string();
           continue;
         case 8:
           if (tag !== 66) {
             break;
           }
 
-          message.updatedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          message.subdivisionId = reader.string();
           continue;
         case 9:
           if (tag !== 74) {
             break;
           }
 
-          message.deletedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          message.districtId = reader.string();
           continue;
       }
       if ((tag & 7) === 4 || tag === 0) {
@@ -151,14 +151,14 @@ export const PortSummary = {
   fromJSON(object: any): PortSummary {
     return {
       id: isSet(object.id) ? globalThis.String(object.id) : "",
+      createdAt: isSet(object.createdAt) ? fromJsonTimestamp(object.createdAt) : undefined,
+      updatedAt: isSet(object.updatedAt) ? fromJsonTimestamp(object.updatedAt) : undefined,
+      deletedAt: isSet(object.deletedAt) ? fromJsonTimestamp(object.deletedAt) : undefined,
       name: isSet(object.name) ? globalThis.String(object.name) : "",
       code: isSet(object.code) ? globalThis.String(object.code) : "",
       authorityId: isSet(object.authorityId) ? globalThis.String(object.authorityId) : "",
       subdivisionId: isSet(object.subdivisionId) ? globalThis.String(object.subdivisionId) : "",
       districtId: isSet(object.districtId) ? globalThis.String(object.districtId) : "",
-      createdAt: isSet(object.createdAt) ? fromJsonTimestamp(object.createdAt) : undefined,
-      updatedAt: isSet(object.updatedAt) ? fromJsonTimestamp(object.updatedAt) : undefined,
-      deletedAt: isSet(object.deletedAt) ? fromJsonTimestamp(object.deletedAt) : undefined,
     };
   },
 
@@ -166,6 +166,15 @@ export const PortSummary = {
     const obj: any = {};
     if (message.id !== "") {
       obj.id = message.id;
+    }
+    if (message.createdAt !== undefined) {
+      obj.createdAt = message.createdAt.toISOString();
+    }
+    if (message.updatedAt !== undefined) {
+      obj.updatedAt = message.updatedAt.toISOString();
+    }
+    if (message.deletedAt !== undefined) {
+      obj.deletedAt = message.deletedAt.toISOString();
     }
     if (message.name !== "") {
       obj.name = message.name;
@@ -182,15 +191,6 @@ export const PortSummary = {
     if (message.districtId !== "") {
       obj.districtId = message.districtId;
     }
-    if (message.createdAt !== undefined) {
-      obj.createdAt = message.createdAt.toISOString();
-    }
-    if (message.updatedAt !== undefined) {
-      obj.updatedAt = message.updatedAt.toISOString();
-    }
-    if (message.deletedAt !== undefined) {
-      obj.deletedAt = message.deletedAt.toISOString();
-    }
     return obj;
   },
 
@@ -200,14 +200,14 @@ export const PortSummary = {
   fromPartial<I extends Exact<DeepPartial<PortSummary>, I>>(object: I): PortSummary {
     const message = createBasePortSummary();
     message.id = object.id ?? "";
+    message.createdAt = object.createdAt ?? undefined;
+    message.updatedAt = object.updatedAt ?? undefined;
+    message.deletedAt = object.deletedAt ?? undefined;
     message.name = object.name ?? "";
     message.code = object.code ?? "";
     message.authorityId = object.authorityId ?? "";
     message.subdivisionId = object.subdivisionId ?? "";
     message.districtId = object.districtId ?? "";
-    message.createdAt = object.createdAt ?? undefined;
-    message.updatedAt = object.updatedAt ?? undefined;
-    message.deletedAt = object.deletedAt ?? undefined;
     return message;
   },
 };

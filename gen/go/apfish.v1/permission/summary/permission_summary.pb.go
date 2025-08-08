@@ -25,14 +25,14 @@ const (
 type PermissionSummary struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	ActionId      string                 `protobuf:"bytes,2,opt,name=action_id,json=actionId,proto3" json:"action_id,omitempty"`
-	ObjectId      string                 `protobuf:"bytes,3,opt,name=object_id,json=objectId,proto3" json:"object_id,omitempty"`
-	Description   string                 `protobuf:"bytes,4,opt,name=description,proto3" json:"description,omitempty"` // Human-readable explanation of the permission
-	Name          string                 `protobuf:"bytes,5,opt,name=name,proto3" json:"name,omitempty"`               // Display name (e.g., "Read Inspections")
-	Code          string                 `protobuf:"bytes,6,opt,name=code,proto3" json:"code,omitempty"`               // Machine-readable identifier (e.g., "inspection:read")
-	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	DeletedAt     *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty"`
+	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	DeletedAt     *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty"`
+	ActionId      string                 `protobuf:"bytes,5,opt,name=action_id,json=actionId,proto3" json:"action_id,omitempty"`
+	ObjectId      string                 `protobuf:"bytes,6,opt,name=object_id,json=objectId,proto3" json:"object_id,omitempty"`
+	Description   string                 `protobuf:"bytes,7,opt,name=description,proto3" json:"description,omitempty"`
+	Name          string                 `protobuf:"bytes,8,opt,name=name,proto3" json:"name,omitempty"`
+	Code          string                 `protobuf:"bytes,9,opt,name=code,proto3" json:"code,omitempty"`
 	MousId        []string               `protobuf:"bytes,10,rep,name=mous_id,json=mousId,proto3" json:"mous_id,omitempty"`
 	AuthoritiesId []string               `protobuf:"bytes,11,rep,name=authorities_id,json=authoritiesId,proto3" json:"authorities_id,omitempty"`
 	DistrictsId   []string               `protobuf:"bytes,12,rep,name=districts_id,json=districtsId,proto3" json:"districts_id,omitempty"`
@@ -79,6 +79,27 @@ func (x *PermissionSummary) GetId() string {
 	return ""
 }
 
+func (x *PermissionSummary) GetCreatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.CreatedAt
+	}
+	return nil
+}
+
+func (x *PermissionSummary) GetUpdatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.UpdatedAt
+	}
+	return nil
+}
+
+func (x *PermissionSummary) GetDeletedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.DeletedAt
+	}
+	return nil
+}
+
 func (x *PermissionSummary) GetActionId() string {
 	if x != nil {
 		return x.ActionId
@@ -112,27 +133,6 @@ func (x *PermissionSummary) GetCode() string {
 		return x.Code
 	}
 	return ""
-}
-
-func (x *PermissionSummary) GetCreatedAt() *timestamppb.Timestamp {
-	if x != nil {
-		return x.CreatedAt
-	}
-	return nil
-}
-
-func (x *PermissionSummary) GetUpdatedAt() *timestamppb.Timestamp {
-	if x != nil {
-		return x.UpdatedAt
-	}
-	return nil
-}
-
-func (x *PermissionSummary) GetDeletedAt() *timestamppb.Timestamp {
-	if x != nil {
-		return x.DeletedAt
-	}
-	return nil
 }
 
 func (x *PermissionSummary) GetMousId() []string {
@@ -170,130 +170,30 @@ func (x *PermissionSummary) GetShipsId() []string {
 	return nil
 }
 
-type PermissionJwt struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	ActionId      string                 `protobuf:"bytes,1,opt,name=action_id,json=actionId,proto3" json:"action_id,omitempty"`
-	ObjectId      string                 `protobuf:"bytes,2,opt,name=object_id,json=objectId,proto3" json:"object_id,omitempty"`
-	MousId        []string               `protobuf:"bytes,3,rep,name=mous_id,json=mousId,proto3" json:"mous_id,omitempty"`
-	AuthoritiesId []string               `protobuf:"bytes,4,rep,name=authorities_id,json=authoritiesId,proto3" json:"authorities_id,omitempty"`
-	DistrictsId   []string               `protobuf:"bytes,5,rep,name=districts_id,json=districtsId,proto3" json:"districts_id,omitempty"`
-	PortsId       []string               `protobuf:"bytes,6,rep,name=ports_id,json=portsId,proto3" json:"ports_id,omitempty"`
-	ShipsId       []string               `protobuf:"bytes,7,rep,name=ships_id,json=shipsId,proto3" json:"ships_id,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *PermissionJwt) Reset() {
-	*x = PermissionJwt{}
-	mi := &file_apfish_v1_permission_summary_permission_summary_proto_msgTypes[1]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *PermissionJwt) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*PermissionJwt) ProtoMessage() {}
-
-func (x *PermissionJwt) ProtoReflect() protoreflect.Message {
-	mi := &file_apfish_v1_permission_summary_permission_summary_proto_msgTypes[1]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use PermissionJwt.ProtoReflect.Descriptor instead.
-func (*PermissionJwt) Descriptor() ([]byte, []int) {
-	return file_apfish_v1_permission_summary_permission_summary_proto_rawDescGZIP(), []int{1}
-}
-
-func (x *PermissionJwt) GetActionId() string {
-	if x != nil {
-		return x.ActionId
-	}
-	return ""
-}
-
-func (x *PermissionJwt) GetObjectId() string {
-	if x != nil {
-		return x.ObjectId
-	}
-	return ""
-}
-
-func (x *PermissionJwt) GetMousId() []string {
-	if x != nil {
-		return x.MousId
-	}
-	return nil
-}
-
-func (x *PermissionJwt) GetAuthoritiesId() []string {
-	if x != nil {
-		return x.AuthoritiesId
-	}
-	return nil
-}
-
-func (x *PermissionJwt) GetDistrictsId() []string {
-	if x != nil {
-		return x.DistrictsId
-	}
-	return nil
-}
-
-func (x *PermissionJwt) GetPortsId() []string {
-	if x != nil {
-		return x.PortsId
-	}
-	return nil
-}
-
-func (x *PermissionJwt) GetShipsId() []string {
-	if x != nil {
-		return x.ShipsId
-	}
-	return nil
-}
-
 var File_apfish_v1_permission_summary_permission_summary_proto protoreflect.FileDescriptor
 
 const file_apfish_v1_permission_summary_permission_summary_proto_rawDesc = "" +
 	"\n" +
 	"5apfish.v1/permission/summary/permission_summary.proto\x12\x1capfish.v1.permission.summary\x1a\x1fgoogle/protobuf/timestamp.proto\"\xf1\x03\n" +
 	"\x11PermissionSummary\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1b\n" +
-	"\taction_id\x18\x02 \x01(\tR\bactionId\x12\x1b\n" +
-	"\tobject_id\x18\x03 \x01(\tR\bobjectId\x12 \n" +
-	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x12\n" +
-	"\x04name\x18\x05 \x01(\tR\x04name\x12\x12\n" +
-	"\x04code\x18\x06 \x01(\tR\x04code\x129\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x129\n" +
 	"\n" +
-	"created_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
+	"created_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
 	"\n" +
-	"updated_at\x18\b \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x129\n" +
+	"updated_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x129\n" +
 	"\n" +
-	"deleted_at\x18\t \x01(\v2\x1a.google.protobuf.TimestampR\tdeletedAt\x12\x17\n" +
+	"deleted_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tdeletedAt\x12\x1b\n" +
+	"\taction_id\x18\x05 \x01(\tR\bactionId\x12\x1b\n" +
+	"\tobject_id\x18\x06 \x01(\tR\bobjectId\x12 \n" +
+	"\vdescription\x18\a \x01(\tR\vdescription\x12\x12\n" +
+	"\x04name\x18\b \x01(\tR\x04name\x12\x12\n" +
+	"\x04code\x18\t \x01(\tR\x04code\x12\x17\n" +
 	"\amous_id\x18\n" +
 	" \x03(\tR\x06mousId\x12%\n" +
 	"\x0eauthorities_id\x18\v \x03(\tR\rauthoritiesId\x12!\n" +
 	"\fdistricts_id\x18\f \x03(\tR\vdistrictsId\x12\x19\n" +
 	"\bports_id\x18\r \x03(\tR\aportsId\x12\x19\n" +
-	"\bships_id\x18\x0e \x03(\tR\ashipsId\"\xe2\x01\n" +
-	"\rPermissionJwt\x12\x1b\n" +
-	"\taction_id\x18\x01 \x01(\tR\bactionId\x12\x1b\n" +
-	"\tobject_id\x18\x02 \x01(\tR\bobjectId\x12\x17\n" +
-	"\amous_id\x18\x03 \x03(\tR\x06mousId\x12%\n" +
-	"\x0eauthorities_id\x18\x04 \x03(\tR\rauthoritiesId\x12!\n" +
-	"\fdistricts_id\x18\x05 \x03(\tR\vdistrictsId\x12\x19\n" +
-	"\bports_id\x18\x06 \x03(\tR\aportsId\x12\x19\n" +
-	"\bships_id\x18\a \x03(\tR\ashipsIdBXZVgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/summary;permission_summaryb\x06proto3"
+	"\bships_id\x18\x0e \x03(\tR\ashipsIdBXZVgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/permission/summary;permission_summaryb\x06proto3"
 
 var (
 	file_apfish_v1_permission_summary_permission_summary_proto_rawDescOnce sync.Once
@@ -307,16 +207,15 @@ func file_apfish_v1_permission_summary_permission_summary_proto_rawDescGZIP() []
 	return file_apfish_v1_permission_summary_permission_summary_proto_rawDescData
 }
 
-var file_apfish_v1_permission_summary_permission_summary_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_apfish_v1_permission_summary_permission_summary_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_apfish_v1_permission_summary_permission_summary_proto_goTypes = []any{
 	(*PermissionSummary)(nil),     // 0: apfish.v1.permission.summary.PermissionSummary
-	(*PermissionJwt)(nil),         // 1: apfish.v1.permission.summary.PermissionJwt
-	(*timestamppb.Timestamp)(nil), // 2: google.protobuf.Timestamp
+	(*timestamppb.Timestamp)(nil), // 1: google.protobuf.Timestamp
 }
 var file_apfish_v1_permission_summary_permission_summary_proto_depIdxs = []int32{
-	2, // 0: apfish.v1.permission.summary.PermissionSummary.created_at:type_name -> google.protobuf.Timestamp
-	2, // 1: apfish.v1.permission.summary.PermissionSummary.updated_at:type_name -> google.protobuf.Timestamp
-	2, // 2: apfish.v1.permission.summary.PermissionSummary.deleted_at:type_name -> google.protobuf.Timestamp
+	1, // 0: apfish.v1.permission.summary.PermissionSummary.created_at:type_name -> google.protobuf.Timestamp
+	1, // 1: apfish.v1.permission.summary.PermissionSummary.updated_at:type_name -> google.protobuf.Timestamp
+	1, // 2: apfish.v1.permission.summary.PermissionSummary.deleted_at:type_name -> google.protobuf.Timestamp
 	3, // [3:3] is the sub-list for method output_type
 	3, // [3:3] is the sub-list for method input_type
 	3, // [3:3] is the sub-list for extension type_name
@@ -335,7 +234,7 @@ func file_apfish_v1_permission_summary_permission_summary_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_apfish_v1_permission_summary_permission_summary_proto_rawDesc), len(file_apfish_v1_permission_summary_permission_summary_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   1,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

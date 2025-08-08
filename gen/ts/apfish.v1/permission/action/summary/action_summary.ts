@@ -12,28 +12,24 @@ import { Timestamp } from "../../../../google/protobuf/timestamp";
 export const protobufPackage = "apfish.v1.permission.action.summary";
 
 export interface ActionSummary {
-  /** Unique identifier for the action */
   id: string;
-  /** Human-readable name (e.g., "Read") */
-  name: string;
-  /** Detailed explanation of the action */
-  description: string;
-  /** Machine-friendly code (e.g., "read") */
-  code: string;
   createdAt: Date | undefined;
   updatedAt: Date | undefined;
   deletedAt: Date | undefined;
+  name: string;
+  description: string;
+  code: string;
 }
 
 function createBaseActionSummary(): ActionSummary {
   return {
     id: "",
-    name: "",
-    description: "",
-    code: "",
     createdAt: undefined,
     updatedAt: undefined,
     deletedAt: undefined,
+    name: "",
+    description: "",
+    code: "",
   };
 }
 
@@ -42,23 +38,23 @@ export const ActionSummary = {
     if (message.id !== "") {
       writer.uint32(10).string(message.id);
     }
-    if (message.name !== "") {
-      writer.uint32(18).string(message.name);
-    }
-    if (message.description !== "") {
-      writer.uint32(26).string(message.description);
-    }
-    if (message.code !== "") {
-      writer.uint32(34).string(message.code);
-    }
     if (message.createdAt !== undefined) {
-      Timestamp.encode(toTimestamp(message.createdAt), writer.uint32(42).fork()).ldelim();
+      Timestamp.encode(toTimestamp(message.createdAt), writer.uint32(18).fork()).ldelim();
     }
     if (message.updatedAt !== undefined) {
-      Timestamp.encode(toTimestamp(message.updatedAt), writer.uint32(50).fork()).ldelim();
+      Timestamp.encode(toTimestamp(message.updatedAt), writer.uint32(26).fork()).ldelim();
     }
     if (message.deletedAt !== undefined) {
-      Timestamp.encode(toTimestamp(message.deletedAt), writer.uint32(58).fork()).ldelim();
+      Timestamp.encode(toTimestamp(message.deletedAt), writer.uint32(34).fork()).ldelim();
+    }
+    if (message.name !== "") {
+      writer.uint32(42).string(message.name);
+    }
+    if (message.description !== "") {
+      writer.uint32(50).string(message.description);
+    }
+    if (message.code !== "") {
+      writer.uint32(58).string(message.code);
     }
     return writer;
   },
@@ -82,42 +78,42 @@ export const ActionSummary = {
             break;
           }
 
-          message.name = reader.string();
+          message.createdAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           continue;
         case 3:
           if (tag !== 26) {
             break;
           }
 
-          message.description = reader.string();
+          message.updatedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           continue;
         case 4:
           if (tag !== 34) {
             break;
           }
 
-          message.code = reader.string();
+          message.deletedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           continue;
         case 5:
           if (tag !== 42) {
             break;
           }
 
-          message.createdAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          message.name = reader.string();
           continue;
         case 6:
           if (tag !== 50) {
             break;
           }
 
-          message.updatedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          message.description = reader.string();
           continue;
         case 7:
           if (tag !== 58) {
             break;
           }
 
-          message.deletedAt = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          message.code = reader.string();
           continue;
       }
       if ((tag & 7) === 4 || tag === 0) {
@@ -131,12 +127,12 @@ export const ActionSummary = {
   fromJSON(object: any): ActionSummary {
     return {
       id: isSet(object.id) ? globalThis.String(object.id) : "",
-      name: isSet(object.name) ? globalThis.String(object.name) : "",
-      description: isSet(object.description) ? globalThis.String(object.description) : "",
-      code: isSet(object.code) ? globalThis.String(object.code) : "",
       createdAt: isSet(object.createdAt) ? fromJsonTimestamp(object.createdAt) : undefined,
       updatedAt: isSet(object.updatedAt) ? fromJsonTimestamp(object.updatedAt) : undefined,
       deletedAt: isSet(object.deletedAt) ? fromJsonTimestamp(object.deletedAt) : undefined,
+      name: isSet(object.name) ? globalThis.String(object.name) : "",
+      description: isSet(object.description) ? globalThis.String(object.description) : "",
+      code: isSet(object.code) ? globalThis.String(object.code) : "",
     };
   },
 
@@ -144,15 +140,6 @@ export const ActionSummary = {
     const obj: any = {};
     if (message.id !== "") {
       obj.id = message.id;
-    }
-    if (message.name !== "") {
-      obj.name = message.name;
-    }
-    if (message.description !== "") {
-      obj.description = message.description;
-    }
-    if (message.code !== "") {
-      obj.code = message.code;
     }
     if (message.createdAt !== undefined) {
       obj.createdAt = message.createdAt.toISOString();
@@ -163,6 +150,15 @@ export const ActionSummary = {
     if (message.deletedAt !== undefined) {
       obj.deletedAt = message.deletedAt.toISOString();
     }
+    if (message.name !== "") {
+      obj.name = message.name;
+    }
+    if (message.description !== "") {
+      obj.description = message.description;
+    }
+    if (message.code !== "") {
+      obj.code = message.code;
+    }
     return obj;
   },
 
@@ -172,12 +168,12 @@ export const ActionSummary = {
   fromPartial<I extends Exact<DeepPartial<ActionSummary>, I>>(object: I): ActionSummary {
     const message = createBaseActionSummary();
     message.id = object.id ?? "";
-    message.name = object.name ?? "";
-    message.description = object.description ?? "";
-    message.code = object.code ?? "";
     message.createdAt = object.createdAt ?? undefined;
     message.updatedAt = object.updatedAt ?? undefined;
     message.deletedAt = object.deletedAt ?? undefined;
+    message.name = object.name ?? "";
+    message.description = object.description ?? "";
+    message.code = object.code ?? "";
     return message;
   },
 };

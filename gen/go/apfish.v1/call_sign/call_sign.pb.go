@@ -27,12 +27,12 @@ const (
 type CallSign struct {
 	state         protoimpl.MessageState      `protogen:"open.v1"`
 	Id            string                      `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	Series        string                      `protobuf:"bytes,2,opt,name=series,proto3" json:"series,omitempty"`
-	LimitLower    string                      `protobuf:"bytes,3,opt,name=limit_lower,json=limitLower,proto3" json:"limit_lower,omitempty"`
-	LimitUpper    string                      `protobuf:"bytes,4,opt,name=limit_upper,json=limitUpper,proto3" json:"limit_upper,omitempty"`
-	CreatedAt     *timestamppb.Timestamp      `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt     *timestamppb.Timestamp      `protobuf:"bytes,6,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	DeletedAt     *timestamppb.Timestamp      `protobuf:"bytes,7,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty"`
+	CreatedAt     *timestamppb.Timestamp      `protobuf:"bytes,2,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	UpdatedAt     *timestamppb.Timestamp      `protobuf:"bytes,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	DeletedAt     *timestamppb.Timestamp      `protobuf:"bytes,4,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty"`
+	Series        string                      `protobuf:"bytes,5,opt,name=series,proto3" json:"series,omitempty"`
+	LimitLower    string                      `protobuf:"bytes,6,opt,name=limit_lower,json=limitLower,proto3" json:"limit_lower,omitempty"`
+	LimitUpper    string                      `protobuf:"bytes,7,opt,name=limit_upper,json=limitUpper,proto3" json:"limit_upper,omitempty"`
 	Authorities   []*summary.AuthoritySummary `protobuf:"bytes,8,rep,name=authorities,proto3" json:"authorities,omitempty"`
 	Ships         []*summary1.ShipSummary     `protobuf:"bytes,9,rep,name=ships,proto3" json:"ships,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -76,27 +76,6 @@ func (x *CallSign) GetId() string {
 	return ""
 }
 
-func (x *CallSign) GetSeries() string {
-	if x != nil {
-		return x.Series
-	}
-	return ""
-}
-
-func (x *CallSign) GetLimitLower() string {
-	if x != nil {
-		return x.LimitLower
-	}
-	return ""
-}
-
-func (x *CallSign) GetLimitUpper() string {
-	if x != nil {
-		return x.LimitUpper
-	}
-	return ""
-}
-
 func (x *CallSign) GetCreatedAt() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreatedAt
@@ -116,6 +95,27 @@ func (x *CallSign) GetDeletedAt() *timestamppb.Timestamp {
 		return x.DeletedAt
 	}
 	return nil
+}
+
+func (x *CallSign) GetSeries() string {
+	if x != nil {
+		return x.Series
+	}
+	return ""
+}
+
+func (x *CallSign) GetLimitLower() string {
+	if x != nil {
+		return x.LimitLower
+	}
+	return ""
+}
+
+func (x *CallSign) GetLimitUpper() string {
+	if x != nil {
+		return x.LimitUpper
+	}
+	return ""
 }
 
 func (x *CallSign) GetAuthorities() []*summary.AuthoritySummary {
@@ -138,18 +138,18 @@ const file_apfish_v1_call_sign_call_sign_proto_rawDesc = "" +
 	"\n" +
 	"#apfish.v1/call_sign/call_sign.proto\x12\x13apfish.v1.call_sign\x1a\x1fgoogle/protobuf/timestamp.proto\x1a<apfish.v1/location/authority/summary/authority_summary.proto\x1a)apfish.v1/ship/summary/ship_summary.proto\"\xba\x03\n" +
 	"\bCallSign\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12\x16\n" +
-	"\x06series\x18\x02 \x01(\tR\x06series\x12\x1f\n" +
-	"\vlimit_lower\x18\x03 \x01(\tR\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x129\n" +
+	"\n" +
+	"created_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
+	"\n" +
+	"updated_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x129\n" +
+	"\n" +
+	"deleted_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tdeletedAt\x12\x16\n" +
+	"\x06series\x18\x05 \x01(\tR\x06series\x12\x1f\n" +
+	"\vlimit_lower\x18\x06 \x01(\tR\n" +
 	"limitLower\x12\x1f\n" +
-	"\vlimit_upper\x18\x04 \x01(\tR\n" +
-	"limitUpper\x129\n" +
-	"\n" +
-	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
-	"\n" +
-	"updated_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x129\n" +
-	"\n" +
-	"deleted_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tdeletedAt\x12X\n" +
+	"\vlimit_upper\x18\a \x01(\tR\n" +
+	"limitUpper\x12X\n" +
 	"\vauthorities\x18\b \x03(\v26.apfish.v1.location.authority.summary.AuthoritySummaryR\vauthorities\x129\n" +
 	"\x05ships\x18\t \x03(\v2#.apfish.v1.ship.summary.ShipSummaryR\x05shipsBFZDgithub.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/call_sign;call_signb\x06proto3"
 

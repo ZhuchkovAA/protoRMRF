@@ -31,20 +31,20 @@ const (
 type Ship struct {
 	state         protoimpl.MessageState        `protogen:"open.v1"`
 	Id            string                        `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	Imo           int32                         `protobuf:"varint,2,opt,name=imo,proto3" json:"imo,omitempty"`
-	Type          *summary.TypeSummary          `protobuf:"bytes,3,opt,name=type,proto3" json:"type,omitempty"`
-	Class         *summary1.ClassSummary        `protobuf:"bytes,4,opt,name=class,proto3" json:"class,omitempty"`
-	Authority     *summary2.AuthoritySummary    `protobuf:"bytes,5,opt,name=authority,proto3" json:"authority,omitempty"`
-	Name          string                        `protobuf:"bytes,6,opt,name=name,proto3" json:"name,omitempty"`
-	Mmsi          int32                         `protobuf:"varint,7,opt,name=mmsi,proto3" json:"mmsi,omitempty"`
-	CallSign      *summary3.CallSignSummary     `protobuf:"bytes,8,opt,name=call_sign,json=callSign,proto3" json:"call_sign,omitempty"`
-	CallSignValue string                        `protobuf:"bytes,9,opt,name=call_sign_value,json=callSignValue,proto3" json:"call_sign_value,omitempty"`
-	DateBuild     *timestamppb.Timestamp        `protobuf:"bytes,10,opt,name=date_build,json=dateBuild,proto3" json:"date_build,omitempty"`
-	DeadWeight    int32                         `protobuf:"varint,11,opt,name=dead_weight,json=deadWeight,proto3" json:"dead_weight,omitempty"`
-	Tonnage       int32                         `protobuf:"varint,12,opt,name=tonnage,proto3" json:"tonnage,omitempty"`
-	CreatedAt     *timestamppb.Timestamp        `protobuf:"bytes,13,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt     *timestamppb.Timestamp        `protobuf:"bytes,14,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	DeletedAt     *timestamppb.Timestamp        `protobuf:"bytes,15,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty"`
+	CreatedAt     *timestamppb.Timestamp        `protobuf:"bytes,2,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	UpdatedAt     *timestamppb.Timestamp        `protobuf:"bytes,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	DeletedAt     *timestamppb.Timestamp        `protobuf:"bytes,4,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty"`
+	Imo           int32                         `protobuf:"varint,5,opt,name=imo,proto3" json:"imo,omitempty"`
+	Type          *summary.TypeSummary          `protobuf:"bytes,6,opt,name=type,proto3" json:"type,omitempty"`
+	Class         *summary1.ClassSummary        `protobuf:"bytes,7,opt,name=class,proto3" json:"class,omitempty"`
+	Authority     *summary2.AuthoritySummary    `protobuf:"bytes,8,opt,name=authority,proto3" json:"authority,omitempty"`
+	Name          string                        `protobuf:"bytes,9,opt,name=name,proto3" json:"name,omitempty"`
+	Mmsi          int32                         `protobuf:"varint,10,opt,name=mmsi,proto3" json:"mmsi,omitempty"`
+	CallSign      *summary3.CallSignSummary     `protobuf:"bytes,11,opt,name=call_sign,json=callSign,proto3" json:"call_sign,omitempty"`
+	CallSignValue string                        `protobuf:"bytes,12,opt,name=call_sign_value,json=callSignValue,proto3" json:"call_sign_value,omitempty"`
+	DateBuild     *timestamppb.Timestamp        `protobuf:"bytes,13,opt,name=date_build,json=dateBuild,proto3" json:"date_build,omitempty"`
+	DeadWeight    int32                         `protobuf:"varint,14,opt,name=dead_weight,json=deadWeight,proto3" json:"dead_weight,omitempty"`
+	Tonnage       int32                         `protobuf:"varint,15,opt,name=tonnage,proto3" json:"tonnage,omitempty"`
 	Captains      []*summary4.CaptainSummary    `protobuf:"bytes,16,rep,name=captains,proto3" json:"captains,omitempty"`
 	Permissions   []*summary5.PermissionSummary `protobuf:"bytes,17,rep,name=permissions,proto3" json:"permissions,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -86,6 +86,27 @@ func (x *Ship) GetId() string {
 		return x.Id
 	}
 	return ""
+}
+
+func (x *Ship) GetCreatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.CreatedAt
+	}
+	return nil
+}
+
+func (x *Ship) GetUpdatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.UpdatedAt
+	}
+	return nil
+}
+
+func (x *Ship) GetDeletedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.DeletedAt
+	}
+	return nil
 }
 
 func (x *Ship) GetImo() int32 {
@@ -165,27 +186,6 @@ func (x *Ship) GetTonnage() int32 {
 	return 0
 }
 
-func (x *Ship) GetCreatedAt() *timestamppb.Timestamp {
-	if x != nil {
-		return x.CreatedAt
-	}
-	return nil
-}
-
-func (x *Ship) GetUpdatedAt() *timestamppb.Timestamp {
-	if x != nil {
-		return x.UpdatedAt
-	}
-	return nil
-}
-
-func (x *Ship) GetDeletedAt() *timestamppb.Timestamp {
-	if x != nil {
-		return x.DeletedAt
-	}
-	return nil
-}
-
 func (x *Ship) GetCaptains() []*summary4.CaptainSummary {
 	if x != nil {
 		return x.Captains
@@ -206,27 +206,27 @@ const file_apfish_v1_ship_ship_proto_rawDesc = "" +
 	"\n" +
 	"\x19apfish.v1/ship/ship.proto\x12\x0eapfish.v1.ship\x1a\x1fgoogle/protobuf/timestamp.proto\x1a.apfish.v1/ship/type/summary/type_summary.proto\x1a0apfish.v1/ship/class/summary/class_summary.proto\x1a<apfish.v1/location/authority/summary/authority_summary.proto\x1a3apfish.v1/call_sign/summary/call_sign_summary.proto\x1a4apfish.v1/ship/captain/summary/captain_summary.proto\x1a5apfish.v1/permission/summary/permission_summary.proto\"\xdf\x06\n" +
 	"\x04Ship\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12\x10\n" +
-	"\x03imo\x18\x02 \x01(\x05R\x03imo\x12<\n" +
-	"\x04type\x18\x03 \x01(\v2(.apfish.v1.ship.type.summary.TypeSummaryR\x04type\x12@\n" +
-	"\x05class\x18\x04 \x01(\v2*.apfish.v1.ship.class.summary.ClassSummaryR\x05class\x12T\n" +
-	"\tauthority\x18\x05 \x01(\v26.apfish.v1.location.authority.summary.AuthoritySummaryR\tauthority\x12\x12\n" +
-	"\x04name\x18\x06 \x01(\tR\x04name\x12\x12\n" +
-	"\x04mmsi\x18\a \x01(\x05R\x04mmsi\x12I\n" +
-	"\tcall_sign\x18\b \x01(\v2,.apfish.v1.call_sign.summary.CallSignSummaryR\bcallSign\x12&\n" +
-	"\x0fcall_sign_value\x18\t \x01(\tR\rcallSignValue\x129\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x129\n" +
 	"\n" +
-	"date_build\x18\n" +
-	" \x01(\v2\x1a.google.protobuf.TimestampR\tdateBuild\x12\x1f\n" +
-	"\vdead_weight\x18\v \x01(\x05R\n" +
+	"created_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
+	"\n" +
+	"updated_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x129\n" +
+	"\n" +
+	"deleted_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tdeletedAt\x12\x10\n" +
+	"\x03imo\x18\x05 \x01(\x05R\x03imo\x12<\n" +
+	"\x04type\x18\x06 \x01(\v2(.apfish.v1.ship.type.summary.TypeSummaryR\x04type\x12@\n" +
+	"\x05class\x18\a \x01(\v2*.apfish.v1.ship.class.summary.ClassSummaryR\x05class\x12T\n" +
+	"\tauthority\x18\b \x01(\v26.apfish.v1.location.authority.summary.AuthoritySummaryR\tauthority\x12\x12\n" +
+	"\x04name\x18\t \x01(\tR\x04name\x12\x12\n" +
+	"\x04mmsi\x18\n" +
+	" \x01(\x05R\x04mmsi\x12I\n" +
+	"\tcall_sign\x18\v \x01(\v2,.apfish.v1.call_sign.summary.CallSignSummaryR\bcallSign\x12&\n" +
+	"\x0fcall_sign_value\x18\f \x01(\tR\rcallSignValue\x129\n" +
+	"\n" +
+	"date_build\x18\r \x01(\v2\x1a.google.protobuf.TimestampR\tdateBuild\x12\x1f\n" +
+	"\vdead_weight\x18\x0e \x01(\x05R\n" +
 	"deadWeight\x12\x18\n" +
-	"\atonnage\x18\f \x01(\x05R\atonnage\x129\n" +
-	"\n" +
-	"created_at\x18\r \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
-	"\n" +
-	"updated_at\x18\x0e \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x129\n" +
-	"\n" +
-	"deleted_at\x18\x0f \x01(\v2\x1a.google.protobuf.TimestampR\tdeletedAt\x12J\n" +
+	"\atonnage\x18\x0f \x01(\x05R\atonnage\x12J\n" +
 	"\bcaptains\x18\x10 \x03(\v2..apfish.v1.ship.captain.summary.CaptainSummaryR\bcaptains\x12Q\n" +
 	"\vpermissions\x18\x11 \x03(\v2/.apfish.v1.permission.summary.PermissionSummaryR\vpermissionsB<Z:github.com/ZhuchkovAA/protoRMRF/gen/go/apfish.v1/ship;shipb\x06proto3"
 
@@ -245,23 +245,23 @@ func file_apfish_v1_ship_ship_proto_rawDescGZIP() []byte {
 var file_apfish_v1_ship_ship_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_apfish_v1_ship_ship_proto_goTypes = []any{
 	(*Ship)(nil),                       // 0: apfish.v1.ship.Ship
-	(*summary.TypeSummary)(nil),        // 1: apfish.v1.ship.type.summary.TypeSummary
-	(*summary1.ClassSummary)(nil),      // 2: apfish.v1.ship.class.summary.ClassSummary
-	(*summary2.AuthoritySummary)(nil),  // 3: apfish.v1.location.authority.summary.AuthoritySummary
-	(*summary3.CallSignSummary)(nil),   // 4: apfish.v1.call_sign.summary.CallSignSummary
-	(*timestamppb.Timestamp)(nil),      // 5: google.protobuf.Timestamp
+	(*timestamppb.Timestamp)(nil),      // 1: google.protobuf.Timestamp
+	(*summary.TypeSummary)(nil),        // 2: apfish.v1.ship.type.summary.TypeSummary
+	(*summary1.ClassSummary)(nil),      // 3: apfish.v1.ship.class.summary.ClassSummary
+	(*summary2.AuthoritySummary)(nil),  // 4: apfish.v1.location.authority.summary.AuthoritySummary
+	(*summary3.CallSignSummary)(nil),   // 5: apfish.v1.call_sign.summary.CallSignSummary
 	(*summary4.CaptainSummary)(nil),    // 6: apfish.v1.ship.captain.summary.CaptainSummary
 	(*summary5.PermissionSummary)(nil), // 7: apfish.v1.permission.summary.PermissionSummary
 }
 var file_apfish_v1_ship_ship_proto_depIdxs = []int32{
-	1,  // 0: apfish.v1.ship.Ship.type:type_name -> apfish.v1.ship.type.summary.TypeSummary
-	2,  // 1: apfish.v1.ship.Ship.class:type_name -> apfish.v1.ship.class.summary.ClassSummary
-	3,  // 2: apfish.v1.ship.Ship.authority:type_name -> apfish.v1.location.authority.summary.AuthoritySummary
-	4,  // 3: apfish.v1.ship.Ship.call_sign:type_name -> apfish.v1.call_sign.summary.CallSignSummary
-	5,  // 4: apfish.v1.ship.Ship.date_build:type_name -> google.protobuf.Timestamp
-	5,  // 5: apfish.v1.ship.Ship.created_at:type_name -> google.protobuf.Timestamp
-	5,  // 6: apfish.v1.ship.Ship.updated_at:type_name -> google.protobuf.Timestamp
-	5,  // 7: apfish.v1.ship.Ship.deleted_at:type_name -> google.protobuf.Timestamp
+	1,  // 0: apfish.v1.ship.Ship.created_at:type_name -> google.protobuf.Timestamp
+	1,  // 1: apfish.v1.ship.Ship.updated_at:type_name -> google.protobuf.Timestamp
+	1,  // 2: apfish.v1.ship.Ship.deleted_at:type_name -> google.protobuf.Timestamp
+	2,  // 3: apfish.v1.ship.Ship.type:type_name -> apfish.v1.ship.type.summary.TypeSummary
+	3,  // 4: apfish.v1.ship.Ship.class:type_name -> apfish.v1.ship.class.summary.ClassSummary
+	4,  // 5: apfish.v1.ship.Ship.authority:type_name -> apfish.v1.location.authority.summary.AuthoritySummary
+	5,  // 6: apfish.v1.ship.Ship.call_sign:type_name -> apfish.v1.call_sign.summary.CallSignSummary
+	1,  // 7: apfish.v1.ship.Ship.date_build:type_name -> google.protobuf.Timestamp
 	6,  // 8: apfish.v1.ship.Ship.captains:type_name -> apfish.v1.ship.captain.summary.CaptainSummary
 	7,  // 9: apfish.v1.ship.Ship.permissions:type_name -> apfish.v1.permission.summary.PermissionSummary
 	10, // [10:10] is the sub-list for method output_type

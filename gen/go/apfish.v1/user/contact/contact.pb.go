@@ -28,13 +28,13 @@ const (
 // A user's contact method (e.g., email, phone).
 type Contact struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"` // Unique contact ID.
-	User          *summary.UserSummary   `protobuf:"bytes,2,opt,name=user,proto3" json:"user,omitempty"`
-	Type          *summary1.TypeSummary  `protobuf:"bytes,3,opt,name=type,proto3" json:"type,omitempty"`   // Contact type.
-	Value         string                 `protobuf:"bytes,4,opt,name=value,proto3" json:"value,omitempty"` // Contact value (e.g., "user@example.com").
-	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	DeletedAt     *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	DeletedAt     *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty"`
+	User          *summary.UserSummary   `protobuf:"bytes,5,opt,name=user,proto3" json:"user,omitempty"`
+	Type          *summary1.TypeSummary  `protobuf:"bytes,6,opt,name=type,proto3" json:"type,omitempty"`
+	Value         string                 `protobuf:"bytes,7,opt,name=value,proto3" json:"value,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -76,27 +76,6 @@ func (x *Contact) GetId() string {
 	return ""
 }
 
-func (x *Contact) GetUser() *summary.UserSummary {
-	if x != nil {
-		return x.User
-	}
-	return nil
-}
-
-func (x *Contact) GetType() *summary1.TypeSummary {
-	if x != nil {
-		return x.Type
-	}
-	return nil
-}
-
-func (x *Contact) GetValue() string {
-	if x != nil {
-		return x.Value
-	}
-	return ""
-}
-
 func (x *Contact) GetCreatedAt() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreatedAt
@@ -116,6 +95,27 @@ func (x *Contact) GetDeletedAt() *timestamppb.Timestamp {
 		return x.DeletedAt
 	}
 	return nil
+}
+
+func (x *Contact) GetUser() *summary.UserSummary {
+	if x != nil {
+		return x.User
+	}
+	return nil
+}
+
+func (x *Contact) GetType() *summary1.TypeSummary {
+	if x != nil {
+		return x.Type
+	}
+	return nil
+}
+
+func (x *Contact) GetValue() string {
+	if x != nil {
+		return x.Value
+	}
+	return ""
 }
 
 type ContactPatch struct {
@@ -192,16 +192,16 @@ const file_apfish_v1_user_contact_contact_proto_rawDesc = "" +
 	"\n" +
 	"$apfish.v1/user/contact/contact.proto\x12\x16apfish.v1.user.contact\x1a\x1egoogle/protobuf/wrappers.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a)apfish.v1/user/summary/user_summary.proto\x1a6apfish.v1/user/contact/type/summary/type_summary.proto\"\xdf\x02\n" +
 	"\aContact\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x127\n" +
-	"\x04user\x18\x02 \x01(\v2#.apfish.v1.user.summary.UserSummaryR\x04user\x12D\n" +
-	"\x04type\x18\x03 \x01(\v20.apfish.v1.user.contact.type.summary.TypeSummaryR\x04type\x12\x14\n" +
-	"\x05value\x18\x04 \x01(\tR\x05value\x129\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x129\n" +
 	"\n" +
-	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
+	"created_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
 	"\n" +
-	"updated_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x129\n" +
+	"updated_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x129\n" +
 	"\n" +
-	"deleted_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tdeletedAt\"\xc0\x01\n" +
+	"deleted_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tdeletedAt\x127\n" +
+	"\x04user\x18\x05 \x01(\v2#.apfish.v1.user.summary.UserSummaryR\x04user\x12D\n" +
+	"\x04type\x18\x06 \x01(\v20.apfish.v1.user.contact.type.summary.TypeSummaryR\x04type\x12\x14\n" +
+	"\x05value\x18\a \x01(\tR\x05value\"\xc0\x01\n" +
 	"\fContactPatch\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x125\n" +
 	"\auser_id\x18\x02 \x01(\v2\x1c.google.protobuf.StringValueR\x06userId\x125\n" +
@@ -224,17 +224,17 @@ var file_apfish_v1_user_contact_contact_proto_msgTypes = make([]protoimpl.Messag
 var file_apfish_v1_user_contact_contact_proto_goTypes = []any{
 	(*Contact)(nil),                // 0: apfish.v1.user.contact.Contact
 	(*ContactPatch)(nil),           // 1: apfish.v1.user.contact.ContactPatch
-	(*summary.UserSummary)(nil),    // 2: apfish.v1.user.summary.UserSummary
-	(*summary1.TypeSummary)(nil),   // 3: apfish.v1.user.contact.type.summary.TypeSummary
-	(*timestamppb.Timestamp)(nil),  // 4: google.protobuf.Timestamp
+	(*timestamppb.Timestamp)(nil),  // 2: google.protobuf.Timestamp
+	(*summary.UserSummary)(nil),    // 3: apfish.v1.user.summary.UserSummary
+	(*summary1.TypeSummary)(nil),   // 4: apfish.v1.user.contact.type.summary.TypeSummary
 	(*wrapperspb.StringValue)(nil), // 5: google.protobuf.StringValue
 }
 var file_apfish_v1_user_contact_contact_proto_depIdxs = []int32{
-	2, // 0: apfish.v1.user.contact.Contact.user:type_name -> apfish.v1.user.summary.UserSummary
-	3, // 1: apfish.v1.user.contact.Contact.type:type_name -> apfish.v1.user.contact.type.summary.TypeSummary
-	4, // 2: apfish.v1.user.contact.Contact.created_at:type_name -> google.protobuf.Timestamp
-	4, // 3: apfish.v1.user.contact.Contact.updated_at:type_name -> google.protobuf.Timestamp
-	4, // 4: apfish.v1.user.contact.Contact.deleted_at:type_name -> google.protobuf.Timestamp
+	2, // 0: apfish.v1.user.contact.Contact.created_at:type_name -> google.protobuf.Timestamp
+	2, // 1: apfish.v1.user.contact.Contact.updated_at:type_name -> google.protobuf.Timestamp
+	2, // 2: apfish.v1.user.contact.Contact.deleted_at:type_name -> google.protobuf.Timestamp
+	3, // 3: apfish.v1.user.contact.Contact.user:type_name -> apfish.v1.user.summary.UserSummary
+	4, // 4: apfish.v1.user.contact.Contact.type:type_name -> apfish.v1.user.contact.type.summary.TypeSummary
 	5, // 5: apfish.v1.user.contact.ContactPatch.user_id:type_name -> google.protobuf.StringValue
 	5, // 6: apfish.v1.user.contact.ContactPatch.type_id:type_name -> google.protobuf.StringValue
 	5, // 7: apfish.v1.user.contact.ContactPatch.value:type_name -> google.protobuf.StringValue
